@@ -4269,11 +4269,11 @@
       ]
     },
     {
-      "name": "Columns",
+      "name": "Hero",
       "cluster": 16,
-      "source": "Columns",
-      "target": "Columns (columns16)",
-      "key": "columns16",
+      "source": "Hero",
+      "target": "Hero (video)",
+      "key": "video",
       "instances": [
         {
           "url": "https://arbres.fondationsaudemarspiguet.org/fr/fondation-pour-les-arbres-home-page",
