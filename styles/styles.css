@@ -36,23 +36,23 @@
 @font-face {
   font-family:"Antarctica Fallback";
   font-style:normal;
-  font-weight:600;
-  src:local("Arial Bold");
-  ascent-override:90.30%;
-  descent-override:20.57%;
-  line-gap-override:29.12%;
-  size-adjust:93.58%;
-}
-
-@font-face {
-  font-family:"Antarctica Fallback";
-  font-style:normal;
   font-weight:300;
   src:local("Arial");
   ascent-override:78.69%;
   descent-override:17.93%;
   line-gap-override:25.38%;
   size-adjust:107.38%;
+}
+
+@font-face {
+  font-family:"Antarctica Fallback";
+  font-style:normal;
+  font-weight:600;
+  src:local("Arial Bold");
+  ascent-override:90.30%;
+  descent-override:20.57%;
+  line-gap-override:29.12%;
+  size-adjust:93.58%;
 }
 
 @font-face {
