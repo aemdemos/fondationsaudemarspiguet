@@ -4170,11 +4170,11 @@
       ]
     },
     {
-      "name": "Cards",
+      "name": "Columns",
       "cluster": 13,
-      "source": "Cards",
-      "target": "Cards (cards13)",
-      "key": "cards13",
+      "source": "Columns",
+      "target": "Columns (columns13)",
+      "key": "columns13",
       "instances": [
         {
           "url": "https://arbres.fondationsaudemarspiguet.org/fr/fondation-pour-les-arbres-home-page",
