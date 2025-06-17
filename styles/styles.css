@@ -12,6 +12,7 @@
  */
 :root {
   --background-color: white;
+  --header-color: rgba(107, 126, 124, 0.85);
   --light-color: #f8f8f8;
   --dark-color: #505050;
   --text-color: #131313;
