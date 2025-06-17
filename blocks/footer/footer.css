@@ -1,20 +1,92 @@
 footer {
-  background-color: var(--light-color);
+  background-color: var(--footer-color);
   font-size: var(--body-font-size-xs);
+  position: relative;
 }
 
 footer .footer > div {
   margin: auto;
   max-width: 1200px;
-  padding: 40px 24px 24px;
+  padding: 40px 20px;
+  font-size: 10px;
+  color: white;
 }
 
-footer .footer p {
-  margin: 0;
+footer .footer .icon img {
+  width: 40px;
+  height: 40px;
+  padding-bottom: 5px;
 }
 
-@media (width >= 900px) {
+footer .footer a:any-link {
+  color: white;
+}
+
+footer .footer a:hover {
+  text-decoration: none;
+  color: #839790;
+}
+
+footer .footer ul {
+  margin-left: -40px;
+}
+
+footer .footer ul > li {
+  display: inline-block;
+  list-style-type: none;
+}
+
+footer .footer .section.non-caps{
+  line-height: 1em;
+  font-weight: 300;
+}
+
+footer .footer .section.non-caps ul > li:not(:last-child) > a::after{
+  content: '|';
+  color: white;
+  padding: 0 4px;
+}
+
+footer .footer .section.caps {
+  font-weight: 500;
+  letter-spacing: .02em;  
+}
+
+footer .footer .section.caps ul > li:not(:last-child) > a::after{
+  content: '|';
+  color: black;
+  padding: 0 4px;
+}
+
+@media (max-width: 930px) {
+  footer .footer .section.caps {
+    font-size: 14px;
+  }
+}
+
+@media (width > 930px) {
   footer .footer > div {
-    padding: 40px 32px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  footer .footer .section.non-caps .default-content-wrapper {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+  }
+
+  footer .footer .section.non-caps .default-content-wrapper > p:last-of-type {
+    display: unset;
+    position:sticky;
+  }
+  
+  footer .footer .section.non-caps .icon {
+    margin-right: 30px;
+  }
+
+  footer .footer .section.caps {
+    font-size: 22px;
   }
 }
