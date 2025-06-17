@@ -1,4 +1,3 @@
-
 /*
  * Copyright 2020 Adobe. All rights reserved.
  * This file is licensed to you under the Apache License, Version 2.0 (the "License");
@@ -32,98 +31,97 @@
   --header-height: var(--nav-height);
 
   /* original site colors */
-  --site-color: #6B7E7C;	
-  --site-color_2: #839790;
-  --header-color: rgba(107, 126, 124, 0.85);
-  --header-color_over: rgba(107, 126, 124, 1);
+  --site-color: #6B7E7C;
+  --site-color-2: #839790;
+  --header-color: rgb(107 126 124 / 85%);
+  --header-color-over: rgb(107 126 124 / 100%);
   --footer-color: #6B7E7C;	
   --titre: #6B7E7C; 
-  --btn_bg:#c5cbcb;
+  --btn-bg: #c5cbcb;
 
 
-  /*MENU OPEN*/
-  --menu_open_bg: #6b7e7c;  
+  /* MENU OPEN */
+  --menu-open-bg: #6b7e7c;  
 
-  /*HOME CAROUSEL*/
+  /* HOME CAROUSEL */
   --carousel-bg-box1: #d8d8d7;  
   --carousel-bg-box2: #b1afa1;  
 
 
-  /*HOME PROJETS */
+  /* HOME PROJETS */
   --projet-bg-odd: #dbd9d3; 
   --projet-bg-even: #ccd5d3;
   --projet-bloc-titre: #6B7E7C;
-  --projet-bloc-btn_first: #9D9B88;
+  --projet-bloc-btn-first: #9D9B88;
 
-  /*HOME news */
-  --news-over_filtre: rgba(148, 127, 95, 0.2); 	
+  /* HOME NEWS */
+  --news-over-filtre: rgb(148 127 95 / 20%); 	
 
-  /*HOME CHIFFRES */
-  --chiffres-bloc_bg: #e1e3e0; 
-  --chiffres-bloc_btn:#525252;
-  --chiffres-bloc_btn_bg: #d3cdbf; 
+  /* HOME CHIFFRES */
+  --chiffres-bloc-bg: #e1e3e0;
+  --chiffres-bloc-btn: #525252;
+  --chiffres-bloc-btn-bg: #d3cdbf; 
 
-  /*EVENTS PROJETS*/	
-  --projet-bg-page-listing: #edecea; 
-      
+  /* EVENTS PROJETS */
+  --projet-bg-page-listing: #edecea;
   --projet-bg-intro: #b9b8b2;
-  --projet-bg-intro_even: #c4c3b8; 
+  --projet-bg-intro-even: #c4c3b8; 
   --projet-intro-texte: #6B7E7C;   
   --projet-bg-page: #edecea;  
   --projet-bg-page-suite: #dcdcdc;   
 
 
-  /*NEWS LISTING */
+  /* NEWS LISTING */
   --news-bg-bien: #918063; 
   --news-bg-arbres: #6f7d7c;
   --news-bg-enavant: #d3cec7;
 
-  /*NEWS PAGE */	
+  /* NEWS PAGE */	
   --news-bg-page: #eae8e9; 
   --news-bg-page-suite: #f2f2f3;  
 
-  /*NEWS PAGE SOPHISTIQUEE */	
+  /* NEWS PAGE SOPHISTIQUEE */	
   --news-sophis-bg-intro: #e1e5e6; 
   --news-sophis-intro: #6b7e7c; 
   --news-sophis-bg-text: #6b7e7c; 
   --news-sophis-bg-text2: #e9e7ea; 	
     
-  /*TEAM PAGE */	
+  /* TEAM PAGE */	
   --team-bg-page: #f8f7f2; 
   --team-cat-titre: #857873;
   --team-bg-btn: #a49e92;
     
-  /*TEAM PARTENAIRES */	
+  /* TEAM PARTENAIRES */	
   --partenaires-bg: #f8f7f2; 	
   --partenaires-bg-bloc: #e1e5e6;
     
-  /*PAGE BLOC*/	
-  --page_bloc_full: #d8d7d0; 	
-  --page_bloc_bg_pictos: #e2e5e5;
-  --page_bloc_pictos_bg: #6f7d7c;
-  --page_bloc_btn_bg: #afb4ad;
-  --page_bloc_btn: #525252;
+  /* PAGE BLOC */
+  --page-bloc-full: #d8d7d0; 	
+  --page-bloc-bg-pictos: #e2e5e5;
+  --page-bloc-pictos-bg: #6f7d7c;
+  --page-bloc-btn-bg: #afb4ad;
+  --page-bloc-btn: #525252;
 
-  /*PAGE BLOC COLOR*/	
-  --page_bloc_color_header:#9aa198;
+  /* PAGE BLOC COLOR */
+  --page-bloc-color-header: #9aa198;
 
-  /*MEDIAS */	
+  /* MEDIAS */	
   --medias-bg: #edecea;
       
-  /*NEWSLETTER BLOC */	
+  /* NEWSLETTER BLOC */	
   --newsletter-bg: #c4c3b9;   
   --newsletter-titre: #72676B;
       
-  /*FLECHE TO TOP */	    
-  --fleche_to_top_bg: rgba(107, 126, 124, 0.85); 
+  /* FLECHE TO TOP */	    
+  --fleche-to-top-bg: rgb(107 126 124 / 85%); 
     
-  /*dropdown */	    
-  --dropdown_bg:#c5cbcb; 
+  /* DROPDOWN */	    
+  --dropdown-bg: #c5cbcb; 
     
-  /*MAP */	    
-  --map-box_bg:rgba(159, 165, 157, 0.9); 	
-  --map-box_partenaires:#363f3e;	
-  --map_carte_icone_container: #E2E5E5;
+  /* MAP */	    
+  --map-box-bg: rgb(159 165 157 / 90%); 	
+  --map-box-partenaires: #363f3e;	
+  --map-carte-icone-container: #E2E5E5;
 }
 
 /* fallback fonts */
