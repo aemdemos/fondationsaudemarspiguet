@@ -36,32 +36,27 @@ footer .footer ul > li {
   list-style-type: none;
 }
 
-footer .footer .section.non-caps{
+footer .footer .section.footer-general {
   line-height: 1em;
   font-weight: 300;
 }
 
-footer .footer .section.non-caps ul > li:not(:last-child) > a::after{
+footer .footer .section.footer-general ul > li:not(:last-child) > a::after {
   content: '|';
   color: white;
   padding: 0 4px;
 }
 
-footer .footer .section.caps {
+footer .footer .section.footer-menu {
   font-weight: 500;
   letter-spacing: .02em;  
+  font-size: 14px;
 }
 
-footer .footer .section.caps ul > li:not(:last-child) > a::after{
+footer .footer .section.footer-menu ul > li:not(:last-child) > a::after{
   content: '|';
   color: black;
   padding: 0 4px;
-}
-
-@media (max-width: 930px) {
-  footer .footer .section.caps {
-    font-size: 14px;
-  }
 }
 
 @media (width > 930px) {
@@ -71,22 +66,21 @@ footer .footer .section.caps ul > li:not(:last-child) > a::after{
     align-items: center;
   }
 
-  footer .footer .section.non-caps .default-content-wrapper {
+  footer .footer .section.footer-general .default-content-wrapper {
     display: flex;
     justify-content: flex-start;
     align-items: center;
   }
 
-  footer .footer .section.non-caps .default-content-wrapper > p:last-of-type {
+  footer .footer .section.footer-general .default-content-wrapper > p:last-of-type {
     display: unset;
-    position:sticky;
   }
   
-  footer .footer .section.non-caps .icon {
+  footer .footer .section.footer-general .icon {
     margin-right: 30px;
   }
 
-  footer .footer .section.caps {
+  footer .footer .section.footer-menu {
     font-size: 22px;
   }
 }
