@@ -1,4 +1,5 @@
 import { div } from '../../scripts/dom-helpers.js';
+import getPathSegments from '../../scripts/utils.js';
 
 async function loadScript(src, attrs) {
   return new Promise((resolve, reject) => {
@@ -24,9 +25,9 @@ function generateNonce() {
   return btoa(crypto.getRandomValues(new Uint8Array(16)).join(''));
 }
 
-async function googleMapLoader(nonce) {
+async function googleMapLoader(nonce, locale) {
   const mapScript = document.createElement('script');
-  mapScript.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyByG84JqtyiGaS_SUF4ruHrdIjQgM01t9U&callback=initMap&loading=async';
+  mapScript.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyByG84JqtyiGaS_SUF4ruHrdIjQgM01t9U&callback=initMap&language=${locale}&loading=async`;
   mapScript.defer = true;
   mapScript.async = true;
   mapScript.nonce = nonce;
@@ -35,10 +36,10 @@ async function googleMapLoader(nonce) {
 
 async function loadMapScripts(nonce) {
   // Load initmapscript.js first so it defines initMap()
+  await loadScript('/blocks/map/infobox.js', window.placeholder);
   await loadScript('/blocks/map/initmapscript.js', nonce);
 
   // Then load other dependencies
-  //   await loadScript('/blocks/map/infobox.js', nonce);
   await loadScript('/blocks/map/mapstyles.js', nonce);
   await loadScript('/blocks/map/markerclusterer.js', nonce);
 }
@@ -46,15 +47,14 @@ async function loadMapScripts(nonce) {
 export default async function decorate(block) {
   const mapDiv = div({ id: 'map' });
   block.append(mapDiv);
+  const [locale] = getPathSegments();
 
   // Generate and store nonce
   window.placeholder = window.placeholder || {};
   window.placeholder.nonce = generateNonce();
 
   const { nonce } = window.placeholder;
-  console.log('Map block nonce:', nonce);
 
   await loadMapScripts(window.placeholder);
-  await googleMapLoader(nonce);
-  await loadScript('/blocks/map/infobox.js', window.placeholder);
+  await googleMapLoader(nonce, locale);
 }
