@@ -45,8 +45,9 @@ async function loadMapScripts(nonce) {
 }
 
 export default async function decorate(block) {
-  const mapDiv = div({ id: 'map' });
-  block.append(mapDiv);
+  block.querySelector('div').id = 'map';
+  const leftCategory = div({ class: 'left-category' });
+  block.prepend(leftCategory);
   const [locale] = getPathSegments();
 
   // Generate and store nonce
