@@ -2914,10 +2914,10 @@ var popupoption = {
 	
 	
 	 markerCluster = new MarkerClusterer(map, markers, {
-            imagePath: '/img/ap-arbres/closter',
+            imagePath: '/assets/images/',
             styles:[
                 {
-                    url: '/img/ap-arbres/closter1.png',
+                    url: '/assets/images/closter1.png',
                     width: 56,
                     height: 56,
                     textColor: '#ffffff',
