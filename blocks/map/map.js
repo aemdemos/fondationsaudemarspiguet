@@ -38,7 +38,7 @@ async function loadMapScripts(nonce) {
   await loadScript('/blocks/map/initmapscript.js', nonce);
 
   // Then load other dependencies
-//   await loadScript('/blocks/map/infobox.js', nonce);
+  //   await loadScript('/blocks/map/infobox.js', nonce);
   await loadScript('/blocks/map/mapstyles.js', nonce);
   await loadScript('/blocks/map/markerclusterer.js', nonce);
 }
