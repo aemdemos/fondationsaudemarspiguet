@@ -1,3 +1,5 @@
+/* eslint-disable */
+/* stylelint-disable */
 var audemarsmapstyles = 
 [
     {

@@ -1,3 +1,5 @@
+/* eslint-disable */
+/* stylelint-disable */
 /**
  *  google-maps-utility-library-v3-infobox
  *
@@ -119,7 +121,7 @@ function InfoBox(opt_opts) {
     } else {
         setTimeout(waitForOverlayView, 50);
     }
-  })();
+  }
   
   /**
    * Creates the DIV representing the InfoBox.
