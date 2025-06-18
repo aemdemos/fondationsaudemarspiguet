@@ -1,19 +1,18 @@
-export default function decorate(block) {
-    const cols = [...block.firstElementChild.children];
-    block.classList.add(`columns-${cols.length}-cols`);
-  
-    // setup image columns
-    [...block.children].forEach((row) => {
-      [...row.children].forEach((col) => {
-        const pic = col.querySelector('picture');
-        if (pic) {
-          const picWrapper = pic.closest('div');
-          if (picWrapper && picWrapper.children.length === 1) {
-            // picture is only content in column
-            picWrapper.classList.add('columns-img-col');
-          }
-        }
-      });
-    });
-  }
-  
+import { div } from '../../scripts/dom-helpers.js';
+import { loadScript } from '../../scripts/aem.js';
+
+function googleMapLoader() {
+  const mapScript = document.createElement('script');
+  // mapScript.nonce = generateNonce();
+  console.log(`Google Maps script nonce: ${mapScript.nonce}`);
+  mapScript.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyByG84JqtyiGaS_SUF4ruHrdIjQgM01t9U&callback=initMap`;
+  mapScript.defer = true;
+  (document.body || document.head).appendChild(mapScript);
+}
+
+export default async function decorate(block) {
+  const mapDiv = div({ id: 'map' });
+  block.append(mapDiv);
+  await loadScript('/blocks/map/initmapscript.js');
+  googleMapLoader();
+}
