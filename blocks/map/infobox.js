@@ -121,7 +121,7 @@ function InfoBox(opt_opts) {
     } else {
         setTimeout(waitForOverlayView, 50);
     }
-  }
+})();
   
   /**
    * Creates the DIV representing the InfoBox.
