@@ -26,7 +26,7 @@ function generateNonce() {
 
 async function googleMapLoader(nonce) {
   const mapScript = document.createElement('script');
-  mapScript.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyByG84JqtyiGaS_SUF4ruHrdIjQgM01t9U&callback=initMap';
+  mapScript.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyByG84JqtyiGaS_SUF4ruHrdIjQgM01t9U&callback=initMap&loading=async';
   mapScript.defer = true;
   mapScript.async = true;
   mapScript.nonce = nonce;
@@ -38,7 +38,7 @@ async function loadMapScripts(nonce) {
   await loadScript('/blocks/map/initmapscript.js', nonce);
 
   // Then load other dependencies
-  await loadScript('/blocks/map/infobox.js', nonce);
+//   await loadScript('/blocks/map/infobox.js', nonce);
   await loadScript('/blocks/map/mapstyles.js', nonce);
   await loadScript('/blocks/map/markerclusterer.js', nonce);
 }
@@ -56,4 +56,5 @@ export default async function decorate(block) {
 
   await loadMapScripts(window.placeholder);
   await googleMapLoader(nonce);
+  await loadScript('/blocks/map/infobox.js', window.placeholder);
 }
