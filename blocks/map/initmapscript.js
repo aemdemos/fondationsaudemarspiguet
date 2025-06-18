@@ -1,11 +1,6 @@
-function generateNonce() {
-  // Generate a random nonce value
-  return btoa(crypto.getRandomValues(new Uint8Array(16)).join(''));
-}
-
-const nonceValue = generateNonce();
 var draggable=true;
-if(isTouchDevice){
+const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+if (isTouchDevice) {
    // draggable=false;
 }
 
@@ -55,12 +50,12 @@ var popupoption = {
 
   var s = document.createElement("script");
   s.type = "text/javascript";
-  s.src = "/js/infobox.js";
-  s.setAttribute("nonce", nonceValue);
-  $("head").append(s);
+  s.src = '/blocks/map/infobox.js';
+  s.setAttribute("nonce", "3b3df148715c7bed4d9747306613a38e");
+  document.head.append(s);
     
     
-  bounds = new google.maps.LatLngBounds();    
+  bounds = new google.maps.LatLngBounds();
 
   map = new google.maps.Map(document.getElementById('map'), {
     center: {lat: 46.77448320376698, lng: 8.009033203125},
@@ -2961,7 +2956,7 @@ var popupoption = {
     
 }
  
-$(function(){
+document.addEventListener('DOMContentLoaded', function(){
 
          $(document).on("click", "a.works_categorylink", function(e){
         e.preventDefault();
@@ -3009,5 +3004,3 @@ $(function(){
         }); 
 
 });
-
-initMap();
