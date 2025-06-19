@@ -16,14 +16,17 @@ export default async function decorate(block) {
   const footer = document.createElement('div');
   while (fragment.firstElementChild) footer.append(fragment.firstElementChild);
 
-  //Add class names to footer sections and wrap general footer links and copyright in common div so that div layout is correct in >900px view
+  /**
+   * Add class names to footer sections and wrap general footer links and copyright in 
+   * common div so that div layout is correct in >900px view
+   */
   const firstSection = footer.querySelector('.section:first-child');
   if (firstSection) {
     firstSection.classList.add('footer-general');
   }
 
   const secondSection = footer.querySelector('.section:nth-of-type(2)');
-   if (secondSection) {
+  if (secondSection) {
     secondSection.classList.add('footer-menu');
   }
 
