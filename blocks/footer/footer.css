@@ -24,7 +24,7 @@ footer .footer a:any-link {
 
 footer .footer a:hover {
   text-decoration: none;
-  color: #839790;
+  color: var(--btn-bg);
 }
 
 footer .footer ul {
