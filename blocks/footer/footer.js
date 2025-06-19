@@ -17,7 +17,7 @@ export default async function decorate(block) {
   while (fragment.firstElementChild) footer.append(fragment.firstElementChild);
 
   /**
-   * Add class names to footer sections and wrap general footer links and copyright in 
+   * Add class names to footer sections and wrap general footer links and copyright in
    * common div so that div layout is correct in >900px view
    */
   const firstSection = footer.querySelector('.section:first-child');
@@ -37,6 +37,6 @@ export default async function decorate(block) {
   linksWrapper.append(footerLinks);
   linksWrapper.append(copyRight);
   firstSection.append(linksWrapper);
-  
+
   block.append(footer);
 }
