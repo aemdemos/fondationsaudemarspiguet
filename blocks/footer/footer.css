@@ -59,7 +59,7 @@ footer .footer .section.footer-menu ul > li:not(:last-child) > a::after{
   padding: 0 4px;
 }
 
-@media (width > 930px) {
+@media (width > 900px) {
   footer .footer > div {
     display: flex;
     justify-content: space-between;
