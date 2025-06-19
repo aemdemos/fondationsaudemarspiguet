@@ -64,17 +64,15 @@ footer .footer .section.footer-menu ul > li:not(:last-child) > a::after{
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 100px 80px;
   }
 
-  footer .footer .section.footer-general .default-content-wrapper {
+  footer .footer .section.footer-general {
     display: flex;
     justify-content: flex-start;
     align-items: center;
   }
 
-  footer .footer .section.footer-general .default-content-wrapper > p:last-of-type {
-    display: unset;
-  }
   
   footer .footer .section.footer-general .icon {
     margin-right: 30px;
