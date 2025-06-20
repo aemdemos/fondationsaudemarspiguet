@@ -1800,6 +1800,51 @@
       ]
     },
     {
+      "name": "newsintro",
+      "cluster": 1,
+      "source": "newsintro",
+      "target": "newsintro",
+      "key": "newsintro",
+      "instances": [
+        {
+          "url": "https://arbres.fondationsaudemarspiguet.org/en/fondation-pour-les-arbres-news/the-ppi-celebrates-its-20th-anniversary-in-senegal",
+          "urlHash": "3ff01fc2c15b42e5d5530ac3e24db01e0977dab4",
+          "uuid": "3ff01fc2-01-ab3e4de776b49f538ccb9d433b686862faf5a7cc",
+          "xpath": "/html[1]/body[1]/div[3]"
+        },
+        {
+          "url": "https://arbres.fondationsaudemarspiguet.org/fr/fondation-pour-les-arbres-actualites/soutenir-leducation-pour-reveler-le-potentiel-des-jeunes",
+          "urlHash": "421214dc4a56da572f64f7a806abf97004244fee",
+          "uuid": "421214dc-01-ab3e4de776b49f538ccb9d433b686862faf5a7cc",
+          "xpath": "/html[1]/body[1]/div[3]"
+        },
+        {
+          "url": "https://arbres.fondationsaudemarspiguet.org/en/fondation-pour-les-arbres-news/supporting-education-to-unlock-young-potential",
+          "urlHash": "6f8978c3ab32898737a312cc3a215c3f14c72bf5",
+          "uuid": "6f8978c3-01-ab3e4de776b49f538ccb9d433b686862faf5a7cc",
+          "xpath": "/html[1]/body[1]/div[3]"
+        },
+        {
+          "url": "https://arbres.fondationsaudemarspiguet.org/fr/fondation-pour-les-arbres-actualites/le-ppi-celebre-ses-20-ans-au-senegal",
+          "urlHash": "750d42af3bf2e0a0c4d75a8daf289fb774fc7fd4",
+          "uuid": "750d42af-01-ab3e4de776b49f538ccb9d433b686862faf5a7cc",
+          "xpath": "/html[1]/body[1]/div[3]"
+        },
+        {
+          "url": "https://arbres.fondationsaudemarspiguet.org/fr/fondation-pour-les-arbres-actualites/education-et-resilience-la-jeunesse-ougandaise-a-lepreuve-du",
+          "urlHash": "87cd25a2da0876ed89fdd3e67a97485e8a5a93f6",
+          "uuid": "87cd25a2-01-ab3e4de776b49f538ccb9d433b686862faf5a7cc",
+          "xpath": "/html[1]/body[1]/div[3]"
+        },
+        {
+          "url": "https://arbres.fondationsaudemarspiguet.org/en/fondation-pour-les-arbres-news/education-and-resilience-future-proofing-the-youth-of-uganda",
+          "urlHash": "e23deb36f254d836f41767987573dbce4dbe37a7",
+          "uuid": "e23deb36-01-ab3e4de776b49f538ccb9d433b686862faf5a7cc",
+          "xpath": "/html[1]/body[1]/div[3]"
+        }
+      ]
+    },
+    {
       "name": "Columns",
       "cluster": 2,
       "source": "Columns",

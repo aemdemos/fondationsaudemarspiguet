@@ -27,7 +27,7 @@ import columns22Parser from './parsers/columns22.js';
 import tableStripedBordered24Parser from './parsers/tableStripedBordered24.js';
 import carousel23Parser from './parsers/carousel23.js';
 import cardsNoImages21Parser from './parsers/cardsNoImages21.js';
-import columns1Parser from './parsers/columns1.js';
+// import columns1Parser from './parsers/columns1.js';
 import columns26Parser from './parsers/columns26.js';
 import cardsNoImages25Parser from './parsers/cardsNoImages25.js';
 import hero32Parser from './parsers/hero32.js';
@@ -44,6 +44,7 @@ import video39Parser from './parsers/video39.js';
 import columns12Parser from './parsers/columns12.js';
 import headerParser from './parsers/header.js';
 import metadataParser from './parsers/metadata.js';
+import newsintroParser from './parsers/newsintro.js';
 import metadataNewsParser from './parsers/metadataNews.js';
 import cleanupTransformer from './transformers/cleanup.js';
 import imageTransformer from './transformers/images.js';
@@ -76,7 +77,7 @@ const parsers = {
   tableStripedBordered24: tableStripedBordered24Parser,
   carousel23: carousel23Parser,
   cardsNoImages21: cardsNoImages21Parser,
-  columns1: columns1Parser,
+  // columns1: columns1Parser,
   columns26: columns26Parser,
   cardsNoImages25: cardsNoImages25Parser,
   hero32: hero32Parser,
@@ -91,6 +92,7 @@ const parsers = {
   columns40: columns40Parser,
   video39: video39Parser,
   columns12: columns12Parser,
+  newsintro: newsintroParser,
 };
 
 const transformers = {
