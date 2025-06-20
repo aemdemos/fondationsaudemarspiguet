@@ -5292,11 +5292,11 @@
       ]
     },
     {
-      "name": "Columns",
+      "name": "carousel (vertical)",
       "cluster": 26,
-      "source": "Columns",
-      "target": "Columns (columns26)",
-      "key": "columns26",
+      "source": "carousel",
+      "target": "carousel (vertical)",
+      "key": "carousel (vertical)",
       "instances": [
         {
           "url": "https://arbres.fondationsaudemarspiguet.org/en/fondation-pour-les-arbres-projects/stepping-up-protection-for-a-thousand-hectares-of-forest-fra",
