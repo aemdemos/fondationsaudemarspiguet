@@ -3447,11 +3447,11 @@
       ]
     },
     {
-      "name": "table",
+      "name": "Table",
       "cluster": 10,
-      "source": "table",
-      "target": "table",
-      "key": "table",
+      "source": "Table",
+      "target": "Table",
+      "key": "Table",
       "instances": [
         {
           "url": "https://arbres.fondationsaudemarspiguet.org/en/fondation-pour-les-arbres-the-foundation-our-team",
@@ -5292,11 +5292,11 @@
       ]
     },
     {
-      "name": "Columns",
+      "name": "Carousel (vertical)",
       "cluster": 26,
-      "source": "Columns",
-      "target": "Columns (columns26)",
-      "key": "columns26",
+      "source": "Carousel",
+      "target": "Carousel (vertical)",
+      "key": "Carousel (vertical)",
       "instances": [
         {
           "url": "https://arbres.fondationsaudemarspiguet.org/en/fondation-pour-les-arbres-projects/stepping-up-protection-for-a-thousand-hectares-of-forest-fra",
