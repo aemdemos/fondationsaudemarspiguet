@@ -112,15 +112,18 @@ export default async function decorate(block) {
   const navMeta = getMetadata('nav');
   const navPath = navMeta ? new URL(navMeta, window.location).pathname : '/nav';
   const fragment = await loadFragment(navPath);
-
+  const logoWrapper = document.createElement('div');
+  logoWrapper.className = 'nav-logo-wrapper';
+  const menuWrapper = document.createElement('div');
+  menuWrapper.className = 'nav-menu-wrapper';
   // decorate nav DOM
   block.textContent = '';
   const nav = document.createElement('nav');
   nav.id = 'nav';
   while (fragment.firstElementChild) nav.append(fragment.firstElementChild);
-
+  console.log(nav);
   const classes = ['brand', 'sections', 'tools'];
-  classes.forEach((c, i) => {
+  classes.forEach((c, i) => {    
     const section = nav.children[i];
     if (section) section.classList.add(`nav-${c}`);
   });
@@ -158,7 +161,12 @@ export default async function decorate(block) {
   // prevent mobile nav behavior on window resize
   toggleMenu(nav, navSections, isDesktop.matches);
   isDesktop.addEventListener('change', () => toggleMenu(nav, navSections, isDesktop.matches));
-
+  logoWrapper.append(navBrand);
+  logoWrapper.append(navSections);
+  logoWrapper.append(hamburger);
+  menuWrapper.append(nav.querySelector('.nav-tools'));
+  nav.append(logoWrapper);
+  nav.append(menuWrapper);
   const navWrapper = document.createElement('div');
   navWrapper.className = 'nav-wrapper';
   navWrapper.append(nav);
