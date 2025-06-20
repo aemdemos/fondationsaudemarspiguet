@@ -3449,7 +3449,7 @@
     {
       "name": "table",
       "cluster": 10,
-      "source": "Cards",
+      "source": "table",
       "target": "table",
       "key": "table",
       "instances": [
