@@ -5166,8 +5166,8 @@
       "name": "Cards (no images)",
       "cluster": 21,
       "source": "Cards",
-      "target": "Cards (cardsNoImages21)",
-      "key": "cardsNoImages21",
+      "target": "Cards (icon-grid)",
+      "key": "icon-grid",
       "instances": [
         {
           "url": "https://arbres.fondationsaudemarspiguet.org/en/fondation-pour-les-arbres-the-foundation-our-mission",
