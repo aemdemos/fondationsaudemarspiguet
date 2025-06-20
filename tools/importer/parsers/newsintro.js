@@ -6,6 +6,7 @@ export default function parse(element, { document }) {
   // ----------- Extract content for each column/cell -----------
   // First row, first column: left/top: intro text block
   const leftTop = document.createElement('div');
+  console.log(element.querySelector('.news_bloc_header'));
 
   const leftImgDiv1 = element.querySelector('.news_detail_big_container .page_hero_image');
   if (leftImgDiv1 && leftImgDiv1.style.backgroundImage) {
@@ -117,5 +118,6 @@ export default function parse(element, { document }) {
   // Create and replace
   const table = WebImporter.DOMUtils.createTable(rows, document);
   // element.replaceWith(table);
-  element.prepend(table);
+  element.querySelector('.news_bloc_header').replaceWith(table);
+  // element.prepend(table);
 }
