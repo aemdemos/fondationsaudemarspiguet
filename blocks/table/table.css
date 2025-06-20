@@ -1,3 +1,4 @@
+
 .table.block {
   width: 100%;
   overflow-x: auto;
@@ -64,4 +65,113 @@
 .table.block.bordered table th,
 .table.block.bordered table td {
   border: 1px solid;
+}
+
+/* Merged .table selector */
+.table {
+  overflow-x: auto;
+  background: none;
+}
+
+/* Generated CSS, unchanged except for the merged .table selector */
+.table.block table,
+.table.block table tr,
+.table.block table th,
+.table.block table td,
+.table.block table thead,
+.table.block table thead tr,
+.table.block table tbody,
+.table.block table tbody tr {
+  border: none;
+  border-bottom: none;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-style: none;
+  border-width: 0;
+  box-shadow: none;
+  outline: none;
+  background: none;
+}
+
+.table.block.striped tbody tr,
+.table.block.bordered table th,
+.table.block.bordered table td {
+  border: none;
+  border-bottom: none;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-style: none;
+  border-width: 0;
+  box-shadow: none;
+  background: none;
+}
+
+.table tr {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  margin: 0;
+  padding: 0;
+  background: none;
+}
+
+.table th,
+.table td {
+  flex: 1 1 0;
+  min-width: 0;
+  padding: 0 48px 0 0;
+  text-align: left;
+  vertical-align: top;
+  background: none;
+  margin: 0;
+  box-shadow: none;
+}
+
+.table th:last-child,
+.table td:last-child {
+  padding-right: 0;
+}
+
+.table table {
+  border-collapse: separate;
+  border-spacing: 0 34px;
+  background: none;
+}
+
+.table p {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-family: var(--body-font-family);
+  line-height: 1.4;
+  color: #8f9793;
+  font-size: 1.09rem;
+  font-weight: 400;
+}
+
+.table strong {
+  display: block;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 1.22rem;
+  color: #222;
+  letter-spacing: 0.03em;
+  margin-bottom: 0;
+  line-height: 1.2;
+}
+
+@media (width <= 900px) {
+  .table th,
+  .table td {
+    padding-right: 16px;
+  }
+}
+
+.table-wrapper {
+  margin-top: 0;
+  margin-bottom: 0;
 }
