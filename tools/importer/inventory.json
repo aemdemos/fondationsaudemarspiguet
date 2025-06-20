@@ -3447,11 +3447,11 @@
       ]
     },
     {
-      "name": "Cards (no images)",
+      "name": "table",
       "cluster": 10,
       "source": "Cards",
-      "target": "Cards (cardsNoImages10)",
-      "key": "cardsNoImages10",
+      "target": "table",
+      "key": "table",
       "instances": [
         {
           "url": "https://arbres.fondationsaudemarspiguet.org/en/fondation-pour-les-arbres-the-foundation-our-team",
