@@ -43,7 +43,7 @@ export default function parse(element, { document }) {
     allNewsLabels.forEach(label => {
         const labelText = label.textContent.trim();
       
-        if (labelText === 'Link(s)') {
+        if (labelText === 'Link(s)' || labelText === 'Lien(s)') {
           const links = [];
           let currentNode = label.nextElementSibling;
       
@@ -60,11 +60,26 @@ export default function parse(element, { document }) {
           meta.links = links.join(', ');
       
         } else if (labelText === 'Photos') {
-          const textNode = label.nextSibling;
-          if (textNode && textNode.nodeType === 3) { // 3 = Text Node
-            meta.photos = textNode.textContent.trim();
+          const photoNames = [];
+          let currentNode = label.nextSibling;
+      
+          while (currentNode) {
+            if (currentNode.nodeType === 3) {
+              // Text node
+              const text = currentNode.textContent.trim();
+              if (text) photoNames.push(text);
+            } else if (currentNode.nodeType === 1) {
+              if (currentNode.tagName === 'BR') {
+                // Just skip <br>
+              } else if (currentNode.classList.contains('news_detail_label')) {
+                break; // stop at next label
+              }
+            }
+            currentNode = currentNode.nextSibling;
           }
-        } else if (labelText === 'Written by') {
+      
+          meta.photos = photoNames.join(', ');
+        } else if (labelText === 'Written by' || labelText === 'Rédaction') {
             const textNode = label.nextSibling;
             if (textNode && textNode.nodeType === 3) { // 3 = Text Node
                 meta.Author = textNode.textContent.trim();
