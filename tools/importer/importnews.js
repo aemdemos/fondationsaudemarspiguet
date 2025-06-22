@@ -46,6 +46,7 @@ import headerParser from './parsers/header.js';
 import metadataParser from './parsers/metadata.js';
 import newsintroParser from './parsers/newsintro.js';
 import sectionmetadataParser from './parsers/sectionmetadata.js';
+import removecontentParser from './parsers/removecontent.js';
 import newscontentParser from './parsers/newscontent.js';
 import metadataNewsParser from './parsers/metadataNews.js';
 import cleanupTransformer from './transformers/cleanup.js';
@@ -100,6 +101,7 @@ const newsparsers = {
   newsintro: newsintroParser,
   sectionmetadata: sectionmetadataParser,
   newscontent: newscontentParser,
+  removecontent: removecontentParser,
 };
 
 const transformers = {
