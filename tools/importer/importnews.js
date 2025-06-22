@@ -45,6 +45,7 @@ import columns12Parser from './parsers/columns12.js';
 import headerParser from './parsers/header.js';
 import metadataParser from './parsers/metadata.js';
 import newsintroParser from './parsers/newsintro.js';
+import sectionmetadataParser from './parsers/sectionmetadata.js';
 import metadataNewsParser from './parsers/metadataNews.js';
 import cleanupTransformer from './transformers/cleanup.js';
 import imageTransformer from './transformers/images.js';
@@ -96,6 +97,7 @@ let parsers = {
 const newsparsers = {
   metadataNews: metadataNewsParser,
   newsintro: newsintroParser,
+  sectionmetadata: sectionmetadataParser,
 };
 
 const transformers = {
