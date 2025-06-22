@@ -27,7 +27,7 @@ import columns22Parser from './parsers/columns22.js';
 import tableStripedBordered24Parser from './parsers/tableStripedBordered24.js';
 import carousel23Parser from './parsers/carousel23.js';
 import cardsNoImages21Parser from './parsers/cardsNoImages21.js';
-// import columns1Parser from './parsers/columns1.js';
+import columns1Parser from './parsers/columns1.js';
 import columns26Parser from './parsers/columns26.js';
 import cardsNoImages25Parser from './parsers/cardsNoImages25.js';
 import hero32Parser from './parsers/hero32.js';
@@ -58,9 +58,8 @@ import {
   getPathSegments,
 } from './import.utils.js';
 
-const parsers = {
+let parsers = {
   metadata: metadataParser,
-  metadataNews: metadataNewsParser,
   tableStripedBordered6: tableStripedBordered6Parser,
   columns2: columns2Parser,
   cards9: cards9Parser,
@@ -77,7 +76,7 @@ const parsers = {
   tableStripedBordered24: tableStripedBordered24Parser,
   carousel23: carousel23Parser,
   cardsNoImages21: cardsNoImages21Parser,
-  // columns1: columns1Parser,
+  columns1: columns1Parser,
   columns26: columns26Parser,
   cardsNoImages25: cardsNoImages25Parser,
   hero32: hero32Parser,
@@ -92,6 +91,10 @@ const parsers = {
   columns40: columns40Parser,
   video39: video39Parser,
   columns12: columns12Parser,
+};
+
+const newsparsers = {
+  metadataNews: metadataNewsParser,
   newsintro: newsintroParser,
 };
 
@@ -282,6 +285,7 @@ const transformers = {
       ) {
         console.log('Detected news page');
         pageElements = [{ name: 'metadataNews' }];
+        parsers = newsparsers;
       }
   
       // sanitize the original URL
