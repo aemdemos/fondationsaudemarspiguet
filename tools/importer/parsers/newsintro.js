@@ -1,3 +1,5 @@
+import { blockSeparator } from '../import.utils.js';
+
 /* global WebImporter */
 export default function parse(element, { document }) {
   // Table header: must match example exactly
@@ -56,7 +58,9 @@ export default function parse(element, { document }) {
 
   // Create and replace
   const table = WebImporter.DOMUtils.createTable(rows, document);
-  // element.replaceWith(table);
+  element.querySelector('.news_bloc_header').after(blockSeparator());
+  // add a section break (the 3 dashes in Word ---)
   element.querySelector('.news_bloc_header').replaceWith(table);
-  // element.prepend(table);
+ // element.replaceWith(table);
+  
 }

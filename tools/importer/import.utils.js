@@ -122,6 +122,12 @@ export function getPathSegments(url) {
   }
 }
 
+export const blockSeparator = () => {
+  const p = document.createElement('p');
+  p.innerText = '---';
+  return p;
+};
+
 
 export const TableBuilder = (originalFunc) => {
   const original = originalFunc;
