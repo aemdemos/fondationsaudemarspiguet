@@ -8,9 +8,9 @@ export default function parse(element, { document }) {
   // ----------- Extract content for each column/cell -----------
   // First row, first column: left/top: intro text block
   const leftTop = document.createElement('div');
-  console.log(element.querySelector('.news_bloc_header'));
+  console.log(document.querySelector('.news_bloc_header'));
 
-  const leftImgDiv1 = element.querySelector('.news_detail_big_container .page_hero_image');
+  const leftImgDiv1 = document.querySelector('.news_detail_big_container .page_hero_image');
   if (leftImgDiv1 && leftImgDiv1.style.backgroundImage) {
     const urlMatch = leftImgDiv1.style.backgroundImage.match(/url\(["']?(.*?)["']?\)/);
     if (urlMatch) {
@@ -21,7 +21,7 @@ export default function parse(element, { document }) {
       leftTop.appendChild(img);
     }
   }
-  const leftImgDiv2 = element.querySelector('.news_detail_big_container .page_hero_image_middle');
+  const leftImgDiv2 = document.querySelector('.news_detail_big_container .page_hero_image_middle');
   if (leftImgDiv2 && leftImgDiv2.style.backgroundImage) {
     const urlMatch = leftImgDiv2.style.backgroundImage.match(/url\(["']?(.*?)["']?\)/);
     if (urlMatch) {
@@ -36,7 +36,7 @@ export default function parse(element, { document }) {
 
   const rightTop = document.createElement('div');
 
-  const rightTopDiv = element.querySelector('.news_detail_big_container .page_hero_image_seconde .page_hero_image_middle');
+  const rightTopDiv = document.querySelector('.news_detail_big_container .page_hero_image_seconde .page_hero_image_middle');
   if (rightTopDiv && rightTopDiv.style.backgroundImage) {
     const urlMatch = rightTopDiv.style.backgroundImage.match(/url\(["']?(.*?)["']?\)/);
     if (urlMatch) {
@@ -58,9 +58,9 @@ export default function parse(element, { document }) {
 
   // Create and replace
   const table = WebImporter.DOMUtils.createTable(rows, document);
-  element.querySelector('.news_bloc_header').after(blockSeparator());
+  document.querySelector('.news_bloc_header').after(blockSeparator());
   // add a section break (the 3 dashes in Word ---)
-  element.querySelector('.news_bloc_header').replaceWith(table);
+  document.querySelector('.news_bloc_header').replaceWith(table);
  // element.replaceWith(table);
   
 }

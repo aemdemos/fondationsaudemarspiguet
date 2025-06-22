@@ -1796,6 +1796,54 @@
           "urlHash": "e23deb36f254d836f41767987573dbce4dbe37a7",
           "uuid": "e23deb36-01-ab3e4de776b49f538ccb9d433b686862faf5a7cc",
           "xpath": "/html[1]/body[1]/div[3]"
+        },
+        {
+          "url": "https://arbres.fondationsaudemarspiguet.org/en/fondation-pour-les-arbres-news/new-forest-reserve-in-the-parc-naturel-du-jorat",
+          "urlHash": "e20d7024960e29daab87d114d86b1776562395f2",
+          "uuid": "e20d7024-09-b336659d6a58b751a90a6f511c6b5bdd1f7d3464",
+          "xpath": "/html[1]/body[1]/div[4]"
+        },
+        {
+          "url": "https://arbres.fondationsaudemarspiguet.org/en/fondation-pour-les-arbres-news/on-the-trail-of-resonance-wood",
+          "urlHash": "74ea070e4da07d5d5f2ad8b507ea5d38f39ee2f8",
+          "uuid": "74ea070e-07-2d8b7725cbc6188698bdb4f4fb9de1c2da2c89da",
+          "xpath": "/html[1]/body[1]/div[3]/div[2]/div[2]/div[2]"
+        },
+        {
+          "url": "https://arbres.fondationsaudemarspiguet.org/en/fondation-pour-les-arbres-news/sentier-de-la-morges-inauguration-of-two-didactic-trails",
+          "urlHash": "e64e602b6f93e5f58c6a2166f78beb86b9438a92",
+          "uuid": "e64e602b-07-2d8b7725cbc6188698bdb4f4fb9de1c2da2c89da",
+          "xpath": "/html[1]/body[1]/div[3]/div[2]/div[2]/div[2]"
+        },
+        {
+          "url": "https://arbres.fondationsaudemarspiguet.org/en/fondation-pour-les-arbres-news/voyage-au-centre-de-la-foret-a-la-recherche-de-sylvette-la-c",
+          "urlHash": "d606795dd888c37193fdcbfe2bd8d840615f6e0a",
+          "uuid": "d606795d-00-6419c5482dba87d55497e10067ddb965e78fe885",
+          "xpath": "/html[1]/body[1]/div[2]"
+        },
+        {
+          "url": "https://arbres.fondationsaudemarspiguet.org/fr/fondation-pour-les-arbres-actualites/nouvelle-reserve-forestiere-dans-le-parc-naturel-du-jorat",
+          "urlHash": "1cf45e1cf6fcbb0c4222bfb25ac0894aaed11342",
+          "uuid": "1cf45e1c-05-7d9e10639d529316d722e05d9b8eeebf7771aed9",
+          "xpath": "/html[1]/body[1]/div[5]"
+        },
+        {
+          "url": "https://arbres.fondationsaudemarspiguet.org/fr/fondation-pour-les-arbres-actualites/sentier-de-la-morges-inauguration-de-deux-parcours-didactiqu",
+          "urlHash": "e325f72f0f426c4a7bbf0549df89de39fb573e24",
+          "uuid": "e325f72f-05-7d9e10639d529316d722e05d9b8eeebf7771aed9",
+          "xpath": "/html[1]/body[1]/div[5]"
+        },
+        {
+          "url": "https://arbres.fondationsaudemarspiguet.org/fr/fondation-pour-les-arbres-actualites/sur-les-traces-du-bois-de-resonance",
+          "urlHash": "63491d3c348131bbfc017bd356d3740fc9e8c509",
+          "uuid": "63491d3c-01-4e79684dc6c7cad652afb05deea99ef05a09f97d",
+          "xpath": "/html[1]/body[1]/div[3]/div[2]/div[2]/div[1]"
+        },
+        {
+          "url": "https://arbres.fondationsaudemarspiguet.org/fr/fondation-pour-les-arbres-actualites/voyage-au-centre-de-la-foret-a-la-recherche-de-sylvette-la-c",
+          "urlHash": "37dd21e5d86c1dd39a1a8b82b23ac6acbd81ab32",
+          "uuid": "37dd21e5-00-6419c5482dba87d55497e10067ddb965e78fe885",
+          "xpath": "/html[1]/body[1]/div[2]"
         }
       ]
     },
@@ -1846,7 +1894,7 @@
     },
     {
       "name": "sectionmetadata",
-      "cluster": 42,
+      "cluster": 44,
       "source": "sectionmetadata",
       "target": "sectionmetadata",
       "key": "sectionmetadata",
@@ -1886,6 +1934,54 @@
           "urlHash": "e23deb36f254d836f41767987573dbce4dbe37a7",
           "uuid": "e23deb36-01-ab3e4de776b49f538ccb9d433b686862faf5a7cc",
           "xpath": "/html[1]/body[1]/div[3]"
+        },
+        {
+          "url": "https://arbres.fondationsaudemarspiguet.org/en/fondation-pour-les-arbres-news/new-forest-reserve-in-the-parc-naturel-du-jorat",
+          "urlHash": "e20d7024960e29daab87d114d86b1776562395f2",
+          "uuid": "e20d7024-09-b336659d6a58b751a90a6f511c6b5bdd1f7d3464",
+          "xpath": "/html[1]/body[1]/div[4]"
+        },
+        {
+          "url": "https://arbres.fondationsaudemarspiguet.org/en/fondation-pour-les-arbres-news/on-the-trail-of-resonance-wood",
+          "urlHash": "74ea070e4da07d5d5f2ad8b507ea5d38f39ee2f8",
+          "uuid": "74ea070e-07-2d8b7725cbc6188698bdb4f4fb9de1c2da2c89da",
+          "xpath": "/html[1]/body[1]/div[3]/div[2]/div[2]/div[2]"
+        },
+        {
+          "url": "https://arbres.fondationsaudemarspiguet.org/en/fondation-pour-les-arbres-news/sentier-de-la-morges-inauguration-of-two-didactic-trails",
+          "urlHash": "e64e602b6f93e5f58c6a2166f78beb86b9438a92",
+          "uuid": "e64e602b-07-2d8b7725cbc6188698bdb4f4fb9de1c2da2c89da",
+          "xpath": "/html[1]/body[1]/div[3]/div[2]/div[2]/div[2]"
+        },
+        {
+          "url": "https://arbres.fondationsaudemarspiguet.org/en/fondation-pour-les-arbres-news/voyage-au-centre-de-la-foret-a-la-recherche-de-sylvette-la-c",
+          "urlHash": "d606795dd888c37193fdcbfe2bd8d840615f6e0a",
+          "uuid": "d606795d-00-6419c5482dba87d55497e10067ddb965e78fe885",
+          "xpath": "/html[1]/body[1]/div[2]"
+        },
+        {
+          "url": "https://arbres.fondationsaudemarspiguet.org/fr/fondation-pour-les-arbres-actualites/nouvelle-reserve-forestiere-dans-le-parc-naturel-du-jorat",
+          "urlHash": "1cf45e1cf6fcbb0c4222bfb25ac0894aaed11342",
+          "uuid": "1cf45e1c-05-7d9e10639d529316d722e05d9b8eeebf7771aed9",
+          "xpath": "/html[1]/body[1]/div[5]"
+        },
+        {
+          "url": "https://arbres.fondationsaudemarspiguet.org/fr/fondation-pour-les-arbres-actualites/sentier-de-la-morges-inauguration-de-deux-parcours-didactiqu",
+          "urlHash": "e325f72f0f426c4a7bbf0549df89de39fb573e24",
+          "uuid": "e325f72f-05-7d9e10639d529316d722e05d9b8eeebf7771aed9",
+          "xpath": "/html[1]/body[1]/div[5]"
+        },
+        {
+          "url": "https://arbres.fondationsaudemarspiguet.org/fr/fondation-pour-les-arbres-actualites/sur-les-traces-du-bois-de-resonance",
+          "urlHash": "63491d3c348131bbfc017bd356d3740fc9e8c509",
+          "uuid": "63491d3c-01-4e79684dc6c7cad652afb05deea99ef05a09f97d",
+          "xpath": "/html[1]/body[1]/div[3]/div[2]/div[2]/div[1]"
+        },
+        {
+          "url": "https://arbres.fondationsaudemarspiguet.org/fr/fondation-pour-les-arbres-actualites/voyage-au-centre-de-la-foret-a-la-recherche-de-sylvette-la-c",
+          "urlHash": "37dd21e5d86c1dd39a1a8b82b23ac6acbd81ab32",
+          "uuid": "37dd21e5-00-6419c5482dba87d55497e10067ddb965e78fe885",
+          "xpath": "/html[1]/body[1]/div[2]"
         }
       ]
     },
@@ -1936,7 +2032,7 @@
     },
     {
       "name": "removecontent",
-      "cluster": 44,
+      "cluster": 45,
       "source": "removecontent",
       "target": "removecontent",
       "key": "removecontent",
@@ -1976,6 +2072,141 @@
           "urlHash": "e23deb36f254d836f41767987573dbce4dbe37a7",
           "uuid": "e23deb36-01-ab3e4de776b49f538ccb9d433b686862faf5a7cc",
           "xpath": "/html[1]/body[1]/div[3]"
+        },
+        {
+          "url": "https://arbres.fondationsaudemarspiguet.org/en/fondation-pour-les-arbres-news/new-forest-reserve-in-the-parc-naturel-du-jorat",
+          "urlHash": "e20d7024960e29daab87d114d86b1776562395f2",
+          "uuid": "e20d7024-09-b336659d6a58b751a90a6f511c6b5bdd1f7d3464",
+          "xpath": "/html[1]/body[1]/div[4]"
+        },
+        {
+          "url": "https://arbres.fondationsaudemarspiguet.org/en/fondation-pour-les-arbres-news/on-the-trail-of-resonance-wood",
+          "urlHash": "74ea070e4da07d5d5f2ad8b507ea5d38f39ee2f8",
+          "uuid": "74ea070e-07-2d8b7725cbc6188698bdb4f4fb9de1c2da2c89da",
+          "xpath": "/html[1]/body[1]/div[3]/div[2]/div[2]/div[2]"
+        },
+        {
+          "url": "https://arbres.fondationsaudemarspiguet.org/en/fondation-pour-les-arbres-news/sentier-de-la-morges-inauguration-of-two-didactic-trails",
+          "urlHash": "e64e602b6f93e5f58c6a2166f78beb86b9438a92",
+          "uuid": "e64e602b-07-2d8b7725cbc6188698bdb4f4fb9de1c2da2c89da",
+          "xpath": "/html[1]/body[1]/div[3]/div[2]/div[2]/div[2]"
+        },
+        {
+          "url": "https://arbres.fondationsaudemarspiguet.org/en/fondation-pour-les-arbres-news/voyage-au-centre-de-la-foret-a-la-recherche-de-sylvette-la-c",
+          "urlHash": "d606795dd888c37193fdcbfe2bd8d840615f6e0a",
+          "uuid": "d606795d-00-6419c5482dba87d55497e10067ddb965e78fe885",
+          "xpath": "/html[1]/body[1]/div[2]"
+        },
+        {
+          "url": "https://arbres.fondationsaudemarspiguet.org/fr/fondation-pour-les-arbres-actualites/nouvelle-reserve-forestiere-dans-le-parc-naturel-du-jorat",
+          "urlHash": "1cf45e1cf6fcbb0c4222bfb25ac0894aaed11342",
+          "uuid": "1cf45e1c-05-7d9e10639d529316d722e05d9b8eeebf7771aed9",
+          "xpath": "/html[1]/body[1]/div[5]"
+        },
+        {
+          "url": "https://arbres.fondationsaudemarspiguet.org/fr/fondation-pour-les-arbres-actualites/sentier-de-la-morges-inauguration-de-deux-parcours-didactiqu",
+          "urlHash": "e325f72f0f426c4a7bbf0549df89de39fb573e24",
+          "uuid": "e325f72f-05-7d9e10639d529316d722e05d9b8eeebf7771aed9",
+          "xpath": "/html[1]/body[1]/div[5]"
+        },
+        {
+          "url": "https://arbres.fondationsaudemarspiguet.org/fr/fondation-pour-les-arbres-actualites/sur-les-traces-du-bois-de-resonance",
+          "urlHash": "63491d3c348131bbfc017bd356d3740fc9e8c509",
+          "uuid": "63491d3c-01-4e79684dc6c7cad652afb05deea99ef05a09f97d",
+          "xpath": "/html[1]/body[1]/div[3]/div[2]/div[2]/div[1]"
+        },
+        {
+          "url": "https://arbres.fondationsaudemarspiguet.org/fr/fondation-pour-les-arbres-actualites/voyage-au-centre-de-la-foret-a-la-recherche-de-sylvette-la-c",
+          "urlHash": "37dd21e5d86c1dd39a1a8b82b23ac6acbd81ab32",
+          "uuid": "37dd21e5-00-6419c5482dba87d55497e10067ddb965e78fe885",
+          "xpath": "/html[1]/body[1]/div[2]"
+        }
+      ]
+    },
+    {
+      "name": "carousel",
+      "cluster": 42,
+      "source": "carousel",
+      "target": "carousel (vertical)",
+      "key": "vertical",
+      "instances": [
+        {
+          "url": "https://arbres.fondationsaudemarspiguet.org/en/fondation-pour-les-arbres-news/the-ppi-celebrates-its-20th-anniversary-in-senegal",
+          "urlHash": "3ff01fc2c15b42e5d5530ac3e24db01e0977dab4",
+          "uuid": "3ff01fc2-01-ab3e4de776b49f538ccb9d433b686862faf5a7cc",
+          "xpath": "/html[1]/body[1]/div[3]"
+        },
+        {
+          "url": "https://arbres.fondationsaudemarspiguet.org/fr/fondation-pour-les-arbres-actualites/soutenir-leducation-pour-reveler-le-potentiel-des-jeunes",
+          "urlHash": "421214dc4a56da572f64f7a806abf97004244fee",
+          "uuid": "421214dc-01-ab3e4de776b49f538ccb9d433b686862faf5a7cc",
+          "xpath": "/html[1]/body[1]/div[3]"
+        },
+        {
+          "url": "https://arbres.fondationsaudemarspiguet.org/en/fondation-pour-les-arbres-news/supporting-education-to-unlock-young-potential",
+          "urlHash": "6f8978c3ab32898737a312cc3a215c3f14c72bf5",
+          "uuid": "6f8978c3-01-ab3e4de776b49f538ccb9d433b686862faf5a7cc",
+          "xpath": "/html[1]/body[1]/div[3]"
+        },
+        {
+          "url": "https://arbres.fondationsaudemarspiguet.org/fr/fondation-pour-les-arbres-actualites/le-ppi-celebre-ses-20-ans-au-senegal",
+          "urlHash": "750d42af3bf2e0a0c4d75a8daf289fb774fc7fd4",
+          "uuid": "750d42af-01-ab3e4de776b49f538ccb9d433b686862faf5a7cc",
+          "xpath": "/html[1]/body[1]/div[3]"
+        },
+        {
+          "url": "https://arbres.fondationsaudemarspiguet.org/en/fondation-pour-les-arbres-news/education-and-resilience-future-proofing-the-youth-of-uganda",
+          "urlHash": "e23deb36f254d836f41767987573dbce4dbe37a7",
+          "uuid": "e23deb36-01-ab3e4de776b49f538ccb9d433b686862faf5a7cc",
+          "xpath": "/html[1]/body[1]/div[3]"
+        },
+        {
+          "url": "https://arbres.fondationsaudemarspiguet.org/en/fondation-pour-les-arbres-news/new-forest-reserve-in-the-parc-naturel-du-jorat",
+          "urlHash": "e20d7024960e29daab87d114d86b1776562395f2",
+          "uuid": "e20d7024-09-b336659d6a58b751a90a6f511c6b5bdd1f7d3464",
+          "xpath": "/html[1]/body[1]/div[4]"
+        },
+        {
+          "url": "https://arbres.fondationsaudemarspiguet.org/en/fondation-pour-les-arbres-news/on-the-trail-of-resonance-wood",
+          "urlHash": "74ea070e4da07d5d5f2ad8b507ea5d38f39ee2f8",
+          "uuid": "74ea070e-07-2d8b7725cbc6188698bdb4f4fb9de1c2da2c89da",
+          "xpath": "/html[1]/body[1]/div[3]/div[2]/div[2]/div[2]"
+        },
+        {
+          "url": "https://arbres.fondationsaudemarspiguet.org/en/fondation-pour-les-arbres-news/sentier-de-la-morges-inauguration-of-two-didactic-trails",
+          "urlHash": "e64e602b6f93e5f58c6a2166f78beb86b9438a92",
+          "uuid": "e64e602b-07-2d8b7725cbc6188698bdb4f4fb9de1c2da2c89da",
+          "xpath": "/html[1]/body[1]/div[3]/div[2]/div[2]/div[2]"
+        },
+        {
+          "url": "https://arbres.fondationsaudemarspiguet.org/en/fondation-pour-les-arbres-news/voyage-au-centre-de-la-foret-a-la-recherche-de-sylvette-la-c",
+          "urlHash": "d606795dd888c37193fdcbfe2bd8d840615f6e0a",
+          "uuid": "d606795d-00-6419c5482dba87d55497e10067ddb965e78fe885",
+          "xpath": "/html[1]/body[1]/div[2]"
+        },
+        {
+          "url": "https://arbres.fondationsaudemarspiguet.org/fr/fondation-pour-les-arbres-actualites/nouvelle-reserve-forestiere-dans-le-parc-naturel-du-jorat",
+          "urlHash": "1cf45e1cf6fcbb0c4222bfb25ac0894aaed11342",
+          "uuid": "1cf45e1c-05-7d9e10639d529316d722e05d9b8eeebf7771aed9",
+          "xpath": "/html[1]/body[1]/div[5]"
+        },
+        {
+          "url": "https://arbres.fondationsaudemarspiguet.org/fr/fondation-pour-les-arbres-actualites/sentier-de-la-morges-inauguration-de-deux-parcours-didactiqu",
+          "urlHash": "e325f72f0f426c4a7bbf0549df89de39fb573e24",
+          "uuid": "e325f72f-05-7d9e10639d529316d722e05d9b8eeebf7771aed9",
+          "xpath": "/html[1]/body[1]/div[5]"
+        },
+        {
+          "url": "https://arbres.fondationsaudemarspiguet.org/fr/fondation-pour-les-arbres-actualites/sur-les-traces-du-bois-de-resonance",
+          "urlHash": "63491d3c348131bbfc017bd356d3740fc9e8c509",
+          "uuid": "63491d3c-01-4e79684dc6c7cad652afb05deea99ef05a09f97d",
+          "xpath": "/html[1]/body[1]/div[3]/div[2]/div[2]/div[1]"
+        },
+        {
+          "url": "https://arbres.fondationsaudemarspiguet.org/fr/fondation-pour-les-arbres-actualites/voyage-au-centre-de-la-foret-a-la-recherche-de-sylvette-la-c",
+          "urlHash": "37dd21e5d86c1dd39a1a8b82b23ac6acbd81ab32",
+          "uuid": "37dd21e5-00-6419c5482dba87d55497e10067ddb965e78fe885",
+          "xpath": "/html[1]/body[1]/div[2]"
         }
       ]
     },

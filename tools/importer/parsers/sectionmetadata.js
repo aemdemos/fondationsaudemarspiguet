@@ -13,7 +13,7 @@ export default function parse(element, { document }) {
   ];
 
   listofClasses.forEach((className) => {
-    const classElement = element.querySelector(`.${className}`);
+    const classElement = document.querySelector(`.${className}`);
     if (classElement && className === 'news_detail_big_intro') {
         const leftTop = document.createElement('div');
         const rightTop = document.createElement('div');

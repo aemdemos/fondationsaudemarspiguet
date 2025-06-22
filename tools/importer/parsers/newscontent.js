@@ -11,7 +11,7 @@ export default function parse(element, { document }) {
 
     const rightTop = document.createElement('div');
 
-    const rightTopDivimg = element.querySelector('.news_detail_big_container .news_detail_big_content_1 .news_detail_big_galerie1 img');
+    const rightTopDivimg = document.querySelector('.news_detail_big_container .news_detail_big_content_1 .news_detail_big_galerie1 img');
     if (rightTopDivimg) {
         rightTop.appendChild(rightTopDivimg);
     }
@@ -20,7 +20,7 @@ export default function parse(element, { document }) {
 
     const bottom = document.createElement('div');
 
-    const bottomDiv = element.querySelector('.news_detail_big_contenu_right');
+    const bottomDiv = document.querySelector('.news_detail_big_contenu_right');
     if (bottomDiv) {
         bottom.appendChild(bottomDiv);
     }
@@ -34,9 +34,9 @@ export default function parse(element, { document }) {
 
     // Create and replace
     const table = WebImporter.DOMUtils.createTable(rows, document);
-    element.querySelector('.news_detail_big_content_1').after(blockSeparator());
+    document.querySelector('.news_detail_big_content_1').after(blockSeparator());
     // add a section break (the 3 dashes in Word ---)
-    element.querySelector('.news_detail_big_content_1').replaceWith(table);
+    document.querySelector('.news_detail_big_content_1').replaceWith(table);
     // element.replaceWith(table);
 
 }
