@@ -27,7 +27,7 @@ import columns22Parser from './parsers/columns22.js';
 import tableStripedBordered24Parser from './parsers/tableStripedBordered24.js';
 import carousel23Parser from './parsers/carousel23.js';
 import cardsNoImages21Parser from './parsers/cardsNoImages21.js';
-import columns1Parser from './parsers/newsintro.js';
+import columns1Parser from './parsers/columns1.js';
 import columns26Parser from './parsers/columns26.js';
 import cardsNoImages25Parser from './parsers/cardsNoImages25.js';
 import hero32Parser from './parsers/hero32.js';
