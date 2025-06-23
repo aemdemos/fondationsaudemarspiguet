@@ -59,9 +59,6 @@ export default function parse(element, { document }) {
         const table = WebImporter.DOMUtils.createTable(rows, document);
         console.log('Table created:', table);
         classElement.after(table);
-        // insert before block separator before the next sibling of classElement
-        const blockSep = blockSeparator();
-        classElement.nextElementSibling.insertAdjacentElement('afterend', blockSep);
     }
   });
 }

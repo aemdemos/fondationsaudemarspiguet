@@ -1848,11 +1848,11 @@
       ]
     },
     {
-      "name": "newsintro",
+      "name": "articleintro",
       "cluster": 41,
-      "source": "newsintro",
-      "target": "newsintro",
-      "key": "",
+      "source": "articleintro",
+      "target": "articleintro",
+      "key": "articleintro",
       "instances": [
         {
           "url": "https://arbres.fondationsaudemarspiguet.org/en/fondation-pour-les-arbres-news/the-ppi-celebrates-its-20th-anniversary-in-senegal",
@@ -1986,11 +1986,11 @@
       ]
     },
     {
-      "name": "newscontent",
+      "name": "articlecontent",
       "cluster": 43,
-      "source": "newscontent",
-      "target": "newscontent",
-      "key": "newscontent",
+      "source": "articlecontent",
+      "target": "articlecontent",
+      "key": "articlecontent",
       "instances": [
         {
           "url": "https://arbres.fondationsaudemarspiguet.org/en/fondation-pour-les-arbres-news/the-ppi-celebrates-its-20th-anniversary-in-senegal",

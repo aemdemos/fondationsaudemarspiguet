@@ -3,7 +3,7 @@ import { blockSeparator } from '../import.utils.js';
 /* global WebImporter */
 export default function parse(element, { document }) {
   // Table header: must match example exactly
-  const headerRow = ['Newsintro'];
+  const headerRow = ['Articleintro'];
 
   // ----------- Extract content for each column/cell -----------
   // First row, first column: left/top: intro text block

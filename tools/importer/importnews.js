@@ -44,11 +44,11 @@ import video39Parser from './parsers/video39.js';
 import columns12Parser from './parsers/columns12.js';
 import headerParser from './parsers/header.js';
 import metadataParser from './parsers/metadata.js';
-import newsintroParser from './parsers/newsintro.js';
+import articleintroParser from './parsers/articleintro.js';
 import sectionmetadataParser from './parsers/sectionmetadata.js';
 import removecontentParser from './parsers/removecontent.js';
 import verticalParser from './parsers/vertical.js';
-import newscontentParser from './parsers/newscontent.js';
+import articlecontentParser from './parsers/articlecontent.js';
 import metadataNewsParser from './parsers/metadataNews.js';
 import cleanupTransformer from './transformers/cleanup.js';
 import imageTransformer from './transformers/images.js';
@@ -99,9 +99,9 @@ let parsers = {
 
 const newsparsers = {
   metadataNews: metadataNewsParser,
-  newsintro: newsintroParser,
+  articleintro: articleintroParser,
   sectionmetadata: sectionmetadataParser,
-  newscontent: newscontentParser,
+  articlecontent: articlecontentParser,
   vertical: verticalParser,
   removecontent: removecontentParser,
 };
