@@ -377,3 +377,12 @@ main .section.light, main .section.highlight {
 .section.hidden {
   display: none;
 }
+
+/* project article page styles */
+.details-sidebar.light-grey-bg {
+  background-color: var(--projet-bg-page);
+}
+
+.details-sidebar.grey-bg {
+  background-color: var(--projet-bg-page-suite);
+}
