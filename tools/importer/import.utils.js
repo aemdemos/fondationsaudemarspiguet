@@ -128,11 +128,6 @@ export const blockSeparator = () => {
   return p;
 };
 
-export const buildSectionMetadata = (cells) => WebImporter.Blocks.createBlock(document, {
-  name: 'Section Metadata',
-  cells: [...cells],
-});
-
 export const TableBuilder = (originalFunc) => {
   const original = originalFunc;
 
