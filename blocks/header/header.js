@@ -177,7 +177,7 @@ export default async function decorate(block) {
     menuItems.forEach((item) => {
       item.addEventListener('mouseover', () => {
         nav.classList.add('hovered');
-      })
+      });
       item.addEventListener('mouseout', () => {
         nav.classList.remove('hovered');
       });
