@@ -170,4 +170,17 @@ export default async function decorate(block) {
   navWrapper.className = 'nav-wrapper';
   navWrapper.append(nav);
   block.append(navWrapper);
+
+  const menuItems = nav.querySelectorAll('.default-content-wrapper > ul > li');
+  if (menuItems.length > 0) {
+    // add aria-label to nav sections
+    menuItems.forEach((item) => {
+      item.addEventListener('mouseover', () => {
+        nav.classList.add('hovered');
+      })
+      item.addEventListener('mouseout', () => {
+        nav.classList.remove('hovered');
+      });
+    });
+  }
 }

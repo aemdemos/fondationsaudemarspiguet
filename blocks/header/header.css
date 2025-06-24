@@ -1,6 +1,5 @@
 /* header and nav layout */
 header .nav-wrapper {
-  background-color: var(--header-color);
   width: 100%;
   z-index: 2;
   position: fixed;
@@ -8,6 +7,7 @@ header .nav-wrapper {
 }
 
 header nav {
+  background-color: var(--header-color);
   box-sizing: border-box;
   align-items: center;
   margin: 0;
@@ -53,12 +53,17 @@ header nav .nav-tools ul li {
     display: flex;
     justify-content: space-between;
   }
-
+  
   header nav[aria-expanded='true'] {
     min-height: 0;
     overflow: visible;
     padding: 20px 20px 30px;
     align-items: stretch;
+    background-color: var(--header-color);
+  }
+
+  header nav[aria-expanded='true'].hovered {
+    background-color: var(--menu-open-bg);
   }
 
   header nav[aria-expanded='true'] .nav-menu-wrapper {
