@@ -534,11 +534,11 @@ function decorateSections(main) {
  * @returns {object} Window placeholders object
  */
 // eslint-disable-next-line import/prefer-default-export
-async function fetchPlaceholders(prefix = 'default') {
+async function fetchPlaceholders(prefix = 'en') {
   window.placeholders = window.placeholders || {};
   if (!window.placeholders[prefix]) {
     window.placeholders[prefix] = new Promise((resolve) => {
-      fetch(`${prefix === 'default' ? '' : prefix}/placeholders.json`)
+      fetch(`/placeholders.json?sheet=${prefix}`)
         .then((resp) => {
           if (resp.ok) {
             return resp.json();
