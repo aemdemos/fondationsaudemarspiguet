@@ -11,8 +11,12 @@ import {
   loadSection,
   loadSections,
   loadCSS,
+  getMetadata,
+  buildBlock,
 } from './aem.js';
 
+const LANGUAGES = new Set(['en', 'fr']);
+let language;
 /**
  * Moves all the attributes from a given elmenet to another given element.
  * @param {Element} from the element to copy attributes from
@@ -60,6 +64,49 @@ async function loadFonts() {
 }
 
 /**
+ * @param {Element} main
+ */
+function buildOtherProjectsBlock(main) {
+  // Only build the block on the main page content, not on fragments
+  if (!document.body.contains(main) || main.closest('header, footer')) {
+    return;
+  }
+
+  const template = getMetadata('template');
+  if (template === 'project-article' || template === 'news-article') {
+    const section = document.createElement('div');
+    section.append(buildBlock('featured-projects', { elems: [template] }));
+    main.append(section);
+  }
+}
+
+export function getLanguageFromPath(pathname, resetCache = false) {
+  if (resetCache) {
+    language = undefined;
+  }
+
+  if (language !== undefined) return language;
+
+  const segs = pathname.split('/');
+  if (segs.length > 1) {
+    const l = segs[1];
+    if (LANGUAGES.has(l)) {
+      language = l;
+    }
+  }
+
+  if (language === undefined) {
+    language = 'en'; // default to English
+  }
+
+  return language;
+}
+
+export function getLanguage(curPath = window.location.pathname, resetCache = false) {
+  return getLanguageFromPath(curPath, resetCache);
+}
+
+/**
  * Builds all synthetic blocks in a container element.
  * @param {Element} main The container element
  */
@@ -83,6 +130,7 @@ export function decorateMain(main) {
   decorateIcons(main);
   decorateLinkedPictures(main);
   buildAutoBlocks(main);
+  buildOtherProjectsBlock(main);
   decorateSections(main);
   decorateBlocks(main);
 }

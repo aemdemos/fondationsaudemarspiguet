@@ -3117,11 +3117,11 @@
       ]
     },
     {
-      "name": "Columns",
+      "name": "Hero",
       "cluster": 8,
-      "source": "Columns",
-      "target": "Columns (columns8)",
-      "key": "columns8",
+      "source": "Hero",
+      "target": "Hero (two-columnar)",
+      "key": "two-columnar",
       "instances": [
         {
           "url": "https://arbres.fondationsaudemarspiguet.org/fr/fondation-pour-les-arbres-nos-projets/la-foret-de-la-mer",
@@ -3447,11 +3447,11 @@
       ]
     },
     {
-      "name": "Cards (no images)",
+      "name": "Table",
       "cluster": 10,
-      "source": "Cards",
-      "target": "Cards (cardsNoImages10)",
-      "key": "cardsNoImages10",
+      "source": "Table",
+      "target": "Table",
+      "key": "Table",
       "instances": [
         {
           "url": "https://arbres.fondationsaudemarspiguet.org/en/fondation-pour-les-arbres-the-foundation-our-team",
@@ -5166,8 +5166,8 @@
       "name": "Cards (no images)",
       "cluster": 21,
       "source": "Cards",
-      "target": "Cards (cardsNoImages21)",
-      "key": "cardsNoImages21",
+      "target": "Cards (icon-grid)",
+      "key": "icon-grid",
       "instances": [
         {
           "url": "https://arbres.fondationsaudemarspiguet.org/en/fondation-pour-les-arbres-the-foundation-our-mission",
@@ -5292,11 +5292,11 @@
       ]
     },
     {
-      "name": "Columns",
+      "name": "Carousel (vertical)",
       "cluster": 26,
-      "source": "Columns",
-      "target": "Columns (columns26)",
-      "key": "columns26",
+      "source": "Carousel",
+      "target": "Carousel (vertical)",
+      "key": "Carousel (vertical)",
       "instances": [
         {
           "url": "https://arbres.fondationsaudemarspiguet.org/en/fondation-pour-les-arbres-projects/stepping-up-protection-for-a-thousand-hectares-of-forest-fra",

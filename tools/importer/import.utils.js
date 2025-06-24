@@ -112,6 +112,17 @@ export function generateDocumentPath({ params: { originalURL } }, inventory) {
   return WebImporter.FileUtils.sanitizePath(p);
 }
 
+export function getPathSegments(url) {
+  try {
+    const urlObj = new URL(url);
+    return urlObj.pathname.split('/').filter(segment => segment.length > 0);
+  } catch (e) {
+    console.error("Invalid URL:", url);
+    return [];
+  }
+}
+
+
 export const TableBuilder = (originalFunc) => {
   const original = originalFunc;
 
