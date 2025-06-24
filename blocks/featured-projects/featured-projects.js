@@ -1,7 +1,6 @@
 import { fetchPlaceholders } from '../../scripts/aem.js';
 import { getLanguage } from '../../scripts/scripts.js';
 
-
 export default async function decorate(block) {
   const template = block.querySelector('div > div')?.textContent?.trim();
 
