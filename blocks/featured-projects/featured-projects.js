@@ -4,7 +4,7 @@ import { getLanguage } from '../../scripts/scripts.js';
 export default async function decorate(block) {
   const template = block.querySelector('div > div')?.textContent?.trim();
 
-  const placeholders = await fetchPlaceholders(`/${getLanguage()}`);
+  const placeholders = await fetchPlaceholders(`${getLanguage()}`);
 
   // Create the heading based on template
   const heading = document.createElement('h2');
