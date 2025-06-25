@@ -18,13 +18,13 @@ indices:
     target: /en/fondation-pour-les-arbres-news/news-index.json
     properties:
       title:
-        select: head > meta[name="title"]
+        select: head > meta[name="og:title"]
         value: attribute(el, "content")
       category:
         select: head > meta[name="category"]
         value: attribute(el, "content")
       description:
-        select: head > meta[name="description"]
+        select: head > meta[name="og:description"]
         value: attribute(el, "content")
       date:
         select: head > meta[name="date"]
@@ -36,7 +36,7 @@ indices:
         select: head > meta[name="author"]
         value: attribute(el, "content")
       image:
-        select: head > meta[name="image"]
+        select: head > meta[name="og:image"]
         value: attribute(el, "content")
       links:
         select: head > meta[name="links"]
@@ -47,13 +47,13 @@ indices:
     target: /fr/fondation-pour-les-arbres-actualites/news-index.json
     properties:
       title:
-        select: head > meta[name="title"]
+        select: head > meta[name="og:title"]
         value: attribute(el, "content")
       category:
         select: head > meta[name="category"]
         value: attribute(el, "content")
       description:
-        select: head > meta[name="description"]
+        select: head > meta[name="og:description"]
         value: attribute(el, "content")
       date:
         select: head > meta[name="date"]
@@ -65,7 +65,7 @@ indices:
         select: head > meta[name="author"]
         value: attribute(el, "content")
       image:
-        select: head > meta[name="image"]
+        select: head > meta[name="og:image"]
         value: attribute(el, "content")
       links:
         select: head > meta[name="links"]
