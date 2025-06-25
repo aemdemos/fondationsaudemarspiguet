@@ -14,3 +14,65 @@ indices:
       robots:
         select: head > meta[name="robots"]
         value: attribute(el, "content")
+  news-en:
+    include:
+      - '/en/fondation-pour-les-arbres-news/**'
+    exclude:
+      - '/en/fondation-pour-les-arbres-news/'
+    target: /en/fondation-pour-les-arbres-news/news-index.json
+    properties:
+      title:
+        select: head > meta[name="title"]
+        value: attribute(el, "content")
+      category:
+        select: head > meta[name="category"]
+        value: attribute(el, "content")
+      description:
+        select: head > meta[name="description"]
+        value: attribute(el, "content")
+      date:
+        select: head > meta[name="date"]
+        value: attribute(el, "content")
+      photos:
+        select: head > meta[name="photos"]
+        value: attribute(el, "content")
+      author:
+        select: head > meta[name="author"]
+        value: attribute(el, "content")
+      image:
+        select: head > meta[name="image"]
+        value: attribute(el, "content")
+      links:
+        select: head > meta[name="links"]
+        value: attribute(el, "content")
+  news-fr:
+    include:
+      - '/fr/fondation-pour-les-arbres-actualites/**'
+    exclude:
+      - '/fr/fondation-pour-les-arbres-actualites/'
+    target: /fr/fondation-pour-les-arbres-actualites/news-index.json
+    properties:
+      title:
+        select: head > meta[name="title"]
+        value: attribute(el, "content")
+      category:
+        select: head > meta[name="category"]
+        value: attribute(el, "content")
+      description:
+        select: head > meta[name="description"]
+        value: attribute(el, "content")
+      date:
+        select: head > meta[name="date"]
+        value: attribute(el, "content")
+      photos:
+        select: head > meta[name="photos"]
+        value: attribute(el, "content")
+      author:
+        select: head > meta[name="author"]
+        value: attribute(el, "content")
+      image:
+        select: head > meta[name="image"]
+        value: attribute(el, "content")
+      links:
+        select: head > meta[name="links"]
+        value: attribute(el, "content")
