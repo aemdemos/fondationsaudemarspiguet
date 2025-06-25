@@ -1,5 +1,3 @@
-version: 1
-
 indices:
   pages:
     include:
@@ -17,8 +15,6 @@ indices:
   news-en:
     include:
       - '/en/fondation-pour-les-arbres-news/**'
-    exclude:
-      - '/en/fondation-pour-les-arbres-news/'
     target: /en/fondation-pour-les-arbres-news/news-index.json
     properties:
       title:
@@ -48,8 +44,6 @@ indices:
   news-fr:
     include:
       - '/fr/fondation-pour-les-arbres-actualites/**'
-    exclude:
-      - '/fr/fondation-pour-les-arbres-actualites/'
     target: /fr/fondation-pour-les-arbres-actualites/news-index.json
     properties:
       title:
