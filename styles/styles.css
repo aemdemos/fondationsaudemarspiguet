@@ -388,6 +388,7 @@ main .section.light, main .section.highlight {
 
   .page-level-btn {
     position: fixed;
+    right: 80px;
     width: 4rem;
     height: 4rem;
     background-color: var(--fleche-to-top-bg);
