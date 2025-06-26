@@ -16,8 +16,8 @@
   --text-color: #131313;
   --link-color: #3b63fb;
   --link-hover-color: #1d3ecf;
-  --body-font-family: "Antarctica", "Antarctica Fallback", "sans-serif";
-  --heading-font-family: "Antarctica", "Antarctica Fallback";
+  --body-font-family: "Antarctica", "sans-serif";
+  --heading-font-family: "Antarctica", "sans-serif";
   --body-font-size-m: 18px;
   --body-font-size-s: 16.6px;
   --body-font-size-xs: 13.4px;
@@ -410,3 +410,13 @@ main .section.light, main .section.highlight {
       height: 3rem;
     }
   }
+
+/* project article page styles */
+.details-sidebar.light-grey-bg {
+  background-color: var(--projet-bg-page);
+}
+
+.details-sidebar.grey-bg {
+  background-color: var(--projet-bg-page-suite);
+}
+

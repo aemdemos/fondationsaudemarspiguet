@@ -37,6 +37,55 @@ export default function parse(element, { document }) {
     if (newsDate) {
         meta.Date = newsDate;
     }
+
+    const allNewsLabels = document.querySelectorAll('.news_detail_label');
+
+    allNewsLabels.forEach(label => {
+        const labelText = label.textContent.trim();
+      
+        if (labelText === 'Link(s)' || labelText === 'Lien(s)') {
+          const links = [];
+          let currentNode = label.nextElementSibling;
+      
+          while (currentNode) {
+            if (currentNode.nodeType === 1 && currentNode.tagName === 'A' && currentNode.classList.contains('link_black')) {
+              links.push(currentNode.href);
+            } else if (currentNode.nodeType === 1 && currentNode.classList.contains('news_detail_label')) {
+              // Stop at the next label
+              break;
+            }
+            currentNode = currentNode.nextSibling;
+          }
+      
+          meta.links = links.join(', ');
+      
+        } else if (labelText === 'Photos') {
+          const photoNames = [];
+          let currentNode = label.nextSibling;
+      
+          while (currentNode) {
+            if (currentNode.nodeType === 3) {
+              // Text node
+              const text = currentNode.textContent.trim();
+              if (text) photoNames.push(text);
+            } else if (currentNode.nodeType === 1) {
+              if (currentNode.tagName === 'BR') {
+                // Just skip <br>
+              } else if (currentNode.classList.contains('news_detail_label')) {
+                break; // stop at next label
+              }
+            }
+            currentNode = currentNode.nextSibling;
+          }
+      
+          meta.photos = photoNames.join(', ');
+        } else if (labelText === 'Written by' || labelText === 'Rédaction') {
+            const textNode = label.nextSibling;
+            if (textNode && textNode.nodeType === 3) { // 3 = Text Node
+                meta.Author = textNode.textContent.trim();
+            }
+        }
+      });
     
     // The below one's are for the Project articles page
     const allLabels = document.querySelectorAll('.projets_detail_label');

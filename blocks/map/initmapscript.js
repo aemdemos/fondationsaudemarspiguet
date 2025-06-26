@@ -27,25 +27,25 @@ var iconpointer = {
 
 
 var popupoption = {
-			 content: ''
-			,disableAutoPan: false
-			,maxWidth: 0
-			,pixelOffset: new google.maps.Size(-120, -20)
-			,zIndex: null
-			,boxStyle: { 
-	          opacity: 1
-			  ,width: "240px"
-			 }
-			 
-			,closeBoxMargin: "0px 0px 0px 0px"
-	         			,closeBoxURL: "/img/btn_arbres_close.svg"
-	        			
-			,infoBoxClearance: new google.maps.Size(1, 1)
-			,alignBottom: true
-			,isHidden: false
-			,pane: "floatPane"
-			,enableEventPropagation: false
-		};
+       content: ''
+      ,disableAutoPan: false
+      ,maxWidth: 0
+      ,pixelOffset: new google.maps.Size(-120, -20)
+      ,zIndex: null
+      ,boxStyle: { 
+            opacity: 1
+        ,width: "240px"
+       }
+       
+      ,closeBoxMargin: "0px 0px 0px 0px"
+                ,closeBoxURL: "/img/btn_arbres_close.svg"
+                
+      ,infoBoxClearance: new google.maps.Size(1, 1)
+      ,alignBottom: true
+      ,isHidden: false
+      ,pane: "floatPane"
+      ,enableEventPropagation: false
+    };
 
 
 
@@ -62,7 +62,7 @@ var popupoption = {
   map = new google.maps.Map(document.getElementById('map'), {
     center: {lat: 46.77448320376698, lng: 8.009033203125},
     //zoom: 9,
-	  
+    
     draggable: draggable,
     scrollwheel: false,
     mapTypeControl: false, // Désactiver le contrôle du type de carte (plan/satellite)
@@ -118,7 +118,7 @@ var popupoption = {
     map: map,
     cursor: 'default',
     item: 99,
-	icon: iconpointer,
+  icon: iconpointer,
     category: "category_10 "
   });
 
@@ -126,35 +126,35 @@ var popupoption = {
   });
   
   if(!isTouchDevice){
-	  
-	 marker.addListener('mouseover', function() {
-		$.each(infoWindows, function(key, elem){
-			if(elem){
-		elem.close();
-			}
-		});
+    
+   marker.addListener('mouseover', function() {
+    $.each(infoWindows, function(key, elem){
+      if(elem){
+    elem.close();
+      }
+    });
     infoWindows[this.item].open(map, this);
     });  
-	  
+    
    marker.addListener('click', function() {
    window.location.href = "/en/fondation-pour-les-arbres-projects/implementing-an-organisational-development-action-plan";
      
   });
   } else {
-	  
-	  
+    
+    
   marker.addListener('click', function() {
-	  
-	$.each(infoWindows, function(key, elem){
-		if(elem){
-	elem.close();
-		}
-	});
+    
+  $.each(infoWindows, function(key, elem){
+    if(elem){
+  elem.close();
+    }
+  });
     infoWindows[this.item].open(map, this);
-	
+  
   });  
-	  
-	  
+    
+    
   }
 
 
@@ -173,7 +173,7 @@ var popupoption = {
     map: map,
     cursor: 'default',
     item: 70,
-	icon: iconpointer,
+  icon: iconpointer,
     category: "category_3 category_4 category_10 "
   });
 
@@ -181,35 +181,35 @@ var popupoption = {
   });
   
   if(!isTouchDevice){
-	  
-	 marker.addListener('mouseover', function() {
-		$.each(infoWindows, function(key, elem){
-			if(elem){
-		elem.close();
-			}
-		});
+    
+   marker.addListener('mouseover', function() {
+    $.each(infoWindows, function(key, elem){
+      if(elem){
+    elem.close();
+      }
+    });
     infoWindows[this.item].open(map, this);
     });  
-	  
+    
    marker.addListener('click', function() {
    window.location.href = "/en/fondation-pour-les-arbres-projects/support-programme-for-biodiversity-ngos-working-in-developin";
      
   });
   } else {
-	  
-	  
+    
+    
   marker.addListener('click', function() {
-	  
-	$.each(infoWindows, function(key, elem){
-		if(elem){
-	elem.close();
-		}
-	});
+    
+  $.each(infoWindows, function(key, elem){
+    if(elem){
+  elem.close();
+    }
+  });
     infoWindows[this.item].open(map, this);
-	
+  
   });  
-	  
-	  
+    
+    
   }
 
 
@@ -228,7 +228,7 @@ var popupoption = {
     map: map,
     cursor: 'default',
     item: 71,
-	icon: iconpointer,
+  icon: iconpointer,
     category: "category_3 category_4 "
   });
 
@@ -236,35 +236,35 @@ var popupoption = {
   });
   
   if(!isTouchDevice){
-	  
-	 marker.addListener('mouseover', function() {
-		$.each(infoWindows, function(key, elem){
-			if(elem){
-		elem.close();
-			}
-		});
+    
+   marker.addListener('mouseover', function() {
+    $.each(infoWindows, function(key, elem){
+      if(elem){
+    elem.close();
+      }
+    });
     infoWindows[this.item].open(map, this);
     });  
-	  
+    
    marker.addListener('click', function() {
    window.location.href = "/en/fondation-pour-les-arbres-projects/stepping-up-protection-for-a-thousand-hectares-of-forest-fra";
      
   });
   } else {
-	  
-	  
+    
+    
   marker.addListener('click', function() {
-	  
-	$.each(infoWindows, function(key, elem){
-		if(elem){
-	elem.close();
-		}
-	});
+    
+  $.each(infoWindows, function(key, elem){
+    if(elem){
+  elem.close();
+    }
+  });
     infoWindows[this.item].open(map, this);
-	
+  
   });  
-	  
-	  
+    
+    
   }
 
 
@@ -283,7 +283,7 @@ var popupoption = {
     map: map,
     cursor: 'default',
     item: 72,
-	icon: iconpointer,
+  icon: iconpointer,
     category: "category_4 "
   });
 
@@ -291,35 +291,35 @@ var popupoption = {
   });
   
   if(!isTouchDevice){
-	  
-	 marker.addListener('mouseover', function() {
-		$.each(infoWindows, function(key, elem){
-			if(elem){
-		elem.close();
-			}
-		});
+    
+   marker.addListener('mouseover', function() {
+    $.each(infoWindows, function(key, elem){
+      if(elem){
+    elem.close();
+      }
+    });
     infoWindows[this.item].open(map, this);
     });  
-	  
+    
    marker.addListener('click', function() {
    window.location.href = "/en/fondation-pour-les-arbres-projects/creating-a-forest-for-learning-iii";
      
   });
   } else {
-	  
-	  
+    
+    
   marker.addListener('click', function() {
-	  
-	$.each(infoWindows, function(key, elem){
-		if(elem){
-	elem.close();
-		}
-	});
+    
+  $.each(infoWindows, function(key, elem){
+    if(elem){
+  elem.close();
+    }
+  });
     infoWindows[this.item].open(map, this);
-	
+  
   });  
-	  
-	  
+    
+    
   }
 
 
@@ -338,7 +338,7 @@ var popupoption = {
     map: map,
     cursor: 'default',
     item: 15,
-	icon: iconpointer,
+  icon: iconpointer,
     category: "category_3 category_4 "
   });
 
@@ -346,35 +346,35 @@ var popupoption = {
   });
   
   if(!isTouchDevice){
-	  
-	 marker.addListener('mouseover', function() {
-		$.each(infoWindows, function(key, elem){
-			if(elem){
-		elem.close();
-			}
-		});
+    
+   marker.addListener('mouseover', function() {
+    $.each(infoWindows, function(key, elem){
+      if(elem){
+    elem.close();
+      }
+    });
     infoWindows[this.item].open(map, this);
     });  
-	  
+    
    marker.addListener('click', function() {
    window.location.href = "/en/fondation-pour-les-arbres-projects/resilience-and-adaptation-to-climate-change-in-the-sitatunga";
      
   });
   } else {
-	  
-	  
+    
+    
   marker.addListener('click', function() {
-	  
-	$.each(infoWindows, function(key, elem){
-		if(elem){
-	elem.close();
-		}
-	});
+    
+  $.each(infoWindows, function(key, elem){
+    if(elem){
+  elem.close();
+    }
+  });
     infoWindows[this.item].open(map, this);
-	
+  
   });  
-	  
-	  
+    
+    
   }
 
 
@@ -393,7 +393,7 @@ var popupoption = {
     map: map,
     cursor: 'default',
     item: 5,
-	icon: iconpointer,
+  icon: iconpointer,
     category: "category_3 category_4 "
   });
 
@@ -401,35 +401,35 @@ var popupoption = {
   });
   
   if(!isTouchDevice){
-	  
-	 marker.addListener('mouseover', function() {
-		$.each(infoWindows, function(key, elem){
-			if(elem){
-		elem.close();
-			}
-		});
+    
+   marker.addListener('mouseover', function() {
+    $.each(infoWindows, function(key, elem){
+      if(elem){
+    elem.close();
+      }
+    });
     infoWindows[this.item].open(map, this);
     });  
-	  
+    
    marker.addListener('click', function() {
    window.location.href = "/en/fondation-pour-les-arbres-projects/sustainable-protection-of-biodiversity-in-the-vaud-alps";
      
   });
   } else {
-	  
-	  
+    
+    
   marker.addListener('click', function() {
-	  
-	$.each(infoWindows, function(key, elem){
-		if(elem){
-	elem.close();
-		}
-	});
+    
+  $.each(infoWindows, function(key, elem){
+    if(elem){
+  elem.close();
+    }
+  });
     infoWindows[this.item].open(map, this);
-	
+  
   });  
-	  
-	  
+    
+    
   }
 
 
@@ -448,7 +448,7 @@ var popupoption = {
     map: map,
     cursor: 'default',
     item: 12,
-	icon: iconpointer,
+  icon: iconpointer,
     category: "category_3 category_5 "
   });
 
@@ -456,35 +456,35 @@ var popupoption = {
   });
   
   if(!isTouchDevice){
-	  
-	 marker.addListener('mouseover', function() {
-		$.each(infoWindows, function(key, elem){
-			if(elem){
-		elem.close();
-			}
-		});
+    
+   marker.addListener('mouseover', function() {
+    $.each(infoWindows, function(key, elem){
+      if(elem){
+    elem.close();
+      }
+    });
     infoWindows[this.item].open(map, this);
     });  
-	  
+    
    marker.addListener('click', function() {
    window.location.href = "/en/fondation-pour-les-arbres-projects/green-cashew-sustainable-cashew-cultivation-to-fight-climate";
      
   });
   } else {
-	  
-	  
+    
+    
   marker.addListener('click', function() {
-	  
-	$.each(infoWindows, function(key, elem){
-		if(elem){
-	elem.close();
-		}
-	});
+    
+  $.each(infoWindows, function(key, elem){
+    if(elem){
+  elem.close();
+    }
+  });
     infoWindows[this.item].open(map, this);
-	
+  
   });  
-	  
-	  
+    
+    
   }
 
 
@@ -503,7 +503,7 @@ var popupoption = {
     map: map,
     cursor: 'default',
     item: 16,
-	icon: iconpointer,
+  icon: iconpointer,
     category: "category_5 "
   });
 
@@ -511,35 +511,35 @@ var popupoption = {
   });
   
   if(!isTouchDevice){
-	  
-	 marker.addListener('mouseover', function() {
-		$.each(infoWindows, function(key, elem){
-			if(elem){
-		elem.close();
-			}
-		});
+    
+   marker.addListener('mouseover', function() {
+    $.each(infoWindows, function(key, elem){
+      if(elem){
+    elem.close();
+      }
+    });
     infoWindows[this.item].open(map, this);
     });  
-	  
+    
    marker.addListener('click', function() {
    window.location.href = "/en/fondation-pour-les-arbres-projects/foretxcellence";
      
   });
   } else {
-	  
-	  
+    
+    
   marker.addListener('click', function() {
-	  
-	$.each(infoWindows, function(key, elem){
-		if(elem){
-	elem.close();
-		}
-	});
+    
+  $.each(infoWindows, function(key, elem){
+    if(elem){
+  elem.close();
+    }
+  });
     infoWindows[this.item].open(map, this);
-	
+  
   });  
-	  
-	  
+    
+    
   }
 
 
@@ -558,7 +558,7 @@ var popupoption = {
     map: map,
     cursor: 'default',
     item: 67,
-	icon: iconpointer,
+  icon: iconpointer,
     category: "category_4 category_5 "
   });
 
@@ -566,35 +566,35 @@ var popupoption = {
   });
   
   if(!isTouchDevice){
-	  
-	 marker.addListener('mouseover', function() {
-		$.each(infoWindows, function(key, elem){
-			if(elem){
-		elem.close();
-			}
-		});
+    
+   marker.addListener('mouseover', function() {
+    $.each(infoWindows, function(key, elem){
+      if(elem){
+    elem.close();
+      }
+    });
     infoWindows[this.item].open(map, this);
     });  
-	  
+    
    marker.addListener('click', function() {
    window.location.href = "/en/fondation-pour-les-arbres-projects/risoud-resonance-wood-learning-trail";
      
   });
   } else {
-	  
-	  
+    
+    
   marker.addListener('click', function() {
-	  
-	$.each(infoWindows, function(key, elem){
-		if(elem){
-	elem.close();
-		}
-	});
+    
+  $.each(infoWindows, function(key, elem){
+    if(elem){
+  elem.close();
+    }
+  });
     infoWindows[this.item].open(map, this);
-	
+  
   });  
-	  
-	  
+    
+    
   }
 
 
@@ -613,7 +613,7 @@ var popupoption = {
     map: map,
     cursor: 'default',
     item: 50,
-	icon: iconpointer,
+  icon: iconpointer,
     category: "category_3 category_4 "
   });
 
@@ -621,35 +621,35 @@ var popupoption = {
   });
   
   if(!isTouchDevice){
-	  
-	 marker.addListener('mouseover', function() {
-		$.each(infoWindows, function(key, elem){
-			if(elem){
-		elem.close();
-			}
-		});
+    
+   marker.addListener('mouseover', function() {
+    $.each(infoWindows, function(key, elem){
+      if(elem){
+    elem.close();
+      }
+    });
     infoWindows[this.item].open(map, this);
     });  
-	  
+    
    marker.addListener('click', function() {
    window.location.href = "/en/fondation-pour-les-arbres-projects/support-for-sustainable-development-through-the-conservation";
      
   });
   } else {
-	  
-	  
+    
+    
   marker.addListener('click', function() {
-	  
-	$.each(infoWindows, function(key, elem){
-		if(elem){
-	elem.close();
-		}
-	});
+    
+  $.each(infoWindows, function(key, elem){
+    if(elem){
+  elem.close();
+    }
+  });
     infoWindows[this.item].open(map, this);
-	
+  
   });  
-	  
-	  
+    
+    
   }
 
 
@@ -668,7 +668,7 @@ var popupoption = {
     map: map,
     cursor: 'default',
     item: 18,
-	icon: iconpointer,
+  icon: iconpointer,
     category: "category_3 category_4 "
   });
 
@@ -676,35 +676,35 @@ var popupoption = {
   });
   
   if(!isTouchDevice){
-	  
-	 marker.addListener('mouseover', function() {
-		$.each(infoWindows, function(key, elem){
-			if(elem){
-		elem.close();
-			}
-		});
+    
+   marker.addListener('mouseover', function() {
+    $.each(infoWindows, function(key, elem){
+      if(elem){
+    elem.close();
+      }
+    });
     infoWindows[this.item].open(map, this);
     });  
-	  
+    
    marker.addListener('click', function() {
    window.location.href = "/en/fondation-pour-les-arbres-projects/agroforestry-and-green-entrepreneurship";
      
   });
   } else {
-	  
-	  
+    
+    
   marker.addListener('click', function() {
-	  
-	$.each(infoWindows, function(key, elem){
-		if(elem){
-	elem.close();
-		}
-	});
+    
+  $.each(infoWindows, function(key, elem){
+    if(elem){
+  elem.close();
+    }
+  });
     infoWindows[this.item].open(map, this);
-	
+  
   });  
-	  
-	  
+    
+    
   }
 
 
@@ -723,7 +723,7 @@ var popupoption = {
     map: map,
     cursor: 'default',
     item: 35,
-	icon: iconpointer,
+  icon: iconpointer,
     category: "category_4 "
   });
 
@@ -731,35 +731,35 @@ var popupoption = {
   });
   
   if(!isTouchDevice){
-	  
-	 marker.addListener('mouseover', function() {
-		$.each(infoWindows, function(key, elem){
-			if(elem){
-		elem.close();
-			}
-		});
+    
+   marker.addListener('mouseover', function() {
+    $.each(infoWindows, function(key, elem){
+      if(elem){
+    elem.close();
+      }
+    });
     infoWindows[this.item].open(map, this);
     });  
-	  
+    
    marker.addListener('click', function() {
    window.location.href = "/en/fondation-pour-les-arbres-projects/sentier-de-la-morges-trail";
      
   });
   } else {
-	  
-	  
+    
+    
   marker.addListener('click', function() {
-	  
-	$.each(infoWindows, function(key, elem){
-		if(elem){
-	elem.close();
-		}
-	});
+    
+  $.each(infoWindows, function(key, elem){
+    if(elem){
+  elem.close();
+    }
+  });
     infoWindows[this.item].open(map, this);
-	
+  
   });  
-	  
-	  
+    
+    
   }
 
 
@@ -778,7 +778,7 @@ var popupoption = {
     map: map,
     cursor: 'default',
     item: 23,
-	icon: iconpointer,
+  icon: iconpointer,
     category: "category_3 category_4 "
   });
 
@@ -786,35 +786,35 @@ var popupoption = {
   });
   
   if(!isTouchDevice){
-	  
-	 marker.addListener('mouseover', function() {
-		$.each(infoWindows, function(key, elem){
-			if(elem){
-		elem.close();
-			}
-		});
+    
+   marker.addListener('mouseover', function() {
+    $.each(infoWindows, function(key, elem){
+      if(elem){
+    elem.close();
+      }
+    });
     infoWindows[this.item].open(map, this);
     });  
-	  
+    
    marker.addListener('click', function() {
    window.location.href = "/en/fondation-pour-les-arbres-projects/toile-verte";
      
   });
   } else {
-	  
-	  
+    
+    
   marker.addListener('click', function() {
-	  
-	$.each(infoWindows, function(key, elem){
-		if(elem){
-	elem.close();
-		}
-	});
+    
+  $.each(infoWindows, function(key, elem){
+    if(elem){
+  elem.close();
+    }
+  });
     infoWindows[this.item].open(map, this);
-	
+  
   });  
-	  
-	  
+    
+    
   }
 
 
@@ -833,7 +833,7 @@ var popupoption = {
     map: map,
     cursor: 'default',
     item: 29,
-	icon: iconpointer,
+  icon: iconpointer,
     category: "category_3 category_4 "
   });
 
@@ -841,35 +841,35 @@ var popupoption = {
   });
   
   if(!isTouchDevice){
-	  
-	 marker.addListener('mouseover', function() {
-		$.each(infoWindows, function(key, elem){
-			if(elem){
-		elem.close();
-			}
-		});
+    
+   marker.addListener('mouseover', function() {
+    $.each(infoWindows, function(key, elem){
+      if(elem){
+    elem.close();
+      }
+    });
     infoWindows[this.item].open(map, this);
     });  
-	  
+    
    marker.addListener('click', function() {
    window.location.href = "/en/fondation-pour-les-arbres-projects/integrated-management-of-mangrove-landscape-in-the-douala-ed";
      
   });
   } else {
-	  
-	  
+    
+    
   marker.addListener('click', function() {
-	  
-	$.each(infoWindows, function(key, elem){
-		if(elem){
-	elem.close();
-		}
-	});
+    
+  $.each(infoWindows, function(key, elem){
+    if(elem){
+  elem.close();
+    }
+  });
     infoWindows[this.item].open(map, this);
-	
+  
   });  
-	  
-	  
+    
+    
   }
 
 
@@ -888,7 +888,7 @@ var popupoption = {
     map: map,
     cursor: 'default',
     item: 25,
-	icon: iconpointer,
+  icon: iconpointer,
     category: "category_3 category_4 "
   });
 
@@ -896,35 +896,35 @@ var popupoption = {
   });
   
   if(!isTouchDevice){
-	  
-	 marker.addListener('mouseover', function() {
-		$.each(infoWindows, function(key, elem){
-			if(elem){
-		elem.close();
-			}
-		});
+    
+   marker.addListener('mouseover', function() {
+    $.each(infoWindows, function(key, elem){
+      if(elem){
+    elem.close();
+      }
+    });
     infoWindows[this.item].open(map, this);
     });  
-	  
+    
    marker.addListener('click', function() {
    window.location.href = "/en/fondation-pour-les-arbres-projects/time-for-conservation-of-endemic-threatened-flora-in-cape-ve";
      
   });
   } else {
-	  
-	  
+    
+    
   marker.addListener('click', function() {
-	  
-	$.each(infoWindows, function(key, elem){
-		if(elem){
-	elem.close();
-		}
-	});
+    
+  $.each(infoWindows, function(key, elem){
+    if(elem){
+  elem.close();
+    }
+  });
     infoWindows[this.item].open(map, this);
-	
+  
   });  
-	  
-	  
+    
+    
   }
 
 
@@ -943,7 +943,7 @@ var popupoption = {
     map: map,
     cursor: 'default',
     item: 7,
-	icon: iconpointer,
+  icon: iconpointer,
     category: "category_4 "
   });
 
@@ -951,35 +951,35 @@ var popupoption = {
   });
   
   if(!isTouchDevice){
-	  
-	 marker.addListener('mouseover', function() {
-		$.each(infoWindows, function(key, elem){
-			if(elem){
-		elem.close();
-			}
-		});
+    
+   marker.addListener('mouseover', function() {
+    $.each(infoWindows, function(key, elem){
+      if(elem){
+    elem.close();
+      }
+    });
     infoWindows[this.item].open(map, this);
     });  
-	  
+    
    marker.addListener('click', function() {
    window.location.href = "/en/fondation-pour-les-arbres-projects/improving-mediation-and-conservation";
      
   });
   } else {
-	  
-	  
+    
+    
   marker.addListener('click', function() {
-	  
-	$.each(infoWindows, function(key, elem){
-		if(elem){
-	elem.close();
-		}
-	});
+    
+  $.each(infoWindows, function(key, elem){
+    if(elem){
+  elem.close();
+    }
+  });
     infoWindows[this.item].open(map, this);
-	
+  
   });  
-	  
-	  
+    
+    
   }
 
 
@@ -998,7 +998,7 @@ var popupoption = {
     map: map,
     cursor: 'default',
     item: 4,
-	icon: iconpointer,
+  icon: iconpointer,
     category: "category_3 "
   });
 
@@ -1006,35 +1006,35 @@ var popupoption = {
   });
   
   if(!isTouchDevice){
-	  
-	 marker.addListener('mouseover', function() {
-		$.each(infoWindows, function(key, elem){
-			if(elem){
-		elem.close();
-			}
-		});
+    
+   marker.addListener('mouseover', function() {
+    $.each(infoWindows, function(key, elem){
+      if(elem){
+    elem.close();
+      }
+    });
     infoWindows[this.item].open(map, this);
     });  
-	  
+    
    marker.addListener('click', function() {
    window.location.href = "/en/fondation-pour-les-arbres-projects/supporting-the-reconstitution-of-forest-cover-through-agro-e";
      
   });
   } else {
-	  
-	  
+    
+    
   marker.addListener('click', function() {
-	  
-	$.each(infoWindows, function(key, elem){
-		if(elem){
-	elem.close();
-		}
-	});
+    
+  $.each(infoWindows, function(key, elem){
+    if(elem){
+  elem.close();
+    }
+  });
     infoWindows[this.item].open(map, this);
-	
+  
   });  
-	  
-	  
+    
+    
   }
 
 
@@ -1053,7 +1053,7 @@ var popupoption = {
     map: map,
     cursor: 'default',
     item: 38,
-	icon: iconpointer,
+  icon: iconpointer,
     category: "category_3 category_4 "
   });
 
@@ -1061,35 +1061,35 @@ var popupoption = {
   });
   
   if(!isTouchDevice){
-	  
-	 marker.addListener('mouseover', function() {
-		$.each(infoWindows, function(key, elem){
-			if(elem){
-		elem.close();
-			}
-		});
+    
+   marker.addListener('mouseover', function() {
+    $.each(infoWindows, function(key, elem){
+      if(elem){
+    elem.close();
+      }
+    });
     infoWindows[this.item].open(map, this);
     });  
-	  
+    
    marker.addListener('click', function() {
    window.location.href = "/en/fondation-pour-les-arbres-projects/blue-forests";
      
   });
   } else {
-	  
-	  
+    
+    
   marker.addListener('click', function() {
-	  
-	$.each(infoWindows, function(key, elem){
-		if(elem){
-	elem.close();
-		}
-	});
+    
+  $.each(infoWindows, function(key, elem){
+    if(elem){
+  elem.close();
+    }
+  });
     infoWindows[this.item].open(map, this);
-	
+  
   });  
-	  
-	  
+    
+    
   }
 
 
@@ -1108,7 +1108,7 @@ var popupoption = {
     map: map,
     cursor: 'default',
     item: 31,
-	icon: iconpointer,
+  icon: iconpointer,
     category: "category_3 "
   });
 
@@ -1116,35 +1116,35 @@ var popupoption = {
   });
   
   if(!isTouchDevice){
-	  
-	 marker.addListener('mouseover', function() {
-		$.each(infoWindows, function(key, elem){
-			if(elem){
-		elem.close();
-			}
-		});
+    
+   marker.addListener('mouseover', function() {
+    $.each(infoWindows, function(key, elem){
+      if(elem){
+    elem.close();
+      }
+    });
     infoWindows[this.item].open(map, this);
     });  
-	  
+    
    marker.addListener('click', function() {
    window.location.href = "/en/fondation-pour-les-arbres-projects/reforestation-and-brazil-nuts";
      
   });
   } else {
-	  
-	  
+    
+    
   marker.addListener('click', function() {
-	  
-	$.each(infoWindows, function(key, elem){
-		if(elem){
-	elem.close();
-		}
-	});
+    
+  $.each(infoWindows, function(key, elem){
+    if(elem){
+  elem.close();
+    }
+  });
     infoWindows[this.item].open(map, this);
-	
+  
   });  
-	  
-	  
+    
+    
   }
 
 
@@ -1163,7 +1163,7 @@ var popupoption = {
     map: map,
     cursor: 'default',
     item: 28,
-	icon: iconpointer,
+  icon: iconpointer,
     category: "category_4 "
   });
 
@@ -1171,35 +1171,35 @@ var popupoption = {
   });
   
   if(!isTouchDevice){
-	  
-	 marker.addListener('mouseover', function() {
-		$.each(infoWindows, function(key, elem){
-			if(elem){
-		elem.close();
-			}
-		});
+    
+   marker.addListener('mouseover', function() {
+    $.each(infoWindows, function(key, elem){
+      if(elem){
+    elem.close();
+      }
+    });
     infoWindows[this.item].open(map, this);
     });  
-	  
+    
    marker.addListener('click', function() {
    window.location.href = "/en/fondation-pour-les-arbres-projects/awareness-raising-and-environmental-education-for-young-peop";
      
   });
   } else {
-	  
-	  
+    
+    
   marker.addListener('click', function() {
-	  
-	$.each(infoWindows, function(key, elem){
-		if(elem){
-	elem.close();
-		}
-	});
+    
+  $.each(infoWindows, function(key, elem){
+    if(elem){
+  elem.close();
+    }
+  });
     infoWindows[this.item].open(map, this);
-	
+  
   });  
-	  
-	  
+    
+    
   }
 
 
@@ -1218,7 +1218,7 @@ var popupoption = {
     map: map,
     cursor: 'default',
     item: 3,
-	icon: iconpointer,
+  icon: iconpointer,
     category: "category_3 category_4 "
   });
 
@@ -1226,35 +1226,35 @@ var popupoption = {
   });
   
   if(!isTouchDevice){
-	  
-	 marker.addListener('mouseover', function() {
-		$.each(infoWindows, function(key, elem){
-			if(elem){
-		elem.close();
-			}
-		});
+    
+   marker.addListener('mouseover', function() {
+    $.each(infoWindows, function(key, elem){
+      if(elem){
+    elem.close();
+      }
+    });
     infoWindows[this.item].open(map, this);
     });  
-	  
+    
    marker.addListener('click', function() {
    window.location.href = "/en/fondation-pour-les-arbres-projects/agro-ecological-restoration-and-agroforestry-in-the-green-be";
      
   });
   } else {
-	  
-	  
+    
+    
   marker.addListener('click', function() {
-	  
-	$.each(infoWindows, function(key, elem){
-		if(elem){
-	elem.close();
-		}
-	});
+    
+  $.each(infoWindows, function(key, elem){
+    if(elem){
+  elem.close();
+    }
+  });
     infoWindows[this.item].open(map, this);
-	
+  
   });  
-	  
-	  
+    
+    
   }
 
 
@@ -1273,7 +1273,7 @@ var popupoption = {
     map: map,
     cursor: 'default',
     item: 8,
-	icon: iconpointer,
+  icon: iconpointer,
     category: "category_3 category_4 "
   });
 
@@ -1281,35 +1281,35 @@ var popupoption = {
   });
   
   if(!isTouchDevice){
-	  
-	 marker.addListener('mouseover', function() {
-		$.each(infoWindows, function(key, elem){
-			if(elem){
-		elem.close();
-			}
-		});
+    
+   marker.addListener('mouseover', function() {
+    $.each(infoWindows, function(key, elem){
+      if(elem){
+    elem.close();
+      }
+    });
     infoWindows[this.item].open(map, this);
     });  
-	  
+    
    marker.addListener('click', function() {
    window.location.href = "/en/fondation-pour-les-arbres-projects/forest-restoration-and-preservation-on-the-island-of-flores";
      
   });
   } else {
-	  
-	  
+    
+    
   marker.addListener('click', function() {
-	  
-	$.each(infoWindows, function(key, elem){
-		if(elem){
-	elem.close();
-		}
-	});
+    
+  $.each(infoWindows, function(key, elem){
+    if(elem){
+  elem.close();
+    }
+  });
     infoWindows[this.item].open(map, this);
-	
+  
   });  
-	  
-	  
+    
+    
   }
 
 
@@ -1328,7 +1328,7 @@ var popupoption = {
     map: map,
     cursor: 'default',
     item: 21,
-	icon: iconpointer,
+  icon: iconpointer,
     category: "category_3 category_4 "
   });
 
@@ -1336,35 +1336,35 @@ var popupoption = {
   });
   
   if(!isTouchDevice){
-	  
-	 marker.addListener('mouseover', function() {
-		$.each(infoWindows, function(key, elem){
-			if(elem){
-		elem.close();
-			}
-		});
+    
+   marker.addListener('mouseover', function() {
+    $.each(infoWindows, function(key, elem){
+      if(elem){
+    elem.close();
+      }
+    });
     infoWindows[this.item].open(map, this);
     });  
-	  
+    
    marker.addListener('click', function() {
    window.location.href = "/en/fondation-pour-les-arbres-projects/mountain-farmers-and-savannah-pastoralists-conserving-sustai";
      
   });
   } else {
-	  
-	  
+    
+    
   marker.addListener('click', function() {
-	  
-	$.each(infoWindows, function(key, elem){
-		if(elem){
-	elem.close();
-		}
-	});
+    
+  $.each(infoWindows, function(key, elem){
+    if(elem){
+  elem.close();
+    }
+  });
     infoWindows[this.item].open(map, this);
-	
+  
   });  
-	  
-	  
+    
+    
   }
 
 
@@ -1383,7 +1383,7 @@ var popupoption = {
     map: map,
     cursor: 'default',
     item: 48,
-	icon: iconpointer,
+  icon: iconpointer,
     category: "category_3 category_4 "
   });
 
@@ -1391,35 +1391,35 @@ var popupoption = {
   });
   
   if(!isTouchDevice){
-	  
-	 marker.addListener('mouseover', function() {
-		$.each(infoWindows, function(key, elem){
-			if(elem){
-		elem.close();
-			}
-		});
+    
+   marker.addListener('mouseover', function() {
+    $.each(infoWindows, function(key, elem){
+      if(elem){
+    elem.close();
+      }
+    });
     infoWindows[this.item].open(map, this);
     });  
-	  
+    
    marker.addListener('click', function() {
    window.location.href = "/en/fondation-pour-les-arbres-projects/sea-forest";
      
   });
   } else {
-	  
-	  
+    
+    
   marker.addListener('click', function() {
-	  
-	$.each(infoWindows, function(key, elem){
-		if(elem){
-	elem.close();
-		}
-	});
+    
+  $.each(infoWindows, function(key, elem){
+    if(elem){
+  elem.close();
+    }
+  });
     infoWindows[this.item].open(map, this);
-	
+  
   });  
-	  
-	  
+    
+    
   }
 
 
@@ -1438,7 +1438,7 @@ var popupoption = {
     map: map,
     cursor: 'default',
     item: 56,
-	icon: iconpointer,
+  icon: iconpointer,
     category: "category_3 "
   });
 
@@ -1446,35 +1446,35 @@ var popupoption = {
   });
   
   if(!isTouchDevice){
-	  
-	 marker.addListener('mouseover', function() {
-		$.each(infoWindows, function(key, elem){
-			if(elem){
-		elem.close();
-			}
-		});
+    
+   marker.addListener('mouseover', function() {
+    $.each(infoWindows, function(key, elem){
+      if(elem){
+    elem.close();
+      }
+    });
     infoWindows[this.item].open(map, this);
     });  
-	  
+    
    marker.addListener('click', function() {
    window.location.href = "/en/fondation-pour-les-arbres-projects/save-the-pilat-forests";
      
   });
   } else {
-	  
-	  
+    
+    
   marker.addListener('click', function() {
-	  
-	$.each(infoWindows, function(key, elem){
-		if(elem){
-	elem.close();
-		}
-	});
+    
+  $.each(infoWindows, function(key, elem){
+    if(elem){
+  elem.close();
+    }
+  });
     infoWindows[this.item].open(map, this);
-	
+  
   });  
-	  
-	  
+    
+    
   }
 
 
@@ -1493,7 +1493,7 @@ var popupoption = {
     map: map,
     cursor: 'default',
     item: 27,
-	icon: iconpointer,
+  icon: iconpointer,
     category: "category_3 category_4 category_5 "
   });
 
@@ -1501,35 +1501,35 @@ var popupoption = {
   });
   
   if(!isTouchDevice){
-	  
-	 marker.addListener('mouseover', function() {
-		$.each(infoWindows, function(key, elem){
-			if(elem){
-		elem.close();
-			}
-		});
+    
+   marker.addListener('mouseover', function() {
+    $.each(infoWindows, function(key, elem){
+      if(elem){
+    elem.close();
+      }
+    });
     infoWindows[this.item].open(map, this);
     });  
-	  
+    
    marker.addListener('click', function() {
    window.location.href = "/en/fondation-pour-les-arbres-projects/mikago";
      
   });
   } else {
-	  
-	  
+    
+    
   marker.addListener('click', function() {
-	  
-	$.each(infoWindows, function(key, elem){
-		if(elem){
-	elem.close();
-		}
-	});
+    
+  $.each(infoWindows, function(key, elem){
+    if(elem){
+  elem.close();
+    }
+  });
     infoWindows[this.item].open(map, this);
-	
+  
   });  
-	  
-	  
+    
+    
   }
 
 
@@ -1548,7 +1548,7 @@ var popupoption = {
     map: map,
     cursor: 'default',
     item: 24,
-	icon: iconpointer,
+  icon: iconpointer,
     category: "category_4 "
   });
 
@@ -1556,35 +1556,35 @@ var popupoption = {
   });
   
   if(!isTouchDevice){
-	  
-	 marker.addListener('mouseover', function() {
-		$.each(infoWindows, function(key, elem){
-			if(elem){
-		elem.close();
-			}
-		});
+    
+   marker.addListener('mouseover', function() {
+    $.each(infoWindows, function(key, elem){
+      if(elem){
+    elem.close();
+      }
+    });
     infoWindows[this.item].open(map, this);
     });  
-	  
+    
    marker.addListener('click', function() {
    window.location.href = "/en/fondation-pour-les-arbres-projects/reception-infrastructure-at-the-parc-naturel-du-jorat";
      
   });
   } else {
-	  
-	  
+    
+    
   marker.addListener('click', function() {
-	  
-	$.each(infoWindows, function(key, elem){
-		if(elem){
-	elem.close();
-		}
-	});
+    
+  $.each(infoWindows, function(key, elem){
+    if(elem){
+  elem.close();
+    }
+  });
     infoWindows[this.item].open(map, this);
-	
+  
   });  
-	  
-	  
+    
+    
   }
 
 
@@ -1603,7 +1603,7 @@ var popupoption = {
     map: map,
     cursor: 'default',
     item: 20,
-	icon: iconpointer,
+  icon: iconpointer,
     category: "category_3 "
   });
 
@@ -1611,35 +1611,35 @@ var popupoption = {
   });
   
   if(!isTouchDevice){
-	  
-	 marker.addListener('mouseover', function() {
-		$.each(infoWindows, function(key, elem){
-			if(elem){
-		elem.close();
-			}
-		});
+    
+   marker.addListener('mouseover', function() {
+    $.each(infoWindows, function(key, elem){
+      if(elem){
+    elem.close();
+      }
+    });
     infoWindows[this.item].open(map, this);
     });  
-	  
+    
    marker.addListener('click', function() {
    window.location.href = "/en/fondation-pour-les-arbres-projects/protection-de-la-foret-par-la-titularisation-fonciere-de-com";
      
   });
   } else {
-	  
-	  
+    
+    
   marker.addListener('click', function() {
-	  
-	$.each(infoWindows, function(key, elem){
-		if(elem){
-	elem.close();
-		}
-	});
+    
+  $.each(infoWindows, function(key, elem){
+    if(elem){
+  elem.close();
+    }
+  });
     infoWindows[this.item].open(map, this);
-	
+  
   });  
-	  
-	  
+    
+    
   }
 
 
@@ -1658,7 +1658,7 @@ var popupoption = {
     map: map,
     cursor: 'default',
     item: 49,
-	icon: iconpointer,
+  icon: iconpointer,
     category: "category_3 category_4 "
   });
 
@@ -1666,35 +1666,35 @@ var popupoption = {
   });
   
   if(!isTouchDevice){
-	  
-	 marker.addListener('mouseover', function() {
-		$.each(infoWindows, function(key, elem){
-			if(elem){
-		elem.close();
-			}
-		});
+    
+   marker.addListener('mouseover', function() {
+    $.each(infoWindows, function(key, elem){
+      if(elem){
+    elem.close();
+      }
+    });
     infoWindows[this.item].open(map, this);
     });  
-	  
+    
    marker.addListener('click', function() {
    window.location.href = "/en/fondation-pour-les-arbres-projects/conservation-of-threatened-woody-species";
      
   });
   } else {
-	  
-	  
+    
+    
   marker.addListener('click', function() {
-	  
-	$.each(infoWindows, function(key, elem){
-		if(elem){
-	elem.close();
-		}
-	});
+    
+  $.each(infoWindows, function(key, elem){
+    if(elem){
+  elem.close();
+    }
+  });
     infoWindows[this.item].open(map, this);
-	
+  
   });  
-	  
-	  
+    
+    
   }
 
 
@@ -1713,7 +1713,7 @@ var popupoption = {
     map: map,
     cursor: 'default',
     item: 36,
-	icon: iconpointer,
+  icon: iconpointer,
     category: "category_3 category_4 category_5 "
   });
 
@@ -1721,35 +1721,35 @@ var popupoption = {
   });
   
   if(!isTouchDevice){
-	  
-	 marker.addListener('mouseover', function() {
-		$.each(infoWindows, function(key, elem){
-			if(elem){
-		elem.close();
-			}
-		});
+    
+   marker.addListener('mouseover', function() {
+    $.each(infoWindows, function(key, elem){
+      if(elem){
+    elem.close();
+      }
+    });
     infoWindows[this.item].open(map, this);
     });  
-	  
+    
    marker.addListener('click', function() {
    window.location.href = "/en/fondation-pour-les-arbres-projects/mpigi-forest-school";
      
   });
   } else {
-	  
-	  
+    
+    
   marker.addListener('click', function() {
-	  
-	$.each(infoWindows, function(key, elem){
-		if(elem){
-	elem.close();
-		}
-	});
+    
+  $.each(infoWindows, function(key, elem){
+    if(elem){
+  elem.close();
+    }
+  });
     infoWindows[this.item].open(map, this);
-	
+  
   });  
-	  
-	  
+    
+    
   }
 
 
@@ -1768,7 +1768,7 @@ var popupoption = {
     map: map,
     cursor: 'default',
     item: 13,
-	icon: iconpointer,
+  icon: iconpointer,
     category: "category_3 category_4 "
   });
 
@@ -1776,35 +1776,35 @@ var popupoption = {
   });
   
   if(!isTouchDevice){
-	  
-	 marker.addListener('mouseover', function() {
-		$.each(infoWindows, function(key, elem){
-			if(elem){
-		elem.close();
-			}
-		});
+    
+   marker.addListener('mouseover', function() {
+    $.each(infoWindows, function(key, elem){
+      if(elem){
+    elem.close();
+      }
+    });
     infoWindows[this.item].open(map, this);
     });  
-	  
+    
    marker.addListener('click', function() {
    window.location.href = "/en/fondation-pour-les-arbres-projects/13";
      
   });
   } else {
-	  
-	  
+    
+    
   marker.addListener('click', function() {
-	  
-	$.each(infoWindows, function(key, elem){
-		if(elem){
-	elem.close();
-		}
-	});
+    
+  $.each(infoWindows, function(key, elem){
+    if(elem){
+  elem.close();
+    }
+  });
     infoWindows[this.item].open(map, this);
-	
+  
   });  
-	  
-	  
+    
+    
   }
 
 
@@ -1823,7 +1823,7 @@ var popupoption = {
     map: map,
     cursor: 'default',
     item: 14,
-	icon: iconpointer,
+  icon: iconpointer,
     category: "category_3 "
   });
 
@@ -1831,35 +1831,35 @@ var popupoption = {
   });
   
   if(!isTouchDevice){
-	  
-	 marker.addListener('mouseover', function() {
-		$.each(infoWindows, function(key, elem){
-			if(elem){
-		elem.close();
-			}
-		});
+    
+   marker.addListener('mouseover', function() {
+    $.each(infoWindows, function(key, elem){
+      if(elem){
+    elem.close();
+      }
+    });
     infoWindows[this.item].open(map, this);
     });  
-	  
+    
    marker.addListener('click', function() {
    window.location.href = "/en/fondation-pour-les-arbres-projects/fruit-producing-edges-of-the-grandes-tattes-forest-14";
      
   });
   } else {
-	  
-	  
+    
+    
   marker.addListener('click', function() {
-	  
-	$.each(infoWindows, function(key, elem){
-		if(elem){
-	elem.close();
-		}
-	});
+    
+  $.each(infoWindows, function(key, elem){
+    if(elem){
+  elem.close();
+    }
+  });
     infoWindows[this.item].open(map, this);
-	
+  
   });  
-	  
-	  
+    
+    
   }
 
 
@@ -1878,7 +1878,7 @@ var popupoption = {
     map: map,
     cursor: 'default',
     item: 30,
-	icon: iconpointer,
+  icon: iconpointer,
     category: "category_3 category_5 "
   });
 
@@ -1886,35 +1886,35 @@ var popupoption = {
   });
   
   if(!isTouchDevice){
-	  
-	 marker.addListener('mouseover', function() {
-		$.each(infoWindows, function(key, elem){
-			if(elem){
-		elem.close();
-			}
-		});
+    
+   marker.addListener('mouseover', function() {
+    $.each(infoWindows, function(key, elem){
+      if(elem){
+    elem.close();
+      }
+    });
     infoWindows[this.item].open(map, this);
     });  
-	  
+    
    marker.addListener('click', function() {
    window.location.href = "/en/fondation-pour-les-arbres-projects/reinforcing-the-traditional-medicinal-plant-culture-and-refo";
      
   });
   } else {
-	  
-	  
+    
+    
   marker.addListener('click', function() {
-	  
-	$.each(infoWindows, function(key, elem){
-		if(elem){
-	elem.close();
-		}
-	});
+    
+  $.each(infoWindows, function(key, elem){
+    if(elem){
+  elem.close();
+    }
+  });
     infoWindows[this.item].open(map, this);
-	
+  
   });  
-	  
-	  
+    
+    
   }
 
 
@@ -1933,7 +1933,7 @@ var popupoption = {
     map: map,
     cursor: 'default',
     item: 57,
-	icon: iconpointer,
+  icon: iconpointer,
     category: "category_3 category_4 "
   });
 
@@ -1941,35 +1941,35 @@ var popupoption = {
   });
   
   if(!isTouchDevice){
-	  
-	 marker.addListener('mouseover', function() {
-		$.each(infoWindows, function(key, elem){
-			if(elem){
-		elem.close();
-			}
-		});
+    
+   marker.addListener('mouseover', function() {
+    $.each(infoWindows, function(key, elem){
+      if(elem){
+    elem.close();
+      }
+    });
     infoWindows[this.item].open(map, this);
     });  
-	  
+    
    marker.addListener('click', function() {
    window.location.href = "/en/fondation-pour-les-arbres-projects/reforestation-and-agroforestry-on-the-bateke-plateau";
      
   });
   } else {
-	  
-	  
+    
+    
   marker.addListener('click', function() {
-	  
-	$.each(infoWindows, function(key, elem){
-		if(elem){
-	elem.close();
-		}
-	});
+    
+  $.each(infoWindows, function(key, elem){
+    if(elem){
+  elem.close();
+    }
+  });
     infoWindows[this.item].open(map, this);
-	
+  
   });  
-	  
-	  
+    
+    
   }
 
 
@@ -1988,7 +1988,7 @@ var popupoption = {
     map: map,
     cursor: 'default',
     item: 43,
-	icon: iconpointer,
+  icon: iconpointer,
     category: "category_3 "
   });
 
@@ -1996,35 +1996,35 @@ var popupoption = {
   });
   
   if(!isTouchDevice){
-	  
-	 marker.addListener('mouseover', function() {
-		$.each(infoWindows, function(key, elem){
-			if(elem){
-		elem.close();
-			}
-		});
+    
+   marker.addListener('mouseover', function() {
+    $.each(infoWindows, function(key, elem){
+      if(elem){
+    elem.close();
+      }
+    });
     infoWindows[this.item].open(map, this);
     });  
-	  
+    
    marker.addListener('click', function() {
    window.location.href = "/en/fondation-pour-les-arbres-projects/supporting-local-communities-through-the-conservation-of-anc";
      
   });
   } else {
-	  
-	  
+    
+    
   marker.addListener('click', function() {
-	  
-	$.each(infoWindows, function(key, elem){
-		if(elem){
-	elem.close();
-		}
-	});
+    
+  $.each(infoWindows, function(key, elem){
+    if(elem){
+  elem.close();
+    }
+  });
     infoWindows[this.item].open(map, this);
-	
+  
   });  
-	  
-	  
+    
+    
   }
 
 
@@ -2043,7 +2043,7 @@ var popupoption = {
     map: map,
     cursor: 'default',
     item: 47,
-	icon: iconpointer,
+  icon: iconpointer,
     category: "category_3 category_4 "
   });
 
@@ -2051,35 +2051,35 @@ var popupoption = {
   });
   
   if(!isTouchDevice){
-	  
-	 marker.addListener('mouseover', function() {
-		$.each(infoWindows, function(key, elem){
-			if(elem){
-		elem.close();
-			}
-		});
+    
+   marker.addListener('mouseover', function() {
+    $.each(infoWindows, function(key, elem){
+      if(elem){
+    elem.close();
+      }
+    });
     infoWindows[this.item].open(map, this);
     });  
-	  
+    
    marker.addListener('click', function() {
    window.location.href = "/en/fondation-pour-les-arbres-projects/improving-the-lives-of-rural-communities-through-the-plantin";
      
   });
   } else {
-	  
-	  
+    
+    
   marker.addListener('click', function() {
-	  
-	$.each(infoWindows, function(key, elem){
-		if(elem){
-	elem.close();
-		}
-	});
+    
+  $.each(infoWindows, function(key, elem){
+    if(elem){
+  elem.close();
+    }
+  });
     infoWindows[this.item].open(map, this);
-	
+  
   });  
-	  
-	  
+    
+    
   }
 
 
@@ -2098,7 +2098,7 @@ var popupoption = {
     map: map,
     cursor: 'default',
     item: 41,
-	icon: iconpointer,
+  icon: iconpointer,
     category: "category_3 "
   });
 
@@ -2106,35 +2106,35 @@ var popupoption = {
   });
   
   if(!isTouchDevice){
-	  
-	 marker.addListener('mouseover', function() {
-		$.each(infoWindows, function(key, elem){
-			if(elem){
-		elem.close();
-			}
-		});
+    
+   marker.addListener('mouseover', function() {
+    $.each(infoWindows, function(key, elem){
+      if(elem){
+    elem.close();
+      }
+    });
     infoWindows[this.item].open(map, this);
     });  
-	  
+    
    marker.addListener('click', function() {
    window.location.href = "/en/fondation-pour-les-arbres-projects/sustainable-mass-timber-construction-for-resilient-rural-eco";
      
   });
   } else {
-	  
-	  
+    
+    
   marker.addListener('click', function() {
-	  
-	$.each(infoWindows, function(key, elem){
-		if(elem){
-	elem.close();
-		}
-	});
+    
+  $.each(infoWindows, function(key, elem){
+    if(elem){
+  elem.close();
+    }
+  });
     infoWindows[this.item].open(map, this);
-	
+  
   });  
-	  
-	  
+    
+    
   }
 
 
@@ -2153,7 +2153,7 @@ var popupoption = {
     map: map,
     cursor: 'default',
     item: 46,
-	icon: iconpointer,
+  icon: iconpointer,
     category: "category_3 category_4 "
   });
 
@@ -2161,35 +2161,35 @@ var popupoption = {
   });
   
   if(!isTouchDevice){
-	  
-	 marker.addListener('mouseover', function() {
-		$.each(infoWindows, function(key, elem){
-			if(elem){
-		elem.close();
-			}
-		});
+    
+   marker.addListener('mouseover', function() {
+    $.each(infoWindows, function(key, elem){
+      if(elem){
+    elem.close();
+      }
+    });
     infoWindows[this.item].open(map, this);
     });  
-	  
+    
    marker.addListener('click', function() {
    window.location.href = "/en/fondation-pour-les-arbres-projects/itombwe-forest-conservation";
      
   });
   } else {
-	  
-	  
+    
+    
   marker.addListener('click', function() {
-	  
-	$.each(infoWindows, function(key, elem){
-		if(elem){
-	elem.close();
-		}
-	});
+    
+  $.each(infoWindows, function(key, elem){
+    if(elem){
+  elem.close();
+    }
+  });
     infoWindows[this.item].open(map, this);
-	
+  
   });  
-	  
-	  
+    
+    
   }
 
 
@@ -2208,7 +2208,7 @@ var popupoption = {
     map: map,
     cursor: 'default',
     item: 17,
-	icon: iconpointer,
+  icon: iconpointer,
     category: "category_3 category_4 "
   });
 
@@ -2216,35 +2216,35 @@ var popupoption = {
   });
   
   if(!isTouchDevice){
-	  
-	 marker.addListener('mouseover', function() {
-		$.each(infoWindows, function(key, elem){
-			if(elem){
-		elem.close();
-			}
-		});
+    
+   marker.addListener('mouseover', function() {
+    $.each(infoWindows, function(key, elem){
+      if(elem){
+    elem.close();
+      }
+    });
     infoWindows[this.item].open(map, this);
     });  
-	  
+    
    marker.addListener('click', function() {
    window.location.href = "/en/fondation-pour-les-arbres-projects/empowering-ethnic-minority-women-for-sustainable-forest-mana";
      
   });
   } else {
-	  
-	  
+    
+    
   marker.addListener('click', function() {
-	  
-	$.each(infoWindows, function(key, elem){
-		if(elem){
-	elem.close();
-		}
-	});
+    
+  $.each(infoWindows, function(key, elem){
+    if(elem){
+  elem.close();
+    }
+  });
     infoWindows[this.item].open(map, this);
-	
+  
   });  
-	  
-	  
+    
+    
   }
 
 
@@ -2263,7 +2263,7 @@ var popupoption = {
     map: map,
     cursor: 'default',
     item: 40,
-	icon: iconpointer,
+  icon: iconpointer,
     category: "category_3 category_4 "
   });
 
@@ -2271,35 +2271,35 @@ var popupoption = {
   });
   
   if(!isTouchDevice){
-	  
-	 marker.addListener('mouseover', function() {
-		$.each(infoWindows, function(key, elem){
-			if(elem){
-		elem.close();
-			}
-		});
+    
+   marker.addListener('mouseover', function() {
+    $.each(infoWindows, function(key, elem){
+      if(elem){
+    elem.close();
+      }
+    });
     infoWindows[this.item].open(map, this);
     });  
-	  
+    
    marker.addListener('click', function() {
    window.location.href = "/en/fondation-pour-les-arbres-projects/integrated-forest-resource-management";
      
   });
   } else {
-	  
-	  
+    
+    
   marker.addListener('click', function() {
-	  
-	$.each(infoWindows, function(key, elem){
-		if(elem){
-	elem.close();
-		}
-	});
+    
+  $.each(infoWindows, function(key, elem){
+    if(elem){
+  elem.close();
+    }
+  });
     infoWindows[this.item].open(map, this);
-	
+  
   });  
-	  
-	  
+    
+    
   }
 
 
@@ -2318,7 +2318,7 @@ var popupoption = {
     map: map,
     cursor: 'default',
     item: 53,
-	icon: iconpointer,
+  icon: iconpointer,
     category: "category_3 category_4 category_5 "
   });
 
@@ -2326,35 +2326,35 @@ var popupoption = {
   });
   
   if(!isTouchDevice){
-	  
-	 marker.addListener('mouseover', function() {
-		$.each(infoWindows, function(key, elem){
-			if(elem){
-		elem.close();
-			}
-		});
+    
+   marker.addListener('mouseover', function() {
+    $.each(infoWindows, function(key, elem){
+      if(elem){
+    elem.close();
+      }
+    });
     infoWindows[this.item].open(map, this);
     });  
-	  
+    
    marker.addListener('click', function() {
    window.location.href = "/en/fondation-pour-les-arbres-projects/ancestral-knowledge-preservation-conservation-and-cultivatio";
      
   });
   } else {
-	  
-	  
+    
+    
   marker.addListener('click', function() {
-	  
-	$.each(infoWindows, function(key, elem){
-		if(elem){
-	elem.close();
-		}
-	});
+    
+  $.each(infoWindows, function(key, elem){
+    if(elem){
+  elem.close();
+    }
+  });
     infoWindows[this.item].open(map, this);
-	
+  
   });  
-	  
-	  
+    
+    
   }
 
 
@@ -2373,7 +2373,7 @@ var popupoption = {
     map: map,
     cursor: 'default',
     item: 26,
-	icon: iconpointer,
+  icon: iconpointer,
     category: "category_4 "
   });
 
@@ -2381,35 +2381,35 @@ var popupoption = {
   });
   
   if(!isTouchDevice){
-	  
-	 marker.addListener('mouseover', function() {
-		$.each(infoWindows, function(key, elem){
-			if(elem){
-		elem.close();
-			}
-		});
+    
+   marker.addListener('mouseover', function() {
+    $.each(infoWindows, function(key, elem){
+      if(elem){
+    elem.close();
+      }
+    });
     infoWindows[this.item].open(map, this);
     });  
-	  
+    
    marker.addListener('click', function() {
    window.location.href = "/en/fondation-pour-les-arbres-projects/creating-a-forest-for-learning-ii";
      
   });
   } else {
-	  
-	  
+    
+    
   marker.addListener('click', function() {
-	  
-	$.each(infoWindows, function(key, elem){
-		if(elem){
-	elem.close();
-		}
-	});
+    
+  $.each(infoWindows, function(key, elem){
+    if(elem){
+  elem.close();
+    }
+  });
     infoWindows[this.item].open(map, this);
-	
+  
   });  
-	  
-	  
+    
+    
   }
 
 
@@ -2428,7 +2428,7 @@ var popupoption = {
     map: map,
     cursor: 'default',
     item: 10,
-	icon: iconpointer,
+  icon: iconpointer,
     category: "category_3 category_4 "
   });
 
@@ -2436,35 +2436,35 @@ var popupoption = {
   });
   
   if(!isTouchDevice){
-	  
-	 marker.addListener('mouseover', function() {
-		$.each(infoWindows, function(key, elem){
-			if(elem){
-		elem.close();
-			}
-		});
+    
+   marker.addListener('mouseover', function() {
+    $.each(infoWindows, function(key, elem){
+      if(elem){
+    elem.close();
+      }
+    });
     infoWindows[this.item].open(map, this);
     });  
-	  
+    
    marker.addListener('click', function() {
    window.location.href = "/en/fondation-pour-les-arbres-projects/multipalms";
      
   });
   } else {
-	  
-	  
+    
+    
   marker.addListener('click', function() {
-	  
-	$.each(infoWindows, function(key, elem){
-		if(elem){
-	elem.close();
-		}
-	});
+    
+  $.each(infoWindows, function(key, elem){
+    if(elem){
+  elem.close();
+    }
+  });
     infoWindows[this.item].open(map, this);
-	
+  
   });  
-	  
-	  
+    
+    
   }
 
 
@@ -2483,7 +2483,7 @@ var popupoption = {
     map: map,
     cursor: 'default',
     item: 60,
-	icon: iconpointer,
+  icon: iconpointer,
     category: "category_4 category_5 "
   });
 
@@ -2491,35 +2491,35 @@ var popupoption = {
   });
   
   if(!isTouchDevice){
-	  
-	 marker.addListener('mouseover', function() {
-		$.each(infoWindows, function(key, elem){
-			if(elem){
-		elem.close();
-			}
-		});
+    
+   marker.addListener('mouseover', function() {
+    $.each(infoWindows, function(key, elem){
+      if(elem){
+    elem.close();
+      }
+    });
     infoWindows[this.item].open(map, this);
     });  
-	  
+    
    marker.addListener('click', function() {
    window.location.href = "/en/fondation-pour-les-arbres-projects/dundreggan-rewilding-centre";
      
   });
   } else {
-	  
-	  
+    
+    
   marker.addListener('click', function() {
-	  
-	$.each(infoWindows, function(key, elem){
-		if(elem){
-	elem.close();
-		}
-	});
+    
+  $.each(infoWindows, function(key, elem){
+    if(elem){
+  elem.close();
+    }
+  });
     infoWindows[this.item].open(map, this);
-	
+  
   });  
-	  
-	  
+    
+    
   }
 
 
@@ -2538,7 +2538,7 @@ var popupoption = {
     map: map,
     cursor: 'default',
     item: 52,
-	icon: iconpointer,
+  icon: iconpointer,
     category: "category_3 category_4 "
   });
 
@@ -2546,35 +2546,35 @@ var popupoption = {
   });
   
   if(!isTouchDevice){
-	  
-	 marker.addListener('mouseover', function() {
-		$.each(infoWindows, function(key, elem){
-			if(elem){
-		elem.close();
-			}
-		});
+    
+   marker.addListener('mouseover', function() {
+    $.each(infoWindows, function(key, elem){
+      if(elem){
+    elem.close();
+      }
+    });
     infoWindows[this.item].open(map, this);
     });  
-	  
+    
    marker.addListener('click', function() {
    window.location.href = "/en/fondation-pour-les-arbres-projects/environmental-education-centres";
      
   });
   } else {
-	  
-	  
+    
+    
   marker.addListener('click', function() {
-	  
-	$.each(infoWindows, function(key, elem){
-		if(elem){
-	elem.close();
-		}
-	});
+    
+  $.each(infoWindows, function(key, elem){
+    if(elem){
+  elem.close();
+    }
+  });
     infoWindows[this.item].open(map, this);
-	
+  
   });  
-	  
-	  
+    
+    
   }
 
 
@@ -2593,7 +2593,7 @@ var popupoption = {
     map: map,
     cursor: 'default',
     item: 32,
-	icon: iconpointer,
+  icon: iconpointer,
     category: "category_3 category_4 category_5 "
   });
 
@@ -2601,35 +2601,35 @@ var popupoption = {
   });
   
   if(!isTouchDevice){
-	  
-	 marker.addListener('mouseover', function() {
-		$.each(infoWindows, function(key, elem){
-			if(elem){
-		elem.close();
-			}
-		});
+    
+   marker.addListener('mouseover', function() {
+    $.each(infoWindows, function(key, elem){
+      if(elem){
+    elem.close();
+      }
+    });
     infoWindows[this.item].open(map, this);
     });  
-	  
+    
    marker.addListener('click', function() {
    window.location.href = "/en/fondation-pour-les-arbres-projects/support-for-traditional-mayan-agriculture-and-raising-awaren";
      
   });
   } else {
-	  
-	  
+    
+    
   marker.addListener('click', function() {
-	  
-	$.each(infoWindows, function(key, elem){
-		if(elem){
-	elem.close();
-		}
-	});
+    
+  $.each(infoWindows, function(key, elem){
+    if(elem){
+  elem.close();
+    }
+  });
     infoWindows[this.item].open(map, this);
-	
+  
   });  
-	  
-	  
+    
+    
   }
 
 
@@ -2648,7 +2648,7 @@ var popupoption = {
     map: map,
     cursor: 'default',
     item: 58,
-	icon: iconpointer,
+  icon: iconpointer,
     category: "category_3 category_4 "
   });
 
@@ -2656,35 +2656,35 @@ var popupoption = {
   });
   
   if(!isTouchDevice){
-	  
-	 marker.addListener('mouseover', function() {
-		$.each(infoWindows, function(key, elem){
-			if(elem){
-		elem.close();
-			}
-		});
+    
+   marker.addListener('mouseover', function() {
+    $.each(infoWindows, function(key, elem){
+      if(elem){
+    elem.close();
+      }
+    });
     infoWindows[this.item].open(map, this);
     });  
-	  
+    
    marker.addListener('click', function() {
    window.location.href = "/en/fondation-pour-les-arbres-projects/afforestation-of-chambarak-and-ttujur-communities";
      
   });
   } else {
-	  
-	  
+    
+    
   marker.addListener('click', function() {
-	  
-	$.each(infoWindows, function(key, elem){
-		if(elem){
-	elem.close();
-		}
-	});
+    
+  $.each(infoWindows, function(key, elem){
+    if(elem){
+  elem.close();
+    }
+  });
     infoWindows[this.item].open(map, this);
-	
+  
   });  
-	  
-	  
+    
+    
   }
 
 
@@ -2703,7 +2703,7 @@ var popupoption = {
     map: map,
     cursor: 'default',
     item: 59,
-	icon: iconpointer,
+  icon: iconpointer,
     category: "category_4 "
   });
 
@@ -2711,35 +2711,35 @@ var popupoption = {
   });
   
   if(!isTouchDevice){
-	  
-	 marker.addListener('mouseover', function() {
-		$.each(infoWindows, function(key, elem){
-			if(elem){
-		elem.close();
-			}
-		});
+    
+   marker.addListener('mouseover', function() {
+    $.each(infoWindows, function(key, elem){
+      if(elem){
+    elem.close();
+      }
+    });
     infoWindows[this.item].open(map, this);
     });  
-	  
+    
    marker.addListener('click', function() {
    window.location.href = "/en/fondation-pour-les-arbres-projects/the-foresters-world";
      
   });
   } else {
-	  
-	  
+    
+    
   marker.addListener('click', function() {
-	  
-	$.each(infoWindows, function(key, elem){
-		if(elem){
-	elem.close();
-		}
-	});
+    
+  $.each(infoWindows, function(key, elem){
+    if(elem){
+  elem.close();
+    }
+  });
     infoWindows[this.item].open(map, this);
-	
+  
   });  
-	  
-	  
+    
+    
   }
 
 
@@ -2758,7 +2758,7 @@ var popupoption = {
     map: map,
     cursor: 'default',
     item: 45,
-	icon: iconpointer,
+  icon: iconpointer,
     category: "category_3 category_4 "
   });
 
@@ -2766,35 +2766,35 @@ var popupoption = {
   });
   
   if(!isTouchDevice){
-	  
-	 marker.addListener('mouseover', function() {
-		$.each(infoWindows, function(key, elem){
-			if(elem){
-		elem.close();
-			}
-		});
+    
+   marker.addListener('mouseover', function() {
+    $.each(infoWindows, function(key, elem){
+      if(elem){
+    elem.close();
+      }
+    });
     infoWindows[this.item].open(map, this);
     });  
-	  
+    
    marker.addListener('click', function() {
    window.location.href = "/en/fondation-pour-les-arbres-projects/stepping-up-protection-for-madagascars-largest-wild-populati";
      
   });
   } else {
-	  
-	  
+    
+    
   marker.addListener('click', function() {
-	  
-	$.each(infoWindows, function(key, elem){
-		if(elem){
-	elem.close();
-		}
-	});
+    
+  $.each(infoWindows, function(key, elem){
+    if(elem){
+  elem.close();
+    }
+  });
     infoWindows[this.item].open(map, this);
-	
+  
   });  
-	  
-	  
+    
+    
   }
 
 
@@ -2813,7 +2813,7 @@ var popupoption = {
     map: map,
     cursor: 'default',
     item: 55,
-	icon: iconpointer,
+  icon: iconpointer,
     category: "category_3 category_4 "
   });
 
@@ -2821,35 +2821,35 @@ var popupoption = {
   });
   
   if(!isTouchDevice){
-	  
-	 marker.addListener('mouseover', function() {
-		$.each(infoWindows, function(key, elem){
-			if(elem){
-		elem.close();
-			}
-		});
+    
+   marker.addListener('mouseover', function() {
+    $.each(infoWindows, function(key, elem){
+      if(elem){
+    elem.close();
+      }
+    });
     infoWindows[this.item].open(map, this);
     });  
-	  
+    
    marker.addListener('click', function() {
    window.location.href = "/en/fondation-pour-les-arbres-projects/landscape-and-biodiversity";
      
   });
   } else {
-	  
-	  
+    
+    
   marker.addListener('click', function() {
-	  
-	$.each(infoWindows, function(key, elem){
-		if(elem){
-	elem.close();
-		}
-	});
+    
+  $.each(infoWindows, function(key, elem){
+    if(elem){
+  elem.close();
+    }
+  });
     infoWindows[this.item].open(map, this);
-	
+  
   });  
-	  
-	  
+    
+    
   }
 
 
@@ -2868,7 +2868,7 @@ var popupoption = {
     map: map,
     cursor: 'default',
     item: 11,
-	icon: iconpointer,
+  icon: iconpointer,
     category: "category_3 category_4 "
   });
 
@@ -2876,44 +2876,44 @@ var popupoption = {
   });
   
   if(!isTouchDevice){
-	  
-	 marker.addListener('mouseover', function() {
-		$.each(infoWindows, function(key, elem){
-			if(elem){
-		elem.close();
-			}
-		});
+    
+   marker.addListener('mouseover', function() {
+    $.each(infoWindows, function(key, elem){
+      if(elem){
+    elem.close();
+      }
+    });
     infoWindows[this.item].open(map, this);
     });  
-	  
+    
    marker.addListener('click', function() {
    window.location.href = "/en/fondation-pour-les-arbres-projects/preserver-les-dernieres-forets-seches-par-lagroforesterie";
      
   });
   } else {
-	  
-	  
+    
+    
   marker.addListener('click', function() {
-	  
-	$.each(infoWindows, function(key, elem){
-		if(elem){
-	elem.close();
-		}
-	});
+    
+  $.each(infoWindows, function(key, elem){
+    if(elem){
+  elem.close();
+    }
+  });
     infoWindows[this.item].open(map, this);
-	
+  
   });  
-	  
-	  
+    
+    
   }
 
 
   markers.push(marker);
   bounds.extend(markerLatLng);
-  	
-	
-	
-	 markerCluster = new MarkerClusterer(map, markers, {
+    
+  
+  
+   markerCluster = new MarkerClusterer(map, markers, {
             imagePath: '/assets/images/',
             styles:[
                 {
@@ -2989,7 +2989,7 @@ document.addEventListener('DOMContentLoaded', function(){
         } else {
 
 
-            if(catmarkers.search(myslectcat) != -1 ){	
+            if(catmarkers.search(myslectcat) != -1 ){ 
                 marker.setMap(map);
                 markerstocluster.push(marker);
                     bounds.extend(marker.position);
