@@ -16,25 +16,26 @@ export default async function decorate(block) {
   const footer = document.createElement('div');
   while (fragment.firstElementChild) footer.append(fragment.firstElementChild);
 
-  // Add class names to footer sections and wrap general footer links and copyright in
-  // common div so that div layout is correct in >900px view
-  const firstSection = footer.querySelector('.section:first-child');
-  if (firstSection) {
-    firstSection.classList.add('footer-general');
-  }
-
-  const secondSection = footer.querySelector('.section:nth-of-type(2)');
-  if (secondSection) {
-    secondSection.classList.add('footer-menu');
-  }
-
-  const footerLinks = footer.querySelector('.section.footer-general ul');
-  const copyRight = footer.querySelector('.section.footer-general p:last-of-type');
-  const linksWrapper = document.createElement('div');
-  linksWrapper.className = 'links-cr-wrapper';
-  linksWrapper.append(footerLinks);
-  linksWrapper.append(copyRight);
-  firstSection.append(linksWrapper);
+  // Wrap social icons, general footer links and copyright
+  // text in a div and wrap general footer links and copyright
+  // text in common div so that div layout is correct in >900px view
+  const footerMenu = footer.querySelector('.section.green-bg > div ul:last-of-type');
+  const socialIcons = footer.querySelector('.section.green-bg > div p:first-of-type');
+  const footerLinks = footer.querySelector('.section.green-bg > div ul:first-of-type');
+  const copyRight = footer.querySelector('.section.green-bg > div p:nth-of-type(2)');
+  const footerGeneralWrapper = document.createElement('div');
+  footerGeneralWrapper.className = 'footer-general-wrapper';
+  footerGeneralWrapper.append(socialIcons);
+  footerGeneralWrapper.append(footerLinks);
+  footerGeneralWrapper.append(copyRight);
+  footerMenu.insertAdjacentElement('beforebegin', footerGeneralWrapper);
+  
+  // Add footer general links and copyright text to it's own div
+  const linksCRWrapper = document.createElement('div');
+  linksCRWrapper.className = 'links-cr-wrapper';
+  linksCRWrapper.append(footerLinks);
+  linksCRWrapper.append(copyRight);
+  footerGeneralWrapper.append(linksCRWrapper);
 
   block.append(footer);
 }
