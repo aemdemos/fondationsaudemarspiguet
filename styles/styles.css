@@ -380,11 +380,6 @@ main .section.light, main .section.highlight {
 
 
 /* Back to top button */
-.fleche-to-top {
-  position: fixed;
-  padding: 0;
-  margin: 0;
-  border: 0;}
 
   .page-level-btn {
     position: fixed;
@@ -393,10 +388,20 @@ main .section.light, main .section.highlight {
     height: 4rem;
     background-color: var(--fleche-to-top-bg);
     border-radius: 5000px;
-    display: flex;
+    display: inline-block;
     align-items: center;
     justify-content: center;
+    opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 1s ease, visibility 1s ease;
   }
+
+  .page-level-btn.show {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
 
   @media (width < 600px) {
     .page-level-btn {

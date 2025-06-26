@@ -120,7 +120,6 @@ function backToTopWithIcon() {
   const main = document.querySelector('main');
   const pageButton = document.createElement('span');
   pageButton.className = 'page-level-btn';
-  pageButton.style.display = 'none';
   pageButton.style.position = 'fixed';
   pageButton.style.bottom = '20px';
   pageButton.style.zIndex = '999';
@@ -144,9 +143,9 @@ function backToTopWithIcon() {
   window.addEventListener('scroll', () => {
     const { scrollY } = window;
     if (scrollY > 500) {
-      pageButton.style.display = 'block';
+      pageButton.classList.add('show');
     } else {
-      pageButton.style.display = 'none';
+      pageButton.classList.remove('show');
     }
   });
 
