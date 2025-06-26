@@ -378,6 +378,39 @@ main .section.light, main .section.highlight {
   display: none;
 }
 
+
+/* Back to top button */
+
+  .page-level-btn {
+    position: fixed;
+    right: 80px;
+    width: 4rem;
+    height: 4rem;
+    background-color: var(--fleche-to-top-bg);
+    border-radius: 5000px;
+    display: inline-block;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 1s ease, visibility 1s ease;
+  }
+
+  .page-level-btn.show {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+  @media (width < 600px) {
+    .page-level-btn {
+      right: 20px;
+      width: 3rem;
+      height: 3rem;
+    }
+  }
+
 /* project article page styles */
 .details-sidebar.light-grey-bg {
   background-color: var(--projet-bg-page);
@@ -386,3 +419,4 @@ main .section.light, main .section.highlight {
 .details-sidebar.grey-bg {
   background-color: var(--projet-bg-page-suite);
 }
+

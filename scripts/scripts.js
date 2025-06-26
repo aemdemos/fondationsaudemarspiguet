@@ -163,6 +163,45 @@ async function loadEager(doc) {
  * Loads everything that doesn't need to be delayed.
  * @param {Element} doc The container element
  */
+
+function backToTopWithIcon() {
+  const main = document.querySelector('main');
+  const pageButton = document.createElement('span');
+  pageButton.className = 'page-level-btn';
+  pageButton.style.position = 'fixed';
+  pageButton.style.bottom = '20px';
+  pageButton.style.zIndex = '999';
+  pageButton.style.cursor = 'pointer';
+
+  // Detect language from URL path
+  const path = window.location.pathname;
+  let svgSrc = '/icons/flech-to-top-en.svg';
+  if (path.startsWith('/fr')) {
+    svgSrc = '/icons/flech-to-top-fr.svg';
+  }
+
+  const svg = document.createElement('img');
+  svg.src = svgSrc;
+  svg.alt = 'Back to Top';
+  svg.className = svgSrc.includes('-fr.svg') ? 'flech-to-top-fr' : 'flech-to-top-en';
+
+  pageButton.appendChild(svg);
+  main.appendChild(pageButton);
+
+  window.addEventListener('scroll', () => {
+    const { scrollY } = window;
+    if (scrollY > 500) {
+      pageButton.classList.add('show');
+    } else {
+      pageButton.classList.remove('show');
+    }
+  });
+
+  pageButton.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+}
+
 async function loadLazy(doc) {
   const main = doc.querySelector('main');
   await loadSections(main);
@@ -176,6 +215,7 @@ async function loadLazy(doc) {
 
   loadCSS(`${window.hlx.codeBasePath}/styles/lazy-styles.css`);
   loadFonts();
+  backToTopWithIcon();
 }
 
 /**
