@@ -30,6 +30,7 @@ header nav[aria-expanded='false'] .nav-logo-wrapper, header nav[aria-expanded='t
   flex-direction: row;
   justify-content: space-between;
   width: 100%;
+  align-items: center;
 }
 
 header nav .nav-tools, header nav .nav-sections {
@@ -40,12 +41,18 @@ header nav[aria-expanded='false'] .nav-tools {
   display: none;
 }
 
+header nav .nav-tools ul {
+  margin: 0;
+  padding: 0;
+}
+
 header nav .nav-tools ul li {
   list-style: none;
   font-size: 30px;
   padding: 0 20px;
   border: none;
-  text-align: center
+  text-align: center;
+  line-height: normal;
 }
 
 @media (width >= 900px) {
@@ -60,11 +67,16 @@ header nav .nav-tools ul li {
     padding: 20px 20px 30px;
     align-items: stretch;
     background-color: var(--header-color);
+    transition: all 0.9s ease-in;
   }
 
   header nav[aria-expanded='true'].hovered {
     background-color: var(--menu-open-bg);
     transition: all 0.9s ease-in;
+  }
+
+  header nav[aria-expanded='true'].hovered.opened {
+    height: calc(height + 20px);
   }
 
   header nav[aria-expanded='true'] .nav-menu-wrapper {
@@ -91,8 +103,12 @@ header nav .nav-tools ul li a:any-link {
 
 /* hamburger */
 header nav .nav-hamburger {
+  width: 46px;
+  height: 46px;
+  background-color: white;
+  border-radius: 5000px;
+  justify-content: center;
   grid-area: hamburger;
-  height: 22px;
   display: flex;
   align-items: center;
 }
@@ -171,7 +187,15 @@ header nav .nav-brand img {
 /* sections */
 header nav .nav-sections {
   position: absolute;
-  right: 80px
+  right: 80px;
+  font-size: 12px;
+  text-transform: uppercase;
+  font-weight: 400;
+  letter-spacing: .12em;
+  margin-top: 1px;
+  transition: color 0.5s;
+  text-decoration: none;
+  display: inline-block;
 }
 
 @media (width >= 900px) {
@@ -183,22 +207,25 @@ header nav .nav-sections {
   header nav .nav-brand img {
     width: 230px;
   }
+
+  header nav[aria-expanded='true'] .nav-sections {
+    align-self: flex-start;
+}
 }
 
 /* brand */
 header .nav-brand {
-  grid-area: brand;
   flex-basis: 128px;
   font-size: var(--heading-font-size-s);
   font-weight: 700;
   line-height: 1;
+  margin-top: 20px;
 }
 
 
 header nav[aria-expanded='true'] .nav-sections {
   display: block;
   visibility: visible;
-  align-self: start;
 }
 
 header nav .nav-sections ul {
@@ -207,19 +234,24 @@ header nav .nav-sections ul {
   font-size: var(--body-font-size-s);
 }
 
-header nav .nav-sections ul > li {
-  font-weight: 500;
-}
-
-header nav .nav-tools ul li ul li {
-  font-size: 18px;
-}
-
 header nav .nav-tools ul li a.button:any-link {
   margin: 0;
   border: none;
   border-radius: 0;
   padding: 0;
+  font-weight: 300;
+}
+
+header nav .nav-tools ul > li:nth-child(2) {
+  opacity: 0.6;
+}
+
+header nav .nav-tools ul li ul li:nth-child(2) {
+  opacity: 1;
+}
+
+header nav .nav-tools ul li ul li:nth-child(1){
+  margin-top: 10px;
 }
 
 header nav .nav-tools ul li a.button:any-link:hover,  header nav .nav-tools ul li ul li  a.button:any-link:hover, header nav .nav-tools ul li ul li:hover{
@@ -244,10 +276,6 @@ header nav[aria-expanded='true'] .nav-tools {
     display: block;
     visibility: visible;
     white-space: nowrap;
-  }
-
-  header nav[aria-expanded='true'] .nav-sections {
-    align-self: unset;
   }
 
   header nav .nav-sections .nav-drop {
@@ -361,6 +389,7 @@ header nav[aria-expanded='true'] .nav-tools {
     padding: 0;
     transition: all 0.9s ease-in;
     font-weight: 400;
+    position: absolute;
   }
 
   header nav .nav-tools .default-content-wrapper > ul li ul li {
@@ -370,7 +399,7 @@ header nav[aria-expanded='true'] .nav-tools {
     text-align: start;
   }
 
-  header nav .nav-tools .default-content-wrapper ul li:nth-child(1):hover ul {
+  header nav.opened .nav-tools .default-content-wrapper ul li ul {
     display: block;
     opacity: 1;
     margin: 0;

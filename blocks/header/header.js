@@ -148,6 +148,17 @@ export default async function decorate(block) {
     });
   }
 
+  // const li = nav.querySelector('.default-content-wrapper ul > li');
+  // console.log(li);
+  // const textNode = Array.from(li.childNodes).find(node => node.nodeType === Node.TEXT_NODE && node.textContent.trim());
+  // if (textNode) {
+  //   alert('Hi');
+  //   const span = document.createElement('span');
+  //   span.textContent = textNode.textContent.trim();
+  //   li.insertBefore(span, textNode);
+  //   li.removeChild(textNode);
+  // }
+
   // hamburger for mobile
   const hamburger = document.createElement('div');
   hamburger.classList.add('nav-hamburger');
@@ -170,10 +181,17 @@ export default async function decorate(block) {
   navWrapper.className = 'nav-wrapper';
   navWrapper.append(nav);
   block.append(navWrapper);
-
+  const firstMenuItem = nav.querySelector('.default-content-wrapper > ul > li p');
+  if (firstMenuItem) {
+  firstMenuItem.addEventListener('mouseover', () => {
+    nav.classList.add('opened');
+  });
+  firstMenuItem.addEventListener('mouseout', () => {
+    nav.classList.remove('opened');
+  });
+}
   const menuItems = nav.querySelectorAll('.default-content-wrapper > ul > li');
   if (menuItems.length > 0) {
-    // add aria-label to nav sections
     menuItems.forEach((item) => {
       item.addEventListener('mouseover', () => {
         nav.classList.add('hovered');
