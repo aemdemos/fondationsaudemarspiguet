@@ -40,12 +40,22 @@ header nav[aria-expanded='false'] .nav-tools {
   display: none;
 }
 
+header nav[aria-expanded='true'] .nav-tools ul {
+  margin: 0;
+  padding: 0;
+}
+
 header nav .nav-tools ul li {
   list-style: none;
   font-size: 30px;
   padding: 0 20px;
   border: none;
   text-align: center
+}
+
+header nav[aria-expanded='true'] .nav-tools ul li ul {
+  margin: 10px 0 0 ;
+  padding: 0;
 }
 
 @media (width >= 900px) {
@@ -201,12 +211,6 @@ header nav[aria-expanded='true'] .nav-sections {
   align-self: start;
 }
 
-header nav .nav-sections ul {
-  list-style: none;
-  padding-left: 0;
-  font-size: var(--body-font-size-s);
-}
-
 header nav .nav-sections ul > li {
   font-weight: 500;
 }
@@ -220,16 +224,13 @@ header nav .nav-tools ul li a.button:any-link {
   border: none;
   border-radius: 0;
   padding: 0;
+  font-weight: 300;
 }
 
 header nav .nav-tools ul li a.button:any-link:hover,  header nav .nav-tools ul li ul li  a.button:any-link:hover, header nav .nav-tools ul li ul li:hover{
   cursor: pointer;
   text-decoration: none;
   opacity: 0.6;
-}
-
-header nav .nav-sections ul > li > ul {
-  margin-top: 0;
 }
 
 header nav[aria-expanded='true'] .nav-tools {
@@ -368,7 +369,6 @@ header nav[aria-expanded='true'] .nav-tools {
     margin: 0;
     padding: 0;
     text-align: start;
-    pointer-events: none;
   }
 
   header nav .nav-tools .default-content-wrapper > ul li p {
@@ -381,6 +381,13 @@ header nav[aria-expanded='true'] .nav-tools {
     margin: 0;
     padding: 0;
     transition: all 0.9s ease-in;
+    cursor: pointer;
+  }
+
+
+  header nav .nav-tools ul li ul.show li:hover{
+    text-decoration: none;
+    opacity: 0.6;
   }
 
 }

@@ -170,26 +170,31 @@ export default async function decorate(block) {
   navWrapper.className = 'nav-wrapper';
   navWrapper.append(nav);
   block.append(navWrapper);
-  const firstMenuItem = nav.querySelector('.default-content-wrapper > ul > li p');
-  const subMenu = nav.querySelector('.default-content-wrapper > ul > li ul');
-  if (firstMenuItem) {
-  firstMenuItem.addEventListener('mouseover', () => {
-    nav.classList.add('hovered');
-    subMenu.classList.add('show');
-  });
-  firstMenuItem.addEventListener('mouseout', () => {
-    nav.classList.remove('hovered');
-    subMenu.classList.remove('show');
-  });
-}
+
+  const firstMenuItem = document.querySelector('.default-content-wrapper > ul > li');
+  const firstMenuItemTitle = firstMenuItem?.querySelector('p');
+  const submenu = firstMenuItem?.querySelector('ul');
+
+  if (firstMenuItemTitle && submenu) {
+    firstMenuItemTitle.addEventListener('mouseenter', () => {
+      submenu.classList.add('show');
+      nav.classList.add('hovered');
+    });
+
+    firstMenuItem.addEventListener('mouseleave', () => {
+      submenu.classList.remove('show');
+      nav.classList.remove('hovered');
+    });
+  }
+
   const menuItems = nav.querySelectorAll('.default-content-wrapper > ul > li');
   if (menuItems.length > 0) {
     menuItems.forEach((item, index) => {
       if (index !== 0) {
-        item.addEventListener('mouseover', () => {
+        item.addEventListener('mouseenter', () => {
           nav.classList.add('hovered');
         });
-        item.addEventListener('mouseout', () => {
+        item.addEventListener('mouseleave', () => {
           nav.classList.remove('hovered');
         });
       }
