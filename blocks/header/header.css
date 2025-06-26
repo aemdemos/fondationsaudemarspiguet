@@ -93,7 +93,7 @@ header nav[aria-expanded='true'] .nav-tools ul li ul {
 }
 
 header nav .nav-tools ul li.active, header nav .nav-tools ul li a.active {
-  opacity: 0.6;
+  opacity: 0.7;
 }
 
 @media (width >= 900px) {
@@ -273,7 +273,7 @@ header nav .nav-tools ul li a.button:any-link {
 header nav .nav-tools ul li a.button:any-link:hover,  header nav .nav-tools ul li ul li  a.button:any-link:hover, header nav .nav-tools ul li ul.show li:hover{
   cursor: pointer;
   text-decoration: none;
-  opacity: 0.6;
+  opacity: 0.7;
 }
 
 header nav[aria-expanded='true'] .nav-tools {
@@ -364,7 +364,7 @@ header nav[aria-expanded='true'] .nav-tools {
 
   header nav .nav-tools ul li ul.show li:hover{
     text-decoration: none;
-    opacity: 0.6;
+    opacity: 0.7;
   }
 
 }
