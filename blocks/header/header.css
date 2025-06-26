@@ -30,6 +30,7 @@ header nav[aria-expanded='false'] .nav-logo-wrapper, header nav[aria-expanded='t
   flex-direction: row;
   justify-content: space-between;
   width: 100%;
+  align-items: center
 }
 
 header nav .nav-tools, header nav .nav-sections {
@@ -101,10 +102,14 @@ header nav .nav-tools ul li a:any-link {
 
 /* hamburger */
 header nav .nav-hamburger {
-  grid-area: hamburger;
-  height: 22px;
+  height: 46px;
+  width: 46px;
+  background-color: #FFF;
+  border-radius: 5000px;
   display: flex;
+  justify-content: center;
   align-items: center;
+  cursor: pointer;
 }
 
 header nav .nav-hamburger button {
@@ -208,7 +213,6 @@ header .nav-brand {
 header nav[aria-expanded='true'] .nav-sections {
   display: block;
   visibility: visible;
-  align-self: start;
 }
 
 header nav .nav-sections ul > li {
@@ -334,6 +338,7 @@ header nav[aria-expanded='true'] .nav-tools {
 
   header nav[aria-expanded='true'] .nav-logo-wrapper {
     width: 10%;
+    align-items: start;
   }
 
   header nav[aria-expanded='true'] .nav-menu-wrapper {
