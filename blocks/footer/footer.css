@@ -6,7 +6,7 @@ footer .footer .section.beige-bg {
   background-color: var(--newsletter-bg);
   font-size: 24px;
   color: var(--newsletter-titre);
-  padding: 25px 0 25px 0;
+  padding: 25px 0;
 }
 
 footer .footer .section.green-bg {
@@ -17,30 +17,35 @@ footer .footer .section.green-bg {
 }
 
 footer .footer .section.beige-bg > div {
-  padding: 0 20px;
+  padding: 0 5px;
   letter-spacing: .06em;
   font-weight: 400;
   line-height: normal;
   text-align: left;
 }
 
-footer .footer .section.beige-bg > div > p:first-of-type {
-  padding-bottom: 20px;
+footer .footer .section.green-bg > div p {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+footer .footer .section.beige-bg > div > p {
   margin: 15px;
 }
 
-footer .footer .section.beige-bg > div > p.button-container {
-  margin: 15px;
+footer .footer .section.beige-bg > div > p:first-of-type {
+  padding-bottom: 20px;
 }
 
 footer .footer .section.beige-bg > div > p.button-container a.button:any-link {
   background-color: var(--site-color);
-  background-image: url(/icons/btn_fleche_right.svg);
+  background-image: url('/icons/btn_fleche_right.svg');
   background-position: calc(100% - 10px) center;
   background-repeat: no-repeat;
   border-radius: unset;
   color: var(--news-button-text-colour);
   font-size: 12px;
+  font-weight: 400;
   width: 100%;
   text-align: left;
   padding: 12px 50px 12px 15px;
@@ -49,16 +54,12 @@ footer .footer .section.beige-bg > div > p.button-container a.button:any-link {
   border: none;
 }
 
-footer .footer .section.green-bg > div p {
-  margin-top: 0;
-  margin-bottom: 0;
-}
-
 footer .footer .section.green-bg > div .footer-general-wrapper {
   line-height: 1.2em;
   font-weight: 300;
   margin-bottom: 10px;
 }
+
 footer .footer .section.green-bg > div .footer-general-wrapper p .icon {
     margin-bottom: 30px;
 }
@@ -90,18 +91,12 @@ footer .footer .section.green-bg > div .footer-general-wrapper .links-cr-wrapper
 }
 
 footer .footer .section.green-bg > div ul > li > a:any-link {
-  color: var(--site-color_2);
+  color: #fff;
 }
 
 footer .footer .section.green-bg > div ul > li > a:hover {
   text-decoration: none;
   color: var(--btn-bg);
-}
-
-footer .footer .section.green-bg > div .footer-general-wrapper .links-cr-wrapper > ul > li:not(:last-child) > a::after {
-  content: '|';
-  color: white;
-  padding: 0 4px;
 }
 
 footer .footer .section.green-bg > div > ul:last-of-type> li:not(:last-child) > a::after{
@@ -110,9 +105,15 @@ footer .footer .section.green-bg > div > ul:last-of-type> li:not(:last-child) > 
   padding: 0 4px;
 }
 
+footer .footer .section.green-bg > div .footer-general-wrapper .links-cr-wrapper > ul > li:not(:last-child) > a::after {
+  content: '|';
+  color: white;
+  padding: 0 4px;
+}
+
 @media (width > 600px) {
   footer .footer .section.beige-bg {
-    padding: 50px 0;
+    padding: 50px 0 30px;
   }
 
   footer .footer .section.beige-bg > div {
@@ -120,15 +121,19 @@ footer .footer .section.green-bg > div > ul:last-of-type> li:not(:last-child) > 
     align-items: center;
   }
 
-  footer .footer .section.beige-bg > div > p:first-of-type {
-    padding-bottom: 0px;
+  footer .footer .section.beige-bg > div > p {
+    width: calc((((100% - (12* 30px)) / 12)* 12) + (11* 30px));
   }
+
+  /*footer .footer .section.beige-bg > div > p:first-of-type {
+    padding-bottom: 0;
+  }*/
 }
 
 @media (width > 900px) {
   footer .footer .section.beige-bg {
     font-size: 40px;
-    padding: 50px 0;
+    padding: 50px 0 30px;
   }
 
   footer .footer .section.beige-bg > div {
@@ -146,9 +151,6 @@ footer .footer .section.green-bg > div > ul:last-of-type> li:not(:last-child) > 
     display: flex;
     justify-content: flex-start;
     align-items: center;
-  }
-
-  footer .footer .section.section.green-bg > div .footer-general-wrapper {
     margin-bottom: 0;
   }
 
@@ -163,5 +165,21 @@ footer .footer .section.green-bg > div > ul:last-of-type> li:not(:last-child) > 
   footer .footer .section.green-bg > div .footer-general-wrapper p .icon {
     margin-right: 30px;
     margin-bottom: 0;
+  }
+}
+
+@media (width > 1200px) {
+  footer .footer .section.beige-bg > div {
+    position: relative;
+    margin: auto;
+    width: 50%;
+  }
+
+  footer .footer .section.beige-bg > div p {
+    max-width: 795px;
+  }
+
+  footer .footer .section.beige-bg > div .button-container a {
+    max-width: 372.5px;
   }
 }
