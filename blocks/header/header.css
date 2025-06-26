@@ -338,6 +338,10 @@ header nav[aria-expanded='true'] .nav-tools {
   header nav .nav-sections .default-content-wrapper > ul > li > ul > li {
     padding: 8px 0;
   }
+
+  header nav .nav-tools ul li a.button:any-link {
+  font-weight: 600;
+}
 }
 
 @media (width >= 900px) {
