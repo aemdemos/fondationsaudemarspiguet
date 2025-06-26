@@ -175,11 +175,11 @@ export default async function decorate(block) {
   if (firstMenuItem) {
   firstMenuItem.addEventListener('mouseover', () => {
     nav.classList.add('hovered');
-    submenu.classList.add('show');
+    subMenu.classList.add('show');
   });
   firstMenuItem.addEventListener('mouseout', () => {
     nav.classList.remove('hovered');
-    submenu.classList.remove('show');
+    subMenu.classList.remove('show');
   });
 }
   const menuItems = nav.querySelectorAll('.default-content-wrapper > ul > li');
