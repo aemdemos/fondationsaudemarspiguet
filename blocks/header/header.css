@@ -258,6 +258,9 @@ header nav[aria-expanded='true'] .nav-sections {
   visibility: visible;
 }
 
+header nav .nav-tools ul li p {
+  font-weight: 200;
+}
 
 header nav .nav-tools ul li a.button:any-link {
   margin: 0;
@@ -295,7 +298,7 @@ header nav[aria-expanded='true'] .nav-tools {
     justify-content: flex-end;
   }
 
-  header nav .nav-tools ul li a.button:any-link {
+  header nav .nav-tools ul li a.button:any-link, header nav .nav-tools ul li p {
     font-weight: 600;
   }
 }
