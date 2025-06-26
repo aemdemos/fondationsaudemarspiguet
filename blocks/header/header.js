@@ -201,8 +201,7 @@ export default async function decorate(block) {
     });
   }
 
-  const scrollLimit = 300; 
-
+  const scrollLimit = 300;
   window.addEventListener('scroll', () => {
     if (window.scrollY > scrollLimit) {
       navWrapper.classList.add('non-sticky');
@@ -213,8 +212,8 @@ export default async function decorate(block) {
 
   const currentUrl = window.location.href;
   const menuLinks = nav.querySelectorAll('.default-content-wrapper > ul > li a');
-  if(menuLinks) {
-    menuLinks.forEach(link => {
+  if (menuLinks) {
+    menuLinks.forEach((link) => {
       const title = link.textContent.trim().toLowerCase().replace(/\s+/g, '-');
       if (currentUrl.includes(title)) {
         link.classList.add('active');
