@@ -200,4 +200,14 @@ export default async function decorate(block) {
       }
     });
   }
+
+  const scrollLimit = 300; // change to your scroll limit in px
+
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > scrollLimit) {
+      navWrapper.classList.add('non-sticky');
+    } else {
+      navWrapper.classList.remove('non-sticky');
+    }
+  });
 }
