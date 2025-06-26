@@ -17,7 +17,7 @@ header nav {
 }
 
 header .nav-wrapper.non-sticky {
-  position: static;
+  transform: translateY(-100%);
 }
 
 header nav[aria-expanded='true'] {
@@ -90,6 +90,10 @@ header nav .nav-tools ul li ul li:nth-child(2) {
 header nav[aria-expanded='true'] .nav-tools ul li ul {
   margin: 10px 0 0 ;
   padding: 0;
+}
+
+header nav .nav-tools ul li.active, header nav .nav-tools ul li a.active {
+  opacity: 0.6;
 }
 
 @media (width >= 900px) {
@@ -365,7 +369,7 @@ header nav[aria-expanded='true'] .nav-tools {
 @media (width >= 1200px) {
   header .nav-wrapper {
     min-height: 100px;
-    position: sticky;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
@@ -374,12 +378,11 @@ header nav[aria-expanded='true'] .nav-tools {
   }
 
   header .nav-wrapper.non-sticky {
-    position: static;
+    transform: translateY(-100%);
   }
 
   header nav {
     min-height: 100px;
-    position: static;
     top: 0;
     left: 0;
     width: 100%;
