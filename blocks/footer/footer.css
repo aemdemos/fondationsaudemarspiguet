@@ -124,10 +124,6 @@ footer .footer .section.green-bg > div .footer-general-wrapper .links-cr-wrapper
   footer .footer .section.beige-bg > div > p {
     width: calc((((100% - (12* 30px)) / 12)* 12) + (11* 30px));
   }
-
-  /*footer .footer .section.beige-bg > div > p:first-of-type {
-    padding-bottom: 0;
-  }*/
 }
 
 @media (width > 900px) {
