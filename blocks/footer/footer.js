@@ -29,7 +29,7 @@ export default async function decorate(block) {
   footerGeneralWrapper.append(footerLinks);
   footerGeneralWrapper.append(copyRight);
   footerMenu.insertAdjacentElement('beforebegin', footerGeneralWrapper);
-  
+
   // Add footer general links and copyright text to it's own div
   const linksCRWrapper = document.createElement('div');
   linksCRWrapper.className = 'links-cr-wrapper';
