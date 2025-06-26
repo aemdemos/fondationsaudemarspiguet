@@ -112,13 +112,15 @@ export default async function decorate(block) {
   const navMeta = getMetadata('nav');
   const navPath = navMeta ? new URL(navMeta, window.location).pathname : '/nav';
   const fragment = await loadFragment(navPath);
-
+  const logoWrapper = document.createElement('div');
+  logoWrapper.className = 'nav-logo-wrapper';
+  const menuWrapper = document.createElement('div');
+  menuWrapper.className = 'nav-menu-wrapper';
   // decorate nav DOM
   block.textContent = '';
   const nav = document.createElement('nav');
   nav.id = 'nav';
   while (fragment.firstElementChild) nav.append(fragment.firstElementChild);
-
   const classes = ['brand', 'sections', 'tools'];
   classes.forEach((c, i) => {
     const section = nav.children[i];
@@ -158,9 +160,54 @@ export default async function decorate(block) {
   // prevent mobile nav behavior on window resize
   toggleMenu(nav, navSections, isDesktop.matches);
   isDesktop.addEventListener('change', () => toggleMenu(nav, navSections, isDesktop.matches));
-
+  logoWrapper.append(navBrand);
+  logoWrapper.append(navSections);
+  logoWrapper.append(hamburger);
+  menuWrapper.append(nav.querySelector('.nav-tools'));
+  nav.append(logoWrapper);
+  nav.append(menuWrapper);
   const navWrapper = document.createElement('div');
   navWrapper.className = 'nav-wrapper';
   navWrapper.append(nav);
   block.append(navWrapper);
+
+  const firstMenuItem = document.querySelector('.default-content-wrapper > ul > li');
+  const firstMenuItemTitle = firstMenuItem?.querySelector('p');
+  const submenu = firstMenuItem?.querySelector('ul');
+
+  if (firstMenuItemTitle && submenu) {
+    firstMenuItemTitle.addEventListener('mouseenter', () => {
+      submenu.classList.add('show');
+      nav.classList.add('hovered');
+    });
+
+    firstMenuItem.addEventListener('mouseleave', () => {
+      submenu.classList.remove('show');
+      nav.classList.remove('hovered');
+    });
+  }
+
+  const menuItems = nav.querySelectorAll('.default-content-wrapper > ul > li');
+  if (menuItems.length > 0) {
+    menuItems.forEach((item, index) => {
+      if (index !== 0) {
+        item.addEventListener('mouseenter', () => {
+          nav.classList.add('hovered');
+        });
+        item.addEventListener('mouseleave', () => {
+          nav.classList.remove('hovered');
+        });
+      }
+    });
+  }
+
+  const scrollLimit = 300; // change to your scroll limit in px
+
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > scrollLimit) {
+      navWrapper.classList.add('non-sticky');
+    } else {
+      navWrapper.classList.remove('non-sticky');
+    }
+  });
 }
