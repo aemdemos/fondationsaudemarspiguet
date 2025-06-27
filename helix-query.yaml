@@ -119,7 +119,7 @@ indices:
         select: head > meta[name="category-ies-"]
         value: attribute(el, "content")
       duration:
-        select: head > meta[name="duration"]
+        select: head > meta[name="project-duration"]
         value: attribute(el, "content")
       location:
         select: head > meta[name="location-s-"]
@@ -157,7 +157,7 @@ indices:
         select: head > meta[name="dur-e-du-projet"]
         value: attribute(el, "content")
       location:
-        select: head > meta[name="lieu-s-"]
+        select: head > meta[name="lieu-x-"]
         value: attribute(el, "content")
       links:
         select: head > meta[name="lien-s-"]
