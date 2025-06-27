@@ -4,14 +4,32 @@ indices:
       - '/**'
     exclude:
       - '/**.json'
+      - '/en/fondation-pour-les-arbres-projets/**'
+      - '/fr/fondation-pour-les-arbres-projets/**'
+      - '/en/fondation-pour-les-arbres-news/**'
+      - '/fr/fondation-pour-les-arbres-actualites/**'
+      - '/drafts/**'
+      - '/nav'
+      - '/**/nav'
+      - '/footer'
+      - '/**/footer'
     target: /query-index.json
     properties:
+      title:
+        select: head > meta[name="og:title"]  
+        value: attribute(el, "content")
+      description:
+        select: head > meta[name="og:description"]
+        value: attribute(el, "content")
+      image:
+        select: head > meta[property="og:image"]
+        value: attribute(el, "content")
+      language:
+        select: head > meta[name="language"]
+        value: attribute(el, "content")
       lastModified:
         select: none
         value: parseTimestamp(headers["last-modified"], "ddd, DD MMM YYYY hh:mm:ss GMT")
-      robots:
-        select: head > meta[name="robots"]
-        value: attribute(el, "content")
   news-en:
     include:
       - '/en/fondation-pour-les-arbres-news/**'
@@ -43,6 +61,9 @@ indices:
       links:
         select: head > meta[name="links"]
         value: attribute(el, "content")
+      lastModified:
+        select: none
+        value: parseTimestamp(headers["last-modified"], "ddd, DD MMM YYYY hh:mm:ss GMT")
   news-fr:
     include:
       - '/fr/fondation-pour-les-arbres-actualites/**'
@@ -73,4 +94,79 @@ indices:
         value: attribute(el, "content")
       links:
         select: head > meta[name="links"]
+        value: attribute(el, "content")
+      lastModified:
+        select: none
+        value: parseTimestamp(headers["last-modified"], "ddd, DD MMM YYYY hh:mm:ss GMT")
+  projects-en:
+    include:
+      - '/en/fondation-pour-les-arbres-projects/**'
+    target: /en/fondation-pour-les-arbres-projects/projects-index.json
+    properties:
+      lastModified:
+        select: none
+        value: parseTimestamp(headers["last-modified"], "ddd, DD MMM YYYY hh:mm:ss GMT")
+      title:
+        select: head > meta[name="og:title"]
+        value: attribute(el, "content")
+      description:
+        select: head > meta[name="og:description"]
+        value: attribute(el, "content")
+      partner:
+        select: head > meta[name="partner"]
+        value: attribute(el, "content")
+      category:
+        select: head > meta[name="category-ies-"]
+        value: attribute(el, "content")
+      duration:
+        select: head > meta[name="duration"]
+        value: attribute(el, "content")
+      location:
+        select: head > meta[name="location-s-"]
+        value: attribute(el, "content")
+      links:
+        select: head > meta[name="link-s-"]
+        value: attribute(el, "content")
+      photos:
+        select: head > meta[name="photos"]
+        value: attribute(el, "content")
+      language:
+        select: head > meta[name="language"]
+        value: attribute(el, "content")
+  projects-fr:
+    include:
+      - '/fr/fondation-pour-les-arbres-projets/**'
+    exclude:
+      - '/fr/fondation-pour-les-arbres-projets/'
+    target: /fr/fondation-pour-les-arbres-projets/projects-index.json
+    properties:
+      lastModified:
+        select: none
+        value: parseTimestamp(headers["last-modified"], "ddd, DD MMM YYYY hh:mm:ss GMT")
+      title:
+        select: head > meta[name="og:title"]
+        value: attribute(el, "content")
+      description:
+        select: head > meta[name="og:description"]
+        value: attribute(el, "content")
+      partner:
+        select: head > meta[name="partner"]
+        value: attribute(el, "content")
+      category:
+        select: head > meta[name="category-ies-"]
+        value: attribute(el, "content")
+      duration:
+        select: head > meta[name="duration"]
+        value: attribute(el, "content")
+      location:
+        select: head > meta[name="location-s-"]
+        value: attribute(el, "content")
+      links:
+        select: head > meta[name="link-s-"]
+        value: attribute(el, "content")
+      photos:
+        select: head > meta[name="photos"]
+        value: attribute(el, "content")
+      language:
+        select: head > meta[name="language"]
         value: attribute(el, "content")
