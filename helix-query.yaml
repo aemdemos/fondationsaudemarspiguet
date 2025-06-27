@@ -148,19 +148,19 @@ indices:
         select: head > meta[property="og:description"]
         value: attribute(el, "content")
       partner:
-        select: head > meta[name="partner"]
+        select: head > meta[name="partenaire"]
         value: attribute(el, "content")
       category:
-        select: head > meta[name="category-ies-"]
+        select: head > meta[name="axe-s-"]
         value: attribute(el, "content")
       duration:
-        select: head > meta[name="duration"]
+        select: head > meta[name="dur-e-du-projet"]
         value: attribute(el, "content")
       location:
-        select: head > meta[name="location-s-"]
+        select: head > meta[name="lieu-s-"]
         value: attribute(el, "content")
       links:
-        select: head > meta[name="link-s-"]
+        select: head > meta[name="lien-s-"]
         value: attribute(el, "content")
       photos:
         select: head > meta[name="photos"]
