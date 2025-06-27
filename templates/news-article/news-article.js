@@ -1,0 +1,1 @@
+console.log('Enabling News Article template');
