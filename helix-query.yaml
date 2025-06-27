@@ -136,7 +136,7 @@ indices:
   projects-fr:
     include:
       - '/fr/fondation-pour-les-arbres-nos-projets/**'
-    target: /fr/fondation-pour-les-arbres-projets/projects-index.json
+    target: /fr/fondation-pour-les-arbres-nos-projets/projects-index.json
     properties:
       lastModified:
         select: none
