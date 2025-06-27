@@ -201,8 +201,7 @@ export default async function decorate(block) {
     });
   }
 
-  const scrollLimit = 300; // change to your scroll limit in px
-
+  const scrollLimit = 300;
   window.addEventListener('scroll', () => {
     if (window.scrollY > scrollLimit) {
       navWrapper.classList.add('non-sticky');
@@ -210,4 +209,19 @@ export default async function decorate(block) {
       navWrapper.classList.remove('non-sticky');
     }
   });
+
+  const currentUrl = window.location.href;
+  const menuLinks = nav.querySelectorAll('.default-content-wrapper > ul > li a');
+  if (menuLinks) {
+    menuLinks.forEach((link) => {
+      const title = link.textContent.trim().toLowerCase().replace(/\s+/g, '-');
+      if (currentUrl.includes(title)) {
+        link.classList.add('active');
+        const parentLi = link.parentElement.parentElement.parentElement;
+        if (parentLi.tagName === 'LI') {
+          parentLi.classList.add('active');
+        }
+      }
+    });
+  }
 }
