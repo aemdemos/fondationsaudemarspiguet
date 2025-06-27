@@ -37,6 +37,10 @@ footer .footer .section.beige-bg > div > p:first-of-type {
   padding-bottom: 20px;
 }
 
+footer .footer .section.beige-bg > div .button-container {
+  overflow: unset;
+}
+
 footer .footer .section.beige-bg > div > p.button-container a.button:any-link {
   background-color: var(--site-color);
   background-image: url('/icons/btn_fleche_right.svg');
@@ -133,14 +137,17 @@ footer .footer .section.green-bg > div .footer-general-wrapper .links-cr-wrapper
   }
 
   footer .footer .section.beige-bg > div {
-    padding: 0 80px;
+    padding: 0 75px;
+  }
+
+  footer .footer .section.green-bg {
+    padding: 100px 80px;
   }
 
   footer .footer .section.green-bg > div {
     display: flex; 
     justify-content: space-between;
     align-items: center;
-    padding: 100px 80px; 
   }
 
   footer .footer .section.section.green-bg > div .footer-general-wrapper{
@@ -168,7 +175,7 @@ footer .footer .section.green-bg > div .footer-general-wrapper .links-cr-wrapper
   footer .footer .section.beige-bg > div {
     position: relative;
     margin: auto;
-    width: 75%;
+    /*width: 75%;*/
   }
 
   footer .footer .section.beige-bg > div p {
