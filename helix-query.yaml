@@ -107,10 +107,10 @@ indices:
         select: none
         value: parseTimestamp(headers["last-modified"], "ddd, DD MMM YYYY hh:mm:ss GMT")
       title:
-        select: head > meta[name="og:title"]
+        select: head > meta[property="og:title"]
         value: attribute(el, "content")
       description:
-        select: head > meta[name="og:description"]
+        select: head > meta[property="og:description"]
         value: attribute(el, "content")
       partner:
         select: head > meta[name="partner"]
@@ -135,19 +135,17 @@ indices:
         value: attribute(el, "content")
   projects-fr:
     include:
-      - '/fr/fondation-pour-les-arbres-projets/**'
-    exclude:
-      - '/fr/fondation-pour-les-arbres-projets/'
+      - '/fr/fondation-pour-les-arbres-nos-projets/**'
     target: /fr/fondation-pour-les-arbres-projets/projects-index.json
     properties:
       lastModified:
         select: none
         value: parseTimestamp(headers["last-modified"], "ddd, DD MMM YYYY hh:mm:ss GMT")
       title:
-        select: head > meta[name="og:title"]
+        select: head > meta[property="og:title"]
         value: attribute(el, "content")
       description:
-        select: head > meta[name="og:description"]
+        select: head > meta[property="og:description"]
         value: attribute(el, "content")
       partner:
         select: head > meta[name="partner"]
