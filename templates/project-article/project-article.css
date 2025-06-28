@@ -1,0 +1,21 @@
+.project-article-template .details-sidebar {
+    display:flex
+}
+
+.project-article-template .details-sidebar .project-article-sidebar {
+    width: 380px;
+    box-sizing: border-box;
+    float: left;
+    font-size: 16px;
+    padding-right: 50px;
+}
+
+.project-article-template .details-sidebar .project-article-sidebar  div {
+    color: var(--site-color-2);
+    margin-top: 20px;
+    margin-bottom: 4px;
+}
+
+.project-article-template .details-sidebar .project-article-sidebar  div:first-child {
+    margin-top: 0;
+}
