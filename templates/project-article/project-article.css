@@ -19,3 +19,32 @@
 .project-article-template .details-sidebar .project-article-sidebar  div:first-child {
     margin-top: 0;
 }
+
+
+@media (width >= 1200px) { 
+    .project-article-template .section.hero-container {
+        margin: 0;
+    }
+
+    .project-article-template .details-sidebar {
+        margin: 0;
+        padding: 80px 0;
+    }
+
+  .project-article-template .details-sidebar .project-article-inner {
+    box-sizing: border-box;
+    position: relative;
+    margin: auto;
+    max-width: 1440px;
+    padding: 0 80px;
+  }
+
+    .project-article-template .details-sidebar .project-article-inner h1 {
+        opacity: 1;
+        transform: translateZ(0);
+        color: var(--site-color);
+        text-align: left;
+        margin-bottom: 40px;
+        font-weight: 400;
+    }
+}

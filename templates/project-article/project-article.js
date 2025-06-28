@@ -4,9 +4,9 @@ export default async function decorate() {
     const language = window.location.pathname.split('/')[1];
     let url;
     if (language === 'en') {
-        url = 'https://main--fondationsaudemarspiguet--aemdemos.aem.page/en/fondation-pour-les-arbres-projects/projects-index.json';
-    } else if(language === 'fr') {
-        url = 'https://main--fondationsaudemarspiguet--aemdemos.aem.page/fr/fondation-pour-les-arbres-nos-projets/projects-index.json';
+       url = 'https://main--fondationsaudemarspiguet--aemdemos.aem.page/en/fondation-pour-les-arbres-projects/projects-index.json';
+    } else if (language === 'fr') {
+       url = 'https://main--fondationsaudemarspiguet--aemdemos.aem.page/fr/fondation-pour-les-arbres-nos-projets/projects-index.json';
     }
     const response = await fetch(url);
     if (!response.ok) {
@@ -14,7 +14,7 @@ export default async function decorate() {
     }
     const data = await response.json();
     const projectdata = data.data;
-    const matchedData = projectdata.find(item =>
+    const matchedData = projectdata.find((item) =>
       item.path.toLowerCase() === projectURL.toLowerCase()
     );
     if (matchedData) {
@@ -53,7 +53,13 @@ export default async function decorate() {
       }
       const projectDiv = document.querySelector('.project-article-template .details-sidebar');
       const articleContent = projectDiv.querySelector('.default-content-wrapper');
-      projectDiv.insertBefore(sidebar, articleContent);
+      const heading = projectDiv.querySelector('.default-content-wrapper h1');
+      const innerDiv = document.createElement('div');
+      innerDiv.className = 'project-article-inner';
+      innerDiv.appendChild(heading);
+      innerDiv.appendChild(sidebar);
+      innerDiv.appendChild(articleContent);
+      projectDiv.appendChild(innerDiv);
     }
   } catch (error) {
     console.error('Error fetching data:', error);
