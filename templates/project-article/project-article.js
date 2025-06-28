@@ -14,8 +14,6 @@ export default async function decorate() {
     }
     const data = await response.json();
     const projectdata = data.data;
-    console.log(projectdata);
-    
     const matchedData = projectdata.find(item => 
       item.path.toLowerCase() === projectURL.toLowerCase()
     );
