@@ -97,7 +97,22 @@
     font-style: normal;
     line-height: 1.2em;
     letter-spacing: .08em;
+    opacity: 0;
+    transform: translateX(20%);
+    animation: slidefadein 1.5s ease-out forwards;
 }
+
+@keyframes slidefadein {
+    from {
+      opacity: 0;
+      transform: translateX(20%);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
 
 .articleintro.block .news-block-header .page-hero-image-seconde {
     padding: 0;
