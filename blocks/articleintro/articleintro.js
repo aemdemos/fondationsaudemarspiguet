@@ -11,6 +11,9 @@ export default function decorate(block) {
   const newsCategory = getMetadata('category');
   const newsDate = getMetadata('date');
   const newsTitle = getMetadata('og:title');
+  newsHeader.querySelector('.news-detail-category').textContent = newsCategory.replace(',', ' |') || '';
+  newsHeader.querySelector('.news-detail-date').textContent = newsDate || '';
+  newsHeader.querySelector('.news-detail-title').textContent = newsTitle || '';
   console.log(newsCategory, newsDate, newsTitle);
   [...block.children].forEach((row) => {
     row.querySelectorAll('img').forEach((img, i) => {
