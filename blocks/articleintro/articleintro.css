@@ -30,6 +30,7 @@
     max-width: 500px;
     height: 450px;
     object-fit: cover;
+    position: absolute;
 }
 
 .articleintro.block .news-block-header .page-hero-image > picture img {
@@ -72,20 +73,6 @@
     width: 50%;
     background-color: #FFF !important;
     float: left;
-    background-size: cover;
-    background-position: center center;
-    background-repeat: no-repeat;
     padding-top: 5%;
-    height: 100%;
+    position: relative;
 }
-
-/* .articleintro.block .news-block-header .page-hero-image-seconde .page-hero-image-seconde-middle {
-    position: absolute;
-    display: block;
-    background-size: cover;
-    background-position: center center;
-    background-repeat: no-repeat;
-    max-width: 500px;
-    width: calc(100% - 80px);
-    height: 450px;
-} */
