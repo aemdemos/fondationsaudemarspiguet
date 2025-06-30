@@ -81,6 +81,10 @@
     text-transform: uppercase;
 }
 
+.articleintro.block.category-color-site .news-block-header .news-detail-big-header .news-detail-category {
+    background-color: var(--site-color);
+}
+
 .articleintro.block .news-block-header .news-detail-big-header .news-detail-date {
     display: inline-block;
     color: var(--site-color-2);
