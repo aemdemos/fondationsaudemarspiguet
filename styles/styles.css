@@ -79,6 +79,7 @@
   /* NEWS PAGE */	
   --news-bg-page: #eae8e9; 
   --news-bg-page-suite: #f2f2f3;  
+  --news-category: #947f5f;
 
   /* NEWS PAGE SOPHISTIQUEE */	
   --news-sophis-bg-intro: #e1e5e6; 
@@ -208,6 +209,17 @@
   }
 }
 
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateX(20%);
+  transition: all 1.5s ease-out;
+}
+
+.animate-on-scroll.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
 body {
   display: none;
   margin: 0;
@@ -222,9 +234,9 @@ body.appear {
   display: block;
 }
 
-header {
+/* header {
   height: var(--nav-height);
-}
+} */
 
 header .header, footer .footer {
   visibility: hidden;
