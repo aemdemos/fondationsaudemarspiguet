@@ -105,6 +105,27 @@ function toggleMenu(nav, navSections, forceExpanded = null) {
   }
 }
 
+function setMainHeightVar(headerEle, doc) {
+  const headerHeight = headerEle.offsetHeight;
+  const mainEle = doc.querySelector('main');
+  if (mainEle) {
+    mainEle.style.marginTop = `${headerHeight}px`;
+  }
+}
+
+function waitForHeaderHeight(block) {
+  const headerEle = block.querySelector('header .nav-wrapper');
+
+  if (headerEle) {
+    setMainHeightVar(headerEle, document); // Initial call
+    window.addEventListener('resize', () => {
+      setMainHeightVar(headerEle, document); // On resize
+    }); // Recalculate on resize
+  } else {
+    setTimeout(() => waitForHeaderHeight(block), 100); // Retry if header not yet in DOM
+  }
+}
+
 /**
  * loads and decorates the header, mainly the nav
  * @param {Element} block The header block element
@@ -238,4 +259,6 @@ export default async function decorate(block) {
       switchLanguage();
     });
   }
+
+  waitForHeaderHeight(block);
 }
