@@ -12,6 +12,22 @@ body.news-article main .section.white-smoke-bg .default-content-wrapper {
 }
 
 body.news-article main .section.white-smoke-bg .default-content-wrapper p {
-    font-size: 38px;
-    max-width: 48%;
+    font-size: 24px;
+    max-width: 90%;
+    position: relative;
+    top: 4vh;
+}
+
+@media (width >= 600px) {
+    body.news-article main .section.white-smoke-bg .default-content-wrapper p {
+        font-size: 38px;
+    }
+}
+
+@media (width >= 900px) {
+    body.news-article main .section.white-smoke-bg .default-content-wrapper p {
+        font-size: 38px;
+        max-width: 48%;
+        top: unset;
+    }
 }
