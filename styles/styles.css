@@ -16,8 +16,8 @@
   --text-color: #131313;
   --link-color: #3b63fb;
   --link-hover-color: #1d3ecf;
-  --body-font-family: "Antarctica", "sans-serif";
-  --heading-font-family: "Antarctica", "sans-serif";
+  --body-font-family: 'Antarctica', sans-serif;
+  --heading-font-family: 'Antarctica', sans-serif;
   --body-font-size-m: 18px;
   --body-font-size-s: 16.6px;
   --body-font-size-xs: 13.4px;
@@ -27,7 +27,7 @@
   --heading-font-size-m: 18px;
   --heading-font-size-s: 16.6px;
   --heading-font-size-xs: 13.4px;
-  --nav-height: 64px;
+  --nav-height: 95px;
   --header-height: var(--nav-height);
 
   /* original site colors */
@@ -123,6 +123,11 @@
   --map-box-bg: rgb(159 165 157 / 90%); 	
   --map-box-partenaires: #363f3e;	
   --map-carte-icone-container: #E2E5E5;
+
+  /* BODY */
+  --body-font-size: 20px;
+  --body-line-height: 1.5em;
+  --body-font-weight: 200;
 }
 
 /* fallback fonts */
@@ -193,6 +198,14 @@
     --heading-font-size-s: 16.6px;
     --heading-font-size-xs: 13.4px;
   }
+
+  h2 {
+    font-size: var(--heading-font-size-xl);
+  }
+
+  main p {
+    font-size: var(--body-font-size-m);
+  }
 }
 
 body {
@@ -235,7 +248,13 @@ h1 {
 }
 
 h2 {
-  font-size: var(--heading-font-size-xl);
+  font-size: 30px;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 1.2em;
+  color: var(--site-color);
+  text-transform: uppercase;
+  letter-spacing: .08em;
 }
 
 h3 {
@@ -257,6 +276,13 @@ h6 {
 p, dl, ol, ul, pre, blockquote {
   margin-top: 0.8em;
   margin-bottom: 0.25em;
+}
+
+main p {
+  letter-spacing: 0.02em;
+  font-size: 14px;
+  line-height: var(--body-line-height);
+  font-weight: var(--body-font-weight);
 }
 
 code, pre {
@@ -363,8 +389,20 @@ main>.section:first-of-type {
 }
 
 @media (width>=900px) {
+  main>.section {
+    padding: 100px 0;
+  }
+
   main>.section>div {
-    padding: 0 32px;
+    padding: 0 80px;
+  }
+
+  main p {
+    font-size: var(--body-font-size-m);
+  }
+
+  main h2 {
+    font-size: var(--heading-font-size-xl);
   }
 }
 
@@ -379,6 +417,17 @@ main .section.light, main .section.highlight {
   display: none;
 }
 
+/* H2 Animation Styles */
+h2.animate {
+  opacity: 0;
+  transform: translateX(-50px);
+  transition: opacity 1.5s ease, transform 1.5s ease;
+}
+
+h2.animate.aos-animate {
+  opacity: 1;
+  transform: translateX(0);
+}
 
 /* Back to top button */
 

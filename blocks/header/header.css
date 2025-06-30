@@ -243,6 +243,12 @@ header nav .nav-sections {
   }
 }
 
+/* @media (width >= 1200px) {
+  header {
+    height: 210px;
+  }
+} */
+
 /* brand */
 header .nav-brand {
   grid-area: brand;
