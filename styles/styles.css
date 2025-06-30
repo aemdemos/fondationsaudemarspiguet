@@ -195,6 +195,17 @@
   }
 }
 
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateX(20%);
+  transition: all 1.5s ease-out;
+}
+
+.animate-on-scroll.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
 body {
   display: none;
   margin: 0;
