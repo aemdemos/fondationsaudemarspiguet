@@ -205,7 +205,7 @@ export default async function decorate(block) {
     });
   }
 
-  const scrollLimit = 300;
+  const scrollLimit = block.querySelector('header .nav-wrapper').offsetHeight;
   window.addEventListener('scroll', () => {
     if (window.scrollY > scrollLimit) {
       navWrapper.classList.add('non-sticky');
