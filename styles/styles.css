@@ -129,6 +129,9 @@
   --body-font-size: 20px;
   --body-line-height: 1.5em;
   --body-font-weight: 200;
+
+  /* SECTIONS */
+  --section-background-color: #d7d9d6;
 }
 
 /* fallback fonts */
@@ -480,5 +483,10 @@ h2.animate.aos-animate {
 
 .details-sidebar.grey-bg {
   background-color: var(--projet-bg-page-suite);
+}
+
+/* SECTIONS */
+.section.soft-grey-bg {
+  background-color: var(--section-background-color);
 }
 
