@@ -2,8 +2,10 @@
 header .nav-wrapper {
   width: 100%;
   z-index: 2;
-  position: sticky;
-  transition: all 0.3s ease;
+  position: fixed;
+  top: 0;
+  left: 0;
+  transition: transform 1s ease, position 0s linear 0.4s;
 }
 
 header nav {
@@ -382,7 +384,7 @@ header nav[aria-expanded='true'] .nav-tools {
     left: 0;
     width: 100%;
     z-index: 9999;
-    transition: all 0.4s ease-in-out 0s;
+    transition: transform 1s ease, position 0s linear 0.4s;
   }
 
   header .nav-wrapper.non-sticky {
