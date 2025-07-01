@@ -2,8 +2,7 @@
 header .nav-wrapper {
   width: 100%;
   z-index: 2;
-  position: fixed;
-  min-height: 100px;
+  position: sticky;
   transition: all 0.3s ease;
 }
 
@@ -242,6 +241,12 @@ header nav .nav-sections {
     font-size: 14px;
   }
 }
+
+/* @media (width >= 1200px) {
+  header {
+    height: 210px;
+  }
+} */
 
 /* brand */
 header .nav-brand {
