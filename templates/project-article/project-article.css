@@ -20,6 +20,12 @@
     margin-top: 0;
 }
 
+.project-article-template .details-sidebar .project-article-sidebar ul li , .project-article-template .details-sidebar .project-article-sidebar ul{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
 
 @media (width >= 1200px) { 
     .project-article-template .section.hero-container {
