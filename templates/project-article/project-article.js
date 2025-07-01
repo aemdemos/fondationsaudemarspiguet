@@ -1,4 +1,4 @@
-import {getMetadata } from '../../scripts/aem.js';
+import { getMetadata } from '../../scripts/aem.js';
 
 export default async function decorate() {
   const sidebar = document.createElement('div');
@@ -51,7 +51,7 @@ export default async function decorate() {
     }
     const link = document.createElement('a');
     link.href = links;
-    link.textContent = links;  
+    link.textContent = links;
     sidebar.innerHTML = `
       <div> Partenaire </div>
         ${partner}
