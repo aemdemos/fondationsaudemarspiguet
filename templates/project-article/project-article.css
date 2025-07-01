@@ -51,6 +51,10 @@
     margin: 0;
 }
 
+.project-article-template .details-sidebar .project-article-inner a {
+    color: var(--text-color);
+}
+
 @media (width >= 600px) {
     .project-article-template .details-sidebar .project-article-sidebar {
         width: 280px;
