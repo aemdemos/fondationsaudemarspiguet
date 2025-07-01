@@ -4,9 +4,9 @@ export default async function decorate() {
     const language = window.location.pathname.split('/')[1];
     let url;
     if (language === 'en') {
-       url = 'https://main--fondationsaudemarspiguet--aemdemos.aem.page/en/fondation-pour-les-arbres-projects/projects-index.json';
+      url = 'https://main--fondationsaudemarspiguet--aemdemos.aem.page/en/fondation-pour-les-arbres-projects/projects-index.json';
     } else if (language === 'fr') {
-       url = 'https://main--fondationsaudemarspiguet--aemdemos.aem.page/fr/fondation-pour-les-arbres-nos-projets/projects-index.json';
+      url = 'https://main--fondationsaudemarspiguet--aemdemos.aem.page/fr/fondation-pour-les-arbres-nos-projets/projects-index.json';
     }
     const response = await fetch(url);
     if (!response.ok) {
@@ -14,9 +14,7 @@ export default async function decorate() {
     }
     const data = await response.json();
     const projectdata = data.data;
-    const matchedData = projectdata.find((item) =>
-      item.path.toLowerCase() === projectURL.toLowerCase()
-    );
+    const matchedData = projectdata.find((item) => item.path.toLowerCase() === projectURL.toLowerCase());
     if (matchedData) {
       const sidebar = document.createElement('div');
       sidebar.className = 'project-article-sidebar';
