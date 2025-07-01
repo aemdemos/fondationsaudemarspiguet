@@ -64,79 +64,6 @@
   }
 }
 
-.hero.two-columnar.block > div {
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  min-height: 70vh;
-  align-items: stretch;
-}
-
-.hero.two-columnar.block > div > div:first-child {
-  flex: 1.15 1 0;
-  min-width: 0;
-  display: flex;
-  align-items: stretch;
-  order: 1;
-}
-
-.hero.two-columnar.block > div > div:first-child picture,
-.hero.two-columnar.block > div > div:first-child img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: 54% center;
-  display: block;
-}
-
-.hero.two-columnar.block > div > div:last-child {
-  flex: 1 1 0;
-  background: #C7C5BD;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0 3vw;
-  box-sizing: border-box;
-  order: 2;
-}
-
-.hero.two-columnar.block > div > div:last-child p {
-  color: #363940;
-  font-size: 1.8vw;
-  font-family: Inter, 'Helvetica Neue', Arial, sans-serif;
-  font-weight: 400;
-  line-height: 1.3;
-  text-align: center;
-  margin: 0;
-  max-width: 25vw;
-}
-
-@media (width <= 900px) {
-  .hero.two-columnar.block > div {
-    flex-direction: column;
-    min-height: 0;
-  }
-
-  .hero.two-columnar.block > div > div:first-child,
-  .hero.two-columnar.block > div > div:last-child {
-    flex: none;
-    width: 100%;
-    min-width: 0;
-    min-height: 0;
-    order: unset;
-  }
-
-  .hero.two-columnar.block > div > div:last-child {
-    padding: 32px 16px;
-    max-width: 100vw;
-  }
-
-  .hero.two-columnar.block > div > div:last-child p {
-    font-size: 5vw;
-    max-width: 100vw;
-  }
-}
-
 .hero > div {
   display: flex;
   flex-direction: row;
@@ -225,25 +152,7 @@
   }
 }
 
-
-.hero {
-  width: 100vw;
-  min-height: 100vh;
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: row;
-}
-
-.hero > div {
-  display: flex;
-  flex-direction: row;
-  width: 100vw;
-  min-height: 100vh;
-  box-sizing: border-box;
-}
-
+/* stylelint-disable no-duplicate-selectors */
 .hero > div > div:first-child {
   flex: 1 1 0;
   order: 1;
@@ -322,4 +231,127 @@
     max-width: 100vw;
   }
 }
+
+/* Two-columnar hero block */
+.hero.two-columnar.block > div {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  flex: 1;
+  top: 100px;
+}
+
+.hero.two-columnar.block > div > div:first-child {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  order: 1;
+}
+
+.hero.two-columnar.block > div > div:first-child picture,
+.hero.two-columnar.block > div > div:first-child img {
+  width: 100%;
+  object-fit: cover;
+  object-position: 54% center;
+  display: block;
+  height: 70vh;
+}
+
+.hero.two-columnar.block > div > div:last-child {
+  background: #C7C5BD;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  order: 2;
+  min-height: 70vh;
+  height: 70vh;
+}
+
+.hero.two-columnar.block > div > div:last-child p {
+  color: #525252;
+  font-size: 40px;
+  font-family: Antarctica,sans-serif;
+  -webkit-font-smoothing: antialiased;
+  font-weight: 300;
+  line-height: normal;
+  letter-spacing: 0.02em;
+  text-align: center;
+  margin: 0;
+  
+}
+
+@media (width >= 600px) and (width <= 900px) {
+  .hero.two-columnar.block > div {
+    position: relative;
+    min-height: 0;
+  }
+
+  .hero.two-columnar.block > div > div:first-child {
+    flex: 1 1 0;
+    width: 50%;
+    min-width: 0;
+    min-height: 0;
+    order: unset;
+    height: 75vh;
+  }
+
+  .hero.two-columnar.block > div > div:last-child {
+    flex: 1 1 0;
+    width: 50%;
+    min-width: 0;
+    min-height: 0;
+    order: unset;
+    height: 75vh;
+  }
+
+   .hero.two-columnar.block > div > div:first-child picture,
+  .hero.two-columnar.block > div > div:first-child img {
+    position: static !important;
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+    object-fit: cover;
+    object-position: 54% center;
+    z-index: auto !important;
+    inset: unset !important;
+  }
+
+  .hero.two-columnar.block > div > div:last-child p {
+    max-width: 100vw;
+  }
+}
+
+@media (width <= 600px) {
+  .hero.two-columnar.block > div {
+    flex-direction: column;
+    min-height: 0;
+  }
+
+  .hero.two-columnar.block > div > div:first-child {
+    flex: none;
+    width: 100%;
+    min-width: 0;
+    min-height: 0;
+    order: unset;
+    height: 50vh;
+  }
+
+  .hero.two-columnar.block > div > div:last-child {
+    flex: none;
+    width: 100%;
+    min-width: 0;
+    min-height: 0;
+    order: unset;
+    height: 25vh;
+  }
+
+  .hero.two-columnar.block > div > div:last-child p {
+    max-width: 100vw;
+    font-size: 24px;
+  }
+}
+
+/* End of two-columnar hero block */
+
 
