@@ -14,17 +14,17 @@ export default function decorate(block) {
   const rightContent = div({ class: 'news-detail-big-contenu-right' });
 
   // Get metadata
-  const links = getMetadata('links')?.split(',').map((link) => link.trim()).join('<br>');
+  const links = getMetadata('links')?.split(',').map((link) => `<a href="${link.trim()}">${link.trim()}</a>`).join('<br>');
   const photos = getMetadata('photos');
 
   // Set metadata content
   if (links) {
     const linksDiv = mainContent.querySelector('.news-links');
-    linksDiv.innerHTML = `<h3>Link(s)</h3>${links}`;
+    linksDiv.innerHTML = `<div>Link(s)</div>${links}`;
   }
   if (photos) {
     const photosDiv = mainContent.querySelector('.news-photos');
-    photosDiv.innerHTML = `<h3>Photos</h3>${photos}`;
+    photosDiv.innerHTML = `<div>Photos</div>${photos}`;
   }
 
   // Transfer content from block to the new structure
