@@ -1,5 +1,7 @@
 import { getMetadata } from '../../scripts/aem.js';
 import { loadFragment } from '../fragment/fragment.js';
+import { switchLanguage } from '../../scripts/languages.js';
+import { getLanguage } from '../../scripts/scripts.js';
 
 // media query match that indicates mobile/tablet width
 const isDesktop = window.matchMedia('(min-width: 900px)');
@@ -103,6 +105,27 @@ function toggleMenu(nav, navSections, forceExpanded = null) {
   }
 }
 
+function setMainHeightVar(headerEle, doc) {
+  const headerHeight = headerEle.offsetHeight;
+  const mainEle = doc.querySelector('main');
+  if (mainEle) {
+    mainEle.style.marginTop = `${headerHeight}px`;
+  }
+}
+
+function waitForHeaderHeight(block) {
+  const headerEle = block.querySelector('header .nav-wrapper');
+
+  if (headerEle) {
+    setMainHeightVar(headerEle, document); // Initial call
+    window.addEventListener('resize', () => {
+      setMainHeightVar(headerEle, document); // On resize
+    }); // Recalculate on resize
+  } else {
+    setTimeout(() => waitForHeaderHeight(block), 100); // Retry if header not yet in DOM
+  }
+}
+
 /**
  * loads and decorates the header, mainly the nav
  * @param {Element} block The header block element
@@ -110,7 +133,9 @@ function toggleMenu(nav, navSections, forceExpanded = null) {
 export default async function decorate(block) {
   // load nav as fragment
   const navMeta = getMetadata('nav');
-  const navPath = navMeta ? new URL(navMeta, window.location).pathname : '/nav';
+  const currentLang = getLanguage();
+  const defaultNavPath = currentLang === 'fr' ? '/fr/nav' : '/nav';
+  const navPath = navMeta ? new URL(navMeta, window.location).pathname : defaultNavPath;
   const fragment = await loadFragment(navPath);
   const logoWrapper = document.createElement('div');
   logoWrapper.className = 'nav-logo-wrapper';
@@ -201,8 +226,7 @@ export default async function decorate(block) {
     });
   }
 
-  const scrollLimit = 300; // change to your scroll limit in px
-
+  const scrollLimit = block.querySelector('header .nav-wrapper').offsetHeight;
   window.addEventListener('scroll', () => {
     if (window.scrollY > scrollLimit) {
       navWrapper.classList.add('non-sticky');
@@ -210,4 +234,31 @@ export default async function decorate(block) {
       navWrapper.classList.remove('non-sticky');
     }
   });
+
+  const currentUrl = window.location.href;
+  const menuLinks = nav.querySelectorAll('.default-content-wrapper > ul > li a');
+  if (menuLinks) {
+    menuLinks.forEach((link) => {
+      const title = link.textContent.trim().toLowerCase().replace(/\s+/g, '-');
+      if (currentUrl.includes(title)) {
+        link.classList.add('active');
+        const parentLi = link.parentElement.parentElement.parentElement;
+        if (parentLi.tagName === 'LI') {
+          parentLi.classList.add('active');
+        }
+      }
+    });
+  }
+
+  // Initialize language switcher
+  const languageSwitcher = nav.querySelector('.nav-sections > div > p');
+  if (languageSwitcher) {
+    languageSwitcher.style.cursor = 'pointer';
+    languageSwitcher.addEventListener('click', (e) => {
+      e.preventDefault();
+      switchLanguage();
+    });
+  }
+
+  waitForHeaderHeight(block);
 }

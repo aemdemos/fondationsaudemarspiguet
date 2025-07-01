@@ -3,8 +3,9 @@ header .nav-wrapper {
   width: 100%;
   z-index: 2;
   position: fixed;
-  min-height: 100px;
-  transition: all 0.3s ease;
+  top: 0;
+  left: 0;
+  transition: transform 1s ease, position 0s linear 0.4s;
 }
 
 header nav {
@@ -17,7 +18,7 @@ header nav {
 }
 
 header .nav-wrapper.non-sticky {
-  position: static;
+  transform: translateY(-100%);
 }
 
 header nav[aria-expanded='true'] {
@@ -90,6 +91,10 @@ header nav .nav-tools ul li ul li:nth-child(2) {
 header nav[aria-expanded='true'] .nav-tools ul li ul {
   margin: 10px 0 0 ;
   padding: 0;
+}
+
+header nav .nav-tools ul li.active, header nav .nav-tools ul li a.active {
+  opacity: 0.7;
 }
 
 @media (width >= 900px) {
@@ -239,6 +244,12 @@ header nav .nav-sections {
   }
 }
 
+/* @media (width >= 1200px) {
+  header {
+    height: 210px;
+  }
+} */
+
 /* brand */
 header .nav-brand {
   grid-area: brand;
@@ -254,6 +265,9 @@ header nav[aria-expanded='true'] .nav-sections {
   visibility: visible;
 }
 
+header nav .nav-tools ul li p {
+  font-weight: 200;
+}
 
 header nav .nav-tools ul li a.button:any-link {
   margin: 0;
@@ -266,7 +280,7 @@ header nav .nav-tools ul li a.button:any-link {
 header nav .nav-tools ul li a.button:any-link:hover,  header nav .nav-tools ul li ul li  a.button:any-link:hover, header nav .nav-tools ul li ul.show li:hover{
   cursor: pointer;
   text-decoration: none;
-  opacity: 0.6;
+  opacity: 0.7;
 }
 
 header nav[aria-expanded='true'] .nav-tools {
@@ -291,7 +305,7 @@ header nav[aria-expanded='true'] .nav-tools {
     justify-content: flex-end;
   }
 
-  header nav .nav-tools ul li a.button:any-link {
+  header nav .nav-tools ul li a.button:any-link, header nav .nav-tools ul li p {
     font-weight: 600;
   }
 }
@@ -357,7 +371,7 @@ header nav[aria-expanded='true'] .nav-tools {
 
   header nav .nav-tools ul li ul.show li:hover{
     text-decoration: none;
-    opacity: 0.6;
+    opacity: 0.7;
   }
 
 }
@@ -365,21 +379,20 @@ header nav[aria-expanded='true'] .nav-tools {
 @media (width >= 1200px) {
   header .nav-wrapper {
     min-height: 100px;
-    position: sticky;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     z-index: 9999;
-    transition: all 0.4s ease-in-out 0s;
+    transition: transform 1s ease, position 0s linear 0.4s;
   }
 
   header .nav-wrapper.non-sticky {
-    position: static;
+    transform: translateY(-100%);
   }
 
   header nav {
     min-height: 100px;
-    position: static;
     top: 0;
     left: 0;
     width: 100%;
