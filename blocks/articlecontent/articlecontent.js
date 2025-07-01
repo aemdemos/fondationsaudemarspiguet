@@ -14,7 +14,7 @@ export default function decorate(block) {
   const rightContent = div({ class: 'news-detail-big-contenu-right' });
 
   // Get metadata
-  const links = getMetadata('links');
+  const links = getMetadata('links')?.split(',').map((link) => link.trim()).join('<br>');
   const photos = getMetadata('photos');
 
   // Set metadata content
