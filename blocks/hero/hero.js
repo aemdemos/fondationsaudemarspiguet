@@ -12,6 +12,9 @@ export default function decorate(block) {
     heroVideoWrapper.setAttribute('autoplay', '');
     heroVideoWrapper.setAttribute('muted', '');
     heroVideoWrapper.setAttribute('loop', '');
+    heroVideoWrapper.setAttribute('nofullscreen', '');
+    heroVideoWrapper.setAttribute('playsinline', '');
+    heroVideoWrapper.setAttribute('style', 'visibility: visible; display: inline;');
     heroVideoWrapper.className = 'video-cover';
     heroVideoWrapper.append(videoSource);
     heroVideoPara.replaceWith(heroVideoWrapper);

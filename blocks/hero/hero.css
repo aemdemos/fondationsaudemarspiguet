@@ -46,8 +46,8 @@
 
 .hero.video div > div .video-cover { 
   padding: 0;
-  width: 100%;
   height: 100%;
+  width: 100%;
   object-fit: cover;
   object-position: right;
   overflow: hidden;
@@ -84,7 +84,7 @@
   z-index: 10;
   font-size: 18px;
   font-weight: 500;
-  letter-spacing: 2px;
+  letter-spacing: 1px;
 }
 
 .hero.video div > div.slide-legend > p {
