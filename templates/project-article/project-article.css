@@ -3,11 +3,25 @@
 }
 
 .project-article-template .details-sidebar .project-article-sidebar {
-    width: 380px;
+    width: 100%;
     box-sizing: border-box;
     float: left;
     font-size: 16px;
     padding-right: 50px;
+    margin-bottom: 60px;
+}
+
+.project-article-template .details-sidebar .project-article-inner h1 {
+    opacity: 1;
+    transform: translateZ(0);
+    color: var(--site-color);
+    text-align: left;
+    margin-bottom: 40px;
+    font-weight: 400;
+    font-feature-settings: 'clig' 0;
+    font-style: normal;
+    line-height: 1.2em;
+    letter-spacing: .08em;
 }
 
 .project-article-template .details-sidebar .project-article-sidebar  div {
@@ -26,6 +40,36 @@
     padding: 0;
 }
 
+.project-article-template .details-sidebar .project-article-inner .default-content-wrapper {
+    width: 100%;
+}
+
+.project-article-template .details-sidebar .project-article-inner .default-content-wrapper p {
+    margin: 0;
+}
+
+@media (width >= 600px) {
+    .project-article-template .details-sidebar .project-article-sidebar {
+        width: 280px;
+    }
+
+    .project-article-template .details-sidebar .project-article-inner .default-content-wrapper {
+        width: calc(100% - 280px);
+        float: right;
+    }
+}
+
+@media (width >= 900px) {
+    .project-article-template .details-sidebar .project-article-sidebar {
+        width: 380px;
+    }
+
+    .project-article-template .details-sidebar .project-article-inner .default-content-wrapper {
+        width: calc(100% - 380px);
+        float: right;
+    }
+}
+
 
 @media (width >= 1200px) { 
     .project-article-template .section.hero-container {
@@ -38,19 +82,10 @@
     }
 
   .project-article-template .details-sidebar .project-article-inner {
-    box-sizing: border-box;
-    position: relative;
-    margin: auto;
-    max-width: 1440px;
-    padding: 0 80px;
-  }
-
-    .project-article-template .details-sidebar .project-article-inner h1 {
-        opacity: 1;
-        transform: translateZ(0);
-        color: var(--site-color);
-        text-align: left;
-        margin-bottom: 40px;
-        font-weight: 400;
+        box-sizing: border-box;
+        position: relative;
+        margin: auto;
+        max-width: 1440px;
+        padding: 0 80px;
     }
 }
