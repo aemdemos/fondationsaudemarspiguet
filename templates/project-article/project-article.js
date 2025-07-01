@@ -1,15 +1,16 @@
 import {getMetadata } from '../../scripts/aem.js';
+
 export default async function decorate() {
   const sidebar = document.createElement('div');
   sidebar.className = 'project-article-sidebar';
   const language = getMetadata('language');
   if (language === 'en') {
-    let partner = getMetadata('partner');
-    let category = getMetadata('category-ies-');
-    let duration = getMetadata('project-duration');
-    let location = getMetadata('location-s-');
-    let links = getMetadata('link-s-');
-    let photos = getMetadata('photos');
+    const partner = getMetadata('partner');
+    const category = getMetadata('category-ies-');
+    const duration = getMetadata('project-duration');
+    const location = getMetadata('location-s-');
+    const links = getMetadata('link-s-');
+    const photos = getMetadata('photos');
     const words = photos.trim().split(/\s+/);
     const photoList = document.createElement('ul');
     for (let i = 0; i < words.length; i += 2) {
@@ -19,7 +20,7 @@ export default async function decorate() {
     }
     const link = document.createElement('a');
     link.href = links;
-    link.textContent = links;  
+    link.textContent = links;
     sidebar.innerHTML = `
       <div> partner </div>
         ${partner}
@@ -35,12 +36,12 @@ export default async function decorate() {
     sidebar.insertBefore(link, sidebar.querySelector('div:last-child'));
     sidebar.appendChild(photoList);
   } else if (language === 'fr') {
-    let partner = getMetadata('partenaire');
-    let category = getMetadata('axe-s-');
-    let duration = getMetadata('dur-e-du-projet');
-    let location = getMetadata('lieu-x-');
-    let links = getMetadata('lien-s-');
-    let photos = getMetadata('photos');
+    const partner = getMetadata('partenaire');
+    const category = getMetadata('axe-s-');
+    const duration = getMetadata('dur-e-du-projet');
+    const location = getMetadata('lieu-x-');
+    const links = getMetadata('lien-s-');
+    const photos = getMetadata('photos');
     const words = photos.trim().split(/\s+/);
     const photoList = document.createElement('ul');
     for (let i = 0; i < words.length; i += 2) {
