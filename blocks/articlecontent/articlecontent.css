@@ -57,6 +57,22 @@
     padding-top: 40px;
 }
 
+.articlecontent.block .news-detail-big-contenu-right {
+    color: #FFF;
+    padding: 240px 90px 220px;
+    width: 50%;
+    float: right;
+    box-sizing: border-box;
+    margin-top: -80px;
+    display: block;
+    background-color: var(--site-color);
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    position: relative;
+}
+
 
 
 /* .articlecontent {
