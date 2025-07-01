@@ -1,5 +1,7 @@
 .project-article-template .details-sidebar {
-    display:flex
+    display:flex;
+    margin: 0;
+    padding: 0;
 }
 
 .project-article-template .details-sidebar .project-article-sidebar {
@@ -22,6 +24,7 @@
     font-style: normal;
     line-height: 1.2em;
     letter-spacing: .08em;
+    font-size: 30px;
 }
 
 .project-article-template .details-sidebar .project-article-sidebar  div {
@@ -56,6 +59,10 @@
     .project-article-template .details-sidebar .project-article-inner .default-content-wrapper {
         width: calc(100% - 280px);
         float: right;
+    }
+
+    .project-article-template .details-sidebar .project-article-inner h1 {
+        font-size: 50px;
     }
 }
 
