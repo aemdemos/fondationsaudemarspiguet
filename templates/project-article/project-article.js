@@ -14,7 +14,8 @@ export default async function decorate() {
     }
     const data = await response.json();
     const projectdata = data.data;
-    const matchedData = projectdata.find((item) => item.path.toLowerCase() === projectURL.toLowerCase());
+    const matchedData = projectdata.find(
+      (item) => item.path.toLowerCase() === projectURL.toLowerCase());
     if (matchedData) {
       const sidebar = document.createElement('div');
       sidebar.className = 'project-article-sidebar';
