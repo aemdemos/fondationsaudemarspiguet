@@ -192,6 +192,7 @@
   scroll-snap-type: none !important;
 }
 
+/* stylelint-disable no-descending-specificity */
 .carousel.carousel-vertical .carousel-slide {
   position: absolute !important;
   top: 0;
@@ -201,6 +202,7 @@
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.5s ease;
+
   /* Remove flex and snap for fade mode */
   display: block !important;
   flex: none !important;

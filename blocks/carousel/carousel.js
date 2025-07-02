@@ -36,7 +36,7 @@ export function showSlide(block, slideIndex = 0) {
   const activeSlide = slides[realSlideIndex];
 
   activeSlide.querySelectorAll('a').forEach((link) => link.removeAttribute('tabindex'));
-  
+
   slides.forEach((slide, idx) => {
     slide.setAttribute('aria-hidden', idx !== realSlideIndex);
     slide.querySelectorAll('a').forEach((link) => {
@@ -47,7 +47,6 @@ export function showSlide(block, slideIndex = 0) {
       }
     });
   });
-
 
   const indicators = block.querySelectorAll('.carousel-slide-indicator');
   indicators.forEach((indicator, idx) => {
@@ -126,8 +125,8 @@ export default async function decorate(block) {
   const slidesWrapper = document.createElement('ul');
   slidesWrapper.classList.add('carousel-slides');
   block.prepend(slidesWrapper);
-  
-   // Detect vertical carousel and add class
+
+  // Detect vertical carousel and add class
   const isVertical = block.classList.contains('vertical') || block.classList.contains('carousel-vertical');
   if (isVertical) {
     block.classList.add('carousel-vertical');
@@ -176,14 +175,14 @@ export default async function decorate(block) {
   showSlide(block, 0);
 
   // Autoplay functionality
-function autoAdvance() {
-  const slides = block.querySelectorAll('.carousel-slide');
-  let current = parseInt(block.dataset.activeSlide, 10) || 0;
-  let next = (current + 1) % slides.length;
-  showSlide(block, next);
-  block._carouselTimer = setTimeout(autoAdvance, 4000); // 4000ms = 4 seconds
-}
-block._carouselTimer = setTimeout(autoAdvance, 4000);
+  function autoAdvance() {
+    const slides = block.querySelectorAll('.carousel-slide');
+    const current = parseInt(block.dataset.activeSlide, 10) || 0;
+    const next = (current + 1) % slides.length;
+    showSlide(block, next);
+    block.carouselTimer = setTimeout(autoAdvance, 4000); // 4000ms = 4 seconds
+  }
+  block.carouselTimer = setTimeout(autoAdvance, 4000);
 
   if (!isSingleSlide) {
     bindEvents(block);
