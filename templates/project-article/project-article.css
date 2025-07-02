@@ -11,6 +11,8 @@
     font-size: 16px;
     padding-right: 50px;
     margin-bottom: 60px;
+    line-height: normal;
+    font-weight: 300;
 }
 
 .project-article-template .details-sidebar .project-article-inner h1 {
@@ -25,12 +27,14 @@
     line-height: 1.2em;
     letter-spacing: .08em;
     font-size: 30px;
+    margin-top: 0;
 }
 
 .project-article-template .details-sidebar .project-article-sidebar  div {
     color: var(--site-color-2);
     margin-top: 20px;
     margin-bottom: 4px;
+    line-height: normal;
 }
 
 .project-article-template .details-sidebar .project-article-sidebar  div:first-child {
@@ -49,6 +53,10 @@
 
 .project-article-template .details-sidebar .project-article-inner .default-content-wrapper p {
     margin: 0;
+    line-height: 1.5em;
+    padding-bottom: 20px;
+    letter-spacing: .02em;
+    font-weight: 300;
 }
 
 .project-article-template .details-sidebar .project-article-inner a {
@@ -79,6 +87,13 @@
         width: calc(100% - 380px);
         float: right;
     }
+
+    .project-article-template main .details-sidebar .project-article-inner .default-content-wrapper p {
+        line-height: 1.5em;
+        padding-bottom: 20px;
+        letter-spacing: .02em;
+        font-size: 20px;
+    }
 }
 
 
@@ -92,7 +107,7 @@
         padding: 80px 0;
     }
 
-  .project-article-template .details-sidebar .project-article-inner {
+    .project-article-template .details-sidebar .project-article-inner {
         box-sizing: border-box;
         position: relative;
         margin: auto;
