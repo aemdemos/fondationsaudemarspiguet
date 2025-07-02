@@ -1,0 +1,127 @@
+
+
+.articlecontent {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  background: none;
+  border-radius: 0;
+  box-shadow: none;
+  margin: 0 auto;
+  padding: 0;
+  max-width: 1200px;
+  min-height: 600px;
+}
+
+.articlecontent > div {
+  min-width: 0;
+}
+
+.articlecontent > div:first-child {
+  flex: 1 1 68%;
+  max-width: 68%;
+  min-width: 0;
+  display: flex;
+  align-items: stretch;
+  justify-content: flex-end;
+  background: none;
+  padding: 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.articlecontent > div:first-child picture,
+.articlecontent > div:first-child img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 600px;
+  max-height: none;
+  object-fit: cover;
+  border-radius: 0;
+  background: none;
+  margin: 0;
+  padding: 0;
+}
+
+.articlecontent > div:last-child {
+  flex: 1 1 32%;
+  max-width: 32%;
+  min-width: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: none;
+  padding: 0;
+  position: relative;
+}
+
+.articlecontent > div:last-child > div {
+  background: #889591;
+  color: #f7f8f8;
+  border-radius: 8px;
+  padding: 44px 32px;
+  margin: 40px 0;
+  box-sizing: border-box;
+  max-width: 370px;
+  width: 100%;
+  box-shadow: 0 2px 8px 0 rgb(80 80 80 / 2%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+/* Typography improvements for heading and paragraph */
+.articlecontent > div:last-child > div p {
+  color: #f7f8f8;
+  font-size: 1.10em;
+  line-height: 2.05;
+  margin: 0 0 1.3em;
+}
+
+.articlecontent > div:last-child > div p strong {
+  display: block;
+  color: #d5b889;
+  font-size: 2.22em;
+  font-weight: 700;
+  margin-bottom: 44px;
+  line-height: 1.1;
+  letter-spacing: 0.01em;
+}
+
+/* Responsive: stack vertically on mobile, and adjust sizing/margins */
+@media (width <= 900px) {
+  .articlecontent {
+    flex-direction: column;
+    max-width: 100%;
+    min-height: 0;
+  }
+
+  .articlecontent > div:first-child,
+  .articlecontent > div:last-child {
+    max-width: 100%;
+    flex: unset;
+  }
+
+  .articlecontent > div:first-child picture,
+  .articlecontent > div:first-child img {
+    min-height: 250px;
+    height: auto;
+    max-height: 400px;
+  }
+
+  .articlecontent > div:last-child {
+    align-items: stretch;
+  }
+
+  .articlecontent > div:last-child > div {
+    margin: 24px 8px;
+    padding: 30px 10px;
+    max-width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px 0 rgb(80 80 80 / 3%);
+  }
+}
+
