@@ -404,9 +404,9 @@ main>.section:first-of-type {
 }
 
 @media (width>=900px) {
-  main>.section {
+  /* main>.section {
     padding: 100px 0;
-  }
+  } */
 
   main>.section>div {
     padding: 0 80px;
