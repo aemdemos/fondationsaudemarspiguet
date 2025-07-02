@@ -1,5 +1,6 @@
 import { div } from '../../scripts/dom-helpers.js';
 import { createOptimizedPicture, getMetadata } from '../../scripts/aem.js';
+import { applyFadeUpAnimation } from '../../templates/news-article/news-article.js';
 
 export default function decorate(block) {
   const mainContent = div(
@@ -50,32 +51,8 @@ export default function decorate(block) {
       const img = imageContent.querySelector('img');
       if (img) {
         const pictureElement = createOptimizedPicture(img.src);
-        const galleryContainer = mainContent.querySelector('.news-detail-big-galerie-1');
-
-        // Create a wrapper div for the fade-up effect
-        const imageWrapper = div({ class: 'image-fade-wrapper' });
-        imageWrapper.style.opacity = '0';
-        imageWrapper.style.transform = 'translateY(80px)';
-        imageWrapper.style.transition = 'opacity 1.5s ease-out, transform 1.5s ease-out';
-
-        imageWrapper.append(pictureElement);
-        galleryContainer.append(imageWrapper);
-
-        // Trigger fade-up animation when element comes into view
-        const observer = new IntersectionObserver((entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              entry.target.style.opacity = '1';
-              entry.target.style.transform = 'translateY(0)';
-            } else {
-              // Reset animation when element goes out of view
-              entry.target.style.opacity = '0';
-              entry.target.style.transform = 'translateY(80px)';
-            }
-          });
-        }, { threshold: 0.1 });
-
-        observer.observe(imageWrapper);
+        const pictureContainer = mainContent.querySelector('.news-detail-big-galerie-1');
+        applyFadeUpAnimation(pictureElement, pictureContainer);
       }
     }
 

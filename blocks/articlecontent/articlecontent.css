@@ -58,7 +58,7 @@
 
 .articlecontent.block .news-detail-big-contenu-right {
     color: #FFF;
-    padding: 120px 45px 110px;
+    padding: 60px 45px;
     width: 100%;
     box-sizing: border-box;
     margin-top: -80px;
@@ -77,7 +77,7 @@
     line-height: 1.5em;
     padding-bottom: 20px;
     letter-spacing: .02em;
-    font-size: 20px;
+    font-size: 14px;
     font-weight: 300;
 }
 
@@ -86,7 +86,7 @@
     line-height: 1.5em;
     padding-bottom: 20px;
     letter-spacing: .02em;
-    font-size: 20px;
+    font-size: 14px;
     font-weight: 300;
     font-weight: bold !important;
 }
@@ -112,5 +112,13 @@
         width: 50%;
         float: right;
         padding: 240px 90px 220px;
+    }
+
+    .articlecontent.block .news-detail-big-contenu-right p {
+        font-size: 20px;
+    }
+
+    .articlecontent.block .news-detail-big-contenu-right p strong {
+        font-size: 20px;
     }
 }
