@@ -79,7 +79,6 @@ function decorateHeadings(main) {
   headingElements.forEach((heading) => observer.observe(heading));
 }
 
-
 /**
  * load fonts.css and set a session storage flag
  */
