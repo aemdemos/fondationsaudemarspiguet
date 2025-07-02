@@ -13,7 +13,7 @@
   --background-color: white;
   --light-color: #f8f8f8;
   --dark-color: #505050;
-  --text-color: #131313;
+  --text-color: #1E1E1E;
   --link-color: #3b63fb;
   --link-hover-color: #1d3ecf;
   --body-font-family: 'Antarctica', sans-serif;
@@ -433,13 +433,13 @@ main .section.light, main .section.highlight {
 }
 
 /* H2 Animation Styles */
-h2.animate {
+.animate {
   opacity: 0;
   transform: translateX(-50px);
   transition: opacity 1.5s ease, transform 1.5s ease;
 }
 
-h2.animate.aos-animate {
+.animate.aos-animate {
   opacity: 1;
   transform: translateX(0);
 }
