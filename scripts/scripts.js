@@ -17,6 +17,7 @@ import {
 
 const LANGUAGES = new Set(['en', 'fr']);
 let language;
+
 /**
  * Moves all the attributes from a given elmenet to another given element.
  * @param {Element} from the element to copy attributes from
@@ -49,6 +50,33 @@ export function moveInstrumentation(from, to) {
       .map(({ nodeName }) => nodeName)
       .filter((attr) => attr.startsWith('data-aue-') || attr.startsWith('data-richtext-')),
   );
+}
+
+/**
+ * Decorates h2 headings with animation class
+ * @param {Element} main The container element
+ */
+function decorateHeadings(main) {
+  const headingElements = main.querySelectorAll('h1, h2');
+  headingElements.forEach((heading) => {
+    heading.classList.add('animate');
+  });
+
+  // Create intersection observer to trigger left-to-right animation
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('aos-animate');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px',
+  });
+
+  // Observe all heading elements
+  headingElements.forEach((heading) => observer.observe(heading));
 }
 
 /**
@@ -131,8 +159,54 @@ export function decorateMain(main) {
   decorateLinkedPictures(main);
   buildAutoBlocks(main);
   buildOtherProjectsBlock(main);
+  decorateHeadings(main);
   decorateSections(main);
   decorateBlocks(main);
+}
+
+/**
+ * Decorates the template.
+ */
+export async function loadTemplate(doc, templateName) {
+  try {
+    const cssLoaded = new Promise((resolve) => {
+      loadCSS(
+        `${window.hlx.codeBasePath}/templates/${templateName}/${templateName}.css`,
+      )
+        .then(resolve)
+        .catch((err) => {
+          // eslint-disable-next-line no-console
+          console.error(
+            `failed to load css module for ${templateName}`,
+            err.target.href,
+          );
+          resolve();
+        });
+    });
+    const decorationComplete = new Promise((resolve) => {
+      (async () => {
+        try {
+          const mod = await import(
+            `../templates/${templateName}/${templateName}.js`
+          );
+          if (mod.default) {
+            await mod.default(doc);
+          }
+        } catch (error) {
+          // eslint-disable-next-line no-console
+          console.log(`failed to load module for ${templateName}`, error);
+        }
+        resolve();
+      })();
+    });
+
+    document.body.classList.add(`${templateName}-template`);
+
+    await Promise.all([cssLoaded, decorationComplete]);
+  } catch (error) {
+    // eslint-disable-next-line no-console
+    console.log(`failed to load block ${templateName}`, error);
+  }
 }
 
 /**
@@ -140,11 +214,15 @@ export function decorateMain(main) {
  * @param {Element} doc The container element
  */
 async function loadEager(doc) {
-  document.documentElement.lang = 'en';
+  document.documentElement.lang = getLanguage();
+  const templateName = getMetadata('template');
   decorateTemplateAndTheme();
   const main = doc.querySelector('main');
   if (main) {
     decorateMain(main);
+    if (templateName) {
+      await loadTemplate(doc, templateName);
+    }
     document.body.classList.add('appear');
     await loadSection(main.querySelector('.section'), waitForFirstImage);
   }
@@ -163,6 +241,45 @@ async function loadEager(doc) {
  * Loads everything that doesn't need to be delayed.
  * @param {Element} doc The container element
  */
+
+function backToTopWithIcon() {
+  const main = document.querySelector('main');
+  const pageButton = document.createElement('span');
+  pageButton.className = 'page-level-btn';
+  pageButton.style.position = 'fixed';
+  pageButton.style.bottom = '20px';
+  pageButton.style.zIndex = '999';
+  pageButton.style.cursor = 'pointer';
+
+  // Detect language from URL path
+  const path = window.location.pathname;
+  let svgSrc = '/icons/flech-to-top-en.svg';
+  if (path.startsWith('/fr')) {
+    svgSrc = '/icons/flech-to-top-fr.svg';
+  }
+
+  const svg = document.createElement('img');
+  svg.src = svgSrc;
+  svg.alt = 'Back to Top';
+  svg.className = svgSrc.includes('-fr.svg') ? 'flech-to-top-fr' : 'flech-to-top-en';
+
+  pageButton.appendChild(svg);
+  main.appendChild(pageButton);
+
+  window.addEventListener('scroll', () => {
+    const { scrollY } = window;
+    if (scrollY > 500) {
+      pageButton.classList.add('show');
+    } else {
+      pageButton.classList.remove('show');
+    }
+  });
+
+  pageButton.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+}
+
 async function loadLazy(doc) {
   const main = doc.querySelector('main');
   await loadSections(main);
@@ -176,6 +293,7 @@ async function loadLazy(doc) {
 
   loadCSS(`${window.hlx.codeBasePath}/styles/lazy-styles.css`);
   loadFonts();
+  backToTopWithIcon();
 }
 
 /**
