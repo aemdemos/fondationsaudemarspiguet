@@ -118,7 +118,7 @@ function adjustScrollLimitForShortContent() {
     const headerHeight = header.offsetHeight;
     // If main content is less than 500px, adjust scroll behavior
     if (mainHeight < 500) {
-      const maxScroll = mainHeight - headerHeight - 50; // Leave 50px buffer
+      const maxScroll = mainHeight - headerHeight - 100; // Leave 50px buffer
       window.addEventListener('scroll', () => {
         if (window.scrollY > maxScroll) {
           window.scrollTo(0, maxScroll);
