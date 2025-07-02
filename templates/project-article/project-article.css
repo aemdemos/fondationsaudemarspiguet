@@ -15,9 +15,11 @@
     font-weight: 300;
 }
 
+.project-article-template .details-sidebar .project-article-inner {
+    padding: 40px 80px 80px;
+}
+
 .project-article-template .details-sidebar .project-article-inner h1 {
-    opacity: 1;
-    transform: translateZ(0);
     color: var(--site-color);
     text-align: left;
     margin-bottom: 40px;
@@ -112,6 +114,5 @@
         position: relative;
         margin: auto;
         max-width: 1440px;
-        padding: 0 80px;
     }
 }

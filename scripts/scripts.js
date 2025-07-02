@@ -56,10 +56,10 @@ export function moveInstrumentation(from, to) {
  * Decorates h2 headings with animation class
  * @param {Element} main The container element
  */
-function decorateH2Headings(main) {
-  const h2Elements = main.querySelectorAll('h2');
-  h2Elements.forEach((h2) => {
-    h2.classList.add('animate');
+function decorateHeadings(main) {
+  const headingElements = main.querySelectorAll('h1, h2');
+  headingElements.forEach((heading) => {
+    heading.classList.add('animate');
   });
 
   // Create intersection observer to trigger left-to-right animation
@@ -75,9 +75,10 @@ function decorateH2Headings(main) {
     rootMargin: '0px 0px -50px 0px',
   });
 
-  // Observe all h2 elements
-  h2Elements.forEach((h2) => observer.observe(h2));
+  // Observe all heading elements
+  headingElements.forEach((heading) => observer.observe(heading));
 }
+
 
 /**
  * load fonts.css and set a session storage flag
@@ -159,7 +160,7 @@ export function decorateMain(main) {
   decorateLinkedPictures(main);
   buildAutoBlocks(main);
   buildOtherProjectsBlock(main);
-  decorateH2Headings(main);
+  decorateHeadings(main);
   decorateSections(main);
   decorateBlocks(main);
 }
