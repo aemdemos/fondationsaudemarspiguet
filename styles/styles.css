@@ -403,8 +403,12 @@ main>.section:first-of-type {
   margin-top: 0;
 }
 
+main > .section.extra-padding {
+  padding: 50px 0;
+}
+
 @media (width>=900px) {
-  main>.section {
+  main > .section.extra-padding {
     padding: 100px 0;
   }
 
