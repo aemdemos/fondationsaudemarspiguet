@@ -107,6 +107,18 @@ function createSlide(row, slideIndex, carouselId) {
   return slide;
 }
 
+function centerIndicators(block) {
+  const container = block.querySelector('.carousel-slides-container');
+  const indicators = container.querySelector('.carousel-slide-indicators');
+  if (container && indicators) {
+    const containerHeight = container.offsetHeight;
+    const indicatorsHeight = indicators.offsetHeight;
+    // Set top so the indicators are vertically centered
+    indicators.style.top = `${(containerHeight - indicatorsHeight) / 2}px`;
+    indicators.style.transform = 'none'; // Remove translateY(-50%) if set in CSS
+  }
+}
+
 let carouselId = 0;
 export default async function decorate(block) {
   carouselId += 1;
@@ -187,4 +199,7 @@ export default async function decorate(block) {
   if (!isSingleSlide) {
     bindEvents(block);
   }
+
+  centerIndicators(block);
+  window.addEventListener('resize', () => centerIndicators(block));
 }
