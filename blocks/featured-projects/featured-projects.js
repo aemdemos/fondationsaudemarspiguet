@@ -50,6 +50,12 @@ async function getProductsdata() {
 
 const loadresults = async (getProducts) => {
   const productResults = [];
+  getProducts.forEach((product) => {
+    // eslint-disable-next-line max-len
+    const productResult = new Products(product.partner, product.duration, product.title, product.category, product.image);
+    productResults.push(productResult);
+  });
+  console.log(productResults);
 };
 
 export default async function decorate(block) {
