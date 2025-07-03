@@ -12,3 +12,17 @@ export default function enableAnimationOnScroll() {
   const elements = document.querySelectorAll('.animate-on-scroll');
   elements.forEach((el) => observer.observe(el));
 }
+
+// Add a clear div after the first paragraph to ensure the second paragraph
+// remains in the float: right position for large screen sizes
+const textPara = document.querySelector('.section.white-lilac-bg .default-content-wrapper p:first-of-type');
+const clearDiv = document.createElement('div');
+clearDiv.className = 'clear';
+textPara.insertAdjacentElement('afterend', clearDiv);
+
+// Add clear div after default-content-wrapper to ensure correct
+// formatting of subsequent items
+const sectionWrapper = document.querySelector('.section.white-lilac-bg');
+if (sectionWrapper) {
+  sectionWrapper.insertAdjacentElement('afterend', clearDiv.cloneNode());
+}
