@@ -116,7 +116,6 @@ function adjustScrollLimitForShortContent() {
 
   if (main && header) {
     const mainHeight = main.offsetHeight;
-    const headerHeight = header.offsetHeight;
     const footerHeight = footer ? footer.offsetHeight : 0;
     // If main content is less than 1000px, adjust scroll behavior
     if (mainHeight < 1500) {
