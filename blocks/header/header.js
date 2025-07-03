@@ -112,13 +112,15 @@ function toggleMenu(nav, navSections, forceExpanded = null) {
 function adjustScrollLimitForShortContent() {
   const main = document.querySelector('main');
   const header = document.querySelector('header .nav-wrapper');
+  const footer = document.querySelector('footer');
 
   if (main && header) {
     const mainHeight = main.offsetHeight;
     const headerHeight = header.offsetHeight;
-    // If main content is less than 500px, adjust scroll behavior
-    if (mainHeight < 500) {
-      const maxScroll = mainHeight - headerHeight - 100; // Leave 50px buffer
+    const footerHeight = footer ? footer.offsetHeight : 0;
+    // If main content is less than 1000px, adjust scroll behavior
+    if (mainHeight < 1500) {
+      const maxScroll = mainHeight - (footerHeight * 0.25); // Leave 40% of footer height buffer
       window.addEventListener('scroll', () => {
         if (window.scrollY > maxScroll) {
           window.scrollTo(0, maxScroll);
