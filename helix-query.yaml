@@ -124,6 +124,9 @@ indices:
       location:
         select: head > meta[name="location-s-"]
         value: attribute(el, "content")
+      image:
+        select: head > meta[property="og:image"]
+        value: attribute(el, "content")
       links:
         select: head > meta[name="link-s-"]
         value: attribute(el, "content")
@@ -158,6 +161,9 @@ indices:
         value: attribute(el, "content")
       location:
         select: head > meta[name="lieu-x-"]
+        value: attribute(el, "content")
+      image:
+        select: head > meta[property="og:image"]
         value: attribute(el, "content")
       links:
         select: head > meta[name="lien-s-"]
