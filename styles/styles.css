@@ -405,11 +405,13 @@ main>.section:first-of-type {
 
 main > .section.extra-padding {
   padding: 50px 0;
+  margin: 0;
 }
 
 @media (width>=900px) {
   main > .section.extra-padding {
     padding: 100px 0;
+    margin: 0;
   }
 
   main>.section>div {
