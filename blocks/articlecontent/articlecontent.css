@@ -50,7 +50,7 @@
 }
 
 .articlecontent.block .news-detail-big-content-1 .news-detail-big-galerie-1 img {
-    width: 140%;
+    width: 100%;
     height: auto;
     max-width: none;
     padding-top: 40px;
@@ -100,6 +100,12 @@
     content: "";
     display: table;
     clear: both;
+}
+
+@media (width >= 600px) {
+    .articlecontent.block .news-detail-big-content-1 .news-detail-big-galerie-1 img {
+        width: 140%;
+    }
 }
 
 @media (width >= 900px) {
