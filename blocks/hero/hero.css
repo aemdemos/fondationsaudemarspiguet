@@ -44,104 +44,11 @@
   padding: 0;
 }
 
-.hero.two-columnar.block > div {
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  min-height: 70vh;
-  align-items: stretch;
-}
-
-.hero.two-columnar.block > div > div:first-child {
-  flex: 1.15 1 0;
-  min-width: 0;
-  display: flex;
-  align-items: stretch;
-  order: 1;
-}
-
-.hero.two-columnar.block > div > div:first-child picture,
-.hero.two-columnar.block > div > div:first-child img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: 54% center;
-  display: block;
-}
-
-.hero.two-columnar.block > div > div:last-child {
-  flex: 1 1 0;
-  background: #C7C5BD;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0 3vw;
-  box-sizing: border-box;
-  order: 2;
-}
-
-.hero.two-columnar.block > div > div:last-child p {
-  color: #363940;
-  font-size: 1.8vw;
-  font-family: Inter, 'Helvetica Neue', Arial, sans-serif;
-  font-weight: 400;
-  line-height: 1.3;
-  text-align: center;
-  margin: 0;
-  max-width: 25vw;
-}
-
-@media (width <= 900px) {
-  .hero.two-columnar.block > div {
-    flex-direction: column;
-    min-height: 0;
-  }
-
-  .hero.two-columnar.block > div > div:first-child,
-  .hero.two-columnar.block > div > div:last-child {
-    flex: none;
-    width: 100%;
-    min-width: 0;
-    min-height: 0;
-    order: unset;
-  }
-
-  .hero.two-columnar.block > div > div:last-child {
-    padding: 32px 16px;
-    max-width: 100vw;
-  }
-
-  .hero.two-columnar.block > div > div:last-child p {
-    font-size: 5vw;
-    max-width: 100vw;
-  }
-}
-
-.hero > div {
-  display: flex;
-  flex-direction: row;
-  align-items: stretch;
-  justify-content: stretch;
-  width: 100%;
-  min-height: 70vh;
-  margin-left: 0;
-  transform: none;
-  position: relative;
-}
-
-/* Parent: allow hero to be edge-to-edge */
-.hero-container > .hero-wrapper {
-  max-width: unset;
+.hero.video div > div .video-cover { 
   padding: 0;
-}
-
-/* Image column: ultra-fine object-position for perfect focus */
-.hero > div > div:first-child {
-  flex: 1 1 0;
-  min-width: 0;
-  display: flex;
-  align-items: stretch;
-  position: relative;
+  height: 100vh;
+  width: 100%;
+  object-fit: cover;
   overflow: hidden;
 }
 
@@ -160,65 +67,37 @@
 
 .hero.video div > div.social-cr-wrapper p {
   margin: 0;
-  max-width: 100%;
-  letter-spacing: 0;
 }
 
-/* Responsive: stack vertically on small screens */
-@media (width <= 900px) {
-  .hero > div {
-    flex-direction: column;
-    min-height: 0;
-    width: 100%;
-  }
-
-  .hero > div > div:first-child,
-  .hero > div > div:last-child {
-    flex: none;
-    width: 100%;
-    min-width: 0;
-    min-height: 0;
-  }
-
-  .hero > div > div:last-child {
-    padding: 32px 16px;
-  }
-
-  .hero > div > div:last-child p {
-    font-size: 5vw;
-    max-width: 100vw;
-  }
+.hero.video div > div.social-cr-wrapper .icon {
+  height: 40px;
+  width: 40px;
+  margin-right: 20px;
 }
 
+.hero.video div > div.slide-legend {
+  position: absolute;
+  bottom: 35px;
+  display: inline-block;
+  right: 20px;
+  z-index: 10;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 1px;
+}
 
-.hero {
-  width: 100vw;
-  min-height: 100vh;
+.hero.video div > div.slide-legend > p {
+  color: #000;
   margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: row;
 }
 
-.hero > div {
-  display: flex;
-  flex-direction: row;
-  width: 100vw;
-  min-height: 100vh;
-  box-sizing: border-box;
+.hero.video div > div.slide-legend > p > a {
+  color: #FFF;
 }
 
-.hero > div > div:first-child {
-  flex: 1 1 0;
-  order: 1;
-  display: flex;
-  align-items: stretch;
-  justify-content: stretch;
-  min-width: 0;
-  min-height: 100vh;
-  height: 100vh;
-  overflow: hidden;
+.hero.video div > div.slide-legend > p > a.any-link {
+  text-decoration: none;
+  overflow-wrap: break-word;
 }
 
 .hero.video div > div.slide-legend > p > a:hover {
@@ -248,4 +127,175 @@
     font-size: 22px;
   }
 }
+
+/* Two-columnar hero block */
+.hero.two-columnar.block {
+  padding: 0 !important;
+  margin-top: 80px;
+}
+
+.hero.two-columnar.block > div {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  flex: 1;
+  
+  align-items: stretch;
+  justify-content: stretch;
+  width: 100%;
+  min-height: 60vh;
+  margin-left: 0;
+  transform: none;
+  min-height: 100vh;
+  padding: 0 !important;
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+}
+
+
+
+.hero.two-columnar.block > div > div:first-child {
+  display: flex;
+  flex: 1 1 50%;
+  width: 50%;
+  min-width: 0;
+  height: auto;          /* Remove fixed height */
+  min-height: 0; 
+  align-items: stretch;
+  justify-content: center;
+  order: 1;
+  position: relative;
+  overflow: hidden;
+  min-height: 60vh;
+  height: 60vh;
+}
+
+.hero.two-columnar.block > div > div:first-child picture,
+.hero.two-columnar.block > div > div:first-child img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 54% center;
+  display: block;
+  height: 60vh;
+}
+
+.hero.two-columnar.block > div > div:last-child {
+  background: #b9b8b2;
+  display: flex;
+  flex: 1 1 50%;
+  width: 50%;
+  min-width: 0;
+  align-items: center;
+  justify-content: stretch;
+  box-sizing: border-box;
+  order: 2;
+  position: relative;
+  overflow: hidden;
+  min-height: 60vh;
+  height: 60vh;
+  
+  padding: 40px 40px;
+  box-sizing: border-box;
+}
+
+.hero.two-columnar.block > div > div:last-child p {
+  color: #525252;
+  font-size: 40px;
+  font-family: Antarctica,sans-serif;
+  -webkit-font-smoothing: antialiased;
+  font-weight: 300;
+  line-height: normal;
+  letter-spacing: 0.02em;
+  text-align: center;
+  max-width: 700px;
+  margin: 0;
+  
+}
+
+@media (width >= 600px) and (width <= 900px) {
+  .hero.two-columnar.block > div > div:first-child,
+  .hero.two-columnar.block > div > div:last-child {
+    min-height: 75vh;
+    height: 75vh;
+  }
+}
+
+@media (width >= 600px) {
+
+  
+  .hero.two-columnar.block > div {
+    position: relative;
+    min-height: 0;
+  }
+
+  .hero.two-columnar.block > div > div:first-child {
+    flex: 1 1 50%;
+    width: 50%;
+    min-width: 0;
+    min-height: 0;
+    order: unset;
+    
+  }
+
+  .hero.two-columnar.block > div > div:last-child {
+    flex: 1 1 50%;
+    width: 50%;
+    min-width: 0;
+    min-height: 0;
+    order: unset;
+    
+    padding: 30px 20px;
+  }
+
+   .hero.two-columnar.block > div > div:first-child picture,
+  .hero.two-columnar.block > div > div:first-child img {
+    position: static !important;
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+    object-fit: cover;
+    object-position: 54% center;
+    z-index: auto !important;
+    inset: unset !important;
+  }
+
+  
+}
+
+@media (width <= 600px) {
+  .hero.two-columnar.block > div {
+    flex-direction: column;
+    min-height: 0;
+  }
+
+  .hero.two-columnar.block > div > div:first-child {
+    flex: none;
+    width: 100%;
+    min-width: 0;
+    min-height: 0;
+    order: unset;
+    height: 50vh;
+  }
+
+  .hero.two-columnar.block > div > div:last-child {
+    flex: none;
+    width: 100%;
+    min-width: 0;
+    min-height: 0;
+    order: unset;
+    height: 25vh;
+    padding: 20px 16px;
+    box-sizing: border-box;
+  }
+
+  .hero.two-columnar.block > div > div:last-child p {
+    max-width: 100vw;
+    font-size: 24px;
+    
+  }
+}
+
+/* End of two-columnar hero block */
 
