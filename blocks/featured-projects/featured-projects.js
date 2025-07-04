@@ -138,5 +138,6 @@ export default async function decorate(block) {
   );
   decorateBlock(builtBlock);
   await loadBlock(builtBlock);
+  builtBlock.classList.add('featured');
   block.append(parentDiv);
 }
