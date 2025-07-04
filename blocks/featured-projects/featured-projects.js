@@ -47,7 +47,7 @@ const resultParsers = {
       const cardLink = a({ href: result.productsPath });
 
       // Create image container
-      const imageContainer = div({ class: 'image_container' });
+      const imageContainer = div({ class: 'image-container' });
 
       if (result.productsImage && result.productsImage.length > 0) {
         const cardImage = createOptimizedPicture(result.productsImage);
@@ -59,13 +59,13 @@ const resultParsers = {
 
       // Create partner info only if not on news pages
       if (!isNewsPage) {
-        const partnerInfo = div({ class: 'projets_listing_partners' });
+        const partnerInfo = div({ class: 'projets-listing-partners' });
         partnerInfo.textContent = result.productsPartner || '';
         cardLink.append(partnerInfo);
       }
 
       // Create location and duration info
-      const projectInfo = div({ class: 'projets_listing_infos' });
+      const projectInfo = div({ class: 'projets-listing-infos' });
       if (isNewsPage) {
         projectInfo.innerHTML = result.productsDuration || '';
       } else {
@@ -79,7 +79,7 @@ const resultParsers = {
       cardLink.append(title);
 
       // Create category
-      const category = div({ class: 'projets_listing_cat' });
+      const category = div({ class: 'projets-listing-cat' });
       category.textContent = result.productsCategory || '';
       cardLink.append(category);
 
