@@ -36,6 +36,10 @@ const resultParsers = {
   // Parse results into a cards block
   cards: (results) => {
     const blockContents = [];
+    // Get path segments to check URL condition
+    const pathSegments = getPathSegments();
+    const isNewsPage = pathSegments[1] === 'fondation-pour-les-arbres-news' || pathSegments[1] === 'fondation-pour-les-arbres-actualites';
+
     results.forEach((result) => {
       const cardContainer = div();
 
@@ -53,14 +57,20 @@ const resultParsers = {
 
       cardLink.append(imageContainer);
 
-      // Create partner info
-      const partnerInfo = div({ class: 'projets_listing_partners' });
-      partnerInfo.textContent = result.productsPartner || '';
-      cardLink.append(partnerInfo);
+      // Create partner info only if not on news pages
+      if (!isNewsPage) {
+        const partnerInfo = div({ class: 'projets_listing_partners' });
+        partnerInfo.textContent = result.productsPartner || '';
+        cardLink.append(partnerInfo);
+      }
 
       // Create location and duration info
       const projectInfo = div({ class: 'projets_listing_infos' });
-      projectInfo.innerHTML = `${result.productsLocation || ''} <br> ${result.productsDuration || ''}`;
+      if (isNewsPage) {
+        projectInfo.innerHTML = result.productsDuration || '';
+      } else {
+        projectInfo.innerHTML = `${result.productsLocation || ''} <br> ${result.productsDuration || ''}`;
+      }
       cardLink.append(projectInfo);
 
       // Create title
