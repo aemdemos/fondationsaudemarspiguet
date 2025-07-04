@@ -139,14 +139,10 @@
   flex-direction: row;
   position: relative;
   flex: 1;
-  
   align-items: stretch;
   justify-content: stretch;
-  width: 100%;
   min-height: 60vh;
-  margin-left: 0;
   transform: none;
-  min-height: 100vh;
   padding: 0 !important;
   width: 100vw;
   margin-left: calc(50% - 50vw);
@@ -159,9 +155,6 @@
   display: flex;
   flex: 1 1 50%;
   width: 50%;
-  min-width: 0;
-  height: auto;          /* Remove fixed height */
-  min-height: 0; 
   align-items: stretch;
   justify-content: center;
   order: 1;
@@ -174,7 +167,6 @@
 .hero.two-columnar.block > div > div:first-child picture,
 .hero.two-columnar.block > div > div:first-child img {
   width: 100%;
-  height: 100%;
   object-fit: cover;
   object-position: 54% center;
   display: block;
@@ -195,9 +187,7 @@
   overflow: hidden;
   min-height: 60vh;
   height: 60vh;
-  
-  padding: 40px 40px;
-  box-sizing: border-box;
+  padding: 40px;
 }
 
 .hero.two-columnar.block > div > div:last-child p {
@@ -211,7 +201,6 @@
   text-align: center;
   max-width: 700px;
   margin: 0;
-  
 }
 
 @media (width >= 600px) and (width <= 900px) {
@@ -223,9 +212,7 @@
 }
 
 @media (width >= 600px) {
-
-  
-  .hero.two-columnar.block > div {
+.hero.two-columnar.block > div {
     position: relative;
     min-height: 0;
   }
@@ -235,8 +222,7 @@
     width: 50%;
     min-width: 0;
     min-height: 0;
-    order: unset;
-    
+    order: unset;  
   }
 
   .hero.two-columnar.block > div > div:last-child {
@@ -244,12 +230,11 @@
     width: 50%;
     min-width: 0;
     min-height: 0;
-    order: unset;
-    
+    order: unset; 
     padding: 30px 20px;
   }
 
-   .hero.two-columnar.block > div > div:first-child picture,
+  .hero.two-columnar.block > div > div:first-child picture,
   .hero.two-columnar.block > div > div:first-child img {
     position: static !important;
     width: 100%;
@@ -260,8 +245,6 @@
     z-index: auto !important;
     inset: unset !important;
   }
-
-  
 }
 
 @media (width <= 600px) {
