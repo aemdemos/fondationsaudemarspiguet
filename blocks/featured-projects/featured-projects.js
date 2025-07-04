@@ -7,7 +7,13 @@ import {
 } from '../../scripts/aem.js';
 import { getLanguage } from '../../scripts/scripts.js';
 import ffetch from '../../scripts/ffetch.js';
-import { div, h3, h2 } from '../../scripts/dom-helpers.js';
+import {
+  div,
+  h3,
+  h2,
+  a,
+} from '../../scripts/dom-helpers.js';
+import getPathSegments from '../../scripts/utils.js';
 
 class Products {
   // eslint-disable-next-line max-len
@@ -33,6 +39,9 @@ const resultParsers = {
     results.forEach((result) => {
       const cardContainer = div();
 
+      // Create the wrapper anchor tag
+      const cardLink = a({ href: result.productsPath });
+
       // Create image container
       const imageContainer = div({ class: 'image_container' });
 
@@ -42,28 +51,29 @@ const resultParsers = {
         imageContainer.append(cardImage);
       }
 
-      cardContainer.append(imageContainer);
+      cardLink.append(imageContainer);
 
       // Create partner info
       const partnerInfo = div({ class: 'projets_listing_partners' });
       partnerInfo.textContent = result.productsPartner || '';
-      cardContainer.append(partnerInfo);
+      cardLink.append(partnerInfo);
 
       // Create location and duration info
       const projectInfo = div({ class: 'projets_listing_infos' });
       projectInfo.innerHTML = `${result.productsLocation || ''} <br> ${result.productsDuration || ''}`;
-      cardContainer.append(projectInfo);
+      cardLink.append(projectInfo);
 
       // Create title
       const title = h3();
       title.textContent = result.productsTitle || '';
-      cardContainer.append(title);
+      cardLink.append(title);
 
       // Create category
       const category = div({ class: 'projets_listing_cat' });
       category.textContent = result.productsCategory || '';
-      cardContainer.append(category);
+      cardLink.append(category);
 
+      cardContainer.append(cardLink);
       blockContents.push([cardContainer]);
     });
     return blockContents;
@@ -98,10 +108,26 @@ async function getProductsdata() {
     return yearsB.year1 - yearsA.year1;
   });
 
-  // Get the first 3 entries from the sorted data
-  const firstThreeProducts = rawProducts1.slice(0, 3);
+  // Get current page path segments
+  const currentPathSegments = getPathSegments();
+  const currentPath = `/${currentPathSegments.join('/')}`;
 
-  return firstThreeProducts;
+  // Find index of current project
+  const currentIndex = rawProducts1.findIndex((product) => product.path === currentPath);
+
+  // If current project is among first 3, remove it and get next one
+  let selectedProducts;
+  if (currentIndex >= 0 && currentIndex <= 2) {
+    selectedProducts = [
+      ...rawProducts1.slice(0, currentIndex),
+      ...rawProducts1.slice(currentIndex + 1, 4), // Get up to index 4 to ensure we have 3 items
+    ];
+  } else {
+    // If current project is not in first 3, just get first 3
+    selectedProducts = rawProducts1.slice(0, 3);
+  }
+
+  return selectedProducts;
 }
 
 const loadresults = async (getProducts) => {
