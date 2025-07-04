@@ -1,1 +1,10 @@
 /* featured-projects.css */
+.featured-projects.block .cards.block.featured ul {
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: .12em;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
