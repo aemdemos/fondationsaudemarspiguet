@@ -3,6 +3,7 @@ import {
   createOptimizedPicture,
   buildBlock,
   decorateBlock,
+  loadBlock,
 } from '../../scripts/aem.js';
 import { getLanguage } from '../../scripts/scripts.js';
 import ffetch from '../../scripts/ffetch.js';
@@ -135,6 +136,7 @@ export default async function decorate(block) {
   const parentDiv = div(
     builtBlock,
   );
-  decorateBlock(parentDiv);
+  decorateBlock(builtBlock);
+  await loadBlock(builtBlock);
   block.append(parentDiv);
 }
