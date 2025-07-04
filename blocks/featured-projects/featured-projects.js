@@ -137,7 +137,6 @@ const loadresults = async (getProducts) => {
     const productResult = new Products(product.partner, product.duration, product.title, product.category, product.image, product.location, product.path);
     productResults.push(productResult);
   });
-  console.log(productResults);
   return resultParsers[blockType](productResults);
 };
 
