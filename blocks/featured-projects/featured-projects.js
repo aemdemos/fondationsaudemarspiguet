@@ -7,17 +7,18 @@ import {
 } from '../../scripts/aem.js';
 import { getLanguage } from '../../scripts/scripts.js';
 import ffetch from '../../scripts/ffetch.js';
-import { div, h3 } from '../../scripts/dom-helpers.js';
+import { div, h3, h2 } from '../../scripts/dom-helpers.js';
 
 class Products {
   // eslint-disable-next-line max-len
-  constructor(productsPartner, productsDuration, productsTitle, productsCategory, productsImage, productsLocation) {
+  constructor(productsPartner, productsDuration, productsTitle, productsCategory, productsImage, productsLocation, productsPath) {
     this.productsPartner = productsPartner;
     this.productsDuration = productsDuration;
     this.productsTitle = productsTitle;
     this.productsCategory = productsCategory;
     this.productsImage = productsImage;
     this.productsLocation = productsLocation;
+    this.productsPath = productsPath;
   }
 }
 
@@ -107,9 +108,10 @@ const loadresults = async (getProducts) => {
   const productResults = [];
   getProducts.forEach((product) => {
     // eslint-disable-next-line max-len
-    const productResult = new Products(product.partner, product.duration, product.title, product.category, product.image, product.location);
+    const productResult = new Products(product.partner, product.duration, product.title, product.category, product.image, product.location, product.path);
     productResults.push(productResult);
   });
+  console.log(productResults);
   return resultParsers[blockType](productResults);
 };
 
@@ -119,7 +121,7 @@ export default async function decorate(block) {
   const placeholders = await fetchPlaceholders(`${getLanguage()}`);
 
   // Create the heading based on template
-  const heading = h3();
+  const heading = h2();
   const headerText = template === 'news-article' ? placeholders.featuredProjectsHeadingOnNewsArticles : placeholders.featuredProjectsHeadingOnProjectArticles;
   heading.textContent = headerText;
 
