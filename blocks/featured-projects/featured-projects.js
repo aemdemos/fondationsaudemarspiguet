@@ -31,7 +31,7 @@ class Products {
 const blockType = 'cards';
 
 // Result parsers parse the query results into a format that can be used by the block builder for
-// the specific block types
+// the specific block types (cards, list, etc.)
 const resultParsers = {
   // Parse results into a cards block
   cards: (results) => {
