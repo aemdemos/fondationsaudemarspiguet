@@ -13,7 +13,7 @@ import {
   h2,
   a,
 } from '../../scripts/dom-helpers.js';
-import getPathSegments from '../../scripts/utils.js';
+import { applyFadeUpAnimation, getPathSegments } from '../../scripts/utils.js';
 
 class Products {
   // eslint-disable-next-line max-len
@@ -176,5 +176,7 @@ export default async function decorate(block) {
   decorateBlock(builtBlock);
   await loadBlock(builtBlock);
   builtBlock.classList.add('featured');
+  applyFadeUpAnimation(builtBlock, parentDiv);
+
   block.append(parentDiv);
 }

@@ -1,6 +1,6 @@
 import { div } from '../../scripts/dom-helpers.js';
 import { createOptimizedPicture, getMetadata } from '../../scripts/aem.js';
-import { applyFadeUpAnimation } from '../../templates/news-article/news-article.js';
+import { applyFadeUpAnimation } from '../../scripts/utils.js';
 
 export default function decorate(block) {
   const mainContent = div(
