@@ -19,10 +19,3 @@ const textPara = document.querySelector('.section.white-lilac-bg .default-conten
 const clearDiv = document.createElement('div');
 clearDiv.className = 'clear';
 textPara.insertAdjacentElement('afterend', clearDiv);
-
-// Add clear div after default-content-wrapper to ensure correct
-// formatting of subsequent items
-const sectionWrapper = document.querySelector('.section.white-lilac-bg');
-if (sectionWrapper) {
-  sectionWrapper.insertAdjacentElement('afterend', clearDiv.cloneNode());
-}
