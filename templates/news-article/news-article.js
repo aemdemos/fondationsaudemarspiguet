@@ -1,6 +1,6 @@
 import { getMetadata } from '../../scripts/aem.js';
 
-export default function enableAnimationOnScroll() {
+export function enableAnimationOnScroll() {
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
@@ -15,7 +15,7 @@ export default function enableAnimationOnScroll() {
   elements.forEach((el) => observer.observe(el));
 }
 
-export async function decorate() {
+export default async function decorate(doc) {
   const sidebar = document.createElement('div');
   sidebar.className = 'news-article-sidebar';
   const language = getMetadata('language');
@@ -101,30 +101,29 @@ export async function decorate() {
         <div> Nous suivre </div>
       `;
     }
-  const linkedin = document.createElement('a');
-  linkedin.href = 'https://www.linkedin.com/company/audemars-piguet-foundations/';
-  linkedin.textContent = '↳ LinkedIn';
-  linkedin.target = '_blank';
-  sidebar.appendChild(linkedin);
-  const articleContent = newsDiv.querySelector('.default-content-wrapper');
-  const heading = getMetadata('og:title');
-  let h1;
-  if (heading) {
-    h1 = document.createElement('h1');
-    h1.textContent = heading;
-  }
-  const newsDetails = document.createElement('div');
-  newsDetails.className = 'news-details';
-  const clearDiv = document.createElement('div');
-  clearDiv.className = 'clear';
-  const innerDiv = document.createElement('div');
-  innerDiv.className = 'news-article-inner';
-  innerDiv.appendChild(newsDetails);
-  innerDiv.appendChild(h1);
-  innerDiv.appendChild(sidebar);
-  innerDiv.appendChild(articleContent);
-  innerDiv.appendChild(clearDiv);
-  newsDiv.appendChild(innerDiv);
+    const linkedin = document.createElement('a');
+    linkedin.href = 'https://www.linkedin.com/company/audemars-piguet-foundations/';
+    linkedin.textContent = '↳ LinkedIn';
+    linkedin.target = '_blank';
+    sidebar.appendChild(linkedin);
+    const articleContent = newsDiv.querySelector('.default-content-wrapper');
+    const heading = getMetadata('og:title');
+    let h1;
+    if (heading) {
+      h1 = document.createElement('h1');
+      h1.textContent = heading;
+    }
+    const newsDetails = document.createElement('div');
+    newsDetails.className = 'news-details';
+    const clearDiv = document.createElement('div');
+    clearDiv.className = 'clear';
+    const innerDiv = document.createElement('div');
+    innerDiv.className = 'news-article-inner';
+    innerDiv.appendChild(newsDetails);
+    innerDiv.appendChild(h1);
+    innerDiv.appendChild(sidebar);
+    innerDiv.appendChild(articleContent);
+    innerDiv.appendChild(clearDiv);
+    newsDiv.appendChild(innerDiv);
   }
 }
-decorate();
