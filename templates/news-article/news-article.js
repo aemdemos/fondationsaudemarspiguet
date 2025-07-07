@@ -86,7 +86,6 @@ export default async function decorate(doc) {
     innerDiv.appendChild(articleContent);
     innerDiv.appendChild(clearDiv);
     newsDiv.appendChild(innerDiv);
-
   } else if (rightAlignSidebar.classList.contains('right')) {
     if (language === 'en') {
       sidebar.innerHTML = `
