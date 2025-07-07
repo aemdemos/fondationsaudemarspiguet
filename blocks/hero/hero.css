@@ -284,6 +284,7 @@
 
 
 /* Two-columnar-text-image block styles */
+
 .hero.two-columnar-text-image.block {
   width: 100vw;
   margin-left: calc(50% - 50vw);
@@ -356,7 +357,23 @@
 }
 
 /* Responsive adjustments */
+
+@media (width >= 900px) and (width <= 1200px) {
+  .section{
+    margin: 0 !important;
+  }
+   
+  .hero.two-columnar-text-image.block > div {
+    flex-direction: row;
+    min-height: 90vh;
+  }
+}
+
 @media (width >= 600px) and (width <= 900px) {
+   .section{
+    margin: 0 !important;
+  }
+  
   .hero.two-columnar-text-image.block > div {
     flex-direction: row;
     min-height: 75vh;
@@ -391,6 +408,10 @@
 }
 
 @media (width <= 600px) {
+   .section{
+    margin: 0 !important;
+  }
+
   .hero.two-columnar-text-image.block {
   width: 100vw;
   padding: 0 !important;
@@ -411,7 +432,7 @@
     min-width: 0;
     min-height: 0;
     order: 2;
-    height: 50vh;
+    height: 75vh;
     padding: 20px 16px;
     box-sizing: border-box;
   }
