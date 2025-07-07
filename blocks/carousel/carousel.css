@@ -72,19 +72,19 @@
 }
 
 .carousel .carousel-slide-indicator button {
-  width: 24px;
-  height: 24px;
+  width: 10px;
+  height: 10px;
   margin: 0;
   padding: 0;
   border-radius: 50%;
-  background-color: #dadada;
+  background-color: #c5cbcb;
   transition: background-color 0.2s;
 }
 
 .carousel .carousel-slide-indicator button:disabled,
 .carousel .carousel-slide-indicator button:hover,
 .carousel .carousel-slide-indicator button:focus-visible {
-  background-color: var(--text-color);
+  background-color: white;
 }
 
 .carousel .carousel-navigation-buttons {
@@ -151,3 +151,85 @@
     --slide-content-width: auto;
   }
 }
+
+
+ /* Vertical Carousel */
+
+ .carousel.carousel-vertical {
+  height: 600px;
+}
+
+.carousel.carousel-vertical .carousel-slide-indicators {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  height: auto;
+  width: 48px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  z-index: 2;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  background: transparent;
+  max-height: 100%;
+  overflow-y: auto;
+  box-sizing: border-box;
+}
+
+.carousel.carousel-vertical .carousel-slides-container {
+   position: relative;
+   height: 100%;
+   overflow: hidden;
+}
+
+.carousel.carousel-vertical .carousel-slides {
+  position: relative !important;
+  display: block !important;
+  overflow: visible !important;
+  scroll-behavior: unset !important;
+  scroll-snap-type: none !important;
+}
+
+/* stylelint-disable no-descending-specificity */
+.carousel.carousel-vertical .carousel-slide {
+  position: absolute !important;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 2s ease-in-out;
+  display: block !important;
+  flex: none !important;
+  scroll-snap-align: unset !important;
+}
+
+.carousel.carousel-vertical .carousel-slide[aria-hidden="false"] {
+  opacity: 1;
+  pointer-events: auto;
+  z-index: 1;
+}
+
+@media (width <= 600px) {
+  .carousel.carousel-vertical {
+    height: 200px;
+  }
+}
+
+@media (width >= 600px) and (width <=900px) {
+  .carousel.carousel-vertical {
+    height: 400px;
+  }
+}
+
+/* End of Vertical Carousel */
+
+
+
+

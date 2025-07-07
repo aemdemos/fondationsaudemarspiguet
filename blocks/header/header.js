@@ -2,6 +2,7 @@ import { getMetadata } from '../../scripts/aem.js';
 import { loadFragment } from '../fragment/fragment.js';
 import { switchLanguage } from '../../scripts/languages.js';
 import { getLanguage } from '../../scripts/scripts.js';
+import getPathSegments from '../../scripts/utils.js';
 
 // media query match that indicates mobile/tablet width
 const isDesktop = window.matchMedia('(min-width: 900px)');
@@ -105,11 +106,38 @@ function toggleMenu(nav, navSections, forceExpanded = null) {
   }
 }
 
+/**
+ * Adjusts the scroll limit for short content
+ */
+function adjustScrollLimitForShortContent() {
+  const main = document.querySelector('main');
+  const header = document.querySelector('header .nav-wrapper');
+  const footer = document.querySelector('footer');
+
+  if (main && header) {
+    const mainHeight = main.offsetHeight;
+    const footerHeight = footer ? footer.offsetHeight : 0;
+    // If main content is less than 1000px, adjust scroll behavior
+    if (mainHeight < 1500) {
+      const maxScroll = mainHeight - (footerHeight * 0.25); // Leave 40% of footer height buffer
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > maxScroll) {
+          window.scrollTo(0, maxScroll);
+        }
+      });
+    }
+  }
+}
+
 function setMainHeightVar(headerEle, doc) {
   const headerHeight = headerEle.offsetHeight;
   const mainEle = doc.querySelector('main');
   if (mainEle) {
-    mainEle.style.marginTop = `${headerHeight}px`;
+    const pathSegments = getPathSegments();
+    const isHomePage = pathSegments.length === 0 || (pathSegments.length === 1 && ['en', 'fr'].includes(pathSegments[0]));
+    if (!isHomePage) {
+      mainEle.style.marginTop = `${headerHeight}px`;
+    }
   }
 }
 
@@ -261,4 +289,13 @@ export default async function decorate(block) {
   }
 
   waitForHeaderHeight(block);
+
+  /**
+ * Adjusts the scroll limit for short content
+ */
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', adjustScrollLimitForShortContent);
+  } else {
+    adjustScrollLimitForShortContent();
+  }
 }
