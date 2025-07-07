@@ -291,7 +291,7 @@
   margin-right: calc(50% - 50vw);
   overflow: hidden;
   padding: 0 !important;
-  margin-top: 100px;
+  margin-top: 95px;
 }
 
 /* stylelint-disable-next-line no-descending-specificity */
@@ -373,7 +373,7 @@
    .section{
     margin: 0 !important;
   }
-  
+
   .hero.two-columnar-text-image.block > div {
     flex-direction: row;
     min-height: 75vh;
