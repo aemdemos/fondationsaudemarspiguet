@@ -20,8 +20,8 @@ export async function decorate() {
   sidebar.className = 'news-article-sidebar';
   const language = getMetadata('language');
   const author = getMetadata('author');
-  const newsDiv = document.querySelector('.news-article-template .details-sidebar')
-  const right_align_sidebar = document.querySelector('.news-article-template .details-sidebar.right')
+  const newsDiv = document.querySelector('.news-article-template .details-sidebar');
+  const right_Align_Sidebar = document.querySelector('.news-article-template .details-sidebar.right');
   if (!newsDiv.classList.contains('right')) {
     if (language === 'en') {
       sidebar.innerHTML = `      
@@ -87,20 +87,20 @@ export async function decorate() {
     innerDiv.appendChild(clearDiv);
     newsDiv.appendChild(innerDiv);
 
-  } else if (right_align_sidebar.classList.contains('right')) {
+  } else if (right_Align_Sidebar.classList.contains('right')) {
     if (language === 'en') {
-    sidebar.innerHTML = `
-      <div class="author">Written by</div>
-        ${author}
-      <div> Follow us </div>
-    `;
-  } else if (language === 'fr') {
-    sidebar.innerHTML = `
-      <div class="author">Rédaction</div>
-        ${author}
-      <div> Nous suivre </div>
-    `;
-  }
+      sidebar.innerHTML = `
+        <div class="author">Written by</div>
+          ${author}
+        <div> Follow us </div>
+      `;
+    } else if (language === 'fr') {
+      sidebar.innerHTML = `
+        <div class="author">Rédaction</div>
+          ${author}
+        <div> Nous suivre </div>
+      `;
+    }
   const linkedin = document.createElement('a');
   linkedin.href = 'https://www.linkedin.com/company/audemars-piguet-foundations/';
   linkedin.textContent = '↳ LinkedIn';
