@@ -16,12 +16,12 @@ export function enableAnimationOnScroll() {
 }
 
 export default async function decorate(doc) {
-  const sidebar = document.createElement('div');
+  const sidebar = doc.createElement('div');
   sidebar.className = 'news-article-sidebar';
   const language = getMetadata('language');
   const author = getMetadata('author');
-  const newsDiv = document.querySelector('.news-article-template .details-sidebar');
-  const right_Align_Sidebar = document.querySelector('.news-article-template .details-sidebar.right');
+  const newsDiv = doc.querySelector('.news-article-template .details-sidebar');
+  const rightAlignSidebar = doc.querySelector('.news-article-template .details-sidebar.right');
   if (!newsDiv.classList.contains('right')) {
     if (language === 'en') {
       sidebar.innerHTML = `      
@@ -42,17 +42,17 @@ export default async function decorate(doc) {
     }
     const links = getMetadata('links');
     const photos = getMetadata('photos');
-    const link = document.createElement('a');
+    const link = doc.createElement('a');
     link.href = links;
     link.textContent = links;
     const words = photos.trim().split(',');
-    const photoList = document.createElement('ul');
+    const photoList = doc.createElement('ul');
     for (let i = 0; i < words.length; i += 1) {
-      const li = document.createElement('li');
-      li.textContent = `${words[i]}`
+      const li = doc.createElement('li');
+      li.textContent = `${words[i]}`;
       photoList.appendChild(li);
     }
-    const linkedin = document.createElement('a');
+    const linkedin = doc.createElement('a');
     linkedin.href = 'https://www.linkedin.com/company/audemars-piguet-foundations/';
     linkedin.textContent = '↳ LinkedIn';
     linkedin.target = '_blank';
@@ -63,22 +63,22 @@ export default async function decorate(doc) {
     const heading = getMetadata('og:title');
     let h1;
     if (heading) {
-      h1 = document.createElement('h1');
+      h1 = doc.createElement('h1');
       h1.textContent = heading;
     }
-    const newsDetails = document.createElement('div');
+    const newsDetails = doc.createElement('div');
     newsDetails.className = 'news-details';
-    const categorySection = document.createElement('div');
-    const clearDiv = document.createElement('div');
+    const categorySection = doc.createElement('div');
+    const clearDiv = doc.createElement('div');
     clearDiv.className = 'clear';
     categorySection.className = 'news-article-category';
     categorySection.textContent = getMetadata('category');
-    const dateSection = document.createElement('div');
+    const dateSection = doc.createElement('div');
     dateSection.className = 'news-article-date';
     dateSection.textContent = getMetadata('date');
     newsDetails.appendChild(categorySection);
     newsDetails.appendChild(dateSection);
-    const innerDiv = document.createElement('div');
+    const innerDiv = doc.createElement('div');
     innerDiv.className = 'news-article-inner';
     innerDiv.appendChild(newsDetails);
     innerDiv.appendChild(h1);
@@ -87,7 +87,7 @@ export default async function decorate(doc) {
     innerDiv.appendChild(clearDiv);
     newsDiv.appendChild(innerDiv);
 
-  } else if (right_Align_Sidebar.classList.contains('right')) {
+  } else if (rightAlignSidebar.classList.contains('right')) {
     if (language === 'en') {
       sidebar.innerHTML = `
         <div class="author">Written by</div>
@@ -101,7 +101,7 @@ export default async function decorate(doc) {
         <div> Nous suivre </div>
       `;
     }
-    const linkedin = document.createElement('a');
+    const linkedin = doc.createElement('a');
     linkedin.href = 'https://www.linkedin.com/company/audemars-piguet-foundations/';
     linkedin.textContent = '↳ LinkedIn';
     linkedin.target = '_blank';
@@ -110,14 +110,14 @@ export default async function decorate(doc) {
     const heading = getMetadata('og:title');
     let h1;
     if (heading) {
-      h1 = document.createElement('h1');
+      h1 = doc.createElement('h1');
       h1.textContent = heading;
     }
-    const newsDetails = document.createElement('div');
+    const newsDetails = doc.createElement('div');
     newsDetails.className = 'news-details';
-    const clearDiv = document.createElement('div');
+    const clearDiv = doc.createElement('div');
     clearDiv.className = 'clear';
-    const innerDiv = document.createElement('div');
+    const innerDiv = doc.createElement('div');
     innerDiv.className = 'news-article-inner';
     innerDiv.appendChild(newsDetails);
     innerDiv.appendChild(h1);
