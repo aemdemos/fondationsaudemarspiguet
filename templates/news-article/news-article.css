@@ -117,6 +117,7 @@ body.news-article main .clear {
     body.news-article main .section.white-lilac-bg {
         padding: 90px 0 0;
         height: 1000px;
+        margin-bottom: 140px;  
     }
 
     body.news-article main .section.white-lilac-bg .default-content-wrapper {
@@ -130,6 +131,6 @@ body.news-article main .clear {
 
     body.news-article main .section.white-lilac-bg .default-content-wrapper p:nth-of-type(2) {
         position: absolute;
-        right: 0;    
+        right: 0;
     }
 }

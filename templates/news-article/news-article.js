@@ -1,4 +1,6 @@
-export default function enableAnimationOnScroll() {
+import { applyFadeUpAnimation } from '../../scripts/utils.js';
+
+export function enableAnimationOnScroll() {
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
@@ -13,9 +15,16 @@ export default function enableAnimationOnScroll() {
   elements.forEach((el) => observer.observe(el));
 }
 
-// Add a clear div after the first paragraph to ensure the second paragraph
-// remains in the float: right position for large screen sizes
-const textPara = document.querySelector('.section.white-lilac-bg .default-content-wrapper p:first-of-type');
-const clearDiv = document.createElement('div');
-clearDiv.className = 'clear';
-textPara.insertAdjacentElement('afterend', clearDiv);
+export default function decorate(doc) {
+  // Add a clear div after the first paragraph to ensure the second paragraph
+  // remains in the float: right position for large screen sizes
+  const textPara = doc.querySelector('.section.white-lilac-bg .default-content-wrapper p:first-of-type');
+  const clearDiv = doc.createElement('div');
+  clearDiv.className = 'clear';
+  textPara.insertAdjacentElement('afterend', clearDiv);
+
+  // apply fade out animation to news detail section
+  const pictureEl = doc.querySelector('.section.white-lilac-bg .default-content-wrapper p:nth-of-type(2) picture');
+  const imagePara = doc.querySelector('.section.white-lilac-bg .default-content-wrapper p:nth-of-type(2)');
+  applyFadeUpAnimation(pictureEl, imagePara);
+}
