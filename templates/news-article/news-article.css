@@ -98,7 +98,7 @@ body.news-article main .section.details-sidebar .news-details {
 body.news-article main .section.details-sidebar .news-article-category {
     padding: 10px;
     display: inline-block;
-    color: #FFF;
+    color: var(--news-button-text-colour);
     font-size: 10px;
     margin-right: 5px;
     letter-spacing: .06em;
