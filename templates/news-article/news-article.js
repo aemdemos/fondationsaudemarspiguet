@@ -1,4 +1,5 @@
 import { getMetadata } from '../../scripts/aem.js';
+import { applyFadeUpAnimation } from '../../scripts/utils.js';
 
 export function enableAnimationOnScroll() {
   const observer = new IntersectionObserver((entries) => {
@@ -115,4 +116,15 @@ export default async function decorate(doc) {
     innerDiv.appendChild(clearDiv);
     newsDiv.appendChild(innerDiv);
   }
+  // Add a clear div after the first paragraph to ensure the second paragraph
+  // remains in the float: right position for large screen sizes
+  const textPara = doc.querySelector('.section.white-lilac-bg .default-content-wrapper p:first-of-type');
+  const clearDiv = doc.createElement('div');
+  clearDiv.className = 'clear';
+  textPara.insertAdjacentElement('afterend', clearDiv);
+
+  // apply fade out animation to news detail section
+  const pictureEl = doc.querySelector('.section.white-lilac-bg .default-content-wrapper p:nth-of-type(2) picture');
+  const imagePara = doc.querySelector('.section.white-lilac-bg .default-content-wrapper p:nth-of-type(2)');
+  applyFadeUpAnimation(pictureEl, imagePara);
 }

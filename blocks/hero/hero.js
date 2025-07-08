@@ -1,3 +1,36 @@
+export function createTwoColumnarHeroBlock({
+  subheading,
+  imageUrl,
+  imageAlt = '',
+}) {
+  // Create main block container
+  const block = document.createElement('section');
+  block.className = 'hero two-columnar-text-image block';
+
+  // Create inner flex container
+  const inner = document.createElement('div');
+
+  // Left column (text)
+  const left = document.createElement('div');
+  left.innerHTML = `
+    <p>${subheading}</p>
+  `;
+
+  // Right column (image)
+  const right = document.createElement('div');
+  const img = document.createElement('img');
+  img.src = imageUrl;
+  img.alt = imageAlt;
+  right.appendChild(img);
+
+  // Assemble columns
+  inner.appendChild(left);
+  inner.appendChild(right);
+  block.appendChild(inner);
+
+  return block;
+}
+
 export default function decorate(block) {
   // add embedded video into hero block
   if (block.classList.contains('video')) {
@@ -35,5 +68,29 @@ export default function decorate(block) {
     if (legendDiv) {
       legendDiv.className = 'slide-legend';
     }
+  }
+
+  // Detect and render two-columnar-text-image hero block
+  if (block.classList.contains('two-columnar-text-image')) {
+    // Example: extract content from block or use static content
+    const heading = block.querySelector('h1')?.textContent || 'Your Heading';
+    const subheading = block.querySelector('p')?.textContent || 'Your subheading goes here.';
+    const button = block.querySelector('a');
+    const buttonText = button?.textContent || 'Learn More';
+    const buttonUrl = button?.href || '#';
+    const image = block.querySelector('img');
+    const imageUrl = image?.src || '/path/to/image.jpg';
+    const imageAlt = image?.alt || '';
+
+    const heroBlock = createTwoColumnarHeroBlock({
+      heading,
+      subheading,
+      buttonText,
+      buttonUrl,
+      imageUrl,
+      imageAlt,
+    });
+
+    block.replaceWith(heroBlock);
   }
 }
