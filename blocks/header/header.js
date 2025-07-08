@@ -2,7 +2,7 @@ import { getMetadata } from '../../scripts/aem.js';
 import { loadFragment } from '../fragment/fragment.js';
 import { switchLanguage } from '../../scripts/languages.js';
 import { getLanguage } from '../../scripts/scripts.js';
-import getPathSegments from '../../scripts/utils.js';
+import { getPathSegments } from '../../scripts/utils.js';
 
 // media query match that indicates mobile/tablet width
 const isDesktop = window.matchMedia('(min-width: 900px)');
