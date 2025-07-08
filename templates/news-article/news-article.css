@@ -86,6 +86,11 @@ body.news-article main .section.details-sidebar {
     padding-top: 220px;
 }
 
+body.news-article main .section.details-sidebar.right {
+    background-color: unset;
+    display: flex;
+}
+
 body.news-article main .section.details-sidebar .news-details {
     display: flex;
 }
