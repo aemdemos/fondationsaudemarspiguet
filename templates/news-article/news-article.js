@@ -1,5 +1,6 @@
 import { getMetadata } from '../../scripts/aem.js';
 import { applyFadeUpAnimation } from '../../scripts/utils.js';
+import { div, h1, a, ul, li } from '../../scripts/dom-helpers.js';
 
 export function enableAnimationOnScroll() {
   const observer = new IntersectionObserver((entries) => {
@@ -17,8 +18,7 @@ export function enableAnimationOnScroll() {
 }
 
 export default async function decorate(doc) {
-  const sidebar = doc.createElement('div');
-  sidebar.className = 'news-article-sidebar';
+  const sidebar = div({ class: 'news-article-sidebar' });
   const language = getMetadata('language');
   const author = getMetadata('author');
   const newsDiv = doc.querySelector('.news-article-template .details-sidebar');
@@ -43,49 +43,33 @@ export default async function decorate(doc) {
     }
     const links = getMetadata('links');
     const photos = getMetadata('photos');
-    const link = doc.createElement('a');
-    link.href = links;
-    link.textContent = links;
+    const link = a({ href: links}, links)
     const words = photos.trim().split(',');
-    const photoList = doc.createElement('ul');
-    for (let i = 0; i < words.length; i += 1) {
-      const li = doc.createElement('li');
-      li.textContent = `${words[i]}`;
-      photoList.appendChild(li);
-    }
-    const linkedin = doc.createElement('a');
-    linkedin.href = 'https://www.linkedin.com/company/audemars-piguet-foundations/';
-    linkedin.textContent = '↳ LinkedIn';
-    linkedin.target = '_blank';
+    const photoList = ul();
+    words.forEach(word => {
+      const listItem = li(word);
+      photoList.appendChild(listItem);
+    });
+    const linkedin = a({ href: 'https://www.linkedin.com/company/audemars-piguet-foundations/', target: '_blank'}, '↳ LinkedIn');
     sidebar.insertBefore(link, sidebar.querySelector('.photos'));
     sidebar.insertBefore(photoList, sidebar.querySelector('.author'));
     sidebar.appendChild(linkedin);
     const articleContent = newsDiv.querySelector('.default-content-wrapper');
     const heading = getMetadata('og:title');
-    let h1;
+    let title;
     if (heading) {
-      h1 = doc.createElement('h1');
-      h1.textContent = heading;
+      title = h1(heading);
     }
-    const newsDetails = doc.createElement('div');
-    newsDetails.className = 'news-details';
-    const categorySection = doc.createElement('div');
-    const clearDiv = doc.createElement('div');
-    clearDiv.className = 'clear';
-    categorySection.className = 'news-article-category';
+    const newsDetails = div({ class: 'news-details' });
+    const categorySection = div({ class: 'news-article-category' });
+    const clearDiv = div({ class: 'clear' });
     categorySection.textContent = getMetadata('category');
-    const dateSection = doc.createElement('div');
-    dateSection.className = 'news-article-date';
+    const dateSection = div({ class: 'news-article-date' });
     dateSection.textContent = getMetadata('date');
     newsDetails.appendChild(categorySection);
     newsDetails.appendChild(dateSection);
-    const innerDiv = doc.createElement('div');
-    innerDiv.className = 'news-article-inner';
-    innerDiv.appendChild(newsDetails);
-    innerDiv.appendChild(h1);
-    innerDiv.appendChild(sidebar);
-    innerDiv.appendChild(articleContent);
-    innerDiv.appendChild(clearDiv);
+    const innerDiv = div({ class: 'news-article-inner' });
+    innerDiv.append(newsDetails, title ,sidebar, articleContent, clearDiv);
     newsDiv.appendChild(innerDiv);
   } else if (rightAlignSidebar.classList.contains('right')) {
     if (language === 'en') {
@@ -101,26 +85,18 @@ export default async function decorate(doc) {
         <div> Nous suivre </div>
       `;
     }
-    const linkedin = doc.createElement('a');
-    linkedin.href = 'https://www.linkedin.com/company/audemars-piguet-foundations/';
-    linkedin.textContent = '↳ LinkedIn';
-    linkedin.target = '_blank';
+    const linkedin = a({ href: 'https://www.linkedin.com/company/audemars-piguet-foundations/', target: '_blank'}, '↳ LinkedIn');
     sidebar.appendChild(linkedin);
     const articleContent = newsDiv.querySelector('.default-content-wrapper');
-    const clearDiv = doc.createElement('div');
-    clearDiv.className = 'clear';
-    const innerDiv = doc.createElement('div');
-    innerDiv.className = 'news-article-inner';
-    innerDiv.appendChild(sidebar);
-    innerDiv.appendChild(articleContent);
-    innerDiv.appendChild(clearDiv);
+    const clearDiv = div({ class: 'clear' });
+    const innerDiv = div({ class: 'news-article-inner' });
+    innerDiv.append(sidebar, articleContent, clearDiv);
     newsDiv.appendChild(innerDiv);
   }
   // Add a clear div after the first paragraph to ensure the second paragraph
   // remains in the float: right position for large screen sizes
   const textPara = doc.querySelector('.section.white-lilac-bg .default-content-wrapper p:first-of-type');
-  const clearDiv = doc.createElement('div');
-  clearDiv.className = 'clear';
+  const clearDiv = div({ class: 'clear' });
   textPara.insertAdjacentElement('afterend', clearDiv);
 
   // apply fade out animation to news detail section
