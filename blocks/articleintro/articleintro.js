@@ -1,5 +1,5 @@
 import { createOptimizedPicture, getMetadata } from '../../scripts/aem.js';
-import enableAnimationOnScroll from '../../templates/news-article/news-article.js';
+import { enableAnimationOnScroll } from '../../templates/news-article/news-article.js';
 import { div, h1 } from '../../scripts/dom-helpers.js';
 
 export default function decorate(block) {
