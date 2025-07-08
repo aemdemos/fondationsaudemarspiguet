@@ -16,15 +16,21 @@ export function enableAnimationOnScroll() {
 }
 
 export default function decorate(doc) {
-  // Add a clear div after the first paragraph to ensure the second paragraph
-  // remains in the float: right position for large screen sizes
-  const textPara = doc.querySelector('.section.white-lilac-bg .default-content-wrapper p:first-of-type');
+  // add clear div between text and image paragraphs to avoid image floating to left
+  const imagePara = doc.querySelector('.section.white-lilac-bg .default-content-wrapper p:last-of-type');
   const clearDiv = doc.createElement('div');
   clearDiv.className = 'clear';
-  textPara.insertAdjacentElement('afterend', clearDiv);
+  if (imagePara) {
+    imagePara.insertAdjacentElement('beforebegin', clearDiv);
+  }
+
+  // add clear div to after the default content wrapper to avoid layout issues with next section
+  const defaultDiv = doc.querySelector('.section.white-lilac-bg .default-content-wrapper');
+  if (defaultDiv) {
+    defaultDiv.appendChild(clearDiv.cloneNode());
+  }
 
   // apply fade out animation to news detail section
-  const pictureEl = doc.querySelector('.section.white-lilac-bg .default-content-wrapper p:nth-of-type(2) picture');
-  const imagePara = doc.querySelector('.section.white-lilac-bg .default-content-wrapper p:nth-of-type(2)');
+  const pictureEl = doc.querySelector('.section.white-lilac-bg .default-content-wrapper p:last-of-type picture');
   applyFadeUpAnimation(pictureEl, imagePara);
 }
