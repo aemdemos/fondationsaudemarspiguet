@@ -106,20 +106,10 @@ export default async function decorate(doc) {
     linkedin.target = '_blank';
     sidebar.appendChild(linkedin);
     const articleContent = newsDiv.querySelector('.default-content-wrapper');
-    const heading = getMetadata('og:title');
-    let h1;
-    if (heading) {
-      h1 = doc.createElement('h1');
-      h1.textContent = heading;
-    }
-    const newsDetails = doc.createElement('div');
-    newsDetails.className = 'news-details';
     const clearDiv = doc.createElement('div');
     clearDiv.className = 'clear';
     const innerDiv = doc.createElement('div');
     innerDiv.className = 'news-article-inner';
-    innerDiv.appendChild(newsDetails);
-    innerDiv.appendChild(h1);
     innerDiv.appendChild(sidebar);
     innerDiv.appendChild(articleContent);
     innerDiv.appendChild(clearDiv);
