@@ -1,6 +1,9 @@
 import { getMetadata } from '../../scripts/aem.js';
 import { applyFadeUpAnimation } from '../../scripts/utils.js';
-import { div, h1, a, ul, li } from '../../scripts/dom-helpers.js';
+import {
+   div, h1, a, ul, li 
+} from '../../scripts/dom-helpers.js';
+
 export function enableAnimationOnScroll() {
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
@@ -42,14 +45,14 @@ export default async function decorate(doc) {
     }
     const links = getMetadata('links');
     const photos = getMetadata('photos');
-    const link = a({ href: links}, links);
+    const link = a( { href: links }, links);
     const words = photos.trim().split(',');
     const photoList = ul();
-    words.forEach(word => {
+    words.forEach((word) => {
       const listItem = li(word);
       photoList.appendChild(listItem);
     });
-    const linkedin = a({ href: 'https://www.linkedin.com/company/audemars-piguet-foundations/', target: '_blank'}, '↳ LinkedIn');
+    const linkedin = a( { href: 'https://www.linkedin.com/company/audemars-piguet-foundations/', target: '_blank' }, '↳ LinkedIn');
     sidebar.insertBefore(link, sidebar.querySelector('.photos'));
     sidebar.insertBefore(photoList, sidebar.querySelector('.author'));
     sidebar.appendChild(linkedin);
@@ -68,7 +71,7 @@ export default async function decorate(doc) {
     newsDetails.appendChild(categorySection);
     newsDetails.appendChild(dateSection);
     const innerDiv = div({ class: 'news-article-inner' });
-    innerDiv.append(newsDetails, title , sidebar, articleContent, clearDiv);
+    innerDiv.append(newsDetails, title, sidebar, articleContent, clearDiv);
     newsDiv.appendChild(innerDiv);
   } else if (rightAlignSidebar.classList.contains('right')) {
     if (language === 'en') {
@@ -84,7 +87,7 @@ export default async function decorate(doc) {
         <div> Nous suivre </div>
       `;
     }
-    const linkedin = a( { href: 'https://www.linkedin.com/company/audemars-piguet-foundations/', target: '_blank'} , '↳ LinkedIn');
+    const linkedin = a( { href: 'https://www.linkedin.com/company/audemars-piguet-foundations/', target: '_blank' }, '↳ LinkedIn');
     sidebar.appendChild(linkedin);
     const articleContent = newsDiv.querySelector('.default-content-wrapper');
     const clearDiv = div({ class: 'clear' });
