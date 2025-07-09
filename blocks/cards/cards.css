@@ -1,3 +1,4 @@
+/* Remove duplicate .cards > ul and merge properties */
 .cards ul,
 .cards li {
   list-style: none;
@@ -6,8 +7,8 @@
 }
 
 .cards {
-  background: #f6f5f0;
-  padding: 48px 0 56px;
+  background: #F9F8F3;
+  padding: 56px 0;
 }
 
 .cards > ul {
@@ -16,9 +17,9 @@
   padding: 0;
   display: flex;
   flex-wrap: wrap;
-  gap: 24px;
+  gap: 36px 24px;
   justify-content: center;
-  max-width: 1040px;
+  max-width: 1200px;
 }
 
 .cards > ul > li {
@@ -66,25 +67,32 @@
 
 /* ---------- IMAGE CARDS (First 6) ---------- */
 .cards > ul > li:nth-child(-n+6) {
-  background: none;
-  border-radius: 0;
+  background: #fff;
+  border-radius: 7px;
   box-shadow: none;
   flex-direction: column;
-  min-height: 0;
+  min-height: 265px;
   padding: 0;
+  display: flex;
+  align-items: stretch;
+  flex: 0 1 calc(33.333% - 24px);
+  box-sizing: border-box;
+  border: none;
+  overflow: hidden;
 }
 
 .cards > ul > li:nth-child(-n+6) .cards-card-image {
   width: 100%;
-  aspect-ratio: 16 / 9;
+  aspect-ratio: 3/2;
+  min-height: 170px;
+  background: #deddd8;
+  border-radius: 7px 7px 0 0;
   overflow: hidden;
-  border-radius: 4px;
-  margin-bottom: 12px;
-  filter: grayscale(1);
+  margin: 0;
   display: flex;
   align-items: flex-end;
-  background: #ccc;
-  min-height: 0;
+  justify-content: flex-start;
+  filter: grayscale(1);
 }
 
 .cards > ul > li:nth-child(-n+6) .cards-card-image img {
@@ -92,23 +100,31 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+  filter: grayscale(1);
+  margin: 0;
 }
 
 .cards > ul > li:nth-child(-n+6) .cards-card-body {
   margin: 0;
-  padding: 0;
+  padding: 4px 8px 10px;
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  text-align: left;
 }
 
 .cards > ul > li:nth-child(-n+6) .cards-card-body p,
 .cards > ul > li:nth-child(-n+6) .cards-card-body strong,
 .cards > ul > li:nth-child(-n+6) .cards-card-body a {
-  font-size: 14px;
-  color: #3c3c3b;
+  font-size: 16px;
+  color: #3C3C3B;
   text-transform: uppercase;
   letter-spacing: 0.03em;
-  font-weight: 500;
+  font-weight: 700;
   margin: 0;
-  line-height: 1.4;
+  line-height: 1.22;
   background: none;
   border: none;
   box-shadow: none;
@@ -116,7 +132,7 @@
   border-radius: 0;
   text-align: left;
   display: inline;
-  font-family: var(--body-font-family);
+  font-family: Inter, Arial, sans-serif;
 }
 
 .cards > ul > li:nth-child(-n+6) .cards-card-body .button {
@@ -125,107 +141,151 @@
   border: none;
   padding: 0;
   border-radius: 0;
-  font-weight: 500;
-  font-size: 14px;
+  font-weight: 700;
+  font-size: 16px;
   text-transform: uppercase;
   letter-spacing: 0.03em;
   box-shadow: none;
   display: inline;
   margin: 0;
-  font-family: var(--body-font-family);
+  font-family: Inter, Arial, sans-serif;
 }
 
 /* ---------- LOGO CARDS (From 7th onward) ---------- */
-.cards > ul > li:not(:nth-child(-n+6)) {
+.cards > ul > li:nth-child(n+7) {
+  background: #fff;
+  border-radius: 7px;
+  box-shadow: none;
   display: flex;
   flex-direction: row;
   align-items: center;
-  min-height: 92px;
-  background: #fff;
-  border-radius: 6px;
-  box-shadow: none;
+  padding: 14px 28px;
+  min-height: 80px;
+  flex: 0 1 calc(33.333% - 24px);
+  box-sizing: border-box;
   border: none;
-  padding: 12px 18px;
-  gap: 14px;
-  margin: 0;
+  overflow: hidden;
 }
 
-.cards > ul > li:not(:nth-child(-n+6)) .cards-card-image {
-  flex: 0 0 40px;
+.cards > ul > li:nth-child(n+7) .cards-card-image {
+  width: 72px;
+  height: 72px;
+  min-width: 72px;
+  min-height: 72px;
+  margin-right: 10px;
+  margin-left: 0;
+  background: none;
+  border-radius: 0;
+  overflow: visible;
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 40px;
-  width: 40px;
-  margin: 0;
-  border-radius: 4px;
-  background: #eae8e9;
-  filter: grayscale(1);
-  overflow: hidden;
+  filter: none;
   padding: 0;
 }
 
-.cards > ul > li:not(:nth-child(-n+6)) .cards-card-image img {
-  max-height: 36px;
-  max-width: 36px;
+.cards > ul > li:nth-child(n+7) .cards-card-image img {
+  max-width: 68px;
+  max-height: 68px;
   width: auto;
   height: auto;
   object-fit: contain;
+  filter: none;
   display: block;
+  margin: 0;
 }
 
-.cards > ul > li:not(:nth-child(-n+6)) .cards-card-body {
+.cards > ul > li:nth-child(n+7) .cards-card-body {
   flex: 1 1 0%;
-  margin: 0;
   padding: 0;
+  margin: 0;
   display: flex;
   align-items: center;
-  min-width: 0;
-  min-height: 0;
+  justify-content: flex-start;
 }
 
-.cards > ul > li:not(:nth-child(-n+6)) .cards-card-body p,
-.cards > ul > li:not(:nth-child(-n+6)) .cards-card-body strong,
-.cards > ul > li:not(:nth-child(-n+6)) .cards-card-body a {
+.cards > ul > li:nth-child(n+7) .cards-card-body p,
+.cards > ul > li:nth-child(n+7) .cards-card-body strong,
+.cards > ul > li:nth-child(n+7) .cards-card-body a {
+  font-family: Inter, Arial, sans-serif;
   font-size: 14px;
-  color: #3c3c3b;
+  color: #3C3C3B;
   text-transform: uppercase;
-  font-weight: 600;
-  letter-spacing: 0.03em;
+  letter-spacing: 0.02em;
+  font-weight: 400;
+  line-height: 1.2;
   margin: 0;
-  line-height: 1.3;
+  text-align: left;
   background: none;
   border: none;
   box-shadow: none;
   padding: 0;
-  border-radius: 0;
-  text-align: left;
-  display: inline;
   white-space: normal;
+
+  /* word-break: break-word; removed deprecated value */
   overflow: visible;
   text-overflow: unset;
-  font-family: var(--body-font-family);
 }
 
-.cards > ul > li:not(:nth-child(-n+6)) .cards-card-body .button {
+.cards > ul > li:nth-child(n+7) .cards-card-image,
+.cards > ul > li:nth-child(n+7) .cards-card-body {
   background: none;
-  color: #3c3c3b;
-  border: none;
-  padding: 0;
+  filter: none;
   border-radius: 0;
-  font-weight: 600;
-  font-size: 14px;
-  text-transform: uppercase;
-  letter-spacing: 0.03em;
   box-shadow: none;
-  display: inline;
-  margin: 0;
-  font-family: var(--body-font-family);
+  padding: 0;
+}
+
+/* Responsive adjustments */
+@media (width <= 900px) {
+  .cards > ul > li {
+    flex: 0 1 calc(50% - 18px);
+  }
+
+  .cards > ul {
+    gap: 28px 16px;
+  }
+}
+
+@media (width <= 600px) {
+  .cards > ul > li {
+    flex: 1 1 100%;
+    min-width: 0;
+    padding-left: 2px;
+    padding-right: 2px;
+  }
+
+  .cards > ul {
+    gap: 16px 0;
+  }
+
+  .cards > ul > li:nth-child(-n+6) .cards-card-image {
+    min-height: 72px;
+    aspect-ratio: 16/10;
+  }
+
+  .cards > ul > li:nth-child(n+7) .cards-card-image {
+    width: 36px;
+    min-width: 36px;
+    height: 36px;
+    min-height: 36px;
+    margin-right: 6px;
+  }
+
+  .cards > ul > li:nth-child(n+7) .cards-card-image img {
+    max-width: 32px;
+    max-height: 32px;
+  }
+
+  .cards > ul > li:nth-child(n+7) {
+    padding: 8px;
+    min-height: 44px;
+  }
 }
 
 /* Responsive stacking for logo cards on small screens */
 @media (width <= 520px) {
-  .cards > ul > li:not(:nth-child(-n+6)) {
+  .cards > ul > li:nth-child(n+7) {
     flex-direction: column;
     align-items: flex-start;
     gap: 7px;
@@ -233,12 +293,12 @@
     min-height: 52px;
   }
 
-  .cards > ul > li:not(:nth-child(-n+6)) .cards-card-image {
+  .cards > ul > li:nth-child(n+7) .cards-card-image {
     height: 28px;
     width: 28px;
   }
 
-  .cards > ul > li:not(:nth-child(-n+6)) .cards-card-image img {
+  .cards > ul > li:nth-child(n+7) .cards-card-image img {
     max-height: 22px;
     max-width: 22px;
   }
