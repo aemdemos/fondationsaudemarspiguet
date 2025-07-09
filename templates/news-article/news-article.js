@@ -1,4 +1,8 @@
+import { getMetadata } from '../../scripts/aem.js';
 import { applyFadeUpAnimation } from '../../scripts/utils.js';
+import {
+  div, h1, a, ul, li,
+} from '../../scripts/dom-helpers.js';
 
 export function enableAnimationOnScroll() {
   const observer = new IntersectionObserver((entries) => {
@@ -15,12 +19,86 @@ export function enableAnimationOnScroll() {
   elements.forEach((el) => observer.observe(el));
 }
 
-export default function decorate(doc) {
+export default async function decorate(doc) {
+  const sidebar = div({ class: 'news-article-sidebar' });
+  const language = getMetadata('language');
+  const author = getMetadata('author');
+  const newsDiv = doc.querySelector('.news-article-template .details-sidebar');
+  const rightAlignSidebar = doc.querySelector('.news-article-template .details-sidebar.right');
+  if (!newsDiv.classList.contains('right')) {
+    if (language === 'en') {
+      sidebar.innerHTML = `      
+        <div> Link(s) </div>
+        <div class="photos"> Photos </div>
+        <div class="author">Written by</div>
+          ${author}
+        <div> Follow us </div>
+      `;
+    } else if (language === 'fr') {
+      sidebar.innerHTML = `      
+        <div> Lien(s) </div>
+        <div class="photos"> Photos </div>
+        <div class="author">Rédaction</div>
+          ${author}
+        <div> Nous suivre </div>
+      `;
+    }
+    const links = getMetadata('links');
+    const photos = getMetadata('photos');
+    const link = a({ href: links }, links);
+    const words = photos.trim().split(',');
+    const photoList = ul();
+    words.forEach((word) => {
+      const listItem = li(word);
+      photoList.appendChild(listItem);
+    });
+    const linkedin = a({ href: 'https://www.linkedin.com/company/audemars-piguet-foundations/', target: '_blank' }, '↳ LinkedIn');
+    sidebar.insertBefore(link, sidebar.querySelector('.photos'));
+    sidebar.insertBefore(photoList, sidebar.querySelector('.author'));
+    sidebar.appendChild(linkedin);
+    const articleContent = newsDiv.querySelector('.default-content-wrapper');
+    const heading = getMetadata('og:title');
+    let title;
+    if (heading) {
+      title = h1(heading);
+    }
+    const newsDetails = div({ class: 'news-details' });
+    const categorySection = div({ class: 'news-article-category' });
+    const clearDiv = div({ class: 'clear' });
+    categorySection.textContent = getMetadata('category');
+    const dateSection = div({ class: 'news-article-date' });
+    dateSection.textContent = getMetadata('date');
+    newsDetails.appendChild(categorySection);
+    newsDetails.appendChild(dateSection);
+    const innerDiv = div({ class: 'news-article-inner' });
+    innerDiv.append(newsDetails, title, sidebar, articleContent, clearDiv);
+    newsDiv.appendChild(innerDiv);
+  } else if (rightAlignSidebar.classList.contains('right')) {
+    if (language === 'en') {
+      sidebar.innerHTML = `
+        <div class="author">Written by</div>
+          ${author}
+        <div> Follow us </div>
+      `;
+    } else if (language === 'fr') {
+      sidebar.innerHTML = `
+        <div class="author">Rédaction</div>
+          ${author}
+        <div> Nous suivre </div>
+      `;
+    }
+    const linkedin = a({ href: 'https://www.linkedin.com/company/audemars-piguet-foundations/', target: '_blank' }, '↳ LinkedIn');
+    sidebar.appendChild(linkedin);
+    const articleContent = newsDiv.querySelector('.default-content-wrapper');
+    const clearDiv = div({ class: 'clear' });
+    const innerDiv = div({ class: 'news-article-inner' });
+    innerDiv.append(sidebar, articleContent, clearDiv);
+    newsDiv.appendChild(innerDiv);
+  }
   // Add a clear div after the first paragraph to ensure the second paragraph
   // remains in the float: right position for large screen sizes
   const textPara = doc.querySelector('.section.white-lilac-bg .default-content-wrapper p:first-of-type');
-  const clearDiv = doc.createElement('div');
-  clearDiv.className = 'clear';
+  const clearDiv = div({ class: 'clear' });
   textPara.insertAdjacentElement('afterend', clearDiv);
 
   // apply fade out animation to news detail section
