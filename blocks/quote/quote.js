@@ -16,10 +16,23 @@ export default async function decorate(block) {
     });
   }
 
-  document.querySelectorAll('.quote blockquote h4, .quote blockquote h5, .quote blockquote h6').forEach(el => {
-  const p = document.createElement('p');
-  p.innerHTML = el.innerHTML;
-  el.parentNode.replaceChild(p, el);
+document.querySelectorAll('.block').forEach(block => {
+  // Add .colourful class if needed
+  if (block.classList.contains('colourful') || block.textContent.includes('colourful')) {
+    block.classList.add('colourful');
+  }
+
+  // If .colourful, convert h4, h5, h6 to p and add color classes
+  if (block.classList.contains('colourful')) {
+    ['h4', 'h5', 'h6'].forEach((tag, idx) => {
+      block.querySelectorAll(tag).forEach(el => {
+        const p = document.createElement('p');
+        p.innerHTML = el.innerHTML;
+        p.classList.add(`color-${tag}`);
+        el.parentNode.replaceChild(p, el);
+      });
+    });
+  }
 });
 
   block.innerHTML = '';
