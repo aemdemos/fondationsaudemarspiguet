@@ -16,24 +16,24 @@ export default async function decorate(block) {
     });
   }
 
-document.querySelectorAll('.block').forEach(block => {
+  document.querySelectorAll('.block').forEach((currentBlock) => {
   // Add .colourful class if needed
-  if (block.classList.contains('colourful') || block.textContent.includes('colourful')) {
-    block.classList.add('colourful');
-  }
+    if (currentBlock.classList.contains('colourful') || currentBlock.textContent.includes('colourful')) {
+      currentBlock.classList.add('colourful');
+    }
 
-  // If .colourful, convert h4, h5, h6 to p and add color classes
-  if (block.classList.contains('colourful')) {
-    ['h4', 'h5', 'h6'].forEach((tag, idx) => {
-      block.querySelectorAll(tag).forEach(el => {
-        const p = document.createElement('p');
-        p.innerHTML = el.innerHTML;
-        p.classList.add(`color-${tag}`);
-        el.parentNode.replaceChild(p, el);
+    // If .colourful, convert h4, h5, h6 to p and add color classes
+    if (currentBlock.classList.contains('colourful')) {
+      ['h4', 'h5', 'h6'].forEach((tag) => {
+        currentBlock.querySelectorAll(tag).forEach((el) => {
+          const p = document.createElement('p');
+          p.innerHTML = el.innerHTML;
+          p.classList.add(`color-${tag}`);
+          el.parentNode.replaceChild(p, el);
+        });
       });
-    });
-  }
-});
+    }
+  });
 
   block.innerHTML = '';
   block.append(blockquote);
