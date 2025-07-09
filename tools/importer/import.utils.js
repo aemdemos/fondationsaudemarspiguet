@@ -176,6 +176,49 @@ export const TableBuilder = (originalFunc) => {
   };
 };
 
+export const TableBuilderNews = (originalFunc) => {
+  const original = originalFunc;
+
+  return {
+    build: (parserName) => (cells, document) => {
+      if (cells.length > 0 && Array.isArray(cells[0])) {
+        let current = cells[0][0];
+        
+        // Transform "Sectionmetadata" to "Section Metadata" for display
+        if (current?.toLowerCase() === 'sectionmetadata') {
+          current = 'Section Metadata';
+          cells[0][0] = current;
+        }
+        
+        // Handle Section Metadata specially
+        if (current?.toLowerCase().includes('section metadata')) {
+          // For section metadata, we don't add the parser name to styles
+          // Just return the original cells without modification
+          return original(cells, document);
+        } else if (current?.toLowerCase().includes('metadata')) {
+          return original(cells, document); // skip the rest
+        }
+
+        const variantMatch = current.match(/\(([^)]+)\)/);
+        if (variantMatch) {
+          const existingVariants = variantMatch[1].split(',').map((v) => v.trim());
+          if (!existingVariants.includes(parserName)) {
+            existingVariants.push(parserName);
+          }
+          const baseName = current.replace(/\s*\([^)]+\)/, '').trim();
+          cells[0][0] = `${baseName} (${existingVariants.join(', ')})`;
+        } else {
+          cells[0][0] = `${current}`;
+        }
+      }
+
+      return original(cells, document);
+    },
+
+    restore: () => original,
+  };
+};
+
 function reduceInstances(instances = []) {
   return instances.map(({ urlHash, xpath, uuid }) => ({
     urlHash,

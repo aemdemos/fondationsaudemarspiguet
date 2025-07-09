@@ -57,7 +57,7 @@ import { TransformHook } from './transformers/transform.js';
 import {
   generateDocumentPath,
   handleOnLoad,
-  TableBuilder,
+  TableBuilderNews,
   mergeInventory,
   getPathSegments,
 } from './import.utils.js';
@@ -182,7 +182,7 @@ const transformers = {
     // before page transform hook
     WebImporter.Import.transform(TransformHook.beforePageTransform, main, { ...source });
   
-    const tableBuilder = TableBuilder(WebImporter.DOMUtils.createTable);
+    const tableBuilder = TableBuilderNews(WebImporter.DOMUtils.createTable);
     // transform all block elements using parsers
     [...pageElements, ...blockElements].forEach(({ element = main, ...pageBlock }) => {
       const parserName = WebImporter.Import.getParserName(pageBlock);
@@ -239,7 +239,7 @@ const transformers = {
         console.warn('Failed to parse header block', e);
       }
     } else {
-      const tableBuilder = TableBuilder(WebImporter.DOMUtils.createTable);
+      const tableBuilder = TableBuilderNews(WebImporter.DOMUtils.createTable);
   
       (fragment.instances || [])
         .filter((instance) => {
