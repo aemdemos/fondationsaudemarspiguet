@@ -24,6 +24,9 @@ export default async function decorate(doc) {
   const language = getMetadata('language');
   const author = getMetadata('author');
   const newsDiv = doc.querySelector('.news-article-template .details-sidebar');
+  const viewMoreButton = doc.querySelector('.news-article-template .details-sidebar .default-content-wrapper .button-container');
+  const buttonDiv = div({ class: 'button-wrapper' });
+  buttonDiv.append(viewMoreButton);
   const rightAlignSidebar = doc.querySelector('.news-article-template .details-sidebar.right');
   if (!newsDiv.classList.contains('right')) {
     if (language === 'en') {
@@ -72,7 +75,7 @@ export default async function decorate(doc) {
     newsDetails.appendChild(dateSection);
     const innerDiv = div({ class: 'news-article-inner' });
     innerDiv.append(newsDetails, title, sidebar, articleContent, clearDiv);
-    newsDiv.appendChild(innerDiv);
+    newsDiv.append(innerDiv, buttonDiv);
   } else if (rightAlignSidebar.classList.contains('right')) {
     if (language === 'en') {
       sidebar.innerHTML = `
@@ -93,7 +96,7 @@ export default async function decorate(doc) {
     const clearDiv = div({ class: 'clear' });
     const innerDiv = div({ class: 'news-article-inner' });
     innerDiv.append(sidebar, articleContent, clearDiv);
-    newsDiv.appendChild(innerDiv);
+    newsDiv.append(innerDiv, buttonDiv);
   }
   // Add a clear div after the first paragraph to ensure the second paragraph
   // remains in the float: right position for large screen sizes
