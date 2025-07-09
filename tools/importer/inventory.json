@@ -1842,6 +1842,51 @@
       ]
     },
     {
+      "name": "articleintro",
+      "cluster": 43,
+      "source": "articleintro",
+      "target": "articleintro",
+      "key": "articleintro",
+      "instances": [
+        {
+          "url": "https://arbres.fondationsaudemarspiguet.org/en/fondation-pour-les-arbres-news/education-and-resilience-future-proofing-the-youth-of-uganda",
+          "urlHash": "e23deb36f254d836f41767987573dbce4dbe37a7",
+          "uuid": "e23deb36-03-7d9e10639d529316d722e05d9b8eeebf7771aed9",
+          "xpath": "/html[1]/body[1]/div[5]"
+        }
+      ]
+    },
+    {
+      "name": "articlecontent",
+      "cluster": 44,
+      "source": "articlecontent",
+      "target": "articlecontent",
+      "key": "articlecontent",
+      "instances": [
+        {
+          "url": "https://arbres.fondationsaudemarspiguet.org/en/fondation-pour-les-arbres-news/education-and-resilience-future-proofing-the-youth-of-uganda",
+          "urlHash": "e23deb36f254d836f41767987573dbce4dbe37a7",
+          "uuid": "e23deb36-03-7d9e10639d529316d722e05d9b8eeebf7771aed9",
+          "xpath": "/html[1]/body[1]/div[5]"
+        }
+      ]
+    },
+    {
+      "name": "sectionmetadata",
+      "cluster": 45,
+      "source": "sectionmetadata",
+      "target": "sectionmetadata",
+      "key": "sectionmetadata",
+      "instances": [
+        {
+          "url": "https://arbres.fondationsaudemarspiguet.org/en/fondation-pour-les-arbres-news/education-and-resilience-future-proofing-the-youth-of-uganda",
+          "urlHash": "e23deb36f254d836f41767987573dbce4dbe37a7",
+          "uuid": "e23deb36-03-7d9e10639d529316d722e05d9b8eeebf7771aed9",
+          "xpath": "/html[1]/body[1]/div[5]"
+        }
+      ]
+    },
+    {
       "name": "Cards",
       "cluster": 3,
       "source": "Cards",
