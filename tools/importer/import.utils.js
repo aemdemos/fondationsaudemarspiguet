@@ -186,7 +186,7 @@ export const TableBuilderNews = (originalFunc) => {
         
         // Transform "Sectionmetadata" to "Section Metadata" for display
         if (current?.toLowerCase() === 'sectionmetadata') {
-          current = 'Section Metadata';
+          current = 'Section-Metadata';
           cells[0][0] = current;
         }
         

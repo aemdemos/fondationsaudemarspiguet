@@ -46,11 +46,22 @@ export default function parse(element, { document }) {
         // insert before block separator before the next sibling of classElement
         const blockSep = blockSeparator();
         classElement.nextElementSibling.insertAdjacentElement('afterend', blockSep);
-    } else if (classElement && className === 'news_detail_btn_plus') {
+    } else if (
+      classElement &&
+      className === 'news_detail_btn_plus'
+    ) {
         const leftTop = document.createElement('div');
         const rightTop = document.createElement('div');
         leftTop.textContent = 'Style';
-        rightTop.textContent = 'details-sidebar';
+        const prevPrev = classElement.previousElementSibling && classElement.previousElementSibling.previousElementSibling;
+        if (
+          prevPrev &&
+          prevPrev.classList.contains('news_detail_big_content_3')
+        ) {
+          rightTop.textContent = 'details-sidebar, light-grey-bg, right';
+        } else {
+          rightTop.textContent = 'details-sidebar, light-grey-bg';
+        }
         const rows = [
             headerRow,
             [leftTop, rightTop]
