@@ -15,6 +15,13 @@ export default async function decorate(block) {
       em.replaceWith(cite);
     });
   }
+
+  document.querySelectorAll('.quote blockquote h4, .quote blockquote h5, .quote blockquote h6').forEach(el => {
+  const p = document.createElement('p');
+  p.innerHTML = el.innerHTML;
+  el.parentNode.replaceChild(p, el);
+});
+
   block.innerHTML = '';
   block.append(blockquote);
 }
