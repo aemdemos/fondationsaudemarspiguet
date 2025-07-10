@@ -16,9 +16,12 @@ export default async function decorate(block) {
     });
   }
 
+  block.innerHTML = '';
+  block.append(blockquote);
+
   document.querySelectorAll('.block').forEach((currentBlock) => {
   // Add .colourful class if needed
-    if (currentBlock.classList.contains('colourful') || currentBlock.textContent.includes('colourful')) {
+    if (!currentBlock.classList.contains('colourful') || currentBlock.textContent.includes('colourful')) {
       currentBlock.classList.add('colourful');
     }
 
@@ -34,7 +37,4 @@ export default async function decorate(block) {
       });
     }
   });
-
-  block.innerHTML = '';
-  block.append(blockquote);
 }
