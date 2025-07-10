@@ -237,6 +237,7 @@ body.news-article main .section.white-lilac-bg .default-content-wrapper p strong
     body.news-article main .section.white-lilac-bg {
         background-color: var(--news-sophis-bg-text2);
         margin-top: 0;
+        padding: 0;
     }
 
     body.news-article main .section.white-lilac-bg .default-content-wrapper {
