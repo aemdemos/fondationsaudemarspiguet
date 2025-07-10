@@ -122,6 +122,7 @@ body.news-article main .section.details-sidebar .news-article-inner a:hover {
 
 body.news-article main .section.details-sidebar .button-wrapper {
     text-align: center;
+    margin: 10vh;
 }
 
 body.news-article main .section.details-sidebar .button-wrapper .button-container a{
