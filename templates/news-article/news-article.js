@@ -100,12 +100,50 @@ export default async function decorate(doc) {
   }
   // Add a clear div after the first paragraph to ensure the second paragraph
   // remains in the float: right position for large screen sizes
-  const textPara = doc.querySelector('.section.white-lilac-bg .default-content-wrapper p:first-of-type');
-  const clearDiv = div({ class: 'clear' });
-  textPara.insertAdjacentElement('afterend', clearDiv);
+  // const textPara = doc.querySelector('.section.white-lilac-bg .default-content-wrapper p:first-of-type');
+  // const clearDiv = div({ class: 'clear' });
+  // textPara.insertAdjacentElement('afterend', clearDiv);
+  const lilacSection = doc.querySelector('.section.white-lilac-bg');
+  if (lilacSection) {
+    const wrapper = lilacSection.querySelector('.default-content-wrapper');
+    if (wrapper) {
+      const ps = Array.from(wrapper.querySelectorAll('p'));
+      if (ps.length > 0) {
+        // Create a div for news-content and move all ps except the last one into it
+        const newsContentDiv = document.createElement('div');
+        newsContentDiv.className = 'news-content';
+        for (let i = 0; i < ps.length - 1; i += 1) {
+          newsContentDiv.appendChild(ps[i]);
+        }
+        // Insert news-content div at the top of the wrapper
+        if (ps.length > 1) {
+          wrapper.insertBefore(newsContentDiv, ps[ps.length - 1]);
+        } else {
+          wrapper.insertBefore(newsContentDiv, ps[0]);
+        }
+
+        // Handle the last p: wrap in div with class news-gallery if it contains picture and img
+        const lastP = ps[ps.length - 1];
+        if (lastP && lastP.querySelector('picture img')) {
+          const galleryDiv = document.createElement('div');
+          galleryDiv.className = 'news-gallery';
+          // Move all children of lastP into galleryDiv
+          while (lastP.firstChild) {
+            galleryDiv.appendChild(lastP.firstChild);
+          }
+          // Replace lastP in the DOM with galleryDiv
+          lastP.parentNode.replaceChild(galleryDiv, lastP);
+        }
+      }
+    }
+  }
 
   // apply fade out animation to news detail section
-  const pictureEl = doc.querySelector('.section.white-lilac-bg .default-content-wrapper p:nth-of-type(2) picture');
-  const imagePara = doc.querySelector('.section.white-lilac-bg .default-content-wrapper p:nth-of-type(2)');
+  const pictureEl = doc.querySelector(
+    '.section.white-lilac-bg .default-content-wrapper .news-gallery picture',
+  );
+  const imagePara = doc.querySelector(
+    '.section.white-lilac-bg .default-content-wrapper .news-gallery',
+  );
   applyFadeUpAnimation(pictureEl, imagePara);
 }
