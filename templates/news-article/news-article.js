@@ -98,11 +98,7 @@ export default async function decorate(doc) {
     innerDiv.append(sidebar, articleContent, clearDiv);
     newsDiv.append(innerDiv, buttonDiv);
   }
-  // Add a clear div after the first paragraph to ensure the second paragraph
-  // remains in the float: right position for large screen sizes
-  // const textPara = doc.querySelector('.section.white-lilac-bg .default-content-wrapper p:first-of-type');
-  // const clearDiv = div({ class: 'clear' });
-  // textPara.insertAdjacentElement('afterend', clearDiv);
+
   const lilacSection = doc.querySelector('.section.white-lilac-bg');
   if (lilacSection) {
     const wrapper = lilacSection.querySelector('.default-content-wrapper');
