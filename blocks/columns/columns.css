@@ -1,22 +1,26 @@
+.columns {
+  background: #e4e6e4;
+  min-height: 60px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 0;
+  box-sizing: border-box;
+}
+
 .columns > div {
   display: flex;
-  flex-direction: column;
-}
-
-.columns img {
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 48px;
   width: 100%;
-}
-
-.columns > div > div {
-  order: 1;
-}
-
-.columns > div > .columns-img-col {
-  order: 0;
-}
-
-.columns > div > .columns-img-col img {
-  display: block;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  margin: 0;
+  padding: 0;
 }
 
 @media (width >= 900px) {
@@ -30,4 +34,108 @@
     flex: 1;
     order: unset;
   }
+}
+
+@media (width <= 600px) {
+  .columns > div {
+    flex-direction: column;
+    gap: 20px;
+  }
+}
+
+.columns img {
+  width: 100%;
+}
+
+.columns > div > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+  background: none;
+  border: none;
+  box-shadow: none;
+  order: 1;
+}
+
+.columns > div > .columns-img-col {
+  order: 0;
+}
+
+.columns > div > .columns-img-col img {
+  display: block;
+}
+
+/* Button styling */
+.columns > div > div > .button-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+}
+
+/* Only show the first .button-container in each column, hide all others */
+.columns > div > div > .button-container:not(:first-of-type) {
+  display: none;
+}
+
+/* Hide ONLY unwanted elements: images, h3, and paragraphs except .button-container */
+.columns > div > div > .columns-img-col,
+.columns > div > div > h3,
+.columns > div > div > p:not(.button-container) {
+  display: none;
+}
+
+.columns > div > div > .button-container > .button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-width: 180px;
+  width: 220px;
+  height: 36px;
+  background: #d3cdbf;
+  color: #6e6c68;
+  border-radius: 0;
+  border: none;
+  font-family: Montserrat, Antarctica, Arial, sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  box-shadow: none;
+  padding: 0 14px 0 18px;
+  margin: 0;
+  transition: filter 0.2s;
+  position: relative;
+  overflow: visible;
+  gap: 18px;
+  outline: none;
+}
+
+.columns > div > div > .button-container > .button:hover,
+.columns > div > div > .button-container > .button:focus {
+  background: #d3cdbf;
+  color: #6e6c68;
+  text-decoration: none;
+  filter: brightness(0.96);
+}
+
+/* Arrow in circle at right, using SVG background */
+.columns > div > div > .button-container > .button::after {
+  display: inline-block;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #fff;
+  margin-left: 14px;
+  margin-right: -4px;
+  vertical-align: middle;
+  background-image: url("data:image/svg+xml,%3Csvg width='14' height='14' xmlns='http://www.w3.org/2000/svg'%3E%3Cpolyline points='5,3 9,7 5,11' fill='none' stroke='%236e6c68' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 14px 14px;
+  content: "";
 }
