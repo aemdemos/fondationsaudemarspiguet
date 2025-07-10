@@ -1,4 +1,4 @@
-// import { applyFadeUpAnimation } from '../../scripts/utils.js';
+import { applyFadeUpAnimation } from '../../scripts/utils.js';
 
 export function enableAnimationOnScroll() {
   const observer = new IntersectionObserver((entries) => {
@@ -46,5 +46,12 @@ export default function decorate(doc) {
       whiteLilacSection.appendChild(ImageDiv);
       whiteLilacSection.appendChild(clearDiv.cloneNode());
     }
+  }
+
+  // apply fade out animation to news detail section
+  const pictureEl = doc.querySelector('.section.white-lilac-bg div.image-wrapper p picture');
+  const imagePara = doc.querySelector('.section.white-lilac-bg div.image-wrapper p');
+  if (pictureEl && imagePara) {
+    applyFadeUpAnimation(pictureEl, imagePara);
   }
 }
