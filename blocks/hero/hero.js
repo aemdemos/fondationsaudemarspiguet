@@ -34,8 +34,8 @@ export function createTwoColumnarHeroBlock({
 export default function decorate(block) {
   // add embedded video into hero block
   if (block.classList.contains('video')) {
-    const heroVideoPara = block.querySelector('div:first-of-type > div > p.button-container');
-    const heroVideoLink = block.querySelector('div:first-of-type > div >  p.button-container > a');
+    const heroVideoPara = block.querySelector('div:first-of-type > div > p');
+    const heroVideoLink = block.querySelector('div:first-of-type > div >  p > a');
     const videoURL = heroVideoLink.href;
     const relativeVideoURL = heroVideoLink.getAttribute('href');
     const heroVideoWrapper = document.createElement('video');
