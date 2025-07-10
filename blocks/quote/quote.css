@@ -38,7 +38,7 @@
   display: inline;
 }
 
-.quote blockquote .quote-quotation > p:last-child {
+.colourful:not(.no-quoter) .quote-quotation > p:last-child {
   color: #947F5F;
   font-size: 20px;
   font-weight: 400;
