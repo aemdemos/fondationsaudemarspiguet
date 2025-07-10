@@ -103,15 +103,13 @@ export default async function decorate(doc) {
   const textPara = doc.querySelector('.section.white-lilac-bg .default-content-wrapper p:first-of-type');
   const clearDiv = div({ class: 'clear' });
   textPara.insertAdjacentElement('afterend', clearDiv);
-  
+
   // Move text content and image content to be encased by different divs
   const whiteLilacSection = doc.querySelector('.section.white-lilac-bg');
   const allParas = doc.querySelectorAll('.section.white-lilac-bg div > p');
   const defaultDiv = doc.querySelector('.section.white-lilac-bg div.default-content-wrapper');
   const ImageDiv = document.createElement('div');
   ImageDiv.className = 'image-wrapper';
-  const clearDiv = doc.createElement('div');
-  clearDiv.className = 'clear';
 
   if (allParas && defaultDiv && whiteLilacSection) {
     defaultDiv.innerHTML = ''; // Clear the default content wrapper
@@ -128,7 +126,7 @@ export default async function decorate(doc) {
     });
     if (numTextPara > 0) {
       whiteLilacSection.appendChild(defaultDiv);
-      whiteLilacSection.appendChild(clearDiv);
+      whiteLilacSection.appendChild(clearDiv.cloneNode());
     }
     if (numImagePara > 0) {
       whiteLilacSection.appendChild(ImageDiv);
