@@ -1,12 +1,17 @@
+/* Columns block background and basic layout */
 .columns {
-  background: #e4e6e4;
-  min-height: 60px;
+  background: var(--news-sophis-bg-intro, #e1e5e6);
+  min-height: 64px;
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 32px 0;
+  padding: 24px 0;
   box-sizing: border-box;
+}
+
+.columns img {
+  width: 100%;
 }
 
 .columns > div {
@@ -21,30 +26,6 @@
   box-shadow: none;
   margin: 0;
   padding: 0;
-}
-
-@media (width >= 900px) {
-  .columns > div {
-    align-items: center;
-    flex-direction: unset;
-    gap: 24px;
-  }
-
-  .columns > div > div {
-    flex: 1;
-    order: unset;
-  }
-}
-
-@media (width <= 600px) {
-  .columns > div {
-    flex-direction: column;
-    gap: 20px;
-  }
-}
-
-.columns img {
-  width: 100%;
 }
 
 .columns > div > div {
@@ -93,49 +74,77 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  min-width: 180px;
-  width: 220px;
-  height: 36px;
-  background: #d3cdbf;
-  color: #6e6c68;
-  border-radius: 0;
+  min-width: 190px;
+  width: 240px;
+  height: 40px;
+  background: var(--chiffres-bloc-bg, #d3cdbf);
+  color: var(--projet-bloc-titre, #6B7E7C);
   border: none;
-  font-family: Montserrat, Antarctica, Arial, sans-serif;
-  font-size: 13px;
-  font-weight: 500;
+  border-radius: 0;
+  font-family: var(--body-font-family);
+  font-size: 12px;
+  font-weight: 600;
   letter-spacing: 0.13em;
   text-transform: uppercase;
   box-shadow: none;
-  padding: 0 14px 0 18px;
+  padding: 0 18px 0 24px;
   margin: 0;
-  transition: filter 0.2s;
-  position: relative;
-  overflow: visible;
-  gap: 18px;
+  gap: 12px;
   outline: none;
+  text-decoration: none;
+  transition: filter 0.2s;
+  overflow: visible;
+  cursor: pointer;
 }
 
 .columns > div > div > .button-container > .button:hover,
 .columns > div > div > .button-container > .button:focus {
-  background: #d3cdbf;
-  color: #6e6c68;
+  background: var(--chiffres-bloc-bg, #d3cdbf);
+  color: var(--projet-bloc-titre, #6B7E7C);
   text-decoration: none;
-  filter: brightness(0.96);
+  filter: brightness(0.97);
 }
 
-/* Arrow in circle at right, using SVG background */
+/* Arrow at right (SVG background, only as decoration, no text injected) */
 .columns > div > div > .button-container > .button::after {
   display: inline-block;
-  width: 28px;
-  height: 28px;
+  width: 24px;
+  height: 24px;
   border-radius: 50%;
-  background: #fff;
-  margin-left: 14px;
-  margin-right: -4px;
+  background: var(--background-color, #fff);
+  margin-left: 16px;
   vertical-align: middle;
-  background-image: url("data:image/svg+xml,%3Csvg width='14' height='14' xmlns='http://www.w3.org/2000/svg'%3E%3Cpolyline points='5,3 9,7 5,11' fill='none' stroke='%236e6c68' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg width='13' height='13' xmlns='http://www.w3.org/2000/svg'%3E%3Cpolyline points='5,3 9,7 5,11' fill='none' stroke='%236B7E7C' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: center;
-  background-size: 14px 14px;
+  background-size: 13px 13px;
   content: "";
+}
+
+/* Responsive: stack columns on small screens */
+@media (width <= 700px) {
+  .columns > div {
+    flex-direction: column;
+    gap: 18px;
+  }
+}
+
+@media (width <= 600px) {
+  .columns > div {
+    flex-direction: column;
+    gap: 20px;
+  }
+}
+
+@media (width >= 900px) {
+  .columns > div {
+    align-items: center;
+    flex-direction: unset;
+    gap: 24px;
+  }
+
+  .columns > div > div {
+    flex: 1;
+    order: unset;
+  }
 }
