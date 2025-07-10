@@ -7,6 +7,7 @@ export default function parse(element, { document }) {
         'news_projets_autre',
         'newsletter_bloc',
         'news_detail',
+        'news_projets_autre',
     ];
 
     listofClasses.forEach((className) => {
