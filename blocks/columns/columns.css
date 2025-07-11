@@ -1,12 +1,14 @@
-/* Columns block background and basic layout */
+/* Columns main container */
 .columns {
-  background: var(--news-sophis-bg-intro, #e1e5e6);
-  min-height: 64px;
-  width: 100%;
   display: flex;
-  align-items: center;
+  flex-direction: row;
   justify-content: center;
-  padding: 24px 0;
+  align-items: center;
+  gap: 72px;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 48px 0 36px;
+  background: #e7e9e6;
   box-sizing: border-box;
 }
 
@@ -14,12 +16,20 @@
   width: 100%;
 }
 
+/* Hide ONLY unwanted elements: images, h3, and paragraphs except .button-container */
+.columns .columns-img-col,
+.columns > div > .columns-img-col,
+.columns > div > div > h3,
+.columns > div > div > p:not(.button-container) {
+  display: none;
+}
+
 .columns > div {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  gap: 48px;
+  gap: 40px;
   width: 100%;
   background: transparent;
   border: none;
@@ -33,11 +43,19 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 0;
+  box-sizing: border-box;
+  width: 176px;
+  height: 176px;
+  min-width: 176px;
+  min-height: 176px;
+  max-width: 176px;
+  max-height: 176px;
+  border-radius: 50%;
+  background: #b2ada1;
+  overflow: hidden;
   margin: 0;
-  background: none;
-  border: none;
-  box-shadow: none;
+  padding: 0;
+  position: relative;
   order: 1;
 }
 
@@ -49,7 +67,6 @@
   display: block;
 }
 
-/* Button styling */
 .columns > div > div > .button-container {
   display: flex;
   align-items: center;
@@ -58,14 +75,15 @@
   padding: 0;
 }
 
-/* Only show the first .button-container in each column, hide all others */
 .columns > div > div > .button-container:not(:first-of-type) {
   display: none;
 }
 
-/* Hide ONLY unwanted elements: images, h3, and paragraphs except .button-container */
-.columns > div > div > .columns-img-col,
-.columns > div > div > h3,
+/* Fixed no-descending-specificity: place general selector before more specific one */
+.columns > div > div > p {
+  display: none;
+}
+
 .columns > div > div > p:not(.button-container) {
   display: none;
 }
@@ -105,7 +123,6 @@
   filter: brightness(0.97);
 }
 
-/* Arrow at right (SVG background, only as decoration, no text injected) */
 .columns > div > div > .button-container > .button::after {
   display: inline-block;
   width: 24px;
@@ -121,7 +138,6 @@
   content: "";
 }
 
-/* Responsive: stack columns on small screens */
 @media (width <= 700px) {
   .columns > div {
     flex-direction: column;
@@ -142,9 +158,148 @@
     flex-direction: unset;
     gap: 24px;
   }
-
   .columns > div > div {
     flex: 1;
     order: unset;
+  }
+}
+
+.columns > div > div:first-child {
+  background: #6b7f7f;
+}
+
+.columns > div > div:nth-child(2) {
+  background: #b2ada1;
+}
+
+.columns > div > div > p:first-of-type {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal;
+  color: #d8d7ce;
+  font-size: 32px;
+  font-family: var(--body-font-family);
+  font-weight: 400;
+  text-align: center;
+  line-height: 1.15;
+  margin: 0;
+  padding: 0 12px;
+  width: 100%;
+  min-height: 2em;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  overflow-wrap: break-word;
+}
+
+@media (width <= 900px) {
+  .columns > div {
+    flex-direction: row;
+    gap: 0;
+    overflow-x: auto;
+    width: 100vw;
+    padding-left: 8vw;
+    justify-content: flex-start;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+  }
+  .columns > div > div {
+    flex: 0 0 70vw;
+    width: 70vw;
+    height: 70vw;
+    min-width: 120px;
+    min-height: 120px;
+    max-width: 220px;
+    max-height: 220px;
+    margin-right: 24px;
+    scroll-snap-align: center;
+  }
+  .columns > div > div > p:first-of-type {
+    font-size: 22px;
+    min-height: unset;
+  }
+}
+
+@media (width <= 600px) {
+  .columns > div > div {
+    width: 120px;
+    height: 120px;
+    min-width: 120px;
+    min-height: 120px;
+    max-width: 120px;
+    max-height: 120px;
+  }
+  .columns > div > div > p:first-of-type {
+    font-size: 13px;
+    padding: 0 4px;
+  }
+}
+
+/* Individual circle colors for up to 4 circles */
+.columns > div:nth-child(1) > div { background: #6b8181; }
+.columns > div:nth-child(2) > div { background: #b6b1a7; }
+.columns > div:nth-child(3) > div { background: #9ea69e; }
+.columns > div:nth-child(4) > div { background: #b3b19c; }
+
+.columns > div > .columns-img-col,
+.columns > div > div > :not(p:first-child) {
+  display: none;
+}
+
+/* Improved block content fit and legibility */
+.columns > div > div > p:first-child {
+  margin: 0;
+  padding: 18px 13px;
+  font-size: 15px;
+  font-family: var(--body-font-family, Antarctica, sans-serif);
+  color: #e2e0dc;
+  text-transform: none;
+  font-weight: 300;
+  text-align: center;
+  letter-spacing: 0.01em;
+  line-height: 1.32;
+  width: 100%;
+  white-space: normal;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  box-sizing: border-box;
+  overflow-wrap: break-word;
+}
+
+/* Responsive: shrink circle and font on smaller screens, keep grouping balanced */
+@media (width <= 900px) {
+  .columns {
+    gap: 24px;
+    max-width: 255px;
+    padding: 24px 0;
+  }
+  .columns > div > div {
+    width: 100px;
+    height: 100px;
+    min-width: 100px;
+    min-height: 100px;
+    max-width: 100px;
+    max-height: 100px;
+    padding: 0;
+  }
+  .columns > div > div > p:first-child {
+    font-size: 9px;
+    padding: 7px 2px;
+    line-height: 1.18;
+  }
+}
+
+@media (width <= 600px) {
+  .columns {
+    flex-direction: column;
+    gap: 12px;
+    max-width: 100vw;
+    padding: 14px 0;
   }
 }
