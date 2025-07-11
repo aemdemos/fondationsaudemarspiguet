@@ -284,10 +284,7 @@ body.news-article main .section.details-sidebar.right .news-article-inner .defau
 
     body.news-article main .section.white-lilac-bg div.default-content-wrapper {
         max-width: 900px;
-        margin-left: auto;
-        margin-right: auto;
         box-sizing: unset;
-        float: unset
     }
 
     body.news-article main .section.white-lilac-bg div.image-wrapper {
