@@ -35,6 +35,11 @@ body.news-article main .section.white-lilac-bg div.default-content-wrapper > p {
     font-size: 14px;
 }
 
+body.news-article main .section.white-lilac-bg div.default-content-wrapper > p > strong {
+    color: var(--news-category);
+    font-weight: bold;
+}
+
 body.news-article main .section.white-lilac-bg div.image-wrapper {
     padding-top: 40px;
     margin-bottom: 40px;
