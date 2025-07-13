@@ -179,5 +179,4 @@ export default async function decorate(block) {
   applyFadeUpAnimation(builtBlock, parentDiv);
 
   block.append(parentDiv);
-  const previousSibling = block.previousElementSibling;
 }
