@@ -9,6 +9,11 @@
     gap: 30px; 
 }
 
+.featured-projects.block h2 {
+    margin: 0;
+    padding: 3vh 0;
+}
+
 .featured-projects.block .cards.block.featured ul li {
     border: none;
     list-style: none;
