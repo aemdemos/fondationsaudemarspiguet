@@ -15,4 +15,4 @@ export default function parse(element, { document }) {
         console.log(classElement);
         if (classElement) { classElement.remove(); }
     });
-}
+} 

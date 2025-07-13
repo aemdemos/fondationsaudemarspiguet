@@ -45,7 +45,6 @@ import columns12Parser from './parsers/columns12.js';
 import headerParser from './parsers/header.js';
 import metadataParser from './parsers/metadata.js';
 import articleintroParser from './parsers/articleintro.js';
-import sectionmetadataParser from './parsers/sectionmetadata.js';
 import removecontentParser from './parsers/removecontent.js';
 import verticalParser from './parsers/vertical.js';
 import articlecontentParser from './parsers/articlecontent.js';
@@ -53,6 +52,7 @@ import metadataNewsParser from './parsers/metadataNews.js';
 import cleanupTransformer from './transformers/cleanup.js';
 import imageTransformer from './transformers/images.js';
 import linkTransformer from './transformers/links.js';
+import injectTransformer from './transformers/inject.js';
 import { TransformHook } from './transformers/transform.js';
 import {
   generateDocumentPath,
@@ -100,7 +100,6 @@ let parsers = {
 const newsparsers = {
   metadataNews: metadataNewsParser,
   articleintro: articleintroParser,
-  sectionmetadata: sectionmetadataParser,
   articlecontent: articlecontentParser,
   vertical: verticalParser,
   removecontent: removecontentParser,
@@ -110,6 +109,7 @@ const transformers = {
     cleanup: cleanupTransformer,
     images: imageTransformer,
     links: linkTransformer,
+    inject: injectTransformer,
   };
   
   WebImporter.Import = {
