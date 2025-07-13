@@ -45,7 +45,7 @@ import columns12Parser from './parsers/columns12.js';
 import headerParser from './parsers/header.js';
 import metadataParser from './parsers/metadata.js';
 import articleintroParser from './parsers/articleintro.js';
-import removecontentParser from './parsers/removecontent.js';
+import removecontentTransformer from './transformers/removecontent.js';
 import verticalParser from './parsers/vertical.js';
 import articlecontentParser from './parsers/articlecontent.js';
 import metadataNewsParser from './parsers/metadataNews.js';
@@ -102,7 +102,6 @@ const newsparsers = {
   articleintro: articleintroParser,
   articlecontent: articlecontentParser,
   vertical: verticalParser,
-  removecontent: removecontentParser,
 };
 
 const transformers = {
@@ -110,6 +109,7 @@ const transformers = {
     images: imageTransformer,
     links: linkTransformer,
     inject: injectTransformer,
+    removecontent: removecontentTransformer,
   };
   
   WebImporter.Import = {
@@ -292,7 +292,7 @@ const transformers = {
         pathSegments.includes('fondation-pour-les-arbres-actualites')
       ) {
         console.log('Detected news page');
-        pageElements = [{ name: 'metadataNews' }];
+        pageElements = []; // No metadata parser needed in normal flow since we extract it early
         parsers = newsparsers;
       }
   
@@ -324,8 +324,17 @@ const transformers = {
         }
       }
   
-      let main = document.body;
-  
+            let main = document.body;
+
+      // For news pages, extract metadata BEFORE transformers run to avoid removal issues
+      if (
+        pathSegments.includes('fondation-pour-les-arbres-news') ||
+        pathSegments.includes('fondation-pour-les-arbres-actualites')
+      ) {
+        console.log('Extracting metadata before transformers run');
+        metadataNewsParser(main, { document });
+      }
+
       // before transform hook
       WebImporter.Import.transform(TransformHook.beforeTransform, main, { ...source, inventory });
   
