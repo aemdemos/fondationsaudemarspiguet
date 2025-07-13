@@ -182,19 +182,24 @@ export const TableBuilderNews = (originalFunc) => {
   return {
     build: (parserName) => (cells, document) => {
       if (cells.length > 0 && Array.isArray(cells[0])) {
-        let current = cells[0][0];
-        
-        // Transform "Sectionmetadata" to "Section Metadata" for display
-        if (current?.toLowerCase() === 'sectionmetadata') {
-          current = 'Section-Metadata';
-          cells[0][0] = current;
-        }
-        
+        const current = cells[0][0];
         // Handle Section Metadata specially
         if (current?.toLowerCase().includes('section metadata')) {
-          // For section metadata, we don't add the parser name to styles
-          // Just return the original cells without modification
-          return original(cells, document);
+          const styleRow = cells.find((row) => row[0]?.toLowerCase() === 'style');
+          if (styleRow) {
+            if (styleRow.length > 1) {
+              const existingStyles = styleRow[1].split(',').map((s) => s.trim());
+              if (!existingStyles.includes(parserName)) {
+                existingStyles.push(parserName);
+                styleRow[1] = existingStyles.join(', ');
+              }
+            } else {
+              styleRow[1] = parserName;
+            }
+          } else {
+            cells.push(['style', parserName]);
+          }
+          return original(cells, document); // skip the rest
         } else if (current?.toLowerCase().includes('metadata')) {
           return original(cells, document); // skip the rest
         }

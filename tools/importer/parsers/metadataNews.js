@@ -39,9 +39,11 @@ export default function parse(element, { document }) {
     }
 
     const allNewsLabels = document.querySelectorAll('.news_detail_label');
+    console.log('Found news_detail_label elements:', allNewsLabels.length);
 
     allNewsLabels.forEach(label => {
         const labelText = label.textContent.trim();
+        console.log('Processing label:', labelText);
       
         if (labelText === 'Link(s)' || labelText === 'Lien(s)') {
           const links = [];
