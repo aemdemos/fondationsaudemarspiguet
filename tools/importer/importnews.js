@@ -45,7 +45,6 @@ import columns12Parser from './parsers/columns12.js';
 import headerParser from './parsers/header.js';
 import metadataParser from './parsers/metadata.js';
 import articleintroParser from './parsers/articleintro.js';
-import sectionmetadataParser from './parsers/sectionmetadata.js';
 import removecontentParser from './parsers/removecontent.js';
 import verticalParser from './parsers/vertical.js';
 import articlecontentParser from './parsers/articlecontent.js';
@@ -53,6 +52,7 @@ import metadataNewsParser from './parsers/metadataNews.js';
 import cleanupTransformer from './transformers/cleanup.js';
 import imageTransformer from './transformers/images.js';
 import linkTransformer from './transformers/links.js';
+import injectTransformer from './transformers/inject.js';
 import { TransformHook } from './transformers/transform.js';
 import {
   generateDocumentPath,
@@ -100,7 +100,6 @@ let parsers = {
 const newsparsers = {
   metadataNews: metadataNewsParser,
   articleintro: articleintroParser,
-  sectionmetadata: sectionmetadataParser,
   articlecontent: articlecontentParser,
   vertical: verticalParser,
   removecontent: removecontentParser,
@@ -110,6 +109,7 @@ const transformers = {
     cleanup: cleanupTransformer,
     images: imageTransformer,
     links: linkTransformer,
+    inject: injectTransformer,
   };
   
   WebImporter.Import = {
@@ -238,44 +238,44 @@ const transformers = {
       } catch (e) {
         console.warn('Failed to parse header block', e);
       }
-    } else {
-      const tableBuilder = TableBuilderNews(WebImporter.DOMUtils.createTable);
-  
-      (fragment.instances || [])
-        .filter((instance) => {
-          const siteUrl = WebImporter.Import.findSiteUrl(instance, inventory.urls);
-          if (!siteUrl) {
-            return false;
-          }
-          return `${siteUrl.url}#${fragment.name}` === originalURL;
-        })
-        .map(({ xpath }) => ({
-          xpath,
-          element: WebImporter.Import.getElementByXPath(document, xpath),
-        }))
-        .filter(({ element }) => element)
-        .forEach(({ xpath, element }) => {
-          main.append(element);
-  
-          const fragmentBlock = inventory.blocks
-            .find(({ instances }) => instances.find((instance) => {
-              const siteUrl = WebImporter.Import.findSiteUrl(instance, inventory.urls);
-              return `${siteUrl.url}#${fragment.name}` === originalURL && instance.xpath === xpath;
-            }));
-  
-          if (!fragmentBlock) return;
-          const parserName = WebImporter.Import.getParserName(fragmentBlock);
-          const parserFn = parsers[parserName];
-          if (!parserFn) return;
-          try {
-            WebImporter.DOMUtils.createTable = tableBuilder.build(parserName);
-            parserFn.call(this, element, source);
-            WebImporter.DOMUtils.createTable = tableBuilder.restore();
-          } catch (e) {
-            console.warn(`Failed to parse block: ${fragmentBlock.key}, with xpath: ${xpath}`, e);
-          }
-        });
     }
+    
+    const tableBuilder = TableBuilderNews(WebImporter.DOMUtils.createTable);
+
+    (fragment.instances || [])
+      .filter((instance) => {
+        const siteUrl = WebImporter.Import.findSiteUrl(instance, inventory.urls);
+        if (!siteUrl) {
+          return false;
+        }
+        return `${siteUrl.url}#${fragment.name}` === originalURL;
+      })
+      .map(({ xpath }) => ({
+        xpath,
+        element: WebImporter.Import.getElementByXPath(document, xpath),
+      }))
+      .filter(({ element }) => element)
+      .forEach(({ xpath, element }) => {
+        main.append(element);
+
+        const fragmentBlock = inventory.blocks
+          .find(({ instances }) => instances.find((instance) => {
+            const siteUrl = WebImporter.Import.findSiteUrl(instance, inventory.urls);
+            return `${siteUrl.url}#${fragment.name}` === originalURL && instance.xpath === xpath;
+          }));
+
+        if (!fragmentBlock) return;
+        const parserName = WebImporter.Import.getParserName(fragmentBlock);
+        const parserFn = parsers[parserName];
+        if (!parserFn) return;
+        try {
+          WebImporter.DOMUtils.createTable = tableBuilder.build(parserName);
+          parserFn.call(this, element, source);
+          WebImporter.DOMUtils.createTable = tableBuilder.restore();
+        } catch (e) {
+          console.warn(`Failed to parse block: ${fragmentBlock.key}, with xpath: ${xpath}`, e);
+        }
+      });
   }
   
   export default {

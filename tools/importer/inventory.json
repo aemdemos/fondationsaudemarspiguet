@@ -1883,27 +1883,27 @@
         }
       ]
     },
-    {
-      "name": "sectionmetadata",
-      "cluster": 45,
-      "source": "sectionmetadata",
-      "target": "sectionmetadata",
-      "key": "sectionmetadata",
-      "instances": [
-        {
-          "url": "https://arbres.fondationsaudemarspiguet.org/en/fondation-pour-les-arbres-news/education-and-resilience-future-proofing-the-youth-of-uganda",
-          "urlHash": "e23deb36f254d836f41767987573dbce4dbe37a7",
-          "uuid": "e23deb36-03-7d9e10639d529316d722e05d9b8eeebf7771aed9",
-          "xpath": "/html[1]/body[1]/div[5]"
-        },
-        {
-          "url": "https://arbres.fondationsaudemarspiguet.org/en/fondation-pour-les-arbres-news/new-forest-reserve-in-the-parc-naturel-du-jorat",
-          "urlHash": "e20d7024960e29daab87d114d86b1776562395f2",
-          "uuid": "e20d7024-05-ec0829989696ff2a25e71ab2883ea1a40a04307d",
-          "xpath": "/html[1]/body[1]/div[3]/div[1]/div[6]"
-        }
-      ]
-    },
+    // {
+    //   "name": "sectionmetadata",
+    //   "cluster": 45,
+    //   "source": "sectionmetadata",
+    //   "target": "sectionmetadata",
+    //   "key": "sectionmetadata",
+    //   "instances": [
+    //     {
+    //       "url": "https://arbres.fondationsaudemarspiguet.org/en/fondation-pour-les-arbres-news/education-and-resilience-future-proofing-the-youth-of-uganda",
+    //       "urlHash": "e23deb36f254d836f41767987573dbce4dbe37a7",
+    //       "uuid": "e23deb36-03-7d9e10639d529316d722e05d9b8eeebf7771aed9",
+    //       "xpath": "/html[1]/body[1]/div[5]"
+    //     },
+    //     {
+    //       "url": "https://arbres.fondationsaudemarspiguet.org/en/fondation-pour-les-arbres-news/new-forest-reserve-in-the-parc-naturel-du-jorat",
+    //       "urlHash": "e20d7024960e29daab87d114d86b1776562395f2",
+    //       "uuid": "e20d7024-05-ec0829989696ff2a25e71ab2883ea1a40a04307d",
+    //       "xpath": "/html[1]/body[1]/div[3]/div[1]/div[6]"
+    //     }
+    //   ]
+    // },
     {
       "name": "removecontent",
       "cluster": 46,
