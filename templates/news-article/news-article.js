@@ -102,7 +102,9 @@ export default async function decorate(doc) {
   // remains in the float: right position for large screen sizes
   const textPara = doc.querySelector('.section.white-lilac-bg .default-content-wrapper p:first-of-type');
   const clearDiv = div({ class: 'clear' });
-  textPara.insertAdjacentElement('afterend', clearDiv);
+  if (textPara) {
+    textPara.insertAdjacentElement('afterend', clearDiv);
+  }
 
   // Move text content and image content to be encased by different divs
   const whiteLilacSection = doc.querySelector('.section.white-lilac-bg');
