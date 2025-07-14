@@ -167,12 +167,12 @@ body.news-article main .section.details-sidebar .news-article-inner a {
     color: var(--text-color);
 }
 
-body.news-article main .section.details-sidebar.right + * li {
-    background-color: white;
-}
-
 body.news-article main .section.details-sidebar + * li {
     background-color: var(--news-bg-page-suite);
+}
+
+body.news-article main .section.details-sidebar.right + * li {
+    background-color: white;
 }
 
 body.news-article main .section.details-sidebar .news-article-inner a:hover {

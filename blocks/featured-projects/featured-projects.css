@@ -78,4 +78,14 @@
     .featured-projects.block .cards.block.featured ul {
         grid-template-columns: repeat(3, 1fr);
     }
+
+    .project-article-template .featured-projects-container.section::before {
+        content: '';
+        position: absolute;
+        z-index: -1;
+        background-color: var(--projet-bg-page-suite);
+        width: 100vw;
+        height: 300px;
+        margin-top: -40px;
+    }
 }
