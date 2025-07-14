@@ -1,3 +1,9 @@
+
+.carousel-container {
+  margin: 0 !important;
+  background-color:  #edecea  !important;
+}
+
 .carousel .carousel-slides-container {
   position: relative;
 }
@@ -230,6 +236,21 @@
 
 /* End of Vertical Carousel */
 
+/* Code to Ensure h2 is above the background */
+.carousel-bg-grey {
+  z-index: 0;
+  position: absolute;
+  pointer-events: none;
+}
 
+.featured-projects.block h2
+ {
+  position: relative;
+  z-index: 2;
+  opacity: 1 !important;
+  transform: none !important;
+  transition: none !important;
+  margin-top: 80px !important;
+}
 
 
