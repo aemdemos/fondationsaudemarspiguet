@@ -1,3 +1,8 @@
+body.news-article main .carousel-wrapper {
+    padding-top: 30px;
+}
+
+
 body.news-article main .section.white-smoke-bg {
     background-color: var(--news-bg-page);
     color: var(--news-sophis-intro);
@@ -104,8 +109,8 @@ body.news-article main .news-article-sidebar ul {
 
 body.news-article main .section.details-sidebar {
     background-color: var(--news-bg-page-suite);
-    margin-top: -240px;
-    padding-top: 220px;
+    margin-top: -340px;
+    padding-top: 350px;
     margin-bottom: 0;
 }
 
@@ -219,6 +224,10 @@ body.news-article main .section.details-sidebar.right .news-article-inner .defau
 }
 
 @media (width >= 600px) {
+    body.news-article main .carousel-wrapper {
+        padding-top: 100px;
+    }
+
     body.news-article main .section.details-sidebar .news-article-sidebar {
         width: 280px;
         box-sizing: border-box;
