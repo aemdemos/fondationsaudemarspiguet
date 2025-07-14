@@ -20,6 +20,8 @@ body.news-article main .section.white-smoke-bg .default-content-wrapper p {
     max-width: 90%;
     position: relative;
     top: 4vh;
+    letter-spacing: .02em;
+    font-weight: 400;
 }
 
 body.news-article main .section.details-sidebar.light-grey-bg + * {
@@ -257,7 +259,7 @@ body.news-article main .section.details-sidebar.right .news-article-inner .defau
     }
 
     body.news-article main .section.white-smoke-bg .default-content-wrapper p {
-        font-size: 38px;
+        font-size: 40px;
     }
 
     body.news-article main .section.white-lilac-bg {
@@ -286,7 +288,7 @@ body.news-article main .section.details-sidebar.right .news-article-inner .defau
 
 @media (width >= 900px) {
     body.news-article main .section.white-smoke-bg .default-content-wrapper p {
-        font-size: 38px;
+        font-size: 40px;
         max-width: 48%;
         top: unset;
     }
@@ -311,7 +313,7 @@ body.news-article main .section.details-sidebar.right .news-article-inner .defau
 
 @media (width >= 1200px) {
     body.news-article main .section.white-smoke-bg .default-content-wrapper p {
-        font-size: 38px;
+        font-size: 40px;
         max-width: 48%;
         top: unset;
     }
