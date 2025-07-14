@@ -15,17 +15,25 @@ export function applyFadeUpAnimation(targetElement, parentContainer) {
   targetWrapper.append(targetElement);
   parentContainer.append(targetWrapper);
 
+  // Track scroll direction to prevent flickering
+  let lastScrollY = window.scrollY;
+
   // Trigger fade-up animation when element comes into view
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
+      const currentScrollY = window.scrollY;
+      const scrollingDown = currentScrollY > lastScrollY;
+
       if (entry.isIntersecting) {
         entry.target.style.opacity = '1';
         entry.target.style.transform = 'translateY(0)';
-      } else {
-        // Reset animation when element goes out of view
+      } else if (!scrollingDown) {
+        // Only reset animation when scrolling up and element goes out of view
         entry.target.style.opacity = '0';
-        entry.target.style.transform = 'translateY(100px)';
+        entry.target.style.transform = 'translateY(80px)';
       }
+
+      lastScrollY = currentScrollY;
     });
   }, { threshold: 0.1 });
 
