@@ -1,8 +1,5 @@
 
-.carousel-container {
-  margin: 0 !important;
-  background-color:  #edecea  !important;
-}
+
 
 .carousel .carousel-slides-container {
   position: relative;
@@ -250,7 +247,11 @@
   opacity: 1 !important;
   transform: none !important;
   transition: none !important;
-  margin-top: 80px !important;
+}
+
+.project-article-template .carousel-container {
+  margin: 0 !important;
+  background-color: #edecea !important;
 }
 
 

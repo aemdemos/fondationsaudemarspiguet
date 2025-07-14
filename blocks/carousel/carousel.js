@@ -1,4 +1,4 @@
-import { fetchPlaceholders } from '../../scripts/aem.js';
+import { fetchPlaceholders, getMetadata } from '../../scripts/aem.js';
 import { moveInstrumentation } from '../../scripts/scripts.js';
 
 function updateActiveSlide(slide) {
@@ -60,29 +60,32 @@ export function showSlide(block, slideIndex = 0) {
   block.dataset.activeSlide = realSlideIndex;
 
   // Add grey background behind carousel, starting at its middle
-  setTimeout(() => {
-    const carouselRect = block.getBoundingClientRect();
-    const parent = block.parentNode;
+  const templateName = getMetadata('template');
+  if (templateName === 'project-article') {
+    setTimeout(() => {
+      const carouselRect = block.getBoundingClientRect();
+      const parent = block.parentNode;
 
-    // Make sure the parent is positioned relative
-    if (getComputedStyle(parent).position === 'static') {
-      parent.style.position = 'relative';
-    }
+      // Make sure the parent is positioned relative
+      if (getComputedStyle(parent).position === 'static') {
+        parent.style.position = 'relative';
+      }
 
-    const bgDiv = document.createElement('div');
-    bgDiv.className = 'carousel-bg-grey';
-    bgDiv.style.position = 'absolute';
-    bgDiv.style.left = '50%';
-    bgDiv.style.transform = 'translateX(-50%)';
-    bgDiv.style.width = '100vw';
-    bgDiv.style.top = `${block.offsetTop + carouselRect.height / 2}px`;
-    bgDiv.style.height = `${carouselRect.height}px`;
-    bgDiv.style.background = 'var(--projet-bg-page-suite)'; // Grey color
-    bgDiv.style.zIndex = '0';
-    bgDiv.style.pointerEvents = 'none';
+      const bgDiv = document.createElement('div');
+      bgDiv.className = 'carousel-bg-grey';
+      bgDiv.style.position = 'absolute';
+      bgDiv.style.left = '50%';
+      bgDiv.style.transform = 'translateX(-50%)';
+      bgDiv.style.width = '100vw';
+      bgDiv.style.top = `${block.offsetTop + carouselRect.height / 2}px`;
+      bgDiv.style.height = `${carouselRect.height}px`;
+      bgDiv.style.background = 'var(--projet-bg-page-suite)'; // Grey color
+      bgDiv.style.zIndex = '0';
+      bgDiv.style.pointerEvents = 'none';
 
-    parent.insertBefore(bgDiv, block);
-  }, 0);
+      parent.insertBefore(bgDiv, block);
+    }, 0);
+  }
 }
 
 function bindEvents(block) {
