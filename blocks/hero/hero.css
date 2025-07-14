@@ -191,7 +191,7 @@
 }
 
 .hero.two-columnar.block > div > div:last-child p {
-  color: #525252;
+  color: #695D5B;
   font-size: 40px;
   font-family: Antarctica,sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -200,7 +200,7 @@
   letter-spacing: 0.02em;
   text-align: center;
   max-width: 700px;
-  margin: 0;
+  
 }
 
 @media (width >= 600px) and (width <= 900px) {
