@@ -1,3 +1,9 @@
+
+body > main > div.section.carousel-container {
+  margin: 0 !important;
+  background-color: #edecea !important;
+}
+
 .carousel .carousel-slides-container {
   position: relative;
 }
