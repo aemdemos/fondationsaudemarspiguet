@@ -70,10 +70,10 @@ export default async function decorate() {
   const projectDiv = document.querySelector('.project-article-template .details-sidebar');
   const articleContent = projectDiv.querySelector('.default-content-wrapper');
   const heading = projectDiv.querySelector('.default-content-wrapper h1');
+  const clearDiv = document.createElement('div');
+  clearDiv.className = 'clear';
   const innerDiv = document.createElement('div');
   innerDiv.className = 'project-article-inner';
-  innerDiv.appendChild(heading);
-  innerDiv.appendChild(sidebar);
-  innerDiv.appendChild(articleContent);
+  innerDiv.append(heading, sidebar, articleContent, clearDiv);
   projectDiv.appendChild(innerDiv);
 }
