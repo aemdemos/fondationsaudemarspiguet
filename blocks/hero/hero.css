@@ -54,7 +54,7 @@
 
 .hero.video div > div.social-cr-wrapper {
   position: absolute;
-  bottom: 30px;
+  bottom: 37px;
   left: 20px;
   display: flex;
   align-items: center;
@@ -67,7 +67,7 @@
 
 .hero.video div > div.social-cr-wrapper p {
   margin: 0;
-  line-height : 12px;
+  line-height : 13px;
 }
 
 .hero.video div > div.social-cr-wrapper .icon {
@@ -78,7 +78,7 @@
 
 .hero.video div > div.slide-legend {
   position: absolute;
-  bottom: 45px;
+  bottom: 48px;
   display: inline-block;
   right: 20px;
   z-index: 10;
@@ -89,7 +89,7 @@
   margin: 0;
   font-size: 14px;
   font-weight: 500;
-  letter-spacing: 1px;
+  letter-spacing: 0.03em;;
 }
 
 .hero.video div > div.social-cr-wrapper p:last-of-type {
@@ -116,6 +116,14 @@
     padding: 40px 32px;
   }
 
+  .hero.video div > div.social-cr-wrapper { 
+    bottom: 29px;
+  }
+
+  .hero.video div > div.slide-legend {
+    bottom: 45px;
+  }
+
   .hero.video div > div.slide-legend > p {
     font-size: 18px;
   }
@@ -127,7 +135,7 @@
 
 @media (width >= 1200px) {
   .hero.video div > div.social-cr-wrapper {
-    bottom: 95px;
+    bottom: 86px;
     left: 100px;
   }
 
@@ -137,7 +145,7 @@
   }
 
   .hero.video div > div.slide-legend > p {
-    font-size: 20px;
+    font-size: 22px;
   }
 }
 
