@@ -52,16 +52,66 @@
 
 /* no header variant */
 .table.block.no-header table tbody tr {
-  border-top: 1px solid;
+  border-top: 1px solid #6B7E7C;
+  border-bottom: 1px solid #6B7E7C;
 }
 
-/* striped variant */
-.table.block.striped tbody tr:nth-child(odd) {
-  background-color: var(--overlay-background-color);
-}
+
 
 /* bordered variant */
 .table.block.bordered table th,
 .table.block.bordered table td {
   border: 1px solid;
+}
+
+/* Style for tables with the 'report' class */
+
+.view-and-search {
+  background-color: #edecea;
+  margin: 0 !important;
+}
+
+.report.table-container {
+  padding-top: 80px;
+  padding-bottom: 80px;
+}
+
+.report.table-container > div > div > table tr:last-child {
+  border-bottom: 1px solid transparent;
+}
+
+.report.table-container table td:first-child,
+.report.table-container table th:first-child,
+.report.table-container table td:first-child p,
+.report.table-container table th:first-child p  {
+  font-weight: 300;
+  letter-spacing: 0.04em;
+  color: #1E1E1E;
+  font-size: 20px !important;
+  font-family: Antarctica,sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: geometricprecision;
+}
+
+.report.table-container table td:nth-child(2) p,
+.report.table-container table th:nth-child(2) p {
+  color: #6B7E7C;
+  font-weight: 700;
+  font-size: 20px;
+}
+
+
+.report.table-container table td:nth-child(3) a {
+  display: inline-flex;
+  align-items: center;
+  color: #839790 !important;
+  font-size: 10px !important;
+  text-transform: uppercase;
+  vertical-align: middle;
+  gap: 0.4em;
+}
+
+/* striped variant */
+.table.block.striped tbody tr:nth-child(odd) {
+  background-color: var(--overlay-background-color);
 }
