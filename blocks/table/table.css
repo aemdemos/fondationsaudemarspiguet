@@ -103,12 +103,24 @@
 
 .report.table-container table td:nth-child(3) a {
   display: inline-flex;
+  flex-direction: row;
   align-items: center;
   color: #839790 !important;
   font-size: 10px !important;
   text-transform: uppercase;
   vertical-align: middle;
   gap: 0.4em;
+}
+
+.report.table-container table td:nth-child(3) a svg {
+  display: inline;
+  margin-left: 0.2em;
+  vertical-align: middle;
+  max-height: 1em;
+}
+
+.report.table-container table td:nth-child(3) {
+  white-space: nowrap;
 }
 
 /* striped variant */
