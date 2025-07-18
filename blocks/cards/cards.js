@@ -40,16 +40,15 @@ export default function decorate(block) {
         link.classList.remove('button', 'primary');
         link.append(cardImageWrapper, heading);
         cardBody.append(link);
-      }
-      else {
-        const titlePara = cardBody.querySelector('p strong');
-        if (titlePara) {
-          const heading = h2(titlePara.textContent);
-          cardBody.innerHTML = '';
-          cardBody.classList.add('no-link');
-          cardBody.append(cardImageWrapper, heading);
+      } else {
+          const titlePara = cardBody.querySelector('p strong');
+          if (titlePara) {
+            const heading = h2(titlePara.textContent);
+            cardBody.innerHTML = '';
+            cardBody.classList.add('no-link');
+            cardBody.append(cardImageWrapper, heading);
+          }
         }
-      }
-    })
+    });
   }
 }
