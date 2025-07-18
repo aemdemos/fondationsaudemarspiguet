@@ -1,7 +1,7 @@
 import { createOptimizedPicture } from '../../scripts/aem.js';
 import { moveInstrumentation } from '../../scripts/scripts.js';
 import {
-  div, h2, a, ul, li,
+  div, h2,
 } from '../../scripts/dom-helpers.js';
 
 export default function decorate(block) {
@@ -24,16 +24,16 @@ export default function decorate(block) {
   });
   block.textContent = '';
   block.append(ul);
-  if(block.classList.contains('listing')) {
+  if (block.classList.contains('listing')) {
     const cardsList = block.querySelectorAll('ul li');
     cardsList.forEach((listItem) => {
       const cardImage = listItem.querySelector('.cards-card-image');
       const cardBody = listItem.querySelector('.cards-card-body');
-      const cardImageWrapper = div({class: 'cards-image-container'});
-      const cardImageLogo = div({class: 'cards-image-logo'});
+      const cardImageWrapper = div({ class: 'cards-image-container' });
+      const cardImageLogo = div({ class: 'cards-image-logo' });
       cardImageWrapper.append(cardImage, cardImageLogo);
       const link = cardBody.querySelector('p a');
-      if(link) {
+      if (link) {
         cardBody.innerHTML = '';
         const heading = h2(link.textContent);
         link.innerHTML = '';
@@ -43,7 +43,7 @@ export default function decorate(block) {
       }
       else {
         const titlePara = cardBody.querySelector('p strong');
-        if(titlePara) {
+        if (titlePara) {
           const heading = h2(titlePara.textContent);
           cardBody.innerHTML = '';
           cardBody.classList.add('no-link');
