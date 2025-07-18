@@ -11,9 +11,9 @@ export default function decorate(block) {
     const li = document.createElement('li');
     moveInstrumentation(row, li);
     while (row.firstElementChild) li.append(row.firstElementChild);
-    [...li.children].forEach((div) => {
-      if (div.children.length === 1 && div.querySelector('picture')) div.className = 'cards-card-image';
-      else div.className = 'cards-card-body';
+    [...li.children].forEach((divs) => {
+      if (divs.children.length === 1 && divs.querySelector('picture')) divs.className = 'cards-card-image';
+      else divs.className = 'cards-card-body';
     });
     ul.append(li);
   });
