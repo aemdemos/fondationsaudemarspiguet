@@ -54,7 +54,7 @@
 
 .hero.video div > div.social-cr-wrapper {
   position: absolute;
-  bottom: 25px;
+  bottom: 37px;
   left: 20px;
   display: flex;
   align-items: center;
@@ -67,6 +67,7 @@
 
 .hero.video div > div.social-cr-wrapper p {
   margin: 0;
+  line-height : 13px;
 }
 
 .hero.video div > div.social-cr-wrapper .icon {
@@ -77,18 +78,23 @@
 
 .hero.video div > div.slide-legend {
   position: absolute;
-  bottom: 35px;
+  bottom: 48px;
   display: inline-block;
   right: 20px;
   z-index: 10;
-  font-size: 14px;
-  font-weight: 500;
-  letter-spacing: 1px;
 }
 
 .hero.video div > div.slide-legend > p {
   color: #000;
   margin: 0;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.03em;;
+}
+
+.hero.video div > div.social-cr-wrapper p:last-of-type {
+  display: none;
+  font-size: 10px;
 }
 
 .hero.video div > div.slide-legend > p > a {
@@ -110,20 +116,35 @@
     padding: 40px 32px;
   }
 
+  .hero.video div > div.social-cr-wrapper { 
+    bottom: 29px;
+  }
+
   .hero.video div > div.slide-legend {
+    bottom: 48px;
+  }
+
+  .hero.video div > div.slide-legend > p {
     font-size: 18px;
+  }
+
+  .hero.video div > div.social-cr-wrapper p:last-of-type {
+    display: unset;
   }
 }
 
 @media (width >= 1200px) {
   .hero.video div > div.social-cr-wrapper {
-    bottom: 95px;
+    bottom: 86px;
     left: 100px;
   }
 
   .hero.video div > div.slide-legend {
     bottom: 100px;
     right: 100px;
+  }
+
+  .hero.video div > div.slide-legend > p {
     font-size: 22px;
   }
 }
