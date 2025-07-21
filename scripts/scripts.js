@@ -14,6 +14,7 @@ import {
   getMetadata,
   buildBlock,
 } from './aem.js';
+import { decoratePartners } from './utils.js';
 
 const LANGUAGES = new Set(['en', 'fr']);
 let language;
@@ -329,3 +330,4 @@ export const NX_ORIGIN = branch === 'local' || origin.includes('localhost') ? 'h
     import(`${NX_ORIGIN}/public/plugins/exp/exp.js`);
   }
 }());
+decoratePartners(document);
