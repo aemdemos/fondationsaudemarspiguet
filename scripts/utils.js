@@ -41,7 +41,7 @@ export function applyFadeUpAnimation(targetElement, parentContainer) {
 }
 
 export function decoratePartners(doc) {
-  const contentDivs = doc.querySelectorAll('main .section.floating .default-content-wrapper');
+  const contentDivs = doc.querySelectorAll('.section.floating .default-content-wrapper');
   contentDivs.forEach((contentDiv) => {
     const clearDiv = div({ class: 'clear' });
     const clearDivInner = div({ class: 'clear' });
