@@ -24,7 +24,7 @@ export default async function decorate(block) {
     italic.replaceWith(span);
   });
 
-   // Handle underline text in quotation - remove underline and make brown
+  // Handle underline text in quotation - remove underline and make brown
   const underlines = quotation.querySelectorAll('u');
   underlines.forEach((underline) => {
     const span = document.createElement('span');

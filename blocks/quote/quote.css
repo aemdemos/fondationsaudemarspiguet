@@ -20,21 +20,22 @@
   width: 1100px;
   align-items: center;
   justify-content: center;
+ 
 }
 
-.quote blockquote p {
+.quote .quote-quotation > p:first-child {
   font-size: 40px;
   font-family: Antarctica,sans-serif;
   -webkit-font-smoothing: antialiased;
   font-weight: 400;
   line-height: normal;
   letter-spacing: 2.4px;
-  color: #1E1E1E;
   text-align: center;
   display: inline;
 }
 
-.quote .quote-quotation > p:last-child {
+
+.quote .quote-quotation > p:last-child:not(:only-child) {
   color: #947F5F;
   font-size: 20px;
   font-weight: 400;
