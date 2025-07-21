@@ -40,7 +40,7 @@ export function applyFadeUpAnimation(targetElement, parentContainer) {
   observer.observe(targetWrapper);
 }
 
-export function decoratePartners(doc){
+export function decoratePartners(doc) {
   const contentDivs = doc.querySelectorAll('main .section.floating .default-content-wrapper');
   contentDivs.forEach((contentDiv) => {
     const clearDiv = div({ class: 'clear' });
@@ -62,6 +62,6 @@ export function decoratePartners(doc){
     if (h2) {
       headingWrapper.appendChild(h2);
     }
-    contentDiv.append(headingWrapper, contentWrapper, clearDiv)
+    contentDiv.append(headingWrapper, contentWrapper, clearDiv);
   });
 }

@@ -390,7 +390,7 @@ main img {
 
 /* sections */
 main>.section {
-  margin: 40px 0;
+  margin: 80px 0;
 }
 
 main>.section>div {
@@ -414,10 +414,6 @@ main .section.cream-bg {
 
 main .section.light-grey-bg {
   background-color: var(--news-sophis-bg-intro);
-}
-
- main .section {
-  padding: 80px 0;
 }
 
  main .section.floating {
