@@ -136,7 +136,11 @@ function setMainHeightVar(headerEle, doc) {
     const pathSegments = getPathSegments();
     const isHomePage = pathSegments.length === 0 || (pathSegments.length === 1 && ['en', 'fr'].includes(pathSegments[0]));
     if (!isHomePage) {
-      mainEle.style.marginTop = `${headerHeight}px`;
+      // Only update if the height has actually changed to avoid unnecessary updates
+      const currentMarginTop = parseInt(mainEle.style.marginTop, 10) || 0;
+      if (currentMarginTop !== headerHeight) {
+        mainEle.style.marginTop = `${headerHeight}px`;
+      }
     }
   }
 }
@@ -146,9 +150,17 @@ function waitForHeaderHeight(block) {
 
   if (headerEle) {
     setMainHeightVar(headerEle, document); // Initial call
+
+    // Use requestAnimationFrame for smooth updates synchronized with browser rendering
+    let resizeRequestId;
     window.addEventListener('resize', () => {
-      setMainHeightVar(headerEle, document); // On resize
-    }); // Recalculate on resize
+      if (resizeRequestId) {
+        cancelAnimationFrame(resizeRequestId);
+      }
+      resizeRequestId = requestAnimationFrame(() => {
+        setMainHeightVar(headerEle, document);
+      });
+    });
   } else {
     setTimeout(() => waitForHeaderHeight(block), 100); // Retry if header not yet in DOM
   }
