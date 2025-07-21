@@ -163,6 +163,7 @@ export function decorateMain(main) {
   decorateHeadings(main);
   decorateSections(main);
   decorateBlocks(main);
+  decoratePartners(main);
 }
 
 /**
@@ -330,4 +331,4 @@ export const NX_ORIGIN = branch === 'local' || origin.includes('localhost') ? 'h
     import(`${NX_ORIGIN}/public/plugins/exp/exp.js`);
   }
 }());
-decoratePartners(document);
+
