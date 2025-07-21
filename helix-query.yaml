@@ -4,10 +4,6 @@ indices:
       - '/**'
     exclude:
       - '/**.json'
-      - '/en/fondation-pour-les-arbres-projets/**'
-      - '/fr/fondation-pour-les-arbres-projets/**'
-      - '/en/fondation-pour-les-arbres-news/**'
-      - '/fr/fondation-pour-les-arbres-actualites/**'
       - '/drafts/**'
       - '/nav'
       - '/**/nav'
