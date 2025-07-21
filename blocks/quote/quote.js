@@ -3,6 +3,37 @@ export default async function decorate(block) {
   const blockquote = document.createElement('blockquote');
   // decorate quotation
   quotation.className = 'quote-quotation';
+
+  // Handle bold text in quotation - remove bold and make brown
+  const bolds = quotation.querySelectorAll('strong, b');
+  bolds.forEach((bold) => {
+    const span = document.createElement('span');
+    span.innerHTML = bold.innerHTML;
+    span.style.color = '#947F5F';
+    span.style.fontWeight = 'normal';
+    bold.replaceWith(span);
+  });
+
+  // Handle italic text in quotation - remove italics and make green
+  const italics = quotation.querySelectorAll('em, i');
+  italics.forEach((italic) => {
+    const span = document.createElement('span');
+    span.innerHTML = italic.innerHTML;
+    span.style.color = '#6b7e7c';
+    span.style.fontStyle = 'normal';
+    italic.replaceWith(span);
+  });
+
+   // Handle underline text in quotation - remove underline and make brown
+  const underlines = quotation.querySelectorAll('u');
+  underlines.forEach((underline) => {
+    const span = document.createElement('span');
+    span.innerHTML = underline.innerHTML;
+    span.style.color = '#695D5B';
+    span.style.textDecoration = 'none';
+    underline.replaceWith(span);
+  });
+
   blockquote.append(quotation);
   // decoration attribution
   if (attribution) {
@@ -18,23 +49,4 @@ export default async function decorate(block) {
 
   block.innerHTML = '';
   block.append(blockquote);
-
-  document.querySelectorAll('.block').forEach((currentBlock) => {
-  // Add .colourful class if needed
-    if (!currentBlock.classList.contains('colourful') || currentBlock.textContent.includes('colourful')) {
-      currentBlock.classList.add('colourful');
-    }
-
-    // If .colourful, convert h4, h5, h6 to p and add color classes
-    if (currentBlock.classList.contains('colourful')) {
-      ['h4', 'h5', 'h6'].forEach((tag) => {
-        currentBlock.querySelectorAll(tag).forEach((el) => {
-          const p = document.createElement('p');
-          p.innerHTML = el.innerHTML;
-          p.classList.add(`color-${tag}`);
-          el.parentNode.replaceChild(p, el);
-        });
-      });
-    }
-  });
 }

@@ -11,10 +11,6 @@
   background-color: #d8d7d0;
 }
 
-.colourful .color-h4 { color: #6b7e7c !important; }
-.colourful .color-h5 { color: #525252 !important; }
-.colourful .color-h6 { color: #947F5F !important; }
-
 .quote-quotation {
   text-align: center;
   margin-left: auto;
@@ -38,7 +34,7 @@
   display: inline;
 }
 
-.colourful:not(.no-quoter) .quote-quotation > p:last-child {
+.quote .quote-quotation > p:last-child {
   color: #947F5F;
   font-size: 20px;
   font-weight: 400;
