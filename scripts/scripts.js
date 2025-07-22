@@ -14,7 +14,7 @@ import {
   getMetadata,
   buildBlock,
 } from './aem.js';
-import { decoratePartners } from './utils.js';
+import { decoratePartnersCard } from './utils.js';
 
 const LANGUAGES = new Set(['en', 'fr']);
 let language;
