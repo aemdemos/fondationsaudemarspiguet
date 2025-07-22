@@ -40,6 +40,7 @@
   margin: 0;
 }
 
+
 .cards.listing .cards-card-body a:hover {
   cursor: pointer;
   text-decoration: none;
@@ -89,6 +90,11 @@
   max-height: 50px;
   width: auto;
   max-width: 150px !important;
+}
+
+.cards.listing .cards-card-body .cards-image-container .cards-card-image img {
+  min-width: 230px;
+  min-height: 225px;
 }
 
 @media (width > 600px ){
