@@ -8,10 +8,10 @@ import {
 } from '../../scripts/aem.js';
 
 async function getProjectsdata() {
-  const rawProducts = await ffetch(`/${getLanguage()}/${getLanguage() === 'en' ? 'fondation-pour-les-arbres-projects' : 'fondation-pour-les-arbres-nos-projets'}/projects-index.json`)
+  const rawProjects = await ffetch(`/${getLanguage()}/${getLanguage() === 'en' ? 'fondation-pour-les-arbres-projects' : 'fondation-pour-les-arbres-nos-projets'}/projects-index.json`)
     .chunks(1000)
     .all();
-  return rawProducts;
+  return rawProjects;
 }
 
 export default async function decorate(doc) {
