@@ -24,31 +24,36 @@ export default function decorate(block) {
   });
   block.textContent = '';
   block.append(ul);
-  if (block.classList.contains('listing')) {
+  if(block.classList.contains('listing')) {
     const cardsList = block.querySelectorAll('ul li');
     cardsList.forEach((listItem) => {
       const cardImage = listItem.querySelector('.cards-card-image');
       const cardBody = listItem.querySelector('.cards-card-body');
-      const cardImageWrapper = div({ class: 'cards-image-container' });
-      const cardImageLogo = div({ class: 'cards-image-logo' });
+      const cardLogo = listItem.querySelector('.cards-card-body p img');
+      const cardImageWrapper = div({class: 'cards-image-container'});
+      const cardImageLogo = div({class: 'cards-image-logo'});
+      if (cardLogo) {
+        cardImageLogo.append(cardLogo);
+      }
       cardImageWrapper.append(cardImage, cardImageLogo);
       const link = cardBody.querySelector('p a');
-      if (link) {
+      if(link) {
         cardBody.innerHTML = '';
         const heading = h2(link.textContent);
         link.innerHTML = '';
         link.classList.remove('button', 'primary');
         link.append(cardImageWrapper, heading);
         cardBody.append(link);
-      } else {
+      }
+      else {
         const titlePara = cardBody.querySelector('p strong');
-        if (titlePara) {
+        if(titlePara) {
           const heading = h2(titlePara.textContent);
           cardBody.innerHTML = '';
           cardBody.classList.add('no-link');
           cardBody.append(cardImageWrapper, heading);
         }
       }
-    });
+    })
   }
 }
