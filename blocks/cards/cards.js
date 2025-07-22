@@ -30,8 +30,8 @@ export default function decorate(block) {
       const cardImage = listItem.querySelector('.cards-card-image');
       const cardBody = listItem.querySelector('.cards-card-body');
       const cardLogo = listItem.querySelector('.cards-card-body p img');
-      const cardImageWrapper = div( {class: 'cards-image-container'} );
-      const cardImageLogo = div( {class: 'cards-image-logo'} );
+      const cardImageWrapper = div({ class: 'cards-image-container' });
+      const cardImageLogo = div({ class: 'cards-image-logo' });
       if (cardLogo) {
         cardImageLogo.append(cardLogo);
       }
