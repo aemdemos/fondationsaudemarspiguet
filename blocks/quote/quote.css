@@ -44,6 +44,26 @@
   display: block;
 }
 
+/* Style italic text in quotation - remove italics and make green */
+.quote .quote-quotation em,
+.quote .quote-quotation i {
+  color: #6b7e7c;
+  font-style: normal;
+}
+
+/* Style underline text in quotation - remove underline and make brown */
+.quote .quote-quotation u {
+  color: #695D5B;
+  text-decoration: none;
+}
+
+/* Style bold text in quotation - remove bold and make grey */
+.quote .quote-quotation strong,
+.quote .quote-quotation b {
+  color: #947F5F;
+  font-weight: normal;
+}
+
 @media (width >= 900px) {
   .quote blockquote {
     padding: 100px 80px;
