@@ -29,7 +29,7 @@ async function googleMapLoader(nonce, locale) {
   const mapScript = document.createElement('script');
   // TODO: Replace with your development API key that allows localhost
   // For production, use an API key restricted to your domain
-  const apiKey = 'AIzaSyByG84JqtyiGaS_SUF4ruHrdIjQgM01t9U'; // Update this key
+  const apiKey = 'AIzaSyB_b3L2RUs0MUbtDZH7ORae1gswT03z4AY'; // Update this key
   mapScript.src = `https://maps.googleapis.com/maps/api/js?key=${apiKey}&callback=initMap&language=${locale}&loading=async`;
   mapScript.defer = true;
   mapScript.async = true;
