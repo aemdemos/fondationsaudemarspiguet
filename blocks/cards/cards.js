@@ -5,6 +5,8 @@ import {
 } from '../../scripts/dom-helpers.js';
 
 export default function decorate(block) {
+  console.log(block);
+  
   /* change to ul, li */
   const ul = document.createElement('ul');
   [...block.children].forEach((row) => {
@@ -22,7 +24,6 @@ export default function decorate(block) {
     moveInstrumentation(img, optimizedPic.querySelector('img'));
     img.closest('picture').replaceWith(optimizedPic);
   });
-  block.textContent = '';
   block.append(ul);
   if (block.classList.contains('listing')) {
     const cardsList = block.querySelectorAll('ul li');
