@@ -416,20 +416,20 @@ main .section.light-grey-bg {
   background-color: var(--news-sophis-bg-intro);
 }
 
- main .section.floating {
+ main .section.float-right {
   padding: 65px 0 50px;
   margin: 0;
 }
 
- main .section.floating .default-content-wrapper {
+ main .section.float-right .default-content-wrapper {
   color: var(--text-color);
 }
 
- main .section.floating .default-content-wrapper .heading-wrapper {
+ main .section.float-right .default-content-wrapper .heading-wrapper {
   width: calc((((100% - (12 * 30px)) / 12) * 3) + (2 * 30px));
 }
 
- main .section.floating .default-content-wrapper .heading-wrapper h1{
+ main .section.float-right .default-content-wrapper .heading-wrapper h1{
   float: left;
   position: relative;
   margin: 15px;
@@ -443,20 +443,20 @@ main .section.light-grey-bg {
   letter-spacing: .08em;
 }
 
- main .section.floating .default-content-wrapper .content-wrapper{
+ main .section.float-right .default-content-wrapper .content-wrapper{
   width: calc((((100% - (12 * 30px)) / 12) * 12) + (11 * 30px));
   float: right;
   margin: 15px;
 }
 
- main .section.floating .default-content-wrapper .content-wrapper ul li{
+ main .section.float-right .default-content-wrapper .content-wrapper ul li{
   list-style: none;
   padding-left: 120px;
   position: relative;
   margin-bottom: 12px;
 }
 
- main .section.floating .default-content-wrapper .clear {
+ main .section.float-right .default-content-wrapper .clear {
   clear: both;
 }
 
@@ -478,11 +478,11 @@ main .section.light-grey-bg {
     font-size: var(--heading-font-size-xl);
   }
 
-   main .section.floating .default-content-wrapper .heading-wrapper{
+   main .section.float-right .default-content-wrapper .heading-wrapper{
     width: calc((((100% - (12*30px))/12)*9) + (8 * 30px));
   }
 
-   main .section.floating .default-content-wrapper .content-wrapper{
+   main .section.float-right .default-content-wrapper .content-wrapper{
     width: calc((((100% - (12*30px))/12)*9) + (8 * 30px));
   }
 }

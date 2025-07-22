@@ -163,7 +163,7 @@ export function decorateMain(main) {
   decorateHeadings(main);
   decorateSections(main);
   decorateBlocks(main);
-  decoratePartners(main);
+  decoratePartnersCard(main);
 }
 
 /**
