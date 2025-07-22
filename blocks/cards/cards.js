@@ -45,13 +45,13 @@ export default function decorate(block) {
         link.append(cardImageWrapper, heading);
         cardBody.append(link);
       } else {
-          const titlePara = cardBody.querySelector('p strong');
-          if (titlePara) {
-            const heading = h2(titlePara.textContent);
-            cardBody.innerHTML = '';
-            cardBody.classList.add('no-link');
-            cardBody.append(cardImageWrapper, heading);
-          }
+        const titlePara = cardBody.querySelector('p strong');
+        if (titlePara) {
+          const heading = h2(titlePara.textContent);
+          cardBody.innerHTML = '';
+          cardBody.classList.add('no-link');
+          cardBody.append(cardImageWrapper, heading);
+        }
       }
     });
   }
