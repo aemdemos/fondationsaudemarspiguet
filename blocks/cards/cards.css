@@ -84,6 +84,13 @@
   align-items: center;
 }
 
+.cards.listing .cards-image-logo img {
+  padding: 10px;
+  max-height: 50px;
+  width: auto;
+  max-width: 150px !important;
+}
+
 @media (width > 600px ){
   .cards.listing > ul {
     display: grid;
