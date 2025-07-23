@@ -461,6 +461,24 @@ main .section.light-grey-bg {
   margin-bottom: 12px;
 }
 
+main .section.float-right .default-content-wrapper .content-wrapper ul li::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  background-color: #947F5F;
+  font-size: 20px;
+  line-height: 20px;
+  position: absolute;
+  top: 10px;
+  left: 100px;
+  border-radius: 500px;
+}
+
+main .section.float-right .default-content-wrapper .content-wrapper ul li em {
+  color: var(--site-color);
+  font-style: unset;
+}
+
  main .section.float-right .default-content-wrapper .clear {
   clear: both;
 }
