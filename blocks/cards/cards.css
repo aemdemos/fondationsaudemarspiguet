@@ -101,7 +101,7 @@
   min-height: 225px;
 }
 
-@media (width > 600px ){
+@media (width >= 600px ){
   .cards.listing > ul {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -109,7 +109,7 @@
   }
 }
 
-@media (width > 900px ){
+@media (width >= 900px ){
   .cards.listing > ul {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
