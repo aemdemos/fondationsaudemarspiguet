@@ -150,13 +150,11 @@ function waitForHeaderHeight(block) {
 
     // Use ResizeObserver for more reliable header height change detection
     if (window.ResizeObserver) {
-      const resizeObserver = new ResizeObserver((entries) => {
-        for (const entry of entries) {
-          // Add a small delay to ensure header has finished resizing
-          setTimeout(() => {
-            setMainHeightVar(headerEle, document);
-          }, 10);
-        }
+      const resizeObserver = new ResizeObserver(() => {
+        // Add a small delay to ensure header has finished resizing
+        setTimeout(() => {
+          setMainHeightVar(headerEle, document);
+        }, 10);
       });
       resizeObserver.observe(headerEle);
     }
@@ -168,10 +166,8 @@ function waitForHeaderHeight(block) {
       if (resizeTimeout) {
         clearTimeout(resizeTimeout);
       }
-      
       // Immediate update
       setMainHeightVar(headerEle, document);
-      
       // Delayed update to catch any late height changes
       resizeTimeout = setTimeout(() => {
         setMainHeightVar(headerEle, document);
