@@ -27,8 +27,10 @@ export default async function decorate(doc) {
   const $newsListing = div({ class: 'news-listing' });
   $section.append($filterContainer, $newsListing);
   const placeholders = await fetchPlaceholders(`${getLanguage()}`);
+  console.log(placeholders);
 
   const getNews = await getNewsdata();
+  console.log(getNews);
 
   $main.append($section);
 }
