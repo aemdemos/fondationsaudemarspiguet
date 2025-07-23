@@ -47,21 +47,15 @@ export function decoratePartnersCard(doc) {
     const clearDivInner = div({ class: 'clear' });
     const headingWrapper = div({ class: 'heading-wrapper' });
     const contentWrapper = div({ class: 'content-wrapper' });
-    const contentPara = contentDiv.querySelector('p');
-    const contentUl = contentDiv.querySelector('ul');
-    contentWrapper.appendChild(contentPara);
-    if (contentUl) {
-      contentWrapper.appendChild(contentUl);
-    }
+    const children = Array.from(contentDiv.children);
+    children.forEach((child) => {
+      if (child.tagName === 'H1' || child.tagName === 'H2') {
+        headingWrapper.appendChild(child);
+      } else {
+        contentWrapper.appendChild(child);
+      }
+    });
     contentWrapper.appendChild(clearDivInner);
-    const h1 = contentDiv.querySelector('h1');
-    const h2 = contentDiv.querySelector('h2');
-    if (h1) {
-      headingWrapper.appendChild(h1);
-    }
-    if (h2) {
-      headingWrapper.appendChild(h2);
-    }
     contentDiv.append(headingWrapper, contentWrapper, clearDiv);
   });
 }
