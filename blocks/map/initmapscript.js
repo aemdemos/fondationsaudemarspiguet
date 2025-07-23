@@ -13,7 +13,7 @@ var boundsswiss;
 var markerCluster;
 var infoWindows = []; 
 
-function initMap() {
+async function initMap() {
     
 var iconpointer = {
     path: google.maps.SymbolPath.CIRCLE,
@@ -50,19 +50,27 @@ var popupoption = {
 
 
 
-  var s = document.createElement("script");
-  s.type = "text/javascript";
-  s.src = '/blocks/map/infobox.js';
-  s.setAttribute("nonce", "3b3df148715c7bed4d9747306613a38e");
-  document.head.append(s);
-    
+  // Load InfoBox script and wait for it to complete
+  await new Promise((resolve, reject) => {
+    if (window.InfoBox) {
+      resolve(); // Already loaded
+      return;
+    }
+    var s = document.createElement("script");
+    s.type = "text/javascript";
+    s.src = '/blocks/map/infobox.js';
+    s.setAttribute("nonce", "3b3df148715c7bed4d9747306613a38e");
+    s.onload = resolve;
+    s.onerror = reject;
+    document.head.append(s);
+  });
     
   bounds = new google.maps.LatLngBounds();
 
   map = new google.maps.Map(document.getElementById('map'), {
     center: {lat: 46.77448320376698, lng: 8.009033203125},
     //zoom: 9,
-    
+    mapId: '5c5cdb8a2b86055061abff98',
     draggable: draggable,
     scrollwheel: false,
     mapTypeControl: false, // Désactiver le contrôle du type de carte (plan/satellite)
