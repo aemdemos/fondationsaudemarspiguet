@@ -40,7 +40,7 @@ export function applyFadeUpAnimation(targetElement, parentContainer) {
   observer.observe(targetWrapper);
 }
 
-export function decoratePartnersCard(doc) {
+export function decorateListingCards(doc) {
   const contentDivs = doc.querySelectorAll('.section.float-right .default-content-wrapper');
   contentDivs.forEach((contentDiv) => {
     const clearDiv = div({ class: 'clear' });

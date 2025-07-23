@@ -93,7 +93,7 @@
   padding: 10px;
   max-height: 50px;
   width: auto;
-  max-width: 150px !important;
+  max-width: 150px;
 }
 
 .cards.listing .cards-card-body .cards-image-container .cards-card-image img {
