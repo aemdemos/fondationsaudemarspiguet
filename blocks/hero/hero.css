@@ -46,10 +46,16 @@
 
 .hero.video div > div .video-cover { 
   padding: 0;
-  height: 100vh;
+  min-height: 60vh;
   width: 100%;
   object-fit: cover;
   overflow: hidden;
+}
+
+iframe .hero.video div > div .video-cover {
+  height: 500px;
+  max-height: 500px;
+  min-height: 500px;
 }
 
 .hero.video div > div.social-cr-wrapper {
@@ -162,15 +168,13 @@
   flex: 1;
   align-items: stretch;
   justify-content: stretch;
-  min-height: 60vh;
+  min-height: 300px;
   transform: none;
   padding: 0 !important;
   width: 100vw;
   margin-left: calc(50% - 50vw);
   margin-right: calc(50% - 50vw);
 }
-
-
 
 .hero.two-columnar.block > div > div:first-child {
   display: flex;
@@ -181,8 +185,7 @@
   order: 1;
   position: relative;
   overflow: hidden;
-  min-height: 60vh;
-  height: 60vh;
+  min-height: 300px;
 }
 
 .hero.two-columnar.block > div > div:first-child picture,
@@ -191,7 +194,8 @@
   object-fit: cover;
   object-position: 54% center;
   display: block;
-  height: 60vh;
+
+  /* height: 60vh; */
 }
 
 .hero.two-columnar.block > div > div:last-child {
@@ -206,8 +210,6 @@
   order: 2;
   position: relative;
   overflow: hidden;
-  min-height: 60vh;
-  height: 60vh;
   padding: 40px;
 }
 
@@ -224,25 +226,25 @@
   
 }
 
-@media (width >= 600px) and (width <= 900px) {
+/* @media (width >= 600px) and (width <= 900px) {
   .hero.two-columnar.block > div > div:first-child,
   .hero.two-columnar.block > div > div:last-child {
     min-height: 75vh;
     height: 75vh;
   }
-}
+} */
 
 @media (width >= 600px) {
 .hero.two-columnar.block > div {
     position: relative;
-    min-height: 0;
+    min-height: 300px;
   }
 
   .hero.two-columnar.block > div > div:first-child {
     flex: 1 1 50%;
     width: 50%;
     min-width: 0;
-    min-height: 0;
+    min-height: 300px;
     order: unset;  
   }
 
@@ -250,7 +252,7 @@
     flex: 1 1 50%;
     width: 50%;
     min-width: 0;
-    min-height: 0;
+    min-height: 300px;
     order: unset; 
     padding: 30px 20px;
   }
@@ -268,6 +270,21 @@
   }
 }
 
+@media (width >= 1200px) {
+  .hero.two-columnar.block > div {
+    height: 500px;
+    min-height: 200px;
+  }
+
+  .hero.two-columnar.block > div > div:first-child {
+    height: 500px;
+  }
+
+  .hero.two-columnar.block > div > div:last-child {
+    height: 500px;
+  }
+}
+
 @media (width <= 600px) {
   .hero.two-columnar.block > div {
     flex-direction: column;
@@ -278,18 +295,18 @@
     flex: none;
     width: 100%;
     min-width: 0;
-    min-height: 0;
     order: unset;
-    height: 50vh;
+    height: auto;
+    min-height: 250px;
   }
 
   .hero.two-columnar.block > div > div:last-child {
     flex: none;
     width: 100%;
     min-width: 0;
-    min-height: 0;
     order: unset;
-    height: 25vh;
+    height: auto;
+    min-height: 200px;
     padding: 20px 16px;
     box-sizing: border-box;
   }
@@ -297,7 +314,6 @@
   .hero.two-columnar.block > div > div:last-child p {
     max-width: 100vw;
     font-size: 24px;
-    
   }
 }
 
@@ -315,15 +331,6 @@
   margin-top: 95px;
 }
 
-/* stylelint-disable-next-line no-descending-specificity */
-.hero.two-columnar-text-image.block > div {
-  display: flex;
-  flex-direction: row;
-  align-items: stretch;
-  min-height: 420px;
-  width: 100%;
-}
-
 .hero.two-columnar-text-image.block > div > div:first-child {
   flex: 1 1 0;
   display: flex;
@@ -337,7 +344,13 @@
   background-color: #b9b8b2;
 }
 
-
+/* stylelint-disable-next-line no-descending-specificity */
+.hero.two-columnar-text-image.block > div {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  width: 100%;
+}
 
 .hero.two-columnar-text-image.block > div > div:first-child p {
   color: #6B7E7C;
@@ -351,8 +364,6 @@
   max-width: 800px;
   margin: 0;
 }
-
-
 
 /* Right column: image */
 .hero.two-columnar-text-image.block > div > div:last-child {
@@ -369,13 +380,13 @@
 .hero.two-columnar-text-image.block > div > div:last-child img,
 .hero.two-columnar-text-image.block > div > div:last-child picture {
   width: 100%;
-  height: 100%;
-  max-height: 100%;
+  aspect-ratio: 16/9;
   background: #fff;
   object-fit: cover;
   object-position: 54% center;
   display: block;
 }
+
 
 /* Responsive adjustments */
 
@@ -397,21 +408,23 @@
 
   .hero.two-columnar-text-image.block > div {
     flex-direction: row;
-    min-height: 75vh;
+    min-height: 500px;
   }
 
-  .hero.two-columnar-text-image.block > div > div:first-child,
-  .hero.two-columnar-text-image.block > div > div:last-child {
+  .hero.two-columnar-text-image.block > div > div:first-child {
     width: 100%;
     min-width: 0;
-    min-height: 0;
-    padding: 0 !important;
-    height:200vh;
+    min-height: 500px;
+    padding: 30px 20px !important;
     order: unset;
   }
 
   .hero.two-columnar-text-image.block > div > div:last-child {
-    padding: 0;
+    width: 100%;
+    min-width: 0;
+    min-height: 500px;
+    padding: 0 !important;
+    order: unset;
   }
 
   .hero.two-columnar-text-image.block > div > div:last-child img,
@@ -420,7 +433,7 @@
     z-index: auto !important;
     inset: unset !important;
     width: 100%;
-    height: 200vh;
+    aspect-ratio: 4/3;
     object-fit: cover;
     object-position: 54% center;
     display: block;
@@ -453,8 +466,8 @@
     min-width: 0;
     min-height: 0;
     order: 2;
-    height: 75vh;
-    padding: 20px 16px;
+    height: auto;
+    padding: 30px 20px;
     box-sizing: border-box;
   }
 
@@ -470,7 +483,7 @@
     min-width: 0;
     min-height: 0;
     order: 1;
-    height: 25vh;
+    height: 300px;
   }
 
   
