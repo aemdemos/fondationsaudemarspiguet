@@ -39,3 +39,23 @@ export function applyFadeUpAnimation(targetElement, parentContainer) {
 
   observer.observe(targetWrapper);
 }
+
+export function decorateListingCards(doc) {
+  const contentDivs = doc.querySelectorAll('.section.float-right .default-content-wrapper');
+  contentDivs.forEach((contentDiv) => {
+    const clearDiv = div({ class: 'clear' });
+    const clearDivInner = div({ class: 'clear' });
+    const headingWrapper = div({ class: 'heading-wrapper' });
+    const contentWrapper = div({ class: 'content-wrapper' });
+    const children = Array.from(contentDiv.children);
+    children.forEach((child) => {
+      if (child.tagName === 'H1' || child.tagName === 'H2') {
+        headingWrapper.appendChild(child);
+      } else {
+        contentWrapper.appendChild(child);
+      }
+    });
+    contentWrapper.appendChild(clearDivInner);
+    contentDiv.append(headingWrapper, contentWrapper, clearDiv);
+  });
+}
