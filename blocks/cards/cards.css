@@ -18,6 +18,10 @@
   background-color: var(--background-color);
 }
 
+.cards.listing > ul > li {
+  background-color: unset;
+}
+
 .cards .cards-card-body {
   margin: 16px;
 }

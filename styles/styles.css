@@ -409,6 +409,62 @@ main > .section.extra-padding {
   margin: 0;
 }
 
+main .section.cream-bg {
+  background-color: var(--team-bg-page);
+}
+
+main .section.section.cream-bg.cards-container {
+  padding: 80px 0;
+}
+
+main .section.light-grey-bg {
+  background-color: var(--news-sophis-bg-intro);
+}
+
+ main .section.float-right {
+  padding: 65px 0 50px;
+  margin: 0;
+}
+
+ main .section.float-right .default-content-wrapper {
+  color: var(--text-color);
+}
+
+ main .section.float-right .default-content-wrapper .heading-wrapper {
+  width: calc((((100% - (12 * 30px)) / 12) * 3) + (2 * 30px));
+}
+
+ main .section.float-right .default-content-wrapper .heading-wrapper h1{
+  float: left;
+  position: relative;
+  margin: 15px;
+  box-sizing: border-box;
+  color: var(--site-color);
+  text-transform: uppercase;
+  font-weight: 400;
+  font-feature-settings: 'clig' 0;
+  font-style: normal;
+  line-height: 1.2em;
+  letter-spacing: .08em;
+}
+
+ main .section.float-right .default-content-wrapper .content-wrapper{
+  width: calc((((100% - (12 * 30px)) / 12) * 12) + (11 * 30px));
+  float: right;
+  margin: 15px;
+}
+
+ main .section.float-right .default-content-wrapper .content-wrapper ul li{
+  list-style: none;
+  padding-left: 120px;
+  position: relative;
+  margin-bottom: 12px;
+}
+
+ main .section.float-right .default-content-wrapper .clear {
+  clear: both;
+}
+
 @media (width>=900px) {
   main > .section.extra-padding {
     padding: 100px 0;
@@ -425,6 +481,14 @@ main > .section.extra-padding {
 
   main h2 {
     font-size: var(--heading-font-size-xl);
+  }
+
+  main .section.float-right .default-content-wrapper .heading-wrapper{
+    width: calc((((100% - (12*30px))/12)*9) + (8 * 30px));
+  }
+
+   main .section.float-right .default-content-wrapper .content-wrapper{
+    width: calc((((100% - (12*30px))/12)*9) + (8 * 30px));
   }
 }
 

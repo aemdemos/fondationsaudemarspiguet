@@ -39,3 +39,29 @@ export function applyFadeUpAnimation(targetElement, parentContainer) {
 
   observer.observe(targetWrapper);
 }
+
+export function decoratePartnersCard(doc) {
+  const contentDivs = doc.querySelectorAll('.section.float-right .default-content-wrapper');
+  contentDivs.forEach((contentDiv) => {
+    const clearDiv = div({ class: 'clear' });
+    const clearDivInner = div({ class: 'clear' });
+    const headingWrapper = div({ class: 'heading-wrapper' });
+    const contentWrapper = div({ class: 'content-wrapper' });
+    const contentPara = contentDiv.querySelector('p');
+    const contentUl = contentDiv.querySelector('ul');
+    contentWrapper.appendChild(contentPara);
+    if (contentUl) {
+      contentWrapper.appendChild(contentUl);
+    }
+    contentWrapper.appendChild(clearDivInner);
+    const h1 = contentDiv.querySelector('h1');
+    const h2 = contentDiv.querySelector('h2');
+    if (h1) {
+      headingWrapper.appendChild(h1);
+    }
+    if (h2) {
+      headingWrapper.appendChild(h2);
+    }
+    contentDiv.append(headingWrapper, contentWrapper, clearDiv);
+  });
+}
