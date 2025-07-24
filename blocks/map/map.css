@@ -96,10 +96,13 @@ p.carte_box_link a {
 }
 
 .custom-zoom-button {
-    width: 29px;
-    height: 29px;
     position: absolute;
-    cursor: pointer
+    cursor: pointer;
+    z-index: 1000;
+}
+
+.custom-zoom-button:hover {
+    opacity: 0.8;
 }
 
 #zoom-in {
@@ -125,27 +128,14 @@ p.carte_box_link a {
     background-repeat: no-repeat
 }
 
-body.ap-arbres #zoom-in::after {
-    background-image: url(/img/btn_arbres_loupe.svg)
+gmp-internal-camera-control {
+    display: none !important;
 }
 
-body.ap-biencommun #zoom-in::after {
-    background-image: url(/img/btn_bien_loupe.svg)
+div.gmnoprint {
+    display: none !important;
 }
 
-body.ap-arbres #zoom-in {
-    background-image: url(/img/btn_arbres_plus.svg)
+img[alt="Google"] {
+    display: none !important;
 }
-
-body.ap-biencommun #zoom-in {
-    background-image: url(/img/btn_bien_plus.svg)
-}
-
-body.ap-arbres #zoom-out {
-    background-image: url(/img/btn_arbres_moins.svg)
-}
-
-body.ap-biencommun #zoom-out {
-    background-image: url(/img/btn_bien_moins.svg)
-}
-
