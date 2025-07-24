@@ -426,11 +426,6 @@ main .section.light-grey-bg {
   margin: 0;
 }
 
-main .section.light-grey-bg .default-content-wrapper {
-    max-width: 1440px;
-    padding: 0 80px;
-}
-
  main .section.float-right .default-content-wrapper {
   color: var(--text-color);
 }
@@ -591,7 +586,12 @@ main .section.light-grey-bg:has(.cards-wrapper) {
 
 main .section.light-grey-bg .cards-wrapper {
   padding: 50px 80px;
-  max-width: 1440px;
+  max-width: 1200px;
+}
+
+main .section.light-grey-bg:has(.cards-wrapper) .default-content-wrapper {
+    max-width: 1200px;
+    padding: 0 80px;
 }
 
 main .section.light-grey-bg .default-content-wrapper h2 {
@@ -601,6 +601,7 @@ main .section.light-grey-bg .default-content-wrapper h2 {
 /* Default button styles */
 main .section.light-grey-bg .default-content-wrapper .button-container {
   text-align: center;
+  margin: 0 auto;
 }
 
 main .section.light-grey-bg .default-content-wrapper p.button-container a.button {
