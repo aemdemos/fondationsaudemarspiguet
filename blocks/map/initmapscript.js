@@ -2992,14 +2992,35 @@ var popupoption = {
 }
  
 document.addEventListener('DOMContentLoaded', function(){
+        
+        // Debug: Check if category links exist
+        setTimeout(() => {
+            const categoryLinks = document.querySelectorAll('a.works_categorylink');
+            console.log('Found category links:', categoryLinks.length);
+            categoryLinks.forEach((link, index) => {
+                console.log(`Link ${index}:`, link, 'data-categoryid:', link.getAttribute('data-categoryid'));
+            });
+            
+            if (categoryLinks.length === 0) {
+                console.log('No category links found! Checking for cards...');
+                const cards = document.querySelectorAll('.cards.map-category');
+                console.log('Found map-category cards:', cards.length);
+                const allAnchors = document.querySelectorAll('.cards.map-category a');
+                console.log('Found anchors in map-category cards:', allAnchors.length);
+            }
+        }, 2000); // Wait 2 seconds for cards to load
 
          $(document).on("click", "a.works_categorylink", function(e){
+        console.log('jQuery: Category link clicked!', this);
         e.preventDefault();
+        // Let event bubble normally
 
         var myslectcat=$(this).data('categoryid');
+        console.log('Selected category:', myslectcat);
 
         $('a.works_categorylink').removeClass("active");
         $(this).addClass("active");
+        console.log('Active class updated');
 
         bounds = new google.maps.LatLngBounds();
         markerstocluster = [];
@@ -3037,5 +3058,69 @@ document.addEventListener('DOMContentLoaded', function(){
                
 
         }); 
+
+        // Alternative vanilla JS event handler in case jQuery doesn't work
+        document.addEventListener('click', function(e) {
+            console.log('Document click detected on:', e.target);
+            
+            // Check for various possible targets
+            const clickedAnchor = e.target.closest('a.works_categorylink') || 
+                                 e.target.closest('a[data-categoryid]') ||
+                                 (e.target.tagName === 'A' && e.target.classList.contains('works_categorylink'));
+            
+            if (clickedAnchor) {
+                console.log('Vanilla JS: Category link clicked!', clickedAnchor);
+                e.preventDefault();
+                // Don't stop propagation - we want this to work
+                
+                const clickedLink = clickedAnchor; // Use the found anchor
+                const myslectcat = clickedLink.getAttribute('data-categoryid');
+                console.log('Vanilla JS: Selected category:', myslectcat);
+                
+                // Remove active class from all
+                document.querySelectorAll('a.works_categorylink').forEach(link => {
+                    link.classList.remove('active');
+                });
+                
+                // Add active class to clicked
+                clickedLink.classList.add('active');
+                console.log('Vanilla JS: Active class updated');
+                
+                // Trigger the same map filtering logic
+                if (window.map && window.markers && window.markerCluster) {
+                    bounds = new google.maps.LatLngBounds();
+                    markerstocluster = [];
+                    markerCluster.clearMarkers();
+                         
+                   // Close all open popups
+                    infoWindows.forEach(function(elem) {
+                        if (elem) {
+                            elem.close();
+                        }
+                    });         
+
+                    markers.forEach(function(marker){
+                        var catmarkers = marker.category;
+
+                        if(myslectcat == "all"){
+                            marker.setMap(map);
+                            markerstocluster.push(marker);
+                            bounds.extend(marker.position);
+                        } else {
+                            if(catmarkers.search(myslectcat) != -1 ){ 
+                                marker.setMap(map);
+                                markerstocluster.push(marker);
+                                bounds.extend(marker.position);
+                            } else {
+                                marker.setMap(null);
+                            }
+                        }
+                    });
+                    markerCluster.addMarkers(markerstocluster);
+                    map.fitBounds(bounds);
+                    console.log('Vanilla JS: Map filtering completed');
+                }
+            }
+        });
 
 });

@@ -116,3 +116,21 @@
     gap: 30px;
   }
 }
+
+/* Map category filter styling */
+.cards.map-category a.works_categorylink {
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  transition: opacity 0.3s ease;
+}
+
+.cards.map-category a.works_categorylink:hover {
+  opacity: 0.7;
+}
+
+.cards.map-category a.works_categorylink.active {
+  opacity: 1;
+  background-color: rgba(107 126 124 / 10%);
+}

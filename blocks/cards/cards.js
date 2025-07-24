@@ -1,3 +1,4 @@
+/* global google */
 import { createOptimizedPicture } from '../../scripts/aem.js';
 import { moveInstrumentation } from '../../scripts/scripts.js';
 import {
@@ -24,6 +25,128 @@ export default function decorate(block) {
   });
   block.textContent = '';
   block.append(ul);
+  // Special handling for map-category variant
+  if (block.classList.contains('map-category')) {
+    console.log('Processing map-category cards block:', block);
+    const categoryMapping = {
+      'View all': { categoryId: 'all', isActive: true },
+      conservation: { categoryId: 'category_3' },
+      awareness: { categoryId: 'category_4' },
+      preservation: { categoryId: 'category_5' },
+      OD: { categoryId: 'category_10' },
+    };
+
+    ul.querySelectorAll('li').forEach((li) => {
+      const cardBodies = li.querySelectorAll('.cards-card-body');
+      if (cardBodies.length >= 2) {
+        const iconContainer = cardBodies[0];
+        const textContainer = cardBodies[1];
+
+        // Check if this is the "View all" card (no icon)
+        const textContent = textContainer.textContent.trim();
+        const icon = iconContainer.querySelector('img');
+
+        let categoryInfo;
+        if (textContent === 'View all') {
+          categoryInfo = categoryMapping['View all'];
+        } else if (icon) {
+          const iconName = icon.getAttribute('data-icon-name');
+          categoryInfo = categoryMapping[iconName];
+        }
+
+        if (categoryInfo) {
+          console.log('Creating anchor for category:', categoryInfo);
+          const anchor = document.createElement('a');
+          anchor.href = '#';
+          anchor.className = 'works_categorylink';
+          anchor.setAttribute('data-categoryid', categoryInfo.categoryId);
+
+          if (categoryInfo.isActive) {
+            anchor.classList.add('active');
+          }
+
+          // Add immediate click handler with map filtering logic
+          anchor.addEventListener('click', (e) => {
+            console.log('Direct anchor click handler triggered');
+            e.preventDefault();
+
+            const myslectcat = anchor.getAttribute('data-categoryid');
+            console.log('Selected category:', myslectcat);
+
+            // Remove active class from all category links
+            document.querySelectorAll('a.works_categorylink').forEach((link) => {
+              link.classList.remove('active');
+            });
+
+            // Add active class to clicked anchor
+            anchor.classList.add('active');
+            console.log('Active class updated');
+
+            // Check if map variables exist and run filtering logic
+            if (window.map && window.markers && window.markerCluster && window.bounds) {
+              console.log('Running map filtering logic...');
+
+              window.bounds = new google.maps.LatLngBounds();
+              const markerstocluster = [];
+              window.markerCluster.clearMarkers();
+
+              // Close all open popups
+              window.infoWindows.forEach((elem) => {
+                if (elem) {
+                  elem.close();
+                }
+              });
+
+              window.markers.forEach((marker) => {
+                const catmarkers = marker.category;
+
+                if (myslectcat === 'all') {
+                  marker.setMap(window.map);
+                  markerstocluster.push(marker);
+                  window.bounds.extend(marker.position);
+                } else if (catmarkers.search(myslectcat) !== -1) {
+                  marker.setMap(window.map);
+                  markerstocluster.push(marker);
+                  window.bounds.extend(marker.position);
+                } else {
+                  marker.setMap(null);
+                }
+              });
+
+              window.markerCluster.addMarkers(markerstocluster);
+              window.map.fitBounds(window.bounds);
+              console.log('Map filtering completed - filtered to:', myslectcat);
+            } else {
+              console.log('Map variables not available:', {
+                map: !!window.map,
+                markers: !!window.markers,
+                markerCluster: !!window.markerCluster,
+                bounds: !!window.bounds,
+              });
+            }
+          });
+
+          console.log('Created anchor:', anchor);
+
+          // For "View all" (first card), wrap the p element
+          if (categoryInfo.categoryId === 'all') {
+            // Move all content from li into the anchor
+            while (li.firstChild) {
+              anchor.appendChild(li.firstChild);
+            }
+            // Put the anchor back into the li
+            li.appendChild(anchor);
+          } else {
+            // For other cards, wrap the entire cards-card-body that contains the icon
+            // Clone the entire iconContainer and put it in the anchor
+            anchor.appendChild(iconContainer.cloneNode(true));
+            // Replace the original iconContainer with the anchor
+            iconContainer.parentNode.replaceChild(anchor, iconContainer);
+          }
+        }
+      }
+    });
+  }
   if (block.classList.contains('listing')) {
     const cardsList = block.querySelectorAll('ul li');
     cardsList.forEach((listItem) => {
