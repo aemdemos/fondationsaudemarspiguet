@@ -5,3 +5,147 @@
     overflow: hidden;
     min-height: 100vh;
 }
+
+#map * {
+    box-shadow: none!important;
+    touch-action: none!important;
+    font-family: Antarctica, sans-serif !important;
+    letter-spacing: .05em
+}
+
+#map > div {
+    background-color: transparent!important
+}
+
+.infoBox > img {
+    position: absolute!important;
+    cursor: pointer;
+    margin: 0;
+    bottom: 10px;
+    right: 10px
+}
+
+.myboxmap {
+    background-color: var(--map-box-bg);
+    padding: 10px
+}
+
+.myboxmap::after {
+    content: "";
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    margin-left: -10px;
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 10px solid var(--map-box-bg);
+}
+
+.myboxmap img {
+    width: 220px !important;
+    height: 144px !important;
+    max-width: none !important;
+    object-fit: cover;
+}
+
+.myboxmap p {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    line-height: normal
+}
+
+
+.myboxmap p {
+    text-transform: uppercase;
+    font-size: 11px
+}
+
+.carte_box_pays,.carte_box_date,.carte_box_categorie {
+    color: #FFF
+}
+
+p.carte_box_titre {
+    font-weight: 600;
+    padding: 4px 0
+}
+
+p.carte_box_categorie {
+    font-size: 9px;
+    padding-right: 36px
+}
+
+p.carte_box_partenaires {
+    color: var(--map-box-partenaires);
+}
+
+p.carte_box_link a {
+    margin-top: 4px;
+    font-size: 11px;
+    color: var(--map-box-partenaires);
+}
+
+.carte_icone_titre {
+    text-transform: uppercase;
+    color: var(--site-color);
+    margin-bottom: 20px;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: .05em
+}
+
+.custom-zoom-button {
+    width: 29px;
+    height: 29px;
+    position: absolute;
+    cursor: pointer
+}
+
+#zoom-in {
+    top: calc(50% - 40px);
+    right: 10px;
+    background-repeat: no-repeat
+}
+
+#zoom-in::after {
+    content: '';
+    width: 29px;
+    height: 29px;
+    position: absolute;
+    top: -35px;
+    background-repeat: no-repeat;
+    background-position: center center;
+    left: -2px
+}
+
+#zoom-out {
+    top: calc(50% + 0px);
+    right: 10px;
+    background-repeat: no-repeat
+}
+
+body.ap-arbres #zoom-in::after {
+    background-image: url(/img/btn_arbres_loupe.svg)
+}
+
+body.ap-biencommun #zoom-in::after {
+    background-image: url(/img/btn_bien_loupe.svg)
+}
+
+body.ap-arbres #zoom-in {
+    background-image: url(/img/btn_arbres_plus.svg)
+}
+
+body.ap-biencommun #zoom-in {
+    background-image: url(/img/btn_bien_plus.svg)
+}
+
+body.ap-arbres #zoom-out {
+    background-image: url(/img/btn_arbres_moins.svg)
+}
+
+body.ap-biencommun #zoom-out {
+    background-image: url(/img/btn_bien_moins.svg)
+}
+

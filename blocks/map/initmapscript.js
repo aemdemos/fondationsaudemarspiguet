@@ -38,7 +38,7 @@ var popupoption = {
        }
        
       ,closeBoxMargin: "0px 0px 0px 0px"
-                ,closeBoxURL: "/img/btn_arbres_close.svg"
+                ,closeBoxURL: "/icons/btn_arbres_close.svg"
                 
       ,infoBoxClearance: new google.maps.Size(1, 1)
       ,alignBottom: true
@@ -116,7 +116,7 @@ var popupoption = {
     
   
   var myOptions = popupoption;
-  myOptions.content="<div class='myboxmap'><img src='\/users_uploads\/projets_projets-listing\/generated\/1162\/img-0422.webp?ck=2025-06-11-163735'   width='220' height='144' ><p class=\"carte_box_partenaires\">Associa\u00e7\u00e3o Projecto Vit\u00f3<\/p><p class=\"carte_box_pays\">Cape Verde<\/p><p class=\"carte_box_date\">2025 \u2192 2027<\/p><p class=\"carte_box_titre\">Implementing an organisational development action plan<\/p><p class=\"carte_box_categorie\">Organisational development<\/p><p class=\"carte_box_link\"><a href=\/en\/fondation-pour-les-arbres-projects\/implementing-an-organisational-development-action-plan>\u2192 See more<\/a><\/p><\/div>";
+  myOptions.content="<div class='myboxmap'><img src='https://content.da.live/aemdemos/fondationsaudemarspiguet/assets/images/map/projects-listing/1162\/img-0422.jpg'   width='220' height='144' ><p class=\"carte_box_partenaires\">Associa\u00e7\u00e3o Projecto Vit\u00f3<\/p><p class=\"carte_box_pays\">Cape Verde<\/p><p class=\"carte_box_date\">2025 \u2192 2027<\/p><p class=\"carte_box_titre\">Implementing an organisational development action plan<\/p><p class=\"carte_box_categorie\">Organisational development<\/p><p class=\"carte_box_link\"><a href=\/en\/fondation-pour-les-arbres-projects\/implementing-an-organisational-development-action-plan>\u2192 See more<\/a><\/p><\/div>";
 
   infoWindows[99]= new InfoBox(myOptions);
 
@@ -171,7 +171,7 @@ var popupoption = {
     
   
   var myOptions = popupoption;
-  myOptions.content="<div class='myboxmap'><img src='\/users_uploads\/projets_projets-listing\/generated\/855\/tompotanah-villages-c-blue-forests.webp?ck=2025-01-29-112711'   width='220' height='144' ><p class=\"carte_box_partenaires\">Comit\u00e9 fran\u00e7ais de l\u2019UICN<\/p><p class=\"carte_box_pays\">Multi-country<\/p><p class=\"carte_box_date\">2025 \u2192 2027<\/p><p class=\"carte_box_titre\">Support programme for biodiversity NGOs working in developing countries (ProBioDev)<\/p><p class=\"carte_box_categorie\">Conservation\/restoration | Awareness raising | Organisational development<\/p><p class=\"carte_box_link\"><a href=\/en\/fondation-pour-les-arbres-projects\/support-programme-for-biodiversity-ngos-working-in-developin>\u2192 See more<\/a><\/p><\/div>";
+  myOptions.content="<div class='myboxmap'><img src='https://content.da.live/aemdemos/fondationsaudemarspiguet/assets/images/map/projects-listing/855\/tompotanah-villages-c-blue-forests.jpg'   width='220' height='144' ><p class=\"carte_box_partenaires\">Comit\u00e9 fran\u00e7ais de l\u2019UICN<\/p><p class=\"carte_box_pays\">Multi-country<\/p><p class=\"carte_box_date\">2025 \u2192 2027<\/p><p class=\"carte_box_titre\">Support programme for biodiversity NGOs working in developing countries (ProBioDev)<\/p><p class=\"carte_box_categorie\">Conservation\/restoration | Awareness raising | Organisational development<\/p><p class=\"carte_box_link\"><a href=\/en\/fondation-pour-les-arbres-projects\/support-programme-for-biodiversity-ngos-working-in-developin>\u2192 See more<\/a><\/p><\/div>";
 
   infoWindows[70]= new InfoBox(myOptions);
 
@@ -226,7 +226,7 @@ var popupoption = {
     
   
   var myOptions = popupoption;
-  myOptions.content="<div class='myboxmap'><img src='\/users_uploads\/projets_projets-listing\/generated\/861\/site-du-programme-bamboo-lemur-4-c-sebastien-meys.webp?ck=2025-01-29-115009'   width='220' height='144' ><p class=\"carte_box_partenaires\">Helpsimus (Association fran\u00e7aise pour la sauvegarde du grand hapal\u00e9mur)<\/p><p class=\"carte_box_pays\">Madagascar<\/p><p class=\"carte_box_date\">2024 \u2192 2027<\/p><p class=\"carte_box_titre\">Stepping up protection for a thousand hectares of forest fragments housing the largest population of greater bamboo lemurs in the wild<\/p><p class=\"carte_box_categorie\">Conservation\/restoration | Awareness raising<\/p><p class=\"carte_box_link\"><a href=\/en\/fondation-pour-les-arbres-projects\/stepping-up-protection-for-a-thousand-hectares-of-forest-fra>\u2192 See more<\/a><\/p><\/div>";
+  myOptions.content="<div class='myboxmap'><img src='https://content.da.live/aemdemos/fondationsaudemarspiguet/assets/images/map/projects-listing/861\/site-du-programme-bamboo-lemur-4-c-sebastien-meys.jpg'   width='220' height='144' ><p class=\"carte_box_partenaires\">Helpsimus (Association fran\u00e7aise pour la sauvegarde du grand hapal\u00e9mur)<\/p><p class=\"carte_box_pays\">Madagascar<\/p><p class=\"carte_box_date\">2024 \u2192 2027<\/p><p class=\"carte_box_titre\">Stepping up protection for a thousand hectares of forest fragments housing the largest population of greater bamboo lemurs in the wild<\/p><p class=\"carte_box_categorie\">Conservation\/restoration | Awareness raising<\/p><p class=\"carte_box_link\"><a href=\/en\/fondation-pour-les-arbres-projects\/stepping-up-protection-for-a-thousand-hectares-of-forest-fra>\u2192 See more<\/a><\/p><\/div>";
 
   infoWindows[71]= new InfoBox(myOptions);
 
@@ -281,7 +281,7 @@ var popupoption = {
     
   
   var myOptions = popupoption;
-  myOptions.content="<div class='myboxmap'><img src='\/users_uploads\/projets_projets-listing\/generated\/869\/petites-filles-1-c-darren-cresswell.webp?ck=2025-01-29-120048'   width='220' height='144' ><p class=\"carte_box_partenaires\">The National Forest Company<\/p><p class=\"carte_box_pays\">England<\/p><p class=\"carte_box_date\">2024 \u2192 2027<\/p><p class=\"carte_box_titre\">Creating a forest for learning III<\/p><p class=\"carte_box_categorie\">Awareness raising<\/p><p class=\"carte_box_link\"><a href=\/en\/fondation-pour-les-arbres-projects\/creating-a-forest-for-learning-iii>\u2192 See more<\/a><\/p><\/div>";
+  myOptions.content="<div class='myboxmap'><img src='https://content.da.live/aemdemos/fondationsaudemarspiguet/assets/images/map/projects-listing/869\/petites-filles-1-c-darren-cresswell.jpg'   width='220' height='144' ><p class=\"carte_box_partenaires\">The National Forest Company<\/p><p class=\"carte_box_pays\">England<\/p><p class=\"carte_box_date\">2024 \u2192 2027<\/p><p class=\"carte_box_titre\">Creating a forest for learning III<\/p><p class=\"carte_box_categorie\">Awareness raising<\/p><p class=\"carte_box_link\"><a href=\/en\/fondation-pour-les-arbres-projects\/creating-a-forest-for-learning-iii>\u2192 See more<\/a><\/p><\/div>";
 
   infoWindows[72]= new InfoBox(myOptions);
 
@@ -336,7 +336,7 @@ var popupoption = {
     
   
   var myOptions = popupoption;
-  myOptions.content="<div class='myboxmap'><img src='\/users_uploads\/projets_projets-listing\/generated\/811\/animation-classe-verte-2-c-credi-ong.webp?ck=2024-11-25-161641'   width='220' height='144' ><p class=\"carte_box_partenaires\">Centre R\u00e9gional de Recherche et d\u2019\u00c9ducation pour le D\u00e9veloppement Int\u00e9gr\u00e9 (CREDI-ONG)<\/p><p class=\"carte_box_pays\">Benin<\/p><p class=\"carte_box_date\">2023 \u2192 2026<\/p><p class=\"carte_box_titre\">Resilience and adaptation to climate change in the Sitatunga Valley<\/p><p class=\"carte_box_categorie\">Conservation\/restoration | Awareness raising<\/p><p class=\"carte_box_link\"><a href=\/en\/fondation-pour-les-arbres-projects\/resilience-and-adaptation-to-climate-change-in-the-sitatunga>\u2192 See more<\/a><\/p><\/div>";
+  myOptions.content="<div class='myboxmap'><img src='https://content.da.live/aemdemos/fondationsaudemarspiguet/assets/images/map/projects-listing/811\/animation-classe-verte-2-c-credi-ong.jpg'   width='220' height='144' ><p class=\"carte_box_partenaires\">Centre R\u00e9gional de Recherche et d\u2019\u00c9ducation pour le D\u00e9veloppement Int\u00e9gr\u00e9 (CREDI-ONG)<\/p><p class=\"carte_box_pays\">Benin<\/p><p class=\"carte_box_date\">2023 \u2192 2026<\/p><p class=\"carte_box_titre\">Resilience and adaptation to climate change in the Sitatunga Valley<\/p><p class=\"carte_box_categorie\">Conservation\/restoration | Awareness raising<\/p><p class=\"carte_box_link\"><a href=\/en\/fondation-pour-les-arbres-projects\/resilience-and-adaptation-to-climate-change-in-the-sitatunga>\u2192 See more<\/a><\/p><\/div>";
 
   infoWindows[15]= new InfoBox(myOptions);
 
@@ -391,7 +391,7 @@ var popupoption = {
     
   
   var myOptions = popupoption;
-  myOptions.content="<div class='myboxmap'><img src='\/users_uploads\/projets_projets-listing\/generated\/159\/alpes-vivantes-1-c-alpes-vivantes.webp?ck=2024-11-25-155054'   width='220' height='144' ><p class=\"carte_box_partenaires\">Alpes vivantes<\/p><p class=\"carte_box_pays\">Switzerland<\/p><p class=\"carte_box_date\">2023 \u2192 2026<\/p><p class=\"carte_box_titre\">Sustainable protection of biodiversity in the Vaud Alps<\/p><p class=\"carte_box_categorie\">Conservation\/restoration | Awareness raising<\/p><p class=\"carte_box_link\"><a href=\/en\/fondation-pour-les-arbres-projects\/sustainable-protection-of-biodiversity-in-the-vaud-alps>\u2192 See more<\/a><\/p><\/div>";
+  myOptions.content="<div class='myboxmap'><img src='https://content.da.live/aemdemos/fondationsaudemarspiguet/assets/images/map/projects-listing/159\/alpes-vivantes-1-c-alpes-vivantes.jpg'   width='220' height='144' ><p class=\"carte_box_partenaires\">Alpes vivantes<\/p><p class=\"carte_box_pays\">Switzerland<\/p><p class=\"carte_box_date\">2023 \u2192 2026<\/p><p class=\"carte_box_titre\">Sustainable protection of biodiversity in the Vaud Alps<\/p><p class=\"carte_box_categorie\">Conservation\/restoration | Awareness raising<\/p><p class=\"carte_box_link\"><a href=\/en\/fondation-pour-les-arbres-projects\/sustainable-protection-of-biodiversity-in-the-vaud-alps>\u2192 See more<\/a><\/p><\/div>";
 
   infoWindows[5]= new InfoBox(myOptions);
 
@@ -446,7 +446,7 @@ var popupoption = {
     
   
   var myOptions = popupoption;
-  myOptions.content="<div class='myboxmap'><img src='\/users_uploads\/projets_projets-listing\/generated\/201\/beneficiaire-du-projet-cajou-cambodge-1-c-eper.webp?ck=2024-11-25-155255'   width='220' height='144' ><p class=\"carte_box_partenaires\">EPER<\/p><p class=\"carte_box_pays\">Cambodia<\/p><p class=\"carte_box_date\">2023 \u2192 2026<\/p><p class=\"carte_box_titre\">Green Cashew - Sustainable cashew cultivation to fight climate change<\/p><p class=\"carte_box_categorie\">Conservation\/restoration | Ancestral knowledge<\/p><p class=\"carte_box_link\"><a href=\/en\/fondation-pour-les-arbres-projects\/green-cashew-sustainable-cashew-cultivation-to-fight-climate>\u2192 See more<\/a><\/p><\/div>";
+  myOptions.content="<div class='myboxmap'><img src='https://content.da.live/aemdemos/fondationsaudemarspiguet/assets/images/map/projects-listing/201\/beneficiaire-du-projet-cajou-cambodge-1-c-eper.jpg'   width='220' height='144' ><p class=\"carte_box_partenaires\">EPER<\/p><p class=\"carte_box_pays\">Cambodia<\/p><p class=\"carte_box_date\">2023 \u2192 2026<\/p><p class=\"carte_box_titre\">Green Cashew - Sustainable cashew cultivation to fight climate change<\/p><p class=\"carte_box_categorie\">Conservation\/restoration | Ancestral knowledge<\/p><p class=\"carte_box_link\"><a href=\/en\/fondation-pour-les-arbres-projects\/green-cashew-sustainable-cashew-cultivation-to-fight-climate>\u2192 See more<\/a><\/p><\/div>";
 
   infoWindows[12]= new InfoBox(myOptions);
 
@@ -501,7 +501,7 @@ var popupoption = {
     
   
   var myOptions = popupoption;
-  myOptions.content="<div class='myboxmap'><img src='\/users_uploads\/projets_projets-listing\/generated\/222\/foretxcellence-1-c-romain-blanc.webp?ck=2024-11-25-155355'   width='220' height='144' ><p class=\"carte_box_partenaires\">For\u00eatxcellence<\/p><p class=\"carte_box_pays\">Switzerland<\/p><p class=\"carte_box_date\">2022 \u2192 2027<\/p><p class=\"carte_box_titre\">For\u00eatxcellence<\/p><p class=\"carte_box_categorie\">Ancestral knowledge<\/p><p class=\"carte_box_link\"><a href=\/en\/fondation-pour-les-arbres-projects\/foretxcellence>\u2192 See more<\/a><\/p><\/div>";
+  myOptions.content="<div class='myboxmap'><img src='https://content.da.live/aemdemos/fondationsaudemarspiguet/assets/images/map/projects-listing/222\/foretxcellence-1-c-romain-blanc.jpg'   width='220' height='144' ><p class=\"carte_box_partenaires\">For\u00eatxcellence<\/p><p class=\"carte_box_pays\">Switzerland<\/p><p class=\"carte_box_date\">2022 \u2192 2027<\/p><p class=\"carte_box_titre\">For\u00eatxcellence<\/p><p class=\"carte_box_categorie\">Ancestral knowledge<\/p><p class=\"carte_box_link\"><a href=\/en\/fondation-pour-les-arbres-projects\/foretxcellence>\u2192 See more<\/a><\/p><\/div>";
 
   infoWindows[16]= new InfoBox(myOptions);
 
@@ -556,7 +556,7 @@ var popupoption = {
     
   
   var myOptions = popupoption;
-  myOptions.content="<div class='myboxmap'><img src='\/users_uploads\/projets_projets-listing\/generated\/827\/sentier-didactique-du-bois-de-resonance-du-risoud-4-c-associ.webp?ck=2024-11-25-161715'   width='220' height='144' ><p class=\"carte_box_partenaires\">Association Sentier didactique du bois de r\u00e9sonance du Risoud<\/p><p class=\"carte_box_pays\">Switzerland<\/p><p class=\"carte_box_date\">2022 \u2192 2023<\/p><p class=\"carte_box_titre\">Risoud resonance wood learning trail<\/p><p class=\"carte_box_categorie\">Awareness raising | Ancestral knowledge<\/p><p class=\"carte_box_link\"><a href=\/en\/fondation-pour-les-arbres-projects\/risoud-resonance-wood-learning-trail>\u2192 See more<\/a><\/p><\/div>";
+  myOptions.content="<div class='myboxmap'><img src='https://content.da.live/aemdemos/fondationsaudemarspiguet/assets/images/map/projects-listing/827\/sentier-didactique-du-bois-de-resonance-du-risoud-4-c-associ.jpg'   width='220' height='144' ><p class=\"carte_box_partenaires\">Association Sentier didactique du bois de r\u00e9sonance du Risoud<\/p><p class=\"carte_box_pays\">Switzerland<\/p><p class=\"carte_box_date\">2022 \u2192 2023<\/p><p class=\"carte_box_titre\">Risoud resonance wood learning trail<\/p><p class=\"carte_box_categorie\">Awareness raising | Ancestral knowledge<\/p><p class=\"carte_box_link\"><a href=\/en\/fondation-pour-les-arbres-projects\/risoud-resonance-wood-learning-trail>\u2192 See more<\/a><\/p><\/div>";
 
   infoWindows[67]= new InfoBox(myOptions);
 
@@ -611,7 +611,7 @@ var popupoption = {
     
   
   var myOptions = popupoption;
-  myOptions.content="<div class='myboxmap'><img src='\/users_uploads\/projets_projets-listing\/generated\/428\/ecotourisme-dobservation-des-bonobos-avec-mmt-dans-le-territ.webp?ck=2024-11-25-160436'   width='220' height='144' ><p class=\"carte_box_partenaires\">Mbou-Mon-Tour (MMT)<\/p><p class=\"carte_box_pays\">Democratic Republic of the Congo (DRC)<\/p><p class=\"carte_box_date\">2022 \u2192 2024<\/p><p class=\"carte_box_titre\">Support for sustainable development through the conservation and enhancement of local biodiversity<\/p><p class=\"carte_box_categorie\">Conservation\/restoration | Awareness raising<\/p><p class=\"carte_box_link\"><a href=\/en\/fondation-pour-les-arbres-projects\/support-for-sustainable-development-through-the-conservation>\u2192 See more<\/a><\/p><\/div>";
+  myOptions.content="<div class='myboxmap'><img src='https://content.da.live/aemdemos/fondationsaudemarspiguet/assets/images/map/projects-listing/428\/ecotourisme-dobservation-des-bonobos-avec-mmt-dans-le-territ.jpg'   width='220' height='144' ><p class=\"carte_box_partenaires\">Mbou-Mon-Tour (MMT)<\/p><p class=\"carte_box_pays\">Democratic Republic of the Congo (DRC)<\/p><p class=\"carte_box_date\">2022 \u2192 2024<\/p><p class=\"carte_box_titre\">Support for sustainable development through the conservation and enhancement of local biodiversity<\/p><p class=\"carte_box_categorie\">Conservation\/restoration | Awareness raising<\/p><p class=\"carte_box_link\"><a href=\/en\/fondation-pour-les-arbres-projects\/support-for-sustainable-development-through-the-conservation>\u2192 See more<\/a><\/p><\/div>";
 
   infoWindows[50]= new InfoBox(myOptions);
 
@@ -666,7 +666,7 @@ var popupoption = {
     
   
   var myOptions = popupoption;
-  myOptions.content="<div class='myboxmap'><img src='\/users_uploads\/projets_projets-listing\/generated\/234\/agou-kpolo-plot-c-morija.webp?ck=2024-11-25-155445'   width='220' height='144' ><p class=\"carte_box_partenaires\">Association Morija<\/p><p class=\"carte_box_pays\">Togo<\/p><p class=\"carte_box_date\">2022 \u2192 2025<\/p><p class=\"carte_box_titre\">Agroforestry and green entrepreneurship<\/p><p class=\"carte_box_categorie\">Conservation\/restoration | Awareness raising<\/p><p class=\"carte_box_link\"><a href=\/en\/fondation-pour-les-arbres-projects\/agroforestry-and-green-entrepreneurship>\u2192 See more<\/a><\/p><\/div>";
+  myOptions.content="<div class='myboxmap'><img src='https://content.da.live/aemdemos/fondationsaudemarspiguet/assets/images/map/projects-listing/234\/agou-kpolo-plot-c-morija.jpg'   width='220' height='144' ><p class=\"carte_box_partenaires\">Association Morija<\/p><p class=\"carte_box_pays\">Togo<\/p><p class=\"carte_box_date\">2022 \u2192 2025<\/p><p class=\"carte_box_titre\">Agroforestry and green entrepreneurship<\/p><p class=\"carte_box_categorie\">Conservation\/restoration | Awareness raising<\/p><p class=\"carte_box_link\"><a href=\/en\/fondation-pour-les-arbres-projects\/agroforestry-and-green-entrepreneurship>\u2192 See more<\/a><\/p><\/div>";
 
   infoWindows[18]= new InfoBox(myOptions);
 
@@ -721,7 +721,7 @@ var popupoption = {
     
   
   var myOptions = popupoption;
-  myOptions.content="<div class='myboxmap'><img src='\/users_uploads\/projets_projets-listing\/generated\/335\/sentier-de-la-morges-71-c-yves-burdet.webp?ck=2024-11-25-155954'   width='220' height='144' ><p class=\"carte_box_partenaires\">Association pour la sauvegarde de Morges (ASM)<\/p><p class=\"carte_box_pays\">Switzerland<\/p><p class=\"carte_box_date\">2022 \u2192 2023<\/p><p class=\"carte_box_titre\">Sentier de la Morges trail<\/p><p class=\"carte_box_categorie\">Awareness raising<\/p><p class=\"carte_box_link\"><a href=\/en\/fondation-pour-les-arbres-projects\/sentier-de-la-morges-trail>\u2192 See more<\/a><\/p><\/div>";
+  myOptions.content="<div class='myboxmap'><img src='https://content.da.live/aemdemos/fondationsaudemarspiguet/assets/images/map/projects-listing/335\/sentier-de-la-morges-71-c-yves-burdet.jpg'   width='220' height='144' ><p class=\"carte_box_partenaires\">Association pour la sauvegarde de Morges (ASM)<\/p><p class=\"carte_box_pays\">Switzerland<\/p><p class=\"carte_box_date\">2022 \u2192 2023<\/p><p class=\"carte_box_titre\">Sentier de la Morges trail<\/p><p class=\"carte_box_categorie\">Awareness raising<\/p><p class=\"carte_box_link\"><a href=\/en\/fondation-pour-les-arbres-projects\/sentier-de-la-morges-trail>\u2192 See more<\/a><\/p><\/div>";
 
   infoWindows[35]= new InfoBox(myOptions);
 
@@ -776,7 +776,7 @@ var popupoption = {
     
   
   var myOptions = popupoption;
-  myOptions.content="<div class='myboxmap'><img src='\/users_uploads\/projets_projets-listing\/generated\/258\/site-toile-verte-givrins-c-parc-jura-vaudois.webp?ck=2024-11-25-155544'   width='220' height='144' ><p class=\"carte_box_partenaires\">Association du Parc naturel r\u00e9gional Jura vaudois<\/p><p class=\"carte_box_pays\">Switzerland<\/p><p class=\"carte_box_date\">2022 \u2192 2026<\/p><p class=\"carte_box_titre\">Toile verte<\/p><p class=\"carte_box_categorie\">Conservation\/restoration | Awareness raising<\/p><p class=\"carte_box_link\"><a href=\/en\/fondation-pour-les-arbres-projects\/toile-verte>\u2192 See more<\/a><\/p><\/div>";
+  myOptions.content="<div class='myboxmap'><img src='https://content.da.live/aemdemos/fondationsaudemarspiguet/assets/images/map/projects-listing/258\/site-toile-verte-givrins-c-parc-jura-vaudois.jpg'   width='220' height='144' ><p class=\"carte_box_partenaires\">Association du Parc naturel r\u00e9gional Jura vaudois<\/p><p class=\"carte_box_pays\">Switzerland<\/p><p class=\"carte_box_date\">2022 \u2192 2026<\/p><p class=\"carte_box_titre\">Toile verte<\/p><p class=\"carte_box_categorie\">Conservation\/restoration | Awareness raising<\/p><p class=\"carte_box_link\"><a href=\/en\/fondation-pour-les-arbres-projects\/toile-verte>\u2192 See more<\/a><\/p><\/div>";
 
   infoWindows[23]= new InfoBox(myOptions);
 
@@ -831,7 +831,7 @@ var popupoption = {
     
   
   var myOptions = popupoption;
-  myOptions.content="<div class='myboxmap'><img src='\/users_uploads\/projets_projets-listing\/generated\/303\/aide-7-c-aide.webp?ck=2024-11-25-155842'   width='220' height='144' ><p class=\"carte_box_partenaires\">Appui aux Initiatives de D\u00e9veloppement (AIDE)<\/p><p class=\"carte_box_pays\">Cameroon<\/p><p class=\"carte_box_date\">2022 \u2192 2024<\/p><p class=\"carte_box_titre\">Integrated management of mangrove landscapes in Douala-Ed\u00e9a National Park<\/p><p class=\"carte_box_categorie\">Conservation\/restoration | Awareness raising<\/p><p class=\"carte_box_link\"><a href=\/en\/fondation-pour-les-arbres-projects\/integrated-management-of-mangrove-landscape-in-the-douala-ed>\u2192 See more<\/a><\/p><\/div>";
+  myOptions.content="<div class='myboxmap'><img src='https://content.da.live/aemdemos/fondationsaudemarspiguet/assets/images/map/projects-listing/303\/aide-7-c-aide.jpg'   width='220' height='144' ><p class=\"carte_box_partenaires\">Appui aux Initiatives de D\u00e9veloppement (AIDE)<\/p><p class=\"carte_box_pays\">Cameroon<\/p><p class=\"carte_box_date\">2022 \u2192 2024<\/p><p class=\"carte_box_titre\">Integrated management of mangrove landscapes in Douala-Ed\u00e9a National Park<\/p><p class=\"carte_box_categorie\">Conservation\/restoration | Awareness raising<\/p><p class=\"carte_box_link\"><a href=\/en\/fondation-pour-les-arbres-projects\/integrated-management-of-mangrove-landscape-in-the-douala-ed>\u2192 See more<\/a><\/p><\/div>";
 
   infoWindows[29]= new InfoBox(myOptions);
 
@@ -886,7 +886,7 @@ var popupoption = {
     
   
   var myOptions = popupoption;
-  myOptions.content="<div class='myboxmap'><img src='\/users_uploads\/projets_projets-listing\/generated\/274\/preservation-de-la-biodiversite-au-cap-vert-2-c-projecto-vit.webp?ck=2024-11-25-155724'   width='220' height='144' ><p class=\"carte_box_partenaires\">Associa\u00e7\u00e3o Projecto Vit\u00f3<\/p><p class=\"carte_box_pays\">Cape Verde<\/p><p class=\"carte_box_date\">2022 \u2192 2025<\/p><p class=\"carte_box_titre\">Time for conservation of endemic threatened flora in Cape Verde's islands<\/p><p class=\"carte_box_categorie\">Conservation\/restoration | Awareness raising<\/p><p class=\"carte_box_link\"><a href=\/en\/fondation-pour-les-arbres-projects\/time-for-conservation-of-endemic-threatened-flora-in-cape-ve>\u2192 See more<\/a><\/p><\/div>";
+  myOptions.content="<div class='myboxmap'><img src='https://content.da.live/aemdemos/fondationsaudemarspiguet/assets/images/map/projects-listing/274\/preservation-de-la-biodiversite-au-cap-vert-2-c-projecto-vit.jpg'   width='220' height='144' ><p class=\"carte_box_partenaires\">Associa\u00e7\u00e3o Projecto Vit\u00f3<\/p><p class=\"carte_box_pays\">Cape Verde<\/p><p class=\"carte_box_date\">2022 \u2192 2025<\/p><p class=\"carte_box_titre\">Time for conservation of endemic threatened flora in Cape Verde's islands<\/p><p class=\"carte_box_categorie\">Conservation\/restoration | Awareness raising<\/p><p class=\"carte_box_link\"><a href=\/en\/fondation-pour-les-arbres-projects\/time-for-conservation-of-endemic-threatened-flora-in-cape-ve>\u2192 See more<\/a><\/p><\/div>";
 
   infoWindows[25]= new InfoBox(myOptions);
 
@@ -941,7 +941,7 @@ var popupoption = {
     
   
   var myOptions = popupoption;
-  myOptions.content="<div class='myboxmap'><img src='\/users_uploads\/projets_projets-listing\/generated\/172\/arboretum-1-c-arboretum-national-du-vallon-de-laubonne.webp?ck=2024-11-25-155124'   width='220' height='144' ><p class=\"carte_box_partenaires\">Association de l\u2019Arboretum national du Vallon de l\u2019Aubonne<\/p><p class=\"carte_box_pays\">Switzerland<\/p><p class=\"carte_box_date\">2022 \u2192 2026<\/p><p class=\"carte_box_titre\">Improving mediation and conservation<\/p><p class=\"carte_box_categorie\">Awareness raising<\/p><p class=\"carte_box_link\"><a href=\/en\/fondation-pour-les-arbres-projects\/improving-mediation-and-conservation>\u2192 See more<\/a><\/p><\/div>";
+  myOptions.content="<div class='myboxmap'><img src='https://content.da.live/aemdemos/fondationsaudemarspiguet/assets/images/map/projects-listing/172\/arboretum-1-c-arboretum-national-du-vallon-de-laubonne.jpg'   width='220' height='144' ><p class=\"carte_box_partenaires\">Association de l\u2019Arboretum national du Vallon de l\u2019Aubonne<\/p><p class=\"carte_box_pays\">Switzerland<\/p><p class=\"carte_box_date\">2022 \u2192 2026<\/p><p class=\"carte_box_titre\">Improving mediation and conservation<\/p><p class=\"carte_box_categorie\">Awareness raising<\/p><p class=\"carte_box_link\"><a href=\/en\/fondation-pour-les-arbres-projects\/improving-mediation-and-conservation>\u2192 See more<\/a><\/p><\/div>";
 
   infoWindows[7]= new InfoBox(myOptions);
 
@@ -996,7 +996,7 @@ var popupoption = {
     
   
   var myOptions = popupoption;
-  myOptions.content="<div class='myboxmap'><img src='\/users_uploads\/projets_projets-listing\/generated\/155\/champ-daubergines-c-acpe.webp?ck=2024-11-25-155049'   width='220' height='144' ><p class=\"carte_box_partenaires\">Actions Communautaires pour la Protection de l\u2019Environnement (ACPE)<\/p><p class=\"carte_box_pays\">Democratic Republic of the Congo (DRC)<\/p><p class=\"carte_box_date\">2022 \u2192 2025<\/p><p class=\"carte_box_titre\">Supporting the reconstitution of forest cover through agro-ecological practices<\/p><p class=\"carte_box_categorie\">Conservation\/restoration<\/p><p class=\"carte_box_link\"><a href=\/en\/fondation-pour-les-arbres-projects\/supporting-the-reconstitution-of-forest-cover-through-agro-e>\u2192 See more<\/a><\/p><\/div>";
+  myOptions.content="<div class='myboxmap'><img src='https://content.da.live/aemdemos/fondationsaudemarspiguet/assets/images/map/projects-listing/155\/champ-daubergines-c-acpe.jpg'   width='220' height='144' ><p class=\"carte_box_partenaires\">Actions Communautaires pour la Protection de l\u2019Environnement (ACPE)<\/p><p class=\"carte_box_pays\">Democratic Republic of the Congo (DRC)<\/p><p class=\"carte_box_date\">2022 \u2192 2025<\/p><p class=\"carte_box_titre\">Supporting the reconstitution of forest cover through agro-ecological practices<\/p><p class=\"carte_box_categorie\">Conservation\/restoration<\/p><p class=\"carte_box_link\"><a href=\/en\/fondation-pour-les-arbres-projects\/supporting-the-reconstitution-of-forest-cover-through-agro-e>\u2192 See more<\/a><\/p><\/div>";
 
   infoWindows[4]= new InfoBox(myOptions);
 
@@ -1051,7 +1051,7 @@ var popupoption = {
     
   
   var myOptions = popupoption;
-  myOptions.content="<div class='myboxmap'><img src='\/users_uploads\/projets_projets-listing\/generated\/355\/belo-sur-mer-pecheuse-dans-une-barque-entouree-de-paletuvier.webp?ck=2024-11-25-160021'   width='220' height='144' ><p class=\"carte_box_partenaires\">Blue Ventures<\/p><p class=\"carte_box_pays\">Madagascar<\/p><p class=\"carte_box_date\">2022 \u2192 2023<\/p><p class=\"carte_box_titre\">Blue forests<\/p><p class=\"carte_box_categorie\">Conservation\/restoration | Awareness raising<\/p><p class=\"carte_box_link\"><a href=\/en\/fondation-pour-les-arbres-projects\/blue-forests>\u2192 See more<\/a><\/p><\/div>";
+  myOptions.content="<div class='myboxmap'><img src='https://content.da.live/aemdemos/fondationsaudemarspiguet/assets/images/map/projects-listing/355\/belo-sur-mer-pecheuse-dans-une-barque-entouree-de-paletuvier.jpg'   width='220' height='144' ><p class=\"carte_box_partenaires\">Blue Ventures<\/p><p class=\"carte_box_pays\">Madagascar<\/p><p class=\"carte_box_date\">2022 \u2192 2023<\/p><p class=\"carte_box_titre\">Blue forests<\/p><p class=\"carte_box_categorie\">Conservation\/restoration | Awareness raising<\/p><p class=\"carte_box_link\"><a href=\/en\/fondation-pour-les-arbres-projects\/blue-forests>\u2192 See more<\/a><\/p><\/div>";
 
   infoWindows[38]= new InfoBox(myOptions);
 
@@ -1106,7 +1106,7 @@ var popupoption = {
     
   
   var myOptions = popupoption;
-  myOptions.content="<div class='myboxmap'><img src='\/users_uploads\/projets_projets-listing\/generated\/316\/apprentissage-c-aquaverde.webp?ck=2024-11-25-155920'   width='220' height='144' ><p class=\"carte_box_partenaires\">Aquaverde<\/p><p class=\"carte_box_pays\">Brazil<\/p><p class=\"carte_box_date\">2022 \u2192 2022<\/p><p class=\"carte_box_titre\">Reforestation and Brazil nuts<\/p><p class=\"carte_box_categorie\">Conservation\/restoration<\/p><p class=\"carte_box_link\"><a href=\/en\/fondation-pour-les-arbres-projects\/reforestation-and-brazil-nuts>\u2192 See more<\/a><\/p><\/div>";
+  myOptions.content="<div class='myboxmap'><img src='https://content.da.live/aemdemos/fondationsaudemarspiguet/assets/images/map/projects-listing/316\/apprentissage-c-aquaverde.jpg'   width='220' height='144' ><p class=\"carte_box_partenaires\">Aquaverde<\/p><p class=\"carte_box_pays\">Brazil<\/p><p class=\"carte_box_date\">2022 \u2192 2022<\/p><p class=\"carte_box_titre\">Reforestation and Brazil nuts<\/p><p class=\"carte_box_categorie\">Conservation\/restoration<\/p><p class=\"carte_box_link\"><a href=\/en\/fondation-pour-les-arbres-projects\/reforestation-and-brazil-nuts>\u2192 See more<\/a><\/p><\/div>";
 
   infoWindows[31]= new InfoBox(myOptions);
 
@@ -1161,7 +1161,7 @@ var popupoption = {
     
   
   var myOptions = popupoption;
-  myOptions.content="<div class='myboxmap'><img src='\/users_uploads\/projets_projets-listing\/generated\/301\/staff-technique-2-c-add.webp?ck=2024-11-25-155838'   width='220' height='144' ><p class=\"carte_box_partenaires\">Alternatives Durables pour le D\u00e9veloppement (ADD)<\/p><p class=\"carte_box_pays\">Cameroon<\/p><p class=\"carte_box_date\">2022 \u2192 2023<\/p><p class=\"carte_box_titre\">Awareness raising and environmental education for young people in vocational schools and communities<\/p><p class=\"carte_box_categorie\">Awareness raising<\/p><p class=\"carte_box_link\"><a href=\/en\/fondation-pour-les-arbres-projects\/awareness-raising-and-environmental-education-for-young-peop>\u2192 See more<\/a><\/p><\/div>";
+  myOptions.content="<div class='myboxmap'><img src='https://content.da.live/aemdemos/fondationsaudemarspiguet/assets/images/map/projects-listing/301\/staff-technique-2-c-add.jpg'   width='220' height='144' ><p class=\"carte_box_partenaires\">Alternatives Durables pour le D\u00e9veloppement (ADD)<\/p><p class=\"carte_box_pays\">Cameroon<\/p><p class=\"carte_box_date\">2022 \u2192 2023<\/p><p class=\"carte_box_titre\">Awareness raising and environmental education for young people in vocational schools and communities<\/p><p class=\"carte_box_categorie\">Awareness raising<\/p><p class=\"carte_box_link\"><a href=\/en\/fondation-pour-les-arbres-projects\/awareness-raising-and-environmental-education-for-young-peop>\u2192 See more<\/a><\/p><\/div>";
 
   infoWindows[28]= new InfoBox(myOptions);
 
@@ -1216,7 +1216,7 @@ var popupoption = {
     
   
   var myOptions = popupoption;
-  myOptions.content="<div class='myboxmap'><img src='\/users_uploads\/projets_projets-listing\/generated\/150\/alcp-c-alcp.webp?ck=2024-11-25-155035'   width='220' height='144' ><p class=\"carte_box_partenaires\">Action Lutte Contre la Pauvret\u00e9 (ALCP)<\/p><p class=\"carte_box_pays\">Burkina Faso<\/p><p class=\"carte_box_date\">2022 \u2192 2025<\/p><p class=\"carte_box_titre\">Agro-ecological restoration and agroforestry in the green belt of the city of Ouagadougou<\/p><p class=\"carte_box_categorie\">Conservation\/restoration | Awareness raising<\/p><p class=\"carte_box_link\"><a href=\/en\/fondation-pour-les-arbres-projects\/agro-ecological-restoration-and-agroforestry-in-the-green-be>\u2192 See more<\/a><\/p><\/div>";
+  myOptions.content="<div class='myboxmap'><img src='https://content.da.live/aemdemos/fondationsaudemarspiguet/assets/images/map/projects-listing/150\/alcp-c-alcp.jpg'   width='220' height='144' ><p class=\"carte_box_partenaires\">Action Lutte Contre la Pauvret\u00e9 (ALCP)<\/p><p class=\"carte_box_pays\">Burkina Faso<\/p><p class=\"carte_box_date\">2022 \u2192 2025<\/p><p class=\"carte_box_titre\">Agro-ecological restoration and agroforestry in the green belt of the city of Ouagadougou<\/p><p class=\"carte_box_categorie\">Conservation\/restoration | Awareness raising<\/p><p class=\"carte_box_link\"><a href=\/en\/fondation-pour-les-arbres-projects\/agro-ecological-restoration-and-agroforestry-in-the-green-be>\u2192 See more<\/a><\/p><\/div>";
 
   infoWindows[3]= new InfoBox(myOptions);
 
@@ -1271,7 +1271,7 @@ var popupoption = {
     
   
   var myOptions = popupoption;
-  myOptions.content="<div class='myboxmap'><img src='\/users_uploads\/projets_projets-listing\/generated\/181\/brulis-c-coeur-de-foret.webp?ck=2024-11-25-155148'   width='220' height='144' ><p class=\"carte_box_partenaires\">C\u0153ur de For\u00eat<\/p><p class=\"carte_box_pays\">Indonesia<\/p><p class=\"carte_box_date\">2022 \u2192 2025<\/p><p class=\"carte_box_titre\">Forest restoration and preservation on the island of Flores, Indonesia<\/p><p class=\"carte_box_categorie\">Conservation\/restoration | Awareness raising<\/p><p class=\"carte_box_link\"><a href=\/en\/fondation-pour-les-arbres-projects\/forest-restoration-and-preservation-on-the-island-of-flores>\u2192 See more<\/a><\/p><\/div>";
+  myOptions.content="<div class='myboxmap'><img src='https://content.da.live/aemdemos/fondationsaudemarspiguet/assets/images/map/projects-listing/181\/brulis-c-coeur-de-foret.jpg'   width='220' height='144' ><p class=\"carte_box_partenaires\">C\u0153ur de For\u00eat<\/p><p class=\"carte_box_pays\">Indonesia<\/p><p class=\"carte_box_date\">2022 \u2192 2025<\/p><p class=\"carte_box_titre\">Forest restoration and preservation on the island of Flores, Indonesia<\/p><p class=\"carte_box_categorie\">Conservation\/restoration | Awareness raising<\/p><p class=\"carte_box_link\"><a href=\/en\/fondation-pour-les-arbres-projects\/forest-restoration-and-preservation-on-the-island-of-flores>\u2192 See more<\/a><\/p><\/div>";
 
   infoWindows[8]= new InfoBox(myOptions);
 
@@ -1326,7 +1326,7 @@ var popupoption = {
     
   
   var myOptions = popupoption;
-  myOptions.content="<div class='myboxmap'><img src='\/users_uploads\/projets_projets-listing\/generated\/244\/assemblee-feminine-de-conservation-des-habitats-c-istituto-o.webp?ck=2024-11-25-155514'   width='220' height='144' ><p class=\"carte_box_partenaires\">Istituto Oikos<\/p><p class=\"carte_box_pays\">Tanzania<\/p><p class=\"carte_box_date\">2022 \u2192 2024<\/p><p class=\"carte_box_titre\">Mountain farmers and savannah pastoralists: conserving sustainable livelihoods in East Africa<\/p><p class=\"carte_box_categorie\">Conservation\/restoration | Awareness raising<\/p><p class=\"carte_box_link\"><a href=\/en\/fondation-pour-les-arbres-projects\/mountain-farmers-and-savannah-pastoralists-conserving-sustai>\u2192 See more<\/a><\/p><\/div>";
+  myOptions.content="<div class='myboxmap'><img src='https://content.da.live/aemdemos/fondationsaudemarspiguet/assets/images/map/projects-listing/244\/assemblee-feminine-de-conservation-des-habitats-c-istituto-o.jpg'   width='220' height='144' ><p class=\"carte_box_partenaires\">Istituto Oikos<\/p><p class=\"carte_box_pays\">Tanzania<\/p><p class=\"carte_box_date\">2022 \u2192 2024<\/p><p class=\"carte_box_titre\">Mountain farmers and savannah pastoralists: conserving sustainable livelihoods in East Africa<\/p><p class=\"carte_box_categorie\">Conservation\/restoration | Awareness raising<\/p><p class=\"carte_box_link\"><a href=\/en\/fondation-pour-les-arbres-projects\/mountain-farmers-and-savannah-pastoralists-conserving-sustai>\u2192 See more<\/a><\/p><\/div>";
 
   infoWindows[21]= new InfoBox(myOptions);
 
@@ -1381,7 +1381,7 @@ var popupoption = {
     
   
   var myOptions = popupoption;
-  myOptions.content="<div class='myboxmap'><img src='\/users_uploads\/projets_projets-listing\/generated\/406\/journee-de-plantation-avec-le-comite-mangrove-4-c-fama-reyan.webp?ck=2024-11-25-160330'   width='220' height='144' ><p class=\"carte_box_partenaires\">Alliance internationale pour la gestion de l\u2019eau de pluie (IRHA)<\/p><p class=\"carte_box_pays\">Senegal<\/p><p class=\"carte_box_date\">2021 \u2192 2024<\/p><p class=\"carte_box_titre\">Sea forest<\/p><p class=\"carte_box_categorie\">Conservation\/restoration | Awareness raising<\/p><p class=\"carte_box_link\"><a href=\/en\/fondation-pour-les-arbres-projects\/sea-forest>\u2192 See more<\/a><\/p><\/div>";
+  myOptions.content="<div class='myboxmap'><img src='https://content.da.live/aemdemos/fondationsaudemarspiguet/assets/images/map/projects-listing/406\/journee-de-plantation-avec-le-comite-mangrove-4-c-fama-reyan.jpg'   width='220' height='144' ><p class=\"carte_box_partenaires\">Alliance internationale pour la gestion de l\u2019eau de pluie (IRHA)<\/p><p class=\"carte_box_pays\">Senegal<\/p><p class=\"carte_box_date\">2021 \u2192 2024<\/p><p class=\"carte_box_titre\">Sea forest<\/p><p class=\"carte_box_categorie\">Conservation\/restoration | Awareness raising<\/p><p class=\"carte_box_link\"><a href=\/en\/fondation-pour-les-arbres-projects\/sea-forest>\u2192 See more<\/a><\/p><\/div>";
 
   infoWindows[48]= new InfoBox(myOptions);
 
@@ -1436,7 +1436,7 @@ var popupoption = {
     
   
   var myOptions = popupoption;
-  myOptions.content="<div class='myboxmap'><img src='\/users_uploads\/projets_projets-listing\/generated\/454\/action-pedagogique-de-terrain-parcelle-de-veranne-le-mantel.webp?ck=2024-11-25-160550'   width='220' height='144' ><p class=\"carte_box_partenaires\">Robin du Bois<\/p><p class=\"carte_box_pays\">France<\/p><p class=\"carte_box_date\">2021 \u2192 2023<\/p><p class=\"carte_box_titre\">Save the Pilat forests<\/p><p class=\"carte_box_categorie\">Conservation\/restoration<\/p><p class=\"carte_box_link\"><a href=\/en\/fondation-pour-les-arbres-projects\/save-the-pilat-forests>\u2192 See more<\/a><\/p><\/div>";
+  myOptions.content="<div class='myboxmap'><img src='https://content.da.live/aemdemos/fondationsaudemarspiguet/assets/images/map/projects-listing/454\/action-pedagogique-de-terrain-parcelle-de-veranne-le-mantel.jpg'   width='220' height='144' ><p class=\"carte_box_partenaires\">Robin du Bois<\/p><p class=\"carte_box_pays\">France<\/p><p class=\"carte_box_date\">2021 \u2192 2023<\/p><p class=\"carte_box_titre\">Save the Pilat forests<\/p><p class=\"carte_box_categorie\">Conservation\/restoration<\/p><p class=\"carte_box_link\"><a href=\/en\/fondation-pour-les-arbres-projects\/save-the-pilat-forests>\u2192 See more<\/a><\/p><\/div>";
 
   infoWindows[56]= new InfoBox(myOptions);
 
@@ -1491,7 +1491,7 @@ var popupoption = {
     
   
   var myOptions = popupoption;
-  myOptions.content="<div class='myboxmap'><img src='\/users_uploads\/projets_projets-listing\/generated\/288\/les-femmes-de-la-cooperative-essodounissi-lavent-des-noix-de.webp?ck=2024-11-25-155815'   width='220' height='144' ><p class=\"carte_box_partenaires\">V\u00e9t\u00e9rinaires Sans Fronti\u00e8res Suisse (VSF-Suisse)<\/p><p class=\"carte_box_pays\">Togo<\/p><p class=\"carte_box_date\">2021 \u2192 2024<\/p><p class=\"carte_box_titre\">MiKaGo<\/p><p class=\"carte_box_categorie\">Conservation\/restoration | Awareness raising | Ancestral knowledge<\/p><p class=\"carte_box_link\"><a href=\/en\/fondation-pour-les-arbres-projects\/mikago>\u2192 See more<\/a><\/p><\/div>";
+  myOptions.content="<div class='myboxmap'><img src='https://content.da.live/aemdemos/fondationsaudemarspiguet/assets/images/map/projects-listing/288\/les-femmes-de-la-cooperative-essodounissi-lavent-des-noix-de.jpg'   width='220' height='144' ><p class=\"carte_box_partenaires\">V\u00e9t\u00e9rinaires Sans Fronti\u00e8res Suisse (VSF-Suisse)<\/p><p class=\"carte_box_pays\">Togo<\/p><p class=\"carte_box_date\">2021 \u2192 2024<\/p><p class=\"carte_box_titre\">MiKaGo<\/p><p class=\"carte_box_categorie\">Conservation\/restoration | Awareness raising | Ancestral knowledge<\/p><p class=\"carte_box_link\"><a href=\/en\/fondation-pour-les-arbres-projects\/mikago>\u2192 See more<\/a><\/p><\/div>";
 
   infoWindows[27]= new InfoBox(myOptions);
 
@@ -1546,7 +1546,7 @@ var popupoption = {
     
   
   var myOptions = popupoption;
-  myOptions.content="<div class='myboxmap'><img src='\/users_uploads\/projets_projets-listing\/generated\/269\/parc-naturel-du-jorat-2-c-raphael-dupertuis.webp?ck=2024-11-25-155649'   width='220' height='144' ><p class=\"carte_box_partenaires\">Parc naturel du Jorat<\/p><p class=\"carte_box_pays\">Switzerland<\/p><p class=\"carte_box_date\">2021 \u2192 2025<\/p><p class=\"carte_box_titre\">Reception infrastructure at the Parc naturel du Jorat<\/p><p class=\"carte_box_categorie\">Awareness raising<\/p><p class=\"carte_box_link\"><a href=\/en\/fondation-pour-les-arbres-projects\/reception-infrastructure-at-the-parc-naturel-du-jorat>\u2192 See more<\/a><\/p><\/div>";
+  myOptions.content="<div class='myboxmap'><img src='https://content.da.live/aemdemos/fondationsaudemarspiguet/assets/images/map/projects-listing/269\/parc-naturel-du-jorat-2-c-raphael-dupertuis.jpg'   width='220' height='144' ><p class=\"carte_box_partenaires\">Parc naturel du Jorat<\/p><p class=\"carte_box_pays\">Switzerland<\/p><p class=\"carte_box_date\">2021 \u2192 2025<\/p><p class=\"carte_box_titre\">Reception infrastructure at the Parc naturel du Jorat<\/p><p class=\"carte_box_categorie\">Awareness raising<\/p><p class=\"carte_box_link\"><a href=\/en\/fondation-pour-les-arbres-projects\/reception-infrastructure-at-the-parc-naturel-du-jorat>\u2192 See more<\/a><\/p><\/div>";
 
   infoWindows[24]= new InfoBox(myOptions);
 
@@ -1601,7 +1601,7 @@ var popupoption = {
     
   
   var myOptions = popupoption;
-  myOptions.content="<div class='myboxmap'><img src='\/users_uploads\/projets_projets-listing\/generated\/239\/assemblee-c-nouvelle-planete.webp?ck=2024-11-25-155501'   width='220' height='144' ><p class=\"carte_box_partenaires\">Nouvelle Plan\u00e8te<\/p><p class=\"carte_box_pays\">Peru<\/p><p class=\"carte_box_date\">2021 \u2192 2024<\/p><p class=\"carte_box_titre\">Protection of the forest through the official establishment of indigenous communities<\/p><p class=\"carte_box_categorie\">Conservation\/restoration<\/p><p class=\"carte_box_link\"><a href=\/en\/fondation-pour-les-arbres-projects\/protection-de-la-foret-par-la-titularisation-fonciere-de-com>\u2192 See more<\/a><\/p><\/div>";
+  myOptions.content="<div class='myboxmap'><img src='https://content.da.live/aemdemos/fondationsaudemarspiguet/assets/images/map/projects-listing/239\/assemblee-c-nouvelle-planete.jpg'   width='220' height='144' ><p class=\"carte_box_partenaires\">Nouvelle Plan\u00e8te<\/p><p class=\"carte_box_pays\">Peru<\/p><p class=\"carte_box_date\">2021 \u2192 2024<\/p><p class=\"carte_box_titre\">Protection of the forest through the official establishment of indigenous communities<\/p><p class=\"carte_box_categorie\">Conservation\/restoration<\/p><p class=\"carte_box_link\"><a href=\/en\/fondation-pour-les-arbres-projects\/protection-de-la-foret-par-la-titularisation-fonciere-de-com>\u2192 See more<\/a><\/p><\/div>";
 
   infoWindows[20]= new InfoBox(myOptions);
 
@@ -1656,7 +1656,7 @@ var popupoption = {
     
   
   var myOptions = popupoption;
-  myOptions.content="<div class='myboxmap'><img src='\/users_uploads\/projets_projets-listing\/generated\/422\/fleur-de-p-greuteri-3-c-alessandro-s-gristina.webp?ck=2024-11-25-160400'   width='220' height='144' ><p class=\"carte_box_partenaires\">Jardin Botanique de l\u2019Universit\u00e9 de Fribourg<\/p><p class=\"carte_box_pays\">Italy<\/p><p class=\"carte_box_date\">2021 \u2192 2024<\/p><p class=\"carte_box_titre\">Conservation of threatened woody species<\/p><p class=\"carte_box_categorie\">Conservation\/restoration | Awareness raising<\/p><p class=\"carte_box_link\"><a href=\/en\/fondation-pour-les-arbres-projects\/conservation-of-threatened-woody-species>\u2192 See more<\/a><\/p><\/div>";
+  myOptions.content="<div class='myboxmap'><img src='https://content.da.live/aemdemos/fondationsaudemarspiguet/assets/images/map/projects-listing/422\/fleur-de-p-greuteri-3-c-alessandro-s-gristina.jpg'   width='220' height='144' ><p class=\"carte_box_partenaires\">Jardin Botanique de l\u2019Universit\u00e9 de Fribourg<\/p><p class=\"carte_box_pays\">Italy<\/p><p class=\"carte_box_date\">2021 \u2192 2024<\/p><p class=\"carte_box_titre\">Conservation of threatened woody species<\/p><p class=\"carte_box_categorie\">Conservation\/restoration | Awareness raising<\/p><p class=\"carte_box_link\"><a href=\/en\/fondation-pour-les-arbres-projects\/conservation-of-threatened-woody-species>\u2192 See more<\/a><\/p><\/div>";
 
   infoWindows[49]= new InfoBox(myOptions);
 
@@ -1711,7 +1711,7 @@ var popupoption = {
     
   
   var myOptions = popupoption;
-  myOptions.content="<div class='myboxmap'><img src='\/users_uploads\/projets_projets-listing\/generated\/346\/autorite-nationale-de-reglementation-pharmaceutique-c-promet.webp?ck=2024-11-25-155956'   width='220' height='144' ><p class=\"carte_box_partenaires\">Fondation Biovision<\/p><p class=\"carte_box_pays\">Uganda<\/p><p class=\"carte_box_date\">2021 \u2192 2024<\/p><p class=\"carte_box_titre\">Mpigi forest school<\/p><p class=\"carte_box_categorie\">Conservation\/restoration | Awareness raising | Ancestral knowledge<\/p><p class=\"carte_box_link\"><a href=\/en\/fondation-pour-les-arbres-projects\/mpigi-forest-school>\u2192 See more<\/a><\/p><\/div>";
+  myOptions.content="<div class='myboxmap'><img src='https://content.da.live/aemdemos/fondationsaudemarspiguet/assets/images/map/projects-listing/346\/autorite-nationale-de-reglementation-pharmaceutique-c-promet.jpg'   width='220' height='144' ><p class=\"carte_box_partenaires\">Fondation Biovision<\/p><p class=\"carte_box_pays\">Uganda<\/p><p class=\"carte_box_date\">2021 \u2192 2024<\/p><p class=\"carte_box_titre\">Mpigi forest school<\/p><p class=\"carte_box_categorie\">Conservation\/restoration | Awareness raising | Ancestral knowledge<\/p><p class=\"carte_box_link\"><a href=\/en\/fondation-pour-les-arbres-projects\/mpigi-forest-school>\u2192 See more<\/a><\/p><\/div>";
 
   infoWindows[36]= new InfoBox(myOptions);
 
@@ -1766,7 +1766,7 @@ var popupoption = {
     
   
   var myOptions = popupoption;
-  myOptions.content="<div class='myboxmap'><img src='\/users_uploads\/projets_projets-listing\/generated\/207\/mosaique-de-petits-milieux-secs-et-humides-crassier-c-esep.webp?ck=2024-11-25-155313'   width='220' height='144' ><p class=\"carte_box_partenaires\">Association des Amis de l\u2019ESEP (\u00c9tablissement scolaire Elisabeth de Portes)<\/p><p class=\"carte_box_pays\">Switzerland<\/p><p class=\"carte_box_date\">2021 \u2192 2027<\/p><p class=\"carte_box_titre\"><\/p><p class=\"carte_box_categorie\">Conservation\/restoration | Awareness raising<\/p><p class=\"carte_box_link\"><a href=\/en\/fondation-pour-les-arbres-projects\/13>\u2192 See more<\/a><\/p><\/div>";
+  myOptions.content="<div class='myboxmap'><img src='https://content.da.live/aemdemos/fondationsaudemarspiguet/assets/images/map/projects-listing/207\/mosaique-de-petits-milieux-secs-et-humides-crassier-c-esep.jpg'   width='220' height='144' ><p class=\"carte_box_partenaires\">Association des Amis de l\u2019ESEP (\u00c9tablissement scolaire Elisabeth de Portes)<\/p><p class=\"carte_box_pays\">Switzerland<\/p><p class=\"carte_box_date\">2021 \u2192 2027<\/p><p class=\"carte_box_titre\"><\/p><p class=\"carte_box_categorie\">Conservation\/restoration | Awareness raising<\/p><p class=\"carte_box_link\"><a href=\/en\/fondation-pour-les-arbres-projects\/13>\u2192 See more<\/a><\/p><\/div>";
 
   infoWindows[13]= new InfoBox(myOptions);
 
@@ -1821,7 +1821,7 @@ var popupoption = {
     
   
   var myOptions = popupoption;
-  myOptions.content="<div class='myboxmap'><img src='\/users_uploads\/projets_projets-listing\/generated\/210\/biche-burtigny-c-open-mind.webp?ck=2024-11-25-155322'   width='220' height='144' ><p class=\"carte_box_partenaires\">Commune de Burtigny<\/p><p class=\"carte_box_pays\">Switzerland<\/p><p class=\"carte_box_date\">2021 \u2192 2024<\/p><p class=\"carte_box_titre\">Fruit-producing edges of the Grandes Tattes forest<\/p><p class=\"carte_box_categorie\">Conservation\/restoration<\/p><p class=\"carte_box_link\"><a href=\/en\/fondation-pour-les-arbres-projects\/fruit-producing-edges-of-the-grandes-tattes-forest-14>\u2192 See more<\/a><\/p><\/div>";
+  myOptions.content="<div class='myboxmap'><img src='https://content.da.live/aemdemos/fondationsaudemarspiguet/assets/images/map/projects-listing/210\/biche-burtigny-c-open-mind.jpg'   width='220' height='144' ><p class=\"carte_box_partenaires\">Commune de Burtigny<\/p><p class=\"carte_box_pays\">Switzerland<\/p><p class=\"carte_box_date\">2021 \u2192 2024<\/p><p class=\"carte_box_titre\">Fruit-producing edges of the Grandes Tattes forest<\/p><p class=\"carte_box_categorie\">Conservation\/restoration<\/p><p class=\"carte_box_link\"><a href=\/en\/fondation-pour-les-arbres-projects\/fruit-producing-edges-of-the-grandes-tattes-forest-14>\u2192 See more<\/a><\/p><\/div>";
 
   infoWindows[14]= new InfoBox(myOptions);
 
@@ -1876,7 +1876,7 @@ var popupoption = {
     
   
   var myOptions = popupoption;
-  myOptions.content="<div class='myboxmap'><img src='\/users_uploads\/projets_projets-listing\/generated\/309\/pepiniere-1-c-ubiratan-g-surui.webp?ck=2024-11-25-155859'   width='220' height='144' ><p class=\"carte_box_partenaires\">Aquaverde<\/p><p class=\"carte_box_pays\">Brazil<\/p><p class=\"carte_box_date\">2021 \u2192 2022<\/p><p class=\"carte_box_titre\">Reinforcing the traditional medicinal plant culture and reforestation of the Surui territory<\/p><p class=\"carte_box_categorie\">Conservation\/restoration | Ancestral knowledge<\/p><p class=\"carte_box_link\"><a href=\/en\/fondation-pour-les-arbres-projects\/reinforcing-the-traditional-medicinal-plant-culture-and-refo>\u2192 See more<\/a><\/p><\/div>";
+  myOptions.content="<div class='myboxmap'><img src='https://content.da.live/aemdemos/fondationsaudemarspiguet/assets/images/map/projects-listing/309\/pepiniere-1-c-ubiratan-g-surui.jpg'   width='220' height='144' ><p class=\"carte_box_partenaires\">Aquaverde<\/p><p class=\"carte_box_pays\">Brazil<\/p><p class=\"carte_box_date\">2021 \u2192 2022<\/p><p class=\"carte_box_titre\">Reinforcing the traditional medicinal plant culture and reforestation of the Surui territory<\/p><p class=\"carte_box_categorie\">Conservation\/restoration | Ancestral knowledge<\/p><p class=\"carte_box_link\"><a href=\/en\/fondation-pour-les-arbres-projects\/reinforcing-the-traditional-medicinal-plant-culture-and-refo>\u2192 See more<\/a><\/p><\/div>";
 
   infoWindows[30]= new InfoBox(myOptions);
 
@@ -1931,7 +1931,7 @@ var popupoption = {
     
   
   var myOptions = popupoption;
-  myOptions.content="<div class='myboxmap'><img src='\/users_uploads\/projets_projets-listing\/generated\/462\/reforestation-et-agroforesterie-sur-le-plateau-de-bateke-4-c.webp?ck=2024-11-25-160623'   width='220' height='144' ><p class=\"carte_box_partenaires\">Secodev<\/p><p class=\"carte_box_pays\">Democratic Republic of the Congo (DRC)<\/p><p class=\"carte_box_date\">2021 \u2192 2023<\/p><p class=\"carte_box_titre\">Reforestation and agroforestry on the Bat\u00e9k\u00e9 plateau<\/p><p class=\"carte_box_categorie\">Conservation\/restoration | Awareness raising<\/p><p class=\"carte_box_link\"><a href=\/en\/fondation-pour-les-arbres-projects\/reforestation-and-agroforestry-on-the-bateke-plateau>\u2192 See more<\/a><\/p><\/div>";
+  myOptions.content="<div class='myboxmap'><img src='https://content.da.live/aemdemos/fondationsaudemarspiguet/assets/images/map/projects-listing/462\/reforestation-et-agroforesterie-sur-le-plateau-de-bateke-4-c.jpg'   width='220' height='144' ><p class=\"carte_box_partenaires\">Secodev<\/p><p class=\"carte_box_pays\">Democratic Republic of the Congo (DRC)<\/p><p class=\"carte_box_date\">2021 \u2192 2023<\/p><p class=\"carte_box_titre\">Reforestation and agroforestry on the Bat\u00e9k\u00e9 plateau<\/p><p class=\"carte_box_categorie\">Conservation\/restoration | Awareness raising<\/p><p class=\"carte_box_link\"><a href=\/en\/fondation-pour-les-arbres-projects\/reforestation-and-agroforestry-on-the-bateke-plateau>\u2192 See more<\/a><\/p><\/div>";
 
   infoWindows[57]= new InfoBox(myOptions);
 
@@ -1986,7 +1986,7 @@ var popupoption = {
     
   
   var myOptions = popupoption;
-  myOptions.content="<div class='myboxmap'><img src='\/users_uploads\/projets_projets-listing\/generated\/383\/arbres-adultes-a-dashtijum-c-fauna-flora-international.webp?ck=2024-11-25-160211'   width='220' height='144' ><p class=\"carte_box_partenaires\">Fauna & Flora International (FFI)<\/p><p class=\"carte_box_pays\">Tadjikistan<\/p><p class=\"carte_box_date\">2020 \u2192 2024<\/p><p class=\"carte_box_titre\">Supporting local communities through the conservation of ancient fruit and nut forests<\/p><p class=\"carte_box_categorie\">Conservation\/restoration<\/p><p class=\"carte_box_link\"><a href=\/en\/fondation-pour-les-arbres-projects\/supporting-local-communities-through-the-conservation-of-anc>\u2192 See more<\/a><\/p><\/div>";
+  myOptions.content="<div class='myboxmap'><img src='https://content.da.live/aemdemos/fondationsaudemarspiguet/assets/images/map/projects-listing/383\/arbres-adultes-a-dashtijum-c-fauna-flora-international.jpg'   width='220' height='144' ><p class=\"carte_box_partenaires\">Fauna & Flora International (FFI)<\/p><p class=\"carte_box_pays\">Tadjikistan<\/p><p class=\"carte_box_date\">2020 \u2192 2024<\/p><p class=\"carte_box_titre\">Supporting local communities through the conservation of ancient fruit and nut forests<\/p><p class=\"carte_box_categorie\">Conservation\/restoration<\/p><p class=\"carte_box_link\"><a href=\/en\/fondation-pour-les-arbres-projects\/supporting-local-communities-through-the-conservation-of-anc>\u2192 See more<\/a><\/p><\/div>";
 
   infoWindows[43]= new InfoBox(myOptions);
 
@@ -2041,7 +2041,7 @@ var popupoption = {
     
   
   var myOptions = popupoption;
-  myOptions.content="<div class='myboxmap'><img src='\/users_uploads\/projets_projets-listing\/generated\/402\/clapiers-de-lapins-c-inter-aide.webp?ck=2024-11-25-160314'   width='220' height='144' ><p class=\"carte_box_partenaires\">Inter Aide<\/p><p class=\"carte_box_pays\">Malawi<\/p><p class=\"carte_box_date\">2020 \u2192 2024<\/p><p class=\"carte_box_titre\">Improving the lives of rural communities through the planting of agroforestry groves and by adopting agro-ecological practices<\/p><p class=\"carte_box_categorie\">Conservation\/restoration | Awareness raising<\/p><p class=\"carte_box_link\"><a href=\/en\/fondation-pour-les-arbres-projects\/improving-the-lives-of-rural-communities-through-the-plantin>\u2192 See more<\/a><\/p><\/div>";
+  myOptions.content="<div class='myboxmap'><img src='https://content.da.live/aemdemos/fondationsaudemarspiguet/assets/images/map/projects-listing/402\/clapiers-de-lapins-c-inter-aide.jpg'   width='220' height='144' ><p class=\"carte_box_partenaires\">Inter Aide<\/p><p class=\"carte_box_pays\">Malawi<\/p><p class=\"carte_box_date\">2020 \u2192 2024<\/p><p class=\"carte_box_titre\">Improving the lives of rural communities through the planting of agroforestry groves and by adopting agro-ecological practices<\/p><p class=\"carte_box_categorie\">Conservation\/restoration | Awareness raising<\/p><p class=\"carte_box_link\"><a href=\/en\/fondation-pour-les-arbres-projects\/improving-the-lives-of-rural-communities-through-the-plantin>\u2192 See more<\/a><\/p><\/div>";
 
   infoWindows[47]= new InfoBox(myOptions);
 
@@ -2096,7 +2096,7 @@ var popupoption = {
     
   
   var myOptions = popupoption;
-  myOptions.content="<div class='myboxmap'><img src='\/users_uploads\/projets_projets-listing\/generated\/374\/femme-plantant-un-arbre-1-c-fairventures.webp?ck=2024-11-25-160146'   width='220' height='144' ><p class=\"carte_box_partenaires\">Fairventures Worldwide<\/p><p class=\"carte_box_pays\">Uganda<\/p><p class=\"carte_box_date\">2020 \u2192 2023<\/p><p class=\"carte_box_titre\">Sustainable mass timber construction for resilient rural economies<\/p><p class=\"carte_box_categorie\">Conservation\/restoration<\/p><p class=\"carte_box_link\"><a href=\/en\/fondation-pour-les-arbres-projects\/sustainable-mass-timber-construction-for-resilient-rural-eco>\u2192 See more<\/a><\/p><\/div>";
+  myOptions.content="<div class='myboxmap'><img src='https://content.da.live/aemdemos/fondationsaudemarspiguet/assets/images/map/projects-listing/374\/femme-plantant-un-arbre-1-c-fairventures.jpg'   width='220' height='144' ><p class=\"carte_box_partenaires\">Fairventures Worldwide<\/p><p class=\"carte_box_pays\">Uganda<\/p><p class=\"carte_box_date\">2020 \u2192 2023<\/p><p class=\"carte_box_titre\">Sustainable mass timber construction for resilient rural economies<\/p><p class=\"carte_box_categorie\">Conservation\/restoration<\/p><p class=\"carte_box_link\"><a href=\/en\/fondation-pour-les-arbres-projects\/sustainable-mass-timber-construction-for-resilient-rural-eco>\u2192 See more<\/a><\/p><\/div>";
 
   infoWindows[41]= new InfoBox(myOptions);
 
@@ -2151,7 +2151,7 @@ var popupoption = {
     
   
   var myOptions = popupoption;
-  myOptions.content="<div class='myboxmap'><img src='\/users_uploads\/projets_projets-listing\/generated\/396\/arbre-indigene-plante-dans-une-zone-deboisee-2-c-igh.webp?ck=2024-11-25-160250'   width='220' height='144' ><p class=\"carte_box_partenaires\">Itombwe G\u00e9n\u00e9ration pour l\u2019Humanit\u00e9 (IGH)<\/p><p class=\"carte_box_pays\">Democratic Republic of the Congo (DRC)<\/p><p class=\"carte_box_date\">2020 \u2192 2023<\/p><p class=\"carte_box_titre\">Itombwe forest conservation<\/p><p class=\"carte_box_categorie\">Conservation\/restoration | Awareness raising<\/p><p class=\"carte_box_link\"><a href=\/en\/fondation-pour-les-arbres-projects\/itombwe-forest-conservation>\u2192 See more<\/a><\/p><\/div>";
+  myOptions.content="<div class='myboxmap'><img src='https://content.da.live/aemdemos/fondationsaudemarspiguet/assets/images/map/projects-listing/396\/arbre-indigene-plante-dans-une-zone-deboisee-2-c-igh.jpg'   width='220' height='144' ><p class=\"carte_box_partenaires\">Itombwe G\u00e9n\u00e9ration pour l\u2019Humanit\u00e9 (IGH)<\/p><p class=\"carte_box_pays\">Democratic Republic of the Congo (DRC)<\/p><p class=\"carte_box_date\">2020 \u2192 2023<\/p><p class=\"carte_box_titre\">Itombwe forest conservation<\/p><p class=\"carte_box_categorie\">Conservation\/restoration | Awareness raising<\/p><p class=\"carte_box_link\"><a href=\/en\/fondation-pour-les-arbres-projects\/itombwe-forest-conservation>\u2192 See more<\/a><\/p><\/div>";
 
   infoWindows[46]= new InfoBox(myOptions);
 
@@ -2206,7 +2206,7 @@ var popupoption = {
     
   
   var myOptions = popupoption;
-  myOptions.content="<div class='myboxmap'><img src='\/users_uploads\/projets_projets-listing\/generated\/228\/madame-bien-village-de-bam-c-gret.webp?ck=2024-11-25-155424'   width='220' height='144' ><p class=\"carte_box_partenaires\">Gret<\/p><p class=\"carte_box_pays\">Vietnam<\/p><p class=\"carte_box_date\">2020 \u2192 2024<\/p><p class=\"carte_box_titre\">Empowering ethnic minority women through sustainable forest management in nature reserves<\/p><p class=\"carte_box_categorie\">Conservation\/restoration | Awareness raising<\/p><p class=\"carte_box_link\"><a href=\/en\/fondation-pour-les-arbres-projects\/empowering-ethnic-minority-women-for-sustainable-forest-mana>\u2192 See more<\/a><\/p><\/div>";
+  myOptions.content="<div class='myboxmap'><img src='https://content.da.live/aemdemos/fondationsaudemarspiguet/assets/images/map/projects-listing/228\/madame-bien-village-de-bam-c-gret.jpg'   width='220' height='144' ><p class=\"carte_box_partenaires\">Gret<\/p><p class=\"carte_box_pays\">Vietnam<\/p><p class=\"carte_box_date\">2020 \u2192 2024<\/p><p class=\"carte_box_titre\">Empowering ethnic minority women through sustainable forest management in nature reserves<\/p><p class=\"carte_box_categorie\">Conservation\/restoration | Awareness raising<\/p><p class=\"carte_box_link\"><a href=\/en\/fondation-pour-les-arbres-projects\/empowering-ethnic-minority-women-for-sustainable-forest-mana>\u2192 See more<\/a><\/p><\/div>";
 
   infoWindows[17]= new InfoBox(myOptions);
 
@@ -2261,7 +2261,7 @@ var popupoption = {
     
   
   var myOptions = popupoption;
-  myOptions.content="<div class='myboxmap'><img src='\/users_uploads\/projets_projets-listing\/generated\/368\/communaute-locale-2-c-experts-solidaires.webp?ck=2024-11-25-160134'   width='220' height='144' ><p class=\"carte_box_partenaires\">Experts-Solidaires<\/p><p class=\"carte_box_pays\">Benin<\/p><p class=\"carte_box_date\">2020 \u2192 2022<\/p><p class=\"carte_box_titre\">Integrated forest resource management<\/p><p class=\"carte_box_categorie\">Conservation\/restoration | Awareness raising<\/p><p class=\"carte_box_link\"><a href=\/en\/fondation-pour-les-arbres-projects\/integrated-forest-resource-management>\u2192 See more<\/a><\/p><\/div>";
+  myOptions.content="<div class='myboxmap'><img src='https://content.da.live/aemdemos/fondationsaudemarspiguet/assets/images/map/projects-listing/368\/communaute-locale-2-c-experts-solidaires.jpg'   width='220' height='144' ><p class=\"carte_box_partenaires\">Experts-Solidaires<\/p><p class=\"carte_box_pays\">Benin<\/p><p class=\"carte_box_date\">2020 \u2192 2022<\/p><p class=\"carte_box_titre\">Integrated forest resource management<\/p><p class=\"carte_box_categorie\">Conservation\/restoration | Awareness raising<\/p><p class=\"carte_box_link\"><a href=\/en\/fondation-pour-les-arbres-projects\/integrated-forest-resource-management>\u2192 See more<\/a><\/p><\/div>";
 
   infoWindows[40]= new InfoBox(myOptions);
 
@@ -2316,7 +2316,7 @@ var popupoption = {
     
   
   var myOptions = popupoption;
-  myOptions.content="<div class='myboxmap'><img src='\/users_uploads\/projets_projets-listing\/generated\/438\/plantation-2-c-pragya.webp?ck=2024-11-25-160502'   width='220' height='144' ><p class=\"carte_box_partenaires\">Pragya<\/p><p class=\"carte_box_pays\">India<\/p><p class=\"carte_box_date\">2020 \u2192 2024<\/p><p class=\"carte_box_titre\">Ancestral knowledge preservation, conservation and cultivation of endangered medicinal and aromatic plants in the Himalayas<\/p><p class=\"carte_box_categorie\">Conservation\/restoration | Awareness raising | Ancestral knowledge<\/p><p class=\"carte_box_link\"><a href=\/en\/fondation-pour-les-arbres-projects\/ancestral-knowledge-preservation-conservation-and-cultivatio>\u2192 See more<\/a><\/p><\/div>";
+  myOptions.content="<div class='myboxmap'><img src='https://content.da.live/aemdemos/fondationsaudemarspiguet/assets/images/map/projects-listing/438\/plantation-2-c-pragya.jpg'   width='220' height='144' ><p class=\"carte_box_partenaires\">Pragya<\/p><p class=\"carte_box_pays\">India<\/p><p class=\"carte_box_date\">2020 \u2192 2024<\/p><p class=\"carte_box_titre\">Ancestral knowledge preservation, conservation and cultivation of endangered medicinal and aromatic plants in the Himalayas<\/p><p class=\"carte_box_categorie\">Conservation\/restoration | Awareness raising | Ancestral knowledge<\/p><p class=\"carte_box_link\"><a href=\/en\/fondation-pour-les-arbres-projects\/ancestral-knowledge-preservation-conservation-and-cultivatio>\u2192 See more<\/a><\/p><\/div>";
 
   infoWindows[53]= new InfoBox(myOptions);
 
@@ -2371,7 +2371,7 @@ var popupoption = {
     
   
   var myOptions = popupoption;
-  myOptions.content="<div class='myboxmap'><img src='\/users_uploads\/projets_projets-listing\/generated\/280\/apprentissage-c-darren-cresswell.webp?ck=2024-11-25-155751'   width='220' height='144' ><p class=\"carte_box_partenaires\">The National Forest Company<\/p><p class=\"carte_box_pays\">England<\/p><p class=\"carte_box_date\">2020 \u2192 2024<\/p><p class=\"carte_box_titre\">Creating a forest for learning II<\/p><p class=\"carte_box_categorie\">Awareness raising<\/p><p class=\"carte_box_link\"><a href=\/en\/fondation-pour-les-arbres-projects\/creating-a-forest-for-learning-ii>\u2192 See more<\/a><\/p><\/div>";
+  myOptions.content="<div class='myboxmap'><img src='https://content.da.live/aemdemos/fondationsaudemarspiguet/assets/images/map/projects-listing/280\/apprentissage-c-darren-cresswell.jpg'   width='220' height='144' ><p class=\"carte_box_partenaires\">The National Forest Company<\/p><p class=\"carte_box_pays\">England<\/p><p class=\"carte_box_date\">2020 \u2192 2024<\/p><p class=\"carte_box_titre\">Creating a forest for learning II<\/p><p class=\"carte_box_categorie\">Awareness raising<\/p><p class=\"carte_box_link\"><a href=\/en\/fondation-pour-les-arbres-projects\/creating-a-forest-for-learning-ii>\u2192 See more<\/a><\/p><\/div>";
 
   infoWindows[26]= new InfoBox(myOptions);
 
@@ -2426,7 +2426,7 @@ var popupoption = {
     
   
   var myOptions = popupoption;
-  myOptions.content="<div class='myboxmap'><img src='\/users_uploads\/projets_projets-listing\/generated\/188\/creation-de-meuble-en-r-vinifera-c-didier-roguet.webp?ck=2024-11-25-155212'   width='220' height='144' ><p class=\"carte_box_partenaires\">Conservatoire et Jardin botaniques de la Ville de Gen\u00e8ve (CJBG)<\/p><p class=\"carte_box_pays\">Benin | Ghana | C\u00f4te d\u2019Ivoire<\/p><p class=\"carte_box_date\">2020 \u2192 2027<\/p><p class=\"carte_box_titre\">Multipalms<\/p><p class=\"carte_box_categorie\">Conservation\/restoration | Awareness raising<\/p><p class=\"carte_box_link\"><a href=\/en\/fondation-pour-les-arbres-projects\/multipalms>\u2192 See more<\/a><\/p><\/div>";
+  myOptions.content="<div class='myboxmap'><img src='https://content.da.live/aemdemos/fondationsaudemarspiguet/assets/images/map/projects-listing/188\/creation-de-meuble-en-r-vinifera-c-didier-roguet.jpg'   width='220' height='144' ><p class=\"carte_box_partenaires\">Conservatoire et Jardin botaniques de la Ville de Gen\u00e8ve (CJBG)<\/p><p class=\"carte_box_pays\">Benin | Ghana | C\u00f4te d\u2019Ivoire<\/p><p class=\"carte_box_date\">2020 \u2192 2027<\/p><p class=\"carte_box_titre\">Multipalms<\/p><p class=\"carte_box_categorie\">Conservation\/restoration | Awareness raising<\/p><p class=\"carte_box_link\"><a href=\/en\/fondation-pour-les-arbres-projects\/multipalms>\u2192 See more<\/a><\/p><\/div>";
 
   infoWindows[10]= new InfoBox(myOptions);
 
@@ -2481,7 +2481,7 @@ var popupoption = {
     
   
   var myOptions = popupoption;
-  myOptions.content="<div class='myboxmap'><img src='\/users_uploads\/projets_projets-listing\/generated\/480\/dundreggan-rewilding-centre-c-paul-campbell-photography.webp?ck=2024-11-25-160720'   width='220' height='144' ><p class=\"carte_box_partenaires\">Trees for Life<\/p><p class=\"carte_box_pays\">Scotland<\/p><p class=\"carte_box_date\">2020 \u2192 2023<\/p><p class=\"carte_box_titre\">Dundreggan Rewilding Centre<\/p><p class=\"carte_box_categorie\">Awareness raising | Ancestral knowledge<\/p><p class=\"carte_box_link\"><a href=\/en\/fondation-pour-les-arbres-projects\/dundreggan-rewilding-centre>\u2192 See more<\/a><\/p><\/div>";
+  myOptions.content="<div class='myboxmap'><img src='https://content.da.live/aemdemos/fondationsaudemarspiguet/assets/images/map/projects-listing/480\/dundreggan-rewilding-centre-c-paul-campbell-photography.jpg'   width='220' height='144' ><p class=\"carte_box_partenaires\">Trees for Life<\/p><p class=\"carte_box_pays\">Scotland<\/p><p class=\"carte_box_date\">2020 \u2192 2023<\/p><p class=\"carte_box_titre\">Dundreggan Rewilding Centre<\/p><p class=\"carte_box_categorie\">Awareness raising | Ancestral knowledge<\/p><p class=\"carte_box_link\"><a href=\/en\/fondation-pour-les-arbres-projects\/dundreggan-rewilding-centre>\u2192 See more<\/a><\/p><\/div>";
 
   infoWindows[60]= new InfoBox(myOptions);
 
@@ -2536,7 +2536,7 @@ var popupoption = {
     
   
   var myOptions = popupoption;
-  myOptions.content="<div class='myboxmap'><img src='\/users_uploads\/projets_projets-listing\/generated\/433\/classe-dapprentissage-orangutan-haven-c-paneco.webp?ck=2024-11-25-160447'   width='220' height='144' ><p class=\"carte_box_partenaires\">Fondation PanEco<\/p><p class=\"carte_box_pays\">Indonesia<\/p><p class=\"carte_box_date\">2020 \u2192 2023<\/p><p class=\"carte_box_titre\">Environmental education centres<\/p><p class=\"carte_box_categorie\">Conservation\/restoration | Awareness raising<\/p><p class=\"carte_box_link\"><a href=\/en\/fondation-pour-les-arbres-projects\/environmental-education-centres>\u2192 See more<\/a><\/p><\/div>";
+  myOptions.content="<div class='myboxmap'><img src='https://content.da.live/aemdemos/fondationsaudemarspiguet/assets/images/map/projects-listing/433\/classe-dapprentissage-orangutan-haven-c-paneco.jpg'   width='220' height='144' ><p class=\"carte_box_partenaires\">Fondation PanEco<\/p><p class=\"carte_box_pays\">Indonesia<\/p><p class=\"carte_box_date\">2020 \u2192 2023<\/p><p class=\"carte_box_titre\">Environmental education centres<\/p><p class=\"carte_box_categorie\">Conservation\/restoration | Awareness raising<\/p><p class=\"carte_box_link\"><a href=\/en\/fondation-pour-les-arbres-projects\/environmental-education-centres>\u2192 See more<\/a><\/p><\/div>";
 
   infoWindows[52]= new InfoBox(myOptions);
 
@@ -2591,7 +2591,7 @@ var popupoption = {
     
   
   var myOptions = popupoption;
-  myOptions.content="<div class='myboxmap'><img src='\/users_uploads\/projets_projets-listing\/generated\/322\/construction-2-c-arutam.webp?ck=2024-11-25-155938'   width='220' height='144' ><p class=\"carte_box_partenaires\">Arutam Z\u00e9ro D\u00e9forestation<\/p><p class=\"carte_box_pays\">Mexico<\/p><p class=\"carte_box_date\">2020 \u2192 2022<\/p><p class=\"carte_box_titre\">Support for traditional Mayan agriculture and raising awareness of family nutrition<\/p><p class=\"carte_box_categorie\">Conservation\/restoration | Awareness raising | Ancestral knowledge<\/p><p class=\"carte_box_link\"><a href=\/en\/fondation-pour-les-arbres-projects\/support-for-traditional-mayan-agriculture-and-raising-awaren>\u2192 See more<\/a><\/p><\/div>";
+  myOptions.content="<div class='myboxmap'><img src='https://content.da.live/aemdemos/fondationsaudemarspiguet/assets/images/map/projects-listing/322\/construction-2-c-arutam.jpg'   width='220' height='144' ><p class=\"carte_box_partenaires\">Arutam Z\u00e9ro D\u00e9forestation<\/p><p class=\"carte_box_pays\">Mexico<\/p><p class=\"carte_box_date\">2020 \u2192 2022<\/p><p class=\"carte_box_titre\">Support for traditional Mayan agriculture and raising awareness of family nutrition<\/p><p class=\"carte_box_categorie\">Conservation\/restoration | Awareness raising | Ancestral knowledge<\/p><p class=\"carte_box_link\"><a href=\/en\/fondation-pour-les-arbres-projects\/support-for-traditional-mayan-agriculture-and-raising-awaren>\u2192 See more<\/a><\/p><\/div>";
 
   infoWindows[32]= new InfoBox(myOptions);
 
@@ -2646,7 +2646,7 @@ var popupoption = {
     
   
   var myOptions = popupoption;
-  myOptions.content="<div class='myboxmap'><img src='\/users_uploads\/projets_projets-listing\/generated\/467\/abreuvoirs-pour-les-animaux-c-shen.webp?ck=2024-11-25-160640'   width='220' height='144' ><p class=\"carte_box_partenaires\">SHEN<\/p><p class=\"carte_box_pays\">Armenia<\/p><p class=\"carte_box_date\">2019 \u2192 2023<\/p><p class=\"carte_box_titre\">Afforestation of Chambarak and Ttujur communities<\/p><p class=\"carte_box_categorie\">Conservation\/restoration | Awareness raising<\/p><p class=\"carte_box_link\"><a href=\/en\/fondation-pour-les-arbres-projects\/afforestation-of-chambarak-and-ttujur-communities>\u2192 See more<\/a><\/p><\/div>";
+  myOptions.content="<div class='myboxmap'><img src='https://content.da.live/aemdemos/fondationsaudemarspiguet/assets/images/map/projects-listing/467\/abreuvoirs-pour-les-animaux-c-shen.jpg'   width='220' height='144' ><p class=\"carte_box_partenaires\">SHEN<\/p><p class=\"carte_box_pays\">Armenia<\/p><p class=\"carte_box_date\">2019 \u2192 2023<\/p><p class=\"carte_box_titre\">Afforestation of Chambarak and Ttujur communities<\/p><p class=\"carte_box_categorie\">Conservation\/restoration | Awareness raising<\/p><p class=\"carte_box_link\"><a href=\/en\/fondation-pour-les-arbres-projects\/afforestation-of-chambarak-and-ttujur-communities>\u2192 See more<\/a><\/p><\/div>";
 
   infoWindows[58]= new InfoBox(myOptions);
 
@@ -2701,7 +2701,7 @@ var popupoption = {
     
   
   var myOptions = popupoption;
-  myOptions.content="<div class='myboxmap'><img src='\/users_uploads\/projets_projets-listing\/generated\/472\/ecole-a-ciel-ouvert-1-c-gabriela-furer-silviva.webp?ck=2024-11-25-160652'   width='220' height='144' ><p class=\"carte_box_partenaires\">Fondation Silviva<\/p><p class=\"carte_box_pays\">Switzerland<\/p><p class=\"carte_box_date\">2019 \u2192 2022<\/p><p class=\"carte_box_titre\">The Forester\u2019s world<\/p><p class=\"carte_box_categorie\">Awareness raising<\/p><p class=\"carte_box_link\"><a href=\/en\/fondation-pour-les-arbres-projects\/the-foresters-world>\u2192 See more<\/a><\/p><\/div>";
+  myOptions.content="<div class='myboxmap'><img src='https://content.da.live/aemdemos/fondationsaudemarspiguet/assets/images/map/projects-listing/472\/ecole-a-ciel-ouvert-1-c-gabriela-furer-silviva.jpg'   width='220' height='144' ><p class=\"carte_box_partenaires\">Fondation Silviva<\/p><p class=\"carte_box_pays\">Switzerland<\/p><p class=\"carte_box_date\">2019 \u2192 2022<\/p><p class=\"carte_box_titre\">The Forester\u2019s world<\/p><p class=\"carte_box_categorie\">Awareness raising<\/p><p class=\"carte_box_link\"><a href=\/en\/fondation-pour-les-arbres-projects\/the-foresters-world>\u2192 See more<\/a><\/p><\/div>";
 
   infoWindows[59]= new InfoBox(myOptions);
 
@@ -2756,7 +2756,7 @@ var popupoption = {
     
   
   var myOptions = popupoption;
-  myOptions.content="<div class='myboxmap'><img src='\/users_uploads\/projets_projets-listing\/generated\/823\/grand-hapalemur-4-c-sebastien-meys.webp?ck=2024-11-25-161712'   width='220' height='144' ><p class=\"carte_box_partenaires\">Helpsimus (Association fran\u00e7aise pour la sauvegarde du grand hapal\u00e9mur)<\/p><p class=\"carte_box_pays\">Madagascar<\/p><p class=\"carte_box_date\">2019 \u2192 2023<\/p><p class=\"carte_box_titre\">Stepping up protection for Madagascar\u2019s largest wild population of greater bamboo lemurs<\/p><p class=\"carte_box_categorie\">Conservation\/restoration | Awareness raising<\/p><p class=\"carte_box_link\"><a href=\/en\/fondation-pour-les-arbres-projects\/stepping-up-protection-for-madagascars-largest-wild-populati>\u2192 See more<\/a><\/p><\/div>";
+  myOptions.content="<div class='myboxmap'><img src='https://content.da.live/aemdemos/fondationsaudemarspiguet/assets/images/map/projects-listing/823\/grand-hapalemur-4-c-sebastien-meys.jpg'   width='220' height='144' ><p class=\"carte_box_partenaires\">Helpsimus (Association fran\u00e7aise pour la sauvegarde du grand hapal\u00e9mur)<\/p><p class=\"carte_box_pays\">Madagascar<\/p><p class=\"carte_box_date\">2019 \u2192 2023<\/p><p class=\"carte_box_titre\">Stepping up protection for Madagascar\u2019s largest wild population of greater bamboo lemurs<\/p><p class=\"carte_box_categorie\">Conservation\/restoration | Awareness raising<\/p><p class=\"carte_box_link\"><a href=\/en\/fondation-pour-les-arbres-projects\/stepping-up-protection-for-madagascars-largest-wild-populati>\u2192 See more<\/a><\/p><\/div>";
 
   infoWindows[45]= new InfoBox(myOptions);
 
@@ -2811,7 +2811,7 @@ var popupoption = {
     
   
   var myOptions = popupoption;
-  myOptions.content="<div class='myboxmap'><img src='\/users_uploads\/projets_projets-listing\/generated\/447\/grand-milieu-sec-c-reseau-ecologique-la-frontiere.webp?ck=2024-11-25-160522'   width='220' height='144' ><p class=\"carte_box_partenaires\">R\u00e9seau \u00e9cologique La Fronti\u00e8re<\/p><p class=\"carte_box_pays\">Switzerland<\/p><p class=\"carte_box_date\">2019 \u2192 2022<\/p><p class=\"carte_box_titre\">Landscape and biodiversity<\/p><p class=\"carte_box_categorie\">Conservation\/restoration | Awareness raising<\/p><p class=\"carte_box_link\"><a href=\/en\/fondation-pour-les-arbres-projects\/landscape-and-biodiversity>\u2192 See more<\/a><\/p><\/div>";
+  myOptions.content="<div class='myboxmap'><img src='https://content.da.live/aemdemos/fondationsaudemarspiguet/assets/images/map/projects-listing/447\/grand-milieu-sec-c-reseau-ecologique-la-frontiere.jpg'   width='220' height='144' ><p class=\"carte_box_partenaires\">R\u00e9seau \u00e9cologique La Fronti\u00e8re<\/p><p class=\"carte_box_pays\">Switzerland<\/p><p class=\"carte_box_date\">2019 \u2192 2022<\/p><p class=\"carte_box_titre\">Landscape and biodiversity<\/p><p class=\"carte_box_categorie\">Conservation\/restoration | Awareness raising<\/p><p class=\"carte_box_link\"><a href=\/en\/fondation-pour-les-arbres-projects\/landscape-and-biodiversity>\u2192 See more<\/a><\/p><\/div>";
 
   infoWindows[55]= new InfoBox(myOptions);
 
@@ -2866,7 +2866,7 @@ var popupoption = {
     
   
   var myOptions = popupoption;
-  myOptions.content="<div class='myboxmap'><img src='\/users_uploads\/projets_projets-listing\/generated\/193\/biodiversite-1-c-daisy-tarrier.webp?ck=2024-11-25-155230'   width='220' height='144' ><p class=\"carte_box_partenaires\">Envol Vert<\/p><p class=\"carte_box_pays\">Colombia<\/p><p class=\"carte_box_date\">2019 \u2192 2025<\/p><p class=\"carte_box_titre\">Preserving the last dry forests through agroforestry<\/p><p class=\"carte_box_categorie\">Conservation\/restoration | Awareness raising<\/p><p class=\"carte_box_link\"><a href=\/en\/fondation-pour-les-arbres-projects\/preserver-les-dernieres-forets-seches-par-lagroforesterie>\u2192 See more<\/a><\/p><\/div>";
+  myOptions.content="<div class='myboxmap'><img src='https://content.da.live/aemdemos/fondationsaudemarspiguet/assets/images/map/projects-listing/193\/biodiversite-1-c-daisy-tarrier.jpg'   width='220' height='144' ><p class=\"carte_box_partenaires\">Envol Vert<\/p><p class=\"carte_box_pays\">Colombia<\/p><p class=\"carte_box_date\">2019 \u2192 2025<\/p><p class=\"carte_box_titre\">Preserving the last dry forests through agroforestry<\/p><p class=\"carte_box_categorie\">Conservation\/restoration | Awareness raising<\/p><p class=\"carte_box_link\"><a href=\/en\/fondation-pour-les-arbres-projects\/preserver-les-dernieres-forets-seches-par-lagroforesterie>\u2192 See more<\/a><\/p><\/div>";
 
   infoWindows[11]= new InfoBox(myOptions);
 
