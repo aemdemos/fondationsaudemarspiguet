@@ -14,6 +14,7 @@ import {
   getMetadata,
   buildBlock,
 } from './aem.js';
+import { decorateListingCards } from './utils.js';
 
 const LANGUAGES = new Set(['en', 'fr']);
 let language;
@@ -162,6 +163,7 @@ export function decorateMain(main) {
   decorateHeadings(main);
   decorateSections(main);
   decorateBlocks(main);
+  decorateListingCards(main);
 }
 
 /**

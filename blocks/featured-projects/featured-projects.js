@@ -1,5 +1,5 @@
 import {
-  fetchPlaceholders,
+  toCamelCase,
   createOptimizedPicture,
   buildBlock,
   decorateBlock,
@@ -26,6 +26,70 @@ class Products {
     this.productsLocation = productsLocation;
     this.productsPath = productsPath;
   }
+}
+
+async function fetchProjectPlaceholders(prefix = 'en') {
+  window.placeholders = window.placeholders || {};
+
+  // Check if we already have data loaded
+  if (!window.placeholders[prefix] || !window.placeholders['category-news'] || !window.placeholders['category-projects']) {
+    try {
+      const resp = await fetch(`/placeholders.json?sheet=${prefix}&sheet=category-news&sheet=category-projects`);
+      const json = resp.ok ? await resp.json() : {};
+
+      // Process main language sheet
+      if (json[prefix] && json[prefix].data) {
+        const placeholders = {};
+        json[prefix].data
+          .filter((placeholder) => placeholder.Key)
+          .forEach((placeholder) => {
+            placeholders[toCamelCase(placeholder.Key)] = placeholder.Text;
+          });
+        window.placeholders[prefix] = placeholders;
+      }
+
+      // Process and store category-news sheet
+      if (json['category-news'] && json['category-news'].data) {
+        const categoryNewsPlaceholders = {
+          en: [],
+          fr: [],
+        };
+        json['category-news'].data.forEach((item) => {
+          if (item.en) {
+            categoryNewsPlaceholders.en.push(item.en);
+          }
+          if (item.fr) {
+            categoryNewsPlaceholders.fr.push(item.fr);
+          }
+        });
+        window.placeholders['category-news'] = categoryNewsPlaceholders;
+      }
+
+      // Process and store category-projects sheet
+      if (json['category-projects'] && json['category-projects'].data) {
+        const categoryProjectsPlaceholders = {
+          en: [],
+          fr: [],
+        };
+        json['category-projects'].data.forEach((item) => {
+          if (item.en) {
+            categoryProjectsPlaceholders.en.push(item.en);
+          }
+          if (item.fr) {
+            categoryProjectsPlaceholders.fr.push(item.fr);
+          }
+        });
+        window.placeholders['category-projects'] = categoryProjectsPlaceholders;
+      }
+    } catch (error) {
+      // Set default empty structures if loading fails
+      window.placeholders[prefix] = window.placeholders[prefix] || {};
+      window.placeholders['category-news'] = window.placeholders['category-news'] || { en: [], fr: [] };
+      window.placeholders['category-projects'] = window.placeholders['category-projects'] || { en: [], fr: [] };
+    }
+  }
+
+  return window.placeholders;
 }
 
 const blockType = 'cards';
@@ -91,7 +155,7 @@ const resultParsers = {
 };
 
 async function getProductsdata() {
-  const rawProducts1 = await ffetch(`/${getLanguage()}/${getLanguage() === 'en' ? 'fondation-pour-les-arbres-projects' : 'fondation-pour-les-arbres-nos-projets'}/projects-index.json`)
+  let rawProducts1 = await ffetch(`/${getLanguage()}/${getLanguage() === 'en' ? 'fondation-pour-les-arbres-projects' : 'fondation-pour-les-arbres-nos-projets'}/projects-index.json`)
     .chunks(1000)
     .all();
 
@@ -121,6 +185,41 @@ async function getProductsdata() {
   // Get current page path segments
   const currentPathSegments = getPathSegments();
   const currentPath = `/${currentPathSegments.join('/')}`;
+
+  // Additional filter based on URL path and category matching
+  const secondPathSegment = currentPathSegments[1];
+  let categoryArray = [];
+
+  if (secondPathSegment === 'fondation-pour-les-arbres-news' && window.placeholders['category-news']?.en) {
+    categoryArray = window.placeholders['category-news'].en;
+  } else if (secondPathSegment === 'fondation-pour-les-arbres-actualites' && window.placeholders['category-news']?.fr) {
+    categoryArray = window.placeholders['category-news'].fr;
+  } else if (secondPathSegment === 'fondation-pour-les-arbres-projects' && window.placeholders['category-projects']?.en) {
+    categoryArray = window.placeholders['category-projects'].en;
+  } else if (secondPathSegment === 'fondation-pour-les-arbres-nos-projets' && window.placeholders['category-projects']?.fr) {
+    categoryArray = window.placeholders['category-projects'].fr;
+  }
+
+  // Filter rawProducts1 based on category matching
+  if (categoryArray.length > 0) {
+    // Normalize categoryArray for comparison (lowercase, spaces to dashes)
+    const normalizedCategoryArray = categoryArray.map((cat) => cat.toLowerCase().replace(/\s+/g, '-'));
+
+    rawProducts1 = rawProducts1.filter((product) => {
+      if (!product.category) return false;
+
+      // Split product categories by "|" and normalize each one
+      const productCategories = product.category.split('|')
+        .map((cat) => cat.trim().toLowerCase().replace(/\s+/g, '-'));
+
+      // Check if any product category matches any category in categoryArray
+      const hasMatch = productCategories.some((productCat) => (
+        normalizedCategoryArray.includes(productCat)
+      ));
+
+      return hasMatch;
+    });
+  }
 
   // Find index of current project
   const currentIndex = rawProducts1.findIndex((product) => product.path === currentPath);
@@ -153,11 +252,11 @@ const loadresults = async (getProducts) => {
 export default async function decorate(block) {
   const template = block.querySelector('div > div')?.textContent?.trim();
 
-  const placeholders = await fetchPlaceholders(`${getLanguage()}`);
+  const placeholders = await fetchProjectPlaceholders(`${getLanguage()}`);
 
   // Create the heading based on template
   const heading = h2();
-  const headerText = template === 'news-article' ? placeholders.featuredProjectsHeadingOnNewsArticles : placeholders.featuredProjectsHeadingOnProjectArticles;
+  const headerText = template === 'news-article' ? placeholders[getLanguage()].featuredProjectsHeadingOnNewsArticles : placeholders[getLanguage()].featuredProjectsHeadingOnProjectArticles;
   heading.textContent = headerText;
 
   const templateCell = block.querySelector('div > div');
