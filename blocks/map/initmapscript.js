@@ -69,7 +69,7 @@ var popupoption = {
 
   map = new google.maps.Map(document.getElementById('map'), {
     center: {lat: 46.77448320376698, lng: 8.009033203125},
-    //zoom: 9,
+    //zoom: 9, // Zoom will be set dynamically after fitBounds
     mapId: '5c5cdb8a2b86055061abff98',
     draggable: draggable,
     scrollwheel: false,
@@ -2935,6 +2935,30 @@ var popupoption = {
         });
 
         map.fitBounds(bounds);
+        console.log('After fitBounds - Current zoom:', map.getZoom());
+        
+        // Add zoom change listener to track what's happening with zoom
+        map.addListener('zoom_changed', function() {
+            console.log('Zoom changed to:', map.getZoom());
+        });
+        
+        // Hide map initially to prevent seeing zoom transition
+        document.getElementById('map').style.opacity = '0';
+        
+        // Use timeout to ensure zoom is set after map is fully initialized
+        setTimeout(() => {
+            var currentZoom = map.getZoom();
+            console.log('Auto zoom from fitBounds:', currentZoom);
+            map.setZoom(currentZoom + 1); // Zoom in by 1 level from auto-calculated zoom
+            console.log('After zooming in +1 level:', map.getZoom());
+            
+            // Show map after zoom is complete
+            setTimeout(() => {
+                document.getElementById('map').style.opacity = '1';
+                document.getElementById('map').style.transition = 'opacity 0.3s ease-in';
+                console.log('Map now visible with correct zoom level');
+            }, 100);
+        }, 500);
        //$(window).trigger("resize");
       //google.maps.event.addDomListener(window,"resize",function(){ google.maps.event.trigger(map,"resize"); map.fitBounds(bounds, {bottom:1, left:1, right:1, top:99});});
     
@@ -2954,11 +2978,15 @@ var popupoption = {
 
       // Ajoute des écouteurs d'événements pour les boutons de zoom
       zoomInButton.addEventListener('click', function() {
+        console.log('Zoom In clicked - Current zoom:', map.getZoom());
         map.setZoom(map.getZoom() + 1);
+        console.log('Zoom In clicked - New zoom:', map.getZoom());
       });
 
       zoomOutButton.addEventListener('click', function() {
+        console.log('Zoom Out clicked - Current zoom:', map.getZoom());
         map.setZoom(map.getZoom() - 1);
+        console.log('Zoom Out clicked - New zoom:', map.getZoom());
       });  
     
     
@@ -3009,6 +3037,10 @@ document.addEventListener('DOMContentLoaded', function(){
         });
         markerCluster.addMarkers(markerstocluster);
          map.fitBounds(bounds);
+         setTimeout(() => {
+             var currentZoom = map.getZoom();
+             map.setZoom(currentZoom + 1); // Zoom in by 1 level after category filtering
+         }, 100);
                
 
         }); 
