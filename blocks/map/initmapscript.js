@@ -70,7 +70,7 @@ var popupoption = {
   map = new google.maps.Map(document.getElementById('map'), {
     center: {lat: 46.77448320376698, lng: 8.009033203125},
     //zoom: 9, // Zoom will be set dynamically after fitBounds
-    mapId: '5c5cdb8a2b86055061abff98',
+    // mapId: '5c5cdb8a2b86055061abff98',
     draggable: draggable,
     scrollwheel: false,
     mapTypeControl: false, // Désactiver le contrôle du type de carte (plan/satellite)
@@ -2945,19 +2945,14 @@ var popupoption = {
         // Hide map initially to prevent seeing zoom transition
         document.getElementById('map').style.opacity = '0';
         
-        // Use timeout to ensure zoom is set after map is fully initialized
+        // Use timeout to ensure map is fully loaded before showing
         setTimeout(() => {
-            var currentZoom = map.getZoom();
-            console.log('Auto zoom from fitBounds:', currentZoom);
-            map.setZoom(currentZoom + 1); // Zoom in by 1 level from auto-calculated zoom
-            console.log('After zooming in +1 level:', map.getZoom());
+            console.log('Map loaded at zoom level:', map.getZoom());
             
-            // Show map after zoom is complete
-            setTimeout(() => {
-                document.getElementById('map').style.opacity = '1';
-                document.getElementById('map').style.transition = 'opacity 0.3s ease-in';
-                console.log('Map now visible with correct zoom level');
-            }, 100);
+            // Show map after it's fully loaded
+            document.getElementById('map').style.opacity = '1';
+            document.getElementById('map').style.transition = 'opacity 0.3s ease-in';
+            console.log('Map now visible with natural zoom level');
         }, 500);
        //$(window).trigger("resize");
       //google.maps.event.addDomListener(window,"resize",function(){ google.maps.event.trigger(map,"resize"); map.fitBounds(bounds, {bottom:1, left:1, right:1, top:99});});
@@ -3039,10 +3034,6 @@ document.addEventListener('DOMContentLoaded', function(){
         });
         markerCluster.addMarkers(markerstocluster);
          map.fitBounds(bounds);
-         setTimeout(() => {
-             var currentZoom = map.getZoom();
-             map.setZoom(currentZoom + 1); // Zoom in by 1 level after category filtering
-         }, 100);
                
 
         }); 
