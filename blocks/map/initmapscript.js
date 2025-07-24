@@ -2925,7 +2925,7 @@ var popupoption = {
             imagePath: '/assets/images/',
             styles:[
                 {
-                    url: '/assets/images/closter1.png',
+                    url: 'https://content.da.live/aemdemos/fondationsaudemarspiguet/assets/images/closter1.png',
                     width: 56,
                     height: 56,
                     textColor: '#ffffff',
