@@ -579,3 +579,49 @@ main .section.light, main .section.highlight {
   background-color: var(--section-background-color);
 }
 
+main .section.light-grey-bg:has(.cards-wrapper) {
+  padding: 100px;
+  margin: 100px 0 0;
+}
+
+main .section.light-grey-bg .cards-wrapper {
+  padding: 50px 80px;
+  max-width: 1200px;
+}
+
+main .section.light-grey-bg:has(.cards-wrapper) .default-content-wrapper {
+    max-width: 1200px;
+    padding: 0 80px;
+}
+
+main .section.light-grey-bg .default-content-wrapper h2 {
+  margin: 0;
+}
+
+/* Default button styles */
+main .section.light-grey-bg .default-content-wrapper .button-container {
+  text-align: center;
+  margin: 0 auto;
+}
+
+main .section.light-grey-bg .default-content-wrapper p.button-container a.button {
+  background-color: var(--page-bloc-btn-bg);
+  background-image: url('/icons/btn_fleche_right.svg');
+  background-position: calc(100% - 10px) center;
+  background-repeat: no-repeat;
+  padding: 13px 50px 13px 15px;
+  border-radius: unset;
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: .12em;
+  line-height: normal;
+  text-transform: uppercase;
+  box-sizing: border-box;
+  border: none;
+  cursor: pointer;
+  color: var(--page-bloc-btn);
+  text-align: center;
+  overflow: unset;  
+  min-width: 270px;
+  margin: 0;
+}
