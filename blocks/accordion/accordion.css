@@ -59,3 +59,12 @@
   border-top: 1px solid #dadada;
   background-color: var(--background-color);
 }
+
+.accordion.teams .accordion-item {
+  width: calc((((100% - (12 * 30px)) / 12) * 4) + (3 * 30px));
+  height: 287px;    
+  float: left;
+  position: relative;
+  margin: 15px;
+  box-sizing: border-box;
+}

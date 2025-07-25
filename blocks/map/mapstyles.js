@@ -11,7 +11,7 @@ var audemarsmapstyles =
             }
         ]
     },
-	
+  
     {
         "featureType": "administrative",
         "elementType": "all",
@@ -195,7 +195,7 @@ var audemarsmapstyles =
             }
         ]
     },
-	{
+  {
         "featureType": "landscape",
         "elementType": "labels",
         "stylers": [
