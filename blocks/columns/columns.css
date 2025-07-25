@@ -165,7 +165,7 @@ h1#media-newsroom {
 }
 
 /* Make the columns wrapper flex and position on right */
-div.section.columns-container > div.columns-wrapper {
+div.section.columns-container:has(.columns.two-column) > div.columns-wrapper {
   display: flex !important;
   justify-content: flex-end !important; /* pushes content to right side */
   align-items: flex-start !important;
@@ -175,7 +175,7 @@ div.section.columns-container > div.columns-wrapper {
 }
 
 /* Override default columns behavior - be very specific */
-.section.columns-container.two-column .columns-wrapper .columns {
+.columns.two-column {
   display: flex !important;
   flex-direction: row !important;
   width: 50% !important;
@@ -183,7 +183,8 @@ div.section.columns-container > div.columns-wrapper {
 }
 
 /* Force individual columns to display side by side */
-.section.columns-container .columns-wrapper .columns > div {
+/* stylelint-disable-next-line no-descending-specificity */
+.columns.two-column > div {
   color: black !important;
   flex: 1 !important;
   display: flex !important;
@@ -195,7 +196,8 @@ div.section.columns-container > div.columns-wrapper {
   font-weight: 300;
 }
 
-.section.columns-container > div.columns-wrapper > div > div > div:nth-child(1) > p {
+/* First column paragraph - ONLY for two-column */
+.columns.two-column > div > div:nth-child(1) > p {
   padding-right: 30px;
   width: 400px;
   text-align: left;
@@ -206,7 +208,8 @@ div.section.columns-container > div.columns-wrapper {
   font-size: 20px;
 }
 
-.section.columns-container > div.columns-wrapper > div > div > div:nth-child(2) > p:nth-child(1) > strong{
+/* Second column strong text - ONLY for two-column */
+.columns.two-column > div > div:nth-child(2) > p:nth-child(1) > strong{
   font-weight: 600;
   font-size: 20px;
   line-height: 1.5em;
@@ -214,8 +217,8 @@ div.section.columns-container > div.columns-wrapper {
   font-family: Antarctica, sans-serif;
 }
 
-/* Removed empty ruleset for .section.columns-container > div.columns-wrapper > div > div > div:nth-child(2) > p.button-container > a.button:any-link */
-.section.columns-container > div.columns-wrapper > div > div > div:nth-child(2) > p.button-container > a.button:any-link, button{
+.columns.two-column >div > div:nth-child(2) > p.button-container > a.button:any-link,
+.columns.two-column > div> div:nth-child(2) > p.button-container > button{
   color: #839790 !important;
   font-weight: normal !important;
   font-size: 20px !important;
@@ -247,19 +250,19 @@ div.section.columns-container > div.columns-wrapper {
   }
 
  /* Stack columns vertically and center on mobile */
-  div.section.columns-container > div.columns-wrapper {
+  div.section.columns-container:has(.columns.two-column) > div.columns-wrapper {
     justify-content: center !important;
     gap: 0 !important;
   }
 
-  .section.columns-container.two-column .columns-wrapper .columns {
-    flex-direction: column !important;
+  .columns.two-column {
+    flex-direction: column-reverse !important;
     width: 100% !important;
     gap: 25px !important;
   }
   
   /* Make each column full width on mobile */
-  .section.columns-container .columns-wrapper .columns > div {
+  .columns.two-column > div {
     width: 100% !important;
     flex: none !important;
     display: block !important;
@@ -267,15 +270,17 @@ div.section.columns-container > div.columns-wrapper {
   }
   
   /* Adjust first column paragraph for mobile */
-  .section.columns-container > div.columns-wrapper > div > div > div:nth-child(1) > p {
-    padding-right: 0;
-    width: 100%;
+  .columns.two-column > div > div:nth-child(1) > p {
+    padding-right: 30px !important;
+    width: 300px !important;
+    text-align: left !important;
+    line-height: 1.5em;
     padding-bottom: 20px;
-    font-size: 18px;
+    font-size: 14px;
   }
   
   /* Adjust second column strong text for mobile */
-  .section.columns-container > div.columns-wrapper > div > div > div:nth-child(2) > p:nth-child(1) > strong {
-    font-size: 18px;
+  .columns.two-column > div > div:nth-child(2) > p:nth-child(1) > strong {
+    font-size: 14px;
   }
 }
