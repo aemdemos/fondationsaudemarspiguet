@@ -8,14 +8,12 @@ main .filter-container .news-listing-container-right {
 }
 
 main .filter-container .news-listing-container-right .filter-top-btn {
-    display: block;
     width: 30px;
     height: 30px;
     background-image: url('/icons/btn_arbres_filtre_top.svg');
 }
 
 main .filter-container .news-listing-container-right .filter-bottom-btn {
-    display: block;
     width: 30px;
     height: 30px;
     background-image: url('/icons/btn_arbres_filtre_bottom.svg');
