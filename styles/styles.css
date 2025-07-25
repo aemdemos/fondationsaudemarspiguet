@@ -410,11 +410,8 @@ main > .section.extra-padding {
 }
 
 main .section.cream-bg {
-  background-color: var(--team-bg-page);
-}
-
-main .section.section.cream-bg.cards-container {
   padding: 80px 0;
+  background-color: var(--team-bg-page);
 }
 
 main .section.light-grey-bg {

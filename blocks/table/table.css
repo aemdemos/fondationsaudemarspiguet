@@ -22,13 +22,8 @@
   }
 }
 
-.table.block table thead tr {
-  border-top: 2px solid;
-  border-bottom: 2px solid;
-}
-
-.table.block table tbody tr {
-  border-bottom: 1px solid;
+.table.block table thead tr, .table.block table tbody tr {
+  border: none;
 }
 
 .table.block table th {
