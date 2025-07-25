@@ -1,5 +1,8 @@
 import { getMetadata } from '../../scripts/aem.js';
 import { loadFragment } from '../fragment/fragment.js';
+import { switchLanguage } from '../../scripts/languages.js';
+import { getLanguage } from '../../scripts/scripts.js';
+import { getPathSegments } from '../../scripts/utils.js';
 
 // media query match that indicates mobile/tablet width
 const isDesktop = window.matchMedia('(min-width: 900px)');
@@ -104,21 +107,104 @@ function toggleMenu(nav, navSections, forceExpanded = null) {
 }
 
 /**
+ * Adjusts the scroll limit for short content
+ */
+function adjustScrollLimitForShortContent() {
+  const main = document.querySelector('main');
+  const header = document.querySelector('header .nav-wrapper');
+  const footer = document.querySelector('footer');
+
+  if (main && header) {
+    const mainHeight = main.offsetHeight;
+    const footerHeight = footer ? footer.offsetHeight : 0;
+    // If main content is less than 1000px, adjust scroll behavior
+    if (mainHeight < 1500) {
+      const maxScroll = mainHeight - (footerHeight * 0.25); // Leave 40% of footer height buffer
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > maxScroll) {
+          window.scrollTo(0, maxScroll);
+        }
+      });
+    }
+  }
+}
+
+function setMainHeightVar(headerEle, doc) {
+  const headerHeight = headerEle.offsetHeight;
+  const mainEle = doc.querySelector('main');
+  if (mainEle) {
+    const pathSegments = getPathSegments();
+    const isHomePage = pathSegments.length === 0 || (pathSegments.length === 1 && ['en', 'fr'].includes(pathSegments[0]));
+    if (!isHomePage) {
+      // Always update margin-top during resize to ensure proper positioning
+      mainEle.style.marginTop = `${headerHeight}px`;
+    }
+  }
+}
+
+function waitForHeaderHeight(block) {
+  const headerEle = block.querySelector('.nav-wrapper');
+
+  if (headerEle) {
+    setMainHeightVar(headerEle, document); // Initial call
+
+    // Use ResizeObserver for more reliable header height change detection
+    if (window.ResizeObserver) {
+      const resizeObserver = new ResizeObserver(() => {
+        // Add a small delay to ensure header has finished resizing
+        setTimeout(() => {
+          setMainHeightVar(headerEle, document);
+        }, 10);
+      });
+      resizeObserver.observe(headerEle);
+    }
+
+    // Fallback: Enhanced window resize listener with debouncing
+    let resizeTimeout;
+    window.addEventListener('resize', () => {
+      // Clear previous timeout
+      if (resizeTimeout) {
+        clearTimeout(resizeTimeout);
+      }
+      // Immediate update
+      setMainHeightVar(headerEle, document);
+      // Delayed update to catch any late height changes
+      resizeTimeout = setTimeout(() => {
+        setMainHeightVar(headerEle, document);
+      }, 100);
+    });
+
+    // Also listen for orientation changes on mobile
+    window.addEventListener('orientationchange', () => {
+      setTimeout(() => {
+        setMainHeightVar(headerEle, document);
+      }, 200);
+    });
+  } else {
+    setTimeout(() => waitForHeaderHeight(block), 100); // Retry if header not yet in DOM
+  }
+}
+
+/**
  * loads and decorates the header, mainly the nav
  * @param {Element} block The header block element
  */
 export default async function decorate(block) {
   // load nav as fragment
   const navMeta = getMetadata('nav');
-  const navPath = navMeta ? new URL(navMeta, window.location).pathname : '/nav';
+  const currentLang = getLanguage();
+  const defaultNavPath = currentLang === 'fr' ? '/fr/nav' : '/nav';
+  const navPath = navMeta ? new URL(navMeta, window.location).pathname : defaultNavPath;
   const fragment = await loadFragment(navPath);
-
+  const logoWrapper = document.createElement('div');
+  logoWrapper.className = 'nav-logo-wrapper';
+  const menuWrapper = document.createElement('div');
+  menuWrapper.className = 'nav-menu-wrapper';
   // decorate nav DOM
   block.textContent = '';
   const nav = document.createElement('nav');
   nav.id = 'nav';
   while (fragment.firstElementChild) nav.append(fragment.firstElementChild);
-
   const classes = ['brand', 'sections', 'tools'];
   classes.forEach((c, i) => {
     const section = nav.children[i];
@@ -158,9 +244,89 @@ export default async function decorate(block) {
   // prevent mobile nav behavior on window resize
   toggleMenu(nav, navSections, isDesktop.matches);
   isDesktop.addEventListener('change', () => toggleMenu(nav, navSections, isDesktop.matches));
-
+  logoWrapper.append(navBrand);
+  logoWrapper.append(navSections);
+  logoWrapper.append(hamburger);
+  menuWrapper.append(nav.querySelector('.nav-tools'));
+  nav.append(logoWrapper);
+  nav.append(menuWrapper);
   const navWrapper = document.createElement('div');
   navWrapper.className = 'nav-wrapper';
   navWrapper.append(nav);
   block.append(navWrapper);
+
+  const firstMenuItem = document.querySelector('.default-content-wrapper > ul > li');
+  const firstMenuItemTitle = firstMenuItem?.querySelector('p');
+  const submenu = firstMenuItem?.querySelector('ul');
+
+  if (firstMenuItemTitle && submenu) {
+    firstMenuItemTitle.addEventListener('mouseenter', () => {
+      submenu.classList.add('show');
+      nav.classList.add('hovered');
+    });
+
+    firstMenuItem.addEventListener('mouseleave', () => {
+      submenu.classList.remove('show');
+      nav.classList.remove('hovered');
+    });
+  }
+
+  const menuItems = nav.querySelectorAll('.default-content-wrapper > ul > li');
+  if (menuItems.length > 0) {
+    menuItems.forEach((item, index) => {
+      if (index !== 0) {
+        item.addEventListener('mouseenter', () => {
+          nav.classList.add('hovered');
+        });
+        item.addEventListener('mouseleave', () => {
+          nav.classList.remove('hovered');
+        });
+      }
+    });
+  }
+
+  const scrollLimit = block.querySelector('header .nav-wrapper').offsetHeight;
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > scrollLimit) {
+      navWrapper.classList.add('non-sticky');
+    } else {
+      navWrapper.classList.remove('non-sticky');
+    }
+  });
+
+  const currentUrl = window.location.href;
+  const menuLinks = nav.querySelectorAll('.default-content-wrapper > ul > li a');
+  if (menuLinks) {
+    menuLinks.forEach((link) => {
+      const title = link.textContent.trim().toLowerCase().replace(/\s+/g, '-');
+      if (currentUrl.includes(title)) {
+        link.classList.add('active');
+        const parentLi = link.parentElement.parentElement.parentElement;
+        if (parentLi.tagName === 'LI') {
+          parentLi.classList.add('active');
+        }
+      }
+    });
+  }
+
+  // Initialize language switcher
+  const languageSwitcher = nav.querySelector('.nav-sections > div > p');
+  if (languageSwitcher) {
+    languageSwitcher.style.cursor = 'pointer';
+    languageSwitcher.addEventListener('click', (e) => {
+      e.preventDefault();
+      switchLanguage();
+    });
+  }
+
+  waitForHeaderHeight(block);
+
+  /**
+ * Adjusts the scroll limit for short content
+ */
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', adjustScrollLimitForShortContent);
+  } else {
+    adjustScrollLimitForShortContent();
+  }
 }

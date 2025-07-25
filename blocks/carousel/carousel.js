@@ -1,4 +1,4 @@
-import { fetchPlaceholders } from '../../scripts/aem.js';
+import { fetchPlaceholders, getMetadata } from '../../scripts/aem.js';
 import { moveInstrumentation } from '../../scripts/scripts.js';
 
 function updateActiveSlide(slide) {
@@ -36,11 +36,56 @@ export function showSlide(block, slideIndex = 0) {
   const activeSlide = slides[realSlideIndex];
 
   activeSlide.querySelectorAll('a').forEach((link) => link.removeAttribute('tabindex'));
-  block.querySelector('.carousel-slides').scrollTo({
-    top: 0,
-    left: activeSlide.offsetLeft,
-    behavior: 'smooth',
+
+  slides.forEach((slide, idx) => {
+    slide.setAttribute('aria-hidden', idx !== realSlideIndex);
+    slide.querySelectorAll('a').forEach((link) => {
+      if (idx !== realSlideIndex) {
+        link.setAttribute('tabindex', '-1');
+      } else {
+        link.removeAttribute('tabindex');
+      }
+    });
   });
+
+  const indicators = block.querySelectorAll('.carousel-slide-indicator');
+  indicators.forEach((indicator, idx) => {
+    if (idx !== realSlideIndex) {
+      indicator.querySelector('button').removeAttribute('disabled');
+    } else {
+      indicator.querySelector('button').setAttribute('disabled', 'true');
+    }
+  });
+
+  block.dataset.activeSlide = realSlideIndex;
+
+  // Add grey background behind carousel, starting at its middle
+  const templateName = getMetadata('template');
+  if (templateName === 'project-article') {
+    setTimeout(() => {
+      const carouselRect = block.getBoundingClientRect();
+      const parent = block.parentNode;
+
+      // Make sure the parent is positioned relative
+      if (getComputedStyle(parent).position === 'static') {
+        parent.style.position = 'relative';
+      }
+
+      const bgDiv = document.createElement('div');
+      bgDiv.className = 'carousel-bg-grey';
+      bgDiv.style.position = 'absolute';
+      bgDiv.style.left = '50%';
+      bgDiv.style.transform = 'translateX(-50%)';
+      bgDiv.style.width = '100vw';
+      bgDiv.style.top = `${block.offsetTop + carouselRect.height / 2}px`;
+      bgDiv.style.height = `${carouselRect.height}px`;
+      bgDiv.style.background = 'var(--projet-bg-page-suite)'; // Grey color
+      bgDiv.style.zIndex = '0';
+      bgDiv.style.pointerEvents = 'none';
+
+      parent.insertBefore(bgDiv, block);
+    }, 0);
+  }
 }
 
 function bindEvents(block) {
@@ -90,6 +135,18 @@ function createSlide(row, slideIndex, carouselId) {
   return slide;
 }
 
+function centerIndicators(block) {
+  const container = block.querySelector('.carousel-slides-container');
+  const indicators = container.querySelector('.carousel-slide-indicators');
+  if (container && indicators) {
+    const containerHeight = container.offsetHeight;
+    const indicatorsHeight = indicators.offsetHeight;
+    // Set top so the indicators are vertically centered
+    indicators.style.top = `${(containerHeight - indicatorsHeight) / 2}px`;
+    indicators.style.transform = 'none'; // Remove translateY(-50%) if set in CSS
+  }
+}
+
 let carouselId = 0;
 export default async function decorate(block) {
   carouselId += 1;
@@ -109,6 +166,12 @@ export default async function decorate(block) {
   slidesWrapper.classList.add('carousel-slides');
   block.prepend(slidesWrapper);
 
+  // Detect vertical carousel and add class
+  const isVertical = block.classList.contains('vertical') || block.classList.contains('carousel-vertical');
+  if (isVertical) {
+    block.classList.add('carousel-vertical');
+  }
+
   let slideIndicators;
   if (!isSingleSlide) {
     const slideIndicatorsNav = document.createElement('nav');
@@ -116,16 +179,18 @@ export default async function decorate(block) {
     slideIndicators = document.createElement('ol');
     slideIndicators.classList.add('carousel-slide-indicators');
     slideIndicatorsNav.append(slideIndicators);
-    block.append(slideIndicatorsNav);
+    container.append(slideIndicatorsNav);
 
-    const slideNavButtons = document.createElement('div');
-    slideNavButtons.classList.add('carousel-navigation-buttons');
-    slideNavButtons.innerHTML = `
-      <button type="button" class= "slide-prev" aria-label="${placeholders.previousSlide || 'Previous Slide'}"></button>
-      <button type="button" class="slide-next" aria-label="${placeholders.nextSlide || 'Next Slide'}"></button>
-    `;
-
-    container.append(slideNavButtons);
+    // Only add navigation buttons if NOT vertical
+    if (!isVertical) {
+      const slideNavButtons = document.createElement('div');
+      slideNavButtons.classList.add('carousel-navigation-buttons');
+      slideNavButtons.innerHTML = `
+        <button type="button" class="slide-prev" aria-label="${placeholders.previousSlide || 'Previous Slide'}"></button>
+        <button type="button" class="slide-next" aria-label="${placeholders.nextSlide || 'Next Slide'}"></button>
+      `;
+      container.append(slideNavButtons);
+    }
   }
 
   rows.forEach((row, idx) => {
@@ -146,7 +211,22 @@ export default async function decorate(block) {
   container.append(slidesWrapper);
   block.prepend(container);
 
+  // Show the first slide by default
+  showSlide(block, 0);
+
+  // Autoplay functionality
+  function autoAdvance() {
+    const slides = block.querySelectorAll('.carousel-slide');
+    const current = parseInt(block.dataset.activeSlide, 10) || 0;
+    const next = (current + 1) % slides.length;
+    showSlide(block, next);
+    block.carouselTimer = setTimeout(autoAdvance, 4000); // 4000ms = 4 seconds
+  }
+  block.carouselTimer = setTimeout(autoAdvance, 4000);
+
   if (!isSingleSlide) {
     bindEvents(block);
   }
+  centerIndicators(block);
+  window.addEventListener('resize', () => centerIndicators(block));
 }

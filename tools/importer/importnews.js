@@ -44,22 +44,26 @@ import video39Parser from './parsers/video39.js';
 import columns12Parser from './parsers/columns12.js';
 import headerParser from './parsers/header.js';
 import metadataParser from './parsers/metadata.js';
+import articleintroParser from './parsers/articleintro.js';
+import removecontentTransformer from './transformers/removecontent.js';
+import verticalParser from './parsers/vertical.js';
+import articlecontentParser from './parsers/articlecontent.js';
 import metadataNewsParser from './parsers/metadataNews.js';
 import cleanupTransformer from './transformers/cleanup.js';
 import imageTransformer from './transformers/images.js';
 import linkTransformer from './transformers/links.js';
+import injectTransformer from './transformers/inject.js';
 import { TransformHook } from './transformers/transform.js';
 import {
   generateDocumentPath,
   handleOnLoad,
-  TableBuilder,
+  TableBuilderNews,
   mergeInventory,
   getPathSegments,
 } from './import.utils.js';
 
-const parsers = {
+let parsers = {
   metadata: metadataParser,
-  metadataNews: metadataNewsParser,
   tableStripedBordered6: tableStripedBordered6Parser,
   columns2: columns2Parser,
   cards9: cards9Parser,
@@ -93,10 +97,19 @@ const parsers = {
   columns12: columns12Parser,
 };
 
+const newsparsers = {
+  metadataNews: metadataNewsParser,
+  articleintro: articleintroParser,
+  articlecontent: articlecontentParser,
+  vertical: verticalParser,
+};
+
 const transformers = {
     cleanup: cleanupTransformer,
     images: imageTransformer,
     links: linkTransformer,
+    inject: injectTransformer,
+    removecontent: removecontentTransformer,
   };
   
   WebImporter.Import = {
@@ -169,7 +182,7 @@ const transformers = {
     // before page transform hook
     WebImporter.Import.transform(TransformHook.beforePageTransform, main, { ...source });
   
-    const tableBuilder = TableBuilder(WebImporter.DOMUtils.createTable);
+    const tableBuilder = TableBuilderNews(WebImporter.DOMUtils.createTable);
     // transform all block elements using parsers
     [...pageElements, ...blockElements].forEach(({ element = main, ...pageBlock }) => {
       const parserName = WebImporter.Import.getParserName(pageBlock);
@@ -226,7 +239,7 @@ const transformers = {
         console.warn('Failed to parse header block', e);
       }
     } else {
-      const tableBuilder = TableBuilder(WebImporter.DOMUtils.createTable);
+      const tableBuilder = TableBuilderNews(WebImporter.DOMUtils.createTable);
   
       (fragment.instances || [])
         .filter((instance) => {
@@ -279,7 +292,8 @@ const transformers = {
         pathSegments.includes('fondation-pour-les-arbres-actualites')
       ) {
         console.log('Detected news page');
-        pageElements = [{ name: 'metadataNews' }];
+        pageElements = []; // No metadata parser needed in normal flow since we extract it early
+        parsers = newsparsers;
       }
   
       // sanitize the original URL
@@ -310,8 +324,17 @@ const transformers = {
         }
       }
   
-      let main = document.body;
-  
+            let main = document.body;
+
+      // For news pages, extract metadata BEFORE transformers run to avoid removal issues
+      if (
+        pathSegments.includes('fondation-pour-les-arbres-news') ||
+        pathSegments.includes('fondation-pour-les-arbres-actualites')
+      ) {
+        console.log('Extracting metadata before transformers run');
+        metadataNewsParser(main, { document });
+      }
+
       // before transform hook
       WebImporter.Import.transform(TransformHook.beforeTransform, main, { ...source, inventory });
   
