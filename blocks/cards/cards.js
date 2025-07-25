@@ -27,7 +27,6 @@ export default function decorate(block) {
   block.append(ul);
   // Special handling for map-category variant
   if (block.classList.contains('map-category')) {
-    console.log('Processing map-category cards block:', block);
     const categoryMapping = {
       'View all': { categoryId: 'all', isActive: true },
       conservation: { categoryId: 'category_3' },
@@ -55,7 +54,6 @@ export default function decorate(block) {
         }
 
         if (categoryInfo) {
-          console.log('Creating anchor for category:', categoryInfo);
           const anchor = document.createElement('a');
           anchor.href = '#';
           anchor.className = 'works_categorylink';
@@ -67,11 +65,9 @@ export default function decorate(block) {
 
           // Add immediate click handler with map filtering logic
           anchor.addEventListener('click', (e) => {
-            console.log('Direct anchor click handler triggered');
             e.preventDefault();
 
             const myslectcat = anchor.getAttribute('data-categoryid');
-            console.log('Selected category:', myslectcat);
 
             // Remove active class from all category links
             document.querySelectorAll('a.works_categorylink').forEach((link) => {
@@ -80,12 +76,9 @@ export default function decorate(block) {
 
             // Add active class to clicked anchor
             anchor.classList.add('active');
-            console.log('Active class updated');
 
             // Check if map variables exist and run filtering logic
             if (window.map && window.markers && window.markerCluster && window.bounds) {
-              console.log('Running map filtering logic...');
-
               window.bounds = new google.maps.LatLngBounds();
               const markerstocluster = [];
               window.markerCluster.clearMarkers();
@@ -115,18 +108,8 @@ export default function decorate(block) {
 
               window.markerCluster.addMarkers(markerstocluster);
               window.map.fitBounds(window.bounds);
-              console.log('Map filtering completed - filtered to:', myslectcat);
-            } else {
-              console.log('Map variables not available:', {
-                map: !!window.map,
-                markers: !!window.markers,
-                markerCluster: !!window.markerCluster,
-                bounds: !!window.bounds,
-              });
             }
           });
-
-          console.log('Created anchor:', anchor);
 
           // For "View all" (first card), wrap the p element
           if (categoryInfo.categoryId === 'all') {

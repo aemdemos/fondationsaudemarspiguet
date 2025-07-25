@@ -2935,24 +2935,16 @@ var popupoption = {
         });
 
         map.fitBounds(bounds);
-        console.log('After fitBounds - Current zoom:', map.getZoom());
-        
-        // Add zoom change listener to track what's happening with zoom
-        map.addListener('zoom_changed', function() {
-            console.log('Zoom changed to:', map.getZoom());
-        });
         
         // Hide map initially to prevent seeing zoom transition
         document.getElementById('map').style.opacity = '0';
         
         // Use timeout to ensure map is fully loaded before showing
         setTimeout(() => {
-            console.log('Map loaded at zoom level:', map.getZoom());
             
             // Show map after it's fully loaded
             document.getElementById('map').style.opacity = '1';
             document.getElementById('map').style.transition = 'opacity 0.3s ease-in';
-            console.log('Map now visible with natural zoom level');
         }, 500);
        //$(window).trigger("resize");
       //google.maps.event.addDomListener(window,"resize",function(){ google.maps.event.trigger(map,"resize"); map.fitBounds(bounds, {bottom:1, left:1, right:1, top:99});});
