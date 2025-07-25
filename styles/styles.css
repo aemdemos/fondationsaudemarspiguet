@@ -633,3 +633,9 @@ main .section.soft-grey-bg.default-colored-text p {
   font-weight: 400;
   color: var(--default-colored-text);
 }
+
+@media (width >= 900px) {
+  main .section.soft-grey-bg.default-colored-text p {
+    font-size: 20px;
+  }
+}
