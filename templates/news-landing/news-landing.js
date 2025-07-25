@@ -1,5 +1,5 @@
 import {
-  div, section,
+  div, section, a,
 } from '../../scripts/dom-helpers.js';
 import { getLanguage } from '../../scripts/scripts.js';
 import ffetch from '../../scripts/ffetch.js';
@@ -21,6 +21,11 @@ export default async function decorate(doc) {
 
   const $newsListingLeft = div({ class: 'news-listing-container-left' });
   const $newsListingRight = div({ class: 'news-listing-container-right' });
+
+  const $filterTop = a({ class: 'filter-top-btn' });
+  const $fitlerBottom = a({ class: 'filter-bottom-btn' });
+
+  $newsListingRight.append($filterTop, $fitlerBottom);
 
   $filterContainer.append($newsListingLeft, $newsListingRight);
 
