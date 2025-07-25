@@ -129,6 +129,87 @@ export default function decorate(block) {
         }
       }
     });
+
+    // Create mobile view for 'View all' and 'CATEGORIES' items AFTER processing
+    const mobileItems = [];
+    ul.querySelectorAll('li').forEach((li) => {
+      const textContent = li.textContent.trim();
+      if (textContent === 'View all' || textContent === 'CATEGORIES') {
+        const clonedLi = li.cloneNode(true);
+
+        // Re-apply event listeners to cloned anchor elements
+        const clonedAnchor = clonedLi.querySelector('a.works_categorylink');
+        if (clonedAnchor) {
+          clonedAnchor.addEventListener('click', (e) => {
+            e.preventDefault();
+
+            const myslectcat = clonedAnchor.getAttribute('data-categoryid');
+
+            // Remove active class from all category links (including cloned ones)
+            document.querySelectorAll('a.works_categorylink').forEach((link) => {
+              link.classList.remove('active');
+            });
+
+            // Add active class to clicked anchor
+            clonedAnchor.classList.add('active');
+
+            // Also update the original anchor to match
+            const originalAnchor = document.querySelector(`ul:not(.mobile-view) a.works_categorylink[data-categoryid="${myslectcat}"]`);
+            if (originalAnchor) {
+              originalAnchor.classList.add('active');
+            }
+
+            // Check if map variables exist and run filtering logic
+            if (window.map && window.markers && window.markerCluster && window.bounds) {
+              window.bounds = new google.maps.LatLngBounds();
+              const markerstocluster = [];
+              window.markerCluster.clearMarkers();
+
+              // Close all open popups
+              window.infoWindows.forEach((elem) => {
+                if (elem) {
+                  elem.close();
+                }
+              });
+
+              window.markers.forEach((marker) => {
+                const catmarkers = marker.category;
+
+                if (myslectcat === 'all') {
+                  marker.setMap(window.map);
+                  markerstocluster.push(marker);
+                  window.bounds.extend(marker.position);
+                } else if (catmarkers.search(myslectcat) !== -1) {
+                  marker.setMap(window.map);
+                  markerstocluster.push(marker);
+                  window.bounds.extend(marker.position);
+                } else {
+                  marker.setMap(null);
+                }
+              });
+
+              window.markerCluster.addMarkers(markerstocluster);
+              window.map.fitBounds(window.bounds);
+            }
+          });
+        }
+
+        mobileItems.push(clonedLi);
+      }
+    });
+
+    if (mobileItems.length > 0) {
+      // Create mobile ul with class "mobile-view"
+      const mobileUl = document.createElement('ul');
+      mobileUl.className = 'mobile-view';
+
+      mobileItems.forEach((item) => {
+        mobileUl.appendChild(item);
+      });
+
+      // Insert mobile ul before the original ul within the same block
+      block.insertBefore(mobileUl, ul);
+    }
   }
   if (block.classList.contains('listing')) {
     const cardsList = block.querySelectorAll('ul li');
