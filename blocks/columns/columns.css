@@ -179,7 +179,6 @@ div.section.columns-container > div.columns-wrapper {
   display: flex !important;
   flex-direction: row !important;
   width: 50% !important;
-  
   gap: 20px !important;
 }
 
@@ -191,7 +190,7 @@ div.section.columns-container > div.columns-wrapper {
   width: auto !important;
   font-size: 20px;
   letter-spacing: 0.02em;
-  font-family: 'Antarctica', sans-serif;
+  font-family: Antarctica, sans-serif;
   line-height: 1.5em;
   font-weight: 300;
 }
@@ -203,7 +202,7 @@ div.section.columns-container > div.columns-wrapper {
   line-height: 1.5em;
   padding-bottom: 20px;
   letter-spacing: 0.02em;
-  font-family: 'Antarctica', sans-serif;
+  font-family: Antarctica, sans-serif;
   font-size: 20px;
 }
 
@@ -212,7 +211,7 @@ div.section.columns-container > div.columns-wrapper {
   font-size: 20px;
   line-height: 1.5em;
   letter-spacing: 0.02em;
-  font-family: 'Antarctica', sans-serif;
+  font-family: Antarctica, sans-serif;
 }
 
 /* Removed empty ruleset for .section.columns-container > div.columns-wrapper > div > div > div:nth-child(2) > p.button-container > a.button:any-link */
@@ -222,7 +221,7 @@ div.section.columns-container > div.columns-wrapper {
   font-size: 20px !important;
   line-height: 1.5em;
   letter-spacing: 0.02em;
-  font-family: 'Antarctica', sans-serif;;
+  font-family: Antarctica, sans-serif;;
   text-decoration: none !important;
   transition: colour 0.5s !important;
   position: relative;
@@ -238,8 +237,6 @@ div.section.columns-container > div.columns-wrapper {
 
 /* Mobile styles */
 @media (width <= 600px) {
-
-
   h1#media-newsroom {
     font-size: 32px;
     letter-spacing: 0.04em;
