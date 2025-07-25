@@ -29,6 +29,7 @@ export default function decorate(block) {
   if (block.classList.contains('map-category')) {
     const categoryMapping = {
       'View all': { categoryId: 'all', isActive: true },
+      Tous: { categoryId: 'all', isActive: true },
       conservation: { categoryId: 'category_3' },
       awareness: { categoryId: 'category_4' },
       preservation: { categoryId: 'category_5' },
@@ -41,13 +42,13 @@ export default function decorate(block) {
         const iconContainer = cardBodies[0];
         const textContainer = cardBodies[1];
 
-        // Check if this is the "View all" card (no icon)
+        // Check if this is the "View all" or "Tous" card (no icon)
         const textContent = textContainer.textContent.trim();
         const icon = iconContainer.querySelector('img');
 
         let categoryInfo;
-        if (textContent === 'View all') {
-          categoryInfo = categoryMapping['View all'];
+        if (textContent === 'View all' || textContent === 'Tous') {
+          categoryInfo = categoryMapping[textContent];
         } else if (icon) {
           const iconName = icon.getAttribute('data-icon-name');
           categoryInfo = categoryMapping[iconName];
@@ -111,7 +112,7 @@ export default function decorate(block) {
             }
           });
 
-          // For "View all" (first card), wrap the p element
+          // For "View all" or "Tous" (first card), wrap the p element
           if (categoryInfo.categoryId === 'all') {
             // Move all content from li into the anchor
             while (li.firstChild) {
@@ -134,7 +135,7 @@ export default function decorate(block) {
     const mobileItems = [];
     ul.querySelectorAll('li').forEach((li) => {
       const textContent = li.textContent.trim();
-      if (textContent === 'View all' || textContent === 'CATEGORIES') {
+      if (textContent === 'View all' || textContent === 'Tous' || textContent === 'CATEGORIES' || textContent === 'AXES') {
         const clonedLi = li.cloneNode(true);
 
         // Re-apply event listeners to cloned anchor elements
