@@ -133,6 +133,7 @@
 
   /* SECTIONS */
   --section-background-color: #d7d9d6;
+  --default-colored-text: #726248;
 }
 
 /* fallback fonts */
@@ -624,4 +625,17 @@ main .section.light-grey-bg .default-content-wrapper p.button-container a.button
   overflow: unset;  
   min-width: 270px;
   margin: 0;
+}
+
+main .section.soft-grey-bg.default-colored-text p {
+  line-height: 1.5;
+  letter-spacing: 0.02em;
+  font-weight: 400;
+  color: var(--default-colored-text);
+}
+
+@media (width >= 900px) {
+  main .section.soft-grey-bg.default-colored-text p {
+    font-size: 20px;
+  }
 }
