@@ -97,10 +97,11 @@
 }
 
 .cards.icons-grid .cards-card-body .icon img {
-  width: 75px;
-  height: 75px;
+  background-color: var(--page-bloc-pictos-bg);
   object-fit: contain;
   display: block;
+  border-radius: 5000px;
+  line-height: 0;
 }
 
 .cards.listing .cards-card-body .cards-image-container .cards-card-image img {
@@ -151,46 +152,35 @@
 }
 
 .cards.icons-grid .cards-card-body .icon {
-  width: 110px;
-  height: 110px;
+  width: 120px;
+  height: 120px;
   border-radius: 50%;
   background: #CED7DA;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 48px;
-  margin-top: 8px;
+  margin-bottom: 20px;
 }
 
-.cards.icons-grid .cards-card-body > .color-h4:nth-of-type(2) {
+.cards.icons-grid .cards-card-body > .color-h4 {
   margin-top: 0;
-  margin-bottom: 38px;
-  color: #a3b6b6;
+  margin-bottom: 10px;
+  color: var(--site-color);
   text-transform: uppercase;
-  font-weight: 600;
-  font-size: 21px;
+  font-weight: 500;
+  font-size: 16px;
   letter-spacing: 2px;
   line-height: 1.28;
 }
 
 .cards.icons-grid .cards-card-body > p:not(.color-h4) {
-  color: #c0c8c8;
-  font-size: 14.5px;
+  color: var(--site-color-2);
+  font-size: 18px;
   font-weight: 400;
-  line-height: 2.04;
+  line-height: 1;
   margin: 0 auto;
   max-width: 325px;
   text-align: center;
-}
-
-.cards.icons-grid .cards-card-body > .color-h4:first-of-type {
-  margin: 0;
-  color: inherit;
-  font-weight: normal;
-  font-size: inherit;
-  text-transform: none;
-  letter-spacing: 0;
-  line-height: 1;
 }
 
 @media (width >= 600px ){
