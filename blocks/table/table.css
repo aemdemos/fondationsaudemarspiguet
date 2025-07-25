@@ -49,12 +49,23 @@
   font-weight: 400;
 }
 
-
 .table.block table {
   width: 100%;
   max-width: 100%;
   border-collapse: collapse;
   font-size: var(--body-font-size-xs);
+}
+
+@media (width >= 600px) {
+  .table.block table {
+    font-size: var(--body-font-size-s);
+  }
+}
+
+@media (width >= 900px) {
+  .table.block table {
+    font-size: var(--body-font-size-m);
+  }
 }
 
 /* Generated CSS, unchanged except for the merged .table selector */
@@ -78,20 +89,13 @@
   background: none;
 }
 
-@media (width >= 600px) {
-  .table.block table {
-    font-size: var(--body-font-size-s);
-  }
+.table.block table thead tr {
+  border-top: 2px solid;
+  border-bottom: 2px solid;
 }
 
-@media (width >= 900px) {
-  .table.block table {
-    font-size: var(--body-font-size-m);
-  }
-}
-
-.table.block table thead tr, .table.block table tbody tr  {
-  border: none;
+.table.block table tbody tr {
+  border-bottom: 1px solid;
 }
 
 .table.block table th {
@@ -103,16 +107,6 @@
   padding: 0.5em;
   text-align: left;
 }
-
-.table table th p,
-.table table td p {
-  margin: 0;
-}
-
-.table table td p + p {
-  margin-top: 0.25em;
-}
-
 
 .table.block.striped tbody tr,
 .table.block.bordered table th,
@@ -128,11 +122,22 @@
   background: none;
 }
 
+.table table th p,
+.table table td p {
+  margin: 0;
+}
+
+.table table td p + p {
+  margin-top: 0.25em;
+}
+
 /* no header variant */
 .table.block.no-header table tbody tr {
   border-top: 1px solid #6B7E7C;
   border-bottom: 1px solid #6B7E7C;
 }
+
+
 
 /* bordered variant */
 .table.block.bordered table th,
@@ -145,7 +150,6 @@
   overflow-x: auto;
   background: none;
 }
-
 
 .table strong {
   display: block;
