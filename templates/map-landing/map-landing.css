@@ -1,3 +1,22 @@
+body.map-landing .default-content-wrapper p.button-container {
+    display: flex;
+    justify-content: end;
+}
+
+body.map-landing .default-content-wrapper p.button-container a.button {
+    background-image: url('/icons/btn_arbres_back.svg');
+    float: right;
+    padding-right: 40px;
+    background-repeat: no-repeat;
+    background-position: right center;
+    font-size: 18px;
+    letter-spacing: .1em;
+    font-weight: 400 !important;
+    background-color: unset;
+    color: var(--site-color-2);
+}
+
+
 body.map-landing .section.pale-grey-bg {
     background-color: var(--news-bg-page);
     padding: 0;
@@ -35,5 +54,9 @@ body.map-landing .section.pale-grey-bg .map-wrapper {
         display: flex;
         flex-direction: column;
         justify-content: center;
+    }
+
+    body.map-landing .default-content-wrapper p.button-container a.button {
+        font-size: 36px;
     }
 }
