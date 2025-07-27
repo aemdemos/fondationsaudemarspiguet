@@ -8,7 +8,7 @@ body.map-landing main .default-content-wrapper h1 {
     margin: 15px;
     box-sizing: border-box;
     color: var(--titre);
-    font-size: 50px;
+    font-size: 36px;
     text-transform: uppercase;
     font-weight: 400;
     font-feature-settings: 'clig' 0;
@@ -97,6 +97,7 @@ body.map-landing .section.pale-grey-bg .map-wrapper {
 
     body.map-landing main .default-content-wrapper h1 {
         float: left;
+        font-size: 50px;
     }
 
     body.map-landing main .default-content-wrapper p:first-of-type {
