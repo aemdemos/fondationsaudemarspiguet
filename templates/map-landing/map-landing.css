@@ -1,3 +1,58 @@
+body.map-landing main .default-content-wrapper {
+    padding: 65px 0 0;
+}
+
+body.map-landing main .default-content-wrapper h1 {
+    width: calc((((100% - (12 * 30px)) / 12) * 9) + (8 * 30px));
+    position: relative;
+    margin: 15px;
+    box-sizing: border-box;
+    color: var(--titre);
+    font-size: 36px;
+    text-transform: uppercase;
+    font-weight: 400;
+    font-feature-settings: 'clig' 0;
+    font-style: normal;
+    line-height: 1.2em;
+    letter-spacing: .08em;
+    padding: 15px;
+}
+
+body.map-landing main .default-content-wrapper p:first-of-type {
+    position: relative;
+    margin: 15px;
+    box-sizing: border-box;
+    font-size: 14px;
+    color: #1E1E1E;
+    background-color: #FFF;
+    font-weight: 300;
+    padding: 15px;
+    margin-bottom: 15px;
+}
+
+body.map-landing main .default-content-wrapper p.button-container {
+    display: flex;
+    justify-content: end;
+    clear: both; /* Negate float effect from previous elements */
+    float: none; /* Ensure it doesn't float */
+    width: 100%; /* Ensure it takes full width */
+}
+
+body.map-landing main .default-content-wrapper p.button-container a.button {
+    background-image: url('/icons/btn_arbres_back.svg');
+    padding-right: 40px;
+    background-repeat: no-repeat;
+    background-position: right center;
+    font-size: 18px;
+    letter-spacing: .1em;
+    font-weight: 400 !important;
+    background-color: unset;
+    color: var(--site-color-2);
+    position: relative;
+    right: 10px;
+}
+
+
 body.map-landing .section.pale-grey-bg {
     background-color: var(--news-bg-page);
     padding: 0;
@@ -35,5 +90,20 @@ body.map-landing .section.pale-grey-bg .map-wrapper {
         display: flex;
         flex-direction: column;
         justify-content: center;
+    }
+
+    body.map-landing main .default-content-wrapper p.button-container a.button {
+        font-size: 36px;
+    }
+
+    body.map-landing main .default-content-wrapper h1 {
+        float: left;
+        font-size: 50px;
+    }
+
+    body.map-landing main .default-content-wrapper p:first-of-type {
+        float: right;
+        width: calc((((100% - (12 * 30px)) / 12) * 9) + (8 * 30px));
+        font-size: 20px;
     }
 }
