@@ -1,5 +1,5 @@
 import {
-  div, section,input,span,a
+  div, section, input, span, a,
 } from '../../scripts/dom-helpers.js';
 import { getLanguage } from '../../scripts/scripts.js';
 import ffetch from '../../scripts/ffetch.js';
@@ -26,10 +26,10 @@ export default async function decorate(doc) {
 
   $newsListingRight.append($filterTop, $fitlerBottom);
   const $newsListingLeft = div(
-      { class: 'news-listing-container-left' },
-      div({ class: 'category-section' }, input({ class: 'category-input', id: 'filtercategories-selectized' , placeholder: 'Category', type: 'text', autofill:'no' })), span({ class: 'filter-separator' }, ' | '), a({ class: 'view-all', href: '#', id: 'view-all' }, 'View All'),
-      span({ class: 'filter-separator' }, ' | '),
-      div({ class: 'search-section' }, input({ class: 'search-input', id: 'filtersearch', placeholder: 'Search...', type: 'text', minlength: '2', size: '10' })), a({ class: 'btn-search-clear', href: '#'}));
+    { class: 'news-listing-container-left' },
+    div({ class: 'category-section' }, input({ class: 'category-input', id: 'filtercategories-selectized', placeholder: 'Category', type: 'text', autofill: 'no' })), span({ class: 'filter-separator' }, ' | '), a({ class: 'view-all', href: '#', id: 'view-all' }, 'View All'),
+    span({ class: 'filter-separator' }, ' | '),
+    div({ class: 'search-section' }, input({ class: 'search-input', id: 'filtersearch', placeholder: 'Search...', type: 'text', minlength: '2', size: '10' })), a({ class: 'btn-search-clear', href: '#'}));
 
   $newsListingRight.append($filterTop, $fitlerBottom);
 
