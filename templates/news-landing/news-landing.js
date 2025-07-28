@@ -36,12 +36,12 @@ export default async function decorate(doc) {
           placeholder: 'Category',
           type: 'text',
           autofill: 'no',
-        })
+        }),
       ),
       span({ class: 'filter-separator' }, ' | '),
       a(
         { class: 'view-all', href: '#', id: 'view-all' },
-        'View All'
+        'View All',
       ),
       span({ class: 'filter-separator' }, ' | '),
       div(
@@ -53,10 +53,10 @@ export default async function decorate(doc) {
           type: 'text',
           minlength: '2',
           size: '10',
-        })
+        }),
       ),
-      a({ class: 'btn-search-clear', href: '#' })
-    ]
+      a({ class: 'btn-search-clear', href: '#' }),
+    ],
   );
   $newsListingRight.append($filterTop, $fitlerBottom);
   $filterContainer.append($newsListingLeft, $newsListingRight);
