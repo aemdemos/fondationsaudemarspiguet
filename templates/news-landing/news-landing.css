@@ -1,0 +1,24 @@
+main .filter-container {
+    padding: 0 80px;
+}
+
+main .filter-container .news-listing-container-right {
+    display: flex;
+    gap: 5px;
+}
+
+main .filter-container .news-listing-container-right .filter-top-btn {
+    width: 30px;
+    height: 30px;
+    background-image: url('/icons/btn_arbres_filtre_top.svg');
+}
+
+main .filter-container .news-listing-container-right .filter-bottom-btn {
+    width: 30px;
+    height: 30px;
+    background-image: url('/icons/btn_arbres_filtre_bottom.svg');
+}
+
+main .filter-container .news-listing {
+    background-color: var(--projet-bg-page-listing);
+}
