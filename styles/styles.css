@@ -461,7 +461,7 @@ main .section.light-grey-bg {
 }
 
 .policy-template main .section .default-content-wrapper li {
-  font-size: var(--body-font-size-m);
+  font-size: 14px;
   letter-spacing: 0.02em;
   font-weight: 300;
 }
@@ -616,10 +616,6 @@ main .section.light-grey-bg:has(.cards-wrapper) .default-content-wrapper {
   padding-top: 60px;
 }
 
-.policy-template main .default-content-wrapper ul {
-  padding-left: 100px;
-}
-
 main .section.light-grey-bg .default-content-wrapper h2 {
   margin: 0;
 }
@@ -753,5 +749,13 @@ main .section.soft-grey-bg.default-colored-text p {
 @media (width >= 900px) {
   .policy-template main .default-content-wrapper h2 {
     padding-top: 100px;
+  }
+
+  .policy-template main .section .default-content-wrapper li {
+    font-size: var(--body-font-size-m);
+  }
+
+  .policy-template main .default-content-wrapper ul {
+    padding-left: 100px;
   }
 }
