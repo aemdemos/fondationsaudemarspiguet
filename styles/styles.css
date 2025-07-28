@@ -134,6 +134,8 @@
   /* SECTIONS */
   --section-background-color: #d7d9d6;
   --default-colored-text: #726248;
+  --input-color: #303030;
+  --input-placeholder-color: #B69859;
 }
 
 /* fallback fonts */
@@ -600,6 +602,47 @@ main .section.light-grey-bg .default-content-wrapper h2 {
 main .section.light-grey-bg .default-content-wrapper .button-container {
   text-align: center;
   margin: 0 auto;
+}
+
+.cta-section {
+  padding-bottom: 50px;
+}
+
+.cta-section p.button-container {
+  text-align: center;
+  margin-top: 30px;
+}
+
+.cta-section p.button-container a.button:any-link {
+  background-color: var(--page-bloc-btn-bg);
+  background-image: url('/icons/btn_fleche_right.svg');
+  border-radius: unset;
+  overflow: unset;
+  background-position: calc(100% - 10px) center;
+  background-repeat: no-repeat;
+  padding: 13px 50px 13px 15px;
+  font-size: 12px;
+  text-transform: uppercase;
+  box-sizing: border-box;
+  border: none;
+  cursor: pointer;
+  letter-spacing: .12em;
+  font-weight: 500;
+  text-align: center;
+  min-width: 270px;
+  line-height: normal;
+  color: var(--page-bloc-btn);
+}
+
+@media (width >= 900px) {
+  .cta-section .default-content-wrapper p:first-child {
+    margin-left: 30%;
+    width: 70%;
+  }
+}
+
+main .section.quote-container .quote-wrapper {
+  margin-bottom: 30px;
 }
 
 main .section.light-grey-bg .default-content-wrapper p.button-container a.button {
