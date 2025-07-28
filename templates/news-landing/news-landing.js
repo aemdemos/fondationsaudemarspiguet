@@ -29,19 +29,14 @@ export default async function decorate(doc) {
     { class: 'news-listing-container-left' },
     div({ class: 'category-section' }, input({ class: 'category-input', id: 'filtercategories-selectized', placeholder: 'Category', type: 'text', autofill: 'no' })), span({ class: 'filter-separator' }, ' | '), a({ class: 'view-all', href: '#', id: 'view-all' }, 'View All'),
     span({ class: 'filter-separator' }, ' | '),
-    div({ class: 'search-section' }, input({ class: 'search-input', id: 'filtersearch', placeholder: 'Search...', type: 'text', minlength: '2', size: '10' })), a({ class: 'btn-search-clear', href: '#'}));
+    div({ class: 'search-section' }, input({ class: 'search-input', id: 'filtersearch', placeholder: 'Search...', type: 'text', minlength: '2', size: '10' })), a({ class: 'btn-search-clear', href: '#'})
+  );
 
   $newsListingRight.append($filterTop, $fitlerBottom);
-
   $filterContainer.append($newsListingLeft, $newsListingRight);
-
   const $newsListing = div({ class: 'news-listing' });
   $section.append($filterContainer, $newsListing);
   const placeholders = await fetchPlaceholders(`${getLanguage()}`);
-  console.log(placeholders);
-
   const getNews = await getNewsdata();
-  console.log(getNews);
-
   $main.append($section);
 }
