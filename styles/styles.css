@@ -138,6 +138,10 @@
   /* POLICY TEMPLATE */
   --policy-template-link-color: #947F5F;
   --policy-template-borders: #A49F94;
+
+  /* LANDING PAGE */
+  --input-color: #303030;
+  --input-placeholder-color: #B69859;
 }
 
 /* fallback fonts */
@@ -415,11 +419,8 @@ main > .section.extra-padding {
 }
 
 main .section.cream-bg {
-  background-color: var(--team-bg-page);
-}
-
-main .section.section.cream-bg.cards-container {
   padding: 80px 0;
+  background-color: var(--team-bg-page);
 }
 
 main .section.light-grey-bg {
