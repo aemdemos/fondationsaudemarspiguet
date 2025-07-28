@@ -1,5 +1,42 @@
 main .filter-container {
     padding: 0 80px;
+    display: flex;
+    justify-content: space-between;
+}
+
+main .filter-container input {
+    width: 180.297px;
+    opacity: 1;
+    position: relative;
+    left: 0;
+    cursor: pointer;
+    font-size: 36px;
+    text-transform: none;
+    font-weight: 400;
+    line-height: 1.01;
+    margin-bottom: 20px;
+}
+
+main .filter-container .news-listing-container-left {
+    display: flex;
+    align-items: baseline;
+}
+
+main .filter-container .news-listing-container-left .filter-separator {
+    padding-right: 10px;
+    font-size: 36px ;
+    text-transform: none;
+    font-weight: 400 ;
+    line-height: 1.01;
+}
+
+main .filter-container .news-listing-container-left .view-all {
+    padding-right: 10px;
+    color: var(--site-color-2);
+    font-size: 36px ;
+    text-transform: none;
+    font-weight: 400 ;
+    line-height: 1.01;
 }
 
 main .filter-container .news-listing-container-right {
@@ -19,6 +56,23 @@ main .filter-container .news-listing-container-right .filter-bottom-btn {
     background-image: url('/icons/btn_arbres_filtre_bottom.svg');
 }
 
-main .filter-container .news-listing {
+main  .news-listing {
     background-color: var(--projet-bg-page-listing);
+    width: 100%;
+    height: 500px;
+}
+
+.news-landing main .filter-container input {
+    border: none;
+}
+
+.news-landing .btn-search-clear {
+    background-image: url('../../icons/btn_arbres_filter_back.svg');
+    height: 40px;
+    width: 30px;
+    display: block;
+    background-repeat: no-repeat;
+    background-position: bottom;
+    float: right;
+    margin-top: 4px;
 }
