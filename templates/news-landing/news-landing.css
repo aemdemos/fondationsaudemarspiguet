@@ -1,30 +1,48 @@
 main .filter-container {
-    padding: 0 80px;
+    padding: 0 20px;
     display: flex;
     justify-content: space-between;
+    max-width: 1720px;
+    margin: auto;
+    font-size: 18px;
 }
 
-main .filter-container input {
-    width: 180.297px;
+main .filter-container .category-input {
+    width: 70px;
     opacity: 1;
     position: relative;
     left: 0;
     cursor: pointer;
-    font-size: 36px;
     text-transform: none;
     font-weight: 400;
     line-height: 1.01;
-    margin-bottom: 20px;
+    outline: none;
+}
+
+main .filter-container .search-input {
+    width: 70px;
+    opacity: 1;
+    position: relative;
+    left: 0;
+    cursor: pointer;
+    padding: 0 10px;
+    text-transform: none;
+    font-weight: 400;
+    line-height: 1.01;
+}
+
+main .filter-container .search-input::placeholder {
+    color: var(--input-placeholder-color);
 }
 
 main .filter-container .news-listing-container-left {
     display: flex;
-    align-items: baseline;
+    align-items: center;
+    margin-bottom: 20px;
 }
 
 main .filter-container .news-listing-container-left .filter-separator {
     padding-right: 10px;
-    font-size: 36px ;
     text-transform: none;
     font-weight: 400 ;
     line-height: 1.01;
@@ -33,15 +51,22 @@ main .filter-container .news-listing-container-left .filter-separator {
 main .filter-container .news-listing-container-left .view-all {
     padding-right: 10px;
     color: var(--site-color-2);
-    font-size: 36px ;
     text-transform: none;
     font-weight: 400 ;
     line-height: 1.01;
+    letter-spacing: .1em;
+}
+
+main .filter-container .news-listing-container-left .view-all:hover {
+    text-decoration: none;
+    opacity: .7;
 }
 
 main .filter-container .news-listing-container-right {
     display: flex;
     gap: 5px;
+    align-items: center;
+    margin-bottom: 20px;
 }
 
 main .filter-container .news-listing-container-right .filter-top-btn {
@@ -64,6 +89,8 @@ main  .news-listing {
 
 .news-landing main .filter-container input {
     border: none;
+    outline: none;
+    color: var(--input-color);
 }
 
 .news-landing .btn-search-clear {
@@ -72,7 +99,27 @@ main  .news-listing {
     width: 30px;
     display: block;
     background-repeat: no-repeat;
-    background-position: bottom;
+    background-position: center;
     float: right;
-    margin-top: 4px;
+}
+
+@media (width >= 600px) {
+    main .filter-container .category-input, main .filter-container .search-input {
+        width: 100px;
+    }
+}
+
+@media (width >= 900px) {
+    main .filter-container {
+        padding: 0 80px;
+        font-size: 36px;
+    }
+
+    main .filter-container .category-input {
+        width: 180px;
+    }
+
+    main .filter-container .search-input {
+        width: 260px;
+    }
 }

@@ -134,6 +134,8 @@
   /* SECTIONS */
   --section-background-color: #d7d9d6;
   --default-colored-text: #726248;
+  --input-color: #303030;
+  --input-placeholder-color: #B69859;
 }
 
 /* fallback fonts */
