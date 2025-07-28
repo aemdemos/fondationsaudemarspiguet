@@ -231,6 +231,12 @@
   }
 }
 
+@media (width > 900px) and (width <= 1200px) {
+  .carousel.carousel-vertical {
+    height: 500px;
+  }
+}
+
 /* End of Vertical Carousel */
 
 /* Code to Ensure h2 is above the background */

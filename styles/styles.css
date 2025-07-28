@@ -604,19 +604,13 @@ main .section.light-grey-bg .default-content-wrapper .button-container {
   margin: 0 auto;
 }
 
-.cta-section p.button-container {
-  text-align: center;
-}
-
-@media (width >= 900px) {
-  .cta-section .default-content-wrapper p:first-child {
-    margin-left: 30%;
-    width: 70%;
-  }
-}
-
 .cta-section {
   padding-bottom: 50px;
+}
+
+.cta-section p.button-container {
+  text-align: center;
+  margin-top: 30px;
 }
 
 .cta-section p.button-container a.button:any-link {
@@ -637,8 +631,18 @@ main .section.light-grey-bg .default-content-wrapper .button-container {
   text-align: center;
   min-width: 270px;
   line-height: normal;
-  margin: 0 15px 0 50px;
   color: var(--page-bloc-btn);
+}
+
+@media (width >= 900px) {
+  .cta-section .default-content-wrapper p:first-child {
+    margin-left: 30%;
+    width: 70%;
+  }
+}
+
+main .section.quote-container .quote-wrapper {
+  margin-bottom: 30px;
 }
 
 main .section.light-grey-bg .default-content-wrapper p.button-container a.button {
