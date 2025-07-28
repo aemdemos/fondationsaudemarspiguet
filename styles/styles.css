@@ -134,6 +134,8 @@
   /* SECTIONS */
   --section-background-color: #d7d9d6;
   --default-colored-text: #726248;
+  --input-color: #303030;
+  --input-placeholder-color: #B69859;
 }
 
 /* fallback fonts */
@@ -411,11 +413,8 @@ main > .section.extra-padding {
 }
 
 main .section.cream-bg {
-  background-color: var(--team-bg-page);
-}
-
-main .section.section.cream-bg.cards-container {
   padding: 80px 0;
+  background-color: var(--team-bg-page);
 }
 
 main .section.light-grey-bg {
