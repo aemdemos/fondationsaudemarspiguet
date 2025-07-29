@@ -63,38 +63,25 @@ export default function decorate(block) {
     let currentIndex = 0;
     const items = ulist.querySelectorAll('li');
     const totalItems = items.length;
+    let itemsToShow = 1; // Default items to show
 
-    const mediaQuerySmallScreen = window.matchMedia('(max-width: 599px)');
-    const mediaQueryMediumScreen = window.matchMedia('(min-width: 600px) and (max-width: 899px)');
-    const mediaQueryLargeScreen = window.matchMedia('(min-width: 900px)');
-
-    if (mediaQuerySmallScreen.matches) {
-      // Show 1 item on small screens
-      items.forEach((item, idx) => {
-        item.style.display = (idx === currentIndex) ? 'block' : 'none';
-      });
-    } else if (mediaQueryMediumScreen.matches) {
-      // Show 2 items on medium screens
-      items.forEach((item, idx) => {
-        item.style.display = (idx >= currentIndex && idx < currentIndex + 2) ? 'block' : 'none';
-      });
-    } else if (mediaQueryLargeScreen.matches) {
-      // Show 3 items on large screens
-      items.forEach((item, idx) => {
-        item.style.display = (idx >= currentIndex && idx < currentIndex + 3) ? 'block' : 'none';
-      });
-    }
-    mediaQuerySmallScreen.addEventListener('change', () => {
-      // Hide items depending on viewport size
-      items.forEach((item, idx) => {
-        item.style.display = (idx >= currentIndex && idx < currentIndex + 1) ? 'block' : 'none';
-      });
+    const myObserver = new ResizeObserver((entries) => {
+      if (entries[0].contentRect.width < 600) {
+        // Handle small screen layout
+        itemsToShow = 1;
+      } else if (entries[0].contentRect.width >= 600 && entries[0].contentRect.width < 900) {
+        // Handle medium screen layout
+        itemsToShow = 2;
+      } else {
+        // Handle large screen layout
+        itemsToShow = 3;
+      }
     });
 
-    mediaQueryMediumScreen.addEventListener('change', () => {
-      items.forEach((item, idx) => {
-        item.style.display = (idx >= currentIndex && idx < currentIndex + 2) ? 'block' : 'none';
-      });
+    myObserver.observe(block);
+
+    items.forEach((item, idx) => {
+      item.style.display = (idx >= currentIndex && idx < currentIndex + itemsToShow) ? 'block' : 'none';
     });
 
     // Create navigation buttons
@@ -103,14 +90,6 @@ export default function decorate(block) {
 
     const nextBtn = document.createElement('button');
     nextBtn.className = 'carousel-next';
-
-    mediaQueryLargeScreen.addEventListener('change', () => {
-      items.forEach((item) => {
-        item.style.display = 'block';
-        prevBtn.style.display = 'none';
-        nextBtn.style.display = 'none';
-      });
-    });
 
     prevBtn.addEventListener('click', () => {
       items[currentIndex].style.display = 'none';
