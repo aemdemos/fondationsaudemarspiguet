@@ -521,7 +521,8 @@ main .section.float-right .default-content-wrapper .content-wrapper ul li em {
 
 main .section.float-right {
   padding: 65px 80px 50px;
-  margin: 0;
+  margin: auto;
+  max-width: 1200px;
 }
 
   main .section.float-right .default-content-wrapper .heading-wrapper{
