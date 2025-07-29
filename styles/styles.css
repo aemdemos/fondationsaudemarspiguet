@@ -428,16 +428,18 @@ main .section.light-grey-bg {
 
  main .section.float-right .default-content-wrapper {
   color: var(--text-color);
+  padding: 0 20px;
 }
 
  main .section.float-right .default-content-wrapper .heading-wrapper {
-  width: calc((((100% - (12 * 30px)) / 12) * 12) + (11 * 30px));
+  width: 100%;
+  box-sizing: border-box;
 }
 
  main .section.float-right .default-content-wrapper .heading-wrapper h1{
   float: left;
   position: relative;
-  margin: 15px;
+  margin: 15px 0;
   box-sizing: border-box;
   color: var(--site-color);
   text-transform: uppercase;
@@ -453,6 +455,18 @@ main .section.light-grey-bg {
   width: calc((((100% - (12 * 30px)) / 12) * 12) + (11 * 30px));
   float: right;
   margin: 15px;
+  box-sizing: border-box;
+}
+
+main .section.soft-grey-bg.default-colored-text p {
+  line-height: 1.5;
+  letter-spacing: 0.02em;
+  font-weight: 400;
+  color: var(--default-colored-text);
+}
+
+main .section.float-right .default-content-wrapper .content-wrapper p {
+  margin: 0 -15px;
 }
 
  main .section.float-right .default-content-wrapper .content-wrapper ul li{
@@ -666,13 +680,6 @@ main .section.light-grey-bg .default-content-wrapper p.button-container a.button
   overflow: unset;  
   min-width: 270px;
   margin: 0;
-}
-
-main .section.soft-grey-bg.default-colored-text p {
-  line-height: 1.5;
-  letter-spacing: 0.02em;
-  font-weight: 400;
-  color: var(--default-colored-text);
 }
 
 @media (width >= 900px) {
