@@ -431,13 +431,20 @@ main .section.light-grey-bg {
   padding: 0 20px;
 }
 
+main .section.float-right .default-content-wrapper .container-col {
+  position: relative;
+  margin-left: -15px;
+  margin-right: -15px;
+}
+
  main .section.float-right .default-content-wrapper .heading-wrapper {
-  width: 100%;
+  width: calc((((100% - (12*30px))/12)*12) + (11 * 30px));
   box-sizing: border-box;
+  float: left;
+  margin: 15px;
 }
 
  main .section.float-right .default-content-wrapper .heading-wrapper h1{
-  float: left;
   position: relative;
   margin: 15px 0;
   box-sizing: border-box;
@@ -463,10 +470,6 @@ main .section.soft-grey-bg.default-colored-text p {
   letter-spacing: 0.02em;
   font-weight: 400;
   color: var(--default-colored-text);
-}
-
-main .section.float-right .default-content-wrapper .content-wrapper p {
-  margin: 0 -15px;
 }
 
  main .section.float-right .default-content-wrapper .content-wrapper ul li{
