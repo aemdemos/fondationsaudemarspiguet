@@ -43,7 +43,7 @@ export function applyFadeUpAnimation(targetElement, parentContainer) {
 export function decorateListingCards(doc) {
   const contentDivs = doc.querySelectorAll('.section.float-right .default-content-wrapper');
   contentDivs.forEach((contentDiv) => {
-    const container_col = div({ class: 'container-col' });
+    const containerCol = div({ class: 'container-col' });
     const clearDiv = div({ class: 'clear' });
     const clearDivInner = div({ class: 'clear' });
     const headingWrapper = div({ class: 'heading-wrapper' });
@@ -57,7 +57,7 @@ export function decorateListingCards(doc) {
       }
     });
     contentWrapper.appendChild(clearDivInner);
-    container_col.append(headingWrapper, contentWrapper, clearDiv);
-    contentDiv.append(container_col);
+    containerCol.append(headingWrapper, contentWrapper, clearDiv);
+    contentDiv.append(containerCol);
   });
 }
