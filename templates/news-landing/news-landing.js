@@ -1,6 +1,10 @@
 import {
   div, section, input, span, a,
 } from '../../scripts/dom-helpers.js';
+import {
+  fetchPlaceholders,
+} from '../../scripts/aem.js';
+import { getLanguage } from '../../scripts/scripts.js';
 
 export default async function decorate(doc) {
   const $main = doc.querySelector('main');
@@ -13,24 +17,29 @@ export default async function decorate(doc) {
   const $fitlerBottom = a({ class: 'filter-bottom-btn' });
 
   $newsListingRight.append($filterTop, $fitlerBottom);
+  const placeholders = await fetchPlaceholders(`${getLanguage()}`);
+  console.log(placeholders);
+  const { newsLandingCategoryFilter } = placeholders;
+  const { newsLandingSearchFilter } = placeholders;
+  const { newsLandingViewFilter } = placeholders;
   const $newsListingLeft = div(
     { class: 'news-listing-container-left' },
     div(
       { class: 'category-section' },
       input(
         {
-          class: 'category-input', id: 'filtercategories-selectized', placeholder: 'Category', type: 'text', autofill: 'no',
+          class: 'category-input', id: 'filtercategories-selectized', placeholder: newsLandingCategoryFilter, type: 'text', autofill: 'no',
         },
       ),
     ),
     span({ class: 'filter-separator' }, ' | '),
-    a({ class: 'view-all', href: '#', id: 'view-all' }, 'View All'),
+    a({ class: 'view-all', href: '#', id: 'view-all' }, newsLandingViewFilter),
     span({ class: 'filter-separator' }, ' | '),
     div(
       { class: 'search-section' },
       input(
         {
-          class: 'search-input', id: 'filtersearch', placeholder: 'Search...', type: 'text', minlength: '2', size: '10',
+          class: 'search-input', id: 'filtersearch', placeholder: newsLandingSearchFilter, type: 'text', minlength: '2', size: '10',
         },
       ),
     ),
