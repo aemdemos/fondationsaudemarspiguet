@@ -519,11 +519,15 @@ main .section.float-right .default-content-wrapper .content-wrapper ul li em {
     font-size: var(--heading-font-size-xl);
   }
 
-main .section.float-right {
-  padding: 65px 80px 50px;
-  margin: auto;
-  max-width: 1200px;
-}
+  main .section.float-right .default-content-wrapper {
+    padding: 0;
+  }
+
+  main .section.float-right {
+    padding: 65px 80px 50px;
+    margin: auto;
+    max-width: 1200px;
+  }
 
   main .section.float-right .default-content-wrapper .heading-wrapper{
     width: calc((((100% - (12*30px))/12)*9) + (8 * 30px));
