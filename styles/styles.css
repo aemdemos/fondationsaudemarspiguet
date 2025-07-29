@@ -508,6 +508,18 @@ main .section.float-right .default-content-wrapper .content-wrapper ul li em {
    main .section.float-right .default-content-wrapper .content-wrapper{
     width: calc((((100% - (12*30px))/12)*9) + (8 * 30px));
   }
+
+  main .section.light-grey-bg:has(.cards-wrapper) {
+    padding: 100px;
+  }
+
+  main .section.light-grey-bg .cards-wrapper {
+    padding: 50px 80px;
+  }
+
+  main .section.light-grey-bg:has(.cards-wrapper) .default-content-wrapper {
+    padding: 0 80px;
+  }
 }
 
 /* section metadata */
@@ -580,18 +592,18 @@ main .section.light, main .section.highlight {
 }
 
 main .section.light-grey-bg:has(.cards-wrapper) {
-  padding: 100px;
+  padding-top: 100px;
+  padding-bottom: 100px;
   margin: 100px 0 0;
 }
 
 main .section.light-grey-bg .cards-wrapper {
-  padding: 50px 80px;
   max-width: 1200px;
+  padding: 0 5px;
 }
 
 main .section.light-grey-bg:has(.cards-wrapper) .default-content-wrapper {
     max-width: 1200px;
-    padding: 0 80px;
 }
 
 main .section.light-grey-bg .default-content-wrapper h2 {
@@ -612,7 +624,7 @@ main .section.light-grey-bg .default-content-wrapper p.button-container a.button
   padding: 13px 50px 13px 15px;
   border-radius: unset;
   font-size: 12px;
-  font-weight: 400;
+  font-weight: 500;
   letter-spacing: .12em;
   line-height: normal;
   text-transform: uppercase;
