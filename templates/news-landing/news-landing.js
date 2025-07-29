@@ -35,7 +35,7 @@ export default async function decorate(doc) {
         },
       ),
       div(
-      { class: 'category-dropdown' },
+        { class: 'category-dropdown' },
       ),
     ),
     span({ class: 'filter-separator' }, ' | '),
@@ -59,12 +59,12 @@ export default async function decorate(doc) {
   console.log(placeholders);
   const getNews = await getNewsdata();
   const allCategories = getNews
-  .flatMap(item => (item.category || '').split(','))
-  .map(cat => cat.trim())
-  .filter(cat => cat);
+    .flatMap((item) => (item.category || '').split(','))
+    .map((cat) => cat.trim())
+    .filter((cat) => cat);
   const uniqueCategories = [...new Set(allCategories)].sort();
   const categoryList = document.createElement('ul');
-  uniqueCategories.forEach(category => {
+  uniqueCategories.forEach((category) => {
     const categoryItem = document.createElement('li');
     categoryItem.textContent = category;
     categoryList.appendChild(categoryItem);
