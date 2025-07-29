@@ -523,6 +523,10 @@ main .section.float-right .default-content-wrapper .content-wrapper ul li em {
     width: calc((((100% - (12*30px))/12)*9) + (8 * 30px));
   }
 
+  main .section.float-right .default-content-wrapper .heading-wrapper h1 {
+    font-size: 50px;
+  }
+
    main .section.float-right .default-content-wrapper .content-wrapper{
     width: calc((((100% - (12*30px))/12)*9) + (8 * 30px));
   }
