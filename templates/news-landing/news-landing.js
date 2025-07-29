@@ -58,17 +58,23 @@ export default async function decorate(doc) {
   const placeholders = await fetchPlaceholders(`${getLanguage()}`);
   console.log(placeholders);
   const getNews = await getNewsdata();
-  const uniqueCategories = [
-    ...new Set(
-      getNews
-        .map((item) => item.category)
-        .filter((category) => category),
-    ),
-  ].sort();
+  const allCategories = getNews
+  .flatMap(item => (item.category || '').split(','))
+  .map(cat => cat.trim())
+  .filter(cat => cat);
+  const uniqueCategories = [...new Set(allCategories)].sort();
+  const categoryList = document.createElement('ul');
+  uniqueCategories.forEach(category => {
+    const categoryItem = document.createElement('li');
+    categoryItem.textContent = category;
+    categoryList.appendChild(categoryItem);
+  });
   console.log(uniqueCategories);
   $main.append($section);
+  const categorysection = doc.querySelector('.category-dropdown');
+  categorysection.appendChild(categoryList);
   const $categoryInput = doc.querySelector('.category-input');
   $categoryInput.addEventListener('click', () => {
-    const categoryResult =  null;
+    categorysection.style.display = categorysection.style.display === 'block' ? 'none' : 'block';
   });
 }
