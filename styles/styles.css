@@ -434,16 +434,25 @@ main .section.light-grey-bg {
 
  main .section.float-right .default-content-wrapper {
   color: var(--text-color);
+  padding: 0 20px;
+}
+
+main .section.float-right .default-content-wrapper .container-col {
+  position: relative;
+  margin-left: -15px;
+  margin-right: -15px;
 }
 
  main .section.float-right .default-content-wrapper .heading-wrapper {
-  width: calc((((100% - (12 * 30px)) / 12) * 3) + (2 * 30px));
+  width: calc((((100% - (12*30px))/12)*12) + (11 * 30px));
+  box-sizing: border-box;
+  float: left;
+  margin: 15px;
 }
 
  main .section.float-right .default-content-wrapper .heading-wrapper h1{
-  float: left;
   position: relative;
-  margin: 15px;
+  margin: 15px 0;
   box-sizing: border-box;
   color: var(--site-color);
   text-transform: uppercase;
@@ -452,12 +461,21 @@ main .section.light-grey-bg {
   font-style: normal;
   line-height: 1.2em;
   letter-spacing: .08em;
+  font-size: 36px;
 }
 
  main .section.float-right .default-content-wrapper .content-wrapper{
   width: calc((((100% - (12 * 30px)) / 12) * 12) + (11 * 30px));
   float: right;
   margin: 15px;
+  box-sizing: border-box;
+}
+
+main .section.soft-grey-bg.default-colored-text p {
+  line-height: 1.5;
+  letter-spacing: 0.02em;
+  font-weight: 400;
+  color: var(--default-colored-text);
 }
 
 .policy-template main .section .default-content-wrapper li {
@@ -519,8 +537,22 @@ main .section.float-right .default-content-wrapper .content-wrapper ul li em {
     font-size: var(--heading-font-size-xl);
   }
 
+  main .section.float-right .default-content-wrapper {
+    padding: 0;
+  }
+
+  main .section.float-right {
+    padding: 65px 80px 50px;
+    margin: auto;
+    max-width: 1200px;
+  }
+
   main .section.float-right .default-content-wrapper .heading-wrapper{
     width: calc((((100% - (12*30px))/12)*9) + (8 * 30px));
+  }
+
+  main .section.float-right .default-content-wrapper .heading-wrapper h1 {
+    font-size: 50px;
   }
 
    main .section.float-right .default-content-wrapper .content-wrapper{
@@ -687,13 +719,6 @@ main .section.light-grey-bg .default-content-wrapper p.button-container a.button
   overflow: unset;  
   min-width: 270px;
   margin: 0;
-}
-
-main .section.soft-grey-bg.default-colored-text p {
-  line-height: 1.5;
-  letter-spacing: 0.02em;
-  font-weight: 400;
-  color: var(--default-colored-text);
 }
 
 @media (width >= 900px) {
