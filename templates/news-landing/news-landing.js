@@ -1,6 +1,18 @@
 import {
   div, section, input, span, a,
 } from '../../scripts/dom-helpers.js';
+import { getLanguage } from '../../scripts/scripts.js';
+import ffetch from '../../scripts/ffetch.js';
+import {
+  fetchPlaceholders,
+} from '../../scripts/aem.js';
+
+async function getNewsdata() {
+  const rawNews = await ffetch(`/${getLanguage()}/${getLanguage() === 'en' ? 'fondation-pour-les-arbres-news' : 'fondation-pour-les-arbres-actualites'}/news-index.json`)
+    .chunks(1000)
+    .all();
+  return rawNews;
+}
 
 export default async function decorate(doc) {
   const $main = doc.querySelector('main');
@@ -22,6 +34,9 @@ export default async function decorate(doc) {
           class: 'category-input', id: 'filtercategories-selectized', placeholder: 'Category', type: 'text', autofill: 'no',
         },
       ),
+      div(
+      { class: 'category-dropdown' },
+      ),
     ),
     span({ class: 'filter-separator' }, ' | '),
     a({ class: 'view-all', href: '#', id: 'view-all' }, 'View All'),
@@ -40,5 +55,20 @@ export default async function decorate(doc) {
   $filterContainer.append($newsListingLeft, $newsListingRight);
   const $newsListing = div({ class: 'news-listing' });
   $section.append($filterContainer, $newsListing);
+  const placeholders = await fetchPlaceholders(`${getLanguage()}`);
+  console.log(placeholders);
+  const getNews = await getNewsdata();
+  const uniqueCategories = [
+    ...new Set(
+      getNews
+        .map((item) => item.category)
+        .filter((category) => category),
+    ),
+  ].sort();
+  console.log(uniqueCategories);
   $main.append($section);
+  const $categoryInput = doc.querySelector('.category-input');
+  $categoryInput.addEventListener('click', () => {
+    const categoryResult =  null;
+  });
 }
