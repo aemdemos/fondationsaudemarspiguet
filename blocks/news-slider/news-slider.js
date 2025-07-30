@@ -12,7 +12,7 @@ import {
   a,
   p,
 } from '../../scripts/dom-helpers.js';
-import { getPathSegments } from '../../scripts/utils.js';
+import loadswiper from '../../scripts/delayed.js';
 
 class News {
   // eslint-disable-next-line max-len
@@ -115,11 +115,77 @@ export default async function decorate(block) {
   const newsData = await getNewsdata();
   const blockContents = await loadresults(newsData);
   const builtBlock = buildBlock(blockType, blockContents);
-  const parentDiv = div(
-    builtBlock,
-  );
+
+  // Keep parentDiv for decorateBlock to work properly
+  const parentDiv = div(builtBlock);
+
   decorateBlock(builtBlock);
   await loadBlock(builtBlock);
 
+  // Work with existing UL/LI structure for Swiper
+  // Add Swiper classes to existing elements
+  const cardsBlock = parentDiv.querySelector('.cards');
+  if (cardsBlock) {
+    cardsBlock.classList.add('swiper', 'news-swiper');
+  }
+
+  // Find the ul and add swiper-wrapper class
+  const ul = parentDiv.querySelector('ul');
+  if (ul) {
+    ul.classList.add('swiper-wrapper');
+
+    // Add swiper-slide class to each li
+    Array.from(ul.children).forEach((li) => {
+      if (li.tagName === 'LI') {
+        li.classList.add('swiper-slide');
+      }
+    });
+  }
+
+  // Add navigation buttons to the cards block
+  if (cardsBlock) {
+    const prevButton = div({ class: 'swiper-button-prev' });
+    const nextButton = div({ class: 'swiper-button-next' });
+    cardsBlock.appendChild(prevButton);
+    cardsBlock.appendChild(nextButton);
+
+    // Add pagination
+    const pagination = div({ class: 'swiper-pagination' });
+    cardsBlock.appendChild(pagination);
+  }
+
+  console.log('🔧 Swiper structure applied to existing UL/LI:', parentDiv);
   block.append(parentDiv);
+
+  // Initialize Swiper
+  console.log('🔄 Loading Swiper from CDN...');
+  loadswiper().then((Swiper) => {
+    console.log('✅ Swiper loaded successfully, initializing...');
+    try {
+      // eslint-disable-next-line no-unused-vars
+      const swiper = new Swiper('.news-swiper', {
+        slidesPerView: 1,
+        spaceBetween: 30,
+        loop: true,
+        pagination: {
+          el: '.swiper-pagination',
+          clickable: true,
+        },
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+        },
+        breakpoints: {
+          640: { slidesPerView: 2 },
+          768: { slidesPerView: 3 },
+          1024: { slidesPerView: 4 },
+        },
+      });
+      console.log('🎉 Swiper initialized successfully with UL/LI structure');
+    } catch (error) {
+      console.error('❌ Failed to create Swiper instance:', error);
+    }
+  }).catch((error) => {
+    console.error('❌ Failed to load Swiper from CDN:', error);
+  });
 }
