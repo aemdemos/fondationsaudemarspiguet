@@ -484,3 +484,7 @@
 }
 
 /* End of Two-columnar-text-image block styles */
+
+.social-cr-wrapper {
+  border: 1px solid red;
+}
