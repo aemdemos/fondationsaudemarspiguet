@@ -201,7 +201,7 @@
   font-family: Antarctica, sans-serif;
   line-height: 1.5em;
   font-weight: 300;
-  margin-right: 40px !important;
+  
 }
 
 
@@ -252,10 +252,10 @@
   box-shadow: none;
   padding: 0;
   background-color: white;
-  margin-top: 0;
+  margin-top: 0 !important;
   word-wrap: break-word;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: auto; 
 }
 
 /* Desktop styles */
@@ -282,8 +282,8 @@
   .columns.two-column {
     flex-direction: row;
     float: right;
-    width: 55%;
-    margin-right: 150px;
+    width: 73%;
+    margin-right: 120px;
     box-sizing: border-box;
   }
 
@@ -292,7 +292,7 @@
   .columns.two-column > div {
     display: flex;
     flex-direction: row;
-    gap: 20px;
+    gap: 30px;
     width: 100%;
     box-sizing: border-box;
   }
@@ -313,6 +313,7 @@
     word-wrap: break-word;
     overflow-wrap: break-word;
     hyphens: auto;
+    margin-top: 0 !important;
   }
 
   /* Second column paragraph - Desktop */
@@ -323,6 +324,7 @@
   word-wrap: break-word;
   overflow-wrap: break-word;
   hyphens: auto;
+  margin-top: 0 !important;
 }
 
   /* Second column strong text - Desktop */
@@ -340,5 +342,16 @@
     word-wrap: break-word;
     overflow-wrap: break-word;
     hyphens: auto;
+  }
+}
+
+@media (width >= 1200px){
+/* Override default columns behavior - Desktop */
+  .columns.two-column {
+    flex-direction: row;
+    float: right;
+    width: 55%;
+    margin-right: 150px;
+    box-sizing: border-box;
   }
 }
