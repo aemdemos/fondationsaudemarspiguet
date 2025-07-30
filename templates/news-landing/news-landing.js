@@ -1,6 +1,5 @@
 import {
-  div, section, input, span, a, img,
-  h2,
+  div, section, input, span, img, a, h2,
 } from '../../scripts/dom-helpers.js';
 import ffetch from '../../scripts/ffetch.js';
 import {
@@ -13,6 +12,26 @@ async function getNewsdata() {
     .chunks(1000)
     .all();
   return rawNews;
+}
+
+function parseDate(dateStr) {
+  const [day, month, year] = dateStr.split('.');
+  return new Date(`${year}-${month}-${day}`);
+}
+
+function showNewsArticles(getNews, doc) {
+  getNews.forEach((news) => {
+    const $newsItem = div({ class: 'news-item' });
+    const $newsTitle = h2({ class: 'news-title' }, news.title);
+    const $newsDate = span({ class: 'news-date' }, news.date);
+    const $newsCategory = span({ class: 'news-category' }, news.category);
+    const $newsDescription = div({ class: 'news-description' }, news.description);
+    const imageWrapper = div({ class: 'news-image-wrapper' });
+    const $newsImg = img({ class: 'news-image', src: news.image, alt: news.title });
+    imageWrapper.append($newsImg);
+    $newsItem.append(imageWrapper, $newsCategory, $newsDate, $newsTitle, $newsDescription);
+    doc.querySelector('.news-listing').append($newsItem);
+  });
 }
 
 export default async function decorate(doc) {
@@ -102,8 +121,7 @@ export default async function decorate(doc) {
     $categoryInput.value = '';
     doc.querySelector('.news-listing').innerHTML = ''; // Clear existing news items
     showNewsArticles(getNews, doc);
-  }); 
-
+  });
 
   const searchInput = document.getElementById('filtersearch');
   const newsListing = document.querySelector('.news-listing');
@@ -123,10 +141,10 @@ export default async function decorate(doc) {
       const filteredNews = searchTerm.length < 2
         ? allNews
         : allNews.filter((news) => {
-            const title = news.title.toLowerCase();
-            const description = news.description.toLowerCase();
-            return title.includes(searchTerm) || description.includes(searchTerm);
-          });
+          const title = news.title.toLowerCase();
+          const description = news.description.toLowerCase();
+          return title.includes(searchTerm) || description.includes(searchTerm);
+        });
       newsListing.innerHTML = '';
       showNewsArticles(filteredNews, document);
     });
@@ -142,28 +160,12 @@ export default async function decorate(doc) {
     });
   }
 
-  const allNewsItems = Array.from(document.querySelectorAll('.news-item')).map((item) => {
-  const rawDate = item.querySelector('.news-date')?.textContent.trim() || '';
-  return {
-    title: item.querySelector('.news-title')?.textContent || '',
-    date: rawDate,
-    parsedDate: parseDotDate(rawDate), // ✅ for sorting
-    category: item.querySelector('.news-category')?.textContent || '',
-    description: item.querySelector('.news-description')?.textContent || '',
-    image: item.querySelector('.news-image')?.src || '',
-  };
-});
-
-
   const sortByDate = doc.querySelector('.filter-top-btn');
   if (sortByDate) {
     sortByDate.addEventListener('click', (event) => {
-      alert('Sort by Date');
       event.preventDefault();
-      const sortedNews = [...allNews].sort((a, b) => b.parsedDate - a.parsedDate);
-      console.log(sortedNews);
-      
-      doc.querySelector('.news-listing').innerHTML = ''; // Clear existing news items
+      const sortedNews = allNews.sort((date1, date2) => parseDate(date2.date) - parseDate(date1.date));
+      doc.querySelector('.news-listing').innerHTML = '';
       showNewsArticles(sortedNews, doc);
     });
   }
@@ -171,38 +173,10 @@ export default async function decorate(doc) {
   const reverseSortByDate = doc.querySelector('.filter-bottom-btn');
   if (reverseSortByDate) {
     reverseSortByDate.addEventListener('click', (event) => {
-      alert('Reverse Sort by Date');
       event.preventDefault();
-      const sortedNews = [...allNewsItems].sort((a, b) => a.parsedDate - b.parsedDate);
-      console.log(sortedNews);
-      
-      doc.querySelector('.news-listing').innerHTML = ''; // Clear existing news items
+      const sortedNews = allNews.sort((date1, date2) => parseDate(date1.date) - parseDate(date2.date));
+      doc.querySelector('.news-listing').innerHTML = '';
       showNewsArticles(sortedNews, doc);
     });
   }
-  
-}
-
-function parseDotDate(dateString) {
-  const [day, month, year] = dateString.split('.');
-  return new Date(`${year}-${month}-${day}`); // Now in YYYY-MM-DD
-}
-
-function showNewsArticles(getNews, doc) {
-  getNews.forEach((news) => {
-    const $newsItem = div({ class: 'news-item' });
-    const $newsTitle = h2({ class: 'news-title' }, news.title);
-    const $newsDate = span({ class: 'news-date' }, news.date);
-    const $newsCategory = span({ class: 'news-category' }, news.category);
-    const $newsDescription = div({ class: 'news-description' }, news.description);
-    const imageWrapper = div({ class: 'news-image-wrapper' });
-    const $newsImg = img ({
-      class: 'news-image',
-      src: news.image,
-      alt: news.title,
-    });
-    imageWrapper.append($newsImg);
-    $newsItem.append(imageWrapper, $newsCategory, $newsDate,  $newsTitle, $newsDescription);
-    doc.querySelector('.news-listing').append($newsItem);
-  });
 }
