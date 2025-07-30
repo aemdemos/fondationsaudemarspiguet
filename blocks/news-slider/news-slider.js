@@ -9,21 +9,20 @@ import ffetch from '../../scripts/ffetch.js';
 import {
   div,
   h3,
-  h2,
   a,
+  p,
 } from '../../scripts/dom-helpers.js';
 import { getPathSegments } from '../../scripts/utils.js';
 
-class Products {
+class News {
   // eslint-disable-next-line max-len
-  constructor(productsPartner, productsDuration, productsTitle, productsCategory, productsImage, productsLocation, productsPath) {
-    this.productsPartner = productsPartner;
-    this.productsDuration = productsDuration;
-    this.productsTitle = productsTitle;
-    this.productsCategory = productsCategory;
-    this.productsImage = productsImage;
-    this.productsLocation = productsLocation;
-    this.productsPath = productsPath;
+  constructor(newsTitle, newsCategory, newsImage, newsPath, newsDescription, newsDate) {
+    this.newsTitle = newsTitle;
+    this.newsCategory = newsCategory;
+    this.newsImage = newsImage;
+    this.newsPath = newsPath;
+    this.newsDescription = newsDescription;
+    this.newsDate = newsDate;
   }
 }
 
@@ -35,52 +34,43 @@ const resultParsers = {
   // Parse results into a cards block
   cards: (results) => {
     const blockContents = [];
-    // Get path segments to check URL condition
-    const pathSegments = getPathSegments();
-    const isNewsPage = pathSegments[1] === 'fondation-pour-les-arbres-news' || pathSegments[1] === 'fondation-pour-les-arbres-actualites';
 
     results.forEach((result) => {
       const cardContainer = div();
 
       // Create the wrapper anchor tag
-      const cardLink = a({ href: result.productsPath });
+      const cardLink = a({ href: result.newsPath });
 
       // Create image container
       const imageContainer = div({ class: 'image-container' });
 
-      if (result.productsImage && result.productsImage.length > 0) {
-        const cardImage = createOptimizedPicture(result.productsImage);
+      if (result.newsImage && result.newsImage.length > 0) {
+        const cardImage = createOptimizedPicture(result.newsImage);
         cardImage.classList.add('lazy', 'slide_img');
         imageContainer.append(cardImage);
       }
 
       cardLink.append(imageContainer);
 
-      // Create partner info only if not on news pages
-      if (!isNewsPage) {
-        const partnerInfo = div({ class: 'projets-listing-partners' });
-        partnerInfo.textContent = result.productsPartner || '';
-        cardLink.append(partnerInfo);
-      }
+      // Create category
+      const category = div({ class: 'news-listing-cat' });
+      category.textContent = result.newsCategory || '';
+      cardLink.append(category);
 
-      // Create location and duration info
-      const projectInfo = div({ class: 'projets-listing-infos' });
-      if (isNewsPage) {
-        projectInfo.innerHTML = result.productsDuration || '';
-      } else {
-        projectInfo.innerHTML = `${result.productsLocation || ''} <br> ${result.productsDuration || ''}`;
-      }
-      cardLink.append(projectInfo);
+      // Create date
+      const date = div({ class: 'news-listing-date' });
+      date.textContent = result.newsDate || '';
+      cardLink.append(date);
 
       // Create title
       const title = h3();
-      title.textContent = result.productsTitle || '';
+      title.textContent = result.newsTitle || '';
       cardLink.append(title);
 
-      // Create category
-      const category = div({ class: 'projets-listing-cat' });
-      category.textContent = result.productsCategory || '';
-      cardLink.append(category);
+      // Create description
+      const description = p();
+      description.textContent = result.newsDescription || '';
+      cardLink.append(description);
 
       cardContainer.append(cardLink);
       blockContents.push([cardContainer]);
@@ -93,22 +83,37 @@ async function getNewsdata() {
   const rawNews1 = await ffetch(`/${getLanguage()}/${getLanguage() === 'en' ? 'fondation-pour-les-arbres-news' : 'fondation-pour-les-arbres-actualites'}/news-index.json`)
     .chunks(1000)
     .all();
-  return rawNews1;
+
+  // Sort news by date in descending order (latest first)
+  const sortedNews = rawNews1.sort((newsA, newsB) => {
+    // Parse date format "dd.mm.yyyy"
+    const parseDate = (dateStr) => {
+      if (!dateStr) return new Date(0);
+      const [day, month, year] = dateStr.split('.');
+      return new Date(year, month - 1, day);
+    };
+
+    const dateA = parseDate(newsA.date);
+    const dateB = parseDate(newsB.date);
+
+    return dateB - dateA; // Descending order (latest first)
+  });
+  return sortedNews;
 }
 
-const loadresults = async (getProducts) => {
-  const productResults = [];
-  getProducts.forEach((product) => {
+const loadresults = async (getNews) => {
+  const newsResults = [];
+  getNews.forEach((newsItem) => {
     // eslint-disable-next-line max-len
-    const productResult = new Products(product.partner, product.duration, product.title, product.category, product.image, product.location, product.path);
-    productResults.push(productResult);
+    const newsResult = new News(newsItem.title, newsItem.category, newsItem.image, newsItem.path, newsItem.description, newsItem.date);
+    newsResults.push(newsResult);
   });
-  return resultParsers[blockType](productResults);
+  return resultParsers[blockType](newsResults);
 };
 
 export default async function decorate(block) {
-  const getNews = await getNewsdata();
-  const blockContents = await loadresults(getNews);
+  const newsData = await getNewsdata();
+  const blockContents = await loadresults(newsData);
   const builtBlock = buildBlock(blockType, blockContents);
   const parentDiv = div(
     builtBlock,
