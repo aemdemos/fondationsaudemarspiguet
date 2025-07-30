@@ -52,14 +52,27 @@ const resultParsers = {
 
       cardLink.append(imageContainer);
 
-      // Create category
-      const category = div({ class: 'news-listing-cat' });
-      category.textContent = result.newsCategory || '';
-      cardLink.append(category);
+      // Create category/categories directly (no wrapper)
+      if (result.newsCategory && result.newsCategory.length > 0) {
+        // Split by comma, trim, and create a div for each category
+        result.newsCategory.split(',').map((cat) => cat.trim()).forEach((cat) => {
+          if (cat) {
+            const categoryDiv = div({ class: 'news-listing-cat' });
+            categoryDiv.textContent = cat;
+            cardLink.append(categoryDiv);
+          }
+        });
+      } else {
+        // If no category, append an empty category div for consistency
+        const categoryDiv = div({ class: 'news-listing-cat' });
+        categoryDiv.textContent = '';
+        cardLink.append(categoryDiv);
+      }
 
       // Create date
       const date = div({ class: 'news-listing-date' });
       date.textContent = result.newsDate || '';
+      // Add the date to the card link (separately from categories)
       cardLink.append(date);
 
       // Create title
