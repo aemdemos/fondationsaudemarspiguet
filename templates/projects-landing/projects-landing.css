@@ -1,0 +1,118 @@
+main .filter-container {
+    padding: 0 24px;
+    display: flex;
+    justify-content: space-between;
+    max-width: 1720px;
+    margin: auto;
+    font-size: 18px;
+}
+
+main .filter-container .category-input {
+    width: 70px;
+    opacity: 1;
+    position: relative;
+    left: 0;
+    cursor: pointer;
+    text-transform: none;
+    font-weight: 400;
+    line-height: 1.01;
+    outline: none;
+}
+
+main .filter-container .search-input {
+    width: 100px;
+    opacity: 1;
+    position: relative;
+    left: 0;
+    cursor: pointer;
+    text-transform: none;
+    font-weight: 400;
+    line-height: 1.01;
+}
+
+main .filter-container .search-input::placeholder {
+    color: var(--input-placeholder-color);
+}
+
+main .filter-container .projects-listing-container-left {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+main .filter-container .projects-listing-container-left .filter-separator {
+    padding: 0 10px;
+    text-transform: none;
+    font-weight: 400 ;
+    line-height: 1.01;
+}
+
+main .filter-container .projects-listing-container-left .view-all {
+    color: var(--site-color-2);
+    text-transform: none;
+    font-weight: 400 ;
+    line-height: 1.01;
+    letter-spacing: .1em;
+    text-align: center;
+}
+
+main .filter-container .projects-listing-container-left .view-all:hover {
+    text-decoration: none;
+    opacity: .7;
+}
+
+main .filter-container .projects-listing-container-right {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+main .filter-container .projects-listing-container-right .filter-top-btn {
+    width: 30px;
+    height: 30px;
+    background-image: url('/icons/btn_arbres_filtre_top.svg');
+}
+
+main .filter-container .projects-listing-container-right .filter-bottom-btn {
+    width: 30px;
+    height: 30px;
+    background-image: url('/icons/btn_arbres_filtre_bottom.svg');
+}
+
+main  .projects-listing {
+    background-color: var(--projet-bg-page-listing);
+    width: 100%;
+    height: 500px;
+}
+
+.projects-landing main .filter-container input {
+    border: none;
+    outline: none;
+    color: var(--input-color);
+}
+
+.projects-landing .btn-search-clear {
+    background-image: url('../../icons/btn_arbres_filter_back.svg');
+    height: 40px;
+    width: 30px;
+    display: block;
+    background-repeat: no-repeat;
+    background-position: center;
+    float: right;
+}
+
+@media (width >= 900px) {
+    main .filter-container {
+        padding: 0 80px;
+        font-size: 36px;
+    }
+
+    main .filter-container .category-input {
+        width: 140px;
+    }
+
+    main .filter-container .search-input {
+        width: 180px;
+    }
+}
