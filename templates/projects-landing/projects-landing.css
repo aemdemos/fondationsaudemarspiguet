@@ -19,6 +19,21 @@ main .filter-container .category-input {
     outline: none;
 }
 
+main .filter-container .location-input {
+    width: 127px;
+    opacity: 1;
+    position: relative;
+    left: 0;
+    cursor: pointer;
+    text-transform: none;
+    font-weight: 400;
+    line-height: 1.01;
+}
+
+main .filter-container .location-input::placeholder {
+    color: var(--input-placeholder-color-2);
+}
+
 main .filter-container .search-input {
     width: 100px;
     opacity: 1;
@@ -68,16 +83,19 @@ main .filter-container .projects-listing-container-right {
     margin-bottom: 20px;
 }
 
-main .filter-container .projects-listing-container-right .filter-top-btn {
-    width: 30px;
-    height: 30px;
-    background-image: url('/icons/btn_arbres_filtre_top.svg');
+main .filter-container .projects-listing-container-right .map-link-btn {
+    cursor: pointer;
+    text-transform: none;
+    color: var(--site-color-2);
+    background-image: url('/icons/btn_arbres_carte.svg');
+    background-repeat: no-repeat;
+    padding-right: 40px;
+    background-position: right center;
 }
 
-main .filter-container .projects-listing-container-right .filter-bottom-btn {
-    width: 30px;
-    height: 30px;
-    background-image: url('/icons/btn_arbres_filtre_bottom.svg');
+main .filter-container .projects-listing-container-right .map-link-btn:hover {
+    text-decoration: none;
+    opacity: .7;
 }
 
 main  .projects-listing {
