@@ -182,7 +182,7 @@
   width: 100%;
   max-width: none;
   gap: 0;
-  margin-right: 0;
+  margin-right: 40px;
 }
 
 /* Apply flex-direction to the inner div that actually contains the columns - Mobile */
