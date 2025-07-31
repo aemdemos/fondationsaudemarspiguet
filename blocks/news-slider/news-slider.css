@@ -17,15 +17,51 @@
     overflow: visible !important;
     margin-left: auto;
     margin-right: auto;
-    position: relative;
     list-style: none;
     padding: 0;
     z-index: 1;
     display: block;
 }
 
+.news-slider-wrapper .swiper-button-prev::after {
+    display: none;
+}
+
+.news-slider-wrapper .swiper-button-prev {
+    background-image: url("/icons/carousel_left.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 20px 20px;
+    height: 40px;
+    width: 40px;
+    background-color: var(--header-color);
+    border-radius: 50%;
+    position: absolute;
+    top: 45%;
+    left: -24%;
+    transform: translateY(-50%);
+}
+
+.news-slider-wrapper .swiper-button-next::after {
+    display: none;
+}
+
+.news-slider-wrapper .swiper-button-next {
+    background-image: url("/icons/carousel_right.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 20px 20px;
+    height: 40px;
+    width: 40px;
+    background-color: var(--header-color);
+    border-radius: 50%;
+    top: 45%;
+    right: -24%;
+    transform: translateY(-50%);
+}
+
 .news-slider-wrapper .swiper-horizontal {
-    touch-action: pan-y;
+    touch-action: pan-x;
 }
 
 .news-slider-wrapper .cards.block.swiper.news-swiper ul.swiper-wrapper {
