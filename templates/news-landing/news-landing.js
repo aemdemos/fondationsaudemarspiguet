@@ -109,6 +109,10 @@ export default async function decorate(doc) {
       const selectedCategory = event.target.textContent;
       $categoryInput.value = selectedCategory;
       categorysection.style.display = 'none';
+      const filteredNews = getNews.filter((news) => news.category
+      && news.category.includes(selectedCategory));
+      doc.querySelector('.news-listing').innerHTML = ''; // Clear existing news items
+      showNewsArticles(filteredNews, doc);
     });
   });
 
