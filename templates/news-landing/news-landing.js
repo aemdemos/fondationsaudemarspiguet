@@ -14,36 +14,13 @@ async function getNewsdata() {
   return rawNews;
 }
 
-function parseDate(dateStr) {
-  const [day, month, year] = dateStr.split('.');
-  return new Date(`${year}-${month}-${day}`);
-}
-
-function showNewsArticles(getNews, doc) {
-  getNews.forEach((news) => {
-    const $newsItem = div({ class: 'news-item' });
-    const $newsTitle = h2({ class: 'news-title' }, news.title);
-    const $newsDate = span({ class: 'news-date' }, news.date);
-    const $newsCategory = span({ class: 'news-category' }, news.category);
-    const $newsDescription = div({ class: 'news-description' }, news.description);
-    const imageWrapper = div({ class: 'news-image-wrapper' });
-    const $newsImg = img({ class: 'news-image', src: news.image, alt: news.title });
-    imageWrapper.append($newsImg);
-    $newsItem.append(imageWrapper, $newsCategory, $newsDate, $newsTitle, $newsDescription);
-    doc.querySelector('.news-listing').append($newsItem);
-  });
-}
-
 export default async function decorate(doc) {
   const $main = doc.querySelector('main');
   const $section = section();
   const $filterContainer = div({ class: 'filter-container' });
-
-  // const $newsListingLeft = div({ class: 'news-listing-container-left' });
   const $newsListingRight = div({ class: 'news-listing-container-right' });
   const $filterTop = a({ class: 'filter-top-btn' });
   const $fitlerBottom = a({ class: 'filter-bottom-btn' });
-
   $newsListingRight.append($filterTop, $fitlerBottom);
   const placeholders = await fetchPlaceholders(`${getLanguage()}`);
   console.log(placeholders);
@@ -94,89 +71,10 @@ export default async function decorate(doc) {
     categoryList.appendChild(categoryItem);
   });
   $main.append($section);
-  showNewsArticles(getNews, doc);
   const categorysection = doc.querySelector('.category-dropdown');
   categorysection.appendChild(categoryList);
   const $categoryInput = doc.querySelector('.category-input');
   $categoryInput.addEventListener('click', () => {
     categorysection.style.display = categorysection.style.display === 'block' ? 'none' : 'block';
   });
-
-  const categoryItems = categorysection.querySelectorAll('li');
-  categoryItems.forEach((item) => {
-    item.addEventListener('click', (event) => {
-      const selectedCategory = event.target.textContent;
-      $categoryInput.value = selectedCategory;
-      categorysection.style.display = 'none';
-      const filteredNews = getNews.filter((news) => news.category
-      && news.category.includes(selectedCategory));
-      doc.querySelector('.news-listing').innerHTML = ''; // Clear existing news items
-      showNewsArticles(filteredNews, doc);
-    });
-  });
-
-  const viewAllButton = doc.getElementById('view-all');
-  viewAllButton.addEventListener('click', (event) => {
-    event.preventDefault();
-    $categoryInput.value = '';
-    doc.querySelector('.news-listing').innerHTML = ''; // Clear existing news items
-    showNewsArticles(getNews, doc);
-  });
-
-  const searchInput = document.getElementById('filtersearch');
-  const newsListing = document.querySelector('.news-listing');
-  const allNews = Array.from(document.querySelectorAll('.news-item')).map((item) => ({
-    title: item.querySelector('.news-title')?.textContent || '',
-    date: item.querySelector('.news-date')?.textContent || '',
-    category: item.querySelector('.news-category')?.textContent || '',
-    description: item.querySelector('.news-description')?.textContent || '',
-    image: item.querySelector('.news-image')?.src || '',
-  }));
-
-  if (searchInput) {
-    searchInput.addEventListener('input', (event) => {
-      const searchTerm = event.target.value.toLowerCase();
-      const filteredNews = searchTerm.length < 2
-        ? allNews
-        : allNews.filter((news) => {
-          const title = news.title.toLowerCase();
-          const description = news.description.toLowerCase();
-          return title.includes(searchTerm) || description.includes(searchTerm);
-        });
-      newsListing.innerHTML = '';
-      showNewsArticles(filteredNews, document);
-    });
-  }
-
-  const btnSearchClear = doc.querySelector('.btn-search-clear');
-  if (btnSearchClear) {
-    btnSearchClear.addEventListener('click', (event) => {
-      event.preventDefault();
-      searchInput.value = '';
-      newsListing.innerHTML = ''; // Clear existing news items
-      showNewsArticles(getNews, doc);
-    });
-  }
-
-  const sortByDate = doc.querySelector('.filter-top-btn');
-  if (sortByDate) {
-    sortByDate.addEventListener('click', (event) => {
-      event.preventDefault();
-      const sortedNews = allNews
-        .sort((date1, date2) => parseDate(date2.date) - parseDate(date1.date));
-      doc.querySelector('.news-listing').innerHTML = '';
-      showNewsArticles(sortedNews, doc);
-    });
-  }
-
-  const reverseSortByDate = doc.querySelector('.filter-bottom-btn');
-  if (reverseSortByDate) {
-    reverseSortByDate.addEventListener('click', (event) => {
-      event.preventDefault();
-      const sortedNews = allNews
-        .sort((date1, date2) => parseDate(date1.date) - parseDate(date2.date));
-      doc.querySelector('.news-listing').innerHTML = '';
-      showNewsArticles(sortedNews, doc);
-    });
-  }
 }
