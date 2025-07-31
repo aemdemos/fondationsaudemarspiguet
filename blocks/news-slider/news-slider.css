@@ -16,7 +16,7 @@ html, body {
     position: relative;
     margin: auto;
     max-width: 1440px !important;
-    padding: 0;
+    padding: 0 !important;
 }
 
 .news-slider-wrapper .cards-card-image > p {
@@ -87,6 +87,7 @@ html, body {
     display: flex;
     gap: 30px;
     min-height: 1000px;
+    margin-top: 50px;
 }
 
 .news-slider-wrapper .cards.block.swiper.news-swiper ul.swiper-wrapper li.swiper-slide {
