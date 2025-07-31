@@ -1,5 +1,5 @@
 import {
-  div, section, input, span, a,
+  div, section, input, span, a, h2, img,
 } from '../../scripts/dom-helpers.js';
 import ffetch from '../../scripts/ffetch.js';
 import {
@@ -12,6 +12,26 @@ async function getNewsdata() {
     .chunks(1000)
     .all();
   return rawNews;
+}
+
+function showNewsArticles(getNews, doc) {
+  getNews.forEach((news) => {
+    const $newsItem = div({ class: 'news-item' });
+    const $newsTitle = h2({ class: 'news-title' }, news.title);
+    const $newsDate = span({ class: 'news-date' }, news.date);
+    const $newsCategory = span({ class: 'news-category' }, news.category);
+    const $newsDescription = div({ class: 'news-description' }, news.description);
+    const imageWrapper = div({ class: 'news-image-wrapper' });
+    const $newsImg = img({ class: 'news-image', src: news.image, alt: news.title });
+    imageWrapper.append($newsImg);
+    $newsItem.append(imageWrapper, $newsCategory, $newsDate, $newsTitle, $newsDescription);
+    doc.querySelector('.news-listing').append($newsItem);
+  });
+}
+
+function parseDate(dateStr) {
+  const [day, month, year] = dateStr.split('.');
+  return new Date(`${year}-${month}-${day}`);
 }
 
 export default async function decorate(doc) {
@@ -58,7 +78,7 @@ export default async function decorate(doc) {
   const $newsListing = div({ class: 'news-listing' });
   $section.append($filterContainer, $newsListing);
   const getNews = await getNewsdata();
-
+  
   const allCategories = getNews
     .flatMap((item) => (item.category || '').split(','))
     .map((cat) => cat.trim())
@@ -79,6 +99,18 @@ export default async function decorate(doc) {
     categorysection.style.display = categorysection.style.display === 'block' ? 'none' : 'block';
   });
 
+  const newsListing = document.querySelector('.news-listing');
+  const allNews = Array.from(document.querySelectorAll('.news-item')).map((item) => ({
+    title: item.querySelector('.news-title')?.textContent || '',
+    date: item.querySelector('.news-date')?.textContent || '',
+    category: item.querySelector('.news-category')?.textContent || '',
+    description: item.querySelector('.news-description')?.textContent || '',
+    image: item.querySelector('.news-image')?.src || '',
+  }));
+  const sortedNews = getNews
+        .sort((date1, date2) => parseDate(date2.date) - parseDate(date1.date));
+  console.log(sortedNews);
+  showNewsArticles(sortedNews, doc);
   const categoryItems = categorysection.querySelectorAll('li');
   categoryItems.forEach((item) => {
     item.addEventListener('click', (event) => {
