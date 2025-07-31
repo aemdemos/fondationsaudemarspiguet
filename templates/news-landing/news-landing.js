@@ -111,7 +111,7 @@ export default async function decorate(doc) {
       categorysection.style.display = 'none';
       const filteredNews = getNews.filter((news) => news.category
       && news.category.includes(selectedCategory));
-      doc.querySelector('.news-listing').innerHTML = ''; // Clear existing news items
+      newsListing.innerHTML = '';
       showNewsArticles(filteredNews, doc);
     });
   });
@@ -120,7 +120,7 @@ export default async function decorate(doc) {
   viewAllButton.addEventListener('click', (event) => {
     event.preventDefault();
     $categoryInput.value = '';
-    doc.querySelector('.news-listing').innerHTML = ''; // Clear existing news items
+    newsListing.innerHTML = '';
     showNewsArticles(sortedNews, doc);
   });
 
@@ -145,10 +145,28 @@ export default async function decorate(doc) {
     clearSearchBtn.addEventListener('click', (event) => {
       event.preventDefault();
       searchInput.value = '';
-      newsListing.innerHTML = ''; // Clear existing news items
+      newsListing.innerHTML = '';
       showNewsArticles(getNews, doc);
     });
   }
 
+  const sortByDate = doc.querySelector('.filter-top-btn');
+  if (sortByDate) {
+    sortByDate.addEventListener('click', (event) => {
+      event.preventDefault();
+      newsListing.innerHTML = '';
+      showNewsArticles(sortedNews, doc);
+    });
+  }
 
+  const reverseSortByDate = doc.querySelector('.filter-bottom-btn');
+  if (reverseSortByDate) {
+    reverseSortByDate.addEventListener('click', (event) => {
+      event.preventDefault();
+      const reverseSortedNews = sortedNews.slice()
+        .sort((date1, date2) => parseDate(date1.date) - parseDate(date2.date));
+      newsListing.innerHTML = '';
+      showNewsArticles(reverseSortedNews, doc);
+    });
+  }
 }
