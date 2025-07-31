@@ -123,4 +123,20 @@ export default async function decorate(doc) {
     doc.querySelector('.news-listing').innerHTML = ''; // Clear existing news items
     showNewsArticles(sortedNews, doc);
   });
+
+  const searchInput = document.getElementById('filtersearch');
+  if (searchInput) {
+    searchInput.addEventListener('input', (event) => {
+      const searchTerm = event.target.value.toLowerCase();
+      const filteredNews = searchTerm.length < 2
+        ? sortedNews
+        : sortedNews.filter((news) => {
+          const title = news.title.toLowerCase();
+          const description = news.description.toLowerCase();
+          return title.includes(searchTerm) || description.includes(searchTerm);
+        });
+      newsListing.innerHTML = '';
+      showNewsArticles(filteredNews, document);
+    });
+  }
 }
