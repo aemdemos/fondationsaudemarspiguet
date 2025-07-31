@@ -59,7 +59,6 @@ export default async function decorate(doc) {
   $section.append($filterContainer, $newsListing);
   const getNews = await getNewsdata();
 
-  // Getting Unique Categories
   const allCategories = getNews
     .flatMap((item) => (item.category || '').split(','))
     .map((cat) => cat.trim())
@@ -73,7 +72,6 @@ export default async function decorate(doc) {
   });
 
   $main.append($section);
-  // Category Input Logic
   const categorysection = doc.querySelector('.category-dropdown');
   categorysection.appendChild(categoryList);
   const $categoryInput = doc.querySelector('.category-input');
@@ -81,7 +79,6 @@ export default async function decorate(doc) {
     categorysection.style.display = categorysection.style.display === 'block' ? 'none' : 'block';
   });
 
-  // Category Selection Logic
   const categoryItems = categorysection.querySelectorAll('li');
   categoryItems.forEach((item) => {
     item.addEventListener('click', (event) => {
