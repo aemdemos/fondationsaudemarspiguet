@@ -161,10 +161,6 @@ export default async function decorate(block) {
     const nextButton = div({ class: 'swiper-button-next' });
     cardsBlock.appendChild(prevButton);
     cardsBlock.appendChild(nextButton);
-
-    // Add pagination
-    const pagination = div({ class: 'swiper-pagination' });
-    cardsBlock.appendChild(pagination);
   }
 
   console.log('🔧 Swiper structure applied to existing UL/LI:', parentDiv);
@@ -207,18 +203,14 @@ export default async function decorate(block) {
         slidesPerView: 1,
         spaceBetween: 30,
         loop: false,
-        pagination: {
-          el: '.swiper-pagination',
-          clickable: true,
-        },
         navigation: {
           nextEl: '.swiper-button-next',
           prevEl: '.swiper-button-prev',
         },
         breakpoints: {
-          640: { slidesPerView: 2 },
-          768: { slidesPerView: 3 },
-          1024: { slidesPerView: 4 },
+          600: { slidesPerView: 2 },
+          900: { slidesPerView: 3 },
+          1200: { slidesPerView: 4 },
         },
         on: {
           init() {

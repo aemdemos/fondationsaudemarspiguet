@@ -16,7 +16,11 @@ html, body {
     position: relative;
     margin: auto;
     max-width: 1440px !important;
-    padding: 0 80px;
+    padding: 0;
+}
+
+.news-slider-wrapper .cards-card-image > p {
+    margin: 0;
 }
 
 .news-slider-wrapper .cards.block.swiper.news-swiper {
@@ -81,19 +85,22 @@ html, body {
     transition-property: transform;
     box-sizing: content-box;
     display: flex;
+    gap: 30px;
+    min-height: 1000px;
 }
 
 .news-slider-wrapper .cards.block.swiper.news-swiper ul.swiper-wrapper li.swiper-slide {
     box-sizing: border-box;
     flex-shrink: 0;
     width: 100%;
-    height: 100%;
+    height: 1000px !important;
     position: relative;
     transition-property: transform;
     display: block;
     margin: 0 !important;
     border: 0;
     padding: 15px;
+    
 }
 
 .news-slider-wrapper .cards.block.swiper.news-swiper ul.swiper-wrapper li.swiper-slide:hover {
@@ -159,11 +166,35 @@ html, body {
     .news-slider-wrapper .cards.block.swiper.news-swiper ul.swiper-wrapper li.swiper-slide a img {
         height: 200px;
     }
+
+    .news-slider-wrapper .cards.block.swiper.news-swiper ul.swiper-wrapper {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+        transition-property: transform;
+        box-sizing: content-box;
+        display: flex;
+        gap: unset;
+        min-height: 700px;
+    }
+
+    .news-slider-wrapper .cards.block.swiper.news-swiper ul.swiper-wrapper li.swiper-slide {
+        height: 700px !important;
+    }
 }
 
 @media (width >= 900px) {
     .news-slider-wrapper .cards.block.swiper.news-swiper ul.swiper-wrapper li.swiper-slide a img {
         height: 300px;
+    }
+
+    .news-slider-wrapper .cards.block.swiper.news-swiper ul.swiper-wrapper {
+        min-height: 1000px;
+    }
+    
+    .news-slider-wrapper .cards.block.swiper.news-swiper ul.swiper-wrapper li.swiper-slide {
+        height: 1000px !important;
     }
 }
 
