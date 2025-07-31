@@ -60,6 +60,9 @@ indices:
       layout:
         select: head > meta[name="layout"]
         value: attribute(el, "content")
+      article-color:
+        select: head > meta[name="article-color"]
+        value: attribute(el, "content")
       lastModified:
         select: none
         value: parseTimestamp(headers["last-modified"], "ddd, DD MMM YYYY hh:mm:ss GMT")
@@ -96,6 +99,9 @@ indices:
         value: attribute(el, "content")
       layout:
         select: head > meta[name="layout"]
+        value: attribute(el, "content")
+      article-color:
+        select: head > meta[name="article-color"]
         value: attribute(el, "content")
       lastModified:
         select: none

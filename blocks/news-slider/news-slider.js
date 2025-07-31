@@ -16,13 +16,14 @@ import loadswiper from '../../scripts/delayed.js';
 
 class News {
   // eslint-disable-next-line max-len
-  constructor(newsTitle, newsCategory, newsImage, newsPath, newsDescription, newsDate) {
+  constructor(newsTitle, newsCategory, newsImage, newsPath, newsDescription, newsDate, articleColor) {
     this.newsTitle = newsTitle;
     this.newsCategory = newsCategory;
     this.newsImage = newsImage;
     this.newsPath = newsPath;
     this.newsDescription = newsDescription;
     this.newsDate = newsDate;
+    this.articleColor = articleColor;
   }
 }
 
@@ -37,6 +38,13 @@ const resultParsers = {
 
     results.forEach((result) => {
       const cardContainer = div();
+
+      // Apply color class based on article-color metadata
+      if (result.articleColor === 'brown') {
+        cardContainer.classList.add('color-brown');
+      } else {
+        cardContainer.classList.add('color-default');
+      }
 
       // Create the wrapper anchor tag
       const cardLink = a({ href: result.newsPath });
@@ -118,7 +126,7 @@ const loadresults = async (getNews) => {
   const newsResults = [];
   getNews.forEach((newsItem) => {
     // eslint-disable-next-line max-len
-    const newsResult = new News(newsItem.title, newsItem.category, newsItem.image, newsItem.path, newsItem.description, newsItem.date);
+    const newsResult = new News(newsItem.title, newsItem.category, newsItem.image, newsItem.path, newsItem.description, newsItem.date, newsItem['article-color'] || newsItem.articleColor);
     newsResults.push(newsResult);
   });
   return resultParsers[blockType](newsResults);
@@ -147,10 +155,20 @@ export default async function decorate(block) {
   if (ul) {
     ul.classList.add('swiper-wrapper');
 
-    // Add swiper-slide class to each li
+    // Add swiper-slide class to each li and apply color classes
     Array.from(ul.children).forEach((li) => {
       if (li.tagName === 'LI') {
         li.classList.add('swiper-slide');
+
+        // Apply color class based on the div inside the li
+        const colorBrownDiv = li.querySelector('.color-brown');
+        const colorDefaultDiv = li.querySelector('.color-default');
+
+        if (colorBrownDiv) {
+          li.classList.add('color-brown');
+        } else if (colorDefaultDiv) {
+          li.classList.add('color-default');
+        }
       }
     });
   }
