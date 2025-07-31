@@ -59,7 +59,7 @@ export default async function decorate(doc) {
   $section.append($filterContainer, $newsListing);
   const getNews = await getNewsdata();
 
-  //Getting Unique Categories
+  // Getting Unique Categories
   const allCategories = getNews
     .flatMap((item) => (item.category || '').split(','))
     .map((cat) => cat.trim())
