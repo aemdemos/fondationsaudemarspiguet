@@ -78,7 +78,6 @@ export default async function decorate(doc) {
   const $newsListing = div({ class: 'news-listing' });
   $section.append($filterContainer, $newsListing);
   const getNews = await getNewsdata();
-  
   const allCategories = getNews
     .flatMap((item) => (item.category || '').split(','))
     .map((cat) => cat.trim())
@@ -100,15 +99,8 @@ export default async function decorate(doc) {
   });
 
   const newsListing = document.querySelector('.news-listing');
-  const allNews = Array.from(document.querySelectorAll('.news-item')).map((item) => ({
-    title: item.querySelector('.news-title')?.textContent || '',
-    date: item.querySelector('.news-date')?.textContent || '',
-    category: item.querySelector('.news-category')?.textContent || '',
-    description: item.querySelector('.news-description')?.textContent || '',
-    image: item.querySelector('.news-image')?.src || '',
-  }));
   const sortedNews = getNews
-        .sort((date1, date2) => parseDate(date2.date) - parseDate(date1.date));
+    .sort((date1, date2) => parseDate(date2.date) - parseDate(date1.date));
   console.log(sortedNews);
   showNewsArticles(sortedNews, doc);
   const categoryItems = categorysection.querySelectorAll('li');
@@ -118,5 +110,13 @@ export default async function decorate(doc) {
       $categoryInput.value = selectedCategory;
       categorysection.style.display = 'none';
     });
+  });
+
+  const viewAllButton = doc.getElementById('view-all');
+  viewAllButton.addEventListener('click', (event) => {
+    event.preventDefault();
+    $categoryInput.value = '';
+    doc.querySelector('.news-listing').innerHTML = ''; // Clear existing news items
+    showNewsArticles(sortedNews, doc);
   });
 }
