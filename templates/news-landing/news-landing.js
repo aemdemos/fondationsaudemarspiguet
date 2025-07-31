@@ -139,4 +139,16 @@ export default async function decorate(doc) {
       showNewsArticles(filteredNews, document);
     });
   }
+
+  const clearSearchBtn = doc.querySelector('.btn-search-clear');
+  if (clearSearchBtn) {
+    clearSearchBtn.addEventListener('click', (event) => {
+      event.preventDefault();
+      searchInput.value = '';
+      newsListing.innerHTML = ''; // Clear existing news items
+      showNewsArticles(getNews, doc);
+    });
+  }
+
+
 }
