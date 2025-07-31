@@ -175,11 +175,38 @@ export default async function decorate(block) {
   loadswiper().then((Swiper) => {
     console.log('✅ Swiper loaded successfully, initializing...');
     try {
+      // Function to update slide opacity based on visibility
+      const updateSlideOpacity = (swiperInstance) => {
+        const { slides, activeIndex, params } = swiperInstance;
+        const { slidesPerView } = params;
+
+        // Calculate how many slides are currently visible
+        let currentSlidesPerView = 1;
+        if (typeof slidesPerView === 'number') {
+          currentSlidesPerView = slidesPerView;
+        } else if (swiperInstance.currentBreakpoint) {
+          currentSlidesPerView = swiperInstance.passedParams.slidesPerView;
+        }
+
+        slides.forEach((slide, index) => {
+          // A slide is considered visible if it's within the active range
+          const isVisible = index >= activeIndex && index < activeIndex + currentSlidesPerView;
+
+          if (isVisible) {
+            slide.style.opacity = '1';
+            slide.classList.add('swiper-slide-visible');
+          } else {
+            slide.style.opacity = '0.2';
+            slide.classList.remove('swiper-slide-visible');
+          }
+        });
+      };
+
       // eslint-disable-next-line no-unused-vars
       const swiper = new Swiper('.news-swiper', {
         slidesPerView: 1,
         spaceBetween: 30,
-        loop: true,
+        loop: false,
         pagination: {
           el: '.swiper-pagination',
           clickable: true,
@@ -192,6 +219,18 @@ export default async function decorate(block) {
           640: { slidesPerView: 2 },
           768: { slidesPerView: 3 },
           1024: { slidesPerView: 4 },
+        },
+        on: {
+          init() {
+            updateSlideOpacity(this);
+          },
+          slideChange() {
+            updateSlideOpacity(this);
+          },
+          breakpoint() {
+            // Update opacity when breakpoint changes (screen resize)
+            setTimeout(() => updateSlideOpacity(this), 100);
+          },
         },
       });
       console.log('🎉 Swiper initialized successfully with UL/LI structure');

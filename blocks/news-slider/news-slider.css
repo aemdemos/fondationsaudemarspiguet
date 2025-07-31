@@ -5,6 +5,12 @@
  */
 
 /* Custom news-slider specific styles can be added here */
+
+/* Prevent horizontal overflow caused by cards extending beyond viewport */
+html, body {
+    overflow-x: hidden;
+}
+
 .news-slider-wrapper {
     box-sizing: border-box;
     position: relative;
@@ -37,9 +43,10 @@
     background-color: var(--header-color);
     border-radius: 50%;
     position: absolute;
-    top: 45%;
-    left: -24%;
+    top: 50%;
+    left: calc(-50vw + 50% + 20px);
     transform: translateY(-50%);
+    z-index: 10;
 }
 
 .news-slider-wrapper .swiper-button-next::after {
@@ -55,9 +62,11 @@
     width: 40px;
     background-color: var(--header-color);
     border-radius: 50%;
-    top: 45%;
-    right: -24%;
+    position: absolute;
+    top: 50%;
+    right: calc(-50vw + 50% + 20px);
     transform: translateY(-50%);
+    z-index: 10;
 }
 
 .news-slider-wrapper .swiper-horizontal {
@@ -91,6 +100,10 @@
     background-color: rgb(114 98 72 / 60%);
 }
 
+.news-slider-wrapper .swiper-slide {
+    transition: opacity 0.3s ease;
+}
+
 .news-slider-wrapper .cards.block.swiper.news-swiper ul.swiper-wrapper li.swiper-slide a {
     transition: color 0.5s;
     text-decoration: none;
@@ -99,7 +112,7 @@
 }
 
 .news-slider-wrapper .cards.block.swiper.news-swiper ul.swiper-wrapper li.swiper-slide a img {
-    height: 700px;
+    height: 600px;
     width: 100%;
     object-fit: cover;
     margin-bottom: 10px;
