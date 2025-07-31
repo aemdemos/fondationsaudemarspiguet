@@ -73,13 +73,13 @@ main .media-filter-container .media-filter-container-right {
     margin-bottom: 20px;
 }
 
-main .media-filter-container .media-filter-container-right .filter-expand-btn {
+main .media-filter-container .media-filter-container-right .filter-top-btn {
     width: 30px;
     height: 30px;
     background-image: url('/icons/btn_arbres_filtre_top.svg');
 }
 
-main .media-filter-container .media-filter-container-right .filter-collapse-btn {
+main .media-filter-container .media-filter-container-right .filter-bottom-btn {
     width: 30px;
     height: 30px;
     background-image: url('/icons/btn_arbres_filtre_bottom.svg');
@@ -109,7 +109,7 @@ main .media-listing {
 
 @media (width >= 900px) {
     main .media-filter-container {
-        padding: 0 80px;
+        padding: 0 20px;
         font-size: 36px;
     }
 
@@ -131,13 +131,13 @@ main .media-listing {
 
 .type-dropdown {
   position: absolute;
-  top: calc(100% + 20px); 
-  left: 0;
+  top: calc(100%); 
+  left: 25px;
   right: 0;
-  background: #c5cbcb;
-  
+  background: #c5cbcb; 
   border-top: none;
-  max-height: 200px;
+  max-height: 100px;
+  width: 150px;
   overflow-y: auto;
   z-index: 1000;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
@@ -178,11 +178,16 @@ main .media-listing {
 /* Responsive dropdown */
 @media (width >= 900px) {
   .type-dropdown {
-    min-width: 140px;
+    left: 50px;
+    width: 250px;
   }
   
   .type-option {
     font-size: 16px;
     padding: 10px 15px;
   }
+
+  .type-dropdown {
+  top: calc(100% + 20px); 
+}
 }

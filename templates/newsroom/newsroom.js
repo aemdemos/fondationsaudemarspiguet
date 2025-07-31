@@ -2,17 +2,73 @@ import {
   div, section, input, span, a,
 } from '../../scripts/dom-helpers.js';
 
+// Function to fetch placeholders from JSON endpoint
+async function fetchPlaceholders() {
+  try {
+    const response = await fetch('https://main--fondationsaudemarspiguet--aemdemos.aem.page/placeholders.json');
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const data = await response.json();
+    return data; // Return the data object or empty object if not found
+  } catch (error) {
+    console.warn('Failed to fetch placeholders:', error);
+    return {}; // Return empty object on error
+  }
+}
+
+// Function to detect current language
+function getCurrentLanguage() {
+
+  // Check URL path
+  const currentPath = window.location.pathname;
+  if (currentPath.startsWith('/fr/') || currentPath.includes('/fr/')) {
+    return 'fr';
+  }
+  
+  // Default to English
+  return 'en';
+}
+
+// Function to get placeholder text with fallback
+function getPlaceholderText(placeholders, key, fallback) {
+
+  const currentLang = getCurrentLanguage();
+  
+  // Check if we have data for the current language
+  if (!placeholders[currentLang] || !placeholders[currentLang].data) {
+    console.warn(`No placeholders found for language: ${currentLang}`);
+    return fallback;
+  }
+  
+  // Find the placeholder by key (case-insensitive)
+  const placeholder = placeholders[currentLang].data.find(item => 
+    item.Key.toLowerCase() === key.toLowerCase()
+  );
+
+  return placeholder ? placeholder.Text : fallback;
+}
+
 export default async function decorate(doc) {
   const $main = doc.querySelector('main');
   const $section = section();
   const $filterContainer = div({ class: 'media-filter-container' });
 
+  // Fetch placeholders from JSON endpoint
+  const placeholders = await fetchPlaceholders();
+
+  // Get placeholder text with fallbacks using the correct keys from your JSON
+  const typePlaceholder = getPlaceholderText(placeholders, 'media-newsroom-type-filter', 'Type');
+  const viewAllText = getPlaceholderText(placeholders, 'media-newsroom-view-filter', 'View all');
+  const searchPlaceholder = getPlaceholderText(placeholders, 'media-newsroom-search-filter', 'Search...');
+
+
   // Right container for filter toggle buttons
   const $mediaFilterRight = div({ class: 'media-filter-container-right' });
-  const $filterExpandBtn = a({ class: 'filter-expand-btn' });
-  const $filterCollapseBtn = a({ class: 'filter-collapse-btn' });
+  const $filterTopBtn = a({ class: 'filter-top-btn' });
+  const $filterBottomBtn = a({ class: 'filter-bottom-btn' });
 
-  $mediaFilterRight.append($filterExpandBtn, $filterCollapseBtn);
+  $mediaFilterRight.append($filterTopBtn, $filterBottomBtn);
 
   // Left container for filter controls
   const $mediaFilterLeft = div(
@@ -23,7 +79,7 @@ export default async function decorate(doc) {
         {
           class: 'type-input',
           id: 'filtertypes-selectized',
-          placeholder: 'Type',
+          placeholder: typePlaceholder, // Use dynamic placeholder
           type: 'text',
           autocomplete: 'off',
         },
@@ -32,7 +88,7 @@ export default async function decorate(doc) {
       div({ class: 'type-dropdown', style: 'display: none;' }),
     ),
     span({ class: 'filter-separator' }, ' | '),
-    a({ class: 'view-all-media', href: '#', id: 'view-all-media' }, 'View All'),
+    a({ class: 'view-all-media', href: '#', id: 'view-all-media' }, viewAllText),
     span({ class: 'filter-separator' }, ' | '),
     div(
       { class: 'media-search-section' },
@@ -40,7 +96,7 @@ export default async function decorate(doc) {
         {
           class: 'media-search-input',
           id: 'filtermediasearch',
-          placeholder: 'Search...',
+          placeholder: searchPlaceholder, // Use dynamic placeholder
           type: 'text',
           minlength: '2',
           size: '12',
@@ -67,12 +123,16 @@ export default async function decorate(doc) {
     // If no light-grey-bg section found, just add to top of main
     $main.insertBefore($section, $main.firstChild);
   }
+
+  // Add sorting functionality to buttons
+  setupSortButtons(doc);
+
   // Add functionality after DOM is ready
-  setupTypeFilter(doc);
+  setupTypeFilter(doc, typePlaceholder);
   setupSearchFilter(doc);
 }
 
-function setupTypeFilter(doc) {
+function setupTypeFilter(doc, typePlaceholder = 'Type') {
   const typeInput = doc.querySelector('.type-input');
   const typeDropdown = doc.querySelector('.type-dropdown');
   
@@ -111,7 +171,7 @@ function setupTypeFilter(doc) {
       return;
     }
 
-    // Add unique type options only (removed "All Types" option)
+    // Add unique type options only
     uniqueTypes.forEach(type => {
       const option = div({ class: 'type-option', 'data-value': type }, type);
       typeDropdown.append(option);
@@ -145,7 +205,7 @@ function setupTypeFilter(doc) {
 
       const cellText = firstCell.textContent.trim();
       
-      // Only show rows that match the selected type (removed empty check for "All Types")
+      // Only show rows that match the selected type 
       if (cellText === selectedType) {
         row.style.display = '';
       } else {
@@ -178,7 +238,7 @@ function setupTypeFilter(doc) {
 if (viewAllBtn) {
   viewAllBtn.addEventListener('click', (e) => {
     e.preventDefault();
-    resetAllFilters(doc);  // ✅ Use shared function
+    resetAllFilters(doc, typePlaceholder);  // ✅ Use shared function
   });
   }
 
@@ -254,12 +314,103 @@ function setupSearchFilter(doc) {
   }
 }
 
+// ✅ Add this function - it was missing!
+function setupSortButtons(doc) {
+  const filterTopBtn = doc.querySelector('.filter-top-btn');
+  const filterBottomBtn = doc.querySelector('.filter-bottom-btn');
+
+  if (!filterTopBtn || !filterBottomBtn) {
+    console.warn('Sort buttons not found');
+    return;
+  }
+
+  console.log('Setting up sort buttons'); // Debug log
+
+  // Sort ascending (A-Z) when top button is clicked
+  filterTopBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    console.log('Top button clicked - sorting ascending'); // Debug log
+    sortTableByFirstColumn(doc, 'asc');
+  });
+
+  // Sort descending (Z-A) when bottom button is clicked
+  filterBottomBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    console.log('Bottom button clicked - sorting descending'); // Debug log
+    sortTableByFirstColumn(doc, 'desc');
+  });
+}
+
+// Function to sort table by first column
+function sortTableByFirstColumn(doc, order = 'asc') {
+  const table = doc.querySelector('.table table') || doc.querySelector('table');
+  if (!table) return;
+
+  const tbody = table.querySelector('tbody');
+  if (!tbody) return;
+
+  // Get all rows as an array
+  const rows = Array.from(tbody.querySelectorAll('tr'));
+  
+  // Filter out hidden rows (from current filters) and store their visibility
+  const rowsWithVisibility = rows.map(row => ({
+    element: row,
+    isVisible: row.style.display !== 'none',
+    firstCellText: row.querySelector('td:first-child')?.textContent.trim() || ''
+  }));
+
+  // Sort the array based on first column text
+  rowsWithVisibility.sort((a, b) => {
+    const textA = a.firstCellText.toLowerCase();
+    const textB = b.firstCellText.toLowerCase();
+    
+    if (order === 'asc') {
+      return textA.localeCompare(textB);
+    } else {
+      return textB.localeCompare(textA);
+    }
+  });
+
+  // Clear the tbody
+  tbody.innerHTML = '';
+
+  // Re-append rows in sorted order, maintaining their visibility
+  rowsWithVisibility.forEach(({ element, isVisible }) => {
+    // Restore visibility state
+    element.style.display = isVisible ? '' : 'none';
+    tbody.appendChild(element);
+  });
+
+  // Add visual feedback to show which sort is active
+  updateSortButtonStates(doc, order);
+}
+
+// Function to update button visual states
+function updateSortButtonStates(doc, activeSort) {
+  const filterTopBtn = doc.querySelector('.filter-top-btn');
+  const filterBottomBtn = doc.querySelector('.filter-bottom-btn');
+
+  if (!filterTopBtn || !filterBottomBtn) return;
+
+  // Remove active classes
+  filterTopBtn.classList.remove('active');
+  filterBottomBtn.classList.remove('active');
+
+  // Add active class to the appropriate button
+  if (activeSort === 'asc') {
+    filterTopBtn.classList.add('active');
+  } else if (activeSort === 'desc') {
+    filterBottomBtn.classList.add('active');
+  }
+}
+
+
 // Add this function outside both setupTypeFilter and setupSearchFilter
-function resetAllFilters(doc) {
+function resetAllFilters(doc, typePlaceholder = 'Type') {
   // Reset type filter
   const typeInput = doc.querySelector('.type-input');
   if (typeInput) {
-    typeInput.value = 'Type';
+    typeInput.value = typePlaceholder;
   }
 
   // Reset search filter
@@ -269,6 +420,11 @@ function resetAllFilters(doc) {
     searchInput.value = '';
   }
  
+  // Reset sort button states
+  const filterTopBtn = doc.querySelector('.filter-top-btn');
+  const filterBottomBtn = doc.querySelector('.filter-bottom-btn');
+  if (filterTopBtn) filterTopBtn.classList.remove('active');
+  if (filterBottomBtn) filterBottomBtn.classList.remove('active');
 
   // Show all table rows
   const table = doc.querySelector('.table table') || doc.querySelector('table');
