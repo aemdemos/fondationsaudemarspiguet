@@ -1,10 +1,11 @@
 main .filter-container {
     padding: 0 24px;
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
     max-width: 1720px;
     margin: auto;
     font-size: 18px;
+    position: relative;
 }
 
 main .filter-container .category-input {
@@ -17,6 +18,41 @@ main .filter-container .category-input {
     font-weight: 400;
     line-height: 1.01;
     outline: none;
+}
+
+main .filter-container .category-dropdown {
+    border: none;
+    margin: 24px 0;
+    border-top: 0 none;
+    box-shadow: none;
+    font-size: 16px;
+    width: 100%;
+    position: absolute;
+    min-width: 250px;
+    max-height: 200px;
+    display: none;
+    z-index: 99;
+}
+
+main .filter-container .category-dropdown ul {
+    margin: 0;
+    padding: 0;
+    overflow-y: auto;
+}
+
+main .filter-container .category-dropdown ul li {
+    list-style: none;
+    cursor: pointer;
+    width: 180.297px;
+    opacity: 1;
+    position: relative;
+    left: 0;
+    background: var(--btn-bg);
+    padding: 5px 18px;
+}
+
+main .filter-container .category-dropdown ul li:hover {
+    font-weight: 500;
 }
 
 main .filter-container .search-input {
@@ -64,7 +100,7 @@ main .filter-container .news-listing-container-left .view-all:hover {
 main .filter-container .news-listing-container-right {
     display: flex;
     gap: 5px;
-    align-items: center;
+    align-self: end;
     margin-bottom: 20px;
 }
 
@@ -78,12 +114,6 @@ main .filter-container .news-listing-container-right .filter-bottom-btn {
     width: 30px;
     height: 30px;
     background-image: url('/icons/btn_arbres_filtre_bottom.svg');
-}
-
-main  .news-listing {
-    background-color: var(--projet-bg-page-listing);
-    width: 100%;
-    height: 500px;
 }
 
 .news-landing main .filter-container input {
@@ -102,10 +132,17 @@ main  .news-listing {
     float: right;
 }
 
+
 @media (width >= 900px) {
     main .filter-container {
         padding: 0 80px;
         font-size: 36px;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    main .filter-container .news-listing-container-right {
+        align-self: center;
     }
 
     main .filter-container .category-input {
