@@ -59,3 +59,71 @@
   border-top: 1px solid #dadada;
   background-color: var(--background-color);
 }
+
+
+/* teams*/
+.accordion.teams details{
+  border: 0px;
+}
+.accordion.teams details[open] .accordion-item-body {
+ background-color: unset;
+ border-top: 0px;
+}
+.accordion.teams details summary:focus,
+.accordion.teams details summary:hover {
+  background-color: unset;
+}
+.accordion.teams summary p:first-of-type {
+    font-weight: 600;
+    font-size: 22px;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+    font-family: 'Antarctica', sans-serif;
+}
+.accordion.teams summary p:nth-of-type(2) {
+    color: rgb(107 126 124);
+    font-size: 22px;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+    font-weight: 400;
+}
+.accordion.teams summary p:nth-of-type(3) {
+font-size: 18px;
+margin-top: 4px;
+}
+/* Button-container styling in summary (always visible) */
+.accordion.teams summary .button-container {
+  display: block !important;
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+.accordion.teams summary .button-container a.button {
+  background-color: unset;
+  font-size: 10px;
+  text-transform: uppercase;
+  color: rgb(131 151 144);
+  transition: color 0.5s;
+  text-decoration: none;
+  position: relative;
+  display: inline-block;
+}
+.accordion.teams details .button-container a.button{
+  background-color: unset;
+  font-size: 10px;
+  text-transform: uppercase;
+  color: rgb(131 151 144);
+  transition: color 0.5s;
+  text-decoration: none;
+    position: relative;
+    display: inline-block;
+}
+@media (width >= 900px) {
+  .accordion.teams  {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .accordion.teams .accordion-item {
+    width: 33.33%;
+  }
+}
+

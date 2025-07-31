@@ -3,9 +3,7 @@
  * Recreate an accordion
  * https://www.hlx.live/developer/block-collection/accordion
  */
-
 import { moveInstrumentation } from '../../scripts/scripts.js';
-
 export default function decorate(block) {
   [...block.children].forEach((row) => {
     // decorate accordion item label
@@ -22,5 +20,26 @@ export default function decorate(block) {
     details.className = 'accordion-item';
     details.append(summary, body);
     row.replaceWith(details);
+    if (block.classList.contains('teams')) {
+      const linkedin = body.querySelector('.button-container');
+      const lastP = summary.querySelector('p:last-child');
+      if (linkedin) {
+        // Initially move LinkedIn button to summary (end)
+        summary.appendChild(linkedin);
+      }
+      details.addEventListener('toggle', () => {
+        if (details.open) {
+          // Hide last paragraph in summary
+          if (lastP) lastP.style.display = 'none';
+          // Move LinkedIn to body end
+          if (linkedin) body.appendChild(linkedin);
+        } else {
+          // Restore last paragraph visibility
+          if (lastP) lastP.style.display = '';
+          // Move LinkedIn back to summary
+          if (linkedin) summary.appendChild(linkedin);
+        }
+      });
+    }
   });
 }
