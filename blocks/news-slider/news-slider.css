@@ -243,7 +243,7 @@ html, body {
     .news-slider-wrapper .cards.block.swiper.news-swiper ul.swiper-wrapper li.swiper-slide {
         height: 1000px !important;
         overflow: hidden;
-        min-width: 350px;
+        min-width: 320px;
     }
 }
 
