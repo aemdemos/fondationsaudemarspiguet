@@ -90,7 +90,7 @@ text-decoration: none;
 /* Teams-specific styles */
 .accordion.teams details {
   border: 0;
-  margin: 0;
+  margin: 15px 0;
 }
 
 .accordion.teams details[open] .accordion-item-body {
@@ -190,5 +190,6 @@ text-decoration: none;
 
   .accordion.teams .accordion-item {
     width: 31%;
+    margin: 0;
   }
 }
