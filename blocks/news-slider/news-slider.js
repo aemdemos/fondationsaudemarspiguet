@@ -29,6 +29,12 @@ class News {
 
 const blockType = 'cards';
 
+// Helper function to count path segments
+function getPathSegmentCount(path) {
+  if (!path) return 0;
+  return path.split('/').filter((segment) => segment).length;
+}
+
 // Result parsers parse the query results into a format that can be used by the block builder for
 // the specific block types
 const resultParsers = {
@@ -105,8 +111,11 @@ async function getNewsdata() {
     .chunks(1000)
     .all();
 
+  // Filter news items that have at least 3 path segments
+  const filteredNews = rawNews1.filter((newsItem) => getPathSegmentCount(newsItem.path) >= 3);
+
   // Sort news by date in descending order (latest first)
-  const sortedNews = rawNews1.sort((newsA, newsB) => {
+  const sortedNews = filteredNews.sort((newsA, newsB) => {
     // Parse date format "dd.mm.yyyy"
     const parseDate = (dateStr) => {
       if (!dateStr) return new Date(0);
@@ -181,13 +190,10 @@ export default async function decorate(block) {
     cardsBlock.appendChild(nextButton);
   }
 
-  console.log('🔧 Swiper structure applied to existing UL/LI:', parentDiv);
   block.append(parentDiv);
 
   // Initialize Swiper
-  console.log('🔄 Loading Swiper from CDN...');
   loadswiper().then((Swiper) => {
-    console.log('✅ Swiper loaded successfully, initializing...');
     try {
       // Function to update slide opacity based on visibility
       const updateSlideOpacity = (swiperInstance) => {
@@ -243,11 +249,10 @@ export default async function decorate(block) {
           },
         },
       });
-      console.log('🎉 Swiper initialized successfully with UL/LI structure');
-    } catch (error) {
-      console.error('❌ Failed to create Swiper instance:', error);
+    } catch {
+      // Error creating Swiper instance
     }
-  }).catch((error) => {
-    console.error('❌ Failed to load Swiper from CDN:', error);
+  }).catch(() => {
+    // Error loading Swiper from CDN
   });
 }

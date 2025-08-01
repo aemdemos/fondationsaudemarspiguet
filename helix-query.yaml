@@ -31,6 +31,7 @@ indices:
       - '/en/fondation-pour-les-arbres-news/**'
     exclude:
       - '/en/fondation-pour-les-arbres-news/'
+      - '/en/fondation-pour-les-arbres-news'
     target: /en/fondation-pour-les-arbres-news/news-index.json
     properties:
       title:
@@ -71,6 +72,7 @@ indices:
       - '/fr/fondation-pour-les-arbres-actualites/**'
     exclude:
       - '/fr/fondation-pour-les-arbres-actualites/'
+      - '/fr/fondation-pour-les-arbres-actualites'
     target: /fr/fondation-pour-les-arbres-actualites/news-index.json
     properties:
       title:

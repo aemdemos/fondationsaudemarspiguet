@@ -88,6 +88,7 @@ html, body {
     gap: 30px;
     min-height: 1000px;
     margin-top: 50px;
+    margin-bottom: 50px;
 }
 
 .news-slider-wrapper .cards.block.swiper.news-swiper ul.swiper-wrapper li.swiper-slide {
@@ -101,7 +102,7 @@ html, body {
     margin: 0 !important;
     border: 0;
     padding: 15px;
-    
+    overflow: hidden;
 }
 
 /* Default color scheme */
@@ -227,6 +228,7 @@ html, body {
 
     .news-slider-wrapper .cards.block.swiper.news-swiper ul.swiper-wrapper li.swiper-slide {
         height: 700px !important;
+        overflow: hidden;
     }
 }
 
@@ -241,6 +243,7 @@ html, body {
     
     .news-slider-wrapper .cards.block.swiper.news-swiper ul.swiper-wrapper li.swiper-slide {
         height: 1000px !important;
+        overflow: hidden;
     }
 }
 
