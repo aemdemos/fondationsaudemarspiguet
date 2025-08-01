@@ -6,6 +6,10 @@
   margin-top: 24px;
 }
 
+/* .accordion.teams details + details {
+  margin-top: 0;
+} */
+
 .accordion details p {
   margin-bottom: 0.8em;
 }
@@ -86,7 +90,7 @@ text-decoration: none;
 /* Teams-specific styles */
 .accordion.teams details {
   border: 0;
-  margin: 15px;
+  margin: 0;
 }
 
 .accordion.teams details[open] .accordion-item-body {
@@ -108,7 +112,7 @@ text-decoration: none;
 }
 
 .accordion.teams summary p:nth-of-type(2) {
-  color: rgb(107 126 124);
+  color: var(--projet-bloc-titre);
   font-size: 22px;
   text-transform: uppercase;
   letter-spacing: .06em;
@@ -146,14 +150,14 @@ text-decoration: none;
   background-color: unset;
   font-size: 10px;
   text-transform: uppercase;
-  color: rgb(131 151 144);
+  color: var(--site-color-2);
   transition: color 0.5s;
   text-decoration: none;
   position: relative;
   display: inline-block;
-  padding: 0;
+  padding: 3px 0;
   margin: 0;
-  line-height: 1;
+  line-height: 1.4;
 }
 
 /* Icon */
@@ -164,7 +168,7 @@ text-decoration: none;
   background-size: 28px 28px;
   background-repeat: no-repeat;
   background-position: center;
-  background-color: #b1afa1;
+  background-color: var(--carousel-bg-box2);
   border-radius: 50%;
   transition: background-image 0.3s;
   float: right;
@@ -181,15 +185,10 @@ text-decoration: none;
   .accordion.teams {
     display: flex;
     flex-wrap: wrap;
-    gap: 24px;
-    justify-content: space-between;
+    gap: 30px;
   }
 
   .accordion.teams .accordion-item {
-    flex: 0 0 calc(33.333% - 16px); /* 3 per row */
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    margin: 0;
+    width: 31%;
   }
 }
