@@ -78,8 +78,8 @@ export default function decorate(block) {
       } else {
         radioCard = input({ type: 'radio', name: 'carousel', id: `card${cardsIdx}` });
       }
-      labelPrev = cardsIdx === 1 ? label({ for: `card${numCards}`, class: 'prev-btn' }) : label({ for: `card${cardsIdx - 1}`, class: 'prev-btn' });
-      labelNext = cardsIdx === numCards ? label({ for: 'card1', class: 'next-btn' }) : label({ for: `card${cardsIdx + 1}`, class: 'next-btn' });
+      labelPrev = cardsIdx === 1 ? label({ for: `card${numCards}`, class: `prev-btn${cardsIdx}` }) : label({ for: `card${cardsIdx - 1}`, class: `prev-btn${cardsIdx}` });
+      labelNext = cardsIdx === numCards ? label({ for: 'card1', class: `next-btn${cardsIdx}` }) : label({ for: `card${cardsIdx + 1}`, class: `next-btn${cardsIdx}` });
       cardsIdx += 1;
       block.append(radioCard);
       carouselControls.append(labelPrev, labelNext);
