@@ -155,14 +155,13 @@ main .news-listing {
 }
 
 .news-listing .news-item {
-    background-color: #6f7d7c;
+    background-color: var(--news-bg-arbres);
     padding: 40px;
-    color: #000;
 }
 
 .news-listing .news-category {
     display: inline-block;
-    background-color: #FFF;
+    background-color: var(--news-button-text-colour);
     padding: 10px;
     margin-bottom: 20px;
     font-size: 10px;
@@ -172,7 +171,7 @@ main .news-listing {
 }
 
 .news-listing .news-date {
-    color: #FFF;
+    color: var(--news-button-text-colour);
     display: inline-block;
     margin-bottom: 20px;
     font-size: 10px;
@@ -180,7 +179,7 @@ main .news-listing {
 }
 
 .news-listing .news-title {
-    color: #FFF;
+    color: var(--news-button-text-colour);
     font-size: 18px;
     text-transform: none;
     font-weight: 700;
