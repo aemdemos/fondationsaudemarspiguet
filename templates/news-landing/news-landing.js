@@ -43,7 +43,6 @@ export default async function decorate(doc) {
   const $fitlerBottom = a({ class: 'filter-bottom-btn' });
   $newsListingRight.append($filterTop, $fitlerBottom);
   const placeholders = await fetchPlaceholders(`${getLanguage()}`);
-  console.log(placeholders);
   const { newsLandingCategoryFilter } = placeholders;
   const { newsLandingSearchFilter } = placeholders;
   const { newsLandingViewFilter } = placeholders;
@@ -101,7 +100,6 @@ export default async function decorate(doc) {
   const newsListing = document.querySelector('.news-listing');
   const sortedNews = getNews
     .sort((date1, date2) => parseDate(date2.date) - parseDate(date1.date));
-  console.log(sortedNews);
   showNewsArticles(sortedNews, doc);
   const categoryItems = categorysection.querySelectorAll('li');
   categoryItems.forEach((item) => {
@@ -118,8 +116,8 @@ export default async function decorate(doc) {
 
   document.addEventListener('click', (event) => {
     if (
-      !categorysection.contains(event.target) &&
-      event.target !== $categoryInput
+      !categorysection.contains(event.target)
+      && event.target !== $categoryInput
     ) {
       categorysection.style.display = 'none';
     }
