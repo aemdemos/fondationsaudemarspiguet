@@ -16,6 +16,7 @@ html, body {
     position: relative;
     margin: auto;
     max-width: 1215px !important;
+    padding: 0 !important;
 }
 
 .news-slider-wrapper .cards-card-image > p {
@@ -254,8 +255,8 @@ html, body {
     }
 }
 
-@media (width >= 1340px) {
+@media (width <= 1340px) and (width >= 900px) {
     .news-slider-wrapper {
-        padding: 0 !important;
+        margin-left: 80px !important;
     }
 }
