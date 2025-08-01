@@ -11,7 +11,6 @@ export default function loadswiper() {
     linkElement.rel = 'stylesheet';
     linkElement.href = 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css';
     document.head.appendChild(linkElement);
-    console.log('📦 Loading Swiper CSS from CDN...');
 
     // Then load JavaScript
     const scriptrrule = document.createElement('script');
@@ -22,7 +21,6 @@ export default function loadswiper() {
       // Give it a moment for the global Swiper to be available
       setTimeout(() => {
         if (typeof window.Swiper !== 'undefined') {
-          console.log('✅ Swiper CSS & JS loaded successfully from CDN');
           resolve(window.Swiper);
         } else {
           reject(new Error('Swiper not found on window after CDN load'));
