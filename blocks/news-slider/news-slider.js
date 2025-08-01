@@ -13,6 +13,7 @@ import {
   p,
 } from '../../scripts/dom-helpers.js';
 import loadswiper from '../../scripts/delayed.js';
+import { applyFadeUpAnimation } from '../../scripts/utils.js';
 
 class News {
   // eslint-disable-next-line max-len
@@ -148,6 +149,8 @@ export default async function decorate(block) {
 
   // Keep parentDiv for decorateBlock to work properly
   const parentDiv = div(builtBlock);
+
+  applyFadeUpAnimation(builtBlock, parentDiv);
 
   decorateBlock(builtBlock);
   await loadBlock(builtBlock);

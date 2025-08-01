@@ -259,4 +259,12 @@ html, body {
     .news-slider-wrapper {
         margin-left: 80px !important;
     }
+
+    .news-slider-wrapper .swiper-button-next {
+        right: calc(-50vw + 55% + 20px);
+    }
+
+    .news-slider-wrapper .swiper-button-prev {
+        left: calc(-50vw + 48% + 20px);
+    }
 }
