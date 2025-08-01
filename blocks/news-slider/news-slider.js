@@ -233,7 +233,7 @@ export default async function decorate(block) {
         },
         breakpoints: {
           600: { slidesPerView: 2 },
-          900: { slidesPerView: 3 },
+          900: { slidesPerView: 2 },
           1200: { slidesPerView: 4 },
         },
         on: {
