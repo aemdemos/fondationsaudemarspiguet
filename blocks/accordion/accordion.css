@@ -27,12 +27,9 @@
 .accordion.teams details u{
 text-decoration: none;
 }
+
 .accordion details[open] summary {
   background-color: var(--light-color);
-}
-
-.accordion.teams details[open] summary {
-  background-color: unset;
 }
 
 .accordion details summary:focus,
@@ -40,8 +37,7 @@ text-decoration: none;
   background-color: var(--light-color);
 }
 
-.accordion.teams details summary:focus,
-.accordion.teams details summary:hover {
+.accordion.teams details[open] summary {
   background-color: unset;
 }
 
@@ -65,7 +61,20 @@ text-decoration: none;
 .accordion details[open] summary::after {
   transform: translateY(-50%) rotate(-45deg);
 }
-/* Hide accordion body (including LinkedIn footer) unless opened */
+
+.accordion details .accordion-item-body {
+  padding: 0 16px;
+}
+
+.accordion details[open] .accordion-item-body {
+  border-top: 1px solid #dadada;
+  background-color: var(--background-color);
+}
+
+.accordion.teams details .accordion-item-body {
+  padding: 0;
+}
+
 .accordion.teams details:not([open]) .accordion-item-body {
   display: none;
 }
@@ -74,29 +83,15 @@ text-decoration: none;
   display: none !important;
 }
 
-.accordion details .accordion-item-body {
-  padding: 0 16px;
-}
-
-.accordion.teams details .accordion-item-body {
-  padding: 0;
-}
-
-.accordion details[open] .accordion-item-body {
-  border-top: 1px solid #dadada;
-  background-color: var(--background-color);
-}
-
 /* Teams-specific styles */
 .accordion.teams details {
-  border: 0px;
+  border: 0;
   margin: 15px;
 }
 
-
 .accordion.teams details[open] .accordion-item-body {
   background-color: unset;
-  border-top: 0px;
+  border-top: 0;
 }
 
 .accordion.teams details summary:focus,
@@ -109,7 +104,7 @@ text-decoration: none;
   font-size: 22px;
   text-transform: uppercase;
   letter-spacing: .06em;
-  font-family: 'Antarctica', sans-serif;
+  font-family: Antarctica, sans-serif;
 }
 
 .accordion.teams summary p:nth-of-type(2) {
@@ -135,17 +130,16 @@ text-decoration: none;
   vertical-align: top;
 }
 
-.accordion.teams .accordion-teams-div .button-container {
-  margin: 4px 0px 0px 0px;
-}
-
 .accordion.teams .button-container {
   display: inline-block !important;
   margin-top: 2px;
   margin-bottom: 2px;
-  margin: 0;
   padding: 0;
   line-height: 1;
+}
+
+.accordion.teams .accordion-teams-div .button-container {
+  margin: 4px 0 0;
 }
 
 .accordion.teams .button-container a.button {

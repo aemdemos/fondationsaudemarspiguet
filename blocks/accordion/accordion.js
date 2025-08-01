@@ -52,7 +52,6 @@ export default function decorate(block) {
       icon.addEventListener('click', (e) => {
         e.preventDefault();
         e.stopPropagation();
-        
         // Toggle the details element
         if (details.open) {
           details.removeAttribute('open');
