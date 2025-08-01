@@ -1,7 +1,7 @@
 import { createOptimizedPicture } from '../../scripts/aem.js';
 import { moveInstrumentation } from '../../scripts/scripts.js';
 import {
-  div, h2,
+  div, h2, input, label,
 } from '../../scripts/dom-helpers.js';
 
 export default function decorate(block) {
@@ -57,52 +57,33 @@ export default function decorate(block) {
   }
 
   if (block.classList.contains('icons-grid')) {
-    // Turn icons-grid into a carousel
+    // This cards block turns into a carousel in small screen views
+    // so we need to add the carousel elements, classes and attributes
+    block.classList.add('carousel');
     const ulist = block.querySelector('ul');
-    ulist.classList.add('carousel');
-    let currentIndex = 0;
-    const items = ulist.querySelectorAll('li');
-    const totalItems = items.length;
-    let itemsToShow = 1; // Default items to show
-
-    const myObserver = new ResizeObserver((entries) => {
-      if (entries[0].contentRect.width < 600) {
-        // Handle small screen layout
-        itemsToShow = 1;
-      } else if (entries[0].contentRect.width >= 600 && entries[0].contentRect.width < 900) {
-        // Handle medium screen layout
-        itemsToShow = 2;
+    ulist.classList.add('carousel-track');
+    const cards = block.querySelectorAll('ul li');
+    let cardsIdx = 1;
+    let radioCard = null;
+    const carouselControls = div({ class: 'carousel-controls' });
+    let labelPrev = null;
+    let labelNext = null;
+    const numCards = cards.length;
+    cards.forEach((card) => {
+      card.classList.add('card');
+      if (cardsIdx === 1) {
+        radioCard = input({
+          type: 'radio', name: 'carousel', id: `card${cardsIdx}`, checked: true,
+        });
       } else {
-        // Handle large screen layout
-        itemsToShow = 3;
+        radioCard = input({ type: 'radio', name: 'carousel', id: `card${cardsIdx}` });
       }
+      labelPrev = cardsIdx === 1 ? label({ for: `card${numCards}`, class: 'prev-btn' }) : label({ for: `card${cardsIdx - 1}`, class: 'prev-btn' });
+      labelNext = cardsIdx === numCards ? label({ for: 'card1', class: 'next-btn' }) : label({ for: `card${cardsIdx + 1}`, class: 'next-btn' });
+      cardsIdx += 1;
+      block.append(radioCard);
+      carouselControls.append(labelPrev, labelNext);
     });
-
-    myObserver.observe(block);
-
-    items.forEach((item, idx) => {
-      item.style.display = (idx >= currentIndex && idx < currentIndex + itemsToShow) ? 'block' : 'none';
-    });
-
-    // Create navigation buttons
-    const prevBtn = document.createElement('button');
-    prevBtn.className = 'carousel-prev';
-
-    const nextBtn = document.createElement('button');
-    nextBtn.className = 'carousel-next';
-
-    prevBtn.addEventListener('click', () => {
-      items[currentIndex].style.display = 'none';
-      currentIndex = (currentIndex - 1 + totalItems) % totalItems;
-      items[currentIndex].style.display = 'block';
-    });
-
-    nextBtn.addEventListener('click', () => {
-      items[currentIndex].style.display = 'none';
-      currentIndex = (currentIndex + 1) % totalItems;
-      items[currentIndex].style.display = 'block';
-    });
-
-    block.append(prevBtn, nextBtn);
+    block.append(carouselControls);
   }
 }
