@@ -15,7 +15,7 @@ html, body {
     box-sizing: border-box;
     position: relative;
     margin: auto;
-    max-width: 1440px !important;
+    max-width: 1200px !important;
     padding: 0 !important;
 }
 
@@ -244,6 +244,7 @@ html, body {
     .news-slider-wrapper .cards.block.swiper.news-swiper ul.swiper-wrapper li.swiper-slide {
         height: 1000px !important;
         overflow: hidden;
+        min-width: 350px;
     }
 }
 
