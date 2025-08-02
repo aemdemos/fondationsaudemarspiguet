@@ -55,6 +55,7 @@ export default async function decorate(doc) {
           class: 'category-input', id: 'filtercategories-selectized', placeholder: newsLandingCategoryFilter, type: 'text', autofill: 'no',
         },
       ),
+      span({ id: 'width-mirror', style: 'position: absolute; visibility: hidden; white-space: pre; font: inherit;' }, ''),
       div(
         { class: 'category-dropdown' },
       ),
@@ -179,4 +180,15 @@ export default async function decorate(doc) {
       showNewsArticles(reverseSortedNews, doc);
     });
   }
+
+  // const inputCategoey = doc.getElementById('filtercategories-selectized');  
+  // const mirror = document.getElementById('width-mirror');
+  // updateInputWidth();
+  // function updateInputWidth() {
+  //   mirror.textContent = input.value || input.placeholder || ' ';
+  //   inputCategoey.style.width = `${mirror.offsetWidth + 4}px`;
+  //   console.log(mirror.offsetWidth);
+  // }
+  // window.addEventListener('load', updateInputWidth);
+  // inputCategoey.addEventListener('input', updateInputWidth);
 }

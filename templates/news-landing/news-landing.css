@@ -9,7 +9,6 @@ main .filter-container {
 }
 
 main .filter-container .category-input {
-    width: 70px;
     opacity: 1;
     position: relative;
     left: 0;
@@ -56,7 +55,6 @@ main .filter-container .category-dropdown ul li:hover {
 }
 
 main .filter-container .search-input {
-    width: 100px;
     opacity: 1;
     position: relative;
     left: 0;
@@ -137,6 +135,9 @@ main .news-listing {
     grid-template-columns: repeat(2, 1fr);
     gap: 30px;
     background-color: var(--projet-bg-page-listing);
+    max-width: 1200px;
+    padding: 35px 80px;
+    margin: auto;
     width: 100%;
     height: auto;
 }
@@ -203,13 +204,5 @@ main .news-listing {
 
     main .filter-container .news-listing-container-right {
         align-self: center;
-    }
-
-    main .filter-container .category-input {
-        width: 140px;
-    }
-
-    main .filter-container .search-input {
-        width: 180px;
     }
 }
