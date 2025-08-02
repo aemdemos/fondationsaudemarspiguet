@@ -1,0 +1,504 @@
+{
+  "templates": [
+    {
+      "name": "Dashboard Template",
+      "cluster": 1,
+      "pages": [
+        {
+          "url": "https://biencommun.fondationsaudemarspiguet.org/en/fondation-pour-le-bien-commun-the-foundation-our-partners",
+          "uuid": "6e9a8fde4edd711219abc5708be43954c0162642"
+        },
+        {
+          "url": "https://biencommun.fondationsaudemarspiguet.org/fr/fondation-pour-le-bien-commun-la-fondation-nos-partenaires",
+          "uuid": "3d0e64de209e183ce66d837322d3c9a522b951e6"
+        },
+        {
+          "url": "https://biencommun.fondationsaudemarspiguet.org/en/fondation-pour-le-bien-commun-the-foundation-our-team",
+          "uuid": "d374bde555a5d77ce24fbdc16780ee2743fac4c3"
+        },
+        {
+          "url": "https://biencommun.fondationsaudemarspiguet.org/fr/fondation-pour-le-bien-commun-la-fondation-notre-equipe",
+          "uuid": "6b138242195fb9f10aaafa7502b75497baabd660"
+        },
+        {
+          "url": "https://biencommun.fondationsaudemarspiguet.org/en",
+          "uuid": "aa839136b1d2548a610d90fba5356a0d9bd6387a"
+        },
+        {
+          "url": "https://biencommun.fondationsaudemarspiguet.org/en/home-page-27",
+          "uuid": "9c8577ecd5597d3f8062b1f3a1b078b6ea00c661"
+        },
+        {
+          "url": "https://biencommun.fondationsaudemarspiguet.org/fr",
+          "uuid": "6a03bacd6ca0875e76a4101bb72f22ad6a8f4c55"
+        },
+        {
+          "url": "https://biencommun.fondationsaudemarspiguet.org/fr/home-bien-commun",
+          "uuid": "c2b1cf9256a4c5e5281503e15f8d9ee838571705"
+        }
+      ]
+    },
+    {
+      "name": "'Portfolio Showcase'",
+      "cluster": 2,
+      "pages": [
+        {
+          "url": "https://biencommun.fondationsaudemarspiguet.org/en/fondation-pour-le-bien-commun-news/voyage-au-centre-de-la-foret-a-la-recherche-de-sylvette-la-c",
+          "uuid": "f065d53284a2bfef414d137be38fded1ac0d4544"
+        },
+        {
+          "url": "https://biencommun.fondationsaudemarspiguet.org/en/fondation-pour-le-bien-commun-news/new-forest-reserve-in-the-parc-naturel-du-jorat",
+          "uuid": "03a00e49cf3937ca8c0f3d36110d09d0c797ba9d"
+        },
+        {
+          "url": "https://biencommun.fondationsaudemarspiguet.org/fr/fondation-pour-le-bien-commun-actualites/nouvelle-reserve-forestiere-dans-le-parc-naturel-du-jorat",
+          "uuid": "3fcdaf54092a18905d761a2b00b1c2a84388ba4b"
+        },
+        {
+          "url": "https://biencommun.fondationsaudemarspiguet.org/fr/fondation-pour-le-bien-commun-actualites/voyage-au-centre-de-la-foret-a-la-recherche-de-sylvette-la-c",
+          "uuid": "e41d9848261a5eb9551b52125b793e76bb6aafdf"
+        },
+        {
+          "url": "https://biencommun.fondationsaudemarspiguet.org/en/fondation-pour-le-bien-commun-news/sentier-de-la-morges-inauguration-of-two-didactic-trails",
+          "uuid": "2edf717cb30241d363348769f2f78f281c46a2e3"
+        },
+        {
+          "url": "https://biencommun.fondationsaudemarspiguet.org/fr/fondation-pour-le-bien-commun-actualites/sur-les-traces-du-bois-de-resonance",
+          "uuid": "482af5b40d8f7f9d004a3d036a545e61aaa69e96"
+        },
+        {
+          "url": "https://biencommun.fondationsaudemarspiguet.org/en/fondation-pour-le-bien-commun-news/on-the-trail-of-resonance-wood",
+          "uuid": "e2322f0739bff47079e13884ba72ffb7ebfce367"
+        },
+        {
+          "url": "https://biencommun.fondationsaudemarspiguet.org/fr/fondation-pour-le-bien-commun-actualites/sentier-de-la-morges-inauguration-de-deux-parcours-didactiqu",
+          "uuid": "3c20f643f86e5110e5a425dd94176d99e752c62d"
+        },
+        {
+          "url": "https://biencommun.fondationsaudemarspiguet.org/en/fondation-pour-le-bien-commun-news/reintroducing-manual-intelligence-in-secondary-schools",
+          "uuid": "d8f1e6d460534f7f418bc0aaee1ea66fd75899c8"
+        },
+        {
+          "url": "https://biencommun.fondationsaudemarspiguet.org/fr/fondation-pour-le-bien-commun-actualites/education-et-resilience-la-jeunesse-ougandaise-a-lepreuve-du",
+          "uuid": "695202bef5a146faa6f69e4e538f25c7239e457f"
+        },
+        {
+          "url": "https://biencommun.fondationsaudemarspiguet.org/en/fondation-pour-le-bien-commun-news/supporting-education-to-unlock-young-potential",
+          "uuid": "7e31558d9eacbd13753a85d098a390eca54f0e5d"
+        },
+        {
+          "url": "https://biencommun.fondationsaudemarspiguet.org/en/fondation-pour-le-bien-commun-news/education-and-resilience-future-proofing-the-youth-of-uganda",
+          "uuid": "598744b2fac82672f6ff74c609a9a6c80a979e85"
+        },
+        {
+          "url": "https://biencommun.fondationsaudemarspiguet.org/en/fondation-pour-le-bien-commun-news/the-ppi-celebrates-its-20th-anniversary-in-senegal",
+          "uuid": "3050ff33c968cfc1120351ea3167e19c71359b3d"
+        },
+        {
+          "url": "https://biencommun.fondationsaudemarspiguet.org/fr/fondation-pour-le-bien-commun-actualites/replacer-lintelligence-manuelle-au-college",
+          "uuid": "c8608eae650f1bad1362c1a43c6cdc65df97f5bd"
+        },
+        {
+          "url": "https://biencommun.fondationsaudemarspiguet.org/fr/fondation-pour-le-bien-commun-actualites/soutenir-leducation-pour-reveler-le-potentiel-des-jeunes",
+          "uuid": "1a40372088a1f42769c091bcb03cf04f2c6063d6"
+        },
+        {
+          "url": "https://biencommun.fondationsaudemarspiguet.org/fr/fondation-pour-le-bien-commun-actualites/le-ppi-celebre-ses-20-ans-au-senegal",
+          "uuid": "981737c50d01f06f2c608f43240176342cb2ba3f"
+        }
+      ]
+    },
+    {
+      "name": "'Directory Listing'",
+      "cluster": 3,
+      "pages": [
+        {
+          "url": "https://biencommun.fondationsaudemarspiguet.org/fr/espace-medias",
+          "uuid": "cf7924add5b37ff9610abc24b437ee4ba7e7bbf9"
+        },
+        {
+          "url": "https://biencommun.fondationsaudemarspiguet.org/en/media-newsroom",
+          "uuid": "77c71f7ce3ab58e0eabf9eda49acff0ef0bad3f9"
+        },
+        {
+          "url": "https://biencommun.fondationsaudemarspiguet.org/fr/fondation-pour-le-bien-commun-actualites",
+          "uuid": "b94e8890b0a4b50eafc77b2330e34f0a0dec03d1"
+        },
+        {
+          "url": "https://biencommun.fondationsaudemarspiguet.org/en/fondation-pour-le-bien-commun-news",
+          "uuid": "ef7b2d08309b649b14c437e0d0e835f501b819d1"
+        }
+      ]
+    },
+    {
+      "name": "'Portfolio Showcase'",
+      "cluster": 4,
+      "pages": [
+        {
+          "url": "https://biencommun.fondationsaudemarspiguet.org/fr/fondation-pour-le-bien-commun-la-fondation-nos-activites",
+          "uuid": "ebb6a6a43ebbf3fcacb4ee82fe2b308907eabe16"
+        },
+        {
+          "url": "https://biencommun.fondationsaudemarspiguet.org/en/our-mission",
+          "uuid": "10fbfbb48c2f7ab830847e12aa95e0010bf98626"
+        },
+        {
+          "url": "https://biencommun.fondationsaudemarspiguet.org/en/fondation-pour-le-bien-commun-the-foundation-our-history",
+          "uuid": "672698f53032ab38ffa1e6c66130654478e6d2fe"
+        },
+        {
+          "url": "https://biencommun.fondationsaudemarspiguet.org/fr/fondation-pour-le-bien-commun-la-fondation-notre-approche",
+          "uuid": "b9bd615c037cc6a7f76c8acc27126831d60e4344"
+        },
+        {
+          "url": "https://biencommun.fondationsaudemarspiguet.org/en/fondation-pour-le-bien-commun-contact",
+          "uuid": "742cd0fa971416730a1bd9a086b3681e9cbecd08"
+        },
+        {
+          "url": "https://biencommun.fondationsaudemarspiguet.org/fr/fondation-pour-le-bien-commun-contact",
+          "uuid": "0bb5129dee8ce9b675119482e44f066e6939eb76"
+        },
+        {
+          "url": "https://biencommun.fondationsaudemarspiguet.org/en/terms-of-use",
+          "uuid": "06684dd73df642bcad9173405f17d339d027c039"
+        },
+        {
+          "url": "https://biencommun.fondationsaudemarspiguet.org/fr/conditions-dutilisation",
+          "uuid": "1fe7cb91c690dce5e9d6651b636befdb9b97f3de"
+        },
+        {
+          "url": "https://biencommun.fondationsaudemarspiguet.org/en/privacy-notice",
+          "uuid": "fc9f522326b3b94c35e16611e42bb210fc28a9c3"
+        },
+        {
+          "url": "https://biencommun.fondationsaudemarspiguet.org/fr/credits-photographiques",
+          "uuid": "0f7fbdf388b25d814e3a2c38bc6186fbedc6bb35"
+        },
+        {
+          "url": "https://biencommun.fondationsaudemarspiguet.org/fr/politique-de-cookie",
+          "uuid": "98410fb9716380343b134f773371fc27424f121c"
+        },
+        {
+          "url": "https://biencommun.fondationsaudemarspiguet.org/fr/declaration-de-confidentialite",
+          "uuid": "70d70dc426a80431b4f71b8210cf1312c1e64571"
+        },
+        {
+          "url": "https://biencommun.fondationsaudemarspiguet.org/en/credits-photographiques",
+          "uuid": "40145b3d1afbe7c2fdcfc899e7d2a3326200c761"
+        },
+        {
+          "url": "https://biencommun.fondationsaudemarspiguet.org/en/cookie-policy",
+          "uuid": "07d1e03117d26f42d13df04ab79e125d1ef6fb77"
+        }
+      ]
+    },
+    {
+      "name": "'Directory Listing Page'",
+      "cluster": 5,
+      "pages": [
+        {
+          "url": "https://biencommun.fondationsaudemarspiguet.org/en/fondation-pour-le-bien-commun-projects",
+          "uuid": "74141e9938dfc4f2b401641ebf2d406813e8df7b"
+        },
+        {
+          "url": "https://biencommun.fondationsaudemarspiguet.org/fr/fondation-pour-le-bien-commun-nos-projets",
+          "uuid": "cc43ffcc90aaaecfb6cd8aced8f36d825bf5c215"
+        }
+      ]
+    },
+    {
+      "name": "'Dashboard'",
+      "cluster": 6,
+      "pages": [
+        {
+          "url": "https://biencommun.fondationsaudemarspiguet.org/fr/fondation-pour-le-bien-commun-nos-projets-carte",
+          "uuid": "0d46115c500dd66fb4bd74281d9156401293da78"
+        },
+        {
+          "url": "https://biencommun.fondationsaudemarspiguet.org/en/fondation-pour-le-bien-commun-projects-map",
+          "uuid": "34285417ae21f9c591207a7c83002fa316b3e5ce"
+        },
+        {
+          "url": "https://biencommun.fondationsaudemarspiguet.org/en/fondation-pour-le-bien-commun-projects-map?carte=ok",
+          "uuid": "56abc960d80bdd38bebc3e4b3e38f72146fd7822"
+        },
+        {
+          "url": "https://biencommun.fondationsaudemarspiguet.org/fr/fondation-pour-le-bien-commun-nos-projets-carte?carte=ok",
+          "uuid": "634a8856541e31616b4a950f1d46e57adabf3ec4"
+        }
+      ]
+    },
+    {
+      "name": "'Portfolio Showcase'",
+      "cluster": 7,
+      "pages": [
+        {
+          "url": "https://biencommun.fondationsaudemarspiguet.org/en/fondation-pour-le-bien-commun-projects/introducing-5200-secondary-school-pupils-to-manual-trades",
+          "uuid": "9ca2202f0cc995b4fe8a1cb8f8673285e0afaa1a"
+        },
+        {
+          "url": "https://biencommun.fondationsaudemarspiguet.org/fr/fondation-pour-le-bien-commun-nos-projets/initier-5200-jeunes-aux-metiers-manuels-des-le-college",
+          "uuid": "03c7350aecc504d0665ff43e2aa8392e26b289a4"
+        },
+        {
+          "url": "https://biencommun.fondationsaudemarspiguet.org/en/fondation-pour-le-bien-commun-projects/community-food-pack",
+          "uuid": "98696448f553339591682e3418adb43c54ecfe1f"
+        },
+        {
+          "url": "https://biencommun.fondationsaudemarspiguet.org/fr/fondation-pour-le-bien-commun-nos-projets/community-food-pack",
+          "uuid": "8e6804ccbc90048a7ffa7aab8c9334bed3345302"
+        },
+        {
+          "url": "https://biencommun.fondationsaudemarspiguet.org/en/fondation-pour-le-bien-commun-projects/transfaire-tomorrow-a-job-for-everyone",
+          "uuid": "c1ec70dcd41bca570df9e85acca0ee627872c14f"
+        },
+        {
+          "url": "https://biencommun.fondationsaudemarspiguet.org/fr/fondation-pour-le-bien-commun-nos-projets/transfaire-demain-un-metier-pour-chacun",
+          "uuid": "4cdd90ab6d683516bc2e0d3aab4975854d9dfec8"
+        },
+        {
+          "url": "https://biencommun.fondationsaudemarspiguet.org/en/fondation-pour-le-bien-commun-projects/food-pack-distribution-for-the-soup-kitchen-programme",
+          "uuid": "b5502ea15b57e58138ca2279e04502f4fd792fe9"
+        },
+        {
+          "url": "https://biencommun.fondationsaudemarspiguet.org/en/fondation-pour-le-bien-commun-projects/one-meal-a-day",
+          "uuid": "681c7b8d29cf243568e47fe90672e6fadd3dc32a"
+        },
+        {
+          "url": "https://biencommun.fondationsaudemarspiguet.org/fr/fondation-pour-le-bien-commun-nos-projets/distribution-de-colis-alimentaires-pour-le-programme-soup-ki",
+          "uuid": "d3a0d77178dad8654c95c36d409fd6eb9fd47986"
+        },
+        {
+          "url": "https://biencommun.fondationsaudemarspiguet.org/fr/fondation-pour-le-bien-commun-nos-projets/un-repas-par-jour",
+          "uuid": "dfc9929be8b88d1e71f12111d9bca92a795ea77b"
+        },
+        {
+          "url": "https://biencommun.fondationsaudemarspiguet.org/en/fondation-pour-le-bien-commun-projects/formation-jeunes-youth-training",
+          "uuid": "62e6a331f60566d3badfdaed5877d6c63a31dce0"
+        },
+        {
+          "url": "https://biencommun.fondationsaudemarspiguet.org/en/fondation-pour-le-bien-commun-projects/food-aid-for-disadvantaged-families",
+          "uuid": "12f1550adba78320bdaa5d2e8ea1af11bd254e48"
+        },
+        {
+          "url": "https://biencommun.fondationsaudemarspiguet.org/en/fondation-pour-le-bien-commun-projects/enhancing-food-and-rice-distribution",
+          "uuid": "d48011174f059d64aa814ab39ebd2469b645ae8f"
+        },
+        {
+          "url": "https://biencommun.fondationsaudemarspiguet.org/en/fondation-pour-le-bien-commun-projects/optimisation-of-food-distribution-and-nutritional-improvemen",
+          "uuid": "5ed1adc986903e1f2583f96b95f01a717b5e7e1d"
+        },
+        {
+          "url": "https://biencommun.fondationsaudemarspiguet.org/en/fondation-pour-le-bien-commun-projects/roll-out-of-local-community-markets-and-local-food-purchasin",
+          "uuid": "fcf7f6f531fd1f1f66fabaef07ead21164a0fdef"
+        },
+        {
+          "url": "https://biencommun.fondationsaudemarspiguet.org/en/fondation-pour-le-bien-commun-projects/upgrade-of-foodbank-location-in-amsterdam-south",
+          "uuid": "8daf24901bf76b4ae8dd14687c903223ac6525bd"
+        },
+        {
+          "url": "https://biencommun.fondationsaudemarspiguet.org/fr/fondation-pour-le-bien-commun-nos-projets/aide-alimentaire-pour-les-familles-defavorisees",
+          "uuid": "a6ff76d62ed311cd9a4a4bb561551a95d067e1f2"
+        },
+        {
+          "url": "https://biencommun.fondationsaudemarspiguet.org/fr/fondation-pour-le-bien-commun-nos-projets/formation-jeunes",
+          "uuid": "e5da467f966c3e72c3cc041e358ae7c836ecb3df"
+        },
+        {
+          "url": "https://biencommun.fondationsaudemarspiguet.org/fr/fondation-pour-le-bien-commun-nos-projets/deploiement-de-marches-communautaires-locaux-et-achat-local",
+          "uuid": "c9c8b52c5f9cebf4bbdd51ae15b11f3a22e7110e"
+        },
+        {
+          "url": "https://biencommun.fondationsaudemarspiguet.org/fr/fondation-pour-le-bien-commun-nos-projets/optimisation-de-la-distribution-alimentaire-et-amelioration",
+          "uuid": "4fcb01cd300e4dfc9013a7ef4f7caa574acaf174"
+        },
+        {
+          "url": "https://biencommun.fondationsaudemarspiguet.org/fr/fondation-pour-le-bien-commun-nos-projets/optimisation-de-la-banque-alimentaire-amsterdam-sud",
+          "uuid": "5c0fa63dba176ca24f3c8183f94847f5a0ebc5fa"
+        },
+        {
+          "url": "https://biencommun.fondationsaudemarspiguet.org/fr/fondation-pour-le-bien-commun-nos-projets/renforcer-la-distribution-de-nourriture-et-de-riz",
+          "uuid": "363c9f0e0068a403b857e443f9414737bb49a99a"
+        },
+        {
+          "url": "https://biencommun.fondationsaudemarspiguet.org/en/fondation-pour-le-bien-commun-projects/the-espace-clovis-respite-centre-in-metz",
+          "uuid": "73f4378bd3a58528c51e778e15d817177e0491e4"
+        },
+        {
+          "url": "https://biencommun.fondationsaudemarspiguet.org/fr/fondation-pour-le-bien-commun-nos-projets/lespace-clovis-a-metz-boutique-solidarite",
+          "uuid": "b8797541828fe0ae5b02ae46648e3711d8642447"
+        },
+        {
+          "url": "https://biencommun.fondationsaudemarspiguet.org/en/fondation-pour-le-bien-commun-projects/funding-weekend-meals-in-november-2024-and-2025",
+          "uuid": "6f7a1357f33e9a66224ca5f3233d399146ef3c8f"
+        },
+        {
+          "url": "https://biencommun.fondationsaudemarspiguet.org/en/fondation-pour-le-bien-commun-projects/covering-a-part-of-the-basic-nutritional-needs-specifically",
+          "uuid": "d83a5abd03b8ab46794110eb8ddd08a9aab3f587"
+        },
+        {
+          "url": "https://biencommun.fondationsaudemarspiguet.org/en/fondation-pour-le-bien-commun-projects/a-10-increase-in-the-distribution-of-hot-meals-to-the-most-d",
+          "uuid": "185a8c77965fc2202c95b76cc22b1792cd18372d"
+        },
+        {
+          "url": "https://biencommun.fondationsaudemarspiguet.org/en/fondation-pour-le-bien-commun-projects/teaching-as-collective-fellowship-programme",
+          "uuid": "4c0509b1986c1317a459d8a6f81f92d9ce6ac671"
+        },
+        {
+          "url": "https://biencommun.fondationsaudemarspiguet.org/en/fondation-pour-le-bien-commun-projects/the-felix-project-kitchen-meals",
+          "uuid": "a08e7a2ee6fb429bfd64286e3a33c9ed02839573"
+        },
+        {
+          "url": "https://biencommun.fondationsaudemarspiguet.org/en/fondation-pour-le-bien-commun-projects/social-support-drop-in-centre",
+          "uuid": "82e5915583be43b139594642c285416d80a8102a"
+        },
+        {
+          "url": "https://biencommun.fondationsaudemarspiguet.org/en/fondation-pour-le-bien-commun-projects/improving-nutrition-among-vulnerable-populations",
+          "uuid": "56cc09479991656c54aa71560dfc58589dd54d3d"
+        },
+        {
+          "url": "https://biencommun.fondationsaudemarspiguet.org/fr/fondation-pour-le-bien-commun-nos-projets/amelioration-de-la-nutrition-des-populations-vulnerables",
+          "uuid": "36658bc2fa29833855ef6b64d090879caef5e64b"
+        },
+        {
+          "url": "https://biencommun.fondationsaudemarspiguet.org/fr/fondation-pour-le-bien-commun-nos-projets/augmentation-de-10-de-la-distribution-de-repas-chauds-aux-pl",
+          "uuid": "9ddd15dfc693d5d13e672511b36f2b080e48300e"
+        },
+        {
+          "url": "https://biencommun.fondationsaudemarspiguet.org/fr/fondation-pour-le-bien-commun-nos-projets/couvrir-une-partie-des-besoins-nutritionnels-de-base-en-part",
+          "uuid": "c31d8ca158244a375fe1097f81f048d1d098984c"
+        },
+        {
+          "url": "https://biencommun.fondationsaudemarspiguet.org/fr/fondation-pour-le-bien-commun-nos-projets/financement-des-repas-du-weekend-en-novembre-2024-et-2025",
+          "uuid": "b8094adcefd14e976926904a3fa114c8355b3f93"
+        },
+        {
+          "url": "https://biencommun.fondationsaudemarspiguet.org/fr/fondation-pour-le-bien-commun-nos-projets/programme-de-formation-teaching-as-collective",
+          "uuid": "314b48b63e12596e691c0f1b7a85cf1f15097768"
+        },
+        {
+          "url": "https://biencommun.fondationsaudemarspiguet.org/fr/fondation-pour-le-bien-commun-nos-projets/the-felix-project-kitchen-meals",
+          "uuid": "e56ea41f2ad47851839f5c0ed20338fa39b486f0"
+        },
+        {
+          "url": "https://biencommun.fondationsaudemarspiguet.org/fr/fondation-pour-le-bien-commun-nos-projets/permanence-daccueil-social",
+          "uuid": "b5a229132ad0dcd813065a3bf853f0cdebf090cb"
+        },
+        {
+          "url": "https://biencommun.fondationsaudemarspiguet.org/en/fondation-pour-le-bien-commun-projects/working-towards-the-socio-professional-inclusion-of-people-w",
+          "uuid": "83005f6af487458c246ac3b4d04cdb08170824f4"
+        },
+        {
+          "url": "https://biencommun.fondationsaudemarspiguet.org/en/fondation-pour-le-bien-commun-projects/home-food-distribution-to-elderly-and-disabled-people",
+          "uuid": "d450fc940695321693563a672d832d6d4023b579"
+        },
+        {
+          "url": "https://biencommun.fondationsaudemarspiguet.org/en/fondation-pour-le-bien-commun-projects/food-rescue-and-rescue-kitchen-programmes",
+          "uuid": "b5122fb6c201b980c2b8e4f5406f012932435848"
+        },
+        {
+          "url": "https://biencommun.fondationsaudemarspiguet.org/en/fondation-pour-le-bien-commun-projects/acceleration-programme",
+          "uuid": "3d8f9066c216f6ac0a1ae2c092f07a294f3ef516"
+        },
+        {
+          "url": "https://biencommun.fondationsaudemarspiguet.org/en/fondation-pour-le-bien-commun-projects/ensuring-distribution-of-food-aid-and-enhancement-of-food-ba",
+          "uuid": "d1923df9214a3596a1d8f53f3ba5c2a22e966fd5"
+        },
+        {
+          "url": "https://biencommun.fondationsaudemarspiguet.org/fr/fondation-pour-le-bien-commun-nos-projets/le-printemps-mirandolina-les-seniors-en-scene",
+          "uuid": "b3df4a88504e7020818562041cf15e7b36d02fe8"
+        },
+        {
+          "url": "https://biencommun.fondationsaudemarspiguet.org/en/fondation-pour-le-bien-commun-projects/mirandolinas-spring-seniors-on-stage",
+          "uuid": "944d46057c8d5c768b010995d16024e620fff688"
+        },
+        {
+          "url": "https://biencommun.fondationsaudemarspiguet.org/fr/fondation-pour-le-bien-commun-nos-projets/assurer-la-distribution-de-laide-alimentaire-et-lamelioratio",
+          "uuid": "660c1c8be43486ea6b71d1edb78867dd8e07c8ad"
+        },
+        {
+          "url": "https://biencommun.fondationsaudemarspiguet.org/fr/fondation-pour-le-bien-commun-nos-projets/distribution-de-nourriture-a-domicile-pour-les-personnes-en",
+          "uuid": "9dc7ef80391a706cc5a8eb4eb2e26a4df46a3445"
+        },
+        {
+          "url": "https://biencommun.fondationsaudemarspiguet.org/fr/fondation-pour-le-bien-commun-nos-projets/agir-pour-linclusion-socio-professionnelle-des-personnes-tre",
+          "uuid": "093424de1c18865efc9e3c5b4ef293422d6db6bb"
+        },
+        {
+          "url": "https://biencommun.fondationsaudemarspiguet.org/fr/fondation-pour-le-bien-commun-nos-projets/programme-dacceleration",
+          "uuid": "3ed0d2d48e4af8513496c55b81763330decc669a"
+        },
+        {
+          "url": "https://biencommun.fondationsaudemarspiguet.org/fr/fondation-pour-le-bien-commun-nos-projets/programmes-food-rescue-et-rescue-kitchen",
+          "uuid": "5a9b8caae8f588305466c0b9bc4f33ed3e9b0122"
+        },
+        {
+          "url": "https://biencommun.fondationsaudemarspiguet.org/en/fondation-pour-le-bien-commun-projects/food-wanted-not-wasted",
+          "uuid": "a17dcc7ae60b6938d18546a56377d329a88eca63"
+        },
+        {
+          "url": "https://biencommun.fondationsaudemarspiguet.org/en/fondation-pour-le-bien-commun-projects/emergency-shelter-and-accommodation-programme",
+          "uuid": "a7a951a644cb930720d7103d28ffb64e615ff73e"
+        },
+        {
+          "url": "https://biencommun.fondationsaudemarspiguet.org/en/fondation-pour-le-bien-commun-projects/distribution-of-food-parcels",
+          "uuid": "9090bd907a2a791e15c4b587ffc2a3a2eeac9d49"
+        },
+        {
+          "url": "https://biencommun.fondationsaudemarspiguet.org/en/fondation-pour-le-bien-commun-projects/young-talents",
+          "uuid": "1eb1e869946dd0d6ace07ec1ca1b831d2997d699"
+        },
+        {
+          "url": "https://biencommun.fondationsaudemarspiguet.org/en/fondation-pour-le-bien-commun-projects/long-term-care-programme-for-vulnerable-elderly-and-disabled",
+          "uuid": "53dd38e538bbe9d9307ee79a1932183c7fbda287"
+        },
+        {
+          "url": "https://biencommun.fondationsaudemarspiguet.org/en/fondation-pour-le-bien-commun-projects/support-the-scale-up-of-teach-for-italy-to-tackle-education",
+          "uuid": "960029a1e34bd0748cfc434e22ba6f834b810f3a"
+        },
+        {
+          "url": "https://biencommun.fondationsaudemarspiguet.org/en/fondation-pour-le-bien-commun-projects/wezesha-impact-skills-enterprise-wise-programme",
+          "uuid": "7d681705a3dc048df867cc3bc719dda7ecc9d106"
+        },
+        {
+          "url": "https://biencommun.fondationsaudemarspiguet.org/fr/fondation-pour-le-bien-commun-nos-projets/distribution-de-colis-alimentaires",
+          "uuid": "16afa04472d28a5b6bfb7e195e3d88a407a18bfe"
+        },
+        {
+          "url": "https://biencommun.fondationsaudemarspiguet.org/fr/fondation-pour-le-bien-commun-nos-projets/food-wanted-not-wasted-nourriture-recherchee-pas-gaspillee",
+          "uuid": "33e21e0726c1f9ad5ed020c57c26795250324727"
+        },
+        {
+          "url": "https://biencommun.fondationsaudemarspiguet.org/fr/fondation-pour-le-bien-commun-nos-projets/jeunes-talents",
+          "uuid": "fee2c8e1a71957c0b8090c334ee62ad9d110802f"
+        },
+        {
+          "url": "https://biencommun.fondationsaudemarspiguet.org/fr/fondation-pour-le-bien-commun-nos-projets/programme-daide-a-long-terme-pour-les-familles-vulnerables-a",
+          "uuid": "25f0697afa34e1130c038c8dc4cf1469661cded7"
+        },
+        {
+          "url": "https://biencommun.fondationsaudemarspiguet.org/fr/fondation-pour-le-bien-commun-nos-projets/programme-dhebergement-durgence",
+          "uuid": "064055d743b5fc60f06148df2aa264f44bc94e4c"
+        },
+        {
+          "url": "https://biencommun.fondationsaudemarspiguet.org/fr/fondation-pour-le-bien-commun-nos-projets/programme-wezesha-impact-skills-enterprise-wise",
+          "uuid": "3f5b312bbd2c596239c61ca2f8fe58f58b397663"
+        },
+        {
+          "url": "https://biencommun.fondationsaudemarspiguet.org/fr/fondation-pour-le-bien-commun-nos-projets/soutenir-lexpansion-de-teach-for-italy-tfi-pour-lutter-contr",
+          "uuid": "fd9fb0c80d50f72bbcbd0620ad6c333790f58b94"
+        }
+      ]
+    },
+    {
+      "name": "'Product Showcase'",
+      "cluster": 8,
+      "pages": [
+        {
+          "url": "https://biencommun.fondationsaudemarspiguet.org/",
+          "uuid": "ac43095e01db0ea5e9ec27f466ad348d603054d7"
+        }
+      ]
+    }
+  ]
+}
