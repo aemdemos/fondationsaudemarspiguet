@@ -1,7 +1,7 @@
 import { createOptimizedPicture } from '../../scripts/aem.js';
 import { moveInstrumentation } from '../../scripts/scripts.js';
 import {
-  div, h2, input, label,
+  div, h2, input, label, img,
 } from '../../scripts/dom-helpers.js';
 
 export default function decorate(block) {
@@ -17,10 +17,10 @@ export default function decorate(block) {
     });
     ul.append(li);
   });
-  ul.querySelectorAll('picture > img').forEach((img) => {
-    const optimizedPic = createOptimizedPicture(img.src, img.alt, false, [{ width: '750' }]);
-    moveInstrumentation(img, optimizedPic.querySelector('img'));
-    img.closest('picture').replaceWith(optimizedPic);
+  ul.querySelectorAll('picture > img').forEach((image) => {
+    const optimizedPic = createOptimizedPicture(image.src, image.alt, false, [{ width: '750' }]);
+    moveInstrumentation(image, optimizedPic.querySelector('img'));
+    image.closest('picture').replaceWith(optimizedPic);
   });
   block.textContent = '';
   block.append(ul);
@@ -78,8 +78,8 @@ export default function decorate(block) {
       } else {
         radioCard = input({ type: 'radio', name: 'carousel', id: `card${cardsIdx}` });
       }
-      labelPrev = cardsIdx === 1 ? label({ for: `card${numCards}`, class: `prev-btn${cardsIdx}` }) : label({ for: `card${cardsIdx - 1}`, class: `prev-btn${cardsIdx}` });
-      labelNext = cardsIdx === numCards ? label({ for: 'card1', class: `next-btn${cardsIdx}` }) : label({ for: `card${cardsIdx + 1}`, class: `next-btn${cardsIdx}` });
+      labelPrev = cardsIdx === 1 ? label({ for: `card${numCards}`, class: `prev prev-btn${cardsIdx}` }, img({ src: '/icons/carousel_left.svg', alt: 'prev' })) : label({ for: `card${cardsIdx - 1}`, class: `prev prev-btn${cardsIdx}` }, img({ src: '/icons/carousel_left.svg', alt: 'prev' }));
+      labelNext = cardsIdx === numCards ? label({ for: 'card1', class: `next next-btn${cardsIdx}` }, img({ src: '/icons/carousel_right.svg', alt: 'prev' })) : label({ for: `card${cardsIdx + 1}`, class: `next next-btn${cardsIdx}` }, img({ src: '/icons/carousel_right.svg', alt: 'prev' }));
       cardsIdx += 1;
       block.append(radioCard);
       carouselControls.append(labelPrev, labelNext);
