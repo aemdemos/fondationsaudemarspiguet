@@ -85,7 +85,8 @@ text-decoration: none;
 
 .accordion.teams details {
   border: 0;
-  margin: 15px 0;
+  padding: 15px 0;
+  margin: 0;
 }
 
 .accordion.teams details[open] .accordion-item-body {
@@ -173,17 +174,15 @@ text-decoration: none;
   background-image: url('/icons/btn_team_moins.svg');
 }
 
-
 @media (width >= 900px) {
   .accordion.teams {
     display: flex;
     flex-wrap: wrap;
-    gap: 24px;
-    justify-content: space-between;
+    gap: 30px;
   }
 
   .accordion.teams .accordion-item {
-    flex: 0 0 calc(33.333% - 16px); /* 3 per row */
+    flex: 0 0 calc(33.333% - 20px); /* 3 per row */
     box-sizing: border-box;
   }
 }
