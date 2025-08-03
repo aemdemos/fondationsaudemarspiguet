@@ -16,7 +16,6 @@ html, body {
     position: relative;
     margin: auto;
     max-width: 1215px !important;
-    padding: 0 !important;
 }
 
 .news-slider-wrapper .cards-card-image > p {
@@ -48,7 +47,7 @@ html, body {
     border-radius: 50%;
     position: absolute;
     top: 50%;
-    left: calc(-50vw + 50% + 20px);
+    left: calc(-50vw + 50% + 10px);
     transform: translateY(-50%);
     z-index: 10;
 }
@@ -233,6 +232,11 @@ html, body {
 }
 
 @media (width >= 900px) {
+    .news-slider-wrapper {
+        padding: 0 !important;
+        margin-left: 24px;
+    }
+
     .news-slider-wrapper .cards.block.swiper.news-swiper ul.swiper-wrapper li.swiper-slide a img {
         height: 300px;
     }
