@@ -138,8 +138,8 @@ indices:
         select: head > meta[property="og:image"]
         value: attribute(el, "content")
       homepage:
-        select: main div.section.hero-container p
-        value: textContent(el)
+        select: head > meta[name="homepage"]
+        value: attribute(el, "content")
       links:
         select: head > meta[name="link-s-"]
         value: attribute(el, "content")
@@ -179,8 +179,8 @@ indices:
         select: head > meta[property="og:image"]
         value: attribute(el, "content")
       homepage:
-        select: main div.section.hero-container p
-        value: textContent(el)
+        select: head > meta[name="homepage"]
+        value: attribute(el, "content")
       links:
         select: head > meta[name="lien-s-"]
         value: attribute(el, "content")
