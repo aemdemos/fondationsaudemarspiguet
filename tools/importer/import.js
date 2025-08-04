@@ -17,7 +17,7 @@ import cards5Parser from './parsers/cards5.js';
 import hero13Parser from './parsers/hero13.js';
 import hero12Parser from './parsers/hero12.js';
 import carousel2Parser from './parsers/carousel2.js';
-import hero15Parser from './parsers/hero15.js';
+// import hero15Parser from './parsers/hero15.js';
 import columns1Parser from './parsers/columns1.js';
 import carousel6Parser from './parsers/carousel6.js';
 import hero20Parser from './parsers/hero20.js';
@@ -63,7 +63,7 @@ const parsers = {
   hero13: hero13Parser,
   hero12: hero12Parser,
   carousel2: carousel2Parser,
-  hero15: hero15Parser,
+  // hero15: hero15Parser,
   columns1: columns1Parser,
   carousel6: carousel6Parser,
   hero20: hero20Parser,
