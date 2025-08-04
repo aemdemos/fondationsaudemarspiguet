@@ -17,7 +17,6 @@ async function getNewsdata() {
 function showNewsArticles(getNews, doc) {
   getNews.forEach((news) => {
     const url = news.path;
-    console.log(url);
     const $newsItem = a({ class: 'news-item', href: url });
     const $newsTitle = h2({ class: 'news-title' }, news.title);
     const $newsDate = span({ class: 'news-date' }, news.date);
@@ -28,12 +27,12 @@ function showNewsArticles(getNews, doc) {
     const clearDiv = div({ class: 'clear' });
     const $newsImg = img({ class: 'news-image', src: news.image, alt: news.title });
     imageWrapper.append($newsImg);
-    contentWrapper.append($newsCategory, $newsDate, $newsTitle, $newsDescription)
-    if (news["article-color"]){
-      $newsItem.classList.add(news["article-color"]);
+    contentWrapper.append($newsCategory, $newsDate, $newsTitle, $newsDescription);
+    if (news['article-color']) {
+      $newsItem.classList.add(news['article-color']);
     }
-    const layout = news.layout;
-    if (layout){
+    const { layout } = news;
+    if (layout) {
       $newsItem.classList.add(layout);
     }
     $newsItem.append(imageWrapper, contentWrapper, clearDiv);
@@ -92,7 +91,7 @@ export default async function decorate(doc) {
     div(
       { class: 'news-listing' },
     ),
-  )
+  );
   $section.append($filterContainer, $newsListing);
   const getNews = await getNewsdata();
   console.log(getNews);

@@ -193,6 +193,7 @@ main .news-listing {
 .news-listing .news-item.horizontal-banner h2 {
     color: var(--site-color);
     font-size: 40px;
+    margin-top: 0;
     text-transform: uppercase;
     font-weight: 400;
 }
