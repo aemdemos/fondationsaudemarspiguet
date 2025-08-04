@@ -137,12 +137,10 @@ main .news-listing-container {
 
 main .news-listing {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr;
     gap: 30px;
-    max-width: 1200px;
     padding: 0 80px;
     margin: auto;
-    width: 100%;
     height: auto;
 }
 
@@ -162,6 +160,11 @@ main .news-listing {
 .news-listing .news-item {
     background-color: var(--news-bg-arbres);
     padding: 40px;
+    grid-column: span 2;
+}
+
+.news-listing .news-item.brown {
+    background-color: var(--news-bg-bien);
 }
 
 .news-listing .news-category {
@@ -175,12 +178,28 @@ main .news-listing {
     letter-spacing: .06em;
 }
 
+.news-listing .news-item.horizontal-banner .news-category {
+    background-color: var(--site-color-2);
+    color: var(--news-button-text-colour);
+}
+
+.news-listing .news-item.horizontal-banner h2 {
+    color: var(--site-color);
+    font-size: 40px;
+    text-transform: uppercase;
+    font-weight: 400;
+}
+
 .news-listing .news-date {
     color: var(--news-button-text-colour);
     display: inline-block;
     margin-bottom: 20px;
     font-size: 10px;
     letter-spacing: .06em;
+}
+
+.news-listing .news-item.horizontal-banner .news-date {
+    color: var(--site-color);
 }
 
 .news-listing .news-title {
@@ -197,8 +216,48 @@ main .news-listing {
     letter-spacing: .02em;
 }
 
+.news-item .clear {
+    clear: both;
+}
+
+.news-listing .news-item.horizontal-banner {
+    background-color: var(--news-bg-enavant);
+}
+
 
 @media (width >= 900px) {
+    main .news-listing {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+        max-width: 1200px;
+        padding: 0 80px;
+        margin: auto;
+        height: auto;
+    }
+
+    .news-listing .news-item {
+        grid-column: span 1;
+    }
+
+    .news-listing .news-item.horizontal-banner {
+        grid-column: span 2;
+    }
+
+    .news-listing .news-item.horizontal-banner .news-image-wrapper {
+        width: calc((((100% - (12 * 30px)) / 12) * 6) + (5 * 30px));
+        background-size: cover;
+        position: relative;
+        float: left;
+        margin: 15px;
+    }
+
+    .news-listing .news-item.horizontal-banner .news-content-wrapper {
+        width: calc((((100% - (12 * 30px)) / 12) * 6) + (5 * 30px));
+        float: right;
+        margin: 15px;
+    }
+
     main .filter-container {
         padding: 0 80px;
         font-size: 36px;

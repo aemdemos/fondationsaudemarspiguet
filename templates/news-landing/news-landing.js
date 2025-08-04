@@ -22,9 +22,19 @@ function showNewsArticles(getNews, doc) {
     const $newsCategory = span({ class: 'news-category' }, news.category);
     const $newsDescription = div({ class: 'news-description' }, news.description);
     const imageWrapper = div({ class: 'news-image-wrapper' });
+    const contentWrapper = div({ class: 'news-content-wrapper' });
+    const clearDiv = div({ class: 'clear' });
     const $newsImg = img({ class: 'news-image', src: news.image, alt: news.title });
     imageWrapper.append($newsImg);
-    $newsItem.append(imageWrapper, $newsCategory, $newsDate, $newsTitle, $newsDescription);
+    contentWrapper.append($newsCategory, $newsDate, $newsTitle, $newsDescription)
+    if (news["article-color"]){
+      $newsItem.classList.add(news["article-color"]);
+    }
+    const layout = news.layout;
+    if (layout){
+      $newsItem.classList.add(layout);
+    }
+    $newsItem.append(imageWrapper, contentWrapper, clearDiv);
     doc.querySelector('.news-listing').append($newsItem);
   });
 }
@@ -83,6 +93,7 @@ export default async function decorate(doc) {
   )
   $section.append($filterContainer, $newsListing);
   const getNews = await getNewsdata();
+  console.log(getNews);
   const allCategories = getNews
     .flatMap((item) => (item.category || '').split(','))
     .map((cat) => cat.trim())
@@ -185,15 +196,4 @@ export default async function decorate(doc) {
       showNewsArticles(reverseSortedNews, doc);
     });
   }
-
-  // const inputCategoey = doc.getElementById('filtercategories-selectized');  
-  // const mirror = document.getElementById('width-mirror');
-  // updateInputWidth();
-  // function updateInputWidth() {
-  //   mirror.textContent = input.value || input.placeholder || ' ';
-  //   inputCategoey.style.width = `${mirror.offsetWidth + 4}px`;
-  //   console.log(mirror.offsetWidth);
-  // }
-  // window.addEventListener('load', updateInputWidth);
-  // inputCategoey.addEventListener('input', updateInputWidth);
 }
