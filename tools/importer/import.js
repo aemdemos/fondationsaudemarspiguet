@@ -101,6 +101,15 @@ const transformers = {
 // Additional page elements to parse that are not included in the inventory
 const pageElements = [{ name: 'metadata' }, ...customElements];
 
+/**
+ * Simple footer parser that preserves the footer content structure
+ */
+function footerParser(el, { document }) {
+  const containerEl = document.createElement('div');
+  containerEl.append(...el.children);
+  return containerEl;
+}
+
 WebImporter.Import = {
   findSiteUrl: (instance, siteUrls) => (
     siteUrls.find(({ id }) => id === instance.urlHash)
@@ -149,7 +158,17 @@ function transformPage(main, { inventory, ...source }) {
     .map((xpath) => WebImporter.Import.getElementByXPath(document, xpath))
     .filter((el) => el);
 
-  // get dom elements for each block on the current page
+  // Pre-compute header and footer fragment XPaths as a Set for O(1) lookup
+  const headerFooterXPaths = new Set(
+    inventory.fragments
+      .filter((fragment) => fragment.name === 'nav' || fragment.name === 'footer')
+      .flatMap((fragment) => fragment.instances
+        .filter((instance) => WebImporter.Import.findSiteUrl(instance, urls)?.url === originalURL)
+        .map((instance) => instance.xpath)
+      )
+  );
+
+  // get dom elements for each block on the current page, including xpath for filtering
   const blockElements = inventoryBlocks
     .flatMap((block) => block.instances
       .filter((instance) => WebImporter.Import.findSiteUrl(instance, urls)?.url === originalURL)
@@ -157,9 +176,15 @@ function transformPage(main, { inventory, ...source }) {
         ...block,
         uuid: instance.uuid,
         section: instance.section,
+        xpath: instance.xpath, // Store xpath for efficient filtering
         element: WebImporter.Import.getElementByXPath(document, instance.xpath),
       })))
     .filter((block) => block.element);
+
+  // Filter out header and footer content from regular page transformations (O(n) complexity)
+  const filteredBlockElements = blockElements.filter((block) => 
+    !headerFooterXPaths.has(block.xpath)
+  );
 
   const defaultContentElements = inventory.outliers
     .filter((instance) => WebImporter.Import.findSiteUrl(instance, urls)?.url === originalURL)
@@ -175,11 +200,16 @@ function transformPage(main, { inventory, ...source }) {
     }
   });
 
+  // remove newsletter blocks and scroll-to-top elements
+  document.querySelectorAll('.newsletter_bloc, #scroll-to-top').forEach((element) => {
+    element.remove();
+  });
+
   // before page transform hook
   WebImporter.Import.transform(TransformHook.beforePageTransform, main, { ...source });
 
-  // transform all elements using parsers
-  [...defaultContentElements, ...blockElements, ...pageElements]
+  // transform all elements using parsers (using filtered block elements for regular pages)
+  [...defaultContentElements, ...filteredBlockElements, ...pageElements]
     // sort elements by order in the page
     .sort((a, b) => (a.uuid ? parseInt(a.uuid.split('-')[1], 10) - parseInt(b.uuid.split('-')[1], 10) : 999))
     // filter out fragment elements
@@ -256,6 +286,25 @@ function transformFragment(main, { fragment, inventory, ...source }) {
       main.append(headerBlock);
     } catch (e) {
       console.warn('Failed to parse header block', e);
+    }
+  } else if (fragment.name === 'footer') {
+    const footerEl = document.createElement('div');
+
+    // get all footer elements
+    fragment.instances.forEach(({ xpath }) => {
+      const el = WebImporter.Import.getElementByXPath(document, xpath);
+      if (!el) {
+        console.warn(`Failed to get element for xpath: ${xpath}`);
+      } else {
+        footerEl.append(el);
+      }
+    });
+
+    try {
+      const footerBlock = footerParser(footerEl, { ...source, document, fragment });
+      main.append(footerBlock);
+    } catch (e) {
+      console.warn('Failed to parse footer block', e);
     }
   } else {
     (fragment.instances || [])
