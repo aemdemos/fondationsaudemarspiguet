@@ -31,10 +31,8 @@ function resetButtonStates(doc) {
 function resetAllFilters(doc, typePlaceholder = 'Type') {
   const typeInput = doc.querySelector('.type-input');
   const searchInput = doc.querySelector('.media-search-input');
-  
   if (typeInput) typeInput.value = typePlaceholder;
   if (searchInput) searchInput.value = '';
-  
   resetButtonStates(doc);
   showAllRows(doc);
 }
@@ -62,7 +60,6 @@ function setupTypeFilter(doc, typePlaceholder = 'Type') {
     getTableRows(doc).forEach((row) => {
       const firstCell = row.querySelector('td:first-child');
       if (!firstCell) return;
-      
       const cellText = firstCell.textContent.trim();
       row.style.display = cellText === selectedType ? '' : 'none';
     });
@@ -119,11 +116,9 @@ function setupSearchFilter(doc) {
 
   function filterTableBySearch(searchTerm) {
     const normalizedSearch = searchTerm.toLowerCase().trim();
-    
     getTableRows(doc).forEach((row) => {
       const secondCell = row.querySelector('td:nth-child(2)');
       if (!secondCell) return;
-
       const cellText = secondCell.textContent.toLowerCase().trim();
       row.style.display = !normalizedSearch || cellText.includes(normalizedSearch) ? '' : 'none';
     });
@@ -202,7 +197,6 @@ export default async function decorate(doc) {
   // Use direct access to placeholders for language switching
   const currentLang = getLanguageFromPath();
   await fetchPlaceholders(currentLang);
-  
   const placeholderData = window.placeholders[currentLang] || {};
   const typePlaceholder = placeholderData.mediaNewsroomTypeFilter || 'Type';
   const viewAllText = placeholderData.mediaNewsroomViewFilter || 'View all';
