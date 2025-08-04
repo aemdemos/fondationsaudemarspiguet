@@ -66,7 +66,6 @@ export default async function decorate(doc) {
           class: 'category-input', id: 'filtercategories-selectized', placeholder: newsLandingCategoryFilter, type: 'text', autofill: 'no',
         },
       ),
-      span({ id: 'width-mirror', style: 'position: absolute; visibility: hidden; white-space: pre; font: inherit;' }, ''),
       div(
         { class: 'category-dropdown' },
       ),
@@ -94,7 +93,6 @@ export default async function decorate(doc) {
   );
   $section.append($filterContainer, $newsListing);
   const getNews = await getNewsdata();
-  console.log(getNews);
   const allCategories = getNews
     .flatMap((item) => (item.category || '').split(','))
     .map((cat) => cat.trim())
