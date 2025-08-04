@@ -219,6 +219,10 @@ async function loadEager(doc) {
   document.documentElement.lang = getLanguage();
   const templateName = getMetadata('template');
   decorateTemplateAndTheme();
+  
+  // Set path-specific favicon early in the load process
+  setPathSpecificFavicon();
+  
   const main = doc.querySelector('main');
   if (main) {
     decorateMain(main);
@@ -280,6 +284,49 @@ function backToTopWithIcon() {
   pageButton.addEventListener('click', () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
+}
+
+/**
+ * Sets path-specific favicon based on current URL
+ */
+function setPathSpecificFavicon() {
+  const { pathname } = window.location;
+  
+  // Define path-specific favicon mappings
+  const faviconMappings = {
+    '/drafts': {
+      '16': '/styles/test-ap.png',
+      '32': '/styles/test-ap.png',
+      'apple': '/styles/test-ap.png'
+    }
+    // Add more path mappings as needed
+    // '/admin': { ... },
+    // '/special': { ... }
+  };
+  
+  // Check if current path matches any special favicon rules
+  let faviconSet = null;
+  for (const [pathPrefix, favicons] of Object.entries(faviconMappings)) {
+    if (pathname.startsWith(pathPrefix)) {
+      faviconSet = favicons;
+      break;
+    }
+  }
+  
+  // If we found a matching path, update the favicons
+  if (faviconSet) {
+    // Update 16x16 favicon
+    const favicon16 = document.querySelector('link[rel="icon"][sizes="16x16"]');
+    if (favicon16) favicon16.href = faviconSet['16'];
+    
+    // Update 32x32 favicon
+    const favicon32 = document.querySelector('link[rel="icon"][sizes="32x32"]');
+    if (favicon32) favicon32.href = faviconSet['32'];
+    
+    // Update apple touch icon
+    const appleIcon = document.querySelector('link[rel="apple-touch-icon"]');
+    if (appleIcon) appleIcon.href = faviconSet['apple'];
+  }
 }
 
 async function loadLazy(doc) {
