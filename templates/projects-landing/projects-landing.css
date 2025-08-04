@@ -19,6 +19,41 @@ main .filter-container .category-input {
     outline: none;
 }
 
+main .filter-container .category-dropdown {
+    border: none;
+    margin: 24px 0;
+    border-top: 0 none;
+    box-shadow: none;
+    font-size: 16px;
+    width: 100%;
+    position: absolute;
+    min-width: 250px;
+    max-height: 200px;
+    display: none;
+    z-index: 99;
+}
+
+main .filter-container .category-dropdown ul {
+    margin: 0;
+    padding: 0;
+    overflow-y: auto;
+}
+
+main .filter-container .category-dropdown ul li {
+    list-style: none;
+    cursor: pointer;
+    width: 180.297px;
+    opacity: 1;
+    position: relative;
+    left: 0;
+    background: var(--btn-bg);
+    padding: 5px 18px;
+}
+
+main .filter-container .category-dropdown ul li:hover {
+    font-weight: 500;
+}
+
 main .filter-container .location-input {
     width: 127px;
     opacity: 1;
