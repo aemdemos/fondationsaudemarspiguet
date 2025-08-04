@@ -13,6 +13,15 @@
   background: none;
 }
 
+.table.block tr {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 0;
+  padding: 0;
+  background: none;
+}
+
 .table th,
 .table td {
   flex: 1 1 0;
@@ -56,6 +65,10 @@
   font-size: var(--body-font-size-xs);
 }
 
+.table.block table tr br {
+    display: none; /* Hide br tags in table headers */
+}
+
 @media (width >= 600px) {
   .table.block table {
     font-size: var(--body-font-size-s);
@@ -66,6 +79,11 @@
   .table.block table {
     font-size: var(--body-font-size-m);
   }
+
+  .table.block tr {
+  flex-direction: row;
+}
+
 }
 
 /* Generated CSS, unchanged except for the merged .table selector */
@@ -99,7 +117,7 @@
 
 .table.block table th,
 .table.block table td {
-  padding: 0.5em;
+  padding: 0.7em;
   text-align: left;
 }
 
@@ -155,6 +173,28 @@
   letter-spacing: 0.03em;
   margin-bottom: 0;
   line-height: 1.2;
+}
+
+.table.block strong {
+    font-weight: 600;
+    font-size: 22px;
+    letter-spacing: .06em;
+}
+
+.table.block table thead tr th p .new-div{
+    color: var(--site-color);
+    font-size: 22px;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+    font-weight: 400;
+}
+
+.table.block table tbody tr td p .new-div{
+    color: var(--site-color);
+    font-size: 22px;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+    font-weight: 400;
 }
 
 @media (width <= 900px) {
