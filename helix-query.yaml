@@ -138,10 +138,7 @@ indices:
         select: head > meta[property="og:image"]
         value: attribute(el, "content")
       homepage:
-        select: head > meta[name="homepage"]
-        value: attribute(el, "content")
-      homepagetext:
-        select: main > div p
+        select: main div.section.hero-container p
         value: textContent(el)
       links:
         select: head > meta[name="link-s-"]
@@ -182,10 +179,7 @@ indices:
         select: head > meta[property="og:image"]
         value: attribute(el, "content")
       homepage:
-        select: head > meta[name="homepage"]
-        value: attribute(el, "content")
-      homepagetext:
-        select: main > div p
+        select: main div.section.hero-container p
         value: textContent(el)
       links:
         select: head > meta[name="lien-s-"]
