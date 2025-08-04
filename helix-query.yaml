@@ -140,6 +140,9 @@ indices:
       homepage:
         select: head > meta[name="homepage"]
         value: attribute(el, "content")
+      homepagetext:
+        select: main > div p
+        value: textContent(el)
       links:
         select: head > meta[name="link-s-"]
         value: attribute(el, "content")
@@ -181,6 +184,9 @@ indices:
       homepage:
         select: head > meta[name="homepage"]
         value: attribute(el, "content")
+      homepagetext:
+        select: main > div p
+        value: textContent(el)
       links:
         select: head > meta[name="lien-s-"]
         value: attribute(el, "content")
