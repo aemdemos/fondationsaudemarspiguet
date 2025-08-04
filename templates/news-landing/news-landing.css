@@ -2,7 +2,7 @@ main .filter-container {
     padding: 0 24px;
     display: flex;
     flex-direction: column;
-    max-width: 1720px;
+    max-width: 1200px;
     margin: auto;
     font-size: 18px;
     position: relative;
@@ -130,13 +130,17 @@ main .filter-container .news-listing-container-right .filter-bottom-btn {
     float: right;
 }
 
+main .news-listing-container {
+    background-color: var(--projet-bg-page-listing);
+    padding: 35px 0;
+}
+
 main .news-listing {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 30px;
-    background-color: var(--projet-bg-page-listing);
     max-width: 1200px;
-    padding: 35px 80px;
+    padding: 0 80px;
     margin: auto;
     width: 100%;
     height: auto;

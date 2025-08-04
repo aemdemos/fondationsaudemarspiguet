@@ -75,7 +75,12 @@ export default async function decorate(doc) {
   );
   $newsListingRight.append($filterTop, $fitlerBottom);
   $filterContainer.append($newsListingLeft, $newsListingRight);
-  const $newsListing = div({ class: 'news-listing' });
+  const $newsListing = div(
+    { class: 'news-listing-container' },
+    div(
+      { class: 'news-listing' },
+    ),
+  )
   $section.append($filterContainer, $newsListing);
   const getNews = await getNewsdata();
   const allCategories = getNews
