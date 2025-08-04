@@ -96,10 +96,6 @@
 .table.block table tbody,
 .table.block table tbody tr {
   border: none;
-  border-bottom: none;
-  border-top: none;
-  border-left: none;
-  border-right: none;
   border-style: none;
   border-width: 0;
   box-shadow: none;
@@ -118,20 +114,24 @@
 .table.block table th,
 .table.block table td {
   padding: 0.7em;
+  padding-left: 0;
   text-align: left;
+}
+
+.table-wrapper {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+main .table-container .table-wrapper .table.block {
+  padding-bottom: 40px;
+  border-bottom: 1px solid var(--site-color);
 }
 
 .table.block.striped tbody tr,
 .table.block.bordered table th,
 .table.block.bordered table td {
   border: none;
-  border-bottom: none;
-  border-top: none;
-  border-left: none;
-  border-right: none;
-  border-style: none;
-  border-width: 0;
-  box-shadow: none;
   background: none;
 }
 
@@ -149,8 +149,6 @@
   border-top: 1px solid #6B7E7C;
   border-bottom: 1px solid #6B7E7C;
 }
-
-
 
 /* bordered variant */
 .table.block.bordered table th,
@@ -181,14 +179,7 @@
     letter-spacing: .06em;
 }
 
-.table.block table thead tr th p .new-div{
-    color: var(--site-color);
-    font-size: 22px;
-    text-transform: uppercase;
-    letter-spacing: .06em;
-    font-weight: 400;
-}
-
+.table.block table thead tr th p .new-div,
 .table.block table tbody tr td p .new-div{
     color: var(--site-color);
     font-size: 22px;
@@ -202,11 +193,6 @@
   .table td {
     padding-right: 16px;
   }
-}
-
-.table-wrapper {
-  margin-top: 0;
-  margin-bottom: 0;
 }
 
 /* Style for tables with the 'report' class */
