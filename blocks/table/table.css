@@ -62,28 +62,11 @@
   width: 100%;
   max-width: 100%;
   border-collapse: collapse;
-  font-size: var(--body-font-size-xs);
+  font-size: 18px;
 }
 
 .table.block table tr br {
     display: none; /* Hide br tags in table headers */
-}
-
-@media (width >= 600px) {
-  .table.block table {
-    font-size: var(--body-font-size-s);
-  }
-}
-
-@media (width >= 900px) {
-  .table.block table {
-    font-size: var(--body-font-size-m);
-  }
-
-  .table.block tr {
-  flex-direction: row;
-}
-
 }
 
 /* Generated CSS, unchanged except for the merged .table selector */
@@ -175,24 +158,14 @@ main .table-container .table-wrapper .table.block {
 
 .table.block strong {
     font-weight: 600;
-    font-size: 22px;
+    font-size: 18px;
     letter-spacing: .06em;
 }
 
-.table.block table thead tr th p .new-div,
-.table.block table tbody tr td p .new-div{
-    color: var(--site-color);
-    font-size: 22px;
-    text-transform: uppercase;
-    letter-spacing: .06em;
+.table.block .new-div {
     font-weight: 400;
-}
-
-@media (width <= 900px) {
-  .table th,
-  .table td {
-    padding-right: 16px;
-  }
+    font-size: 18px;
+    letter-spacing: .06em;
 }
 
 /* Style for tables with the 'report' class */
@@ -257,4 +230,22 @@ main .table-container .table-wrapper .table.block {
 /* striped variant */
 .table.block.striped tbody tr:nth-child(odd) {
   background-color: var(--overlay-background-color);
+}
+
+@media (width >= 600px) {
+  .table.block table {
+    font-size: 22px;
+  }
+
+  .table.block strong, 
+  .table.block .new-div{
+    font-size: 22px;
+  }
+}
+
+@media (width >= 900px) {
+  .table.block tr {
+  flex-direction: row;
+}
+
 }
