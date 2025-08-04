@@ -259,7 +259,7 @@ html, body {
     }
 }
 
-@media (width <= 1340px) and (width >= 900px) {
+@media (width >= 900px) and (width <= 1340px) {
     .news-slider-wrapper {
         margin-left: 80px !important;
     }
