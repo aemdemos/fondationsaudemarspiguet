@@ -22,8 +22,8 @@ function adjustImageUrls(main, url, current) {
         new URL(src);
       } catch (e) {
         if (!src.startsWith('/')) {
-          // enforce transform image url to relative url
-          src = `./${src}`;
+          // enforce transform image url to root-relative url
+          src = `/${src}`;
         }
       }
 
