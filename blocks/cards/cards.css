@@ -96,16 +96,6 @@
   max-width: 150px;
 }
 
-.cards.icons-grid .carousel-controls label img {
-  height: 38px;
-  width: 40px;
-  background-color: var(--header-color);
-  background-repeat: no-repeat;
-  border-radius: 50%;
-  z-index: 10;
-  cursor: pointer;
-}
-
 .cards.icons-grid .cards-card-body .icon img {
   background-color: var(--page-bloc-pictos-bg);
   object-fit: contain;
@@ -113,6 +103,40 @@
   border-radius: 5000px;
   line-height: 0;
   aspect-ratio: unset;
+}
+
+.cards.icons-grid button.carousel-prev {
+    background-image: url('/icons/carousel_left.svg');
+    background-repeat: no-repeat;
+    background-position: 12px center;
+    height: 43px;
+    width: 40px;
+    background-color: var(--header-color);
+    border-radius: 50%;
+    z-index: 10;
+    cursor: pointer;
+    transform: translateY(350%);
+    order: 1;
+}
+
+.cards.icons-grid button.carousel-next {
+    background-image: url('/icons/carousel_right.svg');
+    background-repeat: no-repeat;
+    background-position: 16px center;
+    height: 43px;
+    width: 40px;
+    background-color: var(--header-color);
+    border-radius: 50%;
+    z-index: 10;
+    cursor: pointer;
+    order: 3;
+    transform: translateY(350%);
+}
+
+.cards.icons-grid button:disabled {
+    opacity: .35;
+    cursor: auto;
+    pointer-events: none;
 }
 
 .cards.listing .cards-card-body .cards-image-container .cards-card-image img {
@@ -126,41 +150,16 @@
   padding: 50px 0;
 }
 
-.cards.icons-grid input[type="radio"] {
-  display: none;
-}
-
-.cards.icons-grid .carousel-controls {
-  margin-top: 15px;
-  text-align: center;
-}
-
-.cards.icons-grid .carousel-track .card {
-    flex: 0 0 100%;
-  }
-
-.cards.icons-grid #card1:checked ~ .carousel-track .card:nth-child(1),
-.cards.icons-grid #card2:checked ~ .carousel-track .card:nth-child(2),
-.cards.icons-grid #card3:checked ~ .carousel-track .card:nth-child(3) {
-  display: block;
-}
-
-/* Show relevant controls based on checked input */
-.cards.icons-grid #card1:checked ~ .carousel-controls #prev1,
-.cards.icons-grid #card1:checked ~ .carousel-controls #next1,
-.cards.icons-grid #card2:checked ~ .carousel-controls #prev2,
-.cards.icons-grid #card2:checked ~ .carousel-controls #next2,
-.cards.icons-grid #card3:checked ~ .carousel-controls #prev3,
-.cards.icons-grid #card3:checked ~ .carousel-controls #next3 {
-  display: inline-block;
-}
-
 .cards.icons-grid > ul {
-  max-width: 1000px;
   margin: 0 auto;
   list-style: none;
+  transition: transform 0.3s ease;
+  overflow: hidden;
   display: flex;
+  width: 100%;
+  scroll-behavior: smooth;
   order: 2;
+  column-gap: 50px;
 }
 
 .cards.icons-grid > ul > li {
@@ -172,9 +171,8 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: flex-start;
-  max-width: 370px;
-  width: 100%;
+  flex: 0 0 100%;
+  scroll-snap-align: center;
 }
 
 .cards.icons-grid .cards-card-body {
@@ -233,13 +231,8 @@
     gap: 30px;
   }
 
-  .cards.icons-grid .carousel-track .card  {
+  .cards.icons-grid > ul > li  {
     flex: 0 0 50%;
-    display: block;
-  }
-
-  .cards.icons-grid .carousel-controls {
-    flex-wrap: wrap;
   }
 }
 
@@ -259,13 +252,18 @@
     min-height: 120px;
     width: 100%;
   }
-
-  .cards.icons-grid .carousel-track .card {
-    flex: 0 0 33.33%;
-    display: block;
+  
+  .cards.icons-grid > ul {
+    overflow: unset;
+    width: unset;
+    column-gap: 0;
   }
 
-  .cards.icons-grid .carousel-controls {
+  .cards.icons-grid > ul > li  {
+    flex: 0 0 33.33%;
+  }
+
+  .cards.icons-grid button {
     display: none;
   }
 }

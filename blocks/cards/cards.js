@@ -1,7 +1,7 @@
 import { createOptimizedPicture } from '../../scripts/aem.js';
 import { moveInstrumentation } from '../../scripts/scripts.js';
 import {
-  div, h2, input, label, img,
+  div, h2, button,
 } from '../../scripts/dom-helpers.js';
 
 export default function decorate(block) {
@@ -17,10 +17,10 @@ export default function decorate(block) {
     });
     ul.append(li);
   });
-  ul.querySelectorAll('picture > img').forEach((image) => {
-    const optimizedPic = createOptimizedPicture(image.src, image.alt, false, [{ width: '750' }]);
-    moveInstrumentation(image, optimizedPic.querySelector('img'));
-    image.closest('picture').replaceWith(optimizedPic);
+  ul.querySelectorAll('picture > img').forEach((img) => {
+    const optimizedPic = createOptimizedPicture(img.src, img.alt, false, [{ width: '750' }]);
+    moveInstrumentation(img, optimizedPic.querySelector('img'));
+    img.closest('picture').replaceWith(optimizedPic);
   });
   block.textContent = '';
   block.append(ul);
@@ -63,27 +63,45 @@ export default function decorate(block) {
     const ulist = block.querySelector('ul');
     ulist.classList.add('carousel-track');
     const cards = block.querySelectorAll('ul li');
-    let cardsIdx = 1;
-    let radioCard = null;
-    const carouselControls = div({ class: 'carousel-controls' });
-    let labelPrev = null;
-    let labelNext = null;
     const numCards = cards.length;
+    console.log('num cards', numCards);
     cards.forEach((card) => {
       card.classList.add('card');
-      if (cardsIdx === 1) {
-        radioCard = input({
-          type: 'radio', name: 'carousel', id: `card${cardsIdx}`, checked: true,
-        });
-      } else {
-        radioCard = input({ type: 'radio', name: 'carousel', id: `card${cardsIdx}` });
-      }
-      labelPrev = cardsIdx === 1 ? label({ for: `card${numCards}`, class: `prev prev-btn${cardsIdx}` }, img({ src: '/icons/carousel_left.svg', alt: 'prev' })) : label({ for: `card${cardsIdx - 1}`, class: `prev prev-btn${cardsIdx}` }, img({ src: '/icons/carousel_left.svg', alt: 'prev' }));
-      labelNext = cardsIdx === numCards ? label({ for: 'card1', class: `next next-btn${cardsIdx}` }, img({ src: '/icons/carousel_right.svg', alt: 'prev' })) : label({ for: `card${cardsIdx + 1}`, class: `next next-btn${cardsIdx}` }, img({ src: '/icons/carousel_right.svg', alt: 'prev' }));
-      cardsIdx += 1;
-      block.append(radioCard);
-      carouselControls.append(labelPrev, labelNext);
     });
-    block.append(carouselControls);
+
+    const prevBtn = button({ class: 'carousel-prev' });
+    const nextBtn = button({ class: 'carousel-next' });
+
+    block.append(prevBtn, nextBtn);
+
+    const track = block.querySelector('.carousel-track');
+    const prevButton = block.querySelector('.carousel-prev');
+    const nextButton = block.querySelector('.carousel-next');
+    let index = 0;
+
+    const scrollAmount = () => {
+      const card = block.querySelector('.card');
+      return card.offsetWidth;
+    };
+
+    nextButton.onclick = () => {
+      index += 1;
+      console.log('index', index);
+      track.scrollTo({ left: scrollAmount(), behavior: 'smooth' });
+      prevButton.disabled = false;
+      if (index >= numCards) {
+        nextButton.disabled = true;
+      }
+    };
+
+    prevButton.onclick = () => {
+      index -= 1;
+      console.log('index', index);
+      track.scrollTo({ left: -scrollAmount(), behavior: 'smooth' });
+      nextButton.disabled = false;
+      if (index <= 0) {
+        prevButton.disabled = true;
+      }
+    };
   }
 }
