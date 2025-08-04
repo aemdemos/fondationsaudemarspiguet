@@ -16,7 +16,9 @@ async function getNewsdata() {
 
 function showNewsArticles(getNews, doc) {
   getNews.forEach((news) => {
-    const $newsItem = div({ class: 'news-item' });
+    const url = news.path;
+    console.log(url);
+    const $newsItem = a({ class: 'news-item', href: url });
     const $newsTitle = h2({ class: 'news-title' }, news.title);
     const $newsDate = span({ class: 'news-date' }, news.date);
     const $newsCategory = span({ class: 'news-category' }, news.category);
