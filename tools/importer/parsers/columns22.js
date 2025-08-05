@@ -1,25 +1,37 @@
 /* global WebImporter */
 export default function parse(element, { document }) {
-  // Create header row - must be a string, not the element
-  const headerRow = ['Columns (columns22)'];
+  // Find the left and right column content containers
+  const left = element.querySelector('.projets_listing_container_left');
+  const right = element.querySelector('.projets_listing_container_right');
 
-  // To avoid HierarchyRequestError, do not put the element directly in the table if it is a <div> containing the table!
-  // Instead, move the child elements to a new container or fragment
-  const fragment = document.createDocumentFragment();
-  while (element.firstChild) {
-    fragment.appendChild(element.firstChild);
+  function collectContent(container) {
+    if (!container) return [];
+    return Array.from(container.childNodes).filter((node) => {
+      if (node.nodeType === Node.ELEMENT_NODE) {
+        // Ignore empty divs
+        if (node.tagName === 'DIV' && !node.textContent.trim() && !node.querySelector('input,select,a')) {
+          return false;
+        }
+        // Hide .clear
+        if (node.classList && node.classList.contains('clear')) return false;
+        return true;
+      }
+      if (node.nodeType === Node.TEXT_NODE) {
+        return node.textContent.trim().length > 0;
+      }
+      return false;
+    });
   }
 
-  // Move all nodes from fragment to an array for the table cell
-  const cellContent = Array.from(fragment.childNodes);
-  // If all content was text nodes, we can keep as is; if empty, cellContent will be []
-  // If there is no content, fallback to an empty string
-  const contentRow = [cellContent.length > 0 ? cellContent : ''];
+  const leftContent = collectContent(left);
+  const rightContent = collectContent(right);
 
-  const table = WebImporter.DOMUtils.createTable([
-    headerRow,
-    contentRow
-  ], document);
+  // To match the example: header row has exactly ONE cell, second row has two
+  const cells = [
+    ['Columns (columns22)'],
+    [leftContent, rightContent]
+  ];
 
+  const table = WebImporter.DOMUtils.createTable(cells, document);
   element.replaceWith(table);
 }

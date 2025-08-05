@@ -2,7 +2,6 @@
   border: 1px solid #dadada;
 }
 
-/* stylelint-disable-next-line no-descending-specificity */
 .accordion details + details {
   margin-top: 24px;
 }
@@ -11,14 +10,22 @@
   margin-bottom: 0.8em;
 }
 
-.accordion details summary {
+.accordion.teams details p {
+  margin-bottom: 0;
+  margin-top: 0;
+}
+
+.accordion.teams details summary {
   position: relative;
-  padding: 0 16px;
-  padding-right: 46px;
   cursor: pointer;
   list-style: none;
   overflow: auto;
   transition: background-color 0.2s;
+
+}
+
+.accordion.teams details u{
+text-decoration: none;
 }
 
 .accordion details[open] summary {
@@ -28,6 +35,10 @@
 .accordion details summary:focus,
 .accordion details summary:hover {
   background-color: var(--light-color);
+}
+
+.accordion.teams details[open] summary {
+  background-color: unset;
 }
 
 .accordion details summary::-webkit-details-marker {
@@ -58,4 +69,120 @@
 .accordion details[open] .accordion-item-body {
   border-top: 1px solid #dadada;
   background-color: var(--background-color);
+}
+
+.accordion.teams details .accordion-item-body {
+  padding: 0;
+}
+
+.accordion.teams details:not([open]) .accordion-item-body {
+  display: none;
+}
+
+.accordion.teams details summary::after {
+  display: none !important;
+}
+
+.accordion.teams details {
+  border: 0;
+  padding: 15px 0;
+  margin: 0;
+}
+
+.accordion.teams details[open] .accordion-item-body {
+  background-color: unset;
+  border-top: 0;
+}
+
+.accordion.teams details summary:focus,
+.accordion.teams details summary:hover {
+  background-color: unset;
+}
+
+.accordion.teams summary p:first-of-type {
+  font-weight: 600;
+  font-size: 22px;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  font-family: Antarctica, sans-serif;
+}
+
+.accordion.teams summary p:nth-of-type(2) {
+  color: var(--projet-bloc-titre);
+  font-size: 22px;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  font-weight: 400;
+}
+
+.accordion.teams summary p:nth-of-type(3) {
+  font-size: 18px;
+  margin-top: 4px;
+  margin-bottom: 0;
+}
+
+.accordion.teams .accordion-teams-div {
+  display: inline-block;
+  margin: 0;
+  width: 100%;
+  line-height: 1;
+  vertical-align: top;
+}
+
+.accordion.teams .button-container {
+  display: inline-block !important;
+  margin-top: 2px;
+  margin-bottom: 2px;
+  padding: 0;
+  line-height: 1;
+}
+
+.accordion.teams .accordion-teams-div .button-container {
+  margin: 4px 0 0;
+}
+
+.accordion.teams .button-container a.button {
+  background-color: unset;
+  font-size: 10px;
+  text-transform: uppercase;
+  color: var(--site-color-2);
+  transition: color 0.5s;
+  text-decoration: none;
+  position: relative;
+  display: inline-block;
+  padding: 3px 0;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.accordion.teams .accordion-toggle-icon {
+  width: 24px;
+  height: 24px;
+  background-image: url('/icons/btn_team_plus.svg');
+  background-size: 28px 28px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: var(--carousel-bg-box2);
+  border-radius: 50%;
+  transition: background-image 0.3s;
+  float: right;
+  margin-top: 0;
+  margin-right: 10px;
+}
+
+.accordion.teams .accordion-toggle-icon.open {
+  background-image: url('/icons/btn_team_moins.svg');
+}
+
+@media (width >= 900px) {
+  .accordion.teams {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+  }
+
+  .accordion.teams .accordion-item {
+    flex: 0 0 calc(33.333% - 20px); /* 3 per row */
+    box-sizing: border-box;
+  }
 }
