@@ -113,6 +113,28 @@ export default async function decorate(doc) {
     categorysection.style.display = categorysection.style.display === 'block' ? 'none' : 'block';
   });
 
+  // code for getting width of input dynamically
+
+  const categorySectionDiv = doc.querySelector('.category-section');
+  const inputCat = doc.querySelector('.category-input');
+  const mirror = span({ class: 'input-category-span' });
+  // Function to set width
+  function updateWidth(text) {
+    mirror.textContent = text;
+    const width = mirror.offsetWidth;
+    inputCat.style.width = `${width}px`;
+  }
+
+  // Hidden span to measure text width
+  mirror.style.font = getComputedStyle(inputCat).font;
+  categorySectionDiv.appendChild(mirror);
+  updateWidth(inputCat.placeholder);
+
+  window.addEventListener('resize', () => {
+    const currentText = inputCat.value || inputCat.placeholder;
+    updateWidth(currentText);
+  });
+
   const newsListing = document.querySelector('.news-listing');
   const sortedNews = getNews
     .sort((date1, date2) => parseDate(date2.date) - parseDate(date1.date));
@@ -122,6 +144,7 @@ export default async function decorate(doc) {
     item.addEventListener('click', (event) => {
       const selectedCategory = event.target.textContent;
       $categoryInput.value = selectedCategory;
+      updateWidth(selectedCategory);
       categorysection.style.display = 'none';
       const filteredNews = getNews.filter((news) => news.category
       && news.category.includes(selectedCategory));
@@ -142,6 +165,7 @@ export default async function decorate(doc) {
   const viewAllButton = doc.getElementById('view-all');
   viewAllButton.addEventListener('click', (event) => {
     event.preventDefault();
+    updateWidth(inputCat.placeholder);
     $categoryInput.value = '';
     newsListing.innerHTML = '';
     showNewsArticles(sortedNews, doc);
