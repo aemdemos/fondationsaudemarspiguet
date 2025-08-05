@@ -6,15 +6,20 @@
 
 .home-projects.block .project-article {
     font-size: 18px;
-    max-height: 550px;
+    max-height: 580px;
     position: relative;
+}
+
+.home-projects.block .project-article p {
+    padding: 0 !important;
+    margin: 0 !important;
 }
 
 .home-projects.block .project-article .parent-container {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    gap: 15px;
+    gap: 40px;
     max-width: 1200px !important;
     margin: 0 auto;
     padding: 45px 0 0 0;
@@ -24,6 +29,17 @@
     box-sizing: border-box;
     width: 50%;
     flex: 0 0 50%;
+}
+
+.home-projects.block .project-article div.project-image a div {
+    height: 78%;
+}
+
+.home-projects.block .project-article div.project-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
 }
 
 .home-projects.block .project-article .project-metadata .category-location-duration {
@@ -58,7 +74,7 @@
     position: absolute;
     bottom: 0;
     right: 0;
-    width: calc(50vw - 15px);
+    width: calc(50vw - 40px);
 }
 
 .home-projects.block .project-article .project-metadata .buttons-container a:first-of-type {
