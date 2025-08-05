@@ -138,7 +138,7 @@ indices:
         select: head > meta[property="og:image"]
         value: attribute(el, "content")
       featured:
-        select: main > div p
+        select: main > div:nth-of-type(1) p
         value: textContent(el)
       links:
         select: head > meta[name="link-s-"]
@@ -179,7 +179,7 @@ indices:
         select: head > meta[property="og:image"]
         value: attribute(el, "content")
       featured:
-        select: main > div p
+        select: main > div:nth-of-type(1) p
         value: textContent(el)
       links:
         select: head > meta[name="lien-s-"]
