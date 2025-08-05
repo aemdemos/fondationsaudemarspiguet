@@ -96,6 +96,12 @@
   max-width: 150px;
 }
 
+.cards.map-category ul li p .icon {
+  height: 78px;
+  width: 78px;
+  margin: 0;
+}
+
 .cards.icons-grid .cards-card-body .icon img {
   background-color: var(--page-bloc-pictos-bg);
   border-radius: 5000px;
@@ -184,6 +190,15 @@
   height: 100%;
 }
 
+/* Map category filter styling */
+/* stylelint-disable-next-line selector-class-pattern */
+.cards.map-category p {
+  line-height: 1.5em;
+  padding: 0;
+  letter-spacing: .02em;
+  margin: 0;
+}
+
 .cards.icons-grid .cards-card-body .icon {
   min-width: 120px;
   min-height: 120px;
@@ -194,6 +209,15 @@
 
 .cards.icons-grid .cards-card-body > p {
   margin: 0;
+}
+
+.cards.map-category ul li:first-child p {
+  text-transform: uppercase;
+  color: var(--site-color);
+  margin-bottom: 20px;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: .05em;
 }
 
 .cards.icons-grid .cards-card-body > p:has(.icon) {
@@ -235,15 +259,6 @@
   }
 }
 
-/* Map category filter styling */
-/* stylelint-disable-next-line selector-class-pattern */
-.cards.map-category p {
-  line-height: 1.5em;
-  padding: 0;
-  letter-spacing: .02em;
-  margin: 0;
-}
-
 .cards.map-category ul {
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   grid-gap: 0;
@@ -255,14 +270,6 @@
   justify-content: center;
 }
 
-.cards.map-category ul li p {
-  color: var(--site-color-2);
-  transition: color 0.5s;
-  text-decoration: none;
-  position: relative;
-  display: inline-block;
-}
-
 .cards.map-category ul li a[data-categoryid]:not([data-categoryid="category_10"]) span:has(img) {
   background-color: var(--site-color-2);
   border-radius: 50%;
@@ -271,21 +278,6 @@
 .cards.map-category ul li {
   background-color: var(--map-carte-icone-container);
   border: none;
-}
-
-.cards.map-category ul li:first-child p {
-  text-transform: uppercase;
-  color: var(--site-color);
-  margin-bottom: 20px;
-  font-size: 12px;
-  font-weight: 500;
-  letter-spacing: .05em;
-}
-
-.cards.map-category ul li p .icon {
-  height: 120px;
-  width: 120px;
-  margin: 0;
 }
 
 .cards.map-category a[data-categoryid="all"] {
@@ -372,12 +364,6 @@
     margin: 10px;
     display: flex;
     justify-content: left;
-  }
-
-  .cards.map-category ul li p .icon {
-    height: 78px;
-    width: 78px;
-    margin: 0;
   }
 
   .cards.map-category ul.mobile-view {
