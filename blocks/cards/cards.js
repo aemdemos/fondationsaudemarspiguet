@@ -316,6 +316,7 @@ export default function decorate(block) {
     };
 
     window.addEventListener('resize', () => {
+      scrollToCard(currentIndex);
       if (currentIndex <= 0) {
         prevButton.disabled = true;
       } else {

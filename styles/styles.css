@@ -568,7 +568,7 @@ main .section.float-right .default-content-wrapper .content-wrapper ul li em {
   }
 
   main .section.light-grey-bg:has(.cards-wrapper) .default-content-wrapper {
-    padding: 0 80px;
+    padding: 0;
   }
 }
 
@@ -642,8 +642,7 @@ main .section.light, main .section.highlight {
 }
 
 main .section.light-grey-bg:has(.cards-wrapper) {
-  padding-top: 100px;
-  padding-bottom: 100px;
+  padding: 100px 20px;
   margin: 100px 0 0;
 }
 
