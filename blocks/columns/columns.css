@@ -152,7 +152,7 @@
 
 /* Two-column block styling - Mobile First */
 
-.section:has(.columns.two-column) h1#media-newsroom {
+.section:has(.columns.two-column) h1 {
   color: #6B7E7C;
   font-size: 32px;
   font-weight: 400;
@@ -263,7 +263,7 @@
 
 
 @media (width >= 900px) {
-  .section:has(.columns.two-column) h1#media-newsroom {
+  .section:has(.columns.two-column) h1 {
     float: left;
     font-size: 50px;
     letter-spacing: 0.08em;
