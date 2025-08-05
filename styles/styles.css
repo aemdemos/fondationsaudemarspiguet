@@ -777,7 +777,7 @@ main .section.light-grey-bg .default-content-wrapper p.button-container a.button
 }
 
 main .section.cream-bg.table-container.accordion-container .default-content-wrapper h2{
-    color: var(--team-cat-titre);
+    color: var(--team-cat-titre); 
     font-size: var(--heading-font-size-l);
     margin-bottom: 50px;
     padding: 15px 0;
@@ -789,6 +789,10 @@ main .section.cream-bg.table-container.accordion-container .default-content-wrap
 
 main .section.cream-bg.table-container.accordion-container .default-content-wrapper:nth-child(3) h2 {
     margin-top: 60px;
+}
+
+main .section.cream-bg.table-container.accordion-container{
+  margin-bottom: 0;
 }
 
 @media (width >= 900px) {
