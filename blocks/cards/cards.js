@@ -4,6 +4,18 @@ import {
   div, h2, button,
 } from '../../scripts/dom-helpers.js';
 
+function getVisibleCardCount(track, cards) {
+  const trackWidth = track.offsetWidth;
+  const cardWidth = cards[0].offsetWidth;
+  return Math.floor(trackWidth / cardWidth);
+}
+
+function scrollToCard(cardEl) {
+  if (cardEl) {
+    cardEl.scrollIntoView({ behavior: 'smooth', inline: 'start' });
+  }
+}
+
 export default function decorate(block) {
   /* change to ul, li */
   const ul = document.createElement('ul');
@@ -77,30 +89,25 @@ export default function decorate(block) {
     const track = block.querySelector('.carousel-track');
     const prevButton = block.querySelector('.carousel-prev');
     const nextButton = block.querySelector('.carousel-next');
-    let index = 0;
-
-    const scrollAmount = () => {
-      const card = block.querySelector('.card');
-      return card.offsetWidth;
-    };
+    let currentIndex = 0;
 
     nextButton.onclick = () => {
-      index += 1;
-      console.log('index', index);
-      track.scrollTo({ left: scrollAmount(), behavior: 'smooth' });
-      prevButton.disabled = false;
-      if (index >= numCards) {
-        nextButton.disabled = true;
+      if (currentIndex < cards.length - 1) {
+        prevButton.disabled = false;
+        currentIndex += 1;
+        scrollToCard(cards[currentIndex]);
+        // update next button
+        nextButton.disabled = currentIndex >= cards.length - getVisibleCardCount(track, cards);
       }
     };
 
     prevButton.onclick = () => {
-      index -= 1;
-      console.log('index', index);
-      track.scrollTo({ left: -scrollAmount(), behavior: 'smooth' });
-      nextButton.disabled = false;
-      if (index <= 0) {
-        prevButton.disabled = true;
+      if (currentIndex > 0) {
+        nextButton.disabled = false;
+        currentIndex -= 1;
+        scrollToCard(cards[currentIndex]);
+        // update previous button
+        prevButton.disabled = currentIndex <= 0;
       }
     };
   }
