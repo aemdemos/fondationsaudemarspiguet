@@ -17,7 +17,7 @@ import {
   
   class Products {
     // eslint-disable-next-line max-len
-    constructor(productsPartner, productsDuration, productsTitle, productsCategory, productsImage, productsLocation, productsPath, productsHomepage) {
+    constructor(productsPartner, productsDuration, productsTitle, productsCategory, productsImage, productsLocation, productsPath, productsFeatured, productsFeaturedContent) {
       this.productsPartner = productsPartner;
       this.productsDuration = productsDuration;
       this.productsTitle = productsTitle;
@@ -25,7 +25,8 @@ import {
       this.productsImage = productsImage;
       this.productsLocation = productsLocation;
       this.productsPath = productsPath;
-      this.productsHomepage = productsHomepage;
+      this.productsFeatured = productsFeatured;
+      this.productsFeaturedContent = productsFeaturedContent;
     }
   }
   
@@ -75,7 +76,7 @@ import {
 
         // c) Featured content
         const featuredContent = div({ class: 'featured-content' });
-        featuredContent.textContent = result.productsFeatured || '';
+        featuredContent.textContent = result.productsFeaturedContent || '';
         metadataDiv.append(featuredContent);
 
         // d) Buttons div
@@ -147,7 +148,7 @@ import {
     const productResults = [];
     getProducts.forEach((product) => {
       // eslint-disable-next-line max-len
-      const productResult = new Products(product.partner, product.duration, product.title, product.category, product.image, product.location, product.path, product.homepage);
+      const productResult = new Products(product.partner, product.duration, product.title, product.category, product.image, product.location, product.path, product.featured, product.featuredcontent);
       productResults.push(productResult);
     });
     return resultParsers[blockType](productResults);
