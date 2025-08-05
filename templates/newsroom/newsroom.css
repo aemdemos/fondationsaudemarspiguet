@@ -72,6 +72,7 @@ main .media-filter-container .media-filter-container-right {
     gap: 5px;
     align-items: center;
     margin-bottom: 20px;
+    margin-right: 15px;
 }
 
 main .media-filter-container .media-filter-container-right .filter-top-btn {
