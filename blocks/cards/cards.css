@@ -98,8 +98,6 @@
 
 .cards.icons-grid .cards-card-body .icon img {
   background-color: var(--page-bloc-pictos-bg);
-  object-fit: contain;
-  display: block;
   border-radius: 5000px;
   line-height: 0;
   aspect-ratio: unset;
@@ -159,7 +157,6 @@
   width: 100%;
   scroll-behavior: smooth;
   order: 2;
-  column-gap: 50px;
 }
 
 .cards.icons-grid > ul > li {
@@ -183,6 +180,8 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
+  width: 100%;
+  height: 100%;
 }
 
 .cards.icons-grid .cards-card-body .icon {
@@ -248,9 +247,8 @@
   }
 
   .cards.icons-grid .cards-card-body .icon {
-    min-width: 120px;
-    min-height: 120px;
     width: 100%;
+    height: 100%;
   }
   
   .cards.icons-grid > ul {
