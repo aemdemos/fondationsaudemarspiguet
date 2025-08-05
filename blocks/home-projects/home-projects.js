@@ -73,10 +73,10 @@ import {
         title.textContent = result.productsTitle || '';
         metadataDiv.append(title);
 
-        // c) Homepage content
-        const homepageContent = div({ class: 'homepage-content' });
-        homepageContent.textContent = result.productsHomepage || '';
-        metadataDiv.append(homepageContent);
+        // c) Featured content
+        const featuredContent = div({ class: 'featured-content' });
+        featuredContent.textContent = result.productsFeatured || '';
+        metadataDiv.append(featuredContent);
 
         // d) Buttons div
         const buttonsDiv = div({ class: 'buttons-container' });
@@ -114,8 +114,8 @@ import {
       .chunks(1000)
       .all();
 
-    // Filter by homepage metadata first - only include items where homepage has any content
-    const homepageProducts = rawProducts1.filter((item) => item.homepage && item.homepage.trim().length > 0);
+    // Filter by featured metadata first - only include items where featured has any content
+    const featuredProducts = rawProducts1.filter((item) => item.featured && item.featured.trim().length > 0);
 
     // Function to extract years from duration string
     const extractYears = ((duration) => {
@@ -128,7 +128,7 @@ import {
     });
 
     // Sort the filtered array based on year2 first, then year1
-    homepageProducts.sort((item1, item2) => {
+    featuredProducts.sort((item1, item2) => {
       const yearsA = extractYears(item1.duration);
       const yearsB = extractYears(item2.duration);
 
@@ -140,7 +140,7 @@ import {
       return yearsB.year1 - yearsA.year1;
     });
 
-    return homepageProducts;
+    return featuredProducts;
   }
   
   const loadresults = async (getProducts) => {
