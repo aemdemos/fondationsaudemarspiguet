@@ -1,0 +1,89 @@
+.home-projects-wrapper {
+    padding: 0 !important;
+    margin: 0 !important;
+    max-width: 100% !important;
+}
+
+.home-projects.block .project-article {
+    font-size: 18px;
+    max-height: 550px;
+    position: relative;
+}
+
+.home-projects.block .project-article .parent-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 15px;
+    max-width: 1200px !important;
+    margin: 0 auto;
+    padding: 45px 0 0 0;
+}
+
+.home-projects.block .project-article div.project-image {
+    box-sizing: border-box;
+    width: 50%;
+    flex: 0 0 50%;
+}
+
+.home-projects.block .project-article .project-metadata .category-location-duration {
+    display: block;
+    text-transform: uppercase;
+    font-size: 10px;
+    text-align: left;
+    margin-bottom: 10px;
+    letter-spacing: .06em;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.home-projects.block .project-article .project-metadata h3 {
+    color: var(--projet-bloc-titre);
+    font-size: 40px;
+    margin-bottom: 50px;
+    font-weight: 400;
+    font-feature-settings: 'clig' 0;
+    font-style: normal;
+    line-height: 1.2em;
+    letter-spacing: .08em;
+}
+
+.home-projects.block .project-article .project-metadata .featured-content {
+    line-height: 1.5em;
+    padding-bottom: 50px;
+    letter-spacing: .02em;
+}
+
+.home-projects.block .project-article .project-metadata .buttons-container {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: calc(50vw - 15px);
+}
+
+.home-projects.block .project-article .project-metadata .buttons-container a:first-of-type {
+    background-color: var(--projet-bloc-btn-first);
+}
+
+.home-projects.block .project-article .project-metadata .buttons-container a {
+    width: 50%;
+    background-image: url(/icons/btn_fleche_right.svg);
+    background-position: calc(100% - 10px) center;
+    background-repeat: no-repeat;
+    padding: 13px 50px 13px 15px;
+    color: #FFF;
+    font-size: 12px;
+    text-transform: uppercase;
+    text-align: left;
+    box-sizing: border-box;
+    border: none;
+    cursor: pointer;
+    letter-spacing: .12em;
+    font-weight: 500;
+    line-height: normal;
+    transition: color 0.5s;
+    text-decoration: none;
+    position: relative;
+    display: inline-block;
+    background-color: var(--site-color);
+}

@@ -104,6 +104,7 @@ import {
         metadataDiv.append(buttonsDiv);
 
         cardContainer.append(metadataDiv);
+        cardContainer.classList.add('parent-container');
         blockContents.push([cardContainer]);
       });
       return blockContents;
@@ -165,7 +166,16 @@ import {
     decorateBlock(builtBlock);
     await loadBlock(builtBlock);
     builtBlock.classList.add('featured');
-    applyFadeUpAnimation(builtBlock, parentDiv);
+    builtBlock.querySelectorAll('.columns.block > div').forEach((el, idx) => {
+      el.classList.add('project-article');
+      // Add odd/even background color
+      if (idx % 2 === 0) {
+        el.style.backgroundColor = 'var(--projet-bg-odd)';
+      } else {
+        el.style.backgroundColor = 'var(--projet-bg-even)';
+      }
+    });
+    // applyFadeUpAnimation(builtBlock, parentDiv);
   
     block.append(parentDiv);
   }
