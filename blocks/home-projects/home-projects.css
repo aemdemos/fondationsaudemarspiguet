@@ -6,7 +6,7 @@
 
 .home-projects.block .project-article {
     font-size: 18px;
-    max-height: 580px;
+    /* max-height: 580px; */
     position: relative;
 }
 
@@ -17,7 +17,7 @@
 
 .home-projects.block .project-article .parent-container {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-between;
     gap: 40px;
     max-width: 1200px !important;
@@ -27,8 +27,8 @@
 
 .home-projects.block .project-article div.project-image {
     box-sizing: border-box;
-    width: 50%;
-    flex: 0 0 50%;
+    width: 90%;
+    margin: 0 auto;
 }
 
 .home-projects.block .project-article div.project-image a div {
@@ -40,6 +40,11 @@
     height: 100%;
     object-fit: cover;
     object-position: center;
+}
+
+.home-projects.block .project-article .project-metadata {
+    width: 90%;
+    margin: 0 auto;
 }
 
 .home-projects.block .project-article .project-metadata .category-location-duration {
@@ -71,10 +76,12 @@
 }
 
 .home-projects.block .project-article .project-metadata .buttons-container {
-    position: absolute;
+    position: relative;
     bottom: 0;
     right: 0;
-    width: calc(50vw - 40px);
+    width: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
 .home-projects.block .project-article .project-metadata .buttons-container a:first-of-type {
@@ -82,7 +89,7 @@
 }
 
 .home-projects.block .project-article .project-metadata .buttons-container a {
-    width: 50%;
+    width: 100%;
     background-image: url(/icons/btn_fleche_right.svg);
     background-position: calc(100% - 10px) center;
     background-repeat: no-repeat;
@@ -102,4 +109,34 @@
     position: relative;
     display: inline-block;
     background-color: var(--site-color);
+}
+
+@media (width >= 900px) {
+    .home-projects.block .project-article .parent-container {
+        flex-direction: row;
+    }
+
+    .home-projects.block .project-article div.project-image {
+        box-sizing: border-box;
+        width: 50%;
+        flex: 0 0 50%;
+    }
+
+    .home-projects.block .project-article .project-metadata .buttons-container {
+        flex-direction: row;
+        width: calc(50vw - 40px);
+        position: absolute;
+        bottom: 0;
+        right: 0;
+    }
+
+    .home-projects.block .project-article .project-metadata .buttons-container a {
+        width: 50%;
+    }
+}
+
+@media (width > 900px) and (width < 1200px) {
+    .home-projects.block .project-article .project-metadata .buttons-container {
+        position: relative;
+    }
 }
