@@ -163,6 +163,10 @@ import {
     const parentDiv = div(
       builtBlock,
     );
+
+     // applyFadeUpAnimation(builtBlock, parentDiv);
+    applyFadeUpAnimation(builtBlock, parentDiv);
+    
     decorateBlock(builtBlock);
     await loadBlock(builtBlock);
     builtBlock.classList.add('featured');
@@ -175,7 +179,6 @@ import {
         el.style.backgroundColor = 'var(--projet-bg-even)';
       }
     });
-    // applyFadeUpAnimation(builtBlock, parentDiv);
   
     block.append(parentDiv);
   }

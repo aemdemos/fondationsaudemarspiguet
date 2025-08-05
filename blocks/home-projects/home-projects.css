@@ -6,7 +6,6 @@
 
 .home-projects.block .project-article {
     font-size: 18px;
-    /* max-height: 580px; */
     position: relative;
 }
 
@@ -45,6 +44,9 @@
 .home-projects.block .project-article .project-metadata {
     width: 90%;
     margin: 0 auto;
+    box-sizing: border-box;
+    overflow: hidden;
+    word-wrap: break-word;
 }
 
 .home-projects.block .project-article .project-metadata .category-location-duration {
@@ -71,7 +73,7 @@
 
 .home-projects.block .project-article .project-metadata .featured-content {
     line-height: 1.5em;
-    padding-bottom: 50px;
+    padding-bottom: 20px;
     letter-spacing: .02em;
 }
 
@@ -118,14 +120,45 @@
 
     .home-projects.block .project-article div.project-image {
         box-sizing: border-box;
-        width: 50%;
-        flex: 0 0 50%;
+        width: 48%;
+        flex: 0 0 48%;
     }
 
     .home-projects.block .project-article .project-metadata .buttons-container {
-        flex-direction: row;
-        width: calc(50vw - 40px);
+        flex-direction: column;
+        width: 100%;
+        position: relative;
+        bottom: 0;
+        right: 0;
+    }
+
+    .home-projects.block .project-article .project-metadata .buttons-container a {
+        width: 100%;
+    }
+}
+
+@media (width > 900px) and (width < 1340px) {
+    .home-projects.block .project-article .project-metadata .buttons-container {
+        position: relative;
+    }
+
+    .home-projects.block .project-article .parent-container {
+        margin-left: 80px;
+        margin-right: 80px;
+    }
+
+    .home-projects.block .project-article .project-metadata {
+        width: 48%;
+        max-width: calc(50vw - 80px);
+        overflow: hidden;
+    }
+}
+
+@media (width >= 1340px) {
+    .home-projects.block .project-article .project-metadata .buttons-container {
         position: absolute;
+        flex-direction: row;
+        width: calc(51vw - 33px);
         bottom: 0;
         right: 0;
     }
@@ -133,10 +166,5 @@
     .home-projects.block .project-article .project-metadata .buttons-container a {
         width: 50%;
     }
-}
 
-@media (width > 900px) and (width < 1200px) {
-    .home-projects.block .project-article .project-metadata .buttons-container {
-        position: relative;
-    }
 }
