@@ -1,27 +1,20 @@
 /* global WebImporter */
 export default function parse(element, { document }) {
-  // Table header matches exactly the block name
+  // Create the exact header row: an array with a single string value
   const headerRow = ['Columns (columns26)'];
 
-  // 1st column: left column - all partner/project details, referencing the .detail_info div
-  const detailInfo = element.querySelector('.detail_info');
-  let leftColContent = [];
-  if (detailInfo) leftColContent.push(detailInfo);
+  // Get left column content: .social_container div (all left footer info)
+  const leftCol = element.querySelector('.social_container') || document.createElement('div');
+  // Get right column content: .footer_menu div (all right footer info)
+  const rightCol = element.querySelector('.footer_menu') || document.createElement('div');
 
-  // 2nd column: right column - title, paragraphs, and gallery
-  const h1 = element.querySelector('h1');
-  const detailContent = element.querySelector('.detail_content');
-  const gallery = element.querySelector('.projets_detail_galery');
-  let rightColContent = [];
-  if (h1) rightColContent.push(h1);
-  if (detailContent) rightColContent.push(detailContent);
-  if (gallery) rightColContent.push(gallery);
-
-  // Table rows: always two columns, in one row (plus header)
-  const rows = [
+  // Construct cells: first row is a single header cell, second row is two cells (columns)
+  const cells = [
     headerRow,
-    [leftColContent, rightColContent],
+    [leftCol, rightCol],
   ];
-  const table = WebImporter.DOMUtils.createTable(rows, document);
+
+  // Create the table and replace the original element
+  const table = WebImporter.DOMUtils.createTable(cells, document);
   element.replaceWith(table);
 }

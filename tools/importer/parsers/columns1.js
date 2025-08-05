@@ -1,87 +1,43 @@
 /* global WebImporter */
 export default function parse(element, { document }) {
-    // Table header: must match example exactly
-    const headerRow = ['Columns (columns1)'];
-  
-    // ----------- Extract content for each column/cell -----------
-    // First row, first column: left/top: intro text block
-    const leftTop = document.createElement('div');
-    // Hero block with headline, category, date, and hero image
-    const newsHeader = element.querySelector('.news_bloc_header');
-    if (newsHeader) leftTop.appendChild(newsHeader);
-    // Intro paragraph
-    const intro = element.querySelector('.news_detail_big_intro');
-    if (intro) leftTop.appendChild(intro);
-    // Links and credits
-    const content1 = element.querySelector('.news_detail_big_content_1');
-    if (content1) leftTop.appendChild(content1);
-  
-    // First row, second column: right/top: hero/feature image
-    let rightTop = '';
-    // In the news_bloc_header, there may be hero images as bg-images.
-    // Try to extract the most prominent one for the right cell visual (as in the example)
-    const heroImgDiv = element.querySelector('.news_bloc_header .page_hero_image .page_hero_image_middle.inside_middle');
-    if (heroImgDiv && heroImgDiv.style.backgroundImage) {
-      const urlMatch = heroImgDiv.style.backgroundImage.match(/url\(["']?(.*?)["']?\)/);
-      if (urlMatch) {
-        const img = document.createElement('img');
-        img.src = urlMatch[1];
-        img.alt = '';
-        rightTop = img;
-      }
-    }
-    // If not found, try to use <img> from gallery as fallback
-    if (!rightTop) {
-      const gallery1img = element.querySelector('.news_detail_big_galerie1 img');
-      if (gallery1img) {
-        const img = document.createElement('img');
-        img.src = gallery1img.getAttribute('src') || gallery1img.getAttribute('data-src');
-        img.alt = gallery1img.alt || '';
-        rightTop = img;
-      }
-    }
-  
-    // Second row, first column: left/bottom: another image (from second gallery)
-    let leftBottom = '';
-    const gallery2img = element.querySelector('.news_detail_big_galerie2 img');
-    if (gallery2img) {
-      const img = document.createElement('img');
-      img.src = gallery2img.getAttribute('src') || gallery2img.getAttribute('data-src');
-      img.alt = gallery2img.alt || '';
-      leftBottom = img;
-    }
-  
-    // Second row, second column: right/bottom: summary text, buttons, etc.
-    const rightBottom = document.createElement('div');
-    // Main article body (right side paragraphs, 2nd main content)
-    const contentRight = element.querySelector('.news_detail_big_contenu_right');
-    if (contentRight) rightBottom.appendChild(contentRight);
-    // Main body continued (from .news_detail_big_content_2)
-    const content2 = element.querySelector('.news_detail_big_content_2');
-    if (content2) rightBottom.appendChild(content2);
-    // Final summary/author/buttons
-    const content3 = element.querySelector('.news_detail_big_content_3');
-    if (content3) rightBottom.appendChild(content3);
-    // View more articles button
-    const btnPlus = element.querySelector('.news_detail_btn_plus');
-    if (btnPlus) rightBottom.appendChild(btnPlus);
-  
-    // --------- Compose the table ---------
-    const rows = [
-      headerRow,
-      [leftTop, rightTop],
-      [leftBottom, rightBottom]
-    ];
-  
-    // Add final row for 'Discover our activities' full-width, if present
-    const projectsSection = element.querySelector('.news_projets_autre');
-    if (projectsSection) {
-      // Only one cell, but must use 2 columns to fit the columns block structure
-      rows.push([projectsSection, '']);
-    }
-  
-    // Create and replace
-    const table = WebImporter.DOMUtils.createTable(rows, document);
-    element.replaceWith(table);
+  // Extract the left info column (detail_info)
+  const detailInfo = element.querySelector('.detail_info');
+  // Extract the right content column (detail_content)
+  const detailContent = element.querySelector('.detail_content');
+  // Extract all gallery images from the swiper-slide > img in the gallery block
+  const gal = element.querySelector('.projets_detail_galery');
+  let galleryImages = [];
+  if (gal) {
+    galleryImages = Array.from(gal.querySelectorAll('.swiper-slide img'));
   }
-  
+
+  // Compose table rows as per block requirement
+  // Header row: block name
+  const headerRow = ['Columns (columns1)'];
+  // First columns row: detailInfo (left), detailContent (right)
+  const firstRow = [detailInfo, detailContent];
+  // If there are images, arrange them in a second row
+  let secondRow = null;
+  if (galleryImages.length > 0) {
+    // Arrange images between two columns for visual balance
+    if (galleryImages.length === 1) {
+      secondRow = [galleryImages[0], ''];
+    } else if (galleryImages.length === 2) {
+      secondRow = [galleryImages[0], galleryImages[1]];
+    } else {
+      // More than 2 images: split as equally as possible
+      const half = Math.ceil(galleryImages.length / 2);
+      secondRow = [galleryImages.slice(0, half), galleryImages.slice(half)];
+    }
+  }
+
+  // Build the cells array: always header and first row, add second row if images exist
+  const cells = [headerRow, firstRow];
+  if (secondRow) {
+    cells.push(secondRow);
+  }
+
+  // Create and replace
+  const table = WebImporter.DOMUtils.createTable(cells, document);
+  element.replaceWith(table);
+}
