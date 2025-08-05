@@ -31,6 +31,7 @@ indices:
       - '/en/fondation-pour-les-arbres-news/**'
     exclude:
       - '/en/fondation-pour-les-arbres-news/'
+      - '/en/fondation-pour-les-arbres-news'
     target: /en/fondation-pour-les-arbres-news/news-index.json
     properties:
       title:
@@ -60,6 +61,9 @@ indices:
       layout:
         select: head > meta[name="layout"]
         value: attribute(el, "content")
+      article-color:
+        select: head > meta[name="article-color"]
+        value: attribute(el, "content")
       lastModified:
         select: none
         value: parseTimestamp(headers["last-modified"], "ddd, DD MMM YYYY hh:mm:ss GMT")
@@ -68,6 +72,7 @@ indices:
       - '/fr/fondation-pour-les-arbres-actualites/**'
     exclude:
       - '/fr/fondation-pour-les-arbres-actualites/'
+      - '/fr/fondation-pour-les-arbres-actualites'
     target: /fr/fondation-pour-les-arbres-actualites/news-index.json
     properties:
       title:
@@ -96,6 +101,9 @@ indices:
         value: attribute(el, "content")
       layout:
         select: head > meta[name="layout"]
+        value: attribute(el, "content")
+      article-color:
+        select: head > meta[name="article-color"]
         value: attribute(el, "content")
       lastModified:
         select: none
@@ -128,6 +136,9 @@ indices:
         value: attribute(el, "content")
       image:
         select: head > meta[property="og:image"]
+        value: attribute(el, "content")
+      homepage:
+        select: head > meta[name="homepage"]
         value: attribute(el, "content")
       links:
         select: head > meta[name="link-s-"]
@@ -166,6 +177,9 @@ indices:
         value: attribute(el, "content")
       image:
         select: head > meta[property="og:image"]
+        value: attribute(el, "content")
+      homepage:
+        select: head > meta[name="homepage"]
         value: attribute(el, "content")
       links:
         select: head > meta[name="lien-s-"]

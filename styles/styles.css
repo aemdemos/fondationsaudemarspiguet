@@ -133,6 +133,15 @@
 
   /* SECTIONS */
   --section-background-color: #d7d9d6;
+  --default-colored-text: #726248;
+
+  /* POLICY TEMPLATE */
+  --policy-template-link-color: #947F5F;
+  --policy-template-borders: #A49F94;
+
+  /* LANDING PAGE */
+  --input-color: #303030;
+  --input-placeholder-color: #B69859;
 }
 
 /* fallback fonts */
@@ -410,11 +419,8 @@ main > .section.extra-padding {
 }
 
 main .section.cream-bg {
-  background-color: var(--team-bg-page);
-}
-
-main .section.section.cream-bg.cards-container {
   padding: 80px 0;
+  background-color: var(--team-bg-page);
 }
 
 main .section.light-grey-bg {
@@ -428,16 +434,25 @@ main .section.light-grey-bg {
 
  main .section.float-right .default-content-wrapper {
   color: var(--text-color);
+  padding: 0 20px;
+}
+
+main .section.float-right .default-content-wrapper .container-col {
+  position: relative;
+  margin-left: -15px;
+  margin-right: -15px;
 }
 
  main .section.float-right .default-content-wrapper .heading-wrapper {
-  width: calc((((100% - (12 * 30px)) / 12) * 3) + (2 * 30px));
+  width: calc((((100% - (12*30px))/12)*12) + (11 * 30px));
+  box-sizing: border-box;
+  float: left;
+  margin: 15px;
 }
 
  main .section.float-right .default-content-wrapper .heading-wrapper h1{
-  float: left;
   position: relative;
-  margin: 15px;
+  margin: 15px 0;
   box-sizing: border-box;
   color: var(--site-color);
   text-transform: uppercase;
@@ -446,15 +461,30 @@ main .section.light-grey-bg {
   font-style: normal;
   line-height: 1.2em;
   letter-spacing: .08em;
+  font-size: 36px;
 }
 
  main .section.float-right .default-content-wrapper .content-wrapper{
   width: calc((((100% - (12 * 30px)) / 12) * 12) + (11 * 30px));
   float: right;
   margin: 15px;
+  box-sizing: border-box;
 }
 
- main .section.float-right .default-content-wrapper .content-wrapper ul li{
+main .section.soft-grey-bg.default-colored-text p {
+  line-height: 1.5;
+  letter-spacing: 0.02em;
+  font-weight: 400;
+  color: var(--default-colored-text);
+}
+
+.policy-template main .section .default-content-wrapper li {
+  font-size: 14px;
+  letter-spacing: 0.02em;
+  font-weight: 300;
+}
+
+main .section.float-right .default-content-wrapper .content-wrapper ul li{
   list-style: none;
   padding-left: 120px;
   position: relative;
@@ -472,6 +502,12 @@ main .section.float-right .default-content-wrapper .content-wrapper ul li::befor
   top: 10px;
   left: 100px;
   border-radius: 500px;
+}
+
+.policy-template main .default-content-wrapper p strong em {
+  letter-spacing: 0.01em;
+  font-weight: 450;
+  color: var(--policy-template-link-color);
 }
 
 main .section.float-right .default-content-wrapper .content-wrapper ul li em {
@@ -501,8 +537,22 @@ main .section.float-right .default-content-wrapper .content-wrapper ul li em {
     font-size: var(--heading-font-size-xl);
   }
 
+  main .section.float-right .default-content-wrapper {
+    padding: 0;
+  }
+
+  main .section.float-right {
+    padding: 65px 80px 50px;
+    margin: auto;
+    max-width: 1200px;
+  }
+
   main .section.float-right .default-content-wrapper .heading-wrapper{
     width: calc((((100% - (12*30px))/12)*9) + (8 * 30px));
+  }
+
+  main .section.float-right .default-content-wrapper .heading-wrapper h1 {
+    font-size: 50px;
   }
 
    main .section.float-right .default-content-wrapper .content-wrapper{
@@ -606,6 +656,10 @@ main .section.light-grey-bg:has(.cards-wrapper) .default-content-wrapper {
     max-width: 1200px;
 }
 
+.policy-template main .default-content-wrapper h2 {
+  padding-top: 60px;
+}
+
 main .section.light-grey-bg .default-content-wrapper h2 {
   margin: 0;
 }
@@ -614,6 +668,47 @@ main .section.light-grey-bg .default-content-wrapper h2 {
 main .section.light-grey-bg .default-content-wrapper .button-container {
   text-align: center;
   margin: 0 auto;
+}
+
+.cta-section {
+  padding-bottom: 50px;
+}
+
+.cta-section p.button-container {
+  text-align: center;
+  margin-top: 30px;
+}
+
+.cta-section p.button-container a.button:any-link {
+  background-color: var(--page-bloc-btn-bg);
+  background-image: url('/icons/btn_fleche_right.svg');
+  border-radius: unset;
+  overflow: unset;
+  background-position: calc(100% - 10px) center;
+  background-repeat: no-repeat;
+  padding: 13px 50px 13px 15px;
+  font-size: 12px;
+  text-transform: uppercase;
+  box-sizing: border-box;
+  border: none;
+  cursor: pointer;
+  letter-spacing: .12em;
+  font-weight: 500;
+  text-align: center;
+  min-width: 270px;
+  line-height: normal;
+  color: var(--page-bloc-btn);
+}
+
+@media (width >= 900px) {
+  .cta-section .default-content-wrapper p:first-child {
+    margin-left: 30%;
+    width: 70%;
+  }
+}
+
+main .section.quote-container .quote-wrapper {
+  margin-bottom: 30px;
 }
 
 main .section.light-grey-bg .default-content-wrapper p.button-container a.button {
@@ -636,4 +731,68 @@ main .section.light-grey-bg .default-content-wrapper p.button-container a.button
   overflow: unset;  
   min-width: 270px;
   margin: 0;
+}
+
+@media (width >= 900px) {
+  main .section.soft-grey-bg.default-colored-text p {
+    font-size: 20px;
+  }
+}
+
+.policy-template main .section .default-content-wrapper p:last-child {
+  padding-bottom: 50px;
+  border-bottom: 1px solid var(--policy-template-borders);
+}
+
+.policy-template main .section:last-of-type .default-content-wrapper p:last-child {
+  border-bottom: none;
+}
+
+.policy-template main .section .default-content-wrapper li::marker {
+  color: var(--policy-template-borders);
+}
+
+.policy-template main .default-content-wrapper p u,
+.policy-template main .default-content-wrapper p strong u {
+  text-decoration: none;
+  color: var(--default-colored-text);
+}
+
+.policy-template main .default-content-wrapper p a {
+  color: var(--site-color-2);
+  transition: color 0.5s;
+  text-decoration: none;
+  position: relative;
+  display: inline-block;
+}
+
+.policy-template main .default-content-wrapper p em a {
+  color: black;
+  text-decoration: none;
+  pointer-events: none;
+  cursor: default;
+  font-style: normal;
+}
+
+.policy-template main .default-content-wrapper p strong {
+  font-weight: bold;
+}
+
+.policy-template main .default-content-wrapper p strong u {
+  font-weight: bold;
+  color: var(--policy-template-link-color);
+}
+
+@media (width >= 900px) {
+  .policy-template main .default-content-wrapper h2 {
+    padding-top: 100px;
+  }
+
+  .policy-template main .section .default-content-wrapper li {
+    font-size: var(--body-font-size-m);
+  }
+
+  .policy-template main .default-content-wrapper ul {
+    padding-left: 100px;
+  }
 }

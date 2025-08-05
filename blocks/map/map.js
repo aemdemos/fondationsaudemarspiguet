@@ -1,5 +1,5 @@
 import { div } from '../../scripts/dom-helpers.js';
-import getPathSegments from '../../scripts/utils.js';
+import { getPathSegments } from '../../scripts/utils.js';
 
 async function loadScript(src, attrs) {
   return new Promise((resolve, reject) => {
@@ -27,7 +27,7 @@ function generateNonce() {
 
 async function googleMapLoader(nonce, locale) {
   const mapScript = document.createElement('script');
-  mapScript.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyByG84JqtyiGaS_SUF4ruHrdIjQgM01t9U&callback=initMap&language=${locale}&loading=async`;
+  mapScript.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyB_b3L2RUs0MUbtDZH7ORae1gswT03z4AY&callback=initMap&language=${locale}&loading=async`;
   mapScript.defer = true;
   mapScript.async = true;
   mapScript.nonce = nonce;
@@ -35,11 +35,12 @@ async function googleMapLoader(nonce, locale) {
 }
 
 async function loadMapScripts(nonce) {
+  // Load jQuery first (required by initmapscript.js)
+  await loadScript('https://code.jquery.com/jquery-3.7.1.min.js');
   // Load initmapscript.js first so it defines initMap()
-  await loadScript('/blocks/map/infobox.js', window.placeholder);
   await loadScript('/blocks/map/initmapscript.js', nonce);
 
-  // Then load other dependencies
+  // Then load other dependencies (infobox.js will be loaded inside initMap after Google Maps API)
   await loadScript('/blocks/map/mapstyles.js', nonce);
   await loadScript('/blocks/map/markerclusterer.js', nonce);
 }
