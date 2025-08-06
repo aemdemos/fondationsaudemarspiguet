@@ -588,18 +588,6 @@ main .section.light, main .section.highlight {
   display: none;
 }
 
-/* H2 Animation Styles */
-.animate {
-  opacity: 0;
-  transform: translateX(-50px);
-  transition: opacity 1.5s ease, transform 1.5s ease;
-}
-
-.animate.aos-animate {
-  opacity: 1;
-  transform: translateX(0);
-}
-
 /* Back to top button */
 
   .page-level-btn {
