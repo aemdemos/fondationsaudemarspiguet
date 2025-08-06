@@ -99,3 +99,19 @@
     padding: 60px 20px 40px;
   }
 }
+
+.quote.default blockquote {
+  text-align: left;
+  align-items: flex-start;
+  justify-content: flex-start; 
+  background-color: white;
+}
+
+.quote.default .quote-quotation {
+  text-align: left; 
+  margin-left: 0;
+  margin-right: auto;
+  max-width: 100%;
+  display: block;
+  width: 100%;
+}
