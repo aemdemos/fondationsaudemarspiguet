@@ -3,6 +3,7 @@ import {
   buildBlock,
   decorateBlock,
   loadBlock,
+  fetchPlaceholders,
 } from '../../scripts/aem.js';
 import { getLanguage } from '../../scripts/scripts.js';
 import ffetch from '../../scripts/ffetch.js';
@@ -34,7 +35,7 @@ const blockType = 'columns';
 // block builder for the specific block types
 const resultParsers = {
   // Parse results into a columns block
-  columns: (results) => {
+  columns: (results, leftButtonText, rightButtonText) => {
     const blockContents = [];
     const currentLanguage = getLanguage();
 
@@ -84,18 +85,12 @@ const resultParsers = {
       const projectsListingUrl = currentLanguage === 'fr'
         ? '/fr/fondation-pour-les-arbres-nos-projets'
         : '/en/fondation-pour-les-arbres-projects';
-      const projectsListingText = currentLanguage === 'fr'
-        ? 'Découvrir les projets'
-        : 'Discover the projects';
       const projectsListingButton = a({ href: projectsListingUrl, class: 'btn-projects-listing' });
-      projectsListingButton.textContent = projectsListingText;
+      projectsListingButton.textContent = leftButtonText;
 
       // 2nd button - Individual project
-      const projectDetailText = currentLanguage === 'fr'
-        ? 'En savoir plus sur ce projet'
-        : 'Learn more about this project';
       const projectDetailButton = a({ href: result.productsPath, class: 'btn-project-detail' });
-      projectDetailButton.textContent = projectDetailText;
+      projectDetailButton.textContent = rightButtonText;
 
       buttonsDiv.append(projectsListingButton);
       buttonsDiv.append(projectDetailButton);
@@ -149,13 +144,17 @@ async function getProductsdata() {
 }
 
 const loadresults = async (getProducts) => {
+  const currentLanguage = getLanguage();
+  const placeholders = await fetchPlaceholders(currentLanguage);
+  const leftButtonText = placeholders.homeProjectsLeftButton || '';
+  const rightButtonText = placeholders.homeProjectsRightButton || '';
   const productResults = [];
   getProducts.forEach((product) => {
     // eslint-disable-next-line max-len
     const productResult = new Products(product.partner, product.duration, product.title, product.category, product.image, product.location, product.path, product.featured, product.featuredcontent);
     productResults.push(productResult);
   });
-  return resultParsers[blockType](productResults);
+  return resultParsers[blockType](productResults, leftButtonText, rightButtonText);
 };
 
 export default async function decorate(block) {
