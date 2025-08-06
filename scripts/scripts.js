@@ -54,30 +54,49 @@ export function moveInstrumentation(from, to) {
 }
 
 /**
- * Decorates h2 headings with animation class
+ * Decorates h1, h2 headings with repeatable scroll animations
  * @param {Element} main The container element
  */
 function decorateHeadings(main) {
   const headingElements = main.querySelectorAll('h1, h2');
+
   headingElements.forEach((heading) => {
-    heading.classList.add('animate');
-  });
+    // Set initial styles (starting from left, invisible)
+    heading.style.opacity = '0';
+    heading.style.transform = 'translateX(-50px)';
 
-  // Create intersection observer to trigger left-to-right animation
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('aos-animate');
-        observer.unobserve(entry.target);
-      }
+    // Create individual observer for each heading
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          // Use Web Animations API for reliable animation (left to right)
+          entry.target.animate([
+            { opacity: 0, transform: 'translateX(-50px)' },
+            { opacity: 1, transform: 'translateX(0)' },
+          ], {
+            duration: 1500,
+            easing: 'ease',
+            fill: 'forwards',
+          });
+        } else {
+          // Fast reset animation back to left
+          entry.target.animate([
+            { opacity: 1, transform: 'translateX(0)' },
+            { opacity: 0, transform: 'translateX(-50px)' },
+          ], {
+            duration: 100,
+            easing: 'ease',
+            fill: 'forwards',
+          });
+        }
+      });
+    }, {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px',
     });
-  }, {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px',
-  });
 
-  // Observe all heading elements
-  headingElements.forEach((heading) => observer.observe(heading));
+    observer.observe(heading);
+  });
 }
 
 /**
