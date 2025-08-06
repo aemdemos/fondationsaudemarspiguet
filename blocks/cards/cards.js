@@ -8,8 +8,6 @@ import {
 function getVisibleCardCount(track, cardsBody) {
   const trackWidth = track.offsetWidth;
   const cardWidth = cardsBody.offsetWidth;
-  console.log('trackWidth', track.offsetWidth);
-  console.log('cardWidth', cardsBody.offsetWidth);
   return Math.floor(trackWidth / cardWidth);
 }
 
@@ -266,8 +264,7 @@ export default function decorate(block) {
     ulist.classList.add('carousel-track');
     const cards = block.querySelectorAll('ul li');
     const cardsBodyDiv = block.querySelector('ul li .cards-card-body');
-    const numCards = cards.length;
-    console.log('num cards', numCards);
+
     cards.forEach((card) => {
       card.classList.add('card');
     });
@@ -286,17 +283,13 @@ export default function decorate(block) {
     const visibleCount = getVisibleCardCount(track, cardsBodyDiv);
     prevButton.disabled = currentIndex <= 0;
     nextButton.disabled = currentIndex >= cards.length - visibleCount;
-    console.log('inital index', currentIndex);
 
     nextButton.onclick = () => {
       if (currentIndex < cards.length - 1) {
-        console.log('next before click', currentIndex);
         prevButton.disabled = false;
         currentIndex += 1;
-        console.log('next after click', currentIndex);
         scrollToCard(cards[currentIndex]);
         // update next button
-        console.log('Next Visible Card Count', getVisibleCardCount(track, cardsBodyDiv));
         const visibleCards = getVisibleCardCount(track, cardsBodyDiv);
         nextButton.disabled = currentIndex >= cards.length - visibleCards;
       }
@@ -304,13 +297,10 @@ export default function decorate(block) {
 
     prevButton.onclick = () => {
       if (currentIndex > 0) {
-        console.log('prev before click', currentIndex);
         nextButton.disabled = false;
         currentIndex -= 1;
-        console.log('prev after click', currentIndex);
         scrollToCard(cards[currentIndex]);
         // update previous button
-        console.log('Prev Visible Card Count', getVisibleCardCount(track, cardsBodyDiv));
         prevButton.disabled = currentIndex <= 0;
       }
     };
@@ -322,7 +312,6 @@ export default function decorate(block) {
       } else {
         prevButton.disabled = false;
       }
-      console.log('Window Resize Visible Card Count', getVisibleCardCount(track, cardsBodyDiv));
       if (currentIndex >= cards.length - getVisibleCardCount(track, cardsBodyDiv)) {
         nextButton.disabled = true;
       } else {
