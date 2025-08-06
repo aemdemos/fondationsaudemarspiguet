@@ -14,7 +14,7 @@ import {
   getMetadata,
   buildBlock,
 } from './aem.js';
-import { decorateListingCards } from './utils.js';
+import { decorateListingCards, enableAnimationOnScroll } from './utils.js';
 
 const LANGUAGES = new Set(['en', 'fr']);
 let language;
@@ -296,6 +296,7 @@ async function loadLazy(doc) {
   loadCSS(`${window.hlx.codeBasePath}/styles/lazy-styles.css`);
   loadFonts();
   backToTopWithIcon();
+  enableAnimationOnScroll();
 }
 
 /**

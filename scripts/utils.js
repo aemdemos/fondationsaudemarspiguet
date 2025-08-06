@@ -61,3 +61,49 @@ export function decorateListingCards(doc) {
     contentDiv.append(containerCol);
   });
 }
+
+/**
+ * Enables scroll-based animations for elements with 'animate-on-scroll' class
+ * Uses the exact same pattern as applyFadeUpAnimation but for horizontal movement
+ */
+export function enableAnimationOnScroll() {
+  const elements = document.querySelectorAll('.animate-on-scroll');
+
+  elements.forEach((element) => {
+    // Set initial styles (starting from right, invisible)
+    element.style.opacity = '0';
+    element.style.transform = 'translateX(20%)';
+
+    // Create individual observer for each element
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          // Use Web Animations API for reliable animation
+          entry.target.animate([
+            { opacity: 0, transform: 'translateX(20%)' },
+            { opacity: 1, transform: 'translateX(0)' },
+          ], {
+            duration: 1500,
+            easing: 'ease-out',
+            fill: 'forwards',
+          });
+        } else {
+          // Use Web Animations API for instant reset
+          entry.target.animate([
+            { opacity: 1, transform: 'translateX(0)' },
+            { opacity: 0, transform: 'translateX(20%)' },
+          ], {
+            duration: 100, // Very fast reset
+            easing: 'ease-out',
+            fill: 'forwards',
+          });
+        }
+      });
+    }, {
+      threshold: 0.1,
+      rootMargin: '50px 0px -50px 0px', // Trigger earlier/later to make reset more visible
+    });
+
+    observer.observe(element);
+  });
+}
