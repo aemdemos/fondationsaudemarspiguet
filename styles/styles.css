@@ -804,3 +804,48 @@ main .section.cream-bg.table-container.accordion-container{
   }
 }
 
+
+/* Colorful text styling for any element with colorful class */
+
+.colorful p {
+  width: 100vw !important;
+  margin-left: calc(50% - 50vw) !important;
+  margin-right: calc(50% - 50vw) !important;
+  box-sizing: border-box !important;
+  padding: 75px 80px 100px !important;
+  font-size: 40px !important; 
+  font-family: Antarctica, sans-serif; 
+  -webkit-font-smoothing: antialiased; 
+  font-weight: 400; 
+  line-height: normal; 
+  letter-spacing: 2.4px; 
+  text-align: left; 
+  padding: 75px 80px 100px 80px !important;
+}
+
+.colorful strong,
+.colorful b {
+  color: #947F5F; 
+  font-weight: normal; 
+}
+
+.colorful em,
+.colorful i {
+  color: #6b7e7c; 
+  font-style: normal; 
+}
+
+.colorful u {
+  color: #695D5B; 
+  text-decoration: none; 
+}
+
+/* Mobile responsive for colorful class */
+@media (width <= 600px) {
+  .colorful p{
+    font-size: 30px !important; 
+    letter-spacing: 1.2px; 
+    line-height: 1.3; 
+  }
+}
+
