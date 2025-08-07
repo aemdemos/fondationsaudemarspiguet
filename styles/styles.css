@@ -812,6 +812,7 @@ main .section.cream-bg.table-container.accordion-container{
     font-size: 30px !important; 
     letter-spacing: 1.2px; 
     line-height: 1.3; 
+    background-color: transparent;
   }
 
 /* stylelint-disable-next-line no-descending-specificity */
@@ -864,6 +865,7 @@ main .section.cream-bg.table-container.accordion-container{
 }
 
 /* Target elements with both colored-text AND warm-grey-bg classes */
+/* stylelint-disable-next-line no-descending-specificity */
 .colored-text.warm-grey-bg p {
   font-size: 24px !important; 
 }
