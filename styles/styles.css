@@ -863,3 +863,14 @@ main .section.cream-bg.table-container.accordion-container{
   }
 }
 
+/* Target elements with both colored-text AND warm-grey-bg classes */
+.colored-text.warm-grey-bg p {
+  font-size: 24px !important; 
+}
+
+/* Mobile responsive for the combination */
+@media (width >= 900px) {
+  .colored-text.warm-grey-bg p {
+    font-size: 40px !important;
+  }
+}
