@@ -808,35 +808,35 @@ main .section.cream-bg.table-container.accordion-container{
 /* Colorful text styling for any element with colorful class */
 
 /* stylelint-disable-next-line no-descending-specificity */
- .colorful p{
+ .colored-text p{
     font-size: 30px !important; 
     letter-spacing: 1.2px; 
     line-height: 1.3; 
   }
 
 /* stylelint-disable-next-line no-descending-specificity */
-.colorful strong,
-.colorful b {
+.colored-text strong,
+.colored-text b {
   color: #947F5F; 
   font-weight: normal; 
 }
 
 /* stylelint-disable-next-line no-descending-specificity */
-.colorful em,
-.colorful i {
+.colored-text em,
+.colored-text i {
   color: #6b7e7c; 
   font-style: normal; 
 }
 
 /* stylelint-disable-next-line no-descending-specificity */
-.colorful u {
+.colored-text u {
   color: #695D5B; 
   text-decoration: none; 
 }
 
 /* Mobile responsive for colorful class */
 @media (width >= 600px) {
-  .colorful p{
+  .colored-text p{
     font-size: 40px !important; 
     letter-spacing: 1.2px; 
     line-height: 1.3; 
@@ -847,7 +847,7 @@ main .section.cream-bg.table-container.accordion-container{
 
 /* Larger screen responsive for colorful class */
 @media (width >= 1200px) {
-  .colorful p{
+  .colored-text p{
     width: 100vw !important;
   margin-left: calc(50% - 50vw) !important;
   margin-right: calc(50% - 50vw) !important;
