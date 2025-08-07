@@ -257,24 +257,19 @@ export default function decorate(block) {
   }
 
   if (block.classList.contains('icons-grid')) {
-    // This cards block turns into a carousel in small screen views
-    // so we need to add the carousel elements, classes and attributes
-    block.classList.add('carousel');
-    const ulist = block.querySelector('ul');
-    ulist.classList.add('carousel-track');
+    // This block behaves as a carousel in small screens view.
+    // Existing elements are used as components of the carousel.
+    // Each li item acts as a carousel card or slide.
     const cards = block.querySelectorAll('ul li');
     const cardsBodyDiv = block.querySelector('ul li .cards-card-body');
-
-    cards.forEach((card) => {
-      card.classList.add('card');
-    });
 
     const prevBtn = button({ class: 'carousel-prev' });
     const nextBtn = button({ class: 'carousel-next' });
 
     block.append(prevBtn, nextBtn);
 
-    const track = block.querySelector('.carousel-track');
+    // The ul element behaves like a carousel track
+    const track = block.querySelector('ul');
     const prevButton = block.querySelector('.carousel-prev');
     const nextButton = block.querySelector('.carousel-next');
     let currentIndex = 0;
