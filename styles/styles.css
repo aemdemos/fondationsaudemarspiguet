@@ -876,6 +876,17 @@ main .section.cream-bg.table-container.accordion-container{
   margin-bottom: 0;
 }
 
+@media (width >= 600px) {
+  main .section.warm-grey-bg:has(.cards-wrapper) {
+    padding: 100px 20px;
+  }
+
+  /* added because of generic selector rule: .columns.buttons > div > div */
+  main .section.warm-grey-bg .columns-wrapper .columns > div > div {
+    flex: unset;
+  }
+}
+
 @media (width >= 900px) {
   .policy-template main .default-content-wrapper h2 {
     padding-top: 100px;
@@ -883,6 +894,14 @@ main .section.cream-bg.table-container.accordion-container{
 
   .policy-template main .section .default-content-wrapper li {
     font-size: var(--body-font-size-m);
+  }
+
+  main .section.warm-grey-bg:has(.cards-wrapper) {
+    padding: 100px 80px;
+  }
+
+  main .section.warm-grey-bg .columns-wrapper .columns > div {
+    gap: 65px;
   }
 }
 

@@ -5,10 +5,19 @@ import {
   div, h2, button,
 } from '../../scripts/dom-helpers.js';
 
-function getVisibleCardCount(track, cardsBody) {
-  const trackWidth = track.offsetWidth;
-  const cardWidth = cardsBody.offsetWidth;
-  return Math.floor(trackWidth / cardWidth);
+function getVisibleCardCount(cards) {
+  let visibleCount = 1;
+  const viewportWidth = window.innerWidth;
+  if (viewportWidth < 600) {
+    visibleCount = 1;
+  } else if (viewportWidth >= 600 && viewportWidth < 900) {
+    visibleCount = 2;
+  } else if (viewportWidth >= 900 && viewportWidth < 1200) {
+    visibleCount = 3;
+  } else {
+    return cards.length;
+  }
+  return visibleCount;
 }
 
 function scrollToCard(cardEl) {
