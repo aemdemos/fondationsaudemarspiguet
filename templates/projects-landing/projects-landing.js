@@ -258,4 +258,15 @@ export default async function decorate(doc) {
       }, 300);
     });
   }
+
+  const viewAllButton = doc.getElementById('view-all');
+  viewAllButton.addEventListener('click', (event) => {
+    event.preventDefault();
+    updateWidth(inputCat.placeholder, inputLocation.placeholder);
+    $categoryInput.value = '';
+    $locationInput.value = '';
+    searchInput.value = '';
+    projectsListing.innerHTML = '';
+    showProjectCards(getProjects, doc);
+  });
 }
