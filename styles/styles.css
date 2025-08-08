@@ -429,6 +429,10 @@ main .section.light-grey-bg {
   background-color: var(--news-sophis-bg-intro);
 }
 
+main .section.light-grey-bg.float-right {
+  max-width: 100%;
+}
+
  main .section.float-right {
   padding: 65px 0 50px;
   margin: 0;
@@ -560,6 +564,18 @@ main .section.float-right .default-content-wrapper .content-wrapper ul li em {
    main .section.float-right .default-content-wrapper .content-wrapper{
     width: calc((((100% - (12*30px))/12)*9) + (8 * 30px));
   }
+
+  main .section.light-grey-bg:has(.cards-wrapper) {
+    padding: 100px;
+  }
+
+  main .section.light-grey-bg .cards-wrapper {
+    padding: 50px 80px;
+  }
+
+  main .section.light-grey-bg:has(.cards-wrapper) .default-content-wrapper {
+    padding: 0;
+  }
 }
 
 /* section metadata */
@@ -571,18 +587,6 @@ main .section.light, main .section.highlight {
 
 .section.hidden {
   display: none;
-}
-
-/* H2 Animation Styles */
-.animate {
-  opacity: 0;
-  transform: translateX(-50px);
-  transition: opacity 1.5s ease, transform 1.5s ease;
-}
-
-.animate.aos-animate {
-  opacity: 1;
-  transform: translateX(0);
 }
 
 /* Back to top button */
@@ -632,18 +636,17 @@ main .section.light, main .section.highlight {
 }
 
 main .section.light-grey-bg:has(.cards-wrapper) {
-  padding: 100px;
+  padding: 100px 20px;
   margin: 100px 0 0;
 }
 
 main .section.light-grey-bg .cards-wrapper {
-  padding: 50px 80px;
   max-width: 1200px;
+  padding: 0 5px;
 }
 
 main .section.light-grey-bg:has(.cards-wrapper) .default-content-wrapper {
     max-width: 1200px;
-    padding: 0 80px;
 }
 
 .policy-template main .default-content-wrapper h2 {
@@ -709,7 +712,7 @@ main .section.light-grey-bg .default-content-wrapper p.button-container a.button
   padding: 13px 50px 13px 15px;
   border-radius: unset;
   font-size: 12px;
-  font-weight: 400;
+  font-weight: 500;
   letter-spacing: .12em;
   line-height: normal;
   text-transform: uppercase;
@@ -733,9 +736,33 @@ main .section.light-grey-bg .default-content-wrapper p.button-container a.button
   padding-bottom: 50px;
   border-bottom: 1px solid var(--policy-template-borders);
 }
-
+  
 .policy-template main .section:last-of-type .default-content-wrapper p:last-child {
   border-bottom: none;
+  padding-bottom: 0;
+}
+
+.policy-template main .section:last-of-type {
+  margin-bottom: 0;
+  margin-top: 20px;
+}
+
+.policy-template main .last-modified {
+  font-size: 14px;
+  display: block;
+  padding: 20px 24px 65px;
+  letter-spacing: 0.02em;
+  line-height: var(--body-line-height);
+  font-weight: var(--body-font-weight);
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+@media (width >= 900px) {
+  .policy-template main .last-modified {
+    font-size: var(--body-font-size-m);
+    padding: 20px 80px 145px;
+  }
 }
 
 .policy-template main .section .default-content-wrapper li::marker {
@@ -773,6 +800,25 @@ main .section.light-grey-bg .default-content-wrapper p.button-container a.button
   color: var(--policy-template-link-color);
 }
 
+main .section.cream-bg.table-container.accordion-container .default-content-wrapper h2{
+    color: var(--team-cat-titre); 
+    font-size: var(--heading-font-size-l);
+    margin-bottom: 50px;
+    padding: 15px 0;
+}
+
+main .section.cream-bg.table-container.accordion-container .default-content-wrapper:nth-child(1) h2 {
+    margin-top: 30px;
+}
+
+main .section.cream-bg.table-container.accordion-container .default-content-wrapper:nth-child(3) h2 {
+    margin-top: 60px;
+}
+
+main .section.cream-bg.table-container.accordion-container{
+  margin-bottom: 0;
+}
+
 @media (width >= 900px) {
   .policy-template main .default-content-wrapper h2 {
     padding-top: 100px;
@@ -780,9 +826,5 @@ main .section.light-grey-bg .default-content-wrapper p.button-container a.button
 
   .policy-template main .section .default-content-wrapper li {
     font-size: var(--body-font-size-m);
-  }
-
-  .policy-template main .default-content-wrapper ul {
-    padding-left: 100px;
   }
 }
