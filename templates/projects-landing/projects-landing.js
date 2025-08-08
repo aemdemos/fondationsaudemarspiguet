@@ -164,10 +164,10 @@ export default async function decorate(doc) {
 
   doc.addEventListener('click', (e) => {
     if (
-      !categorysection.contains(e.target) &&
-      !locationsection.contains(e.target) &&
-      e.target !== $categoryInput &&
-      e.target !== $locationInput
+      !categorysection.contains(e.target)
+      && !locationsection.contains(e.target)
+      && e.target !== $categoryInput
+      && e.target !== $locationInput
     ) {
       categorysection.style.display = 'none';
       locationsection.style.display = 'none';

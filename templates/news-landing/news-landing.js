@@ -116,7 +116,6 @@ export default async function decorate(doc) {
   // code for getting width of input dynamically
   const categorySectionDiv = doc.querySelector('.category-section');
   const inputCat = doc.querySelector('.category-input');
-  const language = getLanguage();
   const mirror = span({ class: 'input-category-span' });
   // Function to set width
   function updateWidth(text) {
