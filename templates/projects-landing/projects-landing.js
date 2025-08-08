@@ -193,4 +193,69 @@ export default async function decorate(doc) {
     const currentLocText = inputLocation.value || inputLocation.placeholder;
     updateWidth(currentCatText, currentLocText);
   });
+
+  const projectsListing = document.querySelector('.projects-listing');
+  const categoryItems = categorysection.querySelectorAll('li');
+  const locationItems = locationsection.querySelectorAll('li');
+  let selectedCategory = '';
+  let selectedLocation = '';
+
+  function applyFilters() {
+    let filteredProjects = getProjects;
+
+    if (selectedCategory) {
+      filteredProjects = filteredProjects.filter(
+        (project) => project.category && project.category.includes(selectedCategory),
+      );
+    }
+
+    if (selectedLocation) {
+      filteredProjects = filteredProjects.filter(
+        (project) => project.location && project.location.includes(selectedLocation),
+      );
+    }
+
+    projectsListing.innerHTML = '';
+    console.log(filteredProjects);
+    showProjectCards(filteredProjects, doc);
+  }
+
+  categoryItems.forEach((item) => {
+    item.addEventListener('click', (event) => {
+      selectedCategory = event.target.textContent;
+      $categoryInput.value = selectedCategory;
+      updateWidth(selectedCategory, $locationInput.value);
+      categorysection.style.display = 'none';
+      applyFilters();
+    });
+  });
+
+  locationItems.forEach((item) => {
+    item.addEventListener('click', (event) => {
+      selectedLocation = event.target.textContent;
+      $locationInput.value = selectedLocation;
+      updateWidth($categoryInput.value, selectedLocation);
+      locationsection.style.display = 'none';
+      applyFilters();
+    });
+  });
+
+  const searchInput = document.getElementById('filtersearch');
+  let debounceTimer;
+  if (searchInput) {
+    searchInput.addEventListener('input', (event) => {
+      clearTimeout(debounceTimer);
+      debounceTimer = setTimeout(() => {
+        const searchTerm = event.target.value.toLowerCase();
+        const filteredProject = searchTerm.length < 2
+          ? getProjects
+          : getProjects.filter((projects) => {
+            const title = projects.title.toLowerCase();
+            return title.includes(searchTerm);
+          });
+        projectsListing.innerHTML = '';
+        showProjectCards(filteredProject, document);
+      }, 300);
+    });
+  }
 }
