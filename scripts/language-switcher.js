@@ -12,6 +12,11 @@ function getPagePathWithoutLanguage() {
 
 // Fetch language mappings
 async function fetchLanguageMappings() {
+  // Use centrally loaded placeholders, fallback to fetch if not available
+  if (window.placeholders?.['language-switcher']) {
+    return window.placeholders['language-switcher'];
+  }
+
   try {
     const response = await fetch('/placeholders.json?sheet=language-switcher');
     const json = response.ok ? await response.json() : {};
