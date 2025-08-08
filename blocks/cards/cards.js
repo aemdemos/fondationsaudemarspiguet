@@ -13,7 +13,7 @@ function getVisibleCardCount(track, cardsBody) {
 
 function scrollToCard(cardEl) {
   if (cardEl) {
-    const track = cardEl.closest('.carousel-track');
+    const track = cardEl.closest('ul');
     if (track) {
       const cardOffset = cardEl.offsetLeft;
       track.scrollTo({

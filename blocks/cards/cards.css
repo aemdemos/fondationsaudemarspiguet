@@ -141,17 +141,13 @@
     right: 8px;
 }
 
-.cards.icons-grid.statistics button.carousel-prev {
-  display: block;
-  position:  unset;
+/*.cards.icons-grid.statistics button.carousel-prev {
   transform: translate(-15px, 353%);
 }
 
 .cards.icons-grid.statistics button.carousel-next {
-  display: block;
-  position:  unset;
   transform: translate(15px, 353%);
-}
+}*/
 
 .cards.icons-grid button:disabled {
     opacity: .35;
@@ -221,6 +217,7 @@
   width: 100%;
   height: auto;
   aspect-ratio: 1/1;
+  padding: 40px;
 }
 
 .cards.icons-grid.statistics .cards-card-body > h4 {
