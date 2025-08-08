@@ -13,7 +13,14 @@ function getVisibleCardCount(track, cardsBody) {
 
 function scrollToCard(cardEl) {
   if (cardEl) {
-    cardEl.scrollIntoView({ behavior: 'smooth', inline: 'start' });
+    const track = cardEl.closest('.carousel-track');
+    if (track) {
+      const cardOffset = cardEl.offsetLeft;
+      track.scrollTo({
+        left: cardOffset,
+        behavior: 'smooth',
+      });
+    }
   }
 }
 
@@ -301,7 +308,7 @@ export default function decorate(block) {
     };
 
     window.addEventListener('resize', () => {
-      scrollToCard(currentIndex);
+      scrollToCard(cards[currentIndex]);
       if (currentIndex <= 0) {
         prevButton.disabled = true;
       } else {
