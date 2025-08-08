@@ -14,6 +14,7 @@ import {
   getMetadata,
   buildBlock,
   toCamelCase,
+  fetchPlaceholders,
 } from './aem.js';
 import { decorateListingCards } from './utils.js';
 
@@ -155,6 +156,17 @@ export function getLanguage(curPath = window.location.pathname, resetCache = fal
   return getLanguageFromPath(curPath, resetCache);
 }
 
+export async function load404() {
+  const placeholders = await fetchPlaceholders(`${getLanguage()}`);
+  const { pageNotFoundText } = placeholders;
+
+  // Update the paragraph text with placeholder content
+  const errorMessage = document.querySelector('.error-message-container p');
+  if (errorMessage && pageNotFoundText) {
+    errorMessage.textContent = pageNotFoundText;
+  }
+}
+
 /**
  * Builds all synthetic blocks in a container element.
  * @param {Element} main The container element
@@ -166,6 +178,56 @@ function buildAutoBlocks() {
     // eslint-disable-next-line no-console
     console.error('Auto Blocking failed', error);
   }
+}
+
+function getPolicyTemplateDynamicData(main) {
+  const fetchclass = document.querySelector('.policy-template');
+  fetch('/query-index.json')
+    .then((res) => res.json())
+    .then(async (output) => {
+      const currentPath = window.location.pathname;
+      const segs = currentPath.split('/');
+      const pageSlug = segs[segs.length - 1];
+
+      let i; let pageData;
+      if (fetchclass) {
+        for (i = 0; i < output.total; i += 1) {
+          if (output.data[i].path === currentPath) {
+            pageData = output.data[i];
+          }
+        }
+
+        if (pageData) {
+          const datechanged = pageData.lastModified;
+          const date = new Date(datechanged * 1000);
+          const formattedEng = `${date.toLocaleDateString('en-US', { month: 'short' })} ${date.getDate()}, ${date.getFullYear()}`;
+          const formattedFr = `${date.getDate()} ${date.toLocaleDateString('fr-FR', { month: 'long' })}, ${date.getFullYear()}`;
+          // fetch placeholders based on current language
+          const currentLanguage = getLanguage();
+          const placeholders = await fetchPlaceholders(currentLanguage);
+          const strEng = `${formattedEng}`;
+          const strFr = `${formattedFr}`;
+          const info = document.createElement('span');
+          info.classList.add('last-modified');
+
+          if (currentLanguage === 'en') {
+            if (pageSlug === 'privacy-notice') {
+              info.textContent = `${placeholders.privacyPolicyUpdateText} ${strEng}`;
+            } else if (pageSlug === 'terms-of-use') {
+              info.textContent = `${placeholders.termsOfUseUpdateText} ${strEng}`;
+            }
+          } else if (currentLanguage === 'fr') {
+            if (pageSlug === 'declaration-de-confidentialite') {
+              info.textContent = `${placeholders.privacyPolicyUpdateText} ${strFr}`;
+            } else if (pageSlug === 'conditions-dutilisation') {
+              info.textContent = `${placeholders.termsOfUseUpdateText} ${strFr}`;
+            }
+          }
+
+          main.appendChild(info);
+        }
+      }
+    });
 }
 
 /**
@@ -396,6 +458,7 @@ async function loadLazy(doc) {
   loadCSS(`${window.hlx.codeBasePath}/styles/lazy-styles.css`);
   loadFonts();
   backToTopWithIcon();
+  getPolicyTemplateDynamicData(main);
 }
 
 /**
