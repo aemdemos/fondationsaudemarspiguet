@@ -153,25 +153,11 @@ export default async function decorate(doc) {
   const $categoryInput = doc.querySelector('.category-input');
   $categoryInput.addEventListener('click', () => {
     categorysection.style.display = categorysection.style.display === 'block' ? 'none' : 'block';
-    locationsection.style.display = 'none';
   });
 
   const $locationInput = doc.querySelector('.location-input');
   $locationInput.addEventListener('click', () => {
     locationsection.style.display = locationsection.style.display === 'block' ? 'none' : 'block';
-    categorysection.style.display = 'none';
-  });
-
-  doc.addEventListener('click', (e) => {
-    if (
-      !categorysection.contains(e.target)
-      && !locationsection.contains(e.target)
-      && e.target !== $categoryInput
-      && e.target !== $locationInput
-    ) {
-      categorysection.style.display = 'none';
-      locationsection.style.display = 'none';
-    }
   });
 
   // code for getting width of input dynamically
@@ -195,6 +181,18 @@ export default async function decorate(doc) {
     inputLocation.style.width = `${mirrorLoc.offsetWidth}px`;
   }
 
+  doc.addEventListener('click', (e) => {
+    if (
+      !categorysection.contains(e.target)
+      && !locationsection.contains(e.target)
+      && e.target !== $categoryInput
+      && e.target !== $locationInput
+    ) {
+      categorysection.style.display = 'none';
+      locationsection.style.display = 'none';
+    }
+  });
+
   // Hidden span to measure text width
   mirrorCat.style.font = getComputedStyle(inputCat).font;
   mirrorLoc.style.font = getComputedStyle(inputLocation).font;
@@ -208,49 +206,36 @@ export default async function decorate(doc) {
     updateWidth(currentCatText, currentLocText);
   });
 
+
+
   const projectsListing = document.querySelector('.projects-listing');
   const categoryItems = categorysection.querySelectorAll('li');
   const locationItems = locationsection.querySelectorAll('li');
-  let selectedCategory = '';
-  let selectedLocation = '';
-
-  function applyFilters() {
-    let filteredProjects = getProjects;
-
-    if (selectedCategory) {
-      filteredProjects = filteredProjects.filter(
-        (project) => project.category && project.category.includes(selectedCategory),
-      );
-    }
-
-    if (selectedLocation) {
-      filteredProjects = filteredProjects.filter(
-        (project) => project.location && project.location.includes(selectedLocation),
-      );
-    }
-
-    projectsListing.innerHTML = '';
-    console.log(filteredProjects);
-    showProjectCards(filteredProjects, doc);
-  }
-
   categoryItems.forEach((item) => {
     item.addEventListener('click', (event) => {
-      selectedCategory = event.target.textContent;
+      const selectedCategory = event.target.textContent;
       $categoryInput.value = selectedCategory;
       updateWidth(selectedCategory, $locationInput.value);
       categorysection.style.display = 'none';
-      applyFilters();
+      locationsection.style.display = 'none';
+      const filteredprojects = getProjects.filter((project) => project.category
+      && project.category.includes(selectedCategory));
+      projectsListing.innerHTML = '';
+      showProjectCards(filteredprojects, doc);
     });
   });
 
   locationItems.forEach((item) => {
     item.addEventListener('click', (event) => {
-      selectedLocation = event.target.textContent;
+      const selectedLocation = event.target.textContent;
       $locationInput.value = selectedLocation;
       updateWidth($categoryInput.value, selectedLocation);
       locationsection.style.display = 'none';
-      applyFilters();
+      categorysection.style.display = 'none';
+      const filteredprojects = getProjects.filter((project) => project.location
+      && project.location.includes(selectedLocation));
+      projectsListing.innerHTML = '';
+      showProjectCards(filteredprojects, doc);
     });
   });
 
