@@ -203,16 +203,19 @@ main .projects-listing {
 
 .projects-listing .projects-partner {
     color: var(--site-color-2);
+    text-transform: uppercase
 }
 
 .projects-listing .projects-location, .projects-listing .projects-duration {
     color: var(--site-color);
+    text-transform: uppercase
 }
 
 .projects-listing .projects-category {
     color: var(--site-color-2);
     font-size: 12px;
     font-weight: 300;
+    text-transform: uppercase
 }
 
 
