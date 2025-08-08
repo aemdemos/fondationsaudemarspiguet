@@ -257,7 +257,7 @@ export default function decorate(block) {
   }
 
   if (block.classList.contains('icons-grid')) {
-    // This block behaves as a carousel in small screens view.
+    // This block behaves as a carousel in small/medium screen views.
     // Existing elements are used as components of the carousel.
     // Each li item acts as a carousel card or slide.
     const cards = block.querySelectorAll('ul li');
@@ -312,6 +312,16 @@ export default function decorate(block) {
       } else {
         nextButton.disabled = false;
       }
+    });
+  }
+
+  if (block.classList.contains('statistics')) {
+    const colors = ['#6b7e7c', '#a49f94', '#9aa198', '#9d9b88']; // Add more colors as needed
+    const cards = document.querySelectorAll('.cards-card-body');
+
+    cards.forEach((card, index) => {
+      const color = colors[index % colors.length]; // Loop through colors
+      card.style.backgroundColor = color;
     });
   }
 }

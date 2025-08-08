@@ -428,6 +428,10 @@ main .section.light-grey-bg {
   background-color: var(--news-sophis-bg-intro);
 }
 
+main .section.warm-grey-bg {
+  background-color: var(--chiffres-bloc-bg);
+}
+
 main .section.light-grey-bg.float-right {
   max-width: 100%;
 }
@@ -568,11 +572,23 @@ main .section.float-right .default-content-wrapper .content-wrapper ul li em {
     padding: 100px;
   }
 
+  main .section.warm-grey-bg:has(.cards-wrapper) {
+    padding: 100px;
+  }
+
   main .section.light-grey-bg .cards-wrapper {
     padding: 50px 80px;
   }
 
+  main .section.warm-grey-bg .cards-wrapper {
+    padding: 50px 80px;
+  }
+
   main .section.light-grey-bg:has(.cards-wrapper) .default-content-wrapper {
+    padding: 0;
+  }
+
+    main .section.warm-grey-bg:has(.cards-wrapper) .default-content-wrapper {
     padding: 0;
   }
 }
@@ -639,13 +655,29 @@ main .section.light-grey-bg:has(.cards-wrapper) {
   margin: 100px 0 0;
 }
 
+main .section.warm-grey-bg:has(.cards-wrapper) {
+  padding: 40px 20px;
+  margin: 100px 0 0;
+}
+
 main .section.light-grey-bg .cards-wrapper {
   max-width: 1200px;
   padding: 0 5px;
 }
 
+main .section.warm-grey-bg .cards-wrapper {
+  max-width: 1200px;
+  padding: 0 5px;
+  margin-bottom: 40px;
+}
+
 main .section.light-grey-bg:has(.cards-wrapper) .default-content-wrapper {
     max-width: 1200px;
+}
+
+main .section.warm-grey-bg:has(.cards-wrapper) .default-content-wrapper {
+    max-width: 1200px;
+    padding: 0;
 }
 
 .policy-template main .default-content-wrapper h2 {
@@ -656,8 +688,17 @@ main .section.light-grey-bg .default-content-wrapper h2 {
   margin: 0;
 }
 
+main .section.warm-grey-bg .default-content-wrapper h2 {
+  margin: 0 0 40px;
+}
+
 /* Default button styles */
 main .section.light-grey-bg .default-content-wrapper .button-container {
+  text-align: center;
+  margin: 0 auto;
+}
+
+main .section.warm-grey-bg .default-content-wrapper .button-container {
   text-align: center;
   margin: 0 auto;
 }
@@ -723,6 +764,47 @@ main .section.light-grey-bg .default-content-wrapper p.button-container a.button
   overflow: unset;  
   min-width: 270px;
   margin: 0;
+}
+
+main .section.warm-grey-bg .columns-wrapper .columns {
+  padding: 0;
+  margin-bottom: 20px;
+}
+
+main .section.warm-grey-bg .columns-wrapper .columns > div {
+ gap: 10px;
+}
+
+main .section.warm-grey-bg .columns-wrapper .columns p.button-container a.button {
+  background-color: var(--chiffres-bloc-btn-bg);
+  background-image: url('/icons/btn_fleche_right.svg');
+  background-position: calc(100% - 10px) center;
+  background-repeat: no-repeat;
+  padding: 13px 50px 13px 15px;
+  border-radius: unset;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: .12em;
+  line-height: normal;
+  text-transform: uppercase;
+  box-sizing: border-box;
+  border: none;
+  cursor: pointer;
+  color: var(--chiffres-bloc-btn);
+  text-align: center;
+  overflow: unset;  
+  min-width: 270px;
+  margin: 0;
+  display: inline-block;
+}
+
+main .section.warm-grey-bg .columns-wrapper .columns p.button-container a.button:hover {
+  text-decoration: none;
+  opacity: .7;
+}
+
+main .section.warm-grey-bg .columns-wrapper .columns p.button-container a.button::after {
+  all: unset;
 }
 
 @media (width >= 900px) {

@@ -122,6 +122,7 @@
     transform: translateY(353%);
     order: 1;
     position: absolute;
+    left: 8px;
 }
 
 .cards.icons-grid button.carousel-next {
@@ -140,6 +141,18 @@
     right: 8px;
 }
 
+.cards.icons-grid.statistics button.carousel-prev {
+  display: block;
+  position:  unset;
+  transform: translate(-15px, 353%);
+}
+
+.cards.icons-grid.statistics button.carousel-next {
+  display: block;
+  position:  unset;
+  transform: translate(15px, 353%);
+}
+
 .cards.icons-grid button:disabled {
     opacity: .35;
     cursor: auto;
@@ -155,6 +168,10 @@
   width: 100%;
   display: flex;
   padding: 50px 0;
+}
+
+.cards.icons-grid.statistics {
+  padding: 0;
 }
 
 .cards.icons-grid > ul {
@@ -195,6 +212,24 @@
   height: 100%;
 }
 
+.cards.icons-grid.statistics .cards-card-body {
+  color: #FFF;
+  font-weight: 400;;
+  background-color: var(--site-color);
+  border-radius: 5000px;
+  margin: 0 auto;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1/1;
+}
+
+.cards.icons-grid.statistics .cards-card-body > h4 {
+  font-size: 26px;
+  font-weight: 400;
+  line-height: 1.2em;
+  letter-spacing: .08em;
+}
+
 /* Map category filter styling */
 /* stylelint-disable-next-line selector-class-pattern */
 .cards.map-category p {
@@ -233,6 +268,12 @@
   letter-spacing: .05em;
 }
 
+.cards.icons-grid.statistics .cards-card-body > p {
+  font-size: 80px;
+  color: #FFF;
+  padding: 0;
+}
+
 .cards.icons-grid .cards-card-body > h4:has(.icon) {
   line-height: 0;
   padding: 0 45px;
@@ -263,6 +304,12 @@
     padding-left: 15px;
   }
 
+  .cards.map-category .cards-card-body {
+    margin: 10px;
+    display: flex;
+    justify-content: center;
+  }
+
   .cards.icons-grid .cards-card-body {
     width: calc(100% - 2em);
   }
@@ -271,12 +318,6 @@
 .cards.map-category ul {
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   grid-gap: 0;
-}
-
-.cards.map-category .cards-card-body {
-  margin: 10px;
-  display: flex;
-  justify-content: center;
 }
 
 .cards.map-category ul li a[data-categoryid]:not([data-categoryid="category_10"]) span:has(img) {
