@@ -735,9 +735,33 @@ main .section.light-grey-bg .default-content-wrapper p.button-container a.button
   padding-bottom: 50px;
   border-bottom: 1px solid var(--policy-template-borders);
 }
-
+  
 .policy-template main .section:last-of-type .default-content-wrapper p:last-child {
   border-bottom: none;
+  padding-bottom: 0;
+}
+
+.policy-template main .section:last-of-type {
+  margin-bottom: 0;
+  margin-top: 20px;
+}
+
+.policy-template main .last-modified {
+  font-size: 14px;
+  display: block;
+  padding: 20px 24px 65px;
+  letter-spacing: 0.02em;
+  line-height: var(--body-line-height);
+  font-weight: var(--body-font-weight);
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+@media (width >= 900px) {
+  .policy-template main .last-modified {
+    font-size: var(--body-font-size-m);
+    padding: 20px 80px 145px;
+  }
 }
 
 .policy-template main .section .default-content-wrapper li::marker {
@@ -803,4 +827,3 @@ main .section.cream-bg.table-container.accordion-container{
     font-size: var(--body-font-size-m);
   }
 }
-
