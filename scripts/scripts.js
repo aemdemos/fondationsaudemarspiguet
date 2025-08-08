@@ -13,6 +13,7 @@ import {
   loadCSS,
   getMetadata,
   buildBlock,
+  fetchPlaceholders,
 } from './aem.js';
 import { decorateListingCards } from './utils.js';
 
@@ -152,6 +153,17 @@ export function getLanguageFromPath(pathname, resetCache = false) {
 
 export function getLanguage(curPath = window.location.pathname, resetCache = false) {
   return getLanguageFromPath(curPath, resetCache);
+}
+
+export async function load404() {
+  const placeholders = await fetchPlaceholders(`${getLanguage()}`);
+  const { pageNotFoundText } = placeholders;
+
+  // Update the paragraph text with placeholder content
+  const errorMessage = document.querySelector('.error-message-container p');
+  if (errorMessage && pageNotFoundText) {
+    errorMessage.textContent = pageNotFoundText;
+  }
 }
 
 /**
