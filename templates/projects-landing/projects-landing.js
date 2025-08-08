@@ -153,11 +153,25 @@ export default async function decorate(doc) {
   const $categoryInput = doc.querySelector('.category-input');
   $categoryInput.addEventListener('click', () => {
     categorysection.style.display = categorysection.style.display === 'block' ? 'none' : 'block';
+    locationsection.style.display = 'none';
   });
 
   const $locationInput = doc.querySelector('.location-input');
   $locationInput.addEventListener('click', () => {
     locationsection.style.display = locationsection.style.display === 'block' ? 'none' : 'block';
+    categorysection.style.display = 'none';
+  });
+
+  doc.addEventListener('click', (e) => {
+    if (
+      !categorysection.contains(e.target) &&
+      !locationsection.contains(e.target) &&
+      e.target !== $categoryInput &&
+      e.target !== $locationInput
+    ) {
+      categorysection.style.display = 'none';
+      locationsection.style.display = 'none';
+    }
   });
 
   // code for getting width of input dynamically
