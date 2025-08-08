@@ -179,7 +179,7 @@ function buildAutoBlocks() {
   }
 }
 
-function dynamicDataFetch(main) {
+function getPolicyTemplateDynamicData(main) {
   const fetchclass = document.querySelector('.policy-template');
   fetch('/query-index.json')
     .then((res) => res.json())
@@ -377,7 +377,7 @@ async function loadLazy(doc) {
   loadCSS(`${window.hlx.codeBasePath}/styles/lazy-styles.css`);
   loadFonts();
   backToTopWithIcon();
-  dynamicDataFetch(main);
+  getPolicyTemplateDynamicData(main);
 }
 
 /**
