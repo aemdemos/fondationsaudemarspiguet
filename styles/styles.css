@@ -805,47 +805,68 @@ main .section.cream-bg.table-container.accordion-container{
 }
 
 /* stylelint-disable-next-line no-descending-specificity */
- .colored-text p{
+ main .section.colored-text p{
     font-size: 30px; 
     letter-spacing: 1.2px; 
     line-height: 1.3; 
     background-color: transparent;
+    font-family: Antarctica, sans-serif; 
+    -webkit-font-smoothing: antialiased; 
+    font-weight: 400;  
   }
 
-/* stylelint-disable-next-line no-descending-specificity */
-.colored-text strong,
-.colored-text b {
-  color: var(--news-category);
-  font-weight: normal; 
+  main .section.colored-text.warm-grey-bg p {
+  font-size: 24px; 
 }
 
 /* stylelint-disable-next-line no-descending-specificity */
-.colored-text em,
-.colored-text i {
+main .section.colored-text strong,
+main .section.colored-text b {
+  color: var(--news-category);
+  font-weight: 400; 
+}
+
+/* stylelint-disable-next-line no-descending-specificity */
+main .section.colored-text em,
+main .section.colored-text i {
   color: var(--site-color);
   font-style: normal; 
 }
 
 /* stylelint-disable-next-line no-descending-specificity */
-.colored-text u {
-  color: var(--default-colored-text); 
-  text-decoration: none; 
+main .section.colored-text u {
+  color: var(--default-colored-text);
+  text-decoration: none;
 }
 
 /* Mobile responsive for colorful class */
 @media (width >= 600px) {
-  .colored-text p{
+  main .section.colored-text p{
     font-size: 40px;
-    letter-spacing: 1.2px;
-    line-height: 1.3;
+    letter-spacing: 2.4px;
+    line-height: normal;
     padding-top: 40px;
     padding-bottom: 100px;
+  }
+
+  /* Override for combination at mobile sizes */
+  main .section.colored-text.warm-grey-bg p {
+    font-size: 24px ; /* Slightly larger for mobile */
+    padding-top: 20px ;
+    padding-bottom: 50px ;
+  }
+}
+
+/* Mobile responsive for the combination */
+@media (width >= 900px) {
+  main .section.colored-text.warm-grey-bg p {
+    font-size: 40px;
   }
 }
 
 /* Larger screen responsive for colorful class */
 @media (width >= 1200px) {
-  .colored-text p{
+  main .section.colored-text p{
   width: 100vw;
   margin-left: calc(50% - 50vw);
   margin-right: calc(50% - 50vw);
@@ -859,17 +880,14 @@ main .section.cream-bg.table-container.accordion-container{
   text-align: left; 
   padding: 75px 80px 100px;
   }
+
+   main .section.colored-text.warm-grey-bg p {
+    font-size: 42px; /* Slightly larger for large screens */
+    padding: 60px 80px 80px; /* Different padding */
+  }
 }
 
 /* Target elements with both colored-text AND warm-grey-bg classes */
 /* stylelint-disable-next-line no-descending-specificity */
-.colored-text.warm-grey-bg p {
-  font-size: 24px; 
-}
 
-/* Mobile responsive for the combination */
-@media (width >= 900px) {
-  .colored-text.warm-grey-bg p {
-    font-size: 40px;
-  }
-}
+
