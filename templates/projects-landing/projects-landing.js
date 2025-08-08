@@ -159,24 +159,22 @@ export default async function decorate(doc) {
     locationsection.style.display = locationsection.style.display === 'block' ? 'none' : 'block';
   });
 
-  // code for getting width of input dynamically
-  const categorySectionDiv = doc.querySelector('.category-section');
-  const locationSectionDiv = doc.querySelector('.location-section');
   const inputCat = doc.querySelector('.category-input');
   const inputLocation = doc.querySelector('.location-input');
-  const language = getLanguage();
-  if (language === 'fr') {
-    inputCat.style.minWidth = '60px';
-    inputLocation.style.minWidth = '60px';
-  }
-  const mirrorCat = span({ class: 'input-category-span' });
-  const mirrorLoc = span({ class: 'input-location-span' });
-  // Function to set width
-  function updateWidth(catText, locText) {
-    mirrorCat.textContent = catText;
-    mirrorLoc.textContent = locText;
-    inputCat.style.width = `${mirrorCat.offsetWidth}px`;
-    inputLocation.style.width = `${mirrorLoc.offsetWidth}px`;
+  
+  function setInputWidthToText(inputEl) {
+    const textToMeasure = inputEl.value || inputEl.placeholder;
+    const span = document.createElement('span');
+    const style = getComputedStyle(inputEl);
+    span.style.font = style.font;
+    span.style.whiteSpace = 'pre';
+    span.style.position = 'absolute';
+    span.style.visibility = 'hidden';
+    span.textContent = textToMeasure;
+    document.body.appendChild(span);
+    const width = span.offsetWidth;
+    span.remove();
+    inputEl.style.width = `${width}px`;
   }
 
   doc.addEventListener('click', (e) => {
@@ -191,31 +189,20 @@ export default async function decorate(doc) {
     }
   });
 
-  // Hidden span to measure text width
-  mirrorCat.style.font = getComputedStyle(inputCat).font;
-  mirrorLoc.style.font = getComputedStyle(inputLocation).font;
-  categorySectionDiv.appendChild(mirrorCat);
-  locationSectionDiv.appendChild(mirrorLoc);
-  updateWidth(inputCat.placeholder, inputLocation.placeholder);
-
-  window.addEventListener('resize', () => {
-    const currentCatText = inputCat.value || inputCat.placeholder;
-    const currentLocText = inputLocation.value || inputLocation.placeholder;
-    updateWidth(currentCatText, currentLocText);
-  });
-
   const projectsListing = document.querySelector('.projects-listing');
   const categoryItems = categorysection.querySelectorAll('li');
   const locationItems = locationsection.querySelectorAll('li');
+
   categoryItems.forEach((item) => {
     item.addEventListener('click', (event) => {
       const selectedCategory = event.target.textContent;
       $categoryInput.value = selectedCategory;
-      updateWidth(selectedCategory, $locationInput.value);
+      setInputWidthToText(inputCat);
       categorysection.style.display = 'none';
       locationsection.style.display = 'none';
-      const filteredprojects = getProjects.filter((project) => project.category
-      && project.category.includes(selectedCategory));
+      const filteredprojects = getProjects
+        .filter(project => !$locationInput.value || (project.location && project.location.includes($locationInput.value)))
+        .filter(project => project.category && project.category.includes(selectedCategory));
       projectsListing.innerHTML = '';
       showProjectCards(filteredprojects, doc);
     });
@@ -225,11 +212,14 @@ export default async function decorate(doc) {
     item.addEventListener('click', (event) => {
       const selectedLocation = event.target.textContent;
       $locationInput.value = selectedLocation;
-      updateWidth($categoryInput.value, selectedLocation);
+      setInputWidthToText(inputLocation);
       locationsection.style.display = 'none';
       categorysection.style.display = 'none';
-      const filteredprojects = getProjects.filter((project) => project.location
-      && project.location.includes(selectedLocation));
+
+      const filteredprojects = getProjects
+        .filter(project => !$categoryInput.value || (project.category && project.category.includes($categoryInput.value)))
+        .filter(project => project.location && project.location.includes(selectedLocation));
+
       projectsListing.innerHTML = '';
       showProjectCards(filteredprojects, doc);
     });
@@ -257,7 +247,11 @@ export default async function decorate(doc) {
   const viewAllButton = doc.getElementById('view-all');
   viewAllButton.addEventListener('click', (event) => {
     event.preventDefault();
-    updateWidth(inputCat.placeholder, inputLocation.placeholder);
+    requestAnimationFrame(() => {
+      setInputWidthToText(inputCat);
+      setInputWidthToText(inputLocation);
+      setInputWidthToText(searchInput)
+    });
     $categoryInput.value = '';
     $locationInput.value = '';
     searchInput.value = '';
@@ -274,4 +268,10 @@ export default async function decorate(doc) {
       showProjectCards(getProjects, doc);
     });
   }
+
+  requestAnimationFrame(() => {
+    setInputWidthToText(inputCat);
+    setInputWidthToText(inputLocation);
+    setInputWidthToText(searchInput)
+  });
 }
