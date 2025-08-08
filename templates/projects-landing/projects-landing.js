@@ -167,6 +167,7 @@ export default async function decorate(doc) {
   const language = getLanguage();
   if (language === 'fr') {
     inputCat.style.minWidth = '60px';
+    inputLocation.style.minWidth = '60px';
   }
   const mirrorCat = span({ class: 'input-category-span' });
   const mirrorLoc = span({ class: 'input-location-span' });
