@@ -117,9 +117,6 @@ export default async function decorate(doc) {
   const categorySectionDiv = doc.querySelector('.category-section');
   const inputCat = doc.querySelector('.category-input');
   const language = getLanguage();
-  if (language === 'fr') {
-    inputCat.style.minWidth = '60px';
-  }
   const mirror = span({ class: 'input-category-span' });
   // Function to set width
   function updateWidth(text) {
