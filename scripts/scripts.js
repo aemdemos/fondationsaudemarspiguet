@@ -185,7 +185,6 @@ function dynamicDataFetch(main) {
     .then((res) => res.json())
     .then(async (output) => {
       const currentPath = window.location.pathname;
-
       const segs = currentPath.split('/');
       const pageSlug = segs[segs.length - 1];
 
@@ -246,7 +245,6 @@ export function decorateMain(main) {
   decorateSections(main);
   decorateBlocks(main);
   decorateListingCards(main);
-  dynamicDataFetch(main);
 }
 
 /**
@@ -379,6 +377,7 @@ async function loadLazy(doc) {
   loadCSS(`${window.hlx.codeBasePath}/styles/lazy-styles.css`);
   loadFonts();
   backToTopWithIcon();
+  dynamicDataFetch(main);
 }
 
 /**
