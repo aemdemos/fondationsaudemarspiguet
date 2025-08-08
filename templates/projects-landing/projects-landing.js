@@ -206,8 +206,6 @@ export default async function decorate(doc) {
     updateWidth(currentCatText, currentLocText);
   });
 
-
-
   const projectsListing = document.querySelector('.projects-listing');
   const categoryItems = categorysection.querySelectorAll('li');
   const locationItems = locationsection.querySelectorAll('li');
