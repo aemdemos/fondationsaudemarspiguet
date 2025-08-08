@@ -110,7 +110,6 @@ export default async function decorate(doc) {
   $section.append($filterContainer, $projectsListing);
 
   const getProjects = await getProjectsdata();
-  console.log(getProjects);
   const allCategories = getProjects
     .flatMap((item) => (item.category || '').split('|'))
     .map((cat) => cat.trim())
@@ -175,8 +174,6 @@ export default async function decorate(doc) {
   function updateWidth(catText, locText) {
     mirrorCat.textContent = catText;
     mirrorLoc.textContent = locText;
-    console.log(catText);
-    console.log(locText);
     inputCat.style.width = `${mirrorCat.offsetWidth}px`;
     inputLocation.style.width = `${mirrorLoc.offsetWidth}px`;
   }
