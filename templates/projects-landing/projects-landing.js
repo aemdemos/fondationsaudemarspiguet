@@ -161,19 +161,18 @@ export default async function decorate(doc) {
 
   const inputCat = doc.querySelector('.category-input');
   const inputLocation = doc.querySelector('.location-input');
-  
   function setInputWidthToText(inputEl) {
     const textToMeasure = inputEl.value || inputEl.placeholder;
-    const span = document.createElement('span');
+    const spanForWidth = document.createElement('span');
     const style = getComputedStyle(inputEl);
-    span.style.font = style.font;
-    span.style.whiteSpace = 'pre';
-    span.style.position = 'absolute';
-    span.style.visibility = 'hidden';
-    span.textContent = textToMeasure;
-    document.body.appendChild(span);
-    const width = span.offsetWidth;
-    span.remove();
+    spanForWidth.style.font = style.font;
+    spanForWidth.style.whiteSpace = 'pre';
+    spanForWidth.style.position = 'absolute';
+    spanForWidth.style.visibility = 'hidden';
+    spanForWidth.textContent = textToMeasure;
+    document.body.appendChild(spanForWidth);
+    const width = spanForWidth.offsetWidth;
+    spanForWidth.remove();
     inputEl.style.width = `${width}px`;
   }
 
@@ -201,8 +200,9 @@ export default async function decorate(doc) {
       categorysection.style.display = 'none';
       locationsection.style.display = 'none';
       const filteredprojects = getProjects
-        .filter(project => !$locationInput.value || (project.location && project.location.includes($locationInput.value)))
-        .filter(project => project.category && project.category.includes(selectedCategory));
+        .filter((project) => !$locationInput.value
+        || (project.location && project.location.includes($locationInput.value)))
+        .filter((project) => project.category && project.category.includes(selectedCategory));
       projectsListing.innerHTML = '';
       showProjectCards(filteredprojects, doc);
     });
@@ -217,8 +217,9 @@ export default async function decorate(doc) {
       categorysection.style.display = 'none';
 
       const filteredprojects = getProjects
-        .filter(project => !$categoryInput.value || (project.category && project.category.includes($categoryInput.value)))
-        .filter(project => project.location && project.location.includes(selectedLocation));
+        .filter((project) => !$categoryInput.value
+        || (project.category && project.category.includes($categoryInput.value)))
+        .filter((project) => project.location && project.location.includes(selectedLocation));
 
       projectsListing.innerHTML = '';
       showProjectCards(filteredprojects, doc);
@@ -250,7 +251,7 @@ export default async function decorate(doc) {
     requestAnimationFrame(() => {
       setInputWidthToText(inputCat);
       setInputWidthToText(inputLocation);
-      setInputWidthToText(searchInput)
+      setInputWidthToText(searchInput);
     });
     $categoryInput.value = '';
     $locationInput.value = '';
@@ -272,6 +273,6 @@ export default async function decorate(doc) {
   requestAnimationFrame(() => {
     setInputWidthToText(inputCat);
     setInputWidthToText(inputLocation);
-    setInputWidthToText(searchInput)
+    setInputWidthToText(searchInput);
   });
 }
