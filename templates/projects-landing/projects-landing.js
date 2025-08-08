@@ -269,4 +269,14 @@ export default async function decorate(doc) {
     projectsListing.innerHTML = '';
     showProjectCards(getProjects, doc);
   });
+
+  const clearSearchBtn = doc.querySelector('.btn-search-clear');
+  if (clearSearchBtn) {
+    clearSearchBtn.addEventListener('click', (event) => {
+      event.preventDefault();
+      searchInput.value = '';
+      projectsListing.innerHTML = '';
+      showProjectCards(getProjects, doc);
+    });
+  }
 }
