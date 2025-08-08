@@ -484,6 +484,8 @@ main .section.colored-text p{
     font-family: Antarctica, sans-serif; 
     -webkit-font-smoothing: antialiased; 
     font-weight: 400;  
+    padding-top: 40px;
+    padding-bottom: 80px;
   }
 
 main .section.soft-grey-bg.default-colored-text p {
