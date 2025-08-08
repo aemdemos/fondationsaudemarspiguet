@@ -76,6 +76,7 @@ main .filter-container .search-input {
     text-transform: none;
     font-weight: 400;
     line-height: 1.01;
+    padding: 0 10px;
 }
 
 main .filter-container .search-input::placeholder {
@@ -147,6 +148,7 @@ main .filter-container .projects-listing-container-right .map-link-btn {
     background-repeat: no-repeat;
     background-position: center;
     float: right;
+    margin-top: 4px;
 }
 
 main .projects-listing-container {
