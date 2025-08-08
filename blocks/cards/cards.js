@@ -261,6 +261,38 @@ export default function decorate(block) {
         }
       }
     });
+
+    const divbuttons = document.createElement('div');
+    divbuttons.className = 'cards-buttons';
+    const twoLevelParent = block.parentElement?.parentElement;
+    twoLevelParent.parentElement.insertBefore(divbuttons, twoLevelParent);
+    const b1 = document.createElement('a');
+    b1.className = 'button-primary';
+    const b2 = document.createElement('a');
+    b2.className = 'button-secondary';
+    divbuttons.append(b1, b2);
+
+    const fullcard = block.querySelectorAll('.cards-card-body');
+    const arrAsec = [];
+    fullcard.forEach((card) => arrAsec.push(card.innerHTML));
+
+    const arrDesc = [...arrAsec].reverse();
+    b1.addEventListener('click', () => {
+      fullcard.forEach((card, i) => {
+        card.innerHTML = arrDesc[i];
+      });
+
+      b1.classList.add('disabled');
+      b2.classList.remove('disabled');
+    });
+
+    b2.addEventListener('click', () => {
+      fullcard.forEach((card, i) => {
+        card.innerHTML = arrAsec[i];
+      });
+      b2.classList.add('disabled');
+      b1.classList.remove('disabled');
+    });
   }
 
   if (block.classList.contains('icons-grid')) {
