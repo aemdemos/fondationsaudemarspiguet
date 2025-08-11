@@ -52,7 +52,6 @@ export default async function decorate(doc) {
   const $filterContainer = div({ class: 'filter-container' });
   let placeholders = window.placeholders;
   if (!placeholders) {
-    console.log('fetch call done');
     placeholders = await fetchPlaceholders(`${getLanguage()}`);
   }
   const { projectsLandingCategoryFilter } = placeholders;
