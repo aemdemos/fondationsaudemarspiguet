@@ -33,7 +33,9 @@
 
   /* original site colors */
   --site-color: #6B7E7C;
+  --site-color-bien: #726248;
   --site-color-2: #839790;
+  --site-color-2-bien: #947F5F;
   --header-color: rgb(107 126 124 / 85%);
   --header-color-over: rgb(107 126 124 / 100%);
   --footer-color: #6B7E7C;	
@@ -123,7 +125,9 @@
     
   /* MAP */	    
   --map-box-bg: rgb(159 165 157 / 90%); 	
+  --map-box-bg-bien: rgba(177 154 117 / 90%);
   --map-box-partenaires: #363f3e;	
+  --map-box-partenaires-bien: #393124;
   --map-carte-icone-container: #E2E5E5;
 
   /* BODY */

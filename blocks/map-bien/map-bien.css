@@ -27,7 +27,7 @@
 }
 
 .myboxmap {
-    background-color: var(--map-box-bg);
+    background-color: var(--map-box-bg-bien);
     padding: 10px
 }
 
@@ -57,7 +57,7 @@
     line-height: normal;
     text-transform: uppercase;
     font-size: 11px
-}
+} 
 
 /* stylelint-disable-next-line selector-class-pattern */
 .carte_box_pays,.carte_box_date,.carte_box_categorie {
@@ -78,20 +78,20 @@ p.carte_box_categorie {
 
 /* stylelint-disable-next-line selector-class-pattern */
 p.carte_box_partenaires {
-    color: var(--map-box-partenaires);
+    color: var(--map-box-partenaires-bien);
 }
 
 /* stylelint-disable-next-line selector-class-pattern */
 p.carte_box_link a {
     margin-top: 4px;
     font-size: 11px;
-    color: var(--map-box-partenaires);
+    color: var(--map-box-partenaires-bien);
 }
 
 /* stylelint-disable-next-line selector-class-pattern */
 .carte_icone_titre {
     text-transform: uppercase;
-    color: var(--site-color);
+    color: var(--site-color-bien);
     margin-bottom: 20px;
     font-size: 12px;
     font-weight: 500;

@@ -188,7 +188,7 @@ var popupoption = {
        }
        
       ,closeBoxMargin: "0px 0px 0px 0px"
-                ,closeBoxURL: "/icons/btn_arbres_close.svg"
+                ,closeBoxURL: "/icons/btn_bien_close.svg"
                 
       ,infoBoxClearance: new google.maps.Size(1, 1)
       ,alignBottom: true
@@ -1950,14 +1950,14 @@ var popupoption = {
       var zoomInButton = document.createElement('div');
       zoomInButton.className = 'custom-zoom-button';
       zoomInButton.id = 'zoom-in';
-      zoomInButton.innerHTML = '<img src="/icons/btn_arbres_plus.svg" alt="Zoom In" style="width: 24px; height: 24px;">';
+      zoomInButton.innerHTML = '<img src="/icons/btn_bien_plus.svg" alt="Zoom In" style="width: 24px; height: 24px;">';
       zoomInButton.title = 'Zoom In';
       document.getElementById('map').appendChild(zoomInButton);
 
       var zoomOutButton = document.createElement('div');
       zoomOutButton.className = 'custom-zoom-button';
       zoomOutButton.id = 'zoom-out';
-      zoomOutButton.innerHTML = '<img src="/icons/btn_arbres_moins.svg" alt="Zoom Out" style="width: 24px; height: 24px;">';
+      zoomOutButton.innerHTML = '<img src="/icons/btn_bien_moins.svg" alt="Zoom Out" style="width: 24px; height: 24px;">';
       zoomOutButton.title = 'Zoom Out';
       document.getElementById('map').appendChild(zoomOutButton);
 

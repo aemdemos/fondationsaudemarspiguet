@@ -53,6 +53,10 @@ export default function decorate(block) {
       awareness: { categoryId: 'category_4' },
       preservation: { categoryId: 'category_5' },
       OD: { categoryId: 'category_10' },
+      food_aid: { categoryId: 'category_12' },
+      sport_culture: { categoryId: 'category_13' },
+      educators: { categoryId: 'category_11' },
+      craftsmanship: { categoryId: 'category_9' },
     };
 
     ul.querySelectorAll('li').forEach((li) => {

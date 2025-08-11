@@ -233,6 +233,10 @@
   letter-spacing: .05em;
 }
 
+body.biencommun .cards.map-category ul li:first-child p {
+  color: var(--site-color-bien);
+}
+
 .cards.icons-grid .cards-card-body > h4:has(.icon) {
   line-height: 0;
   padding: 0 45px;
@@ -317,6 +321,12 @@
 /* stylelint-disable-next-line selector-class-pattern */
 .cards.map-category a.works_categorylink:hover {
   opacity: 0.7;
+}
+
+/* stylelint-disable-next-line selector-class-pattern */
+body.biencommun .cards.map-category a.works_categorylink {
+  color: var(--site-color-2-bien);
+  opacity: .5;
 }
 
 /* stylelint-disable-next-line selector-class-pattern */
