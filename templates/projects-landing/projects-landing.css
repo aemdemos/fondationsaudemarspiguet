@@ -8,10 +8,6 @@ main .filter-container {
     position: relative;
 }
 
-main .filter-container input {
-    text-align: center;
-}
-
 main .filter-container .category-input {
     opacity: 1;
     position: relative;
