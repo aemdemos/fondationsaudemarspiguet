@@ -6,6 +6,7 @@ import {
   fetchPlaceholders,
 } from '../../scripts/aem.js';
 import { getLanguage } from '../../scripts/scripts.js';
+import { applyFadeUpAnimation, setInputWidthToText } from '../../scripts/utils.js';
 
 async function getNewsdata() {
   const rawNews = await ffetch(`/${getLanguage()}/${getLanguage() === 'en' ? 'fondation-pour-les-arbres-news' : 'fondation-pour-les-arbres-actualites'}/news-index.json`)
@@ -17,17 +18,27 @@ async function getNewsdata() {
 function showNewsArticles(getNews, doc) {
   getNews.forEach((news) => {
     const url = news.path;
-    const $newsItem = a({ class: 'news-item', href: url });
-    const $newsTitle = h2({ class: 'news-title' }, news.title);
-    const $newsDate = span({ class: 'news-date' }, news.date);
-    const $newsCategory = span({ class: 'news-category' }, news.category);
-    const $newsDescription = div({ class: 'news-description' }, news.description);
-    const imageWrapper = div({ class: 'news-image-wrapper' });
-    const contentWrapper = div({ class: 'news-content-wrapper' });
-    const clearDiv = div({ class: 'clear' });
-    const $newsImg = img({ class: 'news-image', src: news.image, alt: news.title });
-    imageWrapper.append($newsImg);
-    contentWrapper.append($newsCategory, $newsDate, $newsTitle, $newsDescription);
+    const $newsItem = a(
+      { class: 'news-item-wrapper', href: url },
+      div(
+        { class: 'news-item' },
+        div(
+          { class: 'news-image-wrapper' },
+          img(
+            { class: 'news-image', src: news.image, alt: news.title },
+          ),
+        ),
+        div(
+          { class: 'news-content-wrapper' },
+          span({ class: 'news-category' }, news.category),
+          span({ class: 'news-date' }, news.date),
+          h2({ class: 'news-title' }, news.title),
+          div({ class: 'news-description' }, news.description),
+        ),
+        div({ class: 'clear' }),
+      ),
+    );
+
     if (news['article-color']) {
       $newsItem.classList.add(news['article-color']);
     }
@@ -35,7 +46,6 @@ function showNewsArticles(getNews, doc) {
     if (layout) {
       $newsItem.classList.add(layout);
     }
-    $newsItem.append(imageWrapper, contentWrapper, clearDiv);
     doc.querySelector('.news-listing').append($newsItem);
   });
 }
@@ -113,28 +123,7 @@ export default async function decorate(doc) {
     categorysection.style.display = categorysection.style.display === 'block' ? 'none' : 'block';
   });
 
-  // code for getting width of input dynamically
-
-  const categorySectionDiv = doc.querySelector('.category-section');
   const inputCat = doc.querySelector('.category-input');
-  const mirror = span({ class: 'input-category-span' });
-  // Function to set width
-  function updateWidth(text) {
-    mirror.textContent = text;
-    const width = mirror.offsetWidth;
-    inputCat.style.width = `${width}px`;
-  }
-
-  // Hidden span to measure text width
-  mirror.style.font = getComputedStyle(inputCat).font;
-  categorySectionDiv.appendChild(mirror);
-  updateWidth(inputCat.placeholder);
-
-  window.addEventListener('resize', () => {
-    const currentText = inputCat.value || inputCat.placeholder;
-    updateWidth(currentText);
-  });
-
   const newsListing = document.querySelector('.news-listing');
   const sortedNews = getNews
     .sort((date1, date2) => parseDate(date2.date) - parseDate(date1.date));
@@ -144,7 +133,9 @@ export default async function decorate(doc) {
     item.addEventListener('click', (event) => {
       const selectedCategory = event.target.textContent;
       $categoryInput.value = selectedCategory;
-      updateWidth(selectedCategory);
+      requestAnimationFrame(() => {
+        setInputWidthToText(inputCat);
+      });
       categorysection.style.display = 'none';
       const filteredNews = getNews.filter((news) => news.category
       && news.category.includes(selectedCategory));
@@ -165,7 +156,9 @@ export default async function decorate(doc) {
   const viewAllButton = doc.getElementById('view-all');
   viewAllButton.addEventListener('click', (event) => {
     event.preventDefault();
-    updateWidth(inputCat.placeholder);
+    requestAnimationFrame(() => {
+      setInputWidthToText(inputCat);
+    });
     $categoryInput.value = '';
     newsListing.innerHTML = '';
     showNewsArticles(sortedNews, doc);
@@ -219,4 +212,14 @@ export default async function decorate(doc) {
       showNewsArticles(reverseSortedNews, doc);
     });
   }
+
+  requestAnimationFrame(() => {
+    setInputWidthToText(inputCat);
+    setInputWidthToText(searchInput);
+  });
+
+  const newsItems = doc.querySelectorAll('.news-item');
+  newsItems.forEach((news) => {
+    applyFadeUpAnimation(news, news.parentNode);
+  });
 }
