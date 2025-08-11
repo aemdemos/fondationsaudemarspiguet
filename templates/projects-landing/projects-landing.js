@@ -44,6 +44,10 @@ function showProjectCards(getprojects, doc) {
     );
     doc.querySelector('.projects-listing').append($projectsItem);
   });
+  const projectItems = doc.querySelectorAll('.project-item');
+  projectItems.forEach((project) => {
+    applyFadeUpAnimation(project, project.parentNode);
+  });
 }
 
 export default async function decorate(doc) {
@@ -164,7 +168,6 @@ export default async function decorate(doc) {
 
   const inputCat = doc.querySelector('.category-input');
   const inputLocation = doc.querySelector('.location-input');
-
   doc.addEventListener('click', (e) => {
     if (
       !categorysection.contains(e.target)
@@ -262,10 +265,5 @@ export default async function decorate(doc) {
     setInputWidthToText(inputCat);
     setInputWidthToText(inputLocation);
     setInputWidthToText(searchInput);
-  });
-
-  const projectItems = doc.querySelectorAll('.project-item');
-  projectItems.forEach((project) => {
-    applyFadeUpAnimation(project, project.parentNode);
   });
 }

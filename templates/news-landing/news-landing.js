@@ -48,6 +48,10 @@ function showNewsArticles(getNews, doc) {
     }
     doc.querySelector('.news-listing').append($newsItem);
   });
+  const newsItems = doc.querySelectorAll('.news-item');
+  newsItems.forEach((news) => {
+    applyFadeUpAnimation(news, news.parentNode);
+  });
 }
 
 function parseDate(dateStr) {
@@ -216,10 +220,5 @@ export default async function decorate(doc) {
   requestAnimationFrame(() => {
     setInputWidthToText(inputCat);
     setInputWidthToText(searchInput);
-  });
-
-  const newsItems = doc.querySelectorAll('.news-item');
-  newsItems.forEach((news) => {
-    applyFadeUpAnimation(news, news.parentNode);
   });
 }
