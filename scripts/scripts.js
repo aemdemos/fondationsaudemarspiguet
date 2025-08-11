@@ -381,6 +381,10 @@ async function loadEager(doc) {
 
   const templateName = getMetadata('template');
   decorateTemplateAndTheme();
+
+  // Set path-specific favicon early in the load process
+  setPathSpecificFavicon();
+
   const main = doc.querySelector('main');
   if (main) {
     decorateMain(main);
@@ -442,6 +446,52 @@ function backToTopWithIcon() {
   pageButton.addEventListener('click', () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
+}
+
+/**
+ * Sets domain-specific favicon based on current URL
+ */
+function setPathSpecificFavicon() {
+  const { hostname } = window.location;
+
+  // Define domain-specific favicon mappings
+  const faviconMappings = {
+    biencommun: {
+      '16': '/styles/bien-favicon-16x16.png',
+      '32': '/styles/bien-favicon-32x32.png',
+      'apple': '/styles/bien-apple-touch-icon.png'
+    },
+    arbes: {
+      '16': '/styles/arbes-favicon-16x16.png',
+      '32': '/styles/arbes-favicon-32x32.png',
+      'apple': '/styles/arbes-apple-touch-icon.png'
+    }
+    // Add more domain mappings as needed
+  };
+
+  // Check if current domain matches any special favicon rules
+  let faviconSet = null;
+  for (const [domainKey, favicons] of Object.entries(faviconMappings)) {
+    if (hostname.includes(domainKey)) {
+      faviconSet = favicons;
+      break;
+    }
+  }
+
+  // If we found a matching path, update the favicons
+  if (faviconSet) {
+    // Update 16x16 favicon
+    const favicon16 = document.querySelector('link[rel="icon"][sizes="16x16"]');
+    if (favicon16) favicon16.href = faviconSet['16'];
+
+    // Update 32x32 favicon
+    const favicon32 = document.querySelector('link[rel="icon"][sizes="32x32"]');
+    if (favicon32) favicon32.href = faviconSet['32'];
+
+    // Update apple touch icon
+    const appleIcon = document.querySelector('link[rel="apple-touch-icon"]');
+    if (appleIcon) appleIcon.href = faviconSet['apple'];
+  }
 }
 
 async function loadLazy(doc) {
