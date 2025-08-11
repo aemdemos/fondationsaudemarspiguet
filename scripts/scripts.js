@@ -461,7 +461,7 @@ function setPathSpecificFavicon() {
       '32': '/styles/bien-favicon-32x32.png',
       'apple': '/styles/bien-apple-touch-icon.png'
     },
-    arbes: {
+    arbres: {
       '16': '/styles/arbes-favicon-16x16.png',
       '32': '/styles/arbes-favicon-32x32.png',
       'apple': '/styles/arbes-apple-touch-icon.png'
