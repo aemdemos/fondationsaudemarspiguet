@@ -50,8 +50,11 @@ export default async function decorate(doc) {
   const $main = doc.querySelector('main');
   const $section = section();
   const $filterContainer = div({ class: 'filter-container' });
-
-  const placeholders = await fetchPlaceholders(`${getLanguage()}`);
+  let placeholders = window.placeholders;
+  if (!placeholders) {
+    console.log('fetch call done');
+    placeholders = await fetchPlaceholders(`${getLanguage()}`);
+  }
   const { projectsLandingCategoryFilter } = placeholders;
   const { projectsLandingLocationFilter } = placeholders;
   const { projectsLandingViewFilter } = placeholders;
@@ -280,4 +283,5 @@ export default async function decorate(doc) {
   projectItems.forEach((project) => {
     applyFadeUpAnimation(project, project.parentNode);
   });
+
 }
