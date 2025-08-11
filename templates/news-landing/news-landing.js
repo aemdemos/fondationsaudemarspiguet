@@ -19,24 +19,21 @@ function showNewsArticles(getNews, doc) {
   getNews.forEach((news) => {
     const url = news.path;
     const $newsItem = a(
-      { class: 'news-item-wrapper', href: url },
+      { class: 'news-item', href: url },
       div(
-        { class: 'news-item' },
-        div(
-          { class: 'news-image-wrapper' },
-          img(
-            { class: 'news-image', src: news.image, alt: news.title },
-          ),
+        { class: 'news-image-wrapper' },
+        img(
+          { class: 'news-image', src: news.image, alt: news.title },
         ),
-        div(
-          { class: 'news-content-wrapper' },
-          span({ class: 'news-category' }, news.category),
-          span({ class: 'news-date' }, news.date),
-          h2({ class: 'news-title' }, news.title),
-          div({ class: 'news-description' }, news.description),
-        ),
-        div({ class: 'clear' }),
       ),
+      div(
+        { class: 'news-content-wrapper' },
+        span({ class: 'news-category' }, news.category),
+        span({ class: 'news-date' }, news.date),
+        h2({ class: 'news-title' }, news.title),
+        div({ class: 'news-description' }, news.description),
+      ),
+      div({ class: 'clear' }),
     );
 
     if (news['article-color']) {

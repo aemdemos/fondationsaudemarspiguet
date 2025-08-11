@@ -166,20 +166,19 @@ main .news-listing {
     object-fit: cover;
 }
 
-.news-listing .news-item-wrapper {
+.news-listing .news-item {
     background-color: var(--news-bg-arbres);
     padding: 40px;
-    grid-column: span 2;
     color: black;
     text-decoration: none;
 }
 
-.news-listing .news-item-wrapper:hover {
+.news-listing .news-item:hover {
     opacity: 0.7;
     cursor: pointer;
 }
 
-.news-listing .news-item-wrapper.brown {
+.news-listing .news-item.brown {
     background-color: var(--news-bg-bien);
 }
 
@@ -194,12 +193,12 @@ main .news-listing {
     letter-spacing: .06em;
 }
 
-.news-listing .news-item-wrapper.horizontal-banner .news-category {
+.news-listing .news-item.horizontal-banner .news-category {
     background-color: var(--site-color-2);
     color: var(--news-button-text-colour);
 }
 
-.news-listing .news-item-wrapper.horizontal-banner h2 {
+.news-listing .news-item.horizontal-banner h2 {
     color: var(--site-color);
     font-size: 40px;
     margin-top: 0;
@@ -215,7 +214,7 @@ main .news-listing {
     letter-spacing: .06em;
 }
 
-.news-listing .news-item-wrapper.horizontal-banner .news-date {
+.news-listing .news-item.horizontal-banner .news-date {
     color: var(--site-color);
 }
 
@@ -233,12 +232,20 @@ main .news-listing {
     letter-spacing: .02em;
 }
 
-.news-item-wrapper .clear {
+.news-item .clear {
     clear: both;
 }
 
-.news-listing .news-item-wrapper.horizontal-banner {
+.news-listing .news-item.horizontal-banner {
     background-color: var(--news-bg-enavant);
+}
+
+.news-listing > .image-fade-wrapper {
+  display: grid;
+}
+
+.news-listing .image-fade-wrapper.horizontal-banner {
+    grid-column: 1 / -1;
 }
 
 @media (width >= 900px) {
@@ -252,15 +259,7 @@ main .news-listing {
         height: auto;
     }
 
-    .news-listing .news-item-wrapper {
-        grid-column: span 1;
-    }
-
-    .news-listing .news-item-wrapper.horizontal-banner {
-        grid-column: span 2;
-    }
-
-    .news-listing .news-item-wrapper.horizontal-banner .news-image-wrapper {
+    .news-listing .news-item.horizontal-banner .news-image-wrapper {
         width: calc((((100% - (12 * 30px)) / 12) * 6) + (5 * 30px));
         background-size: cover;
         position: relative;
@@ -268,7 +267,7 @@ main .news-listing {
         margin: 15px;
     }
 
-    .news-listing .news-item-wrapper.horizontal-banner .news-content-wrapper {
+    .news-listing .news-item.horizontal-banner .news-content-wrapper {
         width: calc((((100% - (12 * 30px)) / 12) * 6) + (5 * 30px));
         float: right;
         margin: 15px;

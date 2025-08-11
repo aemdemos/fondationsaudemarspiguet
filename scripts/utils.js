@@ -6,12 +6,16 @@ export function getPathSegments() {
 }
 
 export function applyFadeUpAnimation(targetElement, parentContainer) {
+  const isBanner = targetElement.classList.contains('horizontal-banner');
+
   // Create a wrapper div for the fade-up effect
   const targetWrapper = div({ class: 'image-fade-wrapper' });
   targetWrapper.style.opacity = '0';
   targetWrapper.style.transform = 'translateY(80px)';
   targetWrapper.style.transition = 'opacity 1.5s ease-out, transform 1.5s ease-out';
-
+  if (isBanner) {
+    targetWrapper.classList.add('horizontal-banner');
+  }
   targetWrapper.append(targetElement);
   parentContainer.append(targetWrapper);
 
