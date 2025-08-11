@@ -6,7 +6,7 @@ import {
   fetchPlaceholders,
 } from '../../scripts/aem.js';
 import { getLanguage } from '../../scripts/scripts.js';
-import { applyFadeUpAnimation } from '../../scripts/utils.js';
+import { applyFadeUpAnimation, setInputWidthToText } from '../../scripts/utils.js';
 
 async function getProjectsdata() {
   const rawprojects = await ffetch(`/${getLanguage()}/${getLanguage() === 'en' ? 'fondation-pour-les-arbres-projects' : 'fondation-pour-les-arbres-nos-projets'}/projects-index.json`)
@@ -50,7 +50,7 @@ export default async function decorate(doc) {
   const $main = doc.querySelector('main');
   const $section = section();
   const $filterContainer = div({ class: 'filter-container' });
-  let placeholders = window.placeholders;
+  let { placeholders } = window;
   if (!placeholders) {
     placeholders = await fetchPlaceholders(`${getLanguage()}`);
   }
@@ -164,21 +164,6 @@ export default async function decorate(doc) {
 
   const inputCat = doc.querySelector('.category-input');
   const inputLocation = doc.querySelector('.location-input');
-  function setInputWidthToText(inputEl) {
-    const textToMeasure = inputEl.value || inputEl.placeholder;
-    const spanForWidth = document.createElement('span');
-    const style = getComputedStyle(inputEl);
-    spanForWidth.style.font = style.font;
-    spanForWidth.style.whiteSpace = 'pre';
-    spanForWidth.style.position = 'absolute';
-    spanForWidth.style.visibility = 'hidden';
-    spanForWidth.textContent = textToMeasure;
-    document.body.appendChild(spanForWidth);
-    const width = spanForWidth.offsetWidth;
-    spanForWidth.remove();
-    inputEl.style.width = `${width}px`;
-  }
-
   doc.addEventListener('click', (e) => {
     if (
       !categorysection.contains(e.target)
@@ -282,5 +267,4 @@ export default async function decorate(doc) {
   projectItems.forEach((project) => {
     applyFadeUpAnimation(project, project.parentNode);
   });
-
 }
