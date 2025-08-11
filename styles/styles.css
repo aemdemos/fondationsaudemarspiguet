@@ -1,3 +1,4 @@
+
 /*
  * Copyright 2020 Adobe. All rights reserved.
  * This file is licensed to you under the Apache License, Version 2.0 (the "License");
@@ -17,8 +18,8 @@
   --link-color: #3b63fb;
   --link-hover-color: #1d3ecf;
   --listing-card-logo-color: #fffc;
-  --body-font-family: 'Antarctica', sans-serif;
-  --heading-font-family: 'Antarctica', sans-serif;
+  --body-font-family: "Antarctica", "Antarctica Fallback", "sans-serif";
+  --heading-font-family: "Antarctica", "Antarctica Fallback";
   --body-font-size-m: 18px;
   --body-font-size-s: 16.6px;
   --body-font-size-xs: 13.4px;
@@ -28,102 +29,96 @@
   --heading-font-size-m: 18px;
   --heading-font-size-s: 16.6px;
   --heading-font-size-xs: 13.4px;
-  --nav-height: 95px;
+  --nav-height: 216px;
   --header-height: var(--nav-height);
-
-  /* original site colors */
   --site-color: #6B7E7C;
   --site-color-2: #839790;
-  --header-color: rgb(107 126 124 / 85%);
-  --header-color-over: rgb(107 126 124 / 100%);
-  --footer-color: #6B7E7C;	
-  --titre: #6B7E7C; 
+  --arbres-header-color: rgb(107 126 124 / 85%);
+  --arbres-header-color-over: rgb(107 126 124 / 100%);
+  --footer-color: #6B7E7C;
+  --titre: #6B7E7C;
   --btn-bg: #c5cbcb;
 
-
   /* MENU OPEN */
-  --menu-open-bg: #6b7e7c;  
+  --menu-open-bg: #6b7e7c;
 
   /* HOME CAROUSEL */
-  --carousel-bg-box1: #d8d8d7;  
-  --carousel-bg-box2: #b1afa1;  
+  --carousel-bg-box1: #d8d8d7;
+  --carousel-bg-box2: #b1afa1;
 
 
   /* HOME PROJETS */
-  --projet-bg-odd: #dbd9d3; 
+  --projet-bg-odd: #dbd9d3;
   --projet-bg-even: #ccd5d3;
   --projet-bloc-titre: #6B7E7C;
   --projet-bloc-btn-first: #9D9B88;
 
   /* HOME NEWS */
-  --news-over-filtre: rgb(148 127 95 / 20%); 	
+  --news-over-filtre: rgb(148 127 95 / 20%);
 
   /* HOME CHIFFRES */
   --chiffres-bloc-bg: #e1e3e0;
   --chiffres-bloc-btn: #525252;
-  --chiffres-bloc-btn-bg: #d3cdbf; 
+  --chiffres-bloc-btn-bg: #d3cdbf;
 
   /* EVENTS PROJETS */
   --projet-bg-page-listing: #edecea;
   --projet-bg-intro: #b9b8b2;
-  --projet-bg-intro-even: #c4c3b8; 
-  --projet-intro-texte: #6B7E7C;   
-  --projet-bg-page: #edecea;  
-  --projet-bg-page-suite: #dcdcdc;   
-
+  --projet-bg-intro-even: #c4c3b8;
+  --projet-intro-texte: #6B7E7C;
+  --projet-bg-page: #edecea;
+  --projet-bg-page-suite: #dcdcdc;
 
   /* NEWS LISTING */
-  --news-bg-bien: #918063; 
+  --news-bg-bien: #918063;
   --news-bg-arbres: #6f7d7c;
   --news-bg-enavant: #d3cec7;
 
-  /* NEWS PAGE */	
-  --news-bg-page: #eae8e9; 
-  --news-bg-page-suite: #f2f2f3;  
+  /* NEWS PAGE */
+  --news-bg-page: #eae8e9;
+  --news-bg-page-suite: #f2f2f3;
   --news-category: #947f5f;
 
-  /* NEWS PAGE SOPHISTIQUEE */	
-  --news-sophis-bg-intro: #e1e5e6; 
-  --news-sophis-intro: #6b7e7c; 
-  --news-sophis-bg-text: #6b7e7c; 
-  --news-sophis-bg-text2: #e9e7ea; 	
-    
-  /* TEAM PAGE */	
-  --team-bg-page: #f8f7f2; 
+  /* NEWS PAGE SOPHISTIQUEE */
+  --news-sophis-bg-intro: #e1e5e6;
+  --news-sophis-intro: #6b7e7c;
+  --news-sophis-bg-text: #6b7e7c;
+  --news-sophis-bg-text2: #e9e7ea;
+
+  /* TEAM PAGE */
+  --team-bg-page: #f8f7f2;
   --team-cat-titre: #857873;
   --team-bg-btn: #a49e92;
-    
-  /* TEAM PARTENAIRES */	
-  --partenaires-bg: #f8f7f2; 	
+
+  /* PARTENAIRES PAGE */
+  --partenaires-bg: #f8f7f2;
   --partenaires-bg-bloc: #e1e5e6;
-    
+
   /* PAGE BLOC */
-  --page-bloc-full: #d8d7d0; 	
+  --page-bloc-full: #d8d7d0;
   --page-bloc-bg-pictos: #e2e5e5;
   --page-bloc-pictos-bg: #6f7d7c;
   --page-bloc-btn-bg: #afb4ad;
   --page-bloc-btn: #525252;
-
-  /* PAGE BLOC COLOR */
   --page-bloc-color-header: #9aa198;
 
-  /* MEDIAS */	
+  /* MEDIAS PAGE */
   --medias-bg: #edecea;
-      
-  /* NEWSLETTER BLOC */	
-  --newsletter-bg: #c4c3b9;   
+
+  /* NEWSLETTER */
+  --newsletter-bg: #c4c3b9;
   --newsletter-titre: #72676B;
   --news-button-text-colour: #fff;
-      
-  /* FLECHE TO TOP */	    
-  --fleche-to-top-bg: rgb(107 126 124 / 85%); 
-    
-  /* DROPDOWN */	    
-  --dropdown-bg: #c5cbcb; 
-    
-  /* MAP */	    
-  --map-box-bg: rgb(159 165 157 / 90%); 	
-  --map-box-partenaires: #363f3e;	
+
+  /* FLECHE TO TOP */
+  --fleche-to-top-bg: rgb(107 126 124 / 85%);
+
+  /* DROPDOWN */
+  --dropdown-bg: #c5cbcb;
+
+  /* MAP */
+  --map-box-bg: rgb(159 165 157 / 90%);
+  --map-box-partenaires: #363f3e;
   --map-carte-icone-container: #E2E5E5;
 
   /* BODY */
@@ -143,20 +138,102 @@
   --input-color: #303030;
   --input-selected-color: #5a626b;
   --input-placeholder-color: #B69859;
+
+  /* BIENCOMMUN SITE COLORS */
+  
+  /* GENERAL */	
+  --biencommun-site-color: #726248;
+  --biencommun-site-color-2: #947F5F;
+  --biencommun-header-color: rgb(114 98 72 / 85%);
+  --biencommun-header-color-over: rgb(114 98 72 / 100%);
+  --biencommun-footer-color: #726248;
+  --biencommun-titre: #726248; 
+  --biencommun-btn-bg:#ded7ca;
+
+  /* MENU OPEN */
+  --biencommun-menu-open-bg: #947f57;      
+      
+  /* HOME CAROUSEL */
+  --biencommun-carousel-bg-box1: #d8d8d8;  
+  --biencommun-carousel-bg-box2: #aca89d;  
+
+  /* HOME PROJETS */
+  --biencommun-projet-bg-odd: #e0d6c0; 
+  --biencommun-projet-bg-even: #d8d7d0;
+  --biencommun-projet-bloc-titre: #525252;
+  --biencommun-projet-bloc-btn-first: #A49F94;
+
+  /* HOME news */
+  --biencommun-news-over-filtre: rgb(148 127 95 / 20%);
+
+  /* HOME CHIFFRES */
+  --biencommun-chiffres-bloc-bg: #e8e4e3; 
+  --biencommun-chiffres-bloc-btn:#525252;
+  --biencommun-chiffres-bloc-btn-bg: #ccbfac; 
+
+  /* PROJETS PAGE */
+  --biencommun-projet-bg-page-listing: #edecea;     
+  --biencommun-projet-bg-intro: #d8d7d0; 
+  --biencommun-projet-bg-intro-even: #ded7ca;   
+  --biencommun-projet-intro-texte: #695D5B;   
+  --biencommun-projet-bg-page: #edecea;  
+  --biencommun-projet-bg-page-suite: #dcdcdc;    
+      
+
+  /* NEWS LISTING */
+  --biencommun-news-bg-bien: #918063; 
+  --biencommun-news-bg-arbres: #6f7d7c;
+  --biencommun-news-bg-enavant: #d3cec7;
+
+  /* NEWS PAGE */	
+  --biencommun-news-bg-page: #eae8e9; 
+  --biencommun-news-bg-page-suite: #f2f2f3; 
+      
+  /* NEWS PAGE SOPHISTIQUEE */	
+  --biencommun-news-sophis-bg-intro: #e2e0db; 
+  --biencommun-news-sophis-intro: #695D5B; 
+  --biencommun-news-sophis-bg-text: #6f634b; 
+  --biencommun-news-sophis-bg-text2: #eae8e9; 	
+      
+  /* TEAM PAGE */	
+  --biencommun-team-bg-page: #ececeb; 	
+  --biencommun-team-cat-titre: #857873;
+  --biencommun-team-bg-btn: #a29f96; 
+    
+  /* TEAM PARTENAIRES */	
+  --biencommun-partenaires-bg: #edecea; 	
+  --biencommun-partenaires-bg-bloc: #d7d7cf; 
+    
+  /* PAGE BLOC */	
+  --biencommun-page-bloc-full: #ded7ca; 	
+  --biencommun-page-bloc-bg-pictos: #d8d7d0;
+  --biencommun-page-bloc-pictos-bg: #917f63;	
+  --biencommun-page-bloc-btn-bg: #a9997f;
+  --biencommun-page-bloc-btn: #525252;	
+    
+  /* PAGE BLOC COLOR */	
+  --biencommun-page-bloc-color-header:#e0d6c0;
+      
+  /* MEDIAS */	
+  --biencommun-medias-bg: #eae7e9;
+
+  /* NEWSLETTER BLOC */	
+  --biencommun-newsletter-bg: #e7e1d5;
+  --biencommun-newsletter-titre: #72676B;
+      
+  /* FLECHE TO TOP */	    
+  --biencommun-fleche-to-top-bg: rgb(114 98 72 / 85%);
+    
+  /* DROPDOWN */	    
+  --biencommun-dropdown-bg:#e2d6be; 
+    
+  /* MAP */	    
+  --biencommun-map-box-bg:rgb(177 154 117 / 90%); 	
+  --biencommun-map-box-partenaires:#393124;	
+  --biencommun-map-carte-icone-container:#d8d7d0;
 }
 
 /* fallback fonts */
-@font-face {
-  font-family:"Antarctica Fallback";
-  font-style:normal;
-  font-weight:600;
-  src:local("Arial Bold");
-  ascent-override:90.30%;
-  descent-override:20.57%;
-  line-gap-override:29.12%;
-  size-adjust:93.58%;
-}
-
 @font-face {
   font-family:"Antarctica Fallback";
   font-style:normal;
@@ -193,6 +270,17 @@
 @font-face {
   font-family:"Antarctica Fallback";
   font-style:normal;
+  font-weight:600;
+  src:local("Arial Bold");
+  ascent-override:90.30%;
+  descent-override:20.57%;
+  line-gap-override:29.12%;
+  size-adjust:93.58%;
+}
+
+@font-face {
+  font-family:"Antarctica Fallback";
+  font-style:normal;
   font-weight:700;
   src:local("Arial Bold");
   ascent-override:80.18%;
@@ -212,6 +300,7 @@
     --heading-font-size-m: 18px;
     --heading-font-size-s: 16.6px;
     --heading-font-size-xs: 13.4px;
+    --nav-height: 216px;
   }
 
   h2 {
@@ -251,7 +340,6 @@ body.appear {
 /* header {
   height: var(--nav-height);
 } */
-
 header .header, footer .footer {
   visibility: hidden;
 }
@@ -414,7 +502,7 @@ main>.section:first-of-type {
   margin-top: 0;
 }
 
-main > .section.extra-padding {
+main>.section.extra-padding {
   padding: 50px 0;
   margin: 0;
 }
@@ -428,16 +516,17 @@ main .section.light-grey-bg {
   background-color: var(--news-sophis-bg-intro);
 }
 
+
 main .section.light-grey-bg.float-right {
   max-width: 100%;
 }
 
- main .section.float-right {
+main .section.float-right {
   padding: 65px 0 50px;
   margin: 0;
 }
 
- main .section.float-right .default-content-wrapper {
+main .section.float-right .default-content-wrapper {
   color: var(--text-color);
   padding: 0 20px;
 }
@@ -448,29 +537,29 @@ main .section.float-right .default-content-wrapper .container-col {
   margin-right: -15px;
 }
 
- main .section.float-right .default-content-wrapper .heading-wrapper {
-  width: calc((((100% - (12*30px))/12)*12) + (11 * 30px));
+main .section.float-right .default-content-wrapper .heading-wrapper {
+  width: calc((((100% - (12*30px))/12)*12) + (11*30px));
   box-sizing: border-box;
   float: left;
   margin: 15px;
 }
 
- main .section.float-right .default-content-wrapper .heading-wrapper h1{
+main .section.float-right .default-content-wrapper .heading-wrapper h1 {
   position: relative;
   margin: 15px 0;
   box-sizing: border-box;
   color: var(--site-color);
   text-transform: uppercase;
   font-weight: 400;
-  font-feature-settings: 'clig' 0;
+  font-feature-settings: "clig"0;
   font-style: normal;
   line-height: 1.2em;
   letter-spacing: .08em;
   font-size: 36px;
 }
 
- main .section.float-right .default-content-wrapper .content-wrapper{
-  width: calc((((100% - (12 * 30px)) / 12) * 12) + (11 * 30px));
+main .section.float-right .default-content-wrapper .content-wrapper {
+  width: calc((((100% - (12*30px))/12)*12) + (11*30px));
   float: right;
   margin: 15px;
   box-sizing: border-box;
@@ -501,7 +590,7 @@ main .section.soft-grey-bg.default-colored-text p {
   font-weight: 300;
 }
 
-main .section.float-right .default-content-wrapper .content-wrapper ul li{
+main .section.float-right .default-content-wrapper .content-wrapper ul li {
   list-style: none;
   padding-left: 120px;
   position: relative;
@@ -538,12 +627,12 @@ main .section.float-right .default-content-wrapper .content-wrapper ul li em {
   font-style: unset;
 }
 
- main .section.float-right .default-content-wrapper .clear {
+main .section.float-right .default-content-wrapper .clear {
   clear: both;
 }
 
 @media (width>=900px) {
-  main > .section.extra-padding {
+  main>.section.extra-padding {
     padding: 100px 0;
     margin: 0;
   }
@@ -570,16 +659,16 @@ main .section.float-right .default-content-wrapper .content-wrapper ul li em {
     max-width: 1200px;
   }
 
-  main .section.float-right .default-content-wrapper .heading-wrapper{
-    width: calc((((100% - (12*30px))/12)*9) + (8 * 30px));
+  main .section.float-right .default-content-wrapper .heading-wrapper {
+    width: calc((((100% - (12*30px))/12)*9) + (8*30px));
   }
 
   main .section.float-right .default-content-wrapper .heading-wrapper h1 {
     font-size: 50px;
   }
 
-   main .section.float-right .default-content-wrapper .content-wrapper{
-    width: calc((((100% - (12*30px))/12)*9) + (8 * 30px));
+  main .section.float-right .default-content-wrapper .content-wrapper {
+    width: calc((((100% - (12*30px))/12)*9) + (8*30px));
   }
 
   main .section.light-grey-bg:has(.cards-wrapper) {
@@ -607,36 +696,35 @@ main .section.light, main .section.highlight {
 }
 
 /* Back to top button */
-
-  .page-level-btn {
-    position: fixed;
-    right: 80px;
-    width: 4rem;
-    height: 4rem;
-    background-color: var(--fleche-to-top-bg);
-    border-radius: 5000px;
-    display: inline-block;
-    align-items: center;
-    justify-content: center;
-    opacity: 0;
+.page-level-btn {
+  position: fixed;
+  right: 80px;
+  width: 4rem;
+  height: 4rem;
+  background-color: var(--fleche-to-top-bg);
+  border-radius: 5000px;
+  display: inline-block;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
   visibility: hidden;
   pointer-events: none;
   transition: opacity 1s ease, visibility 1s ease;
-  }
+}
 
-  .page-level-btn.show {
+.page-level-btn.show {
   opacity: 1;
   visibility: visible;
   pointer-events: auto;
 }
 
-  @media (width < 600px) {
-    .page-level-btn {
-      right: 20px;
-      width: 3rem;
-      height: 3rem;
-    }
+@media (width<600px) {
+  .page-level-btn {
+    right: 20px;
+    width: 3rem;
+    height: 3rem;
   }
+}
 
 /* project article page styles */
 .details-sidebar.light-grey-bg {
@@ -663,7 +751,8 @@ main .section.light-grey-bg .cards-wrapper {
 }
 
 main .section.light-grey-bg:has(.cards-wrapper) .default-content-wrapper {
-    max-width: 1200px;
+  max-width: 1200px;
+  padding: 0 80px;
 }
 
 .policy-template main .default-content-wrapper h2 {
@@ -691,7 +780,7 @@ main .section.light-grey-bg .default-content-wrapper .button-container {
 
 .cta-section p.button-container a.button:any-link {
   background-color: var(--page-bloc-btn-bg);
-  background-image: url('/icons/btn_fleche_right.svg');
+  background-image: url("/icons/btn_fleche_right.svg");
   border-radius: unset;
   overflow: unset;
   background-position: calc(100% - 10px) center;
@@ -710,7 +799,7 @@ main .section.light-grey-bg .default-content-wrapper .button-container {
   color: var(--page-bloc-btn);
 }
 
-@media (width >= 900px) {
+@media (width>=900px) {
   .cta-section .default-content-wrapper p:first-child {
     margin-left: 30%;
     width: 70%;
@@ -723,7 +812,7 @@ main .section.quote-container .quote-wrapper {
 
 main .section.light-grey-bg .default-content-wrapper p.button-container a.button {
   background-color: var(--page-bloc-btn-bg);
-  background-image: url('/icons/btn_fleche_right.svg');
+  background-image: url("/icons/btn_fleche_right.svg");
   background-position: calc(100% - 10px) center;
   background-repeat: no-repeat;
   padding: 13px 50px 13px 15px;
@@ -738,12 +827,12 @@ main .section.light-grey-bg .default-content-wrapper p.button-container a.button
   cursor: pointer;
   color: var(--page-bloc-btn);
   text-align: center;
-  overflow: unset;  
+  overflow: unset;
   min-width: 270px;
   margin: 0;
 }
 
-@media (width >= 900px) {
+@media (width>=900px) {
   main .section.soft-grey-bg.default-colored-text p {
     font-size: 20px;
   }
@@ -887,6 +976,63 @@ main .section.cream-bg.table-container.accordion-container{
   }
 }
 
+/* BIENCOMMUN SITE SECTION COLORS */
+.section.section-1 {
+  background: rgb(114 98 72 / 85%) none repeat scroll 0% 0% / auto padding-box border-box;
+}
+
+.section.section-2 {
+  background: rgb(242 242 243) none repeat scroll 0% 0% / auto padding-box border-box;
+}
+
+.section.section-3 {
+  background: rgb(231 225 213) none repeat scroll 0% 0% / auto padding-box border-box;
+}
+
+.section.section-4 {
+  background: rgb(114 98 72) none repeat scroll 0% 0% / auto padding-box border-box;
+}
+
+.section.section-5 {
+  background: rgb(216 215 208) none repeat scroll 0% 0% / auto padding-box border-box;
+}
+
+.section.section-6 {
+  background: rgb(237 236 234) none repeat scroll 0% 0% / auto padding-box border-box;
+}
+
+.section.section-7 {
+  background: rgb(220 220 220) none repeat scroll 0% 0% / auto padding-box border-box;
+}
+
+.section.section-8 {
+  background: rgb(222 215 202) none repeat scroll 0% 0% / auto padding-box border-box;
+}
+
+.section.section-9 {
+  background: rgb(90 98 107) none repeat scroll 0% 0% / auto padding-box border-box;
+}
+
+.section.section-10 {
+  background: rgb(215 217 214) none repeat scroll 0% 0% / auto padding-box border-box;
+}
+
+.section.section-11 {
+  background: rgb(215 215 207) none repeat scroll 0% 0% / auto padding-box border-box;
+}
+
+.section.section-12 {
+  background: rgb(232 228 227) none repeat scroll 0% 0% / auto padding-box border-box;
+}
+
+.section.section-13 {
+  background: rgb(236 236 235) none repeat scroll 0% 0% / auto padding-box border-box;
+}
+
+.section.section-14 {
+  background: rgb(234 231 233) none repeat scroll 0% 0% / auto padding-box border-box;
+}
+
 /* Larger screen responsive for colorful class */
 @media (width >= 1200px) {
   main .section.colored-text p{
@@ -909,7 +1055,4 @@ main .section.cream-bg.table-container.accordion-container{
     padding: 60px 80px 80px; /* Different padding */
   }
 }
-
-
-
 
