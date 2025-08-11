@@ -303,6 +303,10 @@ body.biencommun .cards.map-category ul li:first-child p {
   font-size: 24px;
 }
 
+body.biencommun .cards.map-category ul li a[data-categoryid]:not([data-categoryid="category_10"]) span:has(img) {
+  background-color: var(--site-color-2-bien);
+}
+
 .cards.map-category ul li > a[data-categoryid]:not([data-categoryid="all"]) + div p {
   font-size: 12px;
   text-align: left;
@@ -326,7 +330,6 @@ body.biencommun .cards.map-category ul li:first-child p {
 /* stylelint-disable-next-line selector-class-pattern */
 body.biencommun .cards.map-category a.works_categorylink {
   color: var(--site-color-2-bien);
-  opacity: .5;
 }
 
 /* stylelint-disable-next-line selector-class-pattern */
