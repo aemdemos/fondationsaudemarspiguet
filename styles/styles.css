@@ -34,7 +34,6 @@
   --site-color: #6B7E7C;
   --site-color-2: #839790;
   --arbres-header-color: rgb(107 126 124 / 85%);
-  --biencommun-header-color: rgb(114 98 72 / 85%);
   --arbres-header-color-over: rgb(107 126 124 / 100%);
   --footer-color: #6B7E7C;
   --titre: #6B7E7C;
@@ -139,6 +138,99 @@
   --input-color: #303030;
   --input-selected-color: #5a626b;
   --input-placeholder-color: #B69859;
+
+  /* BIENCOMMUN SITE COLORS */
+  
+  /* GENERAL */	
+  --biencommun-site-color: #726248;
+  --biencommun-site-color-2: #947F5F;
+  --biencommun-header-color: rgb(114 98 72 / 85%);
+  --biencommun-header-color-over: rgb(114 98 72 / 100%);
+  --biencommun-footer-color: #726248;
+  --biencommun-titre: #726248; 
+  --biencommun-btn-bg:#ded7ca;
+
+  /* MENU OPEN */
+  --biencommun-menu-open-bg: #947f57;      
+      
+  /* HOME CAROUSEL */
+  --biencommun-carousel-bg-box1: #d8d8d8;  
+  --biencommun-carousel-bg-box2: #aca89d;  
+
+  /* HOME PROJETS */
+  --biencommun-projet-bg-odd: #e0d6c0; 
+  --biencommun-projet-bg-even: #d8d7d0;
+  --biencommun-projet-bloc-titre: #525252;
+  --biencommun-projet-bloc-btn-first: #A49F94;
+
+  /* HOME news */
+  --biencommun-news-over-filtre: rgb(148 127 95 / 20%);
+
+  /* HOME CHIFFRES */
+  --biencommun-chiffres-bloc-bg: #e8e4e3; 
+  --biencommun-chiffres-bloc-btn:#525252;
+  --biencommun-chiffres-bloc-btn-bg: #ccbfac; 
+
+  /* PROJETS PAGE */
+  --biencommun-projet-bg-page-listing: #edecea;     
+  --biencommun-projet-bg-intro: #d8d7d0; 
+  --biencommun-projet-bg-intro-even: #ded7ca;   
+  --biencommun-projet-intro-texte: #695D5B;   
+  --biencommun-projet-bg-page: #edecea;  
+  --biencommun-projet-bg-page-suite: #dcdcdc;    
+      
+
+  /* NEWS LISTING */
+  --biencommun-news-bg-bien: #918063; 
+  --biencommun-news-bg-arbres: #6f7d7c;
+  --biencommun-news-bg-enavant: #d3cec7;
+
+  /* NEWS PAGE */	
+  --biencommun-news-bg-page: #eae8e9; 
+  --biencommun-news-bg-page-suite: #f2f2f3; 
+      
+  /* NEWS PAGE SOPHISTIQUEE */	
+  --biencommun-news-sophis-bg-intro: #e2e0db; 
+  --biencommun-news-sophis-intro: #695D5B; 
+  --biencommun-news-sophis-bg-text: #6f634b; 
+  --biencommun-news-sophis-bg-text2: #eae8e9; 	
+      
+  /* TEAM PAGE */	
+  --biencommun-team-bg-page: #ececeb; 	
+  --biencommun-team-cat-titre: #857873;
+  --biencommun-team-bg-btn: #a29f96; 
+    
+  /* TEAM PARTENAIRES */	
+  --biencommun-partenaires-bg: #edecea; 	
+  --biencommun-partenaires-bg-bloc: #d7d7cf; 
+    
+  /* PAGE BLOC */	
+  --biencommun-page-bloc-full: #ded7ca; 	
+  --biencommun-page-bloc-bg-pictos: #d8d7d0;
+  --biencommun-page-bloc-pictos-bg: #917f63;	
+  --biencommun-page-bloc-btn-bg: #a9997f;
+  --biencommun-page-bloc-btn: #525252;	
+    
+  /* PAGE BLOC COLOR */	
+  --biencommun-page-bloc-color-header:#e0d6c0;
+      
+  /* MEDIAS */	
+  --biencommun-medias-bg: #eae7e9;
+
+  /* NEWSLETTER BLOC */	
+  --biencommun-newsletter-bg: #e7e1d5;
+  --biencommun-newsletter-titre: #72676B;
+      
+  /* FLECHE TO TOP */	    
+  --biencommun-fleche-to-top-bg: rgb(114 98 72 / 85%);
+    
+  /* DROPDOWN */	    
+  --biencommun-dropdown-bg:#e2d6be; 
+    
+  /* MAP */	    
+  --biencommun-map-box-bg:rgb(177 154 117 / 90%); 	
+  --biencommun-map-box-partenaires:#393124;	
+  --biencommun-map-carte-icone-container:#d8d7d0;
 }
 
 /* fallback fonts */
