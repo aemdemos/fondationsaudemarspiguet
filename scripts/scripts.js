@@ -370,6 +370,63 @@ export async function loadAllPlaceholders() {
 }
 
 /**
+ * Sets domain-specific favicon based on current URL
+ */
+function setPathSpecificFavicon() {
+  const { hostname } = window.location;
+
+  // Define domain-specific favicon mappings
+  const faviconMappings = {
+    biencommun: {
+      16: '/styles/bien-favicon-16x16.png',
+      32: '/styles/bien-favicon-32x32.png',
+      apple: '/styles/bien-apple-touch-icon.png',
+    },
+    arbres: {
+      16: '/styles/arbes-favicon-16x16.png',
+      32: '/styles/arbes-favicon-32x32.png',
+      apple: '/styles/arbes-apple-touch-icon.png',
+    },
+    // Add more domain mappings as needed
+  };
+
+  // Default favicon mapping for domains that don't match specific rules
+  const defaultFaviconSet = {
+    16: '/styles/favicon-16x16.png',
+    32: '/styles/favicon-32x32.png',
+    apple: '/styles/apple-touch-icon.png',
+  };
+
+  // Check if current domain matches any special favicon rules
+  const domainKeys = Object.keys(faviconMappings);
+  const matchedDomain = domainKeys.find((domainKey) => hostname.includes(domainKey));
+  const faviconSet = matchedDomain ? faviconMappings[matchedDomain] : defaultFaviconSet;
+
+  // If we found a matching domain, update the favicons
+  if (faviconSet) {
+    const { 16: favicon16Src, 32: favicon32Src, apple: appleSrc } = faviconSet;
+
+    // Update 16x16 favicon
+    const favicon16 = document.querySelector('link[rel="icon"][sizes="16x16"]');
+    if (favicon16) {
+      favicon16.href = favicon16Src;
+    }
+
+    // Update 32x32 favicon
+    const favicon32 = document.querySelector('link[rel="icon"][sizes="32x32"]');
+    if (favicon32) {
+      favicon32.href = favicon32Src;
+    }
+
+    // Update apple touch icon
+    const appleIcon = document.querySelector('link[rel="apple-touch-icon"]');
+    if (appleIcon) {
+      appleIcon.href = appleSrc;
+    }
+  }
+}
+
+/**
  * Loads everything needed to get to LCP.
  * @param {Element} doc The container element
  */
@@ -381,6 +438,10 @@ async function loadEager(doc) {
 
   const templateName = getMetadata('template');
   decorateTemplateAndTheme();
+
+  // Set path-specific favicon early in the load process
+  setPathSpecificFavicon();
+
   const main = doc.querySelector('main');
   if (main) {
     decorateMain(main);
