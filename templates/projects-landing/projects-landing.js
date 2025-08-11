@@ -6,6 +6,7 @@ import {
   fetchPlaceholders,
 } from '../../scripts/aem.js';
 import { getLanguage } from '../../scripts/scripts.js';
+import { applyFadeUpAnimation } from '../../scripts/utils.js';
 
 async function getProjectsdata() {
   const rawprojects = await ffetch(`/${getLanguage()}/${getLanguage() === 'en' ? 'fondation-pour-les-arbres-projects' : 'fondation-pour-les-arbres-nos-projets'}/projects-index.json`)
@@ -188,10 +189,9 @@ export default async function decorate(doc) {
     }
   });
 
-  const projectsListing = document.querySelector('.projects-listing');
+  const projectsListing = doc.querySelector('.projects-listing');
   const categoryItems = categorysection.querySelectorAll('li');
   const locationItems = locationsection.querySelectorAll('li');
-
   categoryItems.forEach((item) => {
     item.addEventListener('click', (event) => {
       const selectedCategory = event.target.textContent;
@@ -274,5 +274,10 @@ export default async function decorate(doc) {
     setInputWidthToText(inputCat);
     setInputWidthToText(inputLocation);
     setInputWidthToText(searchInput);
+  });
+
+  const projectItems = doc.querySelectorAll('.project-item');
+  projectItems.forEach((project) => {
+    applyFadeUpAnimation(project, project.parentNode);
   });
 }
