@@ -342,8 +342,8 @@
  main .cards-buttons{
   display: flex;
   gap: 10px;
- margin: 0;
- padding: 0 20px;
+  margin: 0;
+  padding: 0 20px;
  } 
 
  main .section.cream-bg.cards-container{
@@ -376,7 +376,7 @@ main .cards-buttons .button-asc-btn:hover {
 
 @media (width >= 900px){
   main .cards-buttons{
- padding: 0 80px;
+  padding: 0 80px;
  } 
 
 }
