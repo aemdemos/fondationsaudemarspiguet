@@ -17,8 +17,6 @@ function getVisibleCardCount(numCards) {
   } else {
     visibleCount = numCards;
   }
-  console.log('numCards in side function: ', numCards);
-  console.log('visible count: ', visibleCount);
   return visibleCount;
 }
 
@@ -295,7 +293,6 @@ export default function decorate(block) {
     // initialize buttons
     const visibleCount = getVisibleCardCount(numCards);
     prevButton.disabled = currentIndex <= 0;
-    console.log('numCards in main function: ', numCards);
     nextButton.disabled = currentIndex >= numCards - visibleCount;
 
     nextButton.onclick = () => {

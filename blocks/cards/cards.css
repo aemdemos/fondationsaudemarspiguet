@@ -467,16 +467,16 @@
     
     .cards.icons-grid.statistics > ul {
       overflow: unset;
-      column-gap: 20px;
+      column-gap: 7px;
     }
 
-    .cards.icons-grid > ul > li  {
+    .cards.icons-grid.statistics > ul > li  {
       flex: 0 0 25%;
       padding-left: 0;
     }
 
     .cards.icons-grid.statistics .cards-card-body {
-      width: 100%;
+      width: 93%;
     }
 
     .cards.icons-grid.statistics button {
