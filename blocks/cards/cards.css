@@ -350,7 +350,7 @@
   margin-top: 0;
  }
 
-main .cards-buttons .button-primary{
+main .cards-buttons .button-desc-btn{
   flex-direction: row;
   margin-left: auto;
   background-image: url('/icons/btn_arbres_filtre_top.svg');
@@ -360,7 +360,7 @@ main .cards-buttons .button-primary{
   padding-bottom: 6px;
 }
 
-main .cards-buttons .button-secondary {
+main .cards-buttons .button-asc-btn {
   background-image: url('/icons/btn_arbres_filtre_bottom.svg');
   background-repeat: no-repeat;
   padding-bottom: 6px;
@@ -368,8 +368,8 @@ main .cards-buttons .button-secondary {
   width: 30px;
 }
 
-main .cards-buttons .button-primary:hover, 
-main .cards-buttons .button-secondary:hover {
+main .cards-buttons .button-desc-btn:hover, 
+main .cards-buttons .button-asc-btn:hover {
   cursor: pointer;
   opacity: 0.7;
 }

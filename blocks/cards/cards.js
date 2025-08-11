@@ -248,7 +248,7 @@ export default function decorate(block) {
         cardBody.innerHTML = '';
         const heading = h2(link.textContent);
         link.innerHTML = '';
-        link.classList.remove('button', 'primary');
+        link.classList.remove('button', 'desc_btn');
         link.append(cardImageWrapper, heading);
         cardBody.append(link);
       } else {
@@ -266,32 +266,36 @@ export default function decorate(block) {
     divbuttons.className = 'cards-buttons';
     const twoLevelParent = block.parentElement?.parentElement;
     twoLevelParent.parentElement.insertBefore(divbuttons, twoLevelParent);
-    const b1 = document.createElement('a');
-    b1.className = 'button-primary';
-    const b2 = document.createElement('a');
-    b2.className = 'button-secondary';
-    divbuttons.append(b1, b2);
+    const descBtn = document.createElement('a');
+    descBtn.className = 'button-desc-btn';
+    descBtn.href = '#';
+    const ascBtn = document.createElement('a');
+    ascBtn.className = 'button-asc-btn';
+    ascBtn.href = '#';
+    divbuttons.append(descBtn, ascBtn);
 
     const fullcard = block.querySelectorAll('.cards-card-body');
     const arrAsec = [];
     fullcard.forEach((card) => arrAsec.push(card.innerHTML));
 
     const arrDesc = [...arrAsec].reverse();
-    b1.addEventListener('click', () => {
+    descBtn.addEventListener('click', (e) => {
+      e.preventDefault();
       fullcard.forEach((card, i) => {
         card.innerHTML = arrDesc[i];
       });
 
-      b1.classList.add('disabled');
-      b2.classList.remove('disabled');
+      descBtn.classList.add('disabled');
+      ascBtn.classList.remove('disabled');
     });
 
-    b2.addEventListener('click', () => {
+    ascBtn.addEventListener('click', (e) => {
+      e.preventDefault();
       fullcard.forEach((card, i) => {
         card.innerHTML = arrAsec[i];
       });
-      b2.classList.add('disabled');
-      b1.classList.remove('disabled');
+      ascBtn.classList.add('disabled');
+      descBtn.classList.remove('disabled');
     });
   }
 
