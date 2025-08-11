@@ -1015,16 +1015,21 @@ main .section.cream-bg.table-container.accordion-container{
     font-size: 42px; /* Slightly larger for large screens */
     padding: 60px 80px 80px; /* Different padding */
   }
-
+ 
   main .section.colored-text.warm-grey-bg:has(.icons-grid) .default-content-wrapper > p {
     padding: 10px 0 65px;
-    margin-left: -160px;
-    margin-right: 0;
-    max-width: 1600px;
+    max-width: 1200px;
   }
 
   main .section.colored-text.warm-grey-bg:has(.icons-grid) .columns-wrapper div > div > p {
     width: 100%;
+  }
+
+  @media (width >= 1500px) {
+    main .section.colored-text.warm-grey-bg:has(.icons-grid) .default-content-wrapper > p {
+      margin-left: -150px;
+      max-width: 1520px;
+    }
   }
 }
 
