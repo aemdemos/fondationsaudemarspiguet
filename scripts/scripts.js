@@ -13,6 +13,7 @@ import {
   loadCSS,
   getMetadata,
   buildBlock,
+  toCamelCase,
   fetchPlaceholders,
 } from './aem.js';
 import { decorateListingCards } from './utils.js';
@@ -292,12 +293,92 @@ export async function loadTemplate(doc, templateName) {
   }
 }
 
+export async function loadAllPlaceholders() {
+  // Early return if already loaded
+  if (window.placeholders && Object.keys(window.placeholders).length > 1) {
+    return window.placeholders;
+  }
+
+  const currentLanguage = getLanguage();
+  const sheetsToFetch = [
+    currentLanguage,
+    currentLanguage === 'en' ? 'fr' : 'en',
+    'category-news',
+    'category-projects',
+    'language-switcher',
+  ];
+
+  // Create default structure
+  const createDefaults = () => ({
+    [currentLanguage]: {},
+    [currentLanguage === 'en' ? 'fr' : 'en']: {},
+    'category-news': { en: [], fr: [] },
+    'category-projects': { en: [], fr: [] },
+    'language-switcher': [],
+  });
+
+  // Sheet processors for different data types
+  const processors = {
+    category: (data) => data.reduce((acc, item) => {
+      if (item.en) acc.en.push(item.en);
+      if (item.fr) acc.fr.push(item.fr);
+      return acc;
+    }, { en: [], fr: [] }),
+
+    language: (data) => data.reduce((acc, item) => {
+      if (item.Key) acc[toCamelCase(item.Key)] = item.Text;
+      return acc;
+    }, {}),
+
+    raw: (data) => data,
+  };
+
+  try {
+    const response = await fetch(`/placeholders.json?${sheetsToFetch.map((s) => `sheet=${s}`).join('&')}`);
+
+    if (!response.ok) {
+      throw new Error(`HTTP ${response.status}`);
+    }
+
+    const json = await response.json();
+    window.placeholders = createDefaults();
+
+    // Process each sheet with appropriate processor
+    sheetsToFetch.forEach((sheetName) => {
+      const data = json[sheetName]?.data;
+      if (!data) return;
+
+      if (sheetName === 'category-news' || sheetName === 'category-projects') {
+        window.placeholders[sheetName] = processors.category(data);
+      } else if (sheetName === 'language-switcher') {
+        window.placeholders[sheetName] = processors.raw(data);
+      } else {
+        window.placeholders[sheetName] = processors.language(data);
+      }
+    });
+
+    // Merge current language to root for backward compatibility
+    Object.assign(window.placeholders, window.placeholders[currentLanguage]);
+
+    return window.placeholders;
+  } catch (error) {
+    // eslint-disable-next-line no-console
+    console.error('Error loading placeholders:', error);
+    window.placeholders = createDefaults();
+    return window.placeholders;
+  }
+}
+
 /**
  * Loads everything needed to get to LCP.
  * @param {Element} doc The container element
  */
 async function loadEager(doc) {
   document.documentElement.lang = getLanguage();
+
+  // Load all placeholders early in the application lifecycle
+  await loadAllPlaceholders();
+
   const templateName = getMetadata('template');
   decorateTemplateAndTheme();
   const main = doc.querySelector('main');

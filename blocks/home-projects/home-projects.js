@@ -145,9 +145,15 @@ async function getProductsdata() {
 
 const loadresults = async (getProducts) => {
   const currentLanguage = getLanguage();
-  const placeholders = await fetchPlaceholders(currentLanguage);
-  const leftButtonText = placeholders.homeProjectsLeftButton || '';
-  const rightButtonText = placeholders.homeProjectsRightButton || '';
+
+  // Use centrally loaded placeholders, fallback to fetch if not available
+  let placeholders = window.placeholders?.[currentLanguage];
+  if (!placeholders) {
+    placeholders = await fetchPlaceholders(currentLanguage);
+  }
+
+  const leftButtonText = placeholders?.homeProjectsLeftButton || '';
+  const rightButtonText = placeholders?.homeProjectsRightButton || '';
   const productResults = [];
   getProducts.forEach((product) => {
     // eslint-disable-next-line max-len
