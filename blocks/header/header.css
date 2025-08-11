@@ -101,6 +101,7 @@ header nav .nav-tools ul li.active, header nav .nav-tools ul li a.active {
    header nav {
     display: flex;
     justify-content: space-between;
+    min-height: 100px;
   }
   
   header nav[aria-expanded='true'] {
