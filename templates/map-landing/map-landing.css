@@ -81,6 +81,15 @@ body.map-landing .section.pale-grey-bg .map-wrapper {
     max-width: 100%;
 }
 
+body.map-landing .section.pale-grey-bg .map-bien-wrapper {
+    height: 1064.44px;
+    position: relative;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    max-width: 100%;
+}
+
 @media (width >= 900px) {
     body.map-landing .section.pale-grey-bg .cards-wrapper {
         height: 1064.44px;
