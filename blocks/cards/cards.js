@@ -248,7 +248,7 @@ export default function decorate(block) {
         cardBody.innerHTML = '';
         const heading = h2(link.textContent);
         link.innerHTML = '';
-        link.classList.remove('button', 'primary');
+        link.classList.remove('button', 'desc_btn');
         link.append(cardImageWrapper, heading);
         cardBody.append(link);
       } else {
@@ -260,6 +260,42 @@ export default function decorate(block) {
           cardBody.append(cardImageWrapper, heading);
         }
       }
+    });
+
+    const divbuttons = document.createElement('div');
+    divbuttons.className = 'cards-buttons';
+    const twoLevelParent = block.parentElement?.parentElement;
+    twoLevelParent.parentElement.insertBefore(divbuttons, twoLevelParent);
+    const descBtn = document.createElement('a');
+    descBtn.className = 'button-desc-btn';
+    descBtn.href = '#';
+    const ascBtn = document.createElement('a');
+    ascBtn.className = 'button-asc-btn';
+    ascBtn.href = '#';
+    divbuttons.append(descBtn, ascBtn);
+
+    const fullcard = block.querySelectorAll('.cards-card-body');
+    const arrAsec = [];
+    fullcard.forEach((card) => arrAsec.push(card.innerHTML));
+
+    const arrDesc = [...arrAsec].reverse();
+    descBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      fullcard.forEach((card, i) => {
+        card.innerHTML = arrDesc[i];
+      });
+
+      descBtn.classList.add('disabled');
+      ascBtn.classList.remove('disabled');
+    });
+
+    ascBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      fullcard.forEach((card, i) => {
+        card.innerHTML = arrAsec[i];
+      });
+      ascBtn.classList.add('disabled');
+      descBtn.classList.remove('disabled');
     });
   }
 
