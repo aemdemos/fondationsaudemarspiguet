@@ -16,15 +16,26 @@ async function getNewsdata() {
 
 function showNewsArticles(getNews, doc) {
   getNews.forEach((news) => {
-    const $newsItem = div({ class: 'news-item' });
+    const url = news.path;
+    const $newsItem = a({ class: 'news-item', href: url });
     const $newsTitle = h2({ class: 'news-title' }, news.title);
     const $newsDate = span({ class: 'news-date' }, news.date);
     const $newsCategory = span({ class: 'news-category' }, news.category);
     const $newsDescription = div({ class: 'news-description' }, news.description);
     const imageWrapper = div({ class: 'news-image-wrapper' });
+    const contentWrapper = div({ class: 'news-content-wrapper' });
+    const clearDiv = div({ class: 'clear' });
     const $newsImg = img({ class: 'news-image', src: news.image, alt: news.title });
     imageWrapper.append($newsImg);
-    $newsItem.append(imageWrapper, $newsCategory, $newsDate, $newsTitle, $newsDescription);
+    contentWrapper.append($newsCategory, $newsDate, $newsTitle, $newsDescription);
+    if (news['article-color']) {
+      $newsItem.classList.add(news['article-color']);
+    }
+    const { layout } = news;
+    if (layout) {
+      $newsItem.classList.add(layout);
+    }
+    $newsItem.append(imageWrapper, contentWrapper, clearDiv);
     doc.querySelector('.news-listing').append($newsItem);
   });
 }
@@ -74,7 +85,12 @@ export default async function decorate(doc) {
   );
   $newsListingRight.append($filterTop, $fitlerBottom);
   $filterContainer.append($newsListingLeft, $newsListingRight);
-  const $newsListing = div({ class: 'news-listing' });
+  const $newsListing = div(
+    { class: 'news-listing-container' },
+    div(
+      { class: 'news-listing' },
+    ),
+  );
   $section.append($filterContainer, $newsListing);
   const getNews = await getNewsdata();
   const allCategories = getNews
@@ -97,6 +113,28 @@ export default async function decorate(doc) {
     categorysection.style.display = categorysection.style.display === 'block' ? 'none' : 'block';
   });
 
+  // code for getting width of input dynamically
+
+  const categorySectionDiv = doc.querySelector('.category-section');
+  const inputCat = doc.querySelector('.category-input');
+  const mirror = span({ class: 'input-category-span' });
+  // Function to set width
+  function updateWidth(text) {
+    mirror.textContent = text;
+    const width = mirror.offsetWidth;
+    inputCat.style.width = `${width}px`;
+  }
+
+  // Hidden span to measure text width
+  mirror.style.font = getComputedStyle(inputCat).font;
+  categorySectionDiv.appendChild(mirror);
+  updateWidth(inputCat.placeholder);
+
+  window.addEventListener('resize', () => {
+    const currentText = inputCat.value || inputCat.placeholder;
+    updateWidth(currentText);
+  });
+
   const newsListing = document.querySelector('.news-listing');
   const sortedNews = getNews
     .sort((date1, date2) => parseDate(date2.date) - parseDate(date1.date));
@@ -106,6 +144,7 @@ export default async function decorate(doc) {
     item.addEventListener('click', (event) => {
       const selectedCategory = event.target.textContent;
       $categoryInput.value = selectedCategory;
+      updateWidth(selectedCategory);
       categorysection.style.display = 'none';
       const filteredNews = getNews.filter((news) => news.category
       && news.category.includes(selectedCategory));
@@ -126,6 +165,7 @@ export default async function decorate(doc) {
   const viewAllButton = doc.getElementById('view-all');
   viewAllButton.addEventListener('click', (event) => {
     event.preventDefault();
+    updateWidth(inputCat.placeholder);
     $categoryInput.value = '';
     newsListing.innerHTML = '';
     showNewsArticles(sortedNews, doc);

@@ -1,4 +1,4 @@
 mountpoints:
   /:
-    url: https://content.da.live/aemdemos/fondationsaudemarspiguet/
+    url: https://content.da.live/audemars-piguet/biencommun-fondationsaudemarspiguet/
     type: markup

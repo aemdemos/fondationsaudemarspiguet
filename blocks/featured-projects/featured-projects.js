@@ -32,9 +32,9 @@ async function fetchProjectPlaceholders(prefix = 'en') {
   window.placeholders = window.placeholders || {};
 
   // Check if we already have data loaded
-  if (!window.placeholders[prefix] || !window.placeholders['category-news'] || !window.placeholders['category-projects']) {
+  if (!window.placeholders[prefix] || !window.placeholders['category-news'] || !window.placeholders['category-projects'] || !window.placeholders['language-switcher']) {
     try {
-      const resp = await fetch(`/placeholders.json?sheet=${prefix}&sheet=category-news&sheet=category-projects`);
+      const resp = await fetch(`/placeholders.json?sheet=${prefix}&sheet=category-news&sheet=category-projects&sheet=language-switcher`);
       const json = resp.ok ? await resp.json() : {};
 
       // Process main language sheet

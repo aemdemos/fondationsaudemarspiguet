@@ -13,6 +13,8 @@ import {
   loadCSS,
   getMetadata,
   buildBlock,
+  toCamelCase,
+  fetchPlaceholders,
 } from './aem.js';
 import { decorateListingCards } from './utils.js';
 
@@ -54,30 +56,49 @@ export function moveInstrumentation(from, to) {
 }
 
 /**
- * Decorates h2 headings with animation class
+ * Decorates h1, h2 headings with repeatable scroll animations
  * @param {Element} main The container element
  */
 function decorateHeadings(main) {
   const headingElements = main.querySelectorAll('h1, h2');
+
   headingElements.forEach((heading) => {
-    heading.classList.add('animate');
-  });
+    // Set initial styles (starting from left, invisible)
+    heading.style.opacity = '0';
+    heading.style.transform = 'translateX(-50px)';
 
-  // Create intersection observer to trigger left-to-right animation
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('aos-animate');
-        observer.unobserve(entry.target);
-      }
+    // Create individual observer for each heading
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          // Use Web Animations API for reliable animation (left to right)
+          entry.target.animate([
+            { opacity: 0, transform: 'translateX(-50px)' },
+            { opacity: 1, transform: 'translateX(0)' },
+          ], {
+            duration: 1500,
+            easing: 'ease',
+            fill: 'forwards',
+          });
+        } else {
+          // Fast reset animation back to left
+          entry.target.animate([
+            { opacity: 1, transform: 'translateX(0)' },
+            { opacity: 0, transform: 'translateX(-50px)' },
+          ], {
+            duration: 100,
+            easing: 'ease',
+            fill: 'forwards',
+          });
+        }
+      });
+    }, {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px',
     });
-  }, {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px',
-  });
 
-  // Observe all heading elements
-  headingElements.forEach((heading) => observer.observe(heading));
+    observer.observe(heading);
+  });
 }
 
 /**
@@ -135,6 +156,17 @@ export function getLanguage(curPath = window.location.pathname, resetCache = fal
   return getLanguageFromPath(curPath, resetCache);
 }
 
+export async function load404() {
+  const placeholders = await fetchPlaceholders(`${getLanguage()}`);
+  const { pageNotFoundText } = placeholders;
+
+  // Update the paragraph text with placeholder content
+  const errorMessage = document.querySelector('.error-message-container p');
+  if (errorMessage && pageNotFoundText) {
+    errorMessage.textContent = pageNotFoundText;
+  }
+}
+
 /**
  * Builds all synthetic blocks in a container element.
  * @param {Element} main The container element
@@ -146,6 +178,56 @@ function buildAutoBlocks() {
     // eslint-disable-next-line no-console
     console.error('Auto Blocking failed', error);
   }
+}
+
+function getPolicyTemplateDynamicData(main) {
+  const fetchclass = document.querySelector('.policy-template');
+  fetch('/query-index.json')
+    .then((res) => res.json())
+    .then(async (output) => {
+      const currentPath = window.location.pathname;
+      const segs = currentPath.split('/');
+      const pageSlug = segs[segs.length - 1];
+
+      let i; let pageData;
+      if (fetchclass) {
+        for (i = 0; i < output.total; i += 1) {
+          if (output.data[i].path === currentPath) {
+            pageData = output.data[i];
+          }
+        }
+
+        if (pageData) {
+          const datechanged = pageData.lastModified;
+          const date = new Date(datechanged * 1000);
+          const formattedEng = `${date.toLocaleDateString('en-US', { month: 'short' })} ${date.getDate()}, ${date.getFullYear()}`;
+          const formattedFr = `${date.getDate()} ${date.toLocaleDateString('fr-FR', { month: 'long' })}, ${date.getFullYear()}`;
+          // fetch placeholders based on current language
+          const currentLanguage = getLanguage();
+          const placeholders = await fetchPlaceholders(currentLanguage);
+          const strEng = `${formattedEng}`;
+          const strFr = `${formattedFr}`;
+          const info = document.createElement('span');
+          info.classList.add('last-modified');
+
+          if (currentLanguage === 'en') {
+            if (pageSlug === 'privacy-notice') {
+              info.textContent = `${placeholders.privacyPolicyUpdateText} ${strEng}`;
+            } else if (pageSlug === 'terms-of-use') {
+              info.textContent = `${placeholders.termsOfUseUpdateText} ${strEng}`;
+            }
+          } else if (currentLanguage === 'fr') {
+            if (pageSlug === 'declaration-de-confidentialite') {
+              info.textContent = `${placeholders.privacyPolicyUpdateText} ${strFr}`;
+            } else if (pageSlug === 'conditions-dutilisation') {
+              info.textContent = `${placeholders.termsOfUseUpdateText} ${strFr}`;
+            }
+          }
+
+          main.appendChild(info);
+        }
+      }
+    });
 }
 
 /**
@@ -211,12 +293,92 @@ export async function loadTemplate(doc, templateName) {
   }
 }
 
+export async function loadAllPlaceholders() {
+  // Early return if already loaded
+  if (window.placeholders && Object.keys(window.placeholders).length > 1) {
+    return window.placeholders;
+  }
+
+  const currentLanguage = getLanguage();
+  const sheetsToFetch = [
+    currentLanguage,
+    currentLanguage === 'en' ? 'fr' : 'en',
+    'category-news',
+    'category-projects',
+    'language-switcher',
+  ];
+
+  // Create default structure
+  const createDefaults = () => ({
+    [currentLanguage]: {},
+    [currentLanguage === 'en' ? 'fr' : 'en']: {},
+    'category-news': { en: [], fr: [] },
+    'category-projects': { en: [], fr: [] },
+    'language-switcher': [],
+  });
+
+  // Sheet processors for different data types
+  const processors = {
+    category: (data) => data.reduce((acc, item) => {
+      if (item.en) acc.en.push(item.en);
+      if (item.fr) acc.fr.push(item.fr);
+      return acc;
+    }, { en: [], fr: [] }),
+
+    language: (data) => data.reduce((acc, item) => {
+      if (item.Key) acc[toCamelCase(item.Key)] = item.Text;
+      return acc;
+    }, {}),
+
+    raw: (data) => data,
+  };
+
+  try {
+    const response = await fetch(`/placeholders.json?${sheetsToFetch.map((s) => `sheet=${s}`).join('&')}`);
+
+    if (!response.ok) {
+      throw new Error(`HTTP ${response.status}`);
+    }
+
+    const json = await response.json();
+    window.placeholders = createDefaults();
+
+    // Process each sheet with appropriate processor
+    sheetsToFetch.forEach((sheetName) => {
+      const data = json[sheetName]?.data;
+      if (!data) return;
+
+      if (sheetName === 'category-news' || sheetName === 'category-projects') {
+        window.placeholders[sheetName] = processors.category(data);
+      } else if (sheetName === 'language-switcher') {
+        window.placeholders[sheetName] = processors.raw(data);
+      } else {
+        window.placeholders[sheetName] = processors.language(data);
+      }
+    });
+
+    // Merge current language to root for backward compatibility
+    Object.assign(window.placeholders, window.placeholders[currentLanguage]);
+
+    return window.placeholders;
+  } catch (error) {
+    // eslint-disable-next-line no-console
+    console.error('Error loading placeholders:', error);
+    window.placeholders = createDefaults();
+    return window.placeholders;
+  }
+}
+
 /**
  * Loads everything needed to get to LCP.
  * @param {Element} doc The container element
  */
 async function loadEager(doc) {
   document.documentElement.lang = getLanguage();
+
+  // Load all placeholders early in the application lifecycle
+  await loadAllPlaceholders();
+
   const templateName = getMetadata('template');
   decorateTemplateAndTheme();
   const main = doc.querySelector('main');
@@ -296,6 +458,7 @@ async function loadLazy(doc) {
   loadCSS(`${window.hlx.codeBasePath}/styles/lazy-styles.css`);
   loadFonts();
   backToTopWithIcon();
+  getPolicyTemplateDynamicData(main);
 }
 
 /**

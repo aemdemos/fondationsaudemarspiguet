@@ -2,8 +2,27 @@
 import { createOptimizedPicture } from '../../scripts/aem.js';
 import { moveInstrumentation } from '../../scripts/scripts.js';
 import {
-  div, h2,
+  div, h2, button,
 } from '../../scripts/dom-helpers.js';
+
+function getVisibleCardCount(track, cardsBody) {
+  const trackWidth = track.offsetWidth;
+  const cardWidth = cardsBody.offsetWidth;
+  return Math.floor(trackWidth / cardWidth);
+}
+
+function scrollToCard(cardEl) {
+  if (cardEl) {
+    const track = cardEl.closest('.carousel-track');
+    if (track) {
+      const cardOffset = cardEl.offsetLeft;
+      track.scrollTo({
+        left: cardOffset,
+        behavior: 'smooth',
+      });
+    }
+  }
+}
 
 export default function decorate(block) {
   /* change to ul, li */
@@ -229,7 +248,7 @@ export default function decorate(block) {
         cardBody.innerHTML = '';
         const heading = h2(link.textContent);
         link.innerHTML = '';
-        link.classList.remove('button', 'primary');
+        link.classList.remove('button', 'desc_btn');
         link.append(cardImageWrapper, heading);
         cardBody.append(link);
       } else {
@@ -240,6 +259,106 @@ export default function decorate(block) {
           cardBody.classList.add('no-link');
           cardBody.append(cardImageWrapper, heading);
         }
+      }
+    });
+
+    const divbuttons = document.createElement('div');
+    divbuttons.className = 'cards-buttons';
+    const twoLevelParent = block.parentElement?.parentElement;
+    twoLevelParent.parentElement.insertBefore(divbuttons, twoLevelParent);
+    const descBtn = document.createElement('a');
+    descBtn.className = 'button-desc-btn';
+    descBtn.href = '#';
+    const ascBtn = document.createElement('a');
+    ascBtn.className = 'button-asc-btn';
+    ascBtn.href = '#';
+    divbuttons.append(descBtn, ascBtn);
+
+    const fullcard = block.querySelectorAll('.cards-card-body');
+    const arrAsec = [];
+    fullcard.forEach((card) => arrAsec.push(card.innerHTML));
+
+    const arrDesc = [...arrAsec].reverse();
+    descBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      fullcard.forEach((card, i) => {
+        card.innerHTML = arrDesc[i];
+      });
+
+      descBtn.classList.add('disabled');
+      ascBtn.classList.remove('disabled');
+    });
+
+    ascBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      fullcard.forEach((card, i) => {
+        card.innerHTML = arrAsec[i];
+      });
+      ascBtn.classList.add('disabled');
+      descBtn.classList.remove('disabled');
+    });
+  }
+
+  if (block.classList.contains('icons-grid')) {
+    // This cards block turns into a carousel in small screen views
+    // so we need to add the carousel elements, classes and attributes
+    block.classList.add('carousel');
+    const ulist = block.querySelector('ul');
+    ulist.classList.add('carousel-track');
+    const cards = block.querySelectorAll('ul li');
+    const cardsBodyDiv = block.querySelector('ul li .cards-card-body');
+
+    cards.forEach((card) => {
+      card.classList.add('card');
+    });
+
+    const prevBtn = button({ class: 'carousel-prev' });
+    const nextBtn = button({ class: 'carousel-next' });
+
+    block.append(prevBtn, nextBtn);
+
+    const track = block.querySelector('.carousel-track');
+    const prevButton = block.querySelector('.carousel-prev');
+    const nextButton = block.querySelector('.carousel-next');
+    let currentIndex = 0;
+
+    // initialize buttons
+    const visibleCount = getVisibleCardCount(track, cardsBodyDiv);
+    prevButton.disabled = currentIndex <= 0;
+    nextButton.disabled = currentIndex >= cards.length - visibleCount;
+
+    nextButton.onclick = () => {
+      if (currentIndex < cards.length - 1) {
+        prevButton.disabled = false;
+        currentIndex += 1;
+        scrollToCard(cards[currentIndex]);
+        // update next button
+        const visibleCards = getVisibleCardCount(track, cardsBodyDiv);
+        nextButton.disabled = currentIndex >= cards.length - visibleCards;
+      }
+    };
+
+    prevButton.onclick = () => {
+      if (currentIndex > 0) {
+        nextButton.disabled = false;
+        currentIndex -= 1;
+        scrollToCard(cards[currentIndex]);
+        // update previous button
+        prevButton.disabled = currentIndex <= 0;
+      }
+    };
+
+    window.addEventListener('resize', () => {
+      scrollToCard(cards[currentIndex]);
+      if (currentIndex <= 0) {
+        prevButton.disabled = true;
+      } else {
+        prevButton.disabled = false;
+      }
+      if (currentIndex >= cards.length - getVisibleCardCount(track, cardsBodyDiv)) {
+        nextButton.disabled = true;
+      } else {
+        nextButton.disabled = false;
       }
     });
   }

@@ -1,34 +1,93 @@
+
 .table.block {
   width: 100%;
   overflow-x: auto;
+}
+
+.table tr {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  margin: 0;
+  padding: 0;
+  background: none;
+}
+
+.table.block tr {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 0;
+  padding: 0;
+  background: none;
+}
+
+.table th,
+.table td {
+  flex: 1 1 0;
+  min-width: 0;
+  padding: 0 48px 0 0;
+  text-align: left;
+  vertical-align: top;
+  background: none;
+  margin: 0;
+  box-shadow: none;
+}
+
+.table th:last-child,
+.table td:last-child {
+  padding-right: 0;
+}
+
+.table table {
+  border-collapse: separate;
+  border-spacing: 0 34px;
+  background: none;
+}
+
+.table p {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-family: var(--body-font-family);
+  line-height: 1.4;
+  color: #8f9793;
+  font-size: 1.09rem;
+  font-weight: 400;
 }
 
 .table.block table {
   width: 100%;
   max-width: 100%;
   border-collapse: collapse;
-  font-size: var(--body-font-size-xs);
+  font-size: 18px;
 }
 
-@media (width >= 600px) {
-  .table.block table {
-    font-size: var(--body-font-size-s);
-  }
+.table.block table tr br {
+    display: none; /* Hide br tags in table headers */
 }
 
-@media (width >= 900px) {
-  .table.block table {
-    font-size: var(--body-font-size-m);
-  }
-}
-
-.table.block table thead tr {
-  border-top: 2px solid;
-  border-bottom: 2px solid;
-}
-
+/* Generated CSS, unchanged except for the merged .table selector */
+.table.block table,
+.table.block table tr,
+.table.block table th,
+.table.block table td,
+.table.block table thead,
+.table.block table thead tr,
+.table.block table tbody,
 .table.block table tbody tr {
-  border-bottom: 1px solid;
+  border: none;
+  border-style: none;
+  border-width: 0;
+  box-shadow: none;
+  outline: none;
+  background: none;
+}
+
+.table.block table thead tr, .table.block table tbody tr {
+  border: none;
 }
 
 .table.block table th {
@@ -37,8 +96,26 @@
 
 .table.block table th,
 .table.block table td {
-  padding: 0.5em;
+  padding: 0.7em;
+  padding-left: 0;
   text-align: left;
+}
+
+.table-wrapper {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+main .table-container .table-wrapper .table.block {
+  padding-bottom: 40px;
+  border-bottom: 1px solid var(--site-color);
+}
+
+.table.block.striped tbody tr,
+.table.block.bordered table th,
+.table.block.bordered table td {
+  border: none;
+  background: none;
 }
 
 .table table th p,
@@ -56,12 +133,39 @@
   border-bottom: 1px solid #6B7E7C;
 }
 
-
-
 /* bordered variant */
 .table.block.bordered table th,
 .table.block.bordered table td {
   border: 1px solid;
+}
+
+/* Merged .table selector */
+.table {
+  overflow-x: auto;
+  background: none;
+}
+
+.table strong {
+  display: block;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 1.22rem;
+  color: #222;
+  letter-spacing: 0.03em;
+  margin-bottom: 0;
+  line-height: 1.2;
+}
+
+.table.block strong {
+    font-weight: 600;
+    font-size: 18px;
+    letter-spacing: .06em;
+}
+
+.table.block .new-div {
+    font-weight: 400;
+    font-size: 18px;
+    letter-spacing: .06em;
 }
 
 /* Style for tables with the 'report' class */
@@ -72,7 +176,7 @@
 }
 
 .report.table-container {
-  padding-top: 80px;
+  padding-top: 100px;
   padding-bottom: 80px;
 }
 
@@ -126,4 +230,22 @@
 /* striped variant */
 .table.block.striped tbody tr:nth-child(odd) {
   background-color: var(--overlay-background-color);
+}
+
+@media (width >= 600px) {
+  .table.block table {
+    font-size: 22px;
+  }
+
+  .table.block strong, 
+  .table.block .new-div{
+    font-size: 22px;
+  }
+}
+
+@media (width >= 900px) {
+  .table.block tr {
+  flex-direction: row;
+}
+
 }

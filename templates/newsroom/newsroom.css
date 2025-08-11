@@ -1,0 +1,213 @@
+/* Media Filter Container */
+main .media-filter-container {
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: left;
+    max-width: 1720px;
+    margin: auto;
+    font-size: 18px;
+}
+
+main .media-filter-container .type-input {
+    width: 70px;
+    opacity: 1;
+    position: relative;
+    left: 0;
+    cursor: pointer;
+    text-transform: none;
+    font-weight: 400;
+    line-height: 1.01;
+    outline: none;
+    text-align: right;
+    letter-spacing: .12em;
+}
+
+main .media-filter-container .media-search-input {
+    width: 100px;
+    opacity: 1;
+    position: relative;
+    left: 0;
+    cursor: pointer;
+    text-transform: none;
+    font-weight: 400;
+    line-height: 1.01;
+    letter-spacing: .12em;
+}
+
+main .media-filter-container .media-search-input::placeholder {
+    color: var(--input-placeholder-color);
+}
+
+main .media-filter-container .media-filter-container-left {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+main .media-filter-container .media-filter-container-left .filter-separator {
+    padding: 0 10px;
+    text-transform: none;
+    font-weight: 400;
+    line-height: 1.01;
+}
+
+main .media-filter-container .media-filter-container-left .view-all-media {
+    color: var(--site-color-2);
+    text-transform: none;
+    font-weight: 400;
+    line-height: 1.01;
+    letter-spacing: .1em;
+    text-align: center;
+    white-space: nowrap;
+}
+
+main .media-filter-container .media-filter-container-left .view-all-media:hover {
+    text-decoration: none;
+    opacity: .7;
+}
+
+main .media-filter-container .media-filter-container-right {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    margin-bottom: 20px;
+    margin-right: 15px;
+}
+
+main .media-filter-container .media-filter-container-right .filter-top-btn {
+    width: 30px;
+    height: 30px;
+    background-image: url('/icons/btn_arbres_filtre_top.svg');
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+}
+
+main .media-filter-container .media-filter-container-right .filter-top-btn:hover {
+    opacity: 0.6; /* ✅ Light greyish effect on hover */
+}
+
+main .media-filter-container .media-filter-container-right .filter-bottom-btn {
+    width: 30px;
+    height: 30px;
+    background-image: url('/icons/btn_arbres_filtre_bottom.svg');
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+}
+
+main .media-filter-container .media-filter-container-right .filter-bottom-btn:hover {
+    opacity: 0.6; /* ✅ Light greyish effect on hover */
+}
+
+main .media-listing {
+    background-color: var(--projet-bg-page-listing);
+    width: 100%;
+    height: 500px;
+}
+
+.newsroom main .media-filter-container input {
+    border: none;
+    outline: none;
+    color: var(--input-color);
+}
+
+.newsroom .btn-media-search-clear {
+    background-image: url('../../icons/btn_arbres_filter_back.svg');
+    height: 40px;
+    width: 30px;
+    display: block;
+    background-repeat: no-repeat;
+    background-position: center;
+    float: right;
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+}
+
+.newsroom .btn-media-search-clear:hover {
+    opacity: 0.6; /* ✅ Light greyish effect on hover */
+}
+
+@media (width >= 900px) {
+    main .media-filter-container {
+        padding: 0 20px;
+        font-size: 36px;
+    }
+
+    main .media-filter-container .type-input {
+        width: 140px;
+    }
+
+   
+    main .media-filter-container .media-search-input {
+        width: 250px;
+    }
+}
+
+
+/* Type dropdown styling */
+.type-section {
+  position: relative;
+}
+
+.type-dropdown {
+  position: absolute;
+  top: calc(100%); 
+  left: 25px;
+  right: 0;
+  background: #c5cbcb; 
+  border-top: none;
+  max-height: 100px;
+  width: 150px;
+  overflow-y: auto;
+  z-index: 1000;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.type-option {
+  padding: 8px 12px;
+  cursor: pointer;
+  font-size: 14px;
+  color: #6B7E7C;
+  
+}
+
+.type-option:hover {
+  font-weight: 350;
+}
+
+.type-option:last-child {
+  border-bottom: none;
+}
+
+/* Make type input look clickable */
+.type-input {
+  cursor: pointer !important;
+}
+
+.type-input::after {
+  content: "▼";
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 12px;
+  color: #666;
+  pointer-events: none;
+}
+
+/* Responsive dropdown */
+@media (width >= 900px) {
+  .type-dropdown {
+    left: 50px;
+    width: 250px;
+  }
+  
+  .type-option {
+    font-size: 16px;
+    padding: 10px 15px;
+  }
+
+  .type-dropdown {
+  top: calc(100% + 20px); 
+}
+}

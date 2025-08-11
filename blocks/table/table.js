@@ -22,9 +22,25 @@ export default async function decorate(block) {
 
     [...row.children].forEach((cell) => {
       const td = document.createElement(i === 0 && header ? 'th' : 'td');
-
       if (i === 0) td.setAttribute('scope', 'column');
       td.innerHTML = cell.innerHTML;
+
+      if (block.classList.contains('block') && block.classList.contains('table')) {
+        const pElements = td.querySelectorAll('p');
+
+        pElements.forEach((p) => {
+          const parts = p.innerHTML.split(/<br\s*\/?>/i);
+          const [beforeBr, afterBr] = parts;
+          p.innerHTML = beforeBr;
+
+          if (afterBr && afterBr.trim()) {
+            const afterDiv = document.createElement('div');
+            afterDiv.className = 'new-div';
+            afterDiv.innerHTML = afterBr.trim();
+            p.appendChild(afterDiv);
+          }
+        });
+      }
       tr.append(td);
     });
     if (i === 0 && header) thead.append(tr);

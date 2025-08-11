@@ -201,7 +201,7 @@ function createInfoBoxContent(imageId, imageName, partner, country, dateRange, t
     }).join(' | ');
   }
   
-  return `<div class='myboxmap'><img src='https://content.da.live/aemdemos/fondationsaudemarspiguet/assets/images/map/projects-listing/${imageId}/${imageName}.jpg' width='220' height='144'><p class="carte_box_partenaires">${localizedPartner}</p><p class="carte_box_pays">${localizedCountry}</p><p class="carte_box_date">${dateRange}</p><p class="carte_box_titre">${localizedTitle}</p><p class="carte_box_categorie">${localizedCategory}</p><p class="carte_box_link"><a href=${localizedUrl}>${seeMoreText}</a></p></div>`;
+  return `<div class='myboxmap'><img src='https://content.da.live/audemars-piguet/arbres-fondationsaudemarspiguet/assets/images/map/projects-listing/${imageId}/${imageName}.jpg' width='220' height='144'><p class="carte_box_partenaires">${localizedPartner}</p><p class="carte_box_pays">${localizedCountry}</p><p class="carte_box_date">${dateRange}</p><p class="carte_box_titre">${localizedTitle}</p><p class="carte_box_categorie">${localizedCategory}</p><p class="carte_box_link"><a href=${localizedUrl}>${seeMoreText}</a></p></div>`;
 }
 
 var draggable=true;
@@ -3129,7 +3129,7 @@ var popupoption = {
             imagePath: '/assets/images/',
             styles:[
                 {
-                    url: 'https://content.da.live/aemdemos/fondationsaudemarspiguet/assets/images/closter1.png',
+                    url: 'https://content.da.live/audemars-piguet/arbres-fondationsaudemarspiguet/assets/images/closter1.png',
                     width: 56,
                     height: 56,
                     textColor: '#ffffff',
