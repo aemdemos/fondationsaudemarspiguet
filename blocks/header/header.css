@@ -7,16 +7,24 @@ header .nav-wrapper {
   top: 0;
   left: 0;
   transition: transform 1s ease, position 0s linear 0.4s;
-  background: rgb(114 98 72 / 85%) none repeat scroll 0% 0% / auto padding-box border-box;
+  background: var(--arbres-header-color);
 }
 
 header nav {
-  background-color: var(--header-color);
+  background-color: var(--arbres-header-color);
   box-sizing: border-box;
   align-items: center;
   margin: 0;
   font-family: var(--body-font-family);
   padding: 20px;
+}
+
+.biencommun header .nav-wrapper {
+  background: var(--biencommun-header-color);
+}
+
+.biencommun header nav {
+  background-color: var(--biencommun-header-color);
 }
 
 header .nav-wrapper.non-sticky {
@@ -376,7 +384,10 @@ header nav[aria-expanded="true"] .nav-tools {
     width: 100%;
     z-index: 9999;
     transition: transform 1s ease, position 0s linear 0.4s;
-    background: rgb(114 98 72 / 85%) none repeat scroll 0% 0% / auto padding-box border-box;
+  }
+
+  .biencommun header .nav-wrapper {
+    background: var(--biencommun-header-color);
   }
 
   header .nav-wrapper.non-sticky {
