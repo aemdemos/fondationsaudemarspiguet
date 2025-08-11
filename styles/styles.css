@@ -686,7 +686,7 @@ main .section.light-grey-bg .cards-wrapper {
 main .section.warm-grey-bg .cards-wrapper {
   max-width: 1200px;
   padding: 0 5px;
-  margin-bottom: 40px;
+  margin-bottom: 60px;
 }
 
 main .section.light-grey-bg:has(.cards-wrapper) .default-content-wrapper {
@@ -831,8 +831,10 @@ main .section.warm-grey-bg .columns-wrapper .columns p.button-container a.button
   }
 }
 
-  main .section.colored-text.warm-grey-bg p {
-  font-size: 24px; 
+main .section.colored-text.warm-grey-bg p {
+  font-size: 24px;
+  margin: 0;
+  padding: 0 0 60px;
 }
 
 .policy-template main .section .default-content-wrapper p:last-child {
@@ -953,6 +955,10 @@ main .section.cream-bg.table-container.accordion-container{
     font-size: var(--body-font-size-m);
   }
 
+  main .section.warm-grey-bg .cards-wrapper {
+    padding: 0;
+  }
+
   main .section.warm-grey-bg:has(.cards-wrapper) {
     padding: 100px 80px;
   }
@@ -991,23 +997,31 @@ main .section.cream-bg.table-container.accordion-container{
 /* Larger screen responsive for colorful class */
 @media (width >= 1200px) {
   main .section.colored-text p{
-  width: 100vw;
-  margin-left: calc(50% - 50vw);
-  margin-right: calc(50% - 50vw);
-  box-sizing: border-box;
-  font-size: 40px; 
-  font-family: Antarctica, sans-serif; 
-  -webkit-font-smoothing: antialiased; 
-  font-weight: 400; 
-  line-height: normal; 
-  letter-spacing: 2.4px; 
-  text-align: left; 
-  padding: 50px 80px 100px;
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+    box-sizing: border-box;
+    font-size: 40px; 
+    font-family: Antarctica, sans-serif; 
+    -webkit-font-smoothing: antialiased; 
+    font-weight: 400; 
+    line-height: normal; 
+    letter-spacing: 2.4px; 
+    text-align: left; 
+    padding: 50px 80px 100px;
   }
 
-   main .section.colored-text.warm-grey-bg p {
+  main .section.colored-text.warm-grey-bg p {
     font-size: 42px; /* Slightly larger for large screens */
     padding: 60px 80px 80px; /* Different padding */
+  }
+
+  main .section.colored-text.warm-grey-bg:has(.icons-grid) p {
+    width: 100%;
+  }
+
+  main .section.colored-text.warm-grey-bg:has(.icons-grid) .default-content-wrapper > p {
+    padding: 10px 0 65px;
   }
 }
 

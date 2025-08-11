@@ -5,7 +5,7 @@ import {
   div, h2, button,
 } from '../../scripts/dom-helpers.js';
 
-function getVisibleCardCount(cards) {
+function getVisibleCardCount(numCards) {
   let visibleCount = 1;
   const viewportWidth = window.innerWidth;
   if (viewportWidth < 600) {
@@ -15,8 +15,10 @@ function getVisibleCardCount(cards) {
   } else if (viewportWidth >= 900 && viewportWidth < 1200) {
     visibleCount = 3;
   } else {
-    return cards.length;
+    visibleCount = numCards;
   }
+  console.log('numCards in side function: ', numCards);
+  console.log('visible count: ', visibleCount);
   return visibleCount;
 }
 
@@ -277,7 +279,7 @@ export default function decorate(block) {
     // Existing elements are used as components of the carousel.
     // Each li item acts as a carousel card or slide.
     const cards = block.querySelectorAll('ul li');
-    const cardsBodyDiv = block.querySelector('ul li .cards-card-body');
+    const numCards = cards.length;
 
     const prevBtn = button({ class: 'carousel-prev' });
     const nextBtn = button({ class: 'carousel-next' });
@@ -285,24 +287,25 @@ export default function decorate(block) {
     block.append(prevBtn, nextBtn);
 
     // The ul element behaves like a carousel track
-    const track = block.querySelector('ul');
+    // const track = block.querySelector('ul');
     const prevButton = block.querySelector('.carousel-prev');
     const nextButton = block.querySelector('.carousel-next');
     let currentIndex = 0;
 
     // initialize buttons
-    const visibleCount = getVisibleCardCount(track, cardsBodyDiv);
+    const visibleCount = getVisibleCardCount(numCards);
     prevButton.disabled = currentIndex <= 0;
-    nextButton.disabled = currentIndex >= cards.length - visibleCount;
+    console.log('numCards in main function: ', numCards);
+    nextButton.disabled = currentIndex >= numCards - visibleCount;
 
     nextButton.onclick = () => {
-      if (currentIndex < cards.length - 1) {
+      if (currentIndex < numCards - 1) {
         prevButton.disabled = false;
         currentIndex += 1;
         scrollToCard(cards[currentIndex]);
         // update next button
-        const visibleCards = getVisibleCardCount(track, cardsBodyDiv);
-        nextButton.disabled = currentIndex >= cards.length - visibleCards;
+        const visibleCards = getVisibleCardCount(numCards);
+        nextButton.disabled = currentIndex >= numCards - visibleCards;
       }
     };
 
@@ -323,7 +326,7 @@ export default function decorate(block) {
       } else {
         prevButton.disabled = false;
       }
-      if (currentIndex >= cards.length - getVisibleCardCount(track, cardsBodyDiv)) {
+      if (currentIndex >= numCards - getVisibleCardCount(numCards)) {
         nextButton.disabled = true;
       } else {
         nextButton.disabled = false;
