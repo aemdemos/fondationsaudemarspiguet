@@ -378,14 +378,14 @@ function setPathSpecificFavicon() {
   // Define domain-specific favicon mappings
   const faviconMappings = {
     biencommun: {
-      16: '/styles/bien-favicon-16x16.png',
-      32: '/styles/bien-favicon-32x32.png',
-      apple: '/styles/bien-apple-touch-icon.png',
+      16: '/styles/biencommun-favicon-16x16.png',
+      32: '/styles/biencommun-favicon-32x32.png',
+      apple: '/styles/biencommun-apple-touch-icon.png',
     },
     arbres: {
-      16: '/styles/arbes-favicon-16x16.png',
-      32: '/styles/arbes-favicon-32x32.png',
-      apple: '/styles/arbes-apple-touch-icon.png',
+      16: '/styles/arbres-favicon-16x16.png',
+      32: '/styles/arbres-favicon-32x32.png',
+      apple: '/styles/arbres-apple-touch-icon.png',
     },
     // Add more domain mappings as needed
   };
