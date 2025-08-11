@@ -402,27 +402,47 @@ function setPathSpecificFavicon() {
   const matchedDomain = domainKeys.find((domainKey) => hostname.includes(domainKey));
   const faviconSet = matchedDomain ? faviconMappings[matchedDomain] : defaultFaviconSet;
 
+  // Debug logging
+  // eslint-disable-next-line no-console
+  console.log('Favicon Debug:', {
+    hostname,
+    matchedDomain,
+    faviconSet,
+  });
+
   // If we found a matching domain, update the favicons
   if (faviconSet) {
     const { 16: favicon16Src, 32: favicon32Src, apple: appleSrc } = faviconSet;
 
-    // Update 16x16 favicon
-    const favicon16 = document.querySelector('link[rel="icon"][sizes="16x16"]');
-    if (favicon16) {
+    // Update all 16x16 favicons (there might be duplicates)
+    const favicon16Elements = document.querySelectorAll('link[rel="icon"][sizes="16x16"]');
+    // eslint-disable-next-line no-console
+    console.log('16x16 favicon elements found:', favicon16Elements.length);
+    favicon16Elements.forEach((favicon16) => {
       favicon16.href = favicon16Src;
-    }
+      // eslint-disable-next-line no-console
+      console.log('Updated 16x16 favicon to:', favicon16Src);
+    });
 
-    // Update 32x32 favicon
-    const favicon32 = document.querySelector('link[rel="icon"][sizes="32x32"]');
-    if (favicon32) {
+    // Update all 32x32 favicons (there might be duplicates)
+    const favicon32Elements = document.querySelectorAll('link[rel="icon"][sizes="32x32"]');
+    // eslint-disable-next-line no-console
+    console.log('32x32 favicon elements found:', favicon32Elements.length);
+    favicon32Elements.forEach((favicon32) => {
       favicon32.href = favicon32Src;
-    }
+      // eslint-disable-next-line no-console
+      console.log('Updated 32x32 favicon to:', favicon32Src);
+    });
 
-    // Update apple touch icon
-    const appleIcon = document.querySelector('link[rel="apple-touch-icon"]');
-    if (appleIcon) {
+    // Update all apple touch icons (there might be duplicates)
+    const appleIconElements = document.querySelectorAll('link[rel="apple-touch-icon"]');
+    // eslint-disable-next-line no-console
+    console.log('Apple icon elements found:', appleIconElements.length);
+    appleIconElements.forEach((appleIcon) => {
       appleIcon.href = appleSrc;
-    }
+      // eslint-disable-next-line no-console
+      console.log('Updated apple icon to:', appleSrc);
+    });
   }
 }
 
