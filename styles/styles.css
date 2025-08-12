@@ -682,10 +682,6 @@ main .section.float-right .default-content-wrapper .clear {
     padding: 100px;
   }
 
-  main .section.light-grey-bg .cards-wrapper {
-    padding: 50px 80px;
-  }
-
   main .section.warm-grey-bg .cards-wrapper {
     padding: 50px 80px;
   }
@@ -1078,6 +1074,10 @@ main .section.cream-bg.table-container.accordion-container{
 @media (width >= 900px) {
   main .section.colored-text.warm-grey-bg p {
     font-size: 40px;
+  }
+
+  main .section.light-grey-bg .cards-wrapper {
+    padding: 50px 80px;
   }
 }
 
