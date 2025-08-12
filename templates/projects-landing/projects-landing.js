@@ -52,7 +52,7 @@ function showProjectCards(getprojects, doc) {
 
 export default async function decorate(doc) {
   const $main = doc.querySelector('main');
-  const $section = section();
+  const $section = doc.querySelector('main .section:last-of-type');
   const $filterContainer = div({ class: 'filter-container' });
   let { placeholders } = window;
   if (!placeholders) {
