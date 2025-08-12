@@ -299,6 +299,10 @@ body.biencommun .cards.map-category ul li:first-child p {
   border: none;
 }
 
+body.biencommun .cards.map-category ul li {
+  background-color: var(--map-carte-icone-container-bien);
+}
+
 .cards.map-category a[data-categoryid="all"] {
   font-size: 18px;
 }

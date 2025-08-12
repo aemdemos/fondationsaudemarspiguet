@@ -76,6 +76,11 @@ body.map-landing .section.pale-grey-bg .cards-wrapper {
     margin: 0;
 }
 
+body.map-landing.biencommun .section.pale-grey-bg .cards-wrapper {
+    background-color: var(--map-carte-icone-container-bien);
+}
+
+
 body.map-landing .section.pale-grey-bg .map-wrapper {
     height: 1064.44px;
     position: relative;
