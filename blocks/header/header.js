@@ -1,6 +1,6 @@
 import { getMetadata } from '../../scripts/aem.js';
 import { loadFragment } from '../fragment/fragment.js';
-import { switchLanguage } from '../../scripts/languages.js';
+import { switchLanguage } from '../../scripts/language-switcher.js';
 import { getLanguage } from '../../scripts/scripts.js';
 import { getPathSegments } from '../../scripts/utils.js';
 

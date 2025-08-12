@@ -61,3 +61,18 @@ export function decorateListingCards(doc) {
     contentDiv.append(containerCol);
   });
 }
+
+export function setInputWidthToText(inputEl) {
+  const textToMeasure = inputEl.value || inputEl.placeholder;
+  const spanForWidth = document.createElement('span');
+  const style = getComputedStyle(inputEl);
+  spanForWidth.style.font = style.font;
+  spanForWidth.style.whiteSpace = 'pre';
+  spanForWidth.style.position = 'absolute';
+  spanForWidth.style.visibility = 'hidden';
+  spanForWidth.textContent = textToMeasure;
+  document.body.appendChild(spanForWidth);
+  const width = spanForWidth.offsetWidth;
+  spanForWidth.remove();
+  inputEl.style.width = `${width}px`;
+}

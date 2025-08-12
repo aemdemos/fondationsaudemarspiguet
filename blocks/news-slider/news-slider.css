@@ -43,7 +43,7 @@ html, body {
     background-size: 20px 20px;
     height: 40px;
     width: 40px;
-    background-color: var(--header-color);
+    background-color: var(--arbres-header-color);
     border-radius: 50%;
     position: absolute;
     top: 50%;
@@ -63,7 +63,7 @@ html, body {
     background-size: 20px 20px;
     height: 40px;
     width: 40px;
-    background-color: var(--header-color);
+    background-color: var(--arbres-header-color);
     border-radius: 50%;
     position: absolute;
     top: 50%;
