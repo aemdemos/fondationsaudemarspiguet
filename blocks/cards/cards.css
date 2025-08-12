@@ -115,7 +115,7 @@
     background-position: 12px center;
     height: 43px;
     width: 40px;
-    background-color: var(--header-color);
+    background-color: var(--arbres-header-color);
     border-radius: 50%;
     z-index: 10;
     cursor: pointer;
@@ -131,7 +131,7 @@
     background-position: 16px center;
     height: 43px;
     width: 40px;
-    background-color: var(--header-color);
+    background-color: var(--arbres-header-color);
     border-radius: 50%;
     z-index: 10;
     cursor: pointer;

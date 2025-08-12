@@ -691,7 +691,7 @@ main .section.float-right .default-content-wrapper .clear {
   }
 
   main .section.light-grey-bg:has(.cards-wrapper) .default-content-wrapper {
-    padding: 0;
+    padding: 0 80px;
   }
 
     main .section.warm-grey-bg:has(.cards-wrapper) .default-content-wrapper {
@@ -778,7 +778,6 @@ main .section.warm-grey-bg .cards-wrapper {
 
 main .section.light-grey-bg:has(.cards-wrapper) .default-content-wrapper {
   max-width: 1200px;
-  padding: 0 80px;
 }
 
 main .section.warm-grey-bg:has(.cards-wrapper) .default-content-wrapper {
