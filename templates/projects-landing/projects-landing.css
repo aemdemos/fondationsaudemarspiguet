@@ -159,7 +159,7 @@ main .projects-listing {
     gap: 30px;
     margin: auto;
     height: auto;
-    padding: 35px 0;
+    padding: 35px 20px;
 }
 
 .projects-listing .project-item {
@@ -296,6 +296,7 @@ main .projects-listing {
         grid-template-columns: repeat(3, 1fr);
         gap: 30px;
         max-width: 1200px;
+        padding: 0 80px;
     }
 
     /* main .filter-container {
