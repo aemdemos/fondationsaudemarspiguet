@@ -8,6 +8,14 @@ main .filter-container {
     position: relative;
 }
 
+main .section.hero-container {
+    min-height: 1200px;
+}
+
+main section.project-articles {
+    min-height: 1200px;
+}
+
 main .filter-container .category-input {
     opacity: 1;
     position: relative;
@@ -189,6 +197,8 @@ main .projects-listing {
 .projects-listing .projects-image-wrapper img {
     height: 100%;
     width: 100%;
+    min-width: 200px;
+    min-height: 300px;
     object-fit: cover;
     max-width: 100%;
 }

@@ -47,7 +47,7 @@ function showProjectCards(getprojects, doc) {
 
 export default async function decorate(doc) {
   const $main = doc.querySelector('main');
-  const $section = section();
+  const $section = section({ class: 'project-articles' });
   const $filterContainer = div({ class: 'filter-container' });
 
   const placeholders = await fetchPlaceholders(`${getLanguage()}`);
