@@ -115,13 +115,14 @@
     background-position: 12px center;
     height: 43px;
     width: 40px;
-    background-color: var(--header-color);
+    background-color: var(--arbres-header-color);
     border-radius: 50%;
     z-index: 10;
     cursor: pointer;
     transform: translateY(353%);
     order: 1;
     position: absolute;
+    left: 8px;
 }
 
 .cards.icons-grid button.carousel-next {
@@ -130,7 +131,7 @@
     background-position: 16px center;
     height: 43px;
     width: 40px;
-    background-color: var(--header-color);
+    background-color: var(--arbres-header-color);
     border-radius: 50%;
     z-index: 10;
     cursor: pointer;
@@ -138,6 +139,16 @@
     position: absolute;
     transform: translateY(353%);
     right: 8px;
+}
+
+.cards.icons-grid.statistics button.carousel-prev {
+  transform: translateY(290%);
+  left: 10px;
+}
+
+.cards.icons-grid.statistics button.carousel-next {
+  transform: translateY(290%);
+  right: 10px;
 }
 
 .cards.icons-grid button:disabled {
@@ -155,6 +166,10 @@
   width: 100%;
   display: flex;
   padding: 50px 0;
+}
+
+.cards.icons-grid.statistics {
+  padding: 0;
 }
 
 .cards.icons-grid > ul {
@@ -195,6 +210,25 @@
   height: 100%;
 }
 
+.cards.icons-grid.statistics .cards-card-body {
+  color: #FFF;
+  font-weight: 400;;
+  background-color: var(--site-color);
+  border-radius: 5000px;
+  margin: 0 auto;
+  width: 50%;
+  height: auto;
+  aspect-ratio: 1/1;
+  padding: 10%;
+}
+
+.cards.icons-grid.statistics .cards-card-body > h4 {
+  font-size: 26px;
+  font-weight: 400;
+  line-height: 1.2em;
+  letter-spacing: .08em;
+}
+
 /* Map category filter styling */
 /* stylelint-disable-next-line selector-class-pattern */
 .cards.map-category p {
@@ -233,6 +267,12 @@
   letter-spacing: .05em;
 }
 
+.cards.icons-grid.statistics .cards-card-body > p {
+  font-size: 80px;
+  color: #FFF;
+  padding: 0;
+}
+
 .cards.icons-grid .cards-card-body > h4:has(.icon) {
   line-height: 0;
   padding: 0 45px;
@@ -260,23 +300,26 @@
 
   .cards.icons-grid > ul > li  {
     flex: 0 0 50%;
-    padding-left: 15px;
+  }
+
+  .cards.map-category .cards-card-body {
+    margin: 10px;
+    display: flex;
+    justify-content: center;
   }
 
   .cards.icons-grid .cards-card-body {
     width: calc(100% - 2em);
+  }
+
+  .cards.icons-grid.statistics .cards-card-body {
+    width: 60%;
   }
 }
 
 .cards.map-category ul {
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   grid-gap: 0;
-}
-
-.cards.map-category .cards-card-body {
-  margin: 10px;
-  display: flex;
-  justify-content: center;
 }
 
 .cards.map-category ul li a[data-categoryid]:not([data-categoryid="category_10"]) span:has(img) {
@@ -393,6 +436,10 @@ main .cards-buttons .button-asc-btn:hover {
     width: 100%;
     height: 100%;
   }
+
+  .cards.icons-grid.statistics {
+    flex-direction: column;
+  }
   
   .cards.icons-grid > ul {
     overflow: unset;
@@ -400,9 +447,27 @@ main .cards-buttons .button-asc-btn:hover {
     column-gap: 0;
   }
 
+  .cards.icons-grid.statistics > ul {
+    overflow: hidden;
+    margin: unset;
+    column-gap:  10px;
+  }
+
   .cards.icons-grid > ul > li  {
     flex: 0 0 33.33%;
     padding-left: 0;
+  }
+
+  .cards.map-category .cards-card-body {
+    margin: 10px;
+    display: flex;
+    justify-content: left;
+  }
+
+  .cards.icons-grid.statistics .cards-card-body {
+    margin: 0;
+    width: 90%;
+    padding: 0;
   }
 
   .cards.icons-grid .cards-card-body > p {
@@ -417,14 +482,16 @@ main .cards-buttons .button-asc-btn:hover {
     max-width: 250px;
   }
 
+  .cards.icons-grid.statistics .cards-card-body > h4 {
+    padding-top: 40px;
+  }
+
   .cards.icons-grid button {
     display: none;
   }
   
-  .cards.map-category .cards-card-body {
-    margin: 10px;
-    display: flex;
-    justify-content: left;
+  .cards.icons-grid.statistics button {
+    display: unset;
   }
 
   .cards.map-category ul.mobile-view {
@@ -439,6 +506,24 @@ main .cards-buttons .button-asc-btn:hover {
   @media (width >= 1200px) {
     .cards.icons-grid > ul {
       margin-left: 50px;
+    }
+    
+    .cards.icons-grid.statistics > ul {
+      overflow: unset;
+      column-gap: 7px;
+    }
+
+    .cards.icons-grid.statistics > ul > li  {
+      flex: 0 0 25%;
+      padding-left: 0;
+    }
+
+    .cards.icons-grid.statistics .cards-card-body {
+      width: 93%;
+    }
+
+    .cards.icons-grid.statistics button {
+      display: none;
     }
   }
 }
