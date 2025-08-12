@@ -6,12 +6,16 @@ export function getPathSegments() {
 }
 
 export function applyFadeUpAnimation(targetElement, parentContainer) {
+  const isBanner = targetElement.classList.contains('horizontal-banner');
+
   // Create a wrapper div for the fade-up effect
   const targetWrapper = div({ class: 'image-fade-wrapper' });
   targetWrapper.style.opacity = '0';
   targetWrapper.style.transform = 'translateY(80px)';
   targetWrapper.style.transition = 'opacity 1.5s ease-out, transform 1.5s ease-out';
-
+  if (isBanner) {
+    targetWrapper.classList.add('horizontal-banner');
+  }
   targetWrapper.append(targetElement);
   parentContainer.append(targetWrapper);
 
@@ -60,4 +64,19 @@ export function decorateListingCards(doc) {
     containerCol.append(headingWrapper, contentWrapper, clearDiv);
     contentDiv.append(containerCol);
   });
+}
+
+export function setInputWidthToText(inputEl) {
+  const textToMeasure = inputEl.value || inputEl.placeholder;
+  const spanForWidth = document.createElement('span');
+  const style = getComputedStyle(inputEl);
+  spanForWidth.style.font = style.font;
+  spanForWidth.style.whiteSpace = 'pre';
+  spanForWidth.style.position = 'absolute';
+  spanForWidth.style.visibility = 'hidden';
+  spanForWidth.textContent = textToMeasure;
+  document.body.appendChild(spanForWidth);
+  const width = spanForWidth.offsetWidth;
+  spanForWidth.remove();
+  inputEl.style.width = `${width}px`;
 }

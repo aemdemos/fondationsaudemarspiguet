@@ -370,6 +370,83 @@ export async function loadAllPlaceholders() {
 }
 
 /**
+ * Sets domain-specific favicon based on current URL
+ */
+function setPathSpecificFavicon() {
+  const { hostname } = window.location;
+
+  // Define domain-specific favicon mappings
+  const faviconMappings = {
+    biencommun: {
+      16: '/styles/biencommun-favicon-16x16.png',
+      32: '/styles/biencommun-favicon-32x32.png',
+      apple: '/styles/biencommun-apple-touch-icon.png',
+    },
+    arbres: {
+      16: '/styles/arbres-favicon-16x16.png',
+      32: '/styles/arbres-favicon-32x32.png',
+      apple: '/styles/arbres-apple-touch-icon.png',
+    },
+    // Add more domain mappings as needed
+  };
+
+  // Default favicon mapping for domains that don't match specific rules
+  const defaultFaviconSet = {
+    16: '/styles/favicon-16x16.png',
+    32: '/styles/favicon-32x32.png',
+    apple: '/styles/apple-touch-icon.png',
+  };
+
+  // Check if current domain matches any special favicon rules
+  const domainKeys = Object.keys(faviconMappings);
+  const matchedDomain = domainKeys.find((domainKey) => hostname.includes(domainKey));
+  const faviconSet = matchedDomain ? faviconMappings[matchedDomain] : defaultFaviconSet;
+
+  // Debug logging
+  // eslint-disable-next-line no-console
+  console.log('Favicon Debug:', {
+    hostname,
+    matchedDomain,
+    faviconSet,
+  });
+
+  // If we found a matching domain, update the favicons
+  if (faviconSet) {
+    const { 16: favicon16Src, 32: favicon32Src, apple: appleSrc } = faviconSet;
+
+    // Update all 16x16 favicons (there might be duplicates)
+    const favicon16Elements = document.querySelectorAll('link[rel="icon"][sizes="16x16"]');
+    // eslint-disable-next-line no-console
+    console.log('16x16 favicon elements found:', favicon16Elements.length);
+    favicon16Elements.forEach((favicon16) => {
+      favicon16.href = favicon16Src;
+      // eslint-disable-next-line no-console
+      console.log('Updated 16x16 favicon to:', favicon16Src);
+    });
+
+    // Update all 32x32 favicons (there might be duplicates)
+    const favicon32Elements = document.querySelectorAll('link[rel="icon"][sizes="32x32"]');
+    // eslint-disable-next-line no-console
+    console.log('32x32 favicon elements found:', favicon32Elements.length);
+    favicon32Elements.forEach((favicon32) => {
+      favicon32.href = favicon32Src;
+      // eslint-disable-next-line no-console
+      console.log('Updated 32x32 favicon to:', favicon32Src);
+    });
+
+    // Update all apple touch icons (there might be duplicates)
+    const appleIconElements = document.querySelectorAll('link[rel="apple-touch-icon"]');
+    // eslint-disable-next-line no-console
+    console.log('Apple icon elements found:', appleIconElements.length);
+    appleIconElements.forEach((appleIcon) => {
+      appleIcon.href = appleSrc;
+      // eslint-disable-next-line no-console
+      console.log('Updated apple icon to:', appleSrc);
+    });
+  }
+}
+
+/**
  * Loads everything needed to get to LCP.
  * @param {Element} doc The container element
  */
@@ -381,6 +458,10 @@ async function loadEager(doc) {
 
   const templateName = getMetadata('template');
   decorateTemplateAndTheme();
+
+  // Set path-specific favicon early in the load process
+  setPathSpecificFavicon();
+
   const main = doc.querySelector('main');
   if (main) {
     decorateMain(main);

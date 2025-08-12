@@ -1,11 +1,12 @@
 import {
-  div, h2, section, input, span, a, img,
+  div, h2, input, span, a, img,
 } from '../../scripts/dom-helpers.js';
 import ffetch from '../../scripts/ffetch.js';
 import {
   fetchPlaceholders,
 } from '../../scripts/aem.js';
 import { getLanguage } from '../../scripts/scripts.js';
+import { applyFadeUpAnimation, setInputWidthToText } from '../../scripts/utils.js';
 
 async function getProjectsdata() {
   const rawprojects = await ffetch(`/${getLanguage()}/${getLanguage() === 'en' ? 'fondation-pour-les-arbres-projects' : 'fondation-pour-les-arbres-nos-projets'}/projects-index.json`)
@@ -43,14 +44,20 @@ function showProjectCards(getprojects, doc) {
     );
     doc.querySelector('.projects-listing').append($projectsItem);
   });
+  const projectItems = doc.querySelectorAll('.project-item');
+  projectItems.forEach((project) => {
+    applyFadeUpAnimation(project, project.parentNode);
+  });
 }
 
 export default async function decorate(doc) {
   const $main = doc.querySelector('main');
-  const $section = section({ class: 'project-articles' });
+  const $section = doc.querySelector('main .section:last-of-type');
   const $filterContainer = div({ class: 'filter-container' });
-
-  const placeholders = await fetchPlaceholders(`${getLanguage()}`);
+  let { placeholders } = window;
+  if (!placeholders) {
+    placeholders = await fetchPlaceholders(`${getLanguage()}`);
+  }
   const { projectsLandingCategoryFilter } = placeholders;
   const { projectsLandingLocationFilter } = placeholders;
   const { projectsLandingViewFilter } = placeholders;
@@ -151,34 +158,18 @@ export default async function decorate(doc) {
   categorysection.appendChild(categoryList);
   const $categoryInput = doc.querySelector('.category-input');
   $categoryInput.addEventListener('click', () => {
+    locationsection.style.display = 'none';
     categorysection.style.display = categorysection.style.display === 'block' ? 'none' : 'block';
   });
 
   const $locationInput = doc.querySelector('.location-input');
   $locationInput.addEventListener('click', () => {
+    categorysection.style.display = 'none';
     locationsection.style.display = locationsection.style.display === 'block' ? 'none' : 'block';
   });
 
-  // code for getting width of input dynamically
-  const categorySectionDiv = doc.querySelector('.category-section');
-  const locationSectionDiv = doc.querySelector('.location-section');
   const inputCat = doc.querySelector('.category-input');
   const inputLocation = doc.querySelector('.location-input');
-  const language = getLanguage();
-  if (language === 'fr') {
-    inputCat.style.minWidth = '60px';
-    inputLocation.style.minWidth = '60px';
-  }
-  const mirrorCat = span({ class: 'input-category-span' });
-  const mirrorLoc = span({ class: 'input-location-span' });
-  // Function to set width
-  function updateWidth(catText, locText) {
-    mirrorCat.textContent = catText;
-    mirrorLoc.textContent = locText;
-    inputCat.style.width = `${mirrorCat.offsetWidth}px`;
-    inputLocation.style.width = `${mirrorLoc.offsetWidth}px`;
-  }
-
   doc.addEventListener('click', (e) => {
     if (
       !categorysection.contains(e.target)
@@ -191,31 +182,20 @@ export default async function decorate(doc) {
     }
   });
 
-  // Hidden span to measure text width
-  mirrorCat.style.font = getComputedStyle(inputCat).font;
-  mirrorLoc.style.font = getComputedStyle(inputLocation).font;
-  categorySectionDiv.appendChild(mirrorCat);
-  locationSectionDiv.appendChild(mirrorLoc);
-  updateWidth(inputCat.placeholder, inputLocation.placeholder);
-
-  window.addEventListener('resize', () => {
-    const currentCatText = inputCat.value || inputCat.placeholder;
-    const currentLocText = inputLocation.value || inputLocation.placeholder;
-    updateWidth(currentCatText, currentLocText);
-  });
-
-  const projectsListing = document.querySelector('.projects-listing');
+  const projectsListing = doc.querySelector('.projects-listing');
   const categoryItems = categorysection.querySelectorAll('li');
   const locationItems = locationsection.querySelectorAll('li');
   categoryItems.forEach((item) => {
     item.addEventListener('click', (event) => {
       const selectedCategory = event.target.textContent;
       $categoryInput.value = selectedCategory;
-      updateWidth(selectedCategory, $locationInput.value);
+      setInputWidthToText(inputCat);
       categorysection.style.display = 'none';
       locationsection.style.display = 'none';
-      const filteredprojects = getProjects.filter((project) => project.category
-      && project.category.includes(selectedCategory));
+      const filteredprojects = getProjects
+        .filter((project) => !$locationInput.value
+        || (project.location && project.location.includes($locationInput.value)))
+        .filter((project) => project.category && project.category.includes(selectedCategory));
       projectsListing.innerHTML = '';
       showProjectCards(filteredprojects, doc);
     });
@@ -225,11 +205,15 @@ export default async function decorate(doc) {
     item.addEventListener('click', (event) => {
       const selectedLocation = event.target.textContent;
       $locationInput.value = selectedLocation;
-      updateWidth($categoryInput.value, selectedLocation);
+      setInputWidthToText(inputLocation);
       locationsection.style.display = 'none';
       categorysection.style.display = 'none';
-      const filteredprojects = getProjects.filter((project) => project.location
-      && project.location.includes(selectedLocation));
+
+      const filteredprojects = getProjects
+        .filter((project) => !$categoryInput.value
+        || (project.category && project.category.includes($categoryInput.value)))
+        .filter((project) => project.location && project.location.includes(selectedLocation));
+
       projectsListing.innerHTML = '';
       showProjectCards(filteredprojects, doc);
     });
@@ -246,7 +230,11 @@ export default async function decorate(doc) {
           ? getProjects
           : getProjects.filter((projects) => {
             const title = projects.title.toLowerCase();
-            return title.includes(searchTerm);
+            const category = projects.category.toLowerCase();
+            const location = projects.location.toLowerCase();
+            const partner = projects.partner.toLowerCase();
+            return title.includes(searchTerm) || category.includes(searchTerm)
+            || location.includes(searchTerm) || partner.includes(searchTerm);
           });
         projectsListing.innerHTML = '';
         showProjectCards(filteredProject, document);
@@ -257,7 +245,11 @@ export default async function decorate(doc) {
   const viewAllButton = doc.getElementById('view-all');
   viewAllButton.addEventListener('click', (event) => {
     event.preventDefault();
-    updateWidth(inputCat.placeholder, inputLocation.placeholder);
+    requestAnimationFrame(() => {
+      setInputWidthToText(inputCat);
+      setInputWidthToText(inputLocation);
+      setInputWidthToText(searchInput);
+    });
     $categoryInput.value = '';
     $locationInput.value = '';
     searchInput.value = '';
@@ -274,4 +266,10 @@ export default async function decorate(doc) {
       showProjectCards(getProjects, doc);
     });
   }
+
+  requestAnimationFrame(() => {
+    setInputWidthToText(inputCat);
+    setInputWidthToText(inputLocation);
+    setInputWidthToText(searchInput);
+  });
 }
