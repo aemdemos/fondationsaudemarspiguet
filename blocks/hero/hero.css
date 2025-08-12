@@ -385,10 +385,6 @@
 /* Responsive adjustments */
 
 @media (width >= 900px) and (width <= 1200px) {
-  .section{
-    margin: 0 !important;
-  }
-   
   .hero.two-columnar-text-image.block > div {
     flex-direction: row;
     min-height: 90vh;
@@ -396,10 +392,6 @@
 }
 
 @media (width >= 600px) and (width <= 900px) {
-   .section{
-    margin: 0 !important;
-  }
-
   .hero.two-columnar-text-image.block > div {
     flex-direction: row;
     min-height: 500px;

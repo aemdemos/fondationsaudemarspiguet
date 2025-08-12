@@ -139,6 +139,12 @@
   --input-selected-color: #5a626b;
   --input-placeholder-color: #B69859;
 
+  /* ARBRES CAROUSEL CARDS COLOURS */
+  --arbres-carousel-card-1: #6b7e7c;
+  --arbres-carousel-card-2: #a49f94;
+  --arbres-carousel-card-3: #9aa198;
+  --arbres-carousel-card-4: #9d9b88;
+
   /* BIENCOMMUN SITE COLORS */
   
   /* GENERAL */	
@@ -686,11 +692,7 @@ main .section.float-right .default-content-wrapper .clear {
     padding: 50px 80px;
   }
 
-  main .section.light-grey-bg:has(.cards-wrapper) .default-content-wrapper {
-    padding: 0 80px;
-  }
-
-    main .section.warm-grey-bg:has(.cards-wrapper) .default-content-wrapper {
+  main .section.warm-grey-bg:has(.cards-wrapper) .default-content-wrapper {
     padding: 0;
   }
 }
@@ -774,6 +776,7 @@ main .section.warm-grey-bg .cards-wrapper {
 
 main .section.light-grey-bg:has(.cards-wrapper) .default-content-wrapper {
   max-width: 1200px;
+  padding: 0;
 }
 
 main .section.warm-grey-bg:has(.cards-wrapper) .default-content-wrapper {
@@ -1078,6 +1081,10 @@ main .section.cream-bg.table-container.accordion-container{
 
   main .section.light-grey-bg .cards-wrapper {
     padding: 50px 80px;
+  }
+
+  main .section.light-grey-bg:has(.cards-wrapper) .default-content-wrapper {
+    padding: 0 80px;
   }
 }
 
