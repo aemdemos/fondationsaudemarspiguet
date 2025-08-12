@@ -233,6 +233,12 @@
   letter-spacing: .05em;
 }
 
+.cards.map-category ul.mobile-view li:first-child p {
+  width: 100%;
+  text-align: center;
+  font-size: 24px;
+}
+
 body.biencommun .cards.map-category ul li:first-child p {
   color: var(--site-color-bien);
 }
@@ -295,12 +301,6 @@ body.biencommun .cards.map-category ul li:first-child p {
 
 .cards.map-category a[data-categoryid="all"] {
   font-size: 18px;
-}
-
-.cards.map-category ul.mobile-view li:first-child p {
-  width: 100%;
-  text-align: center;
-  font-size: 24px;
 }
 
 body.biencommun .cards.map-category ul li a[data-categoryid]:not([data-categoryid="category_10"]) span:has(img) {
