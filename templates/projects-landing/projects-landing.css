@@ -8,7 +8,7 @@ main .filter-container {
     position: relative;
 }
 
-main .projects-listing-container {
+main .section .projects-listing-container {
     max-width: unset;
     background-color: var(--projet-bg-page-listing);
     padding: 35px 0;
