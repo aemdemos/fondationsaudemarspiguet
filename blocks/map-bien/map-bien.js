@@ -38,11 +38,11 @@ async function loadMapScripts(nonce) {
   // Load jQuery first (required by initmapscript.js)
   await loadScript('https://code.jquery.com/jquery-3.7.1.min.js');
   // Load initmapscript.js first so it defines initMap()
-  await loadScript('/blocks/map/initmapscript.js', nonce);
+  await loadScript('/blocks/map-bien/initmapscript.js', nonce);
 
   // Then load other dependencies (infobox.js will be loaded inside initMap after Google Maps API)
-  await loadScript('/blocks/map/mapstyles.js', nonce);
-  await loadScript('/blocks/map/markerclusterer.js', nonce);
+  await loadScript('/blocks/map-bien/mapstyles.js', nonce);
+  await loadScript('/blocks/map-bien/markerclusterer.js', nonce);
 }
 
 export default async function decorate(block) {
