@@ -65,7 +65,6 @@ export function showSlide(block, slideIndex = 0) {
     setTimeout(() => {
       const carouselRect = block.getBoundingClientRect();
       const parent = block.parentNode;
-      
       const existingBg = parent.querySelector('.carousel-bg-grey');
       if (existingBg) {
         existingBg.remove();
