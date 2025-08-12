@@ -167,9 +167,9 @@ async function initMap() {
     
 var iconpointer = {
     path: google.maps.SymbolPath.CIRCLE,
-    fillColor: '#6B7E7C',
+    fillColor: 'rgba(114, 98, 72, 0.85)',
     fillOpacity: 1,
-    strokeColor: '#6B7E7C',
+    strokeColor: 'rgba(114, 98, 72, 0.85)',
     strokeWeight: 1,
     scale: 7 
 };
