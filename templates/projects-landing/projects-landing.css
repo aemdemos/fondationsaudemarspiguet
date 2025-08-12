@@ -8,6 +8,12 @@ main .filter-container {
     position: relative;
 }
 
+main .section .projects-listing-container {
+    max-width: unset;
+    background-color: var(--projet-bg-page-listing);
+    padding: 35px 0;
+}
+
 main .filter-container .category-input {
     opacity: 1;
     position: relative;
@@ -17,11 +23,9 @@ main .filter-container .category-input {
     font-weight: 400;
     line-height: 1.01;
     outline: none;
-    min-width: 140px;
 }
 
 main .filter-container .location-input {
-    min-width: 130px;
     cursor: pointer;
 }
 
@@ -31,9 +35,7 @@ main .filter-container .category-dropdown, main .filter-container .location-drop
     border-top: 0 none;
     box-shadow: none;
     font-size: 16px;
-    width: 100%;
     position: absolute;
-    min-width: 250px;
     max-height: 200px;
     display: none;
     z-index: 99;
@@ -42,7 +44,8 @@ main .filter-container .category-dropdown, main .filter-container .location-drop
 main .filter-container .category-dropdown ul, main .filter-container .location-dropdown ul {
     margin: 0;
     padding: 0;
-    overflow-y: auto;
+    overflow: hidden auto;
+    max-height: 200px;
 }
 
 main .filter-container .category-dropdown ul li, main .filter-container .location-dropdown ul li {
@@ -74,6 +77,7 @@ main .filter-container .search-input {
     text-transform: none;
     font-weight: 400;
     line-height: 1.01;
+    padding: 0 10px;
 }
 
 main .filter-container .search-input::placeholder {
@@ -145,20 +149,17 @@ main .filter-container .projects-listing-container-right .map-link-btn {
     background-repeat: no-repeat;
     background-position: center;
     float: right;
+    margin-top: 4px;
 }
 
-main .projects-listing-container {
-    background-color: var(--projet-bg-page-listing);
-    padding: 35px 0;
-}
 
 main .projects-listing {
     display: grid;
     grid-template-columns: 1fr;
     gap: 30px;
-    padding: 0 20px;
     margin: auto;
     height: auto;
+    padding: 35px 20px;
 }
 
 .projects-listing .project-item {
@@ -260,7 +261,6 @@ main .projects-listing {
         gap: 30px;
         max-width: 1200px;
         margin: auto;
-        padding: 0 20px;
     }
 
     .projects-listing .project-item {
@@ -268,7 +268,6 @@ main .projects-listing {
     }
 
     main .filter-container {
-        padding: 0 20px;
         font-size: 36px;
         flex-flow: row wrap;
         justify-content: space-between;
@@ -297,10 +296,6 @@ main .projects-listing {
         grid-template-columns: repeat(3, 1fr);
         gap: 30px;
         max-width: 1200px;
-        padding: 0 80px;
-    }
-
-    main .filter-container {
         padding: 0 80px;
     }
 

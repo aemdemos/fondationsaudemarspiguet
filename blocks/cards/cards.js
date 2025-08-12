@@ -5,15 +5,24 @@ import {
   div, h2, button,
 } from '../../scripts/dom-helpers.js';
 
-function getVisibleCardCount(track, cardsBody) {
-  const trackWidth = track.offsetWidth;
-  const cardWidth = cardsBody.offsetWidth;
-  return Math.floor(trackWidth / cardWidth);
+function getVisibleCardCount(numCards) {
+  let visibleCount = 1;
+  const viewportWidth = window.innerWidth;
+  if (viewportWidth < 600) {
+    visibleCount = 1;
+  } else if (viewportWidth >= 600 && viewportWidth < 900) {
+    visibleCount = 2;
+  } else if (viewportWidth >= 900 && viewportWidth < 1200) {
+    visibleCount = 3;
+  } else {
+    visibleCount = numCards;
+  }
+  return visibleCount;
 }
 
 function scrollToCard(cardEl) {
   if (cardEl) {
-    const track = cardEl.closest('.carousel-track');
+    const track = cardEl.closest('ul');
     if (track) {
       const cardOffset = cardEl.offsetLeft;
       track.scrollTo({
@@ -304,41 +313,36 @@ export default function decorate(block) {
   }
 
   if (block.classList.contains('icons-grid')) {
-    // This cards block turns into a carousel in small screen views
-    // so we need to add the carousel elements, classes and attributes
-    block.classList.add('carousel');
-    const ulist = block.querySelector('ul');
-    ulist.classList.add('carousel-track');
+    // This block behaves as a carousel in small/medium screen views.
+    // Existing elements are used as components of the carousel.
+    // Each li item acts as a carousel card or slide.
     const cards = block.querySelectorAll('ul li');
-    const cardsBodyDiv = block.querySelector('ul li .cards-card-body');
-
-    cards.forEach((card) => {
-      card.classList.add('card');
-    });
+    const numCards = cards.length;
 
     const prevBtn = button({ class: 'carousel-prev' });
     const nextBtn = button({ class: 'carousel-next' });
 
     block.append(prevBtn, nextBtn);
 
-    const track = block.querySelector('.carousel-track');
+    // The ul element behaves like a carousel track
+    // const track = block.querySelector('ul');
     const prevButton = block.querySelector('.carousel-prev');
     const nextButton = block.querySelector('.carousel-next');
     let currentIndex = 0;
 
     // initialize buttons
-    const visibleCount = getVisibleCardCount(track, cardsBodyDiv);
+    const visibleCount = getVisibleCardCount(numCards);
     prevButton.disabled = currentIndex <= 0;
-    nextButton.disabled = currentIndex >= cards.length - visibleCount;
+    nextButton.disabled = currentIndex >= numCards - visibleCount;
 
     nextButton.onclick = () => {
-      if (currentIndex < cards.length - 1) {
+      if (currentIndex < numCards - 1) {
         prevButton.disabled = false;
         currentIndex += 1;
         scrollToCard(cards[currentIndex]);
         // update next button
-        const visibleCards = getVisibleCardCount(track, cardsBodyDiv);
-        nextButton.disabled = currentIndex >= cards.length - visibleCards;
+        const visibleCards = getVisibleCardCount(numCards);
+        nextButton.disabled = currentIndex >= numCards - visibleCards;
       }
     };
 
@@ -359,11 +363,21 @@ export default function decorate(block) {
       } else {
         prevButton.disabled = false;
       }
-      if (currentIndex >= cards.length - getVisibleCardCount(track, cardsBodyDiv)) {
+      if (currentIndex >= numCards - getVisibleCardCount(numCards)) {
         nextButton.disabled = true;
       } else {
         nextButton.disabled = false;
       }
+    });
+  }
+
+  if (block.classList.contains('statistics')) {
+    const colors = ['var(--arbres-carousel-card-1)', 'var(--arbres-carousel-card-2)', 'var(--arbres-carousel-card-3)', 'var(--arbres-carousel-card-4)']; // Add more colors as needed
+    const cards = document.querySelectorAll('.cards-card-body');
+
+    cards.forEach((card, index) => {
+      const color = colors[index % colors.length]; // Loop through colors
+      card.style.backgroundColor = color;
     });
   }
 }

@@ -1,5 +1,5 @@
-footer .footer > div {
-   display: grid;
+footer .footer>div {
+  display: grid;
 }
 
 footer .footer .section.beige-bg {
@@ -16,7 +16,7 @@ footer .footer .section.green-bg {
   color: #fff;
 }
 
-footer .footer .section.beige-bg > div {
+footer .footer .section.beige-bg>div {
   padding: 0 5px;
   letter-spacing: .06em;
   font-weight: 400;
@@ -24,26 +24,26 @@ footer .footer .section.beige-bg > div {
   text-align: left;
 }
 
-footer .footer .section.green-bg > div p {
+footer .footer .section.green-bg>div p {
   margin-top: 0;
   margin-bottom: 0;
 }
 
-footer .footer .section.beige-bg > div > p {
+footer .footer .section.beige-bg>div>p {
   margin: 15px;
 }
 
-footer .footer .section.beige-bg > div > p:first-of-type {
+footer .footer .section.beige-bg>div>p:first-of-type {
   padding-bottom: 20px;
 }
 
-footer .footer .section.beige-bg > div .button-container {
+footer .footer .section.beige-bg>div .button-container {
   overflow: unset;
 }
 
-footer .footer .section.beige-bg > div > p.button-container a.button:any-link {
+footer .footer .section.beige-bg>div>p.button-container a.button:any-link {
   background-color: var(--site-color);
-  background-image: url('/icons/btn_fleche_right.svg');
+  background-image: url("/icons/btn_fleche_right.svg");
   background-position: calc(100% - 10px) center;
   background-repeat: no-repeat;
   border-radius: unset;
@@ -54,89 +54,89 @@ footer .footer .section.beige-bg > div > p.button-container a.button:any-link {
   text-align: left;
   padding: 12px 50px 12px 15px;
   margin: 0;
-  overflow: unset;  
+  overflow: unset;
   border: none;
 }
 
-footer .footer .section.green-bg > div .footer-general-wrapper {
+footer .footer .section.green-bg>div .footer-general-wrapper {
   line-height: 1.2em;
   font-weight: 300;
   margin-bottom: 10px;
 }
 
-footer .footer .section.green-bg > div .footer-general-wrapper p .icon {
-    margin-bottom: 30px;
+footer .footer .section.green-bg>div .footer-general-wrapper p .icon {
+  margin-bottom: 30px;
 }
 
-footer .footer .section.green-bg > div .footer-general-wrapper p .icon img {
+footer .footer .section.green-bg>div .footer-general-wrapper p .icon img {
   width: 40px;
   height: 40px;
 }
 
-footer .footer .section.green-bg > div ul {
+footer .footer .section.green-bg>div ul {
   margin: 0;
   list-style-type: none;
   padding: 0;
   line-height: 1.2em;
 }
 
-footer .footer .section.green-bg > div ul > li {
+footer .footer .section.green-bg>div ul>li {
   float: left;
 }
 
-footer .footer .section.green-bg > div > ul:last-of-type {
+footer .footer .section.green-bg>div>ul:last-of-type {
   font-weight: 500;
-  letter-spacing: .02em;  
+  letter-spacing: .02em;
   font-size: 14px;
 }
 
-footer .footer .section.green-bg > div .footer-general-wrapper .links-cr-wrapper > ul {
+footer .footer .section.green-bg>div .footer-general-wrapper .links-cr-wrapper>ul {
   display: inline-block;
 }
 
-footer .footer .section.green-bg > div ul > li > a:any-link {
+footer .footer .section.green-bg>div ul>li>a:any-link {
   color: #fff;
 }
 
-footer .footer .section.green-bg > div ul > li > a:hover {
+footer .footer .section.green-bg>div ul>li>a:hover {
   text-decoration: none;
   color: var(--btn-bg);
 }
 
-footer .footer .section.green-bg > div > ul:last-of-type> li:not(:last-child) > a::after{
-  content: '|';
+footer .footer .section.green-bg>div>ul:last-of-type>li:not(:last-child)>a::after {
+  content: "|";
   color: black;
   padding: 0 4px;
 }
 
-footer .footer .section.green-bg > div .footer-general-wrapper .links-cr-wrapper > ul > li:not(:last-child) > a::after {
-  content: '|';
+footer .footer .section.green-bg>div .footer-general-wrapper .links-cr-wrapper>ul>li:not(:last-child)>a::after {
+  content: "|";
   color: white;
   padding: 0 4px;
 }
 
-@media (width > 600px) {
+@media (width>600px) {
   footer .footer .section.beige-bg {
     padding: 50px 0 30px;
   }
 
-  footer .footer .section.beige-bg > div {
+  footer .footer .section.beige-bg>div {
     display: flex;
     align-items: center;
   }
 
-  footer .footer .section.beige-bg > div > p {
-    width: calc((((100% - (12* 30px)) / 12)* 12) + (11* 30px));
+  footer .footer .section.beige-bg>div>p {
+    width: calc((((100% - (12*30px))/12)*12) + (11*30px));
   }
 }
 
-@media (width > 900px) {
+@media (width>900px) {
   footer .footer .section.beige-bg {
     font-size: 40px;
     padding: 50px 0 30px;
   }
 
-  footer .footer .section.beige-bg > div {
+  footer .footer .section.beige-bg>div {
     padding: 0 75px;
   }
 
@@ -144,44 +144,44 @@ footer .footer .section.green-bg > div .footer-general-wrapper .links-cr-wrapper
     padding: 100px 80px;
   }
 
-  footer .footer .section.green-bg > div {
-    display: flex; 
+  footer .footer .section.green-bg>div {
+    display: flex;
     justify-content: space-between;
     align-items: center;
   }
 
-  footer .footer .section.section.green-bg > div .footer-general-wrapper{
+  footer .footer .section.section.green-bg>div .footer-general-wrapper {
     display: flex;
     justify-content: flex-start;
     align-items: center;
     margin-bottom: 0;
   }
 
-  footer .footer .section.section.green-bg > div .footer-general-wrapper> p {
+  footer .footer .section.section.green-bg>div .footer-general-wrapper>p {
     margin-bottom: 0;
   }
 
-  footer .footer .section.green-bg > div > ul:last-of-type {
+  footer .footer .section.green-bg>div>ul:last-of-type {
     font-size: 22px;
   }
 
-  footer .footer .section.green-bg > div .footer-general-wrapper p .icon {
+  footer .footer .section.green-bg>div .footer-general-wrapper p .icon {
     margin-right: 30px;
     margin-bottom: 0;
   }
 }
 
-@media (width > 1200px) {
-  footer .footer .section.beige-bg > div {
+@media (width>1200px) {
+  footer .footer .section.beige-bg>div {
     position: relative;
     margin: auto;
   }
 
-  footer .footer .section.beige-bg > div p {
+  footer .footer .section.beige-bg>div p {
     max-width: 795px;
   }
 
-  footer .footer .section.beige-bg > div .button-container a {
+  footer .footer .section.beige-bg>div .button-container a {
     max-width: 372.5px;
   }
 }

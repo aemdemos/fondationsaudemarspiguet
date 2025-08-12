@@ -1,15 +1,6 @@
 
 @font-face {
   font-family: Antarctica;      
-  src: url('../fonts/antarctica-600-normal.woff2') format('woff2');
-  font-weight: 600;
-  font-style: normal;
-  font-display: swap;
-  unicode-range: U+0-10FFFF;
-}
-
-@font-face {
-  font-family: Antarctica;      
   src: url('../fonts/antarctica-300-normal.woff2') format('woff2');
   font-weight: 300;
   font-style: normal;
@@ -30,6 +21,15 @@
   font-family: Antarctica;      
   src: url('../fonts/antarctica-500-normal.woff2') format('woff2');
   font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0-10FFFF;
+}
+
+@font-face {
+  font-family: Antarctica;      
+  src: url('../fonts/antarctica-600-normal.woff2') format('woff2');
+  font-weight: 600;
   font-style: normal;
   font-display: swap;
   unicode-range: U+0-10FFFF;
