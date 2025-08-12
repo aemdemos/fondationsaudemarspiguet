@@ -1,5 +1,5 @@
 import {
-  div, section, input, span, a, h2, img,
+  div, input, span, a, h2, img,
 } from '../../scripts/dom-helpers.js';
 import ffetch from '../../scripts/ffetch.js';
 import {
@@ -58,7 +58,7 @@ function parseDate(dateStr) {
 
 export default async function decorate(doc) {
   const $main = doc.querySelector('main');
-  const $section = doc.querySelector('main .section:last-of-type')
+  const $section = doc.querySelector('main .section:last-of-type');
   const $filterContainer = div({ class: 'filter-container' });
   const $newsListingRight = div({ class: 'news-listing-container-right' });
   const $filterTop = a({ class: 'filter-top-btn' });

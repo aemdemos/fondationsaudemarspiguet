@@ -1,5 +1,5 @@
 import {
-  div, h2, section, input, span, a, img,
+  div, h2, input, span, a, img,
 } from '../../scripts/dom-helpers.js';
 import ffetch from '../../scripts/ffetch.js';
 import {
