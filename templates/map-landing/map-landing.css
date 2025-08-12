@@ -59,6 +59,10 @@ body.map-landing .section.pale-grey-bg {
     margin: 0;
 }
 
+body.biencommun .section.pale-grey-bg {
+    background-color: var(--map-bg-page-bien);
+}
+
 body.map-landing .section.pale-grey-bg .cards-wrapper {
     display: grid;
     grid-template-columns: auto;

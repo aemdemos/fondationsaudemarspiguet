@@ -218,8 +218,8 @@ var popupoption = {
   bounds = new google.maps.LatLngBounds();
 
   map = new google.maps.Map(document.getElementById('map'), {
-    center: {lat: 46.77448320376698, lng: 8.009033203125},
-    //zoom: 9, // Zoom will be set dynamically after fitBounds
+    center: {lat: 30, lng: 8.009033203125},
+    zoom: 2.35, // Fine-tuned zoom level for optimal view
     mapId: '5c5cdb8a2b86055061abff98',
     draggable: draggable,
     scrollwheel: false,
@@ -227,8 +227,8 @@ var popupoption = {
     streetViewControl: false, // Désactiver le contrôle de Street View
     fullscreenControl: false,
     zoomControl: false,
-    //minZoom: 3, 
-   // maxZoom: 16,
+    minZoom: 2, 
+    maxZoom: 16,
     styles: audemarsmapstyles
   });
     
@@ -1930,7 +1930,7 @@ var popupoption = {
             ]
         });
 
-        map.fitBounds(bounds);
+        // map.fitBounds(bounds); // Commented out to use manual zoom level instead
         
         // Hide map initially to prevent seeing zoom transition
         document.getElementById('map').style.opacity = '0';
