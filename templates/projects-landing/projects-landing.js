@@ -1,5 +1,5 @@
 import {
-  div, h2, section, input, span, a, img,
+  div, h2, input, span, a, img,
 } from '../../scripts/dom-helpers.js';
 import ffetch from '../../scripts/ffetch.js';
 import {
@@ -52,7 +52,7 @@ function showProjectCards(getprojects, doc) {
 
 export default async function decorate(doc) {
   const $main = doc.querySelector('main');
-  const $section = section();
+  const $section = doc.querySelector('main .section:last-of-type');
   const $filterContainer = div({ class: 'filter-container' });
   let { placeholders } = window;
   if (!placeholders) {
@@ -158,11 +158,13 @@ export default async function decorate(doc) {
   categorysection.appendChild(categoryList);
   const $categoryInput = doc.querySelector('.category-input');
   $categoryInput.addEventListener('click', () => {
+    locationsection.style.display = 'none';
     categorysection.style.display = categorysection.style.display === 'block' ? 'none' : 'block';
   });
 
   const $locationInput = doc.querySelector('.location-input');
   $locationInput.addEventListener('click', () => {
+    categorysection.style.display = 'none';
     locationsection.style.display = locationsection.style.display === 'block' ? 'none' : 'block';
   });
 
@@ -228,7 +230,11 @@ export default async function decorate(doc) {
           ? getProjects
           : getProjects.filter((projects) => {
             const title = projects.title.toLowerCase();
-            return title.includes(searchTerm);
+            const category = projects.category.toLowerCase();
+            const location = projects.location.toLowerCase();
+            const partner = projects.partner.toLowerCase();
+            return title.includes(searchTerm) || category.includes(searchTerm)
+            || location.includes(searchTerm) || partner.includes(searchTerm);
           });
         projectsListing.innerHTML = '';
         showProjectCards(filteredProject, document);

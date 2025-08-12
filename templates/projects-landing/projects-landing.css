@@ -8,8 +8,10 @@ main .filter-container {
     position: relative;
 }
 
-main .filter-container input {
-    text-align: center;
+main .section .projects-listing-container {
+    max-width: unset;
+    background-color: var(--projet-bg-page-listing);
+    padding: 35px 0;
 }
 
 main .filter-container .category-input {
@@ -150,18 +152,14 @@ main .filter-container .projects-listing-container-right .map-link-btn {
     margin-top: 4px;
 }
 
-main .projects-listing-container {
-    background-color: var(--projet-bg-page-listing);
-    padding: 35px 0;
-}
 
 main .projects-listing {
     display: grid;
     grid-template-columns: 1fr;
     gap: 30px;
-    padding: 0 20px;
     margin: auto;
     height: auto;
+    padding: 35px 20px;
 }
 
 .projects-listing .project-item {
@@ -263,7 +261,6 @@ main .projects-listing {
         gap: 30px;
         max-width: 1200px;
         margin: auto;
-        padding: 0 20px;
     }
 
     .projects-listing .project-item {
@@ -271,7 +268,6 @@ main .projects-listing {
     }
 
     main .filter-container {
-        padding: 0 20px;
         font-size: 36px;
         flex-flow: row wrap;
         justify-content: space-between;
@@ -300,10 +296,6 @@ main .projects-listing {
         grid-template-columns: repeat(3, 1fr);
         gap: 30px;
         max-width: 1200px;
-        padding: 0 80px;
-    }
-
-    main .filter-container {
         padding: 0 80px;
     }
 
