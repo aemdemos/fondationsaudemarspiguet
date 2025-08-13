@@ -1,3 +1,6 @@
+header {
+  min-height: 210px;
+}
 
 /* header and nav layout */
 header .nav-wrapper {
