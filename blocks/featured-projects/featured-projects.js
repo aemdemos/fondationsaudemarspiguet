@@ -223,7 +223,7 @@ async function getProductsdata() {
 
   // Determine number of cards to show based on viewport width
   const viewportWidth = window.innerWidth || document.documentElement.clientWidth || 0;
-  const desiredCount = (viewportWidth >= 600 && viewportWidth < 900) ? 2 : 3;
+  const desiredCount = (viewportWidth < 900) ? 2 : 3;
 
   // Always exclude current project from selection and take the desired count
   const selectedProducts = rawProducts1
@@ -282,12 +282,12 @@ export default async function decorate(block) {
   await render();
 
   // Re-render on resize when crossing breakpoints
-  let lastBucket = (window.innerWidth >= 600 && window.innerWidth < 900) ? 'two' : 'three';
+  let lastBucket = (window.innerWidth < 900) ? 'two' : 'three';
   let resizeRafId;
   const onResize = () => {
     if (resizeRafId) cancelAnimationFrame(resizeRafId);
     resizeRafId = requestAnimationFrame(async () => {
-      const currentBucket = (window.innerWidth >= 600 && window.innerWidth < 900) ? 'two' : 'three';
+      const currentBucket = (window.innerWidth < 900) ? 'two' : 'three';
       if (currentBucket !== lastBucket) {
         lastBucket = currentBucket;
         await render();
