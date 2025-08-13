@@ -1,10 +1,6 @@
-header, .header {
-  min-height: 210px;
-}
 
 /* header and nav layout */
 header .nav-wrapper {
-  min-height: 100px;
   width: 100%;
   z-index: 2;
   position: fixed;
@@ -15,7 +11,6 @@ header .nav-wrapper {
 }
 
 header nav {
-  min-height: 90px;
   background-color: var(--arbres-header-color);
   box-sizing: border-box;
   align-items: center;
@@ -38,13 +33,12 @@ header .nav-wrapper.non-sticky {
 
 header nav[aria-expanded="true"] {
   overflow-y: auto;
-  min-height: 90px;
+  min-height: calc(50vh + 100px);
   background-color: var(--menu-open-bg);
 }
 
 header nav[aria-expanded="true"] .nav-menu-wrapper {
   padding: 50px 0 80px;
-  min-height: 400px;
 }
 
 header nav[aria-expanded="false"] .nav-logo-wrapper, header nav[aria-expanded="true"] .nav-logo-wrapper {
@@ -115,11 +109,10 @@ header nav .nav-tools ul li.active, header nav .nav-tools ul li a.active {
   header nav {
     display: flex;
     justify-content: space-between;
-    min-height: 100px;
   }
 
   header nav[aria-expanded="true"] {
-    min-height: 100px;
+    min-height: 0;
     overflow: visible;
     padding: 20px 20px 30px;
     align-items: stretch;
@@ -330,7 +323,6 @@ header nav[aria-expanded="true"] .nav-tools {
 
   header nav[aria-expanded="true"] .nav-menu-wrapper {
     width: 100%;
-    min-height: 90px;
   }
 
   header nav .nav-tools .default-content-wrapper>ul {
@@ -412,7 +404,7 @@ header nav[aria-expanded="true"] .nav-tools {
   }
 
   header nav[aria-expanded="true"] {
-    min-height: 100px;
+    min-height: 0;
     overflow: visible;
     padding: 100px 80px 30px;
     align-items: stretch;
