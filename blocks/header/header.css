@@ -407,7 +407,7 @@ header nav[aria-expanded="true"] .nav-tools {
   }
 
   header nav[aria-expanded="true"] {
-    min-height: 0;
+    min-height: 100px;
     overflow: visible;
     padding: 100px 80px 30px;
     align-items: stretch;
