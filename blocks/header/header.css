@@ -1,6 +1,6 @@
 /* header and nav layout */
 
-header {
+.header-wrapper, .header {
   height: var(--header-mob-height);
 }
 
@@ -120,7 +120,7 @@ header nav .nav-tools ul li.active, header nav .nav-tools ul li a.active {
     height: var(--header-tab-height);
   }
 
-  header {
+  .header-wrapper, .header {
     height: var(--header-tab-height);
   }
 
@@ -399,7 +399,7 @@ header nav[aria-expanded="true"] .nav-tools {
     transition: transform 1s ease, position 0s linear 0.4s;
   }
 
-  header {
+  .header-wrapper, .header {
     height: var(--header-height);
   }
 
@@ -412,7 +412,6 @@ header nav[aria-expanded="true"] .nav-tools {
   }
 
   header nav {
-    min-height: 100px;
     top: 0;
     left: 0;
     width: 100%;
