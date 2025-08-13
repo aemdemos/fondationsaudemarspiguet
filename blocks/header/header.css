@@ -44,6 +44,7 @@ header nav[aria-expanded="true"] {
 
 header nav[aria-expanded="true"] .nav-menu-wrapper {
   padding: 50px 0 80px;
+  min-height: 400px;
 }
 
 header nav[aria-expanded="false"] .nav-logo-wrapper, header nav[aria-expanded="true"] .nav-logo-wrapper {
@@ -329,6 +330,7 @@ header nav[aria-expanded="true"] .nav-tools {
 
   header nav[aria-expanded="true"] .nav-menu-wrapper {
     width: 100%;
+    min-height: 90px;
   }
 
   header nav .nav-tools .default-content-wrapper>ul {
