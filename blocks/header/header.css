@@ -1,4 +1,8 @@
 
+header.header-wrapper {
+  min-height: 210px; /* or your actual final height */
+}
+
 /* header and nav layout */
 header .nav-wrapper {
   width: 100%;
