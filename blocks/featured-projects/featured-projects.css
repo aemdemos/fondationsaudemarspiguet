@@ -76,7 +76,7 @@
 
 @media (width >= 600px) {
     .featured-projects.block .cards.block.featured ul {
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(2, 1fr);
     }
 
     .project-article-template .featured-projects-container.section::before {
@@ -87,5 +87,11 @@
         width: 100vw;
         height: 300px;
         margin-top: -40px;
+    }
+}
+
+@media (width >= 900px) {
+    .featured-projects.block .cards.block.featured ul {
+        grid-template-columns: repeat(3, 1fr);
     }
 }
