@@ -10,7 +10,7 @@
  * OF ANY KIND, either express or implied. See the License for the specific language
  * governing permissions and limitations under the License.
  */
-:root {
+ :root {
   --background-color: white;
   --light-color: #f8f8f8;
   --dark-color: #505050;
@@ -32,7 +32,9 @@
   --nav-height: 216px;
   --header-height: var(--nav-height);
   --site-color: #6B7E7C;
+  --site-color-bien: #726248;
   --site-color-2: #839790;
+  --site-color-2-bien: #947F5F;
   --arbres-header-color: rgb(107 126 124 / 85%);
   --arbres-header-color-over: rgb(107 126 124 / 100%);
   --footer-color: #6B7E7C;
@@ -120,6 +122,10 @@
   --map-box-bg: rgb(159 165 157 / 90%);
   --map-box-partenaires: #363f3e;
   --map-carte-icone-container: #E2E5E5;
+  --map-box-bg-bien: rgba(177 154 117 / 90%);
+  --map-box-partenaires-bien: #393124;
+  --map-carte-icone-container-bien: #D8D7D0;
+  --map-bg-page-bien: #EDECEA;
 
   /* BODY */
   --body-font-size: 20px;
@@ -1183,5 +1189,3 @@ main .section.cream-bg.table-container.accordion-container{
     max-width: 1520px;
   }
 }
-
-
