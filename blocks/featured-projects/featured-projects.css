@@ -50,7 +50,7 @@
 
 .featured-projects.block .cards.block.featured ul .projets-listing-partners {
     font-size: 14px;
-    line-height: 1.5em;
+    line-height: 1.2em;
 }
 
 .featured-projects.block .cards.block.featured ul .projets-listing-infos {
@@ -71,7 +71,16 @@
 .featured-projects.block .cards.block.featured ul .projets-listing-cat {
     font-size: 10px;
     font-weight: 300;
-    line-height: 1.5em;
+    line-height: 1.2em;
+}
+
+.project-article-template .featured-projects-container.section::before {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    background-color: var(--projet-bg-page-suite);
+    width: 100vw;
+    height: 300px;
 }
 
 @media (width >= 600px) {
@@ -80,12 +89,6 @@
     }
 
     .project-article-template .featured-projects-container.section::before {
-        content: '';
-        position: absolute;
-        z-index: -1;
-        background-color: var(--projet-bg-page-suite);
-        width: 100vw;
-        height: 300px;
         margin-top: -40px;
     }
 }
