@@ -12,6 +12,7 @@ header .nav-wrapper {
 }
 
 header nav {
+  min-height: 90px;
   background-color: var(--arbres-header-color);
   box-sizing: border-box;
   align-items: center;
@@ -34,7 +35,7 @@ header .nav-wrapper.non-sticky {
 
 header nav[aria-expanded="true"] {
   overflow-y: auto;
-  min-height: calc(50vh + 100px);
+  min-height: 90px;
   background-color: var(--menu-open-bg);
 }
 
@@ -114,7 +115,7 @@ header nav .nav-tools ul li.active, header nav .nav-tools ul li a.active {
   }
 
   header nav[aria-expanded="true"] {
-    min-height: 0;
+    min-height: 100px;
     overflow: visible;
     padding: 20px 20px 30px;
     align-items: stretch;

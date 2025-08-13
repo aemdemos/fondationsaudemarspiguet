@@ -190,8 +190,6 @@ main .projects-listing {
 .projects-listing .projects-image-wrapper img {
     height: 100%;
     width: 100%;
-    min-width: 200px;
-    min-height: 300px;
     object-fit: cover;
     max-width: 100%;
 }
