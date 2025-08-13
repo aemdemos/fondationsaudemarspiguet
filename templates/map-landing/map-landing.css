@@ -59,6 +59,10 @@ body.map-landing .section.pale-grey-bg {
     margin: 0;
 }
 
+body.biencommun .section.pale-grey-bg {
+    background-color: var(--map-bg-page-bien);
+}
+
 body.map-landing .section.pale-grey-bg .cards-wrapper {
     display: grid;
     grid-template-columns: auto;
@@ -72,7 +76,21 @@ body.map-landing .section.pale-grey-bg .cards-wrapper {
     margin: 0;
 }
 
+body.map-landing.biencommun .section.pale-grey-bg .cards-wrapper {
+    background-color: var(--map-carte-icone-container-bien);
+}
+
+
 body.map-landing .section.pale-grey-bg .map-wrapper {
+    height: 1064.44px;
+    position: relative;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    max-width: 100%;
+}
+
+body.map-landing .section.pale-grey-bg .map-bien-wrapper {
     height: 1064.44px;
     position: relative;
     overflow: hidden;
