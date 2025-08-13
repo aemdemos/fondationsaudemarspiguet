@@ -1,7 +1,7 @@
 /* header and nav layout */
 header .nav-wrapper {
   width: 100%;
-  height: var(--header-mob-height);
+  min-height: var(--header-mob-height);
   z-index: 2;
   position: fixed;
   top: 0;
@@ -112,7 +112,7 @@ header nav .nav-tools ul li.active, header nav .nav-tools ul li a.active {
   }
 
   header .nav-wrapper {
-    height: var(--header-tab-height);
+    min-height: var(--header-tab-height);
   }
 
   header nav[aria-expanded="true"] {
@@ -381,8 +381,7 @@ header nav[aria-expanded="true"] .nav-tools {
 
 @media (width>=1200px) {
   header .nav-wrapper {
-    min-height: 100px;
-    height: var(--header-height);
+    min-height: var(--header-height);
     position: fixed;
     top: 0;
     left: 0;
