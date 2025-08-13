@@ -1,12 +1,12 @@
 /* header and nav layout */
 
-.header-wrapper, .header {
-  min-height: var(--header-mob-height);
+header {
+  height: var(--header-mob-height);
 }
 
 header .nav-wrapper {
   width: 100%;
-  min-height: var(--header-mob-height);
+  height: var(--header-mob-height);
   z-index: 2;
   position: fixed;
   top: 0;
@@ -117,11 +117,11 @@ header nav .nav-tools ul li.active, header nav .nav-tools ul li a.active {
   }
 
   header .nav-wrapper {
-    min-height: var(--header-tab-height);
+    height: var(--header-tab-height);
   }
 
-  .header-wrapper, .header {
-    min-height: var(--header-tab-height);
+  header {
+    height: var(--header-tab-height);
   }
 
   header nav[aria-expanded="true"] {
@@ -390,7 +390,7 @@ header nav[aria-expanded="true"] .nav-tools {
 
 @media (width>=1200px) {
   header .nav-wrapper {
-    min-height: var(--header-height);
+    height: var(--header-height);
     position: fixed;
     top: 0;
     left: 0;
@@ -399,8 +399,8 @@ header nav[aria-expanded="true"] .nav-tools {
     transition: transform 1s ease, position 0s linear 0.4s;
   }
 
-  .header-wrapper, .header {
-    min-height: var(--header-height);
+  header {
+    height: var(--header-height);
   }
 
   .biencommun header .nav-wrapper {
