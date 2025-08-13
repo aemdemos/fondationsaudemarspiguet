@@ -30,7 +30,11 @@
   --heading-font-size-s: 16.6px;
   --heading-font-size-xs: 13.4px;
   --nav-height: 216px;
+  --nav-mobile-height: 95px;
+  --nav-tab-height: 132px;
   --header-height: var(--nav-height);
+  --header-mob-height: var(--nav-mobile-height);
+  --header-tab-height: var(--nav-tab-height);
   --site-color: #6B7E7C;
   --site-color-bien: #726248;
   --site-color-2: #839790;
