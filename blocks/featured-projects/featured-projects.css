@@ -87,6 +87,10 @@
     height: 300px;
 }
 
+.biencommun.project-article-template.featured-projects-container.section::before {
+    background-color: var(--biencommun-projet-bg-page-suite);
+}
+
 @media (width >= 600px) {
     .featured-projects.block .cards.block.featured ul {
         grid-template-columns: repeat(2, 1fr);
