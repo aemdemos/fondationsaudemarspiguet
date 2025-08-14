@@ -111,10 +111,11 @@ header nav .nav-tools ul li.active, header nav .nav-tools ul li a.active {
     display: flex;
     justify-content: space-between;
     height: var(--header-tab-height);
+    transition: all 0.9s ease-in;
   }
 
   header .nav-wrapper {
-    min-height: var(--header-tab-height);
+    height: var(--header-tab-height);
   }
 
   header nav[aria-expanded="true"] {
@@ -122,14 +123,11 @@ header nav .nav-tools ul li.active, header nav .nav-tools ul li a.active {
     overflow: visible;
     padding: 20px 20px 30px;
     align-items: stretch;
-    background-color: var(--header-color);
-    transition: all 0.9s ease-in;
   }
 
   header nav[aria-expanded="true"].hovered {
-    background-color: var(--menu-open-bg);
     transition: all 0.9s ease-in;
-    height: 150px;
+    height: 166px;
   }
 
   header nav[aria-expanded="true"] .nav-menu-wrapper {
@@ -413,7 +411,8 @@ header nav[aria-expanded="true"] .nav-tools {
   }
 
   header nav[aria-expanded="true"].hovered {
-    height: 250px;
+    transition: all 0.9s ease-in;
+    height: 246px;
   }
 
   header nav .nav-brand img {
