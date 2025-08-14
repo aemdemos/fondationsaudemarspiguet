@@ -1169,7 +1169,7 @@ main .section.cream-bg.table-container.accordion-container{
  
   main .section.colored-text.warm-grey-bg:has(.icons-grid) .default-content-wrapper > p {
     padding: 10px 0 65px;
-    max-width: 1205px;
+    max-width: 110%;
     margin-left: -5vw;
   }
 
