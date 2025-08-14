@@ -5881,6 +5881,65 @@
           "xpath": "/html[1]/body[1]/div[3]"
         }
       ]
+    },
+    {
+      "name": "Carousel",
+      "cluster": 45,
+      "source": "Carousel",
+      "target": "Carousel (vertical)",
+      "key": "vertical",
+      "instances": [
+        {
+          "url": "https://biencommun.fondationsaudemarspiguet.org/fr/fondation-pour-le-bien-commun-actualites/nouvelle-reserve-forestiere-dans-le-parc-naturel-du-jorat",
+          "urlHash": "3fcdaf54092a18905d761a2b00b1c2a84388ba4b",
+          "uuid": "3fcdaf54-00-6419c5482dba87d55497e10067ddb965e78fe885",
+          "xpath": "/html[1]/body[1]/div[2]"
+        },
+        {
+          "url": "https://biencommun.fondationsaudemarspiguet.org/fr/fondation-pour-le-bien-commun-actualites/sentier-de-la-morges-inauguration-de-deux-parcours-didactiqu",
+          "urlHash": "3c20f643f86e5110e5a425dd94176d99e752c62d",
+          "uuid": "3c20f643-05-7d9e10639d529316d722e05d9b8eeebf7771aed9",
+          "xpath": "/html[1]/body[1]/div[5]"
+        },
+        {
+          "url": "https://biencommun.fondationsaudemarspiguet.org/fr/fondation-pour-le-bien-commun-actualites/sur-les-traces-du-bois-de-resonance",
+          "urlHash": "482af5b40d8f7f9d004a3d036a545e61aaa69e96",
+          "uuid": "482af5b4-05-7d9e10639d529316d722e05d9b8eeebf7771aed9",
+          "xpath": "/html[1]/body[1]/div[5]"
+        },
+        {
+          "url": "https://biencommun.fondationsaudemarspiguet.org/fr/fondation-pour-le-bien-commun-actualites/voyage-au-centre-de-la-foret-a-la-recherche-de-sylvette-la-c",
+          "urlHash": "e41d9848261a5eb9551b52125b793e76bb6aafdf",
+          "uuid": "e41d9848-05-7d9e10639d529316d722e05d9b8eeebf7771aed9",
+          "xpath": "/html[1]/body[1]/div[5]"
+        },
+        {
+          "url": "https://biencommun.fondationsaudemarspiguet.org/en/fondation-pour-le-bien-commun-news/new-forest-reserve-in-the-parc-naturel-du-jorat",
+          "urlHash": "03a00e49cf3937ca8c0f3d36110d09d0c797ba9d",
+          "uuid": "03a00e49-02-fcdb38319628d3c857a8a41e1a8b6f8fc9debfea",
+          "xpath": "/html[1]/body[1]/div[3]/div[1]/h1[1]",
+          "section": "section-2"
+        },
+        {
+          "url": "https://biencommun.fondationsaudemarspiguet.org/en/fondation-pour-le-bien-commun-news/on-the-trail-of-resonance-wood",
+          "urlHash": "e2322f0739bff47079e13884ba72ffb7ebfce367",
+          "uuid": "e2322f07-01-673b1192bf50f97452eeb1ca80827e636823b70d",
+          "xpath": "/html[1]/body[1]/div[3]/div[1]/div[2]",
+          "section": "section-2"
+        },
+        {
+          "url": "https://biencommun.fondationsaudemarspiguet.org/en/fondation-pour-le-bien-commun-news/sentier-de-la-morges-inauguration-of-two-didactic-trails",
+          "urlHash": "2edf717cb30241d363348769f2f78f281c46a2e3",
+          "uuid": "2edf717c-00-6419c5482dba87d55497e10067ddb965e78fe885",
+          "xpath": "/html[1]/body[1]/div[2]"
+        },
+        {
+          "url": "https://biencommun.fondationsaudemarspiguet.org/en/fondation-pour-le-bien-commun-news/voyage-au-centre-de-la-foret-a-la-recherche-de-sylvette-la-c",
+          "urlHash": "f065d53284a2bfef414d137be38fded1ac0d4544",
+          "uuid": "f065d532-00-6419c5482dba87d55497e10067ddb965e78fe885",
+          "xpath": "/html[1]/body[1]/div[2]"
+        }
+      ]
     }
   ],
   "outliers": [
