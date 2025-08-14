@@ -370,7 +370,7 @@ export async function loadAllPlaceholders() {
 }
 
 /**
- * Sets domain-specific favicon based on current URL
+ * Sets domain-specific favicon and CSS classes based on current URL
  */
 function setPathSpecificFavicon() {
   const { hostname } = window.location;
@@ -402,12 +402,18 @@ function setPathSpecificFavicon() {
   const matchedDomain = domainKeys.find((domainKey) => hostname.includes(domainKey));
   const faviconSet = matchedDomain ? faviconMappings[matchedDomain] : defaultFaviconSet;
 
+  // Add site-specific CSS class to body for styling
+  if (matchedDomain) {
+    document.body.classList.add(matchedDomain);
+  }
+
   // Debug logging
   // eslint-disable-next-line no-console
-  console.log('Favicon Debug:', {
+  console.log('Site Detection Debug:', {
     hostname,
     matchedDomain,
     faviconSet,
+    addedClass: matchedDomain || 'none',
   });
 
   // If we found a matching domain, update the favicons
