@@ -124,6 +124,11 @@ header nav .nav-tools ul li.active, header nav .nav-tools ul li a.active {
     transition: all 0.9s ease-in;
   }
 
+  .biencommun header nav[aria-expanded="true"].hovered {
+    background-color: var(--biencommun-header-color-over);
+    transition: all 0.9s ease-in;
+  }
+
   header nav[aria-expanded="true"] .nav-menu-wrapper {
     padding: 0;
   }

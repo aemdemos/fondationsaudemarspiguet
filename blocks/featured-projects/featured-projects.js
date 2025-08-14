@@ -221,20 +221,14 @@ async function getProductsdata() {
     });
   }
 
-  // Find index of current project
-  const currentIndex = rawProducts1.findIndex((product) => product.path === currentPath);
+  // Determine number of cards to show based on viewport width
+  const viewportWidth = window.innerWidth || document.documentElement.clientWidth || 0;
+  const desiredCount = (viewportWidth < 900) ? 2 : 3;
 
-  // If current project is among first 3, remove it and get next one
-  let selectedProducts;
-  if (currentIndex >= 0 && currentIndex <= 2) {
-    selectedProducts = [
-      ...rawProducts1.slice(0, currentIndex),
-      ...rawProducts1.slice(currentIndex + 1, 4), // Get up to index 4 to ensure we have 3 items
-    ];
-  } else {
-    // If current project is not in first 3, just get first 3
-    selectedProducts = rawProducts1.slice(0, 3);
-  }
+  // Always exclude current project from selection and take the desired count
+  const selectedProducts = rawProducts1
+    .filter((product) => product.path !== currentPath)
+    .slice(0, desiredCount);
 
   return selectedProducts;
 }
@@ -266,16 +260,39 @@ export default async function decorate(block) {
 
   block.prepend(heading);
 
-  const getProducts = await getProductsdata();
-  const blockContents = await loadresults(getProducts);
-  const builtBlock = buildBlock(blockType, blockContents);
-  const parentDiv = div(
-    builtBlock,
-  );
-  decorateBlock(builtBlock);
-  await loadBlock(builtBlock);
-  builtBlock.classList.add('featured');
-  applyFadeUpAnimation(builtBlock, parentDiv);
+  const render = async () => {
+    // Clear previous content except heading
+    const nodesToRemove = [...block.querySelectorAll(':scope > div')];
+    nodesToRemove.forEach((n) => n.remove());
 
-  block.append(parentDiv);
+    const getProducts = await getProductsdata();
+    const blockContents = await loadresults(getProducts);
+    const builtBlock = buildBlock(blockType, blockContents);
+    const parentDiv = div(
+      builtBlock,
+    );
+    decorateBlock(builtBlock);
+    await loadBlock(builtBlock);
+    builtBlock.classList.add('featured');
+    applyFadeUpAnimation(builtBlock, parentDiv);
+
+    block.append(parentDiv);
+  };
+
+  await render();
+
+  // Re-render on resize when crossing breakpoints
+  let lastBucket = (window.innerWidth < 900) ? 'two' : 'three';
+  let resizeRafId;
+  const onResize = () => {
+    if (resizeRafId) cancelAnimationFrame(resizeRafId);
+    resizeRafId = requestAnimationFrame(async () => {
+      const currentBucket = (window.innerWidth < 900) ? 'two' : 'three';
+      if (currentBucket !== lastBucket) {
+        lastBucket = currentBucket;
+        await render();
+      }
+    });
+  };
+  window.addEventListener('resize', onResize);
 }
