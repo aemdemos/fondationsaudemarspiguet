@@ -7,7 +7,6 @@ header .nav-wrapper {
   top: 0;
   left: 0;
   transition: transform 1s ease, position 0s linear 0.4s;
-  background: var(--arbres-header-color);
 }
 
 header nav {
@@ -123,11 +122,13 @@ header nav .nav-tools ul li.active, header nav .nav-tools ul li a.active {
     overflow: visible;
     padding: 20px 20px 30px;
     align-items: stretch;
+    background: var(--arbres-header-color);
   }
 
   header nav[aria-expanded="true"].hovered {
     transition: all 0.9s ease-in;
     height: 166px;
+    background: var(--arbres-header-color-over);
   }
 
   header nav[aria-expanded="true"] .nav-menu-wrapper {
@@ -377,7 +378,7 @@ header nav[aria-expanded="true"] .nav-tools {
 
 @media (width>=1200px) {
   header .nav-wrapper {
-    min-height: var(--header-height);
+    height: var(--header-height);
     position: fixed;
     top: 0;
     left: 0;
@@ -408,11 +409,13 @@ header nav[aria-expanded="true"] .nav-tools {
     overflow: visible;
     padding: 100px 80px 30px;
     align-items: stretch;
+    background: var(--arbres-header-color);
   }
 
   header nav[aria-expanded="true"].hovered {
     transition: all 0.9s ease-in;
     height: 246px;
+    background-color: var(--arbres-header-color-over);
   }
 
   header nav .nav-brand img {
