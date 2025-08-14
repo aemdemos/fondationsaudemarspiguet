@@ -146,14 +146,14 @@ function waitForHeaderHeight(block) {
   const headerEle = block.querySelector('.nav-wrapper');
 
   if (headerEle) {
-    // setMainHeightVar(headerEle, document); // Initial call
+    setMainHeightVar(headerEle, document); // Initial call
 
     // Use ResizeObserver for more reliable header height change detection
     if (window.ResizeObserver) {
       const resizeObserver = new ResizeObserver(() => {
         // Add a small delay to ensure header has finished resizing
         setTimeout(() => {
-          // setMainHeightVar(headerEle, document);
+          setMainHeightVar(headerEle, document);
         }, 10);
       });
       resizeObserver.observe(headerEle);
@@ -167,17 +167,17 @@ function waitForHeaderHeight(block) {
         clearTimeout(resizeTimeout);
       }
       // Immediate update
-      // setMainHeightVar(headerEle, document);
+      setMainHeightVar(headerEle, document);
       // Delayed update to catch any late height changes
       resizeTimeout = setTimeout(() => {
-        // setMainHeightVar(headerEle, document);
+        setMainHeightVar(headerEle, document);
       }, 100);
     });
 
     // Also listen for orientation changes on mobile
     window.addEventListener('orientationchange', () => {
       setTimeout(() => {
-        // setMainHeightVar(headerEle, document);
+        setMainHeightVar(headerEle, document);
       }, 200);
     });
   } else {
