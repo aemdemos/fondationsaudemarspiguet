@@ -34,9 +34,9 @@ function scrollToCard(cardEl) {
   }
 }
 
-function enableFadeUp(cards, block) {
+function enableFadeUp(cards, isStatistics) {
   cards.forEach((card) => {
-    if (block.classList.contains('statistics')) {
+    if (isStatistics) {
       const paraStat = card.querySelector('.cards-card-body p');
       const cardBody = card.querySelector('.cards-card-body');
       if (paraStat && cardBody) {
@@ -47,6 +47,26 @@ function enableFadeUp(cards, block) {
       const icon = card.querySelector('.cards-card-body .icon');
       if (image && icon) {
         applyFadeUpAnimation(image, icon);
+      }
+    }
+  });
+}
+
+function disableFadeUp(cards, isStatistics) {
+  cards.forEach((card) => {
+    if (isStatistics) {
+      const fadeUpDiv = card.querySelector('.cards-card-body div.image-fade-wrapper');
+      if (fadeUpDiv) {
+        fadeUpDiv.classList.add('disabled-fade-wrapper');
+        fadeUpDiv.classList.remove('image-fade-wrapper');
+        fadeUpDiv.removeAttribute('style');
+      }
+    } else {
+      const fadeUpDiv = card.querySelector('.cards-card-body .icon div.image-fade-wrapper');
+      if (fadeUpDiv) {
+        fadeUpDiv.classList.add('disabled-fade-wrapper');
+        fadeUpDiv.classList.remove('image-fade-wrapper');
+        fadeUpDiv.removeAttribute('style');
       }
     }
   });
@@ -339,6 +359,8 @@ export default function decorate(block) {
 
     block.append(prevBtn, nextBtn);
 
+    const isStatistics = block.classList.contains('statistics');
+
     // The ul element behaves like a carousel track
     // const track = block.querySelector('ul');
     const prevButton = block.querySelector('.carousel-prev');
@@ -351,6 +373,7 @@ export default function decorate(block) {
     nextButton.disabled = currentIndex >= numCards - visibleCount;
 
     nextButton.onclick = () => {
+      disableFadeUp(cards, isStatistics);
       if (currentIndex < numCards - 1) {
         prevButton.disabled = false;
         currentIndex += 1;
@@ -362,6 +385,7 @@ export default function decorate(block) {
     };
 
     prevButton.onclick = () => {
+      disableFadeUp(cards, isStatistics);
       if (currentIndex > 0) {
         nextButton.disabled = false;
         currentIndex -= 1;
@@ -372,6 +396,7 @@ export default function decorate(block) {
     };
 
     window.addEventListener('resize', () => {
+      disableFadeUp(cards, isStatistics);
       scrollToCard(cards[currentIndex]);
       if (currentIndex <= 0) {
         prevButton.disabled = true;
@@ -385,7 +410,7 @@ export default function decorate(block) {
       }
     });
 
-    if (block.classList.contains('statistics')) {
+    if (isStatistics) {
       const colors = ['var(--arbres-carousel-card-1)', 'var(--arbres-carousel-card-2)', 'var(--arbres-carousel-card-3)', 'var(--arbres-carousel-card-4)']; // Add more colors as needed
       const cardsBody = document.querySelectorAll('.cards-card-body');
 
@@ -395,6 +420,6 @@ export default function decorate(block) {
       });
     }
 
-    enableFadeUp(cards, block);
+    enableFadeUp(cards, isStatistics);
   }
 }
