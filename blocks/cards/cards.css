@@ -246,7 +246,7 @@
   justify-content: center;
 }
 
-.cards.icons-grid .cards-card-body > p {
+.cards.icons-grid .cards-card-body p {
   color: var(--site-color-2);
   font-size: 18px;
   font-weight: 400;
@@ -267,7 +267,7 @@
   letter-spacing: .05em;
 }
 
-.cards.icons-grid.statistics .cards-card-body > p {
+.cards.icons-grid.statistics .cards-card-body p {
   font-size: 80px;
   color: #FFF;
   padding: 0;
@@ -470,7 +470,7 @@ main .cards-buttons .button-asc-btn:hover {
     padding: 0;
   }
 
-  .cards.icons-grid .cards-card-body > p {
+  .cards.icons-grid .cards-card-body p {
     max-width: 250px;
   }
 

@@ -1169,19 +1169,13 @@ main .section.cream-bg.table-container.accordion-container{
  
   main .section.colored-text.warm-grey-bg:has(.icons-grid) .default-content-wrapper > p {
     padding: 10px 0 65px;
-    max-width: 1200px;
+    max-width: 1205px;
+    margin-left: -5vw;
   }
 
   main .section.colored-text.warm-grey-bg:has(.icons-grid) .columns-wrapper div > div > p {
     width: 100%;
   }
  }
-
-@media (width >= 1500px) {
-  main .section.colored-text.warm-grey-bg:has(.icons-grid) .default-content-wrapper > p {
-    margin-left: -150px;
-    max-width: 1520px;
-  }
-}
 
 

@@ -4,6 +4,7 @@ import { moveInstrumentation } from '../../scripts/scripts.js';
 import {
   div, h2, button,
 } from '../../scripts/dom-helpers.js';
+import { applyFadeUpAnimation } from '../../scripts/utils.js';
 
 function getVisibleCardCount(numCards) {
   let visibleCount = 1;
@@ -31,6 +32,24 @@ function scrollToCard(cardEl) {
       });
     }
   }
+}
+
+function enableFadeUp(cards, block) {
+  cards.forEach((card) => {
+    if (block.classList.contains('statistics')) {
+      const paraStat = card.querySelector('.cards-card-body p');
+      const cardBody = card.querySelector('.cards-card-body');
+      if (paraStat && cardBody) {
+        applyFadeUpAnimation(paraStat, cardBody);
+      }
+    } else {
+      const image = card.querySelector('.cards-card-body .icon > img');
+      const icon = card.querySelector('.cards-card-body .icon');
+      if (image && icon) {
+        applyFadeUpAnimation(image, icon);
+      }
+    }
+  });
 }
 
 export default function decorate(block) {
@@ -365,15 +384,17 @@ export default function decorate(block) {
         nextButton.disabled = false;
       }
     });
-  }
 
-  if (block.classList.contains('statistics')) {
-    const colors = ['var(--arbres-carousel-card-1)', 'var(--arbres-carousel-card-2)', 'var(--arbres-carousel-card-3)', 'var(--arbres-carousel-card-4)']; // Add more colors as needed
-    const cards = document.querySelectorAll('.cards-card-body');
+    if (block.classList.contains('statistics')) {
+      const colors = ['var(--arbres-carousel-card-1)', 'var(--arbres-carousel-card-2)', 'var(--arbres-carousel-card-3)', 'var(--arbres-carousel-card-4)']; // Add more colors as needed
+      const cardsBody = document.querySelectorAll('.cards-card-body');
 
-    cards.forEach((card, index) => {
-      const color = colors[index % colors.length]; // Loop through colors
-      card.style.backgroundColor = color;
-    });
+      cardsBody.forEach((cardBody, index) => {
+        const color = colors[index % colors.length]; // Loop through colors
+        cardBody.style.backgroundColor = color;
+      });
+    }
+
+    enableFadeUp(cards, block);
   }
 }
