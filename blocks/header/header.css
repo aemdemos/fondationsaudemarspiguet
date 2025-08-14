@@ -1,13 +1,12 @@
 
-/* header and nav layout */
 header .nav-wrapper {
   width: 100%;
+  height: var(--header-mob-height);
   z-index: 2;
   position: fixed;
   top: 0;
   left: 0;
   transition: transform 1s ease, position 0s linear 0.4s;
-  background: var(--arbres-header-color);
 }
 
 header nav {
@@ -15,6 +14,7 @@ header nav {
   box-sizing: border-box;
   align-items: center;
   margin: 0;
+  height: var(--header-mob-height);
   font-family: var(--body-font-family);
   padding: 20px;
 }
@@ -109,6 +109,12 @@ header nav .nav-tools ul li.active, header nav .nav-tools ul li a.active {
   header nav {
     display: flex;
     justify-content: space-between;
+    height: var(--header-tab-height);
+    transition: all 0.9s ease-in;
+  }
+
+  header .nav-wrapper {
+    height: var(--header-tab-height);
   }
 
   header nav[aria-expanded="true"] {
@@ -116,17 +122,13 @@ header nav .nav-tools ul li.active, header nav .nav-tools ul li a.active {
     overflow: visible;
     padding: 20px 20px 30px;
     align-items: stretch;
-    background-color: var(--header-color);
+    background: var(--arbres-header-color);
   }
 
   header nav[aria-expanded="true"].hovered {
-    background-color: var(--menu-open-bg);
     transition: all 0.9s ease-in;
-  }
-
-  .biencommun header nav[aria-expanded="true"].hovered {
-    background-color: var(--biencommun-header-color-over);
-    transition: all 0.9s ease-in;
+    height: 166px;
+    background: var(--arbres-header-color-over);
   }
 
   header nav[aria-expanded="true"] .nav-menu-wrapper {
@@ -249,12 +251,6 @@ header nav .nav-sections {
     font-size: 14px;
   }
 }
-
-/* @media (width >= 1200px) {
-  header {
-    height: 210px;
-  }
-} */
 
 
 /* brand */
@@ -382,7 +378,7 @@ header nav[aria-expanded="true"] .nav-tools {
 
 @media (width>=1200px) {
   header .nav-wrapper {
-    min-height: 100px;
+    height: var(--header-height);
     position: fixed;
     top: 0;
     left: 0;
@@ -400,12 +396,12 @@ header nav[aria-expanded="true"] .nav-tools {
   }
 
   header nav {
-    min-height: 100px;
     top: 0;
     left: 0;
     width: 100%;
     z-index: 9999;
     transition: all 0.4s ease-in-out 0s;
+    height: var(--header-height);
   }
 
   header nav[aria-expanded="true"] {
@@ -413,6 +409,13 @@ header nav[aria-expanded="true"] .nav-tools {
     overflow: visible;
     padding: 100px 80px 30px;
     align-items: stretch;
+    background: var(--arbres-header-color);
+  }
+
+  header nav[aria-expanded="true"].hovered {
+    transition: all 0.9s ease-in;
+    height: 246px;
+    background-color: var(--arbres-header-color-over);
   }
 
   header nav .nav-brand img {
