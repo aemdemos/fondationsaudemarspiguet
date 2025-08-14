@@ -37,11 +37,23 @@
     margin-top: 0;
 }
 
+.biencommun.project-article-template .details-sidebar .project-article-inner h1 {
+    color: var(--biencommun-site-color);
+}
+
+.biencommun.project-article-template .details-sidebar {
+    background-color: var(--biencommun-projet-bg-page);
+}
+
 .project-article-template .details-sidebar .project-article-sidebar  div {
     color: var(--site-color-2);
     margin-top: 20px;
     margin-bottom: 4px;
     line-height: normal;
+}
+
+.biencommun.project-article-template .details-sidebar .project-article-sidebar  div {
+    color: var(--biencommun-site-color-2);
 }
 
 .project-article-template .details-sidebar .project-article-sidebar  div:first-child {
