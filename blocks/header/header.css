@@ -15,6 +15,7 @@ header nav {
   box-sizing: border-box;
   align-items: center;
   margin: 0;
+  height: var(--header-mob-height);
   font-family: var(--body-font-family);
   padding: 20px;
 }
@@ -109,6 +110,7 @@ header nav .nav-tools ul li.active, header nav .nav-tools ul li a.active {
   header nav {
     display: flex;
     justify-content: space-between;
+    height: var(--header-tab-height);
   }
 
   header .nav-wrapper {
@@ -398,6 +400,7 @@ header nav[aria-expanded="true"] .nav-tools {
     width: 100%;
     z-index: 9999;
     transition: all 0.4s ease-in-out 0s;
+    height: var(--header-height);
   }
 
   header nav[aria-expanded="true"] {

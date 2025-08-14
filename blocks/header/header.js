@@ -2,11 +2,9 @@ import { getMetadata } from '../../scripts/aem.js';
 import { loadFragment } from '../fragment/fragment.js';
 import { switchLanguage } from '../../scripts/language-switcher.js';
 import { getLanguage } from '../../scripts/scripts.js';
-import { getPathSegments } from '../../scripts/utils.js';
 
 // media query match that indicates mobile/tablet width
 const isDesktop = window.matchMedia('(min-width: 900px)');
-const root = document.documentElement;
 
 function closeOnEscape(e) {
   if (e.code === 'Escape') {
