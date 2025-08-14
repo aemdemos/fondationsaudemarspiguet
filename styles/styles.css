@@ -353,9 +353,10 @@ body.appear {
   display: block;
 }
 
-/* header {
-  height: var(--nav-height);
-} */
+header {
+  height: var(--header-mob-height);
+}
+
 header .header, footer .footer {
   visibility: hidden;
 }
@@ -651,6 +652,10 @@ main .section.float-right .default-content-wrapper .clear {
 }
 
 @media (width>=900px) {
+  header {
+    height: var(--header-tab-height);
+  }
+
   main>.section.extra-padding {
     padding: 100px 0;
     margin: 0;
@@ -1157,6 +1162,10 @@ main .section.cream-bg.table-container.accordion-container{
 
 /* Larger screen responsive for colorful class */
 @media (width >= 1200px) {
+  header {
+    height: var(--header-height);
+  }
+  
   main .section.colored-text p{
     width: 100vw;
     margin-left: calc(50% - 50vw);
