@@ -2,7 +2,6 @@ import { getMetadata } from '../../scripts/aem.js';
 import { loadFragment } from '../fragment/fragment.js';
 import { switchLanguage } from '../../scripts/language-switcher.js';
 import { getLanguage } from '../../scripts/scripts.js';
-import { getPathSegments } from '../../scripts/utils.js';
 
 // media query match that indicates mobile/tablet width
 const isDesktop = window.matchMedia('(min-width: 900px)');
@@ -126,62 +125,6 @@ function adjustScrollLimitForShortContent() {
         }
       });
     }
-  }
-}
-
-function setMainHeightVar(headerEle, doc) {
-  const headerHeight = headerEle.offsetHeight;
-  const mainEle = doc.querySelector('main');
-  if (mainEle) {
-    const pathSegments = getPathSegments();
-    const isHomePage = pathSegments.length === 0 || (pathSegments.length === 1 && ['en', 'fr'].includes(pathSegments[0]));
-    if (!isHomePage) {
-      // Always update margin-top during resize to ensure proper positioning
-      mainEle.style.marginTop = `${headerHeight}px`;
-    }
-  }
-}
-
-function waitForHeaderHeight(block) {
-  const headerEle = block.querySelector('.nav-wrapper');
-
-  if (headerEle) {
-    setMainHeightVar(headerEle, document); // Initial call
-
-    // Use ResizeObserver for more reliable header height change detection
-    if (window.ResizeObserver) {
-      const resizeObserver = new ResizeObserver(() => {
-        // Add a small delay to ensure header has finished resizing
-        setTimeout(() => {
-          setMainHeightVar(headerEle, document);
-        }, 10);
-      });
-      resizeObserver.observe(headerEle);
-    }
-
-    // Fallback: Enhanced window resize listener with debouncing
-    let resizeTimeout;
-    window.addEventListener('resize', () => {
-      // Clear previous timeout
-      if (resizeTimeout) {
-        clearTimeout(resizeTimeout);
-      }
-      // Immediate update
-      setMainHeightVar(headerEle, document);
-      // Delayed update to catch any late height changes
-      resizeTimeout = setTimeout(() => {
-        setMainHeightVar(headerEle, document);
-      }, 100);
-    });
-
-    // Also listen for orientation changes on mobile
-    window.addEventListener('orientationchange', () => {
-      setTimeout(() => {
-        setMainHeightVar(headerEle, document);
-      }, 200);
-    });
-  } else {
-    setTimeout(() => waitForHeaderHeight(block), 100); // Retry if header not yet in DOM
   }
 }
 
@@ -318,9 +261,6 @@ export default async function decorate(block) {
       switchLanguage();
     });
   }
-
-  waitForHeaderHeight(block);
-
   /**
  * Adjusts the scroll limit for short content
  */
