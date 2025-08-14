@@ -1,8 +1,8 @@
 /* header and nav layout */
 
-header {
+/* header {
   height: var(--header-mob-height);
-}
+} */
 
 header .nav-wrapper {
   width: 100%;
@@ -120,9 +120,9 @@ header nav .nav-tools ul li.active, header nav .nav-tools ul li a.active {
     height: var(--header-tab-height);
   }
 
-  header {
+  /* header {
     height: var(--header-tab-height);
-  }
+  } */
 
   header nav[aria-expanded="true"] {
     min-height: 0;
@@ -399,9 +399,9 @@ header nav[aria-expanded="true"] .nav-tools {
     transition: transform 1s ease, position 0s linear 0.4s;
   }
 
-  header {
+  /* header {
     height: var(--header-height);
-  }
+  } */
 
   .biencommun header .nav-wrapper {
     background: var(--biencommun-header-color);
