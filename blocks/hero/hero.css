@@ -476,3 +476,12 @@
 }
 
 /* End of Two-columnar-text-image block styles */
+
+/* Hero Image block styles */
+
+.hero.image.block {
+  width: 100vw;
+  height: 700px;
+  overflow: hidden;
+  padding: 0;
+}
