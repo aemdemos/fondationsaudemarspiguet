@@ -11,6 +11,10 @@ body.news-article main .section.white-smoke-bg {
     margin: 0;
 }
 
+body.biencommun main .section.white-smoke-bg {
+    color: var(--biencommun-news-sophis-intro);
+}
+
 body.news-article main .section.featured-projects-container {
     padding-bottom: 30px;
 }
@@ -100,6 +104,10 @@ body.news-article main .news-article-sidebar div {
     color: var(--site-color-2);
     margin-top: 20px;
     margin-bottom: 4px;
+}
+
+body.biencommun main .news-article-sidebar div {
+    color: var(--site-color-2-bien);
 }
 
 body.news-article main .news-article-sidebar ul {
@@ -205,6 +213,10 @@ body.news-article main .section.details-sidebar .button-wrapper .button-containe
     line-height: normal;
     border-radius: 0;
     margin: 0;
+}
+
+body.biencommun main .section.details-sidebar .button-wrapper .button-container a {
+    background-color: var(--site-color-bien);
 }
 
 body.news-article main .section.details-sidebar.right .news-article-inner .default-content-wrapper p {
