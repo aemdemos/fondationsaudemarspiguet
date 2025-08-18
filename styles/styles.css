@@ -651,6 +651,11 @@ main .section.float-right .default-content-wrapper .content-wrapper ul li em {
   font-style: unset;
 }
 
+.biencommun main .section.float-right .default-content-wrapper .content-wrapper ul li em {
+  color: var(--biencommun-site-color-2);
+  font-style: unset;
+}
+
 main .section.float-right .default-content-wrapper .clear {
   clear: both;
 }
@@ -952,9 +957,29 @@ main .section.colored-text.warm-grey-bg p {
   padding-bottom: 0;
 }
 
+.biencommun main .section.cream-bg {
+background-color: var(--biencommun-team-bg-page);
+}
+
+.biencommun main .section.float-right .default-content-wrapper .heading-wrapper h1 {
+  color: var(--biencommun-titre);
+}
+
+.biencommun main .section.float-right h2{
+  color: var(--biencommun-titre);
+}
+
+.biencommun main .section.extra-padding .default-content-wrapper h2 {
+color: var(--biencommun-titre);
+}
+
 .policy-template main .section:last-of-type {
   margin-bottom: 0;
   margin-top: 20px;
+}
+
+.biencommun main .section.light-grey-bg {
+  background-color: var(--biencommun-partenaires-bg-bloc);
 }
 
 .policy-template main .last-modified {
