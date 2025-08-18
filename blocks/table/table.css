@@ -127,6 +127,10 @@ main .table-container .table-wrapper .table.block {
   margin-top: 0.25em;
 }
 
+.biencommun .table p {
+  color: var(--default-colored-text);
+}
+
 /* no header variant */
 .table.block.no-header table tbody tr {
   border-top: 1px solid #6B7E7C;
