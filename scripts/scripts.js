@@ -402,8 +402,6 @@ function setPathSpecificFavicon() {
   const matchedDomain = domainKeys.find((domainKey) => hostname.includes(domainKey));
   const faviconSet = matchedDomain ? faviconMappings[matchedDomain] : defaultFaviconSet;
 
-
-
   // Debug logging
   // eslint-disable-next-line no-console
   console.log('Favicon Debug:', {
