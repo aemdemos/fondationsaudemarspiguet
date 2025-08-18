@@ -121,6 +121,10 @@ text-decoration: none;
   margin-bottom: 0;
 }
 
+.biencommun .accordion.teams summary p:nth-of-type(2) {
+  color: var(--default-colored-text);
+}
+
 .accordion.teams .accordion-teams-div {
   display: inline-block;
   margin: 0;
@@ -153,6 +157,10 @@ text-decoration: none;
   padding: 3px 0;
   margin: 0;
   line-height: 1.4;
+}
+
+.biencommun .accordion.teams .button-container a.button {
+  color: var(--biencommun-site-color-2);
 }
 
 .accordion.teams .accordion-toggle-icon {
