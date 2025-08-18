@@ -155,9 +155,9 @@ const resultParsers = {
 };
 
 async function getProductsdata() {
-  const hostname = window.location.hostname;
+  const { hostname } = window.location;
   let rawProducts1 = [];
-  
+
   // Helper function to safely fetch with ffetch
   const safeFetch = async (path) => {
     try {
@@ -166,11 +166,10 @@ async function getProductsdata() {
         .all();
       return result;
     } catch (error) {
-      console.warn(`Failed to fetch from path: ${path}`, error);
       return null;
     }
   };
-  
+
   // Determine the path based on domain
   if (hostname.includes('arbres')) {
     const projectsPath = `/${getLanguage()}/${getLanguage() === 'en' ? 'fondation-pour-les-arbres-projects' : 'fondation-pour-les-arbres-nos-projets'}/projects-index.json`;
@@ -184,15 +183,15 @@ async function getProductsdata() {
     // For localhost or other domains, try arbres first, fallback to biencommun
     const arbresPath = `/${getLanguage()}/${getLanguage() === 'en' ? 'fondation-pour-les-arbres-projects' : 'fondation-pour-les-arbres-nos-projets'}/projects-index.json`;
     const bienCommunPath = `/${getLanguage()}/${getLanguage() === 'en' ? 'fondation-pour-le-bien-commun-projects' : 'fondation-pour-le-bien-commun-nos-projets'}/projects-index.json`;
-    
+
     let result = await safeFetch(arbresPath);
-    
+
     // ffetch returns empty array for 404s instead of throwing error
     // So we check if result is null OR an empty array, then try fallback
     if (!result || (Array.isArray(result) && result.length === 0)) {
       result = await safeFetch(bienCommunPath);
     }
-    
+
     if (result && Array.isArray(result) && result.length > 0) {
       rawProducts1 = result;
     } else {
