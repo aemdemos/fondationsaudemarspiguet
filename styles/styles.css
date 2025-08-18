@@ -651,6 +651,11 @@ main .section.float-right .default-content-wrapper .content-wrapper ul li em {
   font-style: unset;
 }
 
+.biencommun main .section.float-right .default-content-wrapper .content-wrapper ul li em {
+  color: var(--biencommun-site-color-2);
+  font-style: unset;
+}
+
 main .section.float-right .default-content-wrapper .clear {
   clear: both;
 }
@@ -744,6 +749,10 @@ main .section.light, main .section.highlight {
   transition: opacity 1s ease, visibility 1s ease;
 }
 
+.biencommun .page-level-btn {
+  background-color: var(--biencommun-fleche-to-top-bg);
+}
+
 .page-level-btn.show {
   opacity: 1;
   visibility: visible;
@@ -805,6 +814,10 @@ main .section.warm-grey-bg:has(.cards-wrapper) .default-content-wrapper {
 
 .policy-template main .default-content-wrapper h2 {
   padding-top: 60px;
+}
+
+.policy-template.biencommun  .default-content-wrapper h2 {
+  color: var(--biencommun-titre); 
 }
 
 main .section.light-grey-bg .default-content-wrapper h2 {
@@ -942,19 +955,39 @@ main .section.colored-text.warm-grey-bg p {
   padding: 0 0 60px;
 }
 
-.policy-template main .section .default-content-wrapper p:last-child {
+.policy-template main .section .default-content-wrapper > *:last-child {
   padding-bottom: 50px;
   border-bottom: 1px solid var(--policy-template-borders);
 }
   
-.policy-template main .section:last-of-type .default-content-wrapper p:last-child {
+.policy-template main .section:last-of-type .default-content-wrapper > *:last-child {
   border-bottom: none;
   padding-bottom: 0;
+}
+
+.biencommun main .section.cream-bg {
+background-color: var(--biencommun-team-bg-page);
+}
+
+.biencommun main .section.float-right .default-content-wrapper .heading-wrapper h1 {
+  color: var(--biencommun-titre);
+}
+
+.biencommun main .section.float-right h2{
+  color: var(--biencommun-titre);
+}
+
+.biencommun main .section.extra-padding .default-content-wrapper h2 {
+color: var(--biencommun-titre);
 }
 
 .policy-template main .section:last-of-type {
   margin-bottom: 0;
   margin-top: 20px;
+}
+
+.biencommun main .section.light-grey-bg {
+  background-color: var(--biencommun-partenaires-bg-bloc);
 }
 
 .policy-template main .last-modified {

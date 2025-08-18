@@ -7,6 +7,7 @@ header .nav-wrapper {
   top: 0;
   left: 0;
   transition: transform 1s ease, position 0s linear 0.4s;
+  background: var(--arbres-header-color);
 }
 
 header nav {
@@ -125,10 +126,18 @@ header nav .nav-tools ul li.active, header nav .nav-tools ul li a.active {
     background: var(--arbres-header-color);
   }
 
+  .biencommun header nav[aria-expanded="true"] {
+    background: var(--biencommun-header-color);
+  }
+
   header nav[aria-expanded="true"].hovered {
     transition: all 0.9s ease-in;
     height: 166px;
     background: var(--arbres-header-color-over);
+  }
+
+  .biencommun header nav[aria-expanded="true"].hovered {
+    background-color: var(--biencommun-header-color-over);
   }
 
   header nav[aria-expanded="true"] .nav-menu-wrapper {
