@@ -479,9 +479,15 @@
 
 /* Hero Image block styles */
 
-.hero.image.block {
+.biencommun .hero.image.block {
   width: 100vw;
-  height: 700px;
+  height: 500px;
   overflow: hidden;
   padding: 0;
+}
+
+@media (width >= 600px) {
+  .biencommun .hero.image.block {
+    height: 700px;
+  }
 }

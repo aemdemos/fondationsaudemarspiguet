@@ -573,7 +573,7 @@ main .section.float-right .default-content-wrapper .heading-wrapper h1 {
   font-size: 36px;
 }
 
-body.biencommun main .section.float-right .default-content-wrapper .heading-wrapper h1 {
+.biencommun main .section.float-right .default-content-wrapper .heading-wrapper h1 {
   color: var(--biencommun-site-color);
 }
 
