@@ -582,10 +582,6 @@ main .section.float-right .default-content-wrapper .heading-wrapper h1 {
   font-size: 36px;
 }
 
-.biencommun main .section.float-right .default-content-wrapper .heading-wrapper h1 {
-  color: var(--biencommun-site-color);
-}
-
 main .section.float-right .default-content-wrapper .content-wrapper {
   width: calc((((100% - (12*30px))/12)*12) + (11*30px));
   float: right;
