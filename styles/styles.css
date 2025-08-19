@@ -608,6 +608,30 @@ main .section.soft-grey-bg.default-colored-text p {
   color: var(--default-colored-text);
 }
 
+main .section.map1 .default-content-wrapper {
+  padding: 40px;
+}
+
+/* Make strong elements bold in map1 section for both themes */
+main .section.map1 .default-content-wrapper strong,
+main .section.map1 .default-content-wrapper b {
+  font-weight: bold;
+}
+
+main .section.map1 .default-content-wrapper .icon {
+  width: 40px;  /* Increased from default 24px */
+  height: 40px; /* Increased from default 24px */
+}
+
+main .section.map1 .default-content-wrapper a {
+  font-weight: bold;
+  text-decoration: none;
+  padding-bottom: 20px;
+  font-size: 14px;
+  letter-spacing: 0.2em;
+  line-height: 56px;
+}
+
 .policy-template main .section .default-content-wrapper li {
   font-size: 14px;
   letter-spacing: 0.02em;
