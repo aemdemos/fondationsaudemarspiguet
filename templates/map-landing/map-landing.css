@@ -18,6 +18,10 @@ body.map-landing main .default-content-wrapper h1 {
     padding: 15px;
 }
 
+body.biencommun.map-landing main .default-content-wrapper h1 {
+    color: var(--site-color-bien);
+}
+
 body.map-landing main .default-content-wrapper p:first-of-type {
     position: relative;
     margin: 15px;
@@ -50,6 +54,11 @@ body.map-landing main .default-content-wrapper p.button-container a.button {
     color: var(--site-color-2);
     position: relative;
     right: 10px;
+}
+
+body.biencommun.map-landing main .default-content-wrapper p.button-container a.button {
+    color: var(--site-color-2-bien);
+    background-image: url('/icons/btn_bien_back.svg');
 }
 
 

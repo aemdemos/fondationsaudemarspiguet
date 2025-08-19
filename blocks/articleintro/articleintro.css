@@ -93,6 +93,10 @@
     font-weight: 300;
 }
 
+body.biencommun .articleintro.block .news-block-header .news-detail-big-header .news-detail-date {
+    color: var(--site-color-2-bien);
+}
+
 .articleintro.block .news-block-header .news-detail-big-header .news-detail-title {
     margin: 20px 0 10px;
     color: var(--titre);
@@ -105,6 +109,10 @@
     line-height: 1.2em;
     letter-spacing: .08em;
     opacity: 1;
+}
+
+body.biencommun .articleintro.block .news-block-header .news-detail-big-header .news-detail-title {
+    color: var(--site-color-bien);
 }
 
 .articleintro.block .news-block-header .page-hero-image-seconde {
