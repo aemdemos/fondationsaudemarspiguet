@@ -9,9 +9,17 @@ import { getLanguage } from '../../scripts/scripts.js';
 import { applyFadeUpAnimation, setInputWidthToText } from '../../scripts/utils.js';
 
 async function getProjectsdata() {
-  const rawprojects = await ffetch(`/${getLanguage()}/${getLanguage() === 'en' ? 'fondation-pour-les-arbres-projects' : 'fondation-pour-les-arbres-nos-projets'}/projects-index.json`)
+  const hostname = window.location.href;
+  let rawprojects;
+  if (hostname.includes('arbres')) {
+    rawprojects = await ffetch(`/${getLanguage()}/${getLanguage() === 'en' ? 'fondation-pour-les-arbres-projects' : 'fondation-pour-les-arbres-nos-projets'}/projects-index.json`)
     .chunks(1000)
     .all();
+  } else if (hostname.includes('biencommun')) {
+    rawprojects = await ffetch(`/${getLanguage()}/${getLanguage() === 'en' ? 'fondation-pour-le-bien-commun-projects' : 'fondation-pour-le-bien-commun-nos-projets'}/projects-index.json`)
+    .chunks(1000)
+    .all();
+  }
   return rawprojects;
 }
 

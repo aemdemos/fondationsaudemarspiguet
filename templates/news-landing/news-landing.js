@@ -9,10 +9,18 @@ import { getLanguage } from '../../scripts/scripts.js';
 import { applyFadeUpAnimation, setInputWidthToText } from '../../scripts/utils.js';
 
 async function getNewsdata() {
-  const rawNews = await ffetch(`/${getLanguage()}/${getLanguage() === 'en' ? 'fondation-pour-les-arbres-news' : 'fondation-pour-les-arbres-actualites'}/news-index.json`)
+  const hostname = window.location.href;
+  let rawnews;
+  if (hostname.includes('arbres')) {
+    rawnews = await ffetch(`/${getLanguage()}/${getLanguage() === 'en' ? 'fondation-pour-les-arbres-news' : 'fondation-pour-les-arbres-actualites'}/news-index.json`)
     .chunks(1000)
     .all();
-  return rawNews;
+  } else if (hostname.includes('biencommun')) {
+    rawnews = await ffetch(`/${getLanguage()}/${getLanguage() === 'en' ? 'fondation-pour-le-bien-commun-news' : 'fondation-pour-le-bien-commun-actualites'}/news-index.json`)
+    .chunks(1000)
+    .all();
+  }
+  return rawnews;
 }
 
 function showNewsArticles(getNews, doc) {
