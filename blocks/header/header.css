@@ -349,6 +349,7 @@ header nav[aria-expanded="true"] .nav-tools {
     text-transform: uppercase;
     font-weight: 600;
     letter-spacing: .12em;
+    text-align: start;
   }
 
   header nav .nav-tools .default-content-wrapper>ul li ul {
