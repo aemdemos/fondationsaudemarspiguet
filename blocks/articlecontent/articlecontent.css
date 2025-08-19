@@ -80,7 +80,7 @@ body.biencommun .articlecontent.block .news-detail-big-content-1 .inside-middle 
 }
 
 body.biencommun .articlecontent.block .news-detail-big-contenu-right {
-    background-color: var(--site-color-2-bien);
+    background-color: var(--biencommun-news-sophis-bg-text);
 }
 
 .articlecontent.block .news-detail-big-contenu-right p {

@@ -39,6 +39,10 @@ body.news-article main .section.details-sidebar.light-grey-bg + * {
     margin: 0;
   }
 
+body.biencommun main .section.details-sidebar.light-grey-bg + * {
+    background-color: unset;
+}
+
 body.news-article main .section.white-lilac-bg {
     background-color: var(--news-sophis-bg-text2);
     padding: 40px 0 0;
@@ -59,6 +63,14 @@ body.news-article main .section.white-lilac-bg div.default-content-wrapper > p {
 body.news-article main .section.white-lilac-bg div.default-content-wrapper > p > strong {
     color: var(--news-category);
     font-weight: bold;
+}
+
+body.biencommun main .section.white-lilac-bg div.default-content-wrapper > p > strong {
+    color: var(--biencommun-projet-bloc-titre);
+}
+
+body.biencommun main .section.white-lilac-bg div.default-content-wrapper a:any-link {
+    color: var(--site-color-2-bien);
 }
 
 body.news-article main .section.white-lilac-bg div.image-wrapper {
