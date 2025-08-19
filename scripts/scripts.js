@@ -370,7 +370,7 @@ export async function loadAllPlaceholders() {
 }
 
 /**
- * Sets domain-specific favicon based on current URL
+ * Sets domain-specific favicon and CSS classes based on current URL
  */
 function setPathSpecificFavicon() {
   const { hostname } = window.location;
