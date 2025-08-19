@@ -215,11 +215,23 @@ export default async function decorate(block) {
   builtBlock.querySelectorAll('.columns.block > div').forEach((el, idx) => {
     el.classList.add('project-article');
     // Add odd/even background color
-    if (idx % 2 === 0) {
-      el.style.backgroundColor = 'var(--projet-bg-odd)';
-    } else {
-      el.style.backgroundColor = 'var(--projet-bg-even)';
+    const { hostname } = window.location;
+
+    // Only apply background color logic for arbres or biencommun hostnames
+    if (hostname.includes('arbres') || hostname.includes('biencommun')) {
+      const useBienCommun = hostname.includes('biencommun');
+
+      if (idx % 2 === 0) {
+        el.style.backgroundColor = useBienCommun
+          ? 'var(--biencommun-projet-bg-odd)'
+          : 'var(--projet-bg-odd)';
+      } else {
+        el.style.backgroundColor = useBienCommun
+          ? 'var(--biencommun-projet-bg-even)'
+          : 'var(--projet-bg-even)';
+      }
     }
+    // For localhost, let CSS handle the styling naturally
   });
 
   block.append(parentDiv);

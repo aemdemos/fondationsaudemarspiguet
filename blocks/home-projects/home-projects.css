@@ -49,6 +49,10 @@
     word-wrap: break-word;
 }
 
+body.biencommun .home-projects.block .project-article .project-metadata {
+    color: var(--biencommun-projet-bloc-titre);
+}
+
 .home-projects.block .project-article .project-metadata .category-location-duration {
     display: block;
     text-transform: uppercase;
@@ -69,6 +73,10 @@
     font-style: normal;
     line-height: 1.2em;
     letter-spacing: .08em;
+}
+
+body.biencommun .home-projects.block .project-article .project-metadata h3 {
+    color: var(--biencommun-projet-bloc-titre);
 }
 
 .home-projects.block .project-article .project-metadata .featured-content {
@@ -112,6 +120,32 @@
 .home-projects.block .project-article .project-metadata .buttons-container a:first-of-type {
     background-color: var(--projet-bloc-btn-first);
 }
+
+body.biencommun .home-projects.block .project-article .project-metadata .buttons-container a:first-of-type {
+    background-color: var(--biencommun-projet-bloc-btn-first);
+}
+
+body.biencommun .home-projects.block .project-article .project-metadata .buttons-container a:last-of-type {
+    background-color: var(--biencommun-titre);
+}
+
+.home-projects.block .project-article:first-child {
+    background-color: var(--projet-bg-odd);
+}
+
+.home-projects.block .project-article:nth-child(even) {
+    background-color: var(--projet-bg-even);
+}
+
+body.biencommun .home-projects.block .project-article:first-child {
+    background-color: var(--biencommun-projet-bg-odd);
+}
+
+body.biencommun .home-projects.block .project-article:nth-child(even) {
+    background-color: var(--biencommun-projet-bg-even);
+}
+
+
 
 @media (width >= 900px) {
     .home-projects.block .project-article .parent-container {
