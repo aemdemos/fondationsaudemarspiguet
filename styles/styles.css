@@ -537,6 +537,10 @@ main .section.light-grey-bg {
   background-color: var(--news-sophis-bg-intro);
 }
 
+.biencommun main .section.grey-yellow-bg {
+  background-color: var(--biencommun-page-bloc-bg-pictos);
+}
+
 main .section.warm-grey-bg {
   background-color: var(--chiffres-bloc-bg);
 }
@@ -704,19 +708,15 @@ main .section.float-right .default-content-wrapper .clear {
     width: calc((((100% - (12*30px))/12)*9) + (8*30px));
   }
 
-  main .section.light-grey-bg:has(.cards-wrapper) {
+  main .section:has(.icons-grid) {
     padding: 100px;
   }
 
-  main .section.warm-grey-bg:has(.cards-wrapper) {
-    padding: 100px;
-  }
-
-  main .section.warm-grey-bg .cards-wrapper {
+  main .section:has(.icons-grid.statistics) .cards-wrapper {
     padding: 50px 80px;
   }
 
-  main .section.warm-grey-bg:has(.cards-wrapper) .default-content-wrapper {
+  main .section:has(.icons-grid.statistics) .default-content-wrapper {
     padding: 0;
   }
 }
@@ -781,33 +781,33 @@ main .section.light, main .section.highlight {
   background-color: var(--section-background-color);
 }
 
-main .section.light-grey-bg:has(.cards-wrapper) {
+main .section:has(.icons-grid) {
   padding: 100px 20px;
   margin: 100px 0 0;
 }
 
-main .section.warm-grey-bg:has(.cards-wrapper) {
+main .section:has(.icons-grid.statistics) {
   padding: 40px 20px;
   margin: 100px 0 0;
 }
 
-main .section.light-grey-bg .cards-wrapper {
+main .section:has(.icons-grid) .cards-wrapper {
   max-width: 1200px;
   padding: 0 5px;
 }
 
-main .section.warm-grey-bg .cards-wrapper {
+main .section:has(.icons-grid.statistics) .cards-wrapper {
   max-width: 1200px;
   padding: 0 5px;
   margin-bottom: 60px;
 }
 
-main .section.light-grey-bg:has(.cards-wrapper) .default-content-wrapper {
+main .section:has(.icons-grid) .default-content-wrapper {
   max-width: 1200px;
   padding: 0;
 }
 
-main .section.warm-grey-bg:has(.cards-wrapper) .default-content-wrapper {
+main .section:has(.icons-grid.statistics) .default-content-wrapper {
     max-width: 1200px;
     padding: 0;
 }
@@ -820,21 +820,20 @@ main .section.warm-grey-bg:has(.cards-wrapper) .default-content-wrapper {
   color: var(--biencommun-titre); 
 }
 
-main .section.light-grey-bg .default-content-wrapper h2 {
+main .section:has(.icons-grid) .default-content-wrapper h2 {
   margin: 0;
 }
 
-main .section.warm-grey-bg .default-content-wrapper h2 {
+.biencommun main .section.float-right h2{
+  color: var(--biencommun-titre);
+}
+
+main .section:has(.icons-grid.statistics) .default-content-wrapper h2 {
   margin: 0 0 40px;
 }
 
 /* Default button styles */
-main .section.light-grey-bg .default-content-wrapper .button-container {
-  text-align: center;
-  margin: 0 auto;
-}
-
-main .section.warm-grey-bg .default-content-wrapper .button-container {
+main .section:has(.icons-grid) .default-content-wrapper .button-container {
   text-align: center;
   margin: 0 auto;
 }
@@ -885,7 +884,7 @@ main .section.quote-container .quote-wrapper {
   margin-bottom: 30px;
 }
 
-main .section.light-grey-bg .default-content-wrapper p.button-container a.button {
+main .section:has(.icons-grid) .default-content-wrapper p.button-container a.button {
   background-color: var(--page-bloc-btn-bg);
   background-image: url("/icons/btn_fleche_right.svg");
   background-position: calc(100% - 10px) center;
@@ -907,16 +906,20 @@ main .section.light-grey-bg .default-content-wrapper p.button-container a.button
   margin: 0;
 }
 
-main .section.warm-grey-bg .columns-wrapper .columns {
+.biencommun main .section:has(.icons-grid) .default-content-wrapper p.button-container a.button {
+  background-color: var(--biencommun-page-bloc-btn-bg);
+}
+
+main .section:has(.icons-grid.statistics) .columns-wrapper .columns {
   padding: 0;
   margin-bottom: 20px;
 }
 
-main .section.warm-grey-bg .columns-wrapper .columns > div {
+main .section:has(.icons-grid.statistics) .columns-wrapper .columns > div {
  gap: 10px;
 }
 
-main .section.warm-grey-bg .columns-wrapper .columns p.button-container a.button {
+main .section:has(.icons-grid.statistics) .columns-wrapper .columns p.button-container a.button {
   background-color: var(--chiffres-bloc-btn-bg);
   background-image: url('/icons/btn_fleche_right.svg');
   background-position: calc(100% - 10px) center;
@@ -939,12 +942,16 @@ main .section.warm-grey-bg .columns-wrapper .columns p.button-container a.button
   display: inline-block;
 }
 
-main .section.warm-grey-bg .columns-wrapper .columns p.button-container a.button:hover {
+.biencommun main .section:has(.icons-grid.statistics) .columns-wrapper .columns p.button-container a.button {
+  background-color: var(--biencommun-chiffres-bloc-btn-bg);
+}
+
+main .section:has(.icons-grid.statistics) .columns-wrapper .columns p.button-container a.button:hover {
   text-decoration: none;
   opacity: .7;
 }
 
-main .section.warm-grey-bg .columns-wrapper .columns p.button-container a.button::after {
+main .section:has(.icons-grid.statistics) .columns-wrapper .columns p.button-container a.button::after {
   all: unset;
 }
 
@@ -975,10 +982,6 @@ background-color: var(--biencommun-team-bg-page);
 }
 
 .biencommun main .section.float-right .default-content-wrapper .heading-wrapper h1 {
-  color: var(--biencommun-titre);
-}
-
-.biencommun main .section.float-right h2{
   color: var(--biencommun-titre);
 }
 
@@ -1079,12 +1082,12 @@ main .section.cream-bg.table-container.accordion-container{
 }
 
 @media (width >= 600px) {
-  main .section.warm-grey-bg:has(.cards-wrapper) {
+  main .section:has(.icons-grid.statistics) {
     padding: 100px 20px;
   }
 
   /* added because of generic selector rule: .columns.buttons > div > div */
-  main .section.warm-grey-bg .columns-wrapper .columns > div > div {
+  main .section:has(.icons-grid.statistics) .columns-wrapper .columns > div > div {
     flex: unset;
   }
 }
@@ -1098,15 +1101,15 @@ main .section.cream-bg.table-container.accordion-container{
     font-size: var(--body-font-size-m);
   }
 
-  main .section.warm-grey-bg .cards-wrapper {
+  main .section:has(.icons-grid.statistics).cards-wrapper {
     padding: 0;
   }
 
-  main .section.warm-grey-bg:has(.cards-wrapper) {
+  main .section:has(.icons-grid.statistics) {
     padding: 100px 80px;
   }
 
-  main .section.warm-grey-bg .columns-wrapper .columns > div {
+  main .section:has(.icons-grid.statistics) .columns-wrapper .columns > div {
     gap: 65px;
   }
 }
@@ -1136,11 +1139,11 @@ main .section.cream-bg.table-container.accordion-container{
     font-size: 40px;
   }
 
-  main .section.light-grey-bg .cards-wrapper {
+  main .section:has(.icons-grid) .cards-wrapper {
     padding: 50px 80px;
   }
 
-  main .section.light-grey-bg:has(.cards-wrapper) .default-content-wrapper {
+  main .section:has(.icons-grid) .default-content-wrapper {
     padding: 0 80px;
   }
 }
