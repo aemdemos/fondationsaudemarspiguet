@@ -69,6 +69,13 @@
     display: none; /* Hide br tags in table headers */
 }
 
+/* Ensure the table uses flexbox layout */
+.report.table-container table tr {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+}
+
 /* Generated CSS, unchanged except for the merged .table selector */
 .table.block table,
 .table.block table tr,
@@ -145,6 +152,17 @@ main .report.table-container .table-wrapper .table.block {
 .report.table-container .table.block.no-header table tbody tr {
   border-bottom: none;
 }
+
+/* stylelint-disable no-descending-specificity */
+.report.table-container table th,
+.report.table-container table td {
+  padding: 8px 12px;
+  text-align: left;
+  white-space: nowrap; /* Prevent all text from wrapping */
+  overflow: visible; /* Allow content to extend */
+  box-sizing: border-box; 
+}
+
 /* bordered variant */
 .table.block.bordered table th,
 .table.block.bordered table td {
@@ -199,10 +217,6 @@ main .report.table-container .table-wrapper .table.block {
   min-width: max-content;
 }
 
-.report.table-container > div > div > table tr:last-child {
-  border-bottom: 1px solid transparent;
-}
-
 /* Make report table columns variable size */
 .report.table-container table td:first-child,
 .report.table-container table th:first-child {
@@ -228,22 +242,6 @@ main .report.table-container .table-wrapper .table.block {
   text-align: right;
   white-space: nowrap;
   padding: 8px 0 8px 8px !important;
-}
-
-/* Ensure the table uses flexbox layout */
-.report.table-container table tr {
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-}
-
-.report.table-container table th,
-.report.table-container table td {
-  padding: 8px 12px;
-  text-align: left;
-  white-space: nowrap; /* Prevent all text from wrapping */
-  overflow: visible; /* Allow content to extend */
-  box-sizing: border-box; 
 }
 
 /* Override the equal flex from general .table styles */
