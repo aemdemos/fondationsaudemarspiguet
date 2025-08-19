@@ -105,13 +105,49 @@ const resultParsers = {
 };
 
 async function getProductsdata() {
-  const language = getLanguage();
-  const projectsPath = language === 'en'
-    ? 'fondation-pour-les-arbres-projects'
-    : 'fondation-pour-les-arbres-nos-projets';
-  const rawProducts1 = await ffetch(`/${language}/${projectsPath}/projects-index.json`)
-    .chunks(1000)
-    .all();
+  const { hostname } = window.location;
+  let rawProducts1 = [];
+
+  // Helper function to safely fetch with ffetch
+  const safeFetch = async (path) => {
+    try {
+      const result = await ffetch(path)
+        .chunks(1000)
+        .all();
+      return result;
+    } catch (error) {
+      return null;
+    }
+  };
+
+  // Determine the path based on domain
+  if (hostname.includes('arbres')) {
+    const projectsPath = `/${getLanguage()}/${getLanguage() === 'en' ? 'fondation-pour-les-arbres-projects' : 'fondation-pour-les-arbres-nos-projets'}/projects-index.json`;
+    const result = await safeFetch(projectsPath);
+    if (result) rawProducts1 = result;
+  } else if (hostname.includes('biencommun')) {
+    const projectsPath = `/${getLanguage()}/${getLanguage() === 'en' ? 'fondation-pour-le-bien-commun-projects' : 'fondation-pour-le-bien-commun-nos-projets'}/projects-index.json`;
+    const result = await safeFetch(projectsPath);
+    if (result) rawProducts1 = result;
+  } else {
+    // For localhost or other domains, try arbres first, fallback to biencommun
+    const arbresPath = `/${getLanguage()}/${getLanguage() === 'en' ? 'fondation-pour-les-arbres-projects' : 'fondation-pour-les-arbres-nos-projets'}/projects-index.json`;
+    const bienCommunPath = `/${getLanguage()}/${getLanguage() === 'en' ? 'fondation-pour-le-bien-commun-projects' : 'fondation-pour-le-bien-commun-nos-projets'}/projects-index.json`;
+
+    let result = await safeFetch(arbresPath);
+
+    // ffetch returns empty array for 404s instead of throwing error
+    // So we check if result is null OR an empty array, then try fallback
+    if (!result || (Array.isArray(result) && result.length === 0)) {
+      result = await safeFetch(bienCommunPath);
+    }
+
+    if (result && Array.isArray(result) && result.length > 0) {
+      rawProducts1 = result;
+    } else {
+      rawProducts1 = []; // Ensure it's an empty array
+    }
+  }
 
   // Filter by featured metadata first - only include items where featured has content
   const featuredProducts = rawProducts1.filter((item) => item.featured

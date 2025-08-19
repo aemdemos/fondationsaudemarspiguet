@@ -108,9 +108,49 @@ const resultParsers = {
 };
 
 async function getNewsdata() {
-  const rawNews1 = await ffetch(`/${getLanguage()}/${getLanguage() === 'en' ? 'fondation-pour-les-arbres-news' : 'fondation-pour-les-arbres-actualites'}/news-index.json`)
-    .chunks(1000)
-    .all();
+  const { hostname } = window.location;
+  let rawNews1 = [];
+
+  // Helper function to safely fetch with ffetch
+  const safeFetch = async (path) => {
+    try {
+      const result = await ffetch(path)
+        .chunks(1000)
+        .all();
+      return result;
+    } catch (error) {
+      return null;
+    }
+  };
+
+  // Determine the path based on domain
+  if (hostname.includes('arbres')) {
+    const newsPath = `/${getLanguage()}/${getLanguage() === 'en' ? 'fondation-pour-les-arbres-news' : 'fondation-pour-les-arbres-actualites'}/news-index.json`;
+    const result = await safeFetch(newsPath);
+    if (result) rawNews1 = result;
+  } else if (hostname.includes('biencommun')) {
+    const newsPath = `/${getLanguage()}/${getLanguage() === 'en' ? 'fondation-pour-le-bien-commun-news' : 'fondation-pour-le-bien-commun-actualites'}/news-index.json`;
+    const result = await safeFetch(newsPath);
+    if (result) rawNews1 = result;
+  } else {
+    // For localhost or other domains, try arbres first, fallback to biencommun
+    const arbresPath = `/${getLanguage()}/${getLanguage() === 'en' ? 'fondation-pour-les-arbres-news' : 'fondation-pour-les-arbres-actualites'}/news-index.json`;
+    const bienCommunPath = `/${getLanguage()}/${getLanguage() === 'en' ? 'fondation-pour-le-bien-commun-news' : 'fondation-pour-le-bien-commun-actualites'}/news-index.json`;
+
+    let result = await safeFetch(arbresPath);
+
+    // ffetch returns empty array for 404s instead of throwing error
+    // So we check if result is null OR an empty array, then try fallback
+    if (!result || (Array.isArray(result) && result.length === 0)) {
+      result = await safeFetch(bienCommunPath);
+    }
+
+    if (result && Array.isArray(result) && result.length > 0) {
+      rawNews1 = result;
+    } else {
+      rawNews1 = []; // Ensure it's an empty array
+    }
+  }
 
   // Filter news items that have at least 3 path segments
   const filteredNews = rawNews1.filter((newsItem) => getPathSegmentCount(newsItem.path) >= 3);
