@@ -608,6 +608,33 @@ main .section.soft-grey-bg.default-colored-text p {
   color: var(--default-colored-text);
 }
 
+main .section.colored-text strong,
+main .section.colored-text b {
+  color: var(--news-category);
+  font-weight: 400; 
+}
+
+.policy-template main .default-content-wrapper p a {
+  color: var(--site-color-2);
+  transition: color 0.5s;
+  text-decoration: none;
+  position: relative;
+  display: inline-block;
+}
+
+.policy-template main .default-content-wrapper p em a {
+  color: black;
+  text-decoration: none;
+  pointer-events: none;
+  cursor: default;
+  font-style: normal;
+}
+
+
+.policy-template main .default-content-wrapper p strong {
+  font-weight: bold;
+}
+
 .biencommun.contact-us main .section .default-content-wrapper {
   padding: 50px;
 }
@@ -618,6 +645,11 @@ main .section.soft-grey-bg.default-colored-text p {
   font-weight: bold;
 }
 
+main .section.colored-text.warm-grey-bg p {
+  font-size: 24px;
+  margin: 0;
+  padding: 0 0 60px;
+}
 
 .biencommun.contact-us main .section .default-content-wrapper p {
   padding-top: 20px;
@@ -999,12 +1031,6 @@ main .section.warm-grey-bg .columns-wrapper .columns p.button-container a.button
   }
 }
 
-main .section.colored-text.warm-grey-bg p {
-  font-size: 24px;
-  margin: 0;
-  padding: 0 0 60px;
-}
-
 .policy-template main .section .default-content-wrapper > *:last-child {
   padding-bottom: 50px;
   border-bottom: 1px solid var(--policy-template-borders);
@@ -1062,12 +1088,6 @@ color: var(--biencommun-titre);
   color: var(--policy-template-borders);
 }
 
-main .section.colored-text strong,
-main .section.colored-text b {
-  color: var(--news-category);
-  font-weight: 400; 
-}
-
 main .section.colored-text u {
   color: var(--default-colored-text);
   text-decoration: none;
@@ -1077,26 +1097,6 @@ main .section.colored-text u {
 .policy-template main .default-content-wrapper p strong u {
   text-decoration: none;
   color: var(--default-colored-text);
-}
-
-.policy-template main .default-content-wrapper p a {
-  color: var(--site-color-2);
-  transition: color 0.5s;
-  text-decoration: none;
-  position: relative;
-  display: inline-block;
-}
-
-.policy-template main .default-content-wrapper p em a {
-  color: black;
-  text-decoration: none;
-  pointer-events: none;
-  cursor: default;
-  font-style: normal;
-}
-
-.policy-template main .default-content-wrapper p strong {
-  font-weight: bold;
 }
 
 .policy-template main .default-content-wrapper p strong u {
