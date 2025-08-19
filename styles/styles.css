@@ -608,29 +608,42 @@ main .section.soft-grey-bg.default-colored-text p {
   color: var(--default-colored-text);
 }
 
-main .section.map1 .default-content-wrapper {
+main .biencommun.contact-us .default-content-wrapper {
   padding: 40px;
 }
 
-/* Make strong elements bold in map1 section for both themes */
-main .section.map1 .default-content-wrapper strong,
-main .section.map1 .default-content-wrapper b {
+/* Make strong elements bold in contact-us section for both themes */
+.biencommun.contact-us .default-content-wrapper strong,
+.biencommun.contact-us .default-content-wrapper b {
   font-weight: bold;
 }
 
-main .section.map1 .default-content-wrapper .icon {
+.biencommun.contact-us .default-content-wrapper .icon {
   width: 40px;  /* Increased from default 24px */
   height: 40px; /* Increased from default 24px */
 }
 
-main .section.map1 .default-content-wrapper a {
+.biencommun.contact-us .default-content-wrapper a {
   font-weight: bold;
   text-decoration: none;
-  padding-bottom: 20px;
+  padding-bottom: 26px;
   font-size: 14px;
   letter-spacing: 0.2em;
-  line-height: 56px;
+  line-height: 40px;
+  vertical-align: middle;
+  display: inline-block;
+  padding-left: 15px;
 }
+
+/* Alternative approach - target paragraphs containing the icon classes */
+.biencommun.contact-us .default-content-wrapper p .icon-fleche_right_black + a {
+  color: var(--text-color);
+}
+
+.biencommun.contact-us .default-content-wrapper p .icon-fleche_right_green + a {
+  color: var(--site-color);
+}
+
 
 .policy-template main .section .default-content-wrapper li {
   font-size: 14px;
