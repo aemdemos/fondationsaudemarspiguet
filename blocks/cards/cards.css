@@ -428,6 +428,14 @@ main .cards-buttons .button-asc-btn {
   width: 30px;
 }
 
+.biencommun main .cards-buttons .button-desc-btn{
+  background-image: url('/icons/btn_bien_filtre_top.svg');
+}
+
+.biencommun main .cards-buttons .button-asc-btn {
+  background-image: url('/icons/btn_bien_filtre_bottom.svg');
+}
+
 main .cards-buttons .button-desc-btn:hover, 
 main .cards-buttons .button-asc-btn:hover {
   cursor: pointer;
