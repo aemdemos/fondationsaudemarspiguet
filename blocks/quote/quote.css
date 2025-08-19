@@ -51,6 +51,18 @@
   font-style: normal;
 }
 
+/* Style italic text in quotation for biencommun site - different color */
+body.biencommun .quote .quote-quotation em,
+body.biencommun .quote .quote-quotation i {
+  color: var(--biencommun-projet-bloc-titre);
+  font-style: normal;
+}
+
+/* Different background color for quote block on biencommun site */
+body.biencommun .quote blockquote {
+  background-color: var(--biencommun-page-bloc-full);
+}
+
 /* Style underline text in quotation - remove underline and make brown */
 .quote .quote-quotation u {
   color: #695D5B;
