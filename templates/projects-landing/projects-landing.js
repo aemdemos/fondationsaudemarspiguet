@@ -115,8 +115,11 @@ export default async function decorate(doc) {
     ),
   );
   $section.append($filterContainer, $projectsListing);
-
-  const getProjects = await getProjectsdata();
+  const getAllProjects = await getProjectsdata();
+  let getProjects = getAllProjects;
+  if (getLanguage() === 'fr') {
+    getProjects = getAllProjects.filter((project) => project.path.includes('/fr/fondation-pour-les-arbres-nos-projets/'));
+  }
   const allCategories = getProjects
     .flatMap((item) => (item.category || '').split('|'))
     .map((cat) => cat.trim())
