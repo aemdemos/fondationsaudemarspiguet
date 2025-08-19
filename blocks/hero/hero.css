@@ -152,7 +152,6 @@
 /* Two-columnar hero block */
 .hero.two-columnar.block {
   padding: 0 !important;
-  margin-top: 80px;
 }
 
 .hero.two-columnar.block > div {
@@ -206,13 +205,15 @@
   width: 50%;
   min-width: 0;
   align-items: center;
-  justify-content: stretch;
+  justify-content: center;
   box-sizing: border-box;
   order: 2;
   position: relative;
-  overflow: hidden;
+  overflow: visible;
   padding: 40px;
 }
+
+
 
 .hero.two-columnar.block > div > div:last-child p {
   color: #695D5B;
@@ -273,16 +274,15 @@
 
 @media (width >= 1200px) {
   .hero.two-columnar.block > div {
-    height: 500px;
-    min-height: 200px;
+    min-height: 500px;
   }
 
   .hero.two-columnar.block > div > div:first-child {
-    height: 500px;
+    min-height: 500px;
   }
 
   .hero.two-columnar.block > div > div:last-child {
-    height: 500px;
+    min-height: 500px;
   }
 }
 
@@ -324,7 +324,6 @@
   margin-right: calc(50% - 50vw);
   overflow: hidden;
   padding: 0 !important;
-  margin-top: 95px;
 }
 
 .hero.two-columnar-text-image.block > div > div:first-child {
@@ -332,12 +331,13 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
   padding: 64px 48px;
   box-sizing: border-box;
   background: #fff;
   min-width: 0;
   background-color: #b9b8b2;
+  overflow: visible;
 }
 
 .hero.two-columnar-text-image.block > div > div:first-child p {
@@ -358,7 +358,7 @@
   flex: 1 1 0;
   display: flex;
   align-items: stretch;
-  justify-content:stretch;
+  justify-content: stretch;
   overflow: hidden;
   min-width: 0;
   background: #fff;
@@ -373,6 +373,9 @@
   color: var(--biencommun-projet-intro-texte);
 }
 
+.biencommun .hero.two-columnar.block > div > div:last-child {
+  background-color: var(--biencommun-projet-bg-intro-even);
+}
 
 .hero.two-columnar-text-image.block > div > div:last-child img,
 .hero.two-columnar-text-image.block > div > div:last-child picture {
@@ -390,7 +393,7 @@
 @media (width >= 900px) and (width <= 1200px) {
   .hero.two-columnar-text-image.block > div {
     flex-direction: row;
-    min-height: 90vh;
+    min-height: 500px;
   }
 }
 
@@ -470,8 +473,8 @@
     flex: none;
     width: 100%;
     min-width: 0;
-    min-height: 0;
+    min-height: 300px;
     order: 1;
-    height: 300px;
+    height: auto;
   }  
 }
