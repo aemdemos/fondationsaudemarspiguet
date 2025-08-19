@@ -200,17 +200,18 @@ export default async function decorate(block) {
 
   const firstMenuItem = document.querySelector('.default-content-wrapper > ul > li');
   const firstMenuItemTitle = firstMenuItem?.querySelector('p');
+  console.log(firstMenuItemTitle);
   const submenu = firstMenuItem?.querySelector('ul');
 
   if (firstMenuItemTitle && submenu) {
     firstMenuItemTitle.addEventListener('mouseenter', () => {
       submenu.classList.add('show');
-      nav.classList.add('hovered');
+      nav.classList.add('hovered', 'expanded');
     });
 
     firstMenuItem.addEventListener('mouseleave', () => {
       submenu.classList.remove('show');
-      nav.classList.remove('hovered');
+      nav.classList.remove('hovered', 'expanded');
     });
   }
 
