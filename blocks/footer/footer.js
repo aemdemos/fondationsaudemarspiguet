@@ -22,10 +22,10 @@ export default async function decorate(block) {
   // Wrap social icons, general footer links and copyright
   // text in a div and wrap general footer links and copyright
   // text in common div so that div layout is correct in >900px view
-  const footerMenu = footer.querySelector('.section.green-bg > div ul:last-of-type');
-  const socialIcons = footer.querySelector('.section.green-bg > div p:first-of-type');
-  const footerLinks = footer.querySelector('.section.green-bg > div ul:first-of-type');
-  const copyRight = footer.querySelector('.section.green-bg > div p:nth-of-type(2)');
+  const footerMenu = footer.querySelector('.section.footer-s2 > div ul:last-of-type');
+  const socialIcons = footer.querySelector('.section.footer-s2 > div p:first-of-type');
+  const footerLinks = footer.querySelector('.section.footer-s2 > div ul:first-of-type');
+  const copyRight = footer.querySelector('.section.footer-s2 > div p:nth-of-type(2)');
   const footerGeneralWrapper = document.createElement('div');
   footerGeneralWrapper.className = 'footer-general-wrapper';
   footerGeneralWrapper.append(socialIcons);
