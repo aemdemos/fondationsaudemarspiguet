@@ -869,6 +869,11 @@ main .section.warm-grey-bg .default-content-wrapper .button-container {
   color: var(--page-bloc-btn);
 }
 
+/* Biencommun theme override for CTA button */
+body.biencommun .cta-section p.button-container a.button:any-link {
+  background-color: var(--biencommun-page-bloc-btn-bg); /* #a9997f */
+}
+
 @media (width>=900px) {
   .cta-section .default-content-wrapper p:first-child {
     margin-left: 30%;
