@@ -103,7 +103,13 @@ export default async function decorate(doc) {
     ),
   );
   $section.append($filterContainer, $newsListing);
-  const getNews = await getNewsdata();
+  const getAllNews = await getNewsdata();
+  let getNews = getAllNews;
+  if (getLanguage() === 'fr') {
+    getNews = getAllNews.filter((project) => project.path.includes('/fr/fondation-pour-les-arbres-actualites/'));
+  } else {
+    getNews = getAllNews.filter((project) => project.path.includes('/en/fondation-pour-les-arbres-news/'));
+  }
   const allCategories = getNews
     .flatMap((item) => (item.category || '').split(','))
     .map((cat) => cat.trim())

@@ -200,7 +200,6 @@ export default async function decorate(block) {
 
   const firstMenuItem = document.querySelector('.default-content-wrapper > ul > li');
   const firstMenuItemTitle = firstMenuItem?.querySelector('p');
-  console.log(firstMenuItemTitle);
   const submenu = firstMenuItem?.querySelector('ul');
 
   if (firstMenuItemTitle && submenu) {
