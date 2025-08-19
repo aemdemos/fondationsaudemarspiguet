@@ -987,7 +987,7 @@ color: var(--biencommun-titre);
 }
 
 .biencommun main .section.light-grey-bg {
-  background-color: var(--biencommun-partenaires-bg-bloc);
+  background-color: var(--biencommun-projet-bg-page);
 }
 
 .policy-template main .last-modified {
