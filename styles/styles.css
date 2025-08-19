@@ -247,6 +247,12 @@
   --biencommun-map-box-bg:rgb(177 154 117 / 90%); 	
   --biencommun-map-box-partenaires:#393124;	
   --biencommun-map-carte-icone-container:#d8d7d0;
+
+  /* BIENCOMMUN CAROUSEL CARDS COLOURS */
+  --biencommun-carousel-card-1: #a49f94;
+  --biencommun-carousel-card-2: #b19a75;
+  --biencommun-carousel-card-3: #726248;
+  --biencommun-carousel-card-4: #947f5f;
 }
 
 /* fallback fonts */
@@ -998,6 +1004,10 @@ color: var(--biencommun-titre);
   background-color: var(--biencommun-projet-bg-page);
 }
 
+.biencommun main .section.light-grey-red-bg {
+  background-color: var(--biencommun-chiffres-bloc-bg);
+}
+
 .policy-template main .last-modified {
   font-size: 14px;
   display: block;
@@ -1140,7 +1150,7 @@ main .section.cream-bg.table-container.accordion-container{
   }
 
   main .section:has(.icons-grid) .cards-wrapper {
-    padding: 50px 80px;
+    padding: 0 80px;
   }
 
   main .section:has(.icons-grid) .default-content-wrapper {
@@ -1231,13 +1241,13 @@ main .section.cream-bg.table-container.accordion-container{
     padding: 60px 80px 80px; /* Different padding */
   }
  
-  main .section.colored-text.warm-grey-bg:has(.icons-grid) .default-content-wrapper > p {
+  main .section.colored-text:has(.icons-grid) .default-content-wrapper > p {
     padding: 10px 0 65px;
     max-width: 110%;
     margin-left: -5vw;
   }
 
-  main .section.colored-text.warm-grey-bg:has(.icons-grid) .columns-wrapper div > div > p {
+  main .section.colored-text:has(.icons-grid) .columns-wrapper div > div > p {
     width: 100%;
   }
  }
