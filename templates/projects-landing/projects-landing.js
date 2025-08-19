@@ -119,6 +119,8 @@ export default async function decorate(doc) {
   let getProjects = getAllProjects;
   if (getLanguage() === 'fr') {
     getProjects = getAllProjects.filter((project) => project.path.includes('/fr/fondation-pour-les-arbres-nos-projets/'));
+  } else {
+    getProjects = getAllProjects.filter((project) => project.path.includes('/en/fondation-pour-les-arbres-projects/'));
   }
   const allCategories = getProjects
     .flatMap((item) => (item.category || '').split('|'))
