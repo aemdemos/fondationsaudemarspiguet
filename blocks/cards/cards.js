@@ -364,6 +364,7 @@ export default function decorate(block) {
     block.append(prevBtn, nextBtn);
 
     const isStatistics = block.classList.contains('statistics');
+    const isBiencommun = (document.querySelector('body')).classList.contains('biencommun');
 
     // The ul element behaves like a carousel track
     // const track = block.querySelector('ul');
@@ -415,7 +416,12 @@ export default function decorate(block) {
     });
 
     if (isStatistics) {
-      const colors = ['var(--arbres-carousel-card-1)', 'var(--arbres-carousel-card-2)', 'var(--arbres-carousel-card-3)', 'var(--arbres-carousel-card-4)']; // Add more colors as needed
+      let colors = null;
+      if (isBiencommun) {
+        colors = ['var(--biencommun-carousel-card-1)', 'var(--biencommun-carousel-card-2)', 'var(--biencommun-carousel-card-3)', 'var(--biencommun-carousel-card-4)']; // Add more colors as needed
+      } else {
+        colors = ['var(--arbres-carousel-card-1)', 'var(--arbres-carousel-card-2)', 'var(--arbres-carousel-card-3)', 'var(--arbres-carousel-card-4)']; // Add more colors as needed
+      }
       const cardsBody = document.querySelectorAll('.cards-card-body');
 
       cardsBody.forEach((cardBody, index) => {
