@@ -155,6 +155,14 @@
 }
 
 @media (width >= 1340px) {
+    body.biencommun .home-projects.block .project-article p {
+        height: 500px;
+    }
+
+    .home-projects.block .project-article div.project-image a div {
+        min-height: 400px;
+    }
+
     .home-projects.block .project-article .project-metadata .buttons-container {
         position: absolute;
         flex-direction: row;
