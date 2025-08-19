@@ -13,12 +13,12 @@ async function getProjectsdata() {
   let rawprojects;
   if (hostname.includes('arbres')) {
     rawprojects = await ffetch(`/${getLanguage()}/${getLanguage() === 'en' ? 'fondation-pour-les-arbres-projects' : 'fondation-pour-les-arbres-nos-projets'}/projects-index.json`)
-    .chunks(1000)
-    .all();
+      .chunks(1000)
+      .all();
   } else if (hostname.includes('biencommun')) {
     rawprojects = await ffetch(`/${getLanguage()}/${getLanguage() === 'en' ? 'fondation-pour-le-bien-commun-projects' : 'fondation-pour-le-bien-commun-nos-projets'}/projects-index.json`)
-    .chunks(1000)
-    .all();
+      .chunks(1000)
+      .all();
   }
   return rawprojects;
 }
