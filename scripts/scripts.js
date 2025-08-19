@@ -407,7 +407,7 @@ function setPathSpecificFavicon() {
   console.log('Favicon Debug:', {
     hostname,
     matchedDomain,
-    faviconSet
+    faviconSet,
   });
 
   // If we found a matching domain, update the favicons
