@@ -523,10 +523,33 @@ main>.section:first-of-type {
   margin-top: 0;
 }
 
+/* stylelint-disable no-descending-specificity */
+.full-width *,
+main .section .full-width *,
+main .section .default-content-wrapper .full-width * {
+  margin: 0 !important;
+  padding: 0 !important;
+  max-width: none !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
 main>.section.extra-padding {
   padding: 50px 0;
   margin: 0;
 }
+
+/* Ensure all children of full-width span the full width */
+
+.full-width > *,
+main .section .full-width > * {
+  width: 100% !important;
+  max-width: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+
 
 main .section.cream-bg {
   padding: 80px 0;
@@ -539,6 +562,26 @@ main .section.light-grey-bg {
 
 main .section.warm-grey-bg {
   background-color: var(--chiffres-bloc-bg);
+}
+
+/* Ensure default-content-wrapper inside full-width spans the full width */
+.full-width .default-content-wrapper,
+main .section .full-width .default-content-wrapper {
+  width: 100% !important;
+  max-width: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  box-sizing: border-box !important;
+}
+
+/* Override any specific default-content-wrapper padding/margins */
+main > .section > .full-width .default-content-wrapper,
+main .section .default-content-wrapper.full-width {
+  width: 100% !important;
+  max-width: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  box-sizing: border-box !important;
 }
 
 main .section.light-grey-bg.float-right {
@@ -1284,43 +1327,5 @@ main .section.cream-bg.table-container.accordion-container{
   }
  }
 
-/* Ensure default-content-wrapper inside full-width spans the full width */
-.full-width .default-content-wrapper,
-main .section .full-width .default-content-wrapper {
-  width: 100% !important;
-  max-width: none !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  box-sizing: border-box !important;
-}
-
-.full-width *,
-main .section .full-width *,
-main .section .default-content-wrapper .full-width * {
-  margin: 0 !important;
-  padding: 0 !important;
-  max-width: none !important;
-  width: 100% !important;
-  box-sizing: border-box !important;
-}
-
-/* Ensure all children of full-width span the full width */
-.full-width > *,
-main .section .full-width > * {
-  width: 100% !important;
-  max-width: none !important;
-  margin: 0 !important;
-  padding: 0 !important;
-}
-
-/* Override any specific default-content-wrapper padding/margins */
-main > .section > .full-width .default-content-wrapper,
-main .section .default-content-wrapper.full-width {
-  width: 100% !important;
-  max-width: none !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  box-sizing: border-box !important;
-}
 
 
