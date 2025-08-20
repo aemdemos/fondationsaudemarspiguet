@@ -183,13 +183,6 @@ export default function decorate(block) {
 
               window.markerCluster.addMarkers(markerstocluster);
               window.map.fitBounds(window.bounds);
-            } else {
-              console.warn('Map variables not ready yet:', {
-                map: !!window.map,
-                markers: !!window.markers,
-                markerCluster: !!window.markerCluster,
-                bounds: !!window.bounds,
-              });
             }
           });
 
@@ -275,13 +268,6 @@ export default function decorate(block) {
 
               window.markerCluster.addMarkers(markerstocluster);
               window.map.fitBounds(window.bounds);
-            } else {
-              console.warn('Map variables not ready yet (mobile):', {
-                map: !!window.map,
-                markers: !!window.markers,
-                markerCluster: !!window.markerCluster,
-                bounds: !!window.bounds,
-              });
             }
           });
         }
