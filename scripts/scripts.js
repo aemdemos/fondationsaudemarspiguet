@@ -575,3 +575,12 @@ export const NX_ORIGIN = branch === 'local' || origin.includes('localhost') ? 'h
     import(`${NX_ORIGIN}/public/plugins/exp/exp.js`);
   }
 }());
+
+document.addEventListener('DOMContentLoaded', () => {
+  document.body.addEventListener('click', (e) => {
+    if (e.target.closest('.contact-us a, .biencommun a')) {
+      e.preventDefault();
+      window.open(e.target.href || e.target.closest('a').href, '_blank');
+    }
+  });
+});
