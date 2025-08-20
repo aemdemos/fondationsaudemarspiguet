@@ -28,11 +28,23 @@ async function getProjectsdata() {
   if (hostname.includes('arbres')) {
     const projectsPath = `/${getLanguage()}/${getLanguage() === 'en' ? 'fondation-pour-les-arbres-projects' : 'fondation-pour-les-arbres-nos-projets'}/projects-index.json`;
     const result = await safeFetch(projectsPath);
-    if (result) rawProjects = result;
+    if (result) {
+      if (getLanguage() === 'fr') {
+        rawProjects = result.filter((project) => project.path.includes('/fr/fondation-pour-les-arbres-nos-projets/'));
+      } else {
+        rawProjects = result.filter((project) => project.path.includes('/en/fondation-pour-les-arbres-projects/'));
+      }
+    }
   } else if (hostname.includes('biencommun')) {
     const projectsPath = `/${getLanguage()}/${getLanguage() === 'en' ? 'fondation-pour-le-bien-commun-projects' : 'fondation-pour-le-bien-commun-nos-projets'}/projects-index.json`;
     const result = await safeFetch(projectsPath);
-    if (result) rawProjects = result;
+    if (result) {
+      if (getLanguage() === 'fr') {
+        rawProjects = result.filter((project) => project.path.includes('/fr/fondation-pour-le-bien-commun-nos-projets/'));
+      } else {
+        rawProjects = result.filter((project) => project.path.includes('/en/fondation-pour-le-bien-commun-projects/'));
+      }
+    }
   } else {
     // For localhost or other domains, try arbres first, fallback to biencommun
     const arbresPath = `/${getLanguage()}/${getLanguage() === 'en' ? 'fondation-pour-les-arbres-projects' : 'fondation-pour-les-arbres-nos-projets'}/projects-index.json`;

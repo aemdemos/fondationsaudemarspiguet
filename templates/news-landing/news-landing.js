@@ -28,11 +28,23 @@ async function getNewsdata() {
   if (hostname.includes('arbres')) {
     const newsPath = `/${getLanguage()}/${getLanguage() === 'en' ? 'fondation-pour-les-arbres-news' : 'fondation-pour-les-arbres-actualites'}/news-index.json`;
     const result = await safeFetch(newsPath);
-    if (result) rawNews = result;
+    if (result) {
+      if (getLanguage() === 'fr') {
+        rawNews = result.filter((news) => news.path.includes('/fr/fondation-pour-les-arbres-actualites/'));
+      } else {
+        rawNews = result.filter((news) => news.path.includes('/en/fondation-pour-les-arbres-news/'));
+      }
+    }
   } else if (hostname.includes('biencommun')) {
     const newsPath = `/${getLanguage()}/${getLanguage() === 'en' ? 'fondation-pour-le-bien-commun-news' : 'fondation-pour-le-bien-commun-actualites'}/news-index.json`;
     const result = await safeFetch(newsPath);
-    if (result) rawNews = result;
+    if (result) {
+      if (getLanguage() === 'fr') {
+        rawNews = result.filter((news) => news.path.includes('/fr/fondation-pour-le-bien-commun-actualites/'));
+      } else {
+        rawNews = result.filter((news) => news.path.includes('/en/fondation-pour-le-bien-commun-news/'));
+      }
+    }
   } else {
     // For localhost or other domains, try arbres first, fallback to biencommun
     const arbresPath = `/${getLanguage()}/${getLanguage() === 'en' ? 'fondation-pour-les-arbres-news' : 'fondation-pour-les-arbres-actualites'}/news-index.json`;
