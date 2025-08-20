@@ -527,11 +527,11 @@ main>.section:first-of-type {
 .full-width *,
 main .section .full-width *,
 main .section .default-content-wrapper .full-width * {
-  margin: 0 !important;
-  padding: 0 !important;
-  max-width: none !important;
-  width: 100% !important;
-  box-sizing: border-box !important;
+  margin: 0;
+  padding: 0;
+  max-width: none;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 main>.section.extra-padding {
@@ -543,10 +543,10 @@ main>.section.extra-padding {
 
 .full-width > *,
 main .section .full-width > * {
-  width: 100% !important;
-  max-width: none !important;
-  margin: 0 !important;
-  padding: 0 !important;
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding: 0;
 }
 
 
@@ -567,21 +567,21 @@ main .section.warm-grey-bg {
 /* Ensure default-content-wrapper inside full-width spans the full width */
 .full-width .default-content-wrapper,
 main .section .full-width .default-content-wrapper {
-  width: 100% !important;
-  max-width: none !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  box-sizing: border-box !important;
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 /* Override any specific default-content-wrapper padding/margins */
 main > .section > .full-width .default-content-wrapper,
 main .section .default-content-wrapper.full-width {
-  width: 100% !important;
-  max-width: none !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  box-sizing: border-box !important;
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 main .section.light-grey-bg.float-right {
@@ -678,9 +678,9 @@ main .section.colored-text b {
   font-weight: bold;
 }
 
-.biencommun.contact-us main .section .default-content-wrapper {
+/* .biencommun.contact-us main .section .default-content-wrapper {
   padding: 15px;
-}
+} */
 
 /* Make strong elements bold in contact-us section for both themes */
 .biencommun.contact-us main .section .default-content-wrapper strong,
@@ -713,7 +713,12 @@ main .section.colored-text.warm-grey-bg p {
   line-height: 20px;
   vertical-align: bottom;
   display: inline-block;
-  padding-left: 15px;
+  
+  /* padding-left: 15px; */
+}
+
+.biencommun.contact-us main .section {
+  margin: 0;
 }
 
 @media (width >= 900px) {
