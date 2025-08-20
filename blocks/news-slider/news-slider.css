@@ -52,6 +52,10 @@ html, body {
     z-index: 10;
 }
 
+.biencommun .news-slider-wrapper .swiper-button-prev {
+    background-color: var(--biencommun-header-color);
+}
+
 .news-slider-wrapper .swiper-button-next::after {
     display: none;
 }
@@ -70,6 +74,10 @@ html, body {
     right: calc(-50vw + 50% + 20px);
     transform: translateY(-50%);
     z-index: 10;
+}
+
+.biencommun .news-slider-wrapper .swiper-button-next {
+    background-color: var(--biencommun-header-color);
 }
 
 .news-slider-wrapper .swiper-horizontal {
