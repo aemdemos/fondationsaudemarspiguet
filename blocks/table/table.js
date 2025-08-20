@@ -25,7 +25,7 @@ export default async function decorate(block) {
       if (i === 0) td.setAttribute('scope', 'column');
       td.innerHTML = cell.innerHTML;
 
-      if (block.classList.contains('block') && block.classList.contains('table')) {
+      if (block.classList.contains('block') && block.classList.contains('table') && block.classList.contains('no-border')) {
         const pElements = td.querySelectorAll('p');
 
         pElements.forEach((p) => {

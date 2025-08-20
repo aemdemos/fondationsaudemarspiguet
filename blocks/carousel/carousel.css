@@ -260,4 +260,22 @@
   background-color: #edecea !important;
 }
 
+.biencommun .full-width.carousel-container {
+  width: 100%;
+  padding: 0;
+}
+
+/* Full width carousel styles */
+.biencommun .full-width.carousel-container .carousel-wrapper {
+  width: 100%;
+  position: relative;
+  padding: 0;
+  margin: 0;
+}
+
+.biencommun .full-width.carousel-container .carousel.hero-banner {
+  width: 100vw;
+  position: relative;
+}
+
 
