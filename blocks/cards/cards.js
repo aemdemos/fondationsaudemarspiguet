@@ -138,6 +138,7 @@ export default function decorate(block) {
           // Add immediate click handler with map filtering logic
           anchor.addEventListener('click', (e) => {
             e.preventDefault();
+            e.stopPropagation();
 
             const myslectcat = anchor.getAttribute('data-categoryid');
 
@@ -156,11 +157,13 @@ export default function decorate(block) {
               window.markerCluster.clearMarkers();
 
               // Close all open popups
-              window.infoWindows.forEach((elem) => {
-                if (elem) {
-                  elem.close();
-                }
-              });
+              if (window.infoWindows) {
+                window.infoWindows.forEach((elem) => {
+                  if (elem) {
+                    elem.close();
+                  }
+                });
+              }
 
               window.markers.forEach((marker) => {
                 const catmarkers = marker.category;
@@ -180,6 +183,13 @@ export default function decorate(block) {
 
               window.markerCluster.addMarkers(markerstocluster);
               window.map.fitBounds(window.bounds);
+            } else {
+              console.warn('Map variables not ready yet:', {
+                map: !!window.map,
+                markers: !!window.markers,
+                markerCluster: !!window.markerCluster,
+                bounds: !!window.bounds,
+              });
             }
           });
 
@@ -214,6 +224,7 @@ export default function decorate(block) {
         if (clonedAnchor) {
           clonedAnchor.addEventListener('click', (e) => {
             e.preventDefault();
+            e.stopPropagation();
 
             const myslectcat = clonedAnchor.getAttribute('data-categoryid');
 
@@ -238,11 +249,13 @@ export default function decorate(block) {
               window.markerCluster.clearMarkers();
 
               // Close all open popups
-              window.infoWindows.forEach((elem) => {
-                if (elem) {
-                  elem.close();
-                }
-              });
+              if (window.infoWindows) {
+                window.infoWindows.forEach((elem) => {
+                  if (elem) {
+                    elem.close();
+                  }
+                });
+              }
 
               window.markers.forEach((marker) => {
                 const catmarkers = marker.category;
@@ -262,6 +275,13 @@ export default function decorate(block) {
 
               window.markerCluster.addMarkers(markerstocluster);
               window.map.fitBounds(window.bounds);
+            } else {
+              console.warn('Map variables not ready yet (mobile):', {
+                map: !!window.map,
+                markers: !!window.markers,
+                markerCluster: !!window.markerCluster,
+                bounds: !!window.bounds,
+              });
             }
           });
         }
