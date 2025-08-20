@@ -165,6 +165,7 @@
   --biencommun-footer-color: #726248;
   --biencommun-titre: #726248; 
   --biencommun-btn-bg:#ded7ca;
+  --biecommun-text-color: #D3C19B;
 
   /* MENU OPEN */
   --biencommun-menu-open-bg: #947f57;      
@@ -667,6 +668,12 @@ main .section.colored-text b {
   font-weight: 400; 
 }
 
+.biencommun main .section.colored-text strong,
+.biencommun main .section.colored-text b {
+  color: var(--news-category);
+}
+
+
 .policy-template main .default-content-wrapper p a {
   color: var(--site-color-2);
   transition: color 0.5s;
@@ -698,7 +705,7 @@ main .section.colored-text b {
   font-weight: bold;
 }
 
-main .section.colored-text.warm-grey-bg p {
+main .section.colored-text p {
   font-size: 24px;
   margin: 0;
   padding: 0 0 60px;
@@ -779,6 +786,11 @@ main .section.colored-text em,
 main .section.colored-text i {
   color: var(--site-color);
   font-style: normal; 
+}
+
+.biencommun main .section.colored-text em,
+.biencommun main .section.colored-text i {
+  color: var(--biencommun-projet-bloc-titre);
 }
 
 .policy-template main .default-content-wrapper p strong em {
