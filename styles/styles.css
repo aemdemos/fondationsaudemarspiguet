@@ -530,7 +530,7 @@ main>.section:first-of-type {
 }
 
 /* stylelint-disable no-descending-specificity */
-.full-width *,
+.contact-us.full-width *,
 main .section .full-width *,
 main .section .default-content-wrapper .full-width * {
   margin: 0;
@@ -547,15 +547,13 @@ main>.section.extra-padding {
 
 /* Ensure all children of full-width span the full width */
 
-.full-width > *,
+.contact-us.full-width > *,
 main .section .full-width > * {
   width: 100%;
   max-width: none;
   margin: 0;
   padding: 0;
 }
-
-
 
 main .section.cream-bg {
   padding: 80px 0;
