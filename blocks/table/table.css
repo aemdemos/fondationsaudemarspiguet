@@ -160,7 +160,6 @@ main .table-container .table-wrapper .table.block {
 /* striped variant */
 .table.block.striped tbody tr:nth-child(odd) {
   background-color: var(--overlay-background-color);
-<<<<<<< Updated upstream
 }
 
 @media (width >= 600px) {
@@ -175,10 +174,7 @@ main .table-container .table-wrapper .table.block {
 }
 
 @media (width >= 900px) {
-  .table.block tr {
-  flex-direction: row;
-}
-
-=======
->>>>>>> Stashed changes
+    .table.block tr {
+    flex-direction: row;
+  }
 }
