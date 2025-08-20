@@ -16,16 +16,6 @@
   }
 }
 
-<<<<<<< Updated upstream
-/* Generated CSS, unchanged except for the merged .table selector */
-.table.block table,
-.table.block table tr,
-.table.block table th,
-.table.block table td,
-.table.block table thead,
-.table.block table thead tr,
-.table.block table tbody,
-=======
 @media (width >= 900px) {
   .table.block table {
     font-size: var(--body-font-size-m);
@@ -37,7 +27,6 @@
   border-bottom: 2px solid;
 }
 
->>>>>>> Stashed changes
 .table.block table tbody tr {
   border-bottom: 1px solid;
 }
@@ -52,26 +41,6 @@
   text-align: left;
 }
 
-<<<<<<< Updated upstream
-.table-wrapper {
-  margin-top: 0;
-  margin-bottom: 0;
-}
-
-main .table-container .table-wrapper .table.block {
-  padding-bottom: 40px;
-  border-bottom: 1px solid var(--site-color);
-}
-
-.table.block.striped tbody tr,
-.table.block.bordered table th,
-.table.block.bordered table td {
-  border: none;
-  background: none;
-}
-
-=======
->>>>>>> Stashed changes
 .table table th p,
 .table table td p {
   margin: 0;
@@ -87,11 +56,8 @@ main .table-container .table-wrapper .table.block {
   border-bottom: 1px solid #6B7E7C;
 }
 
-<<<<<<< Updated upstream
-=======
 
 
->>>>>>> Stashed changes
 /* bordered variant */
 .table.block.bordered table th,
 .table.block.bordered table td {
@@ -160,21 +126,4 @@ main .table-container .table-wrapper .table.block {
 /* striped variant */
 .table.block.striped tbody tr:nth-child(odd) {
   background-color: var(--overlay-background-color);
-}
-
-@media (width >= 600px) {
-  .table.block table {
-    font-size: 22px;
-  }
-
-  .table.block strong, 
-  .table.block .new-div{
-    font-size: 22px;
-  }
-}
-
-@media (width >= 900px) {
-    .table.block tr {
-    flex-direction: row;
-  }
 }
