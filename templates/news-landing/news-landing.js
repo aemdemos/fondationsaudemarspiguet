@@ -9,18 +9,50 @@ import { getLanguage } from '../../scripts/scripts.js';
 import { applyFadeUpAnimation, setInputWidthToText } from '../../scripts/utils.js';
 
 async function getNewsdata() {
-  const hostname = window.location.href;
-  let rawnews;
+  const { hostname } = window.location;
+  let rawNews = [];
+
+  // Helper function to safely fetch with ffetch
+  const safeFetch = async (path) => {
+    try {
+      const result = await ffetch(path)
+        .chunks(1000)
+        .all();
+      return result;
+    } catch (error) {
+      return null;
+    }
+  };
+
+  // Determine the path based on domain
   if (hostname.includes('arbres')) {
-    rawnews = await ffetch(`/${getLanguage()}/${getLanguage() === 'en' ? 'fondation-pour-les-arbres-news' : 'fondation-pour-les-arbres-actualites'}/news-index.json`)
-      .chunks(1000)
-      .all();
+    const newsPath = `/${getLanguage()}/${getLanguage() === 'en' ? 'fondation-pour-les-arbres-news' : 'fondation-pour-les-arbres-actualites'}/news-index.json`;
+    const result = await safeFetch(newsPath);
+    if (result) rawNews = result;
   } else if (hostname.includes('biencommun')) {
-    rawnews = await ffetch(`/${getLanguage()}/${getLanguage() === 'en' ? 'fondation-pour-le-bien-commun-news' : 'fondation-pour-le-bien-commun-actualites'}/news-index.json`)
-      .chunks(1000)
-      .all();
+    const newsPath = `/${getLanguage()}/${getLanguage() === 'en' ? 'fondation-pour-le-bien-commun-news' : 'fondation-pour-le-bien-commun-actualites'}/news-index.json`;
+    const result = await safeFetch(newsPath);
+    if (result) rawNews = result;
+  } else {
+    // For localhost or other domains, try arbres first, fallback to biencommun
+    const arbresPath = `/${getLanguage()}/${getLanguage() === 'en' ? 'fondation-pour-les-arbres-news' : 'fondation-pour-les-arbres-actualites'}/news-index.json`;
+    const bienCommunPath = `/${getLanguage()}/${getLanguage() === 'en' ? 'fondation-pour-le-bien-commun-news' : 'fondation-pour-le-bien-commun-actualites'}/news-index.json`;
+
+    let result = await safeFetch(arbresPath);
+
+    // ffetch returns empty array for 404s instead of throwing error
+    // So we check if result is null OR an empty array, then try fallback
+    if (!result || (Array.isArray(result) && result.length === 0)) {
+      result = await safeFetch(bienCommunPath);
+    }
+
+    if (result && Array.isArray(result) && result.length > 0) {
+      rawNews = result;
+    } else {
+      rawNews = []; // Ensure it's an empty array
+    }
   }
-  return rawnews;
+  return rawNews;
 }
 
 function showNewsArticles(getNews, doc) {
@@ -111,13 +143,7 @@ export default async function decorate(doc) {
     ),
   );
   $section.append($filterContainer, $newsListing);
-  const getAllNews = await getNewsdata();
-  let getNews = getAllNews;
-  if (getLanguage() === 'fr') {
-    getNews = getAllNews.filter((project) => project.path.includes('/fr/fondation-pour-les-arbres-actualites/'));
-  } else {
-    getNews = getAllNews.filter((project) => project.path.includes('/en/fondation-pour-les-arbres-news/'));
-  }
+  const getNews = await getNewsdata();
   const allCategories = getNews
     .flatMap((item) => (item.category || '').split(','))
     .map((cat) => cat.trim())

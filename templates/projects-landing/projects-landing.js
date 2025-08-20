@@ -9,18 +9,50 @@ import { getLanguage } from '../../scripts/scripts.js';
 import { applyFadeUpAnimation, setInputWidthToText } from '../../scripts/utils.js';
 
 async function getProjectsdata() {
-  const hostname = window.location.href;
-  let rawprojects;
+  const { hostname } = window.location;
+  let rawProjects = [];
+
+  // Helper function to safely fetch with ffetch
+  const safeFetch = async (path) => {
+    try {
+      const result = await ffetch(path)
+        .chunks(1000)
+        .all();
+      return result;
+    } catch (error) {
+      return null;
+    }
+  };
+
+  // Determine the path based on domain
   if (hostname.includes('arbres')) {
-    rawprojects = await ffetch(`/${getLanguage()}/${getLanguage() === 'en' ? 'fondation-pour-les-arbres-projects' : 'fondation-pour-les-arbres-nos-projets'}/projects-index.json`)
-      .chunks(1000)
-      .all();
+    const projectsPath = `/${getLanguage()}/${getLanguage() === 'en' ? 'fondation-pour-les-arbres-projects' : 'fondation-pour-les-arbres-nos-projets'}/projects-index.json`;
+    const result = await safeFetch(projectsPath);
+    if (result) rawProjects = result;
   } else if (hostname.includes('biencommun')) {
-    rawprojects = await ffetch(`/${getLanguage()}/${getLanguage() === 'en' ? 'fondation-pour-le-bien-commun-projects' : 'fondation-pour-le-bien-commun-nos-projets'}/projects-index.json`)
-      .chunks(1000)
-      .all();
+    const projectsPath = `/${getLanguage()}/${getLanguage() === 'en' ? 'fondation-pour-le-bien-commun-projects' : 'fondation-pour-le-bien-commun-nos-projets'}/projects-index.json`;
+    const result = await safeFetch(projectsPath);
+    if (result) rawProjects = result;
+  } else {
+    // For localhost or other domains, try arbres first, fallback to biencommun
+    const arbresPath = `/${getLanguage()}/${getLanguage() === 'en' ? 'fondation-pour-les-arbres-projects' : 'fondation-pour-les-arbres-nos-projets'}/projects-index.json`;
+    const bienCommunPath = `/${getLanguage()}/${getLanguage() === 'en' ? 'fondation-pour-le-bien-commun-projects' : 'fondation-pour-le-bien-commun-nos-projets'}/projects-index.json`;
+
+    let result = await safeFetch(arbresPath);
+
+    // ffetch returns empty array for 404s instead of throwing error
+    // So we check if result is null OR an empty array, then try fallback
+    if (!result || (Array.isArray(result) && result.length === 0)) {
+      result = await safeFetch(bienCommunPath);
+    }
+
+    if (result && Array.isArray(result) && result.length > 0) {
+      rawProjects = result;
+    } else {
+      rawProjects = []; // Ensure it's an empty array
+    }
   }
-  return rawprojects;
+  return rawProjects;
 }
 
 function showProjectCards(getprojects, doc) {
@@ -123,13 +155,7 @@ export default async function decorate(doc) {
     ),
   );
   $section.append($filterContainer, $projectsListing);
-  const getAllProjects = await getProjectsdata();
-  let getProjects = getAllProjects;
-  if (getLanguage() === 'fr') {
-    getProjects = getAllProjects.filter((project) => project.path.includes('/fr/fondation-pour-les-arbres-nos-projets/'));
-  } else {
-    getProjects = getAllProjects.filter((project) => project.path.includes('/en/fondation-pour-les-arbres-projects/'));
-  }
+  const getProjects = await getProjectsdata();
   const allCategories = getProjects
     .flatMap((item) => (item.category || '').split('|'))
     .map((cat) => cat.trim())
