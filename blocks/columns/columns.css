@@ -239,7 +239,6 @@
 .columns.two-column > div > div:nth-child(2) > p.button-container > a.button:any-link,
 .columns.two-column > div > div:nth-child(2) > p.button-container > button {
   color: #839790;
-  font-weight: normal;
   font-size: 14px;
   line-height: 21px;
   font-weight: 300;

@@ -242,13 +242,12 @@ export default async function decorate(doc) {
   $section.append($filterContainer);
 
   // Insert filter section
-const greySection = $main.querySelector('.light-grey-bg, .pale-grey-bg');
-if (greySection) {
-  greySection.parentNode.insertBefore($section, greySection);
-} else {
-  $main.insertBefore($section, $main.firstChild);
-}
-
+  const greySection = $main.querySelector('.light-grey-bg, .pale-grey-bg');
+  if (greySection) {
+    greySection.parentNode.insertBefore($section, greySection);
+  } else {
+    $main.insertBefore($section, $main.firstChild);
+  }
 
   // Initialize functionality
   setupSortButtons(doc);
