@@ -578,7 +578,7 @@ export const NX_ORIGIN = branch === 'local' || origin.includes('localhost') ? 'h
 
 document.addEventListener('DOMContentLoaded', () => {
   document.body.addEventListener('click', (e) => {
-    if (e.target.closest('.contact-us a, .biencommun a')) {
+    if (e.target.closest('.contact-us a')) {
       e.preventDefault();
       window.open(e.target.href || e.target.closest('a').href, '_blank');
     }
