@@ -62,6 +62,10 @@ main .media-filter-container .media-filter-container-left .view-all-media {
     white-space: nowrap;
 }
 
+.biencommun main .media-filter-container .media-filter-container-left .view-all-media {
+    color: var(--site-color-2-bien);
+}
+
 main .media-filter-container .media-filter-container-left .view-all-media:hover {
     text-decoration: none;
     opacity: .7;
@@ -83,6 +87,14 @@ main .media-filter-container .media-filter-container-right .filter-top-btn {
     transition: opacity 0.2s ease;
 }
 
+.biencommun .media-filter-container .media-filter-container-right .filter-top-btn {
+    width: 30px;
+    height: 30px;
+    background-image: url('/icons/btn_bien_filtre_top.svg');
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+}
+
 main .media-filter-container .media-filter-container-right .filter-top-btn:hover {
     opacity: 0.6; /* ✅ Light greyish effect on hover */
 }
@@ -90,7 +102,15 @@ main .media-filter-container .media-filter-container-right .filter-top-btn:hover
 main .media-filter-container .media-filter-container-right .filter-bottom-btn {
     width: 30px;
     height: 30px;
-    background-image: url('/icons/btn_arbres_filtre_bottom.svg');
+    background-image: url('/icons/btn_arbes_filtre_bottom.svg');
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+}
+
+.biencommun .media-filter-container .media-filter-container-right .filter-bottom-btn {
+    width: 30px;
+    height: 30px;
+    background-image: url('/icons/btn_bien_filtre_bottom.svg');
     cursor: pointer;
     transition: opacity 0.2s ease;
 }
@@ -113,6 +133,18 @@ main .media-listing {
 
 .newsroom .btn-media-search-clear {
     background-image: url('../../icons/btn_arbres_filter_back.svg');
+    height: 40px;
+    width: 30px;
+    display: block;
+    background-repeat: no-repeat;
+    background-position: center;
+    float: right;
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+}
+
+.biencommun .btn-media-search-clear {
+    background-image: url('/icons/btn_bien_filter_clear.svg');
     height: 40px;
     width: 30px;
     display: block;
