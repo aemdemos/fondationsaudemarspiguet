@@ -364,3 +364,7 @@
  {
     color: var(--site-color-2-bien);
 }
+
+.biencommun .section:has(.columns.two-column) h1 {
+  color: #726248;
+}
