@@ -166,7 +166,7 @@ main .media-listing {
     }
 
     main .media-filter-container .type-input {
-        width: 140px;
+        width: 170px;
     }
 
    
@@ -236,10 +236,20 @@ main .media-listing {
   
   .type-option {
     font-size: 16px;
-    padding: 10px 15px;
+    padding: 5px 15px;
   }
 
   .type-dropdown {
   top: calc(100% + 20px); 
 }
 }
+
+/* Biencommun Colors */
+.biencommun .type-dropdown {
+  background-color: #e2d6be; 
+}
+
+.biencommun .type-option {
+  color: #726248;  
+};
+  
