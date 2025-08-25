@@ -431,6 +431,9 @@
   width: 100%;
   position: relative;
   padding: 0;
+}
+
+.biencommun .full-width.carousel-container .carousel-wrapper {
   margin: 0;
 }
 
