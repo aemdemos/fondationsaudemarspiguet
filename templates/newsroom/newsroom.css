@@ -14,6 +14,7 @@ main .media-filter-container .type-input {
     opacity: 1;
     position: relative;
     left: 0;
+    right: 10px;
     cursor: pointer;
     text-transform: none;
     font-weight: 400;
@@ -21,6 +22,11 @@ main .media-filter-container .type-input {
     outline: none;
     text-align: right;
     letter-spacing: .12em;
+}
+
+main .media-filter-container .type-input.selected {
+    width: 95px;
+    right: 0;
 }
 
 main .media-filter-container .media-search-input {
@@ -62,6 +68,10 @@ main .media-filter-container .media-filter-container-left .view-all-media {
     white-space: nowrap;
 }
 
+.biencommun main .media-filter-container .media-filter-container-left .view-all-media {
+    color: var(--site-color-2-bien);
+}
+
 main .media-filter-container .media-filter-container-left .view-all-media:hover {
     text-decoration: none;
     opacity: .7;
@@ -83,6 +93,14 @@ main .media-filter-container .media-filter-container-right .filter-top-btn {
     transition: opacity 0.2s ease;
 }
 
+.biencommun .media-filter-container .media-filter-container-right .filter-top-btn {
+    width: 30px;
+    height: 30px;
+    background-image: url('/icons/btn_bien_filtre_top.svg');
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+}
+
 main .media-filter-container .media-filter-container-right .filter-top-btn:hover {
     opacity: 0.6; /* ✅ Light greyish effect on hover */
 }
@@ -90,7 +108,15 @@ main .media-filter-container .media-filter-container-right .filter-top-btn:hover
 main .media-filter-container .media-filter-container-right .filter-bottom-btn {
     width: 30px;
     height: 30px;
-    background-image: url('/icons/btn_arbres_filtre_bottom.svg');
+    background-image: url('/icons/btn_arbes_filtre_bottom.svg');
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+}
+
+.biencommun .media-filter-container .media-filter-container-right .filter-bottom-btn {
+    width: 30px;
+    height: 30px;
+    background-image: url('/icons/btn_bien_filtre_bottom.svg');
     cursor: pointer;
     transition: opacity 0.2s ease;
 }
@@ -123,6 +149,18 @@ main .media-listing {
     transition: opacity 0.2s ease;
 }
 
+.biencommun .btn-media-search-clear {
+    background-image: url('/icons/btn_bien_filter_clear.svg');
+    height: 40px;
+    width: 30px;
+    display: block;
+    background-repeat: no-repeat;
+    background-position: center;
+    float: right;
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+}
+
 .newsroom .btn-media-search-clear:hover {
     opacity: 0.6; /* ✅ Light greyish effect on hover */
 }
@@ -134,9 +172,14 @@ main .media-listing {
     }
 
     main .media-filter-container .type-input {
-        width: 140px;
+        width: 150px;
     }
 
+    main .media-filter-container .type-input.selected {
+    width: auto;
+    max-width: 195px;
+    margin-left: 10px;
+    }
    
     main .media-filter-container .media-search-input {
         width: 250px;
@@ -172,7 +215,7 @@ main .media-listing {
 }
 
 .type-option:hover {
-  font-weight: 350;
+  font-weight: 500;
 }
 
 .type-option:last-child {
@@ -204,10 +247,24 @@ main .media-listing {
   
   .type-option {
     font-size: 16px;
-    padding: 10px 15px;
+    padding: 5px 15px;
   }
 
   .type-dropdown {
   top: calc(100% + 20px); 
 }
+}
+
+/* Biencommun Colors */
+.biencommun .type-dropdown {
+  background-color: var(--biencommun-dropdown-bg); 
+  color: var(--biencommun-carousel-card-3);
+}
+
+.biencommun .type-option {
+  color: var(--biencommun-carousel-card-3);  
+}
+
+.biencommun.newsroom main .media-filter-container input {
+    color: var(--input-selected-color);
 }

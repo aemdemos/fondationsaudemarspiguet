@@ -1,5 +1,5 @@
 import {
-  div, section, input, span, a,
+  div, input, span, a,
 } from '../../scripts/dom-helpers.js';
 import { getLanguageFromPath } from '../../scripts/scripts.js';
 import { fetchPlaceholders } from '../../scripts/aem.js';
@@ -31,7 +31,10 @@ function resetButtonStates(doc) {
 function resetAllFilters(doc, typePlaceholder = 'Type') {
   const typeInput = doc.querySelector('.type-input');
   const searchInput = doc.querySelector('.media-search-input');
-  if (typeInput) typeInput.value = typePlaceholder;
+  if (typeInput) {
+    typeInput.value = typePlaceholder;
+    typeInput.classList.remove('selected'); // Add this line
+  }
   if (searchInput) searchInput.value = '';
   resetButtonStates(doc);
   showAllRows(doc);
@@ -79,6 +82,14 @@ function setupTypeFilter(doc, typePlaceholder = 'Type') {
       option.addEventListener('click', () => {
         typeInput.value = type;
         typeDropdown.style.display = 'none';
+
+        // Add selected class functionality
+        if (type && type !== typePlaceholder) {
+          typeInput.classList.add('selected');
+        } else {
+          typeInput.classList.remove('selected');
+        }
+
         filterTable(type);
       });
       typeDropdown.append(option);
@@ -191,7 +202,14 @@ function setupSortButtons(doc) {
 
 export default async function decorate(doc) {
   const $main = doc.querySelector('main');
-  const $section = section();
+  // Use existing section from DA document instead of creating new one
+  const $section = doc.querySelector('main .section:last-of-type') || doc.querySelector('main section:first-child');
+  // If no section exists in DA, fall back (but this should not happen)
+  if (!$section) {
+    console.warn('No section found in newsroom DA document');
+    return;
+  }
+
   const $filterContainer = div({ class: 'media-filter-container' });
 
   // Use direct access to placeholders for language switching
@@ -239,14 +257,15 @@ export default async function decorate(doc) {
   );
 
   $filterContainer.append($mediaFilterLeft, $mediaFilterRight);
-  $section.append($filterContainer);
 
   // Insert filter section
-  const lightGreySection = $main.querySelector('.light-grey-bg');
-  if (lightGreySection) {
-    lightGreySection.parentNode.insertBefore($section, lightGreySection);
+  const viewAndSearchSection = $main.querySelector('.view-and-search');
+  if (viewAndSearchSection) {
+  // Insert filter container before view-and-search section
+    viewAndSearchSection.parentNode.insertBefore($filterContainer, viewAndSearchSection);
   } else {
-    $main.insertBefore($section, $main.firstChild);
+  // Insert filter container at the beginning of the first section
+    $section.insertBefore($filterContainer, $section.firstChild);
   }
 
   // Initialize functionality
