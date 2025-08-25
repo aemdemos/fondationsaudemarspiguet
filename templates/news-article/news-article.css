@@ -2,16 +2,18 @@ body.news-article main .carousel-wrapper {
     padding-top: 30px;
 }
 
-
 body.news-article main .section.white-smoke-bg {
     background-color: var(--news-bg-page);
+}
+
+body.news-article main .section.articleintro-container + div {
     color: var(--news-sophis-intro);
     padding: 60px 0;
     text-align: center;
     margin: 0;
 }
 
-body.biencommun main .section.white-smoke-bg {
+body.biencommun main .section.articleintro-container + div {
     color: var(--biencommun-news-sophis-intro);
 }
 
@@ -19,12 +21,12 @@ body.news-article main .section.featured-projects-container {
     padding-bottom: 30px;
 }
 
-body.news-article main .section.white-smoke-bg .default-content-wrapper {
+body.news-article main .section.articleintro-container + div .default-content-wrapper {
     max-width: unset;
     margin: auto;
 }
 
-body.news-article main .section.white-smoke-bg .default-content-wrapper p {
+body.news-article main .section.articleintro-container + div .default-content-wrapper p {
     font-size: 24px;
     max-width: 90%;
     position: relative;
@@ -289,7 +291,7 @@ body.news-article main .section.details-sidebar.right .news-article-inner .defau
         float: left;
     }
 
-    body.news-article main .section.white-smoke-bg .default-content-wrapper p {
+    body.news-article main .section.articleintro-container + div .default-content-wrapper p {
         font-size: 40px;
     }
 
@@ -318,7 +320,7 @@ body.news-article main .section.details-sidebar.right .news-article-inner .defau
 }
 
 @media (width >= 900px) {
-    body.news-article main .section.white-smoke-bg .default-content-wrapper p {
+    body.news-article main .section.articleintro-container + div .default-content-wrapper p {
         font-size: 40px;
         max-width: 48%;
         top: unset;
@@ -349,7 +351,7 @@ body.news-article main .section.details-sidebar.right .news-article-inner .defau
 }
 
 @media (width >= 1200px) {
-    body.news-article main .section.white-smoke-bg .default-content-wrapper p {
+    body.news-article main .section.articleintro-container + div .default-content-wrapper p {
         font-size: 40px;
         max-width: 48%;
         top: unset;
