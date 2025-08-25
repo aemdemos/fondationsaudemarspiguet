@@ -10,7 +10,7 @@ main .media-filter-container {
 }
 
 main .media-filter-container .type-input {
-    width: 70px;
+    width: 82px;
     opacity: 1;
     position: relative;
     left: 0;
@@ -204,7 +204,7 @@ main .media-listing {
 }
 
 .type-option:hover {
-  font-weight: 350;
+  font-weight: 500;
 }
 
 .type-option:last-child {
@@ -246,10 +246,14 @@ main .media-listing {
 
 /* Biencommun Colors */
 .biencommun .type-dropdown {
-  background-color: #e2d6be; 
+  background-color: var(--biencommun-dropdown-bg); 
+  color: var(--biencommun-carousel-card-3);
 }
 
 .biencommun .type-option {
-  color: #726248;  
-};
-  
+  color: var(--biencommun-carousel-card-3);  
+}
+
+.biencommun.newsroom main .media-filter-container input {
+    color: var(--input-selected-color);
+}
