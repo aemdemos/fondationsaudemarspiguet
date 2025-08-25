@@ -164,7 +164,7 @@
   max-width: 1000px;
   left: 50%;
   transform: translate(-50%, -50%);
-  color: #FFF;
+  color: var(--news-button-text-colour);
   text-align: center;
   box-sizing: border-box;
   padding: 0 60px;
@@ -186,7 +186,7 @@
   align-items: center;
   justify-content: flex-start;
   z-index: 10;
-  color: #FFF;
+  color: var(--news-button-text-colour);
   font-size: 10px;
   font-weight: 250;
 }
@@ -203,7 +203,6 @@
 }
 
 .biencommun .carousel-container .carousel.hero-banner div.slide-legend > p {
-  color: #000;
   margin: 0;
   font-size: 14px;
   font-weight: 500;
@@ -228,7 +227,7 @@
 }
 
 .biencommun .carousel-container .carousel.hero-banner div.slide-legend > p > a {
-  color: #FFF;
+  color: var(--news-button-text-colour);
 }
 
 .biencommun .carousel-container .carousel.hero-banner div.slide-legend > p > a.any-link {
@@ -440,4 +439,3 @@
   position: relative;
   height: 100vh;
 }
-
