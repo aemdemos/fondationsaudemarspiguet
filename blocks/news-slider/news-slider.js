@@ -95,9 +95,29 @@ const resultParsers = {
       title.textContent = result.newsTitle || '';
       cardLink.append(title);
 
-      // Create description
+      // Create description with smart sentence limiting
       const description = p();
-      description.textContent = result.newsDescription || '';
+      if (result.newsDescription) {
+        // More robust sentence splitting that handles line breaks and various spacing
+        // Split by period followed by any whitespace (including line breaks) and capital letter
+        const sentences = result.newsDescription
+          .split(/\.\s*(?=[A-Z]|$)/)
+          .filter((s) => s.trim().length > 0)
+          .map((s) => s.trim() + (s.trim().endsWith('.') ? '' : '.'));
+
+        // Try 2 sentences first
+        let descriptionText = sentences.slice(0, 2).join(' ').trim();
+
+        // If 2 sentences are too long (approx 20+ lines), fall back to 1 sentence
+        // Rough estimate: 500+ characters might create 20+ lines depending on container width
+        if (descriptionText.length > 500 && sentences.length > 1) {
+          descriptionText = sentences[0].trim();
+        }
+
+        description.textContent = descriptionText;
+      } else {
+        description.textContent = '';
+      }
       cardLink.append(description);
 
       cardContainer.append(cardLink);
