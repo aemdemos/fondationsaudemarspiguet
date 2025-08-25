@@ -83,12 +83,12 @@ function setupTypeFilter(doc, typePlaceholder = 'Type') {
         typeInput.value = type;
         typeDropdown.style.display = 'none';
 
-         // Add selected class functionality
-  if (type && type !== typePlaceholder) {
-    typeInput.classList.add('selected');
-  } else {
-    typeInput.classList.remove('selected');
-  }
+        // Add selected class functionality
+        if (type && type !== typePlaceholder) {
+          typeInput.classList.add('selected');
+        } else {
+          typeInput.classList.remove('selected');
+        }
 
         filterTable(type);
       });
@@ -252,13 +252,13 @@ export default async function decorate(doc) {
   $filterContainer.append($mediaFilterLeft, $mediaFilterRight);
   $section.append($filterContainer);
 
-// Insert filter section
-const viewAndSearchSection = $main.querySelector('.view-and-search');
-if (viewAndSearchSection) {
-  viewAndSearchSection.parentNode.insertBefore($section, viewAndSearchSection);
-} else {
-  $main.insertBefore($section, $main.firstChild);
-}
+  // Insert filter section
+  const viewAndSearchSection = $main.querySelector('.view-and-search');
+  if (viewAndSearchSection) {
+    viewAndSearchSection.parentNode.insertBefore($section, viewAndSearchSection);
+  } else {
+    $main.insertBefore($section, $main.firstChild);
+  }
 
   // Initialize functionality
   setupSortButtons(doc);
