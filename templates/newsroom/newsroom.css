@@ -10,10 +10,11 @@ main .media-filter-container {
 }
 
 main .media-filter-container .type-input {
-    width: 82px;
+    width: 70px;
     opacity: 1;
     position: relative;
     left: 0;
+    right: 10px;
     cursor: pointer;
     text-transform: none;
     font-weight: 400;
@@ -21,6 +22,11 @@ main .media-filter-container .type-input {
     outline: none;
     text-align: right;
     letter-spacing: .12em;
+}
+
+main .media-filter-container .type-input.selected {
+    width: 95px;
+    right: 0;
 }
 
 main .media-filter-container .media-search-input {
@@ -166,9 +172,14 @@ main .media-listing {
     }
 
     main .media-filter-container .type-input {
-        width: 170px;
+        width: 150px;
     }
 
+    main .media-filter-container .type-input.selected {
+    width: auto;
+    max-width: 195px;
+    margin-left: 10px;
+    }
    
     main .media-filter-container .media-search-input {
         width: 250px;

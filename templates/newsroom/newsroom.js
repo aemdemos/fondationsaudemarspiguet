@@ -31,7 +31,10 @@ function resetButtonStates(doc) {
 function resetAllFilters(doc, typePlaceholder = 'Type') {
   const typeInput = doc.querySelector('.type-input');
   const searchInput = doc.querySelector('.media-search-input');
-  if (typeInput) typeInput.value = typePlaceholder;
+  if (typeInput) {
+    typeInput.value = typePlaceholder;
+    typeInput.classList.remove('selected'); // Add this line
+  }
   if (searchInput) searchInput.value = '';
   resetButtonStates(doc);
   showAllRows(doc);
@@ -79,6 +82,14 @@ function setupTypeFilter(doc, typePlaceholder = 'Type') {
       option.addEventListener('click', () => {
         typeInput.value = type;
         typeDropdown.style.display = 'none';
+
+         // Add selected class functionality
+  if (type && type !== typePlaceholder) {
+    typeInput.classList.add('selected');
+  } else {
+    typeInput.classList.remove('selected');
+  }
+
         filterTable(type);
       });
       typeDropdown.append(option);
