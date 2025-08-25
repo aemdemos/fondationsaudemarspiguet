@@ -1,5 +1,5 @@
 import {
-  div, section, input, span, a,
+  div, input, span, a,
 } from '../../scripts/dom-helpers.js';
 import { getLanguageFromPath } from '../../scripts/scripts.js';
 import { fetchPlaceholders } from '../../scripts/aem.js';
@@ -202,7 +202,14 @@ function setupSortButtons(doc) {
 
 export default async function decorate(doc) {
   const $main = doc.querySelector('main');
-  const $section = section();
+  // Use existing section from DA document instead of creating new one
+  const $section = doc.querySelector('main .section:last-of-type') || doc.querySelector('main section:first-child');
+  // If no section exists in DA, fall back (but this should not happen)
+  if (!$section) {
+    console.warn('No section found in newsroom DA document');
+    return;
+  }
+
   const $filterContainer = div({ class: 'media-filter-container' });
 
   // Use direct access to placeholders for language switching
@@ -250,14 +257,15 @@ export default async function decorate(doc) {
   );
 
   $filterContainer.append($mediaFilterLeft, $mediaFilterRight);
-  $section.append($filterContainer);
 
   // Insert filter section
   const viewAndSearchSection = $main.querySelector('.view-and-search');
   if (viewAndSearchSection) {
-    viewAndSearchSection.parentNode.insertBefore($section, viewAndSearchSection);
+  // Insert filter container before view-and-search section
+    viewAndSearchSection.parentNode.insertBefore($filterContainer, viewAndSearchSection);
   } else {
-    $main.insertBefore($section, $main.firstChild);
+  // Insert filter container at the beginning of the first section
+    $section.insertBefore($filterContainer, $section.firstChild);
   }
 
   // Initialize functionality
