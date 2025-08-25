@@ -252,13 +252,13 @@ export default async function decorate(doc) {
   $filterContainer.append($mediaFilterLeft, $mediaFilterRight);
   $section.append($filterContainer);
 
-  // Insert filter section
-  const greySection = $main.querySelector('.light-grey-bg, .pale-grey-bg');
-  if (greySection) {
-    greySection.parentNode.insertBefore($section, greySection);
-  } else {
-    $main.insertBefore($section, $main.firstChild);
-  }
+// Insert filter section
+const viewAndSearchSection = $main.querySelector('.view-and-search');
+if (viewAndSearchSection) {
+  viewAndSearchSection.parentNode.insertBefore($section, viewAndSearchSection);
+} else {
+  $main.insertBefore($section, $main.firstChild);
+}
 
   // Initialize functionality
   setupSortButtons(doc);
