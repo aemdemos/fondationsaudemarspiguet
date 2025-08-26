@@ -100,16 +100,16 @@ export default async function decorate(doc) {
   }
   // Add a clear div after the first paragraph to ensure the second paragraph
   // remains in the float: right position for large screen sizes
-  const textPara = doc.querySelector('.section.white-lilac-bg .default-content-wrapper p:first-of-type');
+  const textPara = doc.querySelector('.section.articlecontent-container + div .default-content-wrapper p:first-of-type');
   const clearDiv = div({ class: 'clear' });
   if (textPara) {
     textPara.insertAdjacentElement('afterend', clearDiv);
   }
 
   // Move text content and image content to be encased by different divs
-  const whiteLilacSection = doc.querySelector('.section.white-lilac-bg');
-  const allParas = doc.querySelectorAll('.section.white-lilac-bg div > p');
-  const defaultDiv = doc.querySelector('.section.white-lilac-bg div.default-content-wrapper');
+  const whiteLilacSection = doc.querySelector('.section.articlecontent-container + div');
+  const allParas = doc.querySelectorAll('.section.articlecontent-container + div div > p');
+  const defaultDiv = doc.querySelector('.section.articlecontent-container + div div.default-content-wrapper');
   const ImageDiv = document.createElement('div');
   ImageDiv.className = 'image-wrapper';
 
@@ -137,8 +137,8 @@ export default async function decorate(doc) {
   }
 
   // apply fade out animation to news detail section
-  const pictureEl = doc.querySelector('.section.white-lilac-bg div.image-wrapper p picture');
-  const imagePara = doc.querySelector('.section.white-lilac-bg div.image-wrapper p');
+  const pictureEl = doc.querySelector('.section.articlecontent-container + div div.image-wrapper p picture');
+  const imagePara = doc.querySelector('.section.articlecontent-container + div div.image-wrapper p');
   if (pictureEl && imagePara) {
     applyFadeUpAnimation(pictureEl, imagePara);
   }

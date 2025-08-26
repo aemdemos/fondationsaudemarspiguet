@@ -2,16 +2,18 @@ body.news-article main .carousel-wrapper {
     padding-top: 30px;
 }
 
-
 body.news-article main .section.white-smoke-bg {
     background-color: var(--news-bg-page);
+}
+
+body.news-article main .section.articleintro-container + div {
     color: var(--news-sophis-intro);
     padding: 60px 0;
     text-align: center;
     margin: 0;
 }
 
-body.biencommun main .section.white-smoke-bg {
+body.biencommun main .section.articleintro-container + div {
     color: var(--biencommun-news-sophis-intro);
 }
 
@@ -19,12 +21,12 @@ body.news-article main .section.featured-projects-container {
     padding-bottom: 30px;
 }
 
-body.news-article main .section.white-smoke-bg .default-content-wrapper {
+body.news-article main .section.articleintro-container + div .default-content-wrapper {
     max-width: unset;
     margin: auto;
 }
 
-body.news-article main .section.white-smoke-bg .default-content-wrapper p {
+body.news-article main .section.articleintro-container + div .default-content-wrapper p {
     font-size: 24px;
     max-width: 90%;
     position: relative;
@@ -36,44 +38,50 @@ body.news-article main .section.white-smoke-bg .default-content-wrapper p {
 
 body.news-article main .section.details-sidebar.light-grey-bg + * {
     background-color: var(--news-bg-page-suite);
+}
+
+body.news-article main .section.details-sidebar + * {
     margin: 0;
   }
 
-body.biencommun main .section.details-sidebar.light-grey-bg + * {
+body.biencommun main .section.details-sidebar + * {
     background-color: unset;
 }
 
 body.news-article main .section.white-lilac-bg {
     background-color: var(--news-sophis-bg-text2);
+}
+
+body.news-article main .section.articlecontent-container + div {
     padding: 40px 0 0;
     margin: 0 0 40px;
 }
 
-body.news-article main .section.white-lilac-bg div.default-content-wrapper {
+body.news-article main .section.articlecontent-container + div div.default-content-wrapper {
     float: right;
     padding: 0 20px;
 }
 
-body.news-article main .section.white-lilac-bg div.default-content-wrapper > p {
+body.news-article main .section.articlecontent-container + div div.default-content-wrapper > p {
     line-height: 1.5em;
     letter-spacing: .04em;
     font-size: 14px;
 }
 
-body.news-article main .section.white-lilac-bg div.default-content-wrapper > p > strong {
+body.news-article main .section.articlecontent-container + div div.default-content-wrapper > p > strong {
     color: var(--news-category);
     font-weight: bold;
 }
 
-body.biencommun main .section.white-lilac-bg div.default-content-wrapper > p > strong {
+body.biencommun main .section.articlecontent-container + div div.default-content-wrapper > p > strong {
     color: var(--biencommun-projet-bloc-titre);
 }
 
-body.biencommun main .section.white-lilac-bg div.default-content-wrapper a:any-link {
+body.biencommun main .section.articlecontent-container + div div.default-content-wrapper a:any-link {
     color: var(--site-color-2-bien);
 }
 
-body.news-article main .section.white-lilac-bg div.image-wrapper {
+body.news-article main .section.articlecontent-container + div div.image-wrapper {
     padding-top: 40px;
     margin-bottom: 40px;
     float: right;
@@ -81,11 +89,11 @@ body.news-article main .section.white-lilac-bg div.image-wrapper {
     padding-right: unset;
 }
 
-body.news-article main .section.white-lilac-bg div.image-wrapper p {
+body.news-article main .section.articlecontent-container + div div.image-wrapper p {
     margin-top: 0;
 }
 
-body.news-article main .section.white-lilac-bg div.image-wrapper img {
+body.news-article main .section.articlecontent-container + div div.image-wrapper img {
     vertical-align: bottom;
 }
 
@@ -289,26 +297,26 @@ body.news-article main .section.details-sidebar.right .news-article-inner .defau
         float: left;
     }
 
-    body.news-article main .section.white-smoke-bg .default-content-wrapper p {
+    body.news-article main .section.articleintro-container + div .default-content-wrapper p {
         font-size: 40px;
     }
 
-    body.news-article main .section.white-lilac-bg {
+    body.news-article main .section.articlecontent-container + div {
         padding: 90px 0 0;
         margin: 0 0 50px;
     }
 
-    body.news-article main .section.white-lilac-bg div.default-content-wrapper {
+    body.news-article main .section.articlecontent-container + div div.default-content-wrapper {
         width: calc(100% - 280px);
         box-sizing: border-box;
     }
 
-    body.news-article main .section.white-lilac-bg div.image-wrapper {
+    body.news-article main .section.articlecontent-container + div div.image-wrapper {
         padding-top: 15px;
         margin-bottom: 0;
     }
 
-    body.news-article main .section.white-lilac-bg div.image-wrapper p {
+    body.news-article main .section.articlecontent-container + div div.image-wrapper p {
         margin-bottom: 0;
     }
 
@@ -318,18 +326,18 @@ body.news-article main .section.details-sidebar.right .news-article-inner .defau
 }
 
 @media (width >= 900px) {
-    body.news-article main .section.white-smoke-bg .default-content-wrapper p {
+    body.news-article main .section.articleintro-container + div .default-content-wrapper p {
         font-size: 40px;
         max-width: 48%;
         top: unset;
     }
 
-    body.news-article main .section.white-lilac-bg div.default-content-wrapper {
+    body.news-article main .section.articlecontent-container + div div.default-content-wrapper {
         padding: 0 80px;
         width: calc(100% - 380px);
     }
 
-    body.news-article main .section.white-lilac-bg div.default-content-wrapper > p {
+    body.news-article main .section.articlecontent-container + div div.default-content-wrapper > p {
         font-size: 20px;
     }
 
@@ -349,22 +357,22 @@ body.news-article main .section.details-sidebar.right .news-article-inner .defau
 }
 
 @media (width >= 1200px) {
-    body.news-article main .section.white-smoke-bg .default-content-wrapper p {
+    body.news-article main .section.articleintro-container + div .default-content-wrapper p {
         font-size: 40px;
         max-width: 48%;
         top: unset;
     }
 
-    body.news-article main .section.white-lilac-bg {
+    body.news-article main .section.articlecontent-container + div {
         margin: 0 0 140px;
     }
 
-    body.news-article main .section.white-lilac-bg div.default-content-wrapper {
+    body.news-article main .section.articlecontent-container + div div.default-content-wrapper {
         max-width: 900px;
         box-sizing: unset;
     }
 
-    body.news-article main .section.white-lilac-bg div.image-wrapper {
+    body.news-article main .section.articlecontent-container + div div.image-wrapper {
         margin-bottom: -90px;
         max-width: unset;
     }
