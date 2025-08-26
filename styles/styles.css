@@ -254,8 +254,28 @@
   --biencommun-carousel-card-3: #726248;
   --biencommun-carousel-card-4: #947f5f;
 
+       
   /* BIENCOMMUN DEFAULT TEXT COLOURS */
   --biencommun-text-color-4: #D3C19B;
+
+  /* FONDATIONS SITE COLORS */
+  --fondations-site-color: #857873;
+  --fondations-site-color-2: #947F5F;
+  --fondations-header-color: rgb(133 120 115 / 100%);
+  --fondations-footer-color: #9D9D9C;
+  --fondations-titre-h2: #726248;
+  --fondations-titre: #525252;
+  --fondations-fleche-to-top-bg: #515151;
+
+  /* FONDATIONS NEWSLETTER */
+  --fondations-newsletter-bg:#e6e1d6;
+  --fondations-newsletter-titre: #72676B;
+  
+  /* FONDATIONS MENU OPEN */
+    --fondations-menu-open-bg: #5b626a;  
+  
+  /* FONDATIONS MEDIAS */
+  --fondations-medias-bg: #eae7e9;
 }
 
 /* fallback fonts */
