@@ -161,7 +161,8 @@ var markers = [];
 var bounds;
 var boundsswiss;
 var markerCluster;
-var infoWindows = []; 
+var infoWindows = [];
+var markerstocluster = []; 
 
 async function initMap() {
     
@@ -1937,6 +1938,12 @@ var popupoption = {
         
         // Use timeout to ensure map is fully loaded before showing
         setTimeout(() => {
+            // Ensure all variables are globally accessible for cards.js
+            window.map = map;
+            window.markers = markers;
+            window.bounds = bounds;
+            window.markerCluster = markerCluster;
+            window.infoWindows = infoWindows;
             
             // Show map after it's fully loaded
             document.getElementById('map').style.opacity = '1';
