@@ -254,6 +254,10 @@
   --biencommun-carousel-card-3: #726248;
   --biencommun-carousel-card-4: #947f5f;
 
+       
+  /* BIENCOMMUN DEFAULT TEXT COLOURS */
+  --biencommun-text-color-4: #D3C19B;
+
   /* FONDATIONS SITE COLORS */
   --fondations-site-color: #857873;
   --fondations-site-color-2: #947F5F;
@@ -684,6 +688,11 @@ main .section.colored-text b {
   font-weight: 400; 
 }
 
+.biencommun main .section.colored-text strong,
+.biencommun main .section.colored-text b {
+  color: var(--site-color-2-bien);
+}
+
 .policy-template main .default-content-wrapper p a {
   color: var(--site-color-2);
   transition: color 0.5s;
@@ -800,6 +809,11 @@ main .section.colored-text em,
 main .section.colored-text i {
   color: var(--site-color);
   font-style: normal; 
+}
+
+.biencommun main .section.colored-text em,
+.biencommun main .section.colored-text i {
+  color: var(--biencommun-page-bloc-btn);
 }
 
 .policy-template main .default-content-wrapper p strong em {
@@ -1179,6 +1193,14 @@ color: var(--biencommun-titre);
 main .section.colored-text u {
   color: var(--default-colored-text);
   text-decoration: none;
+}
+
+.biencommun main .section.colored-text u {
+  color: var(--biencommun-team-cat-titre);
+}
+
+.biencommun main .section.colored-text strong > em {
+  color: var(--biencommun-text-color-4);
 }
 
 .policy-template main .default-content-wrapper p u,
