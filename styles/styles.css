@@ -579,8 +579,11 @@ main>.section.extra-padding {
   padding: 0;
 }
 
-main .section.cream-bg {
+main .section:has(.accordion.teams) {
   padding: 80px 0;
+}
+
+main .section.cream-bg {
   background-color: var(--team-bg-page);
 }
 
@@ -1219,22 +1222,22 @@ main .section.colored-text u {
   color: var(--policy-template-link-color);
 }
 
-main .section.cream-bg.table-container.accordion-container .default-content-wrapper h2{
+main .section.table-container.accordion-container .default-content-wrapper h2{
     color: var(--team-cat-titre); 
     font-size: var(--heading-font-size-l);
     margin-bottom: 50px;
     padding: 15px 0;
 }
 
-main .section.cream-bg.table-container.accordion-container .default-content-wrapper:nth-child(1) h2 {
+main .section.table-container.accordion-container .default-content-wrapper:nth-child(1) h2 {
     margin-top: 30px;
 }
 
-main .section.cream-bg.table-container.accordion-container .default-content-wrapper:nth-child(3) h2 {
+main .section.table-container.accordion-container .default-content-wrapper:nth-child(3) h2 {
     margin-top: 60px;
 }
 
-main .section.cream-bg.table-container.accordion-container{
+main .section.table-container.accordion-container{
   margin-bottom: 0;
 }
 
