@@ -125,7 +125,6 @@ function createSlide(row, slideIndex, carouselId) {
   slide.dataset.slideIndex = slideIndex;
   slide.setAttribute('id', `carousel-${carouselId}-slide-${slideIndex}`);
   slide.classList.add('carousel-slide');
-
   row.querySelectorAll(':scope > div').forEach((column, colIdx) => {
     column.classList.add(`carousel-slide-${colIdx === 0 ? 'image' : 'content'}`);
     slide.append(column);
@@ -135,7 +134,6 @@ function createSlide(row, slideIndex, carouselId) {
   if (labeledBy) {
     slide.setAttribute('aria-labelledby', labeledBy.getAttribute('id'));
   }
-
   return slide;
 }
 
@@ -155,7 +153,27 @@ let carouselId = 0;
 export default async function decorate(block) {
   carouselId += 1;
   block.setAttribute('id', `carousel-${carouselId}`);
-  const rows = block.querySelectorAll(':scope > div');
+  let rows = block.querySelectorAll(':scope > div');
+  if (block.classList.contains('hero-banner')) {
+    rows = Array.from(rows).filter((row) => {
+      const hasPicture = row.querySelector('picture');
+      if (!hasPicture) {
+        // Handle row without picture
+        const socialContainer = row.querySelector('div:nth-child(1)');
+        const slidelegende = row.querySelector('div:nth-child(2)');
+        if (socialContainer) {
+          socialContainer.classList.add('social-cr-wrapper');
+        }
+        if (slidelegende) {
+          slidelegende.classList.add('slide-legend');
+        }
+        // Append to block (outside carousel slides)
+        block.append(socialContainer, slidelegende);
+      }
+      return hasPicture; // keep only picture rows in "rows"
+    });
+  }
+
   const isSingleSlide = rows.length < 2;
 
   const placeholders = await fetchPlaceholders();
@@ -196,9 +214,9 @@ export default async function decorate(block) {
       container.append(slideNavButtons);
     }
   }
-
+  let slide;
   rows.forEach((row, idx) => {
-    const slide = createSlide(row, idx, carouselId);
+    slide = createSlide(row, idx, carouselId);
     moveInstrumentation(row, slide);
     slidesWrapper.append(slide);
 
