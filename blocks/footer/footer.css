@@ -16,6 +16,10 @@ footer .footer .section.beige-bg {
   background-color: var(--biencommun-newsletter-bg);
 }
 
+.fondations footer .footer .section.grey-bg {
+  background-color: var(--fondations-footer-color);
+}
+
 footer .footer .section.social-section {
   padding: 40px 20px;
   font-size: 10px;
