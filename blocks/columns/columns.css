@@ -369,3 +369,7 @@
 .biencommun .section:has(.columns.two-column) h1 {
   color: #726248;
 }
+
+.fondations .section:has(.columns.two-column) h1 {
+  color: var(--fondations-titre);
+}
