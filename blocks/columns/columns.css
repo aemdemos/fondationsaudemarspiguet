@@ -361,7 +361,10 @@
   }
 }
 
-.biencommun .columns.two-column > div > div:nth-child(2) > p.button-container > a.button:any-link, .biencommun .columns.two-column > div > div:nth-child(2) > p.button-container > button
+.biencommun .columns.two-column > div > div:nth-child(2) > p.button-container > a.button:any-link, 
+.biencommun .columns.two-column > div > div:nth-child(2) > p.button-container > button,
+.fondations .columns.two-column > div > div:nth-child(2) > p.button-container > a.button:any-link, 
+.fondations .columns.two-column > div > div:nth-child(2) > p.button-container > button
  {
     color: var(--site-color-2-bien);
 }
