@@ -13,9 +13,13 @@
   <script src="/scripts/scripts.js" type="module"></script>
   <link rel="stylesheet" href="/styles/styles.css"/>
   
-  <!-- Favicons will be dynamically inserted based on domain -->
+  <!-- Static favicon links - updated by script below -->
+  <link rel="apple-touch-icon" href="/styles/apple-touch-icon.png" sizes="180x180" id="apple-icon">
+  <link rel="icon" href="/styles/favicon-32x32.png" type="image/png" sizes="32x32" id="favicon-32">
+  <link rel="icon" href="/styles/favicon-16x16.png" type="image/png" sizes="16x16" id="favicon-16">
+  
   <script>
-    // Simple domain-based favicon detection - runs immediately
+    // Update favicon hrefs immediately based on domain
     (function() {
       const hostname = window.location.hostname.toLowerCase();
       const pathname = window.location.pathname.toLowerCase();
@@ -33,33 +37,26 @@
         siteType = 'fondations';
       }
       
-      // Define favicon paths
-      const faviconPaths = {
-        biencommun: {
-          apple: '/styles/biencommun-apple-touch-icon.png',
-          favicon32: '/styles/biencommun-favicon-32x32.png',
-          favicon16: '/styles/biencommun-favicon-16x16.png'
-        },
-        arbres: {
-          apple: '/styles/arbres-apple-touch-icon.png',
-          favicon32: '/styles/arbres-favicon-32x32.png',
-          favicon16: '/styles/arbres-favicon-16x16.png'
-        },
-        fondations: {
-          apple: '/styles/apple-touch-icon.png',
-          favicon32: '/styles/favicon-32x32.png',
-          favicon16: '/styles/favicon-16x16.png'
+      // Update favicon hrefs if not fondations (since that's the default)
+      if (siteType !== 'fondations') {
+        const appleIcon = document.getElementById('apple-icon');
+        const favicon32 = document.getElementById('favicon-32');
+        const favicon16 = document.getElementById('favicon-16');
+        
+        if (siteType === 'biencommun') {
+          appleIcon.href = '/styles/biencommun-apple-touch-icon.png';
+          favicon32.href = '/styles/biencommun-favicon-32x32.png';
+          favicon16.href = '/styles/biencommun-favicon-16x16.png';
+        } else if (siteType === 'arbres') {
+          appleIcon.href = '/styles/arbres-apple-touch-icon.png';
+          favicon32.href = '/styles/arbres-favicon-32x32.png';
+          favicon16.href = '/styles/arbres-favicon-16x16.png';
         }
-      };
-      
-      const favicons = faviconPaths[siteType];
-      
-      // Insert favicon link elements
-      document.write('<link rel="apple-touch-icon" href="' + favicons.apple + '" sizes="180x180">');
-      document.write('<link rel="icon" href="' + favicons.favicon32 + '" type="image/png" sizes="32x32">');
-      document.write('<link rel="icon" href="' + favicons.favicon16 + '" type="image/png" sizes="16x16">');
-      
-      console.log('404 Favicon: Applied', siteType, 'favicons');
+        
+        console.log('404 Favicon: Updated to', siteType);
+      } else {
+        console.log('404 Favicon: Using default fondations');
+      }
     })();
   </script>
 
