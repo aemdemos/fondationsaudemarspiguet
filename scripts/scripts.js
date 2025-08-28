@@ -451,7 +451,7 @@ export function setPathSpecificFavicon() {
 
   // Debug logging
   // eslint-disable-next-line no-console
-  console.log('Favicon Debug:', {
+  console.log('🔍 Favicon Debug:', {
     hostname: window.location.hostname,
     detectedSite,
     faviconSet,
@@ -490,6 +490,10 @@ export function setPathSpecificFavicon() {
       // eslint-disable-next-line no-console
       console.log('Updated apple icon to:', appleSrc);
     });
+    
+    // Summary log
+    // eslint-disable-next-line no-console
+    console.log('✅ Favicons updated for:', detectedSite);
   }
 }
 
