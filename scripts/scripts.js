@@ -429,7 +429,6 @@ export function applySiteClass(siteType = null) {
  */
 export function getFaviconUrls(siteType = null) {
   const detectedSite = siteType || detectSiteType();
-  
   const faviconMappings = {
     biencommun: {
       apple: '/styles/biencommun-apple-touch-icon.png',
@@ -459,12 +458,13 @@ export function setPathSpecificFavicon() {
   const faviconUrls = getFaviconUrls(detectedSite);
 
   // Check if favicon elements exist
-  let favicon16Elements = document.querySelectorAll('link[rel="icon"][sizes="16x16"]');
-  let favicon32Elements = document.querySelectorAll('link[rel="icon"][sizes="32x32"]');
-  let appleIconElements = document.querySelectorAll('link[rel="apple-touch-icon"]');
+  const favicon16Elements = document.querySelectorAll('link[rel="icon"][sizes="16x16"]');
+  const favicon32Elements = document.querySelectorAll('link[rel="icon"][sizes="32x32"]');
+  const appleIconElements = document.querySelectorAll('link[rel="apple-touch-icon"]');
 
   // Check if this is likely a 404 page (no favicon elements exist)
-  const is404Page = favicon16Elements.length === 0 && favicon32Elements.length === 0 && appleIconElements.length === 0;
+  const is404Page = favicon16Elements.length === 0
+    && favicon32Elements.length === 0 && appleIconElements.length === 0;
 
   if (is404Page) {
     // Create favicons for 404/non-existing pages only
@@ -488,6 +488,7 @@ export function setPathSpecificFavicon() {
     appleIcon.href = faviconUrls.apple;
     document.head.appendChild(appleIcon);
 
+    // eslint-disable-next-line no-console
     console.log('404 Favicons created for:', detectedSite);
   } else {
     // Update existing favicons for regular pages
@@ -503,6 +504,7 @@ export function setPathSpecificFavicon() {
       appleIcon.href = faviconUrls.apple;
     });
 
+    // eslint-disable-next-line no-console
     console.log('Regular page favicons updated for:', detectedSite);
   }
 }
