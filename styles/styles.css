@@ -422,8 +422,6 @@ h2 {
   color: var(--biencommun-site-color);
 }
 
-
-.fondations h2 {
 .fondations main .default-content-wrapper h2 {
   color: var(--fondations-titre);
 }

@@ -227,7 +227,7 @@ export default async function decorate(block) {
       if (socialContainer && slidelegende) {
         slide.append(
           socialContainer.cloneNode(true),
-          slidelegende.cloneNode(true)
+          slidelegende.cloneNode(true),
         );
       }
     }
@@ -261,7 +261,7 @@ export default async function decorate(block) {
       btn.addEventListener('click', () => {
         slides[idx].scrollIntoView({
           behavior: 'smooth',
-          block: 'start'
+          block: 'start',
         });
       });
     });
@@ -283,13 +283,13 @@ export default async function decorate(block) {
     showSlide(block, 0);
 
     // Autoplay functionality
-    function autoAdvance() {
+    const autoAdvance = () => {
       const slides = block.querySelectorAll('.carousel-slide');
       const current = parseInt(block.dataset.activeSlide, 10) || 0;
       const next = (current + 1) % slides.length;
       showSlide(block, next);
       block.carouselTimer = setTimeout(autoAdvance, 4000); // 4000ms = 4 seconds
-    }
+    };
     block.carouselTimer = setTimeout(autoAdvance, 4000);
 
     if (!isSingleSlide) {
