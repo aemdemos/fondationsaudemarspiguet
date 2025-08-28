@@ -458,6 +458,30 @@ export function setPathSpecificFavicon() {
       faviconSet,
     });
 
+    // Additional debugging - what's actually in the DOM?
+    const allFaviconElements = document.querySelectorAll('link[rel*="icon"]');
+    const allElements = document.querySelectorAll('link');
+    // eslint-disable-next-line no-console
+    console.log('🔍 DOM Debug:', {
+      'allFaviconElements': allFaviconElements.length,
+      'allLinkElements': allElements.length,
+      'documentReadyState': document.readyState,
+      'hasAppleIcon': !!document.getElementById('apple-icon'),
+      'hasFavicon32': !!document.getElementById('favicon-32'),
+      'hasFavicon16': !!document.getElementById('favicon-16')
+    });
+    
+    // Log first few link elements to see what we have
+    Array.from(allElements).slice(0, 5).forEach((link, index) => {
+      // eslint-disable-next-line no-console
+      console.log(`Link ${index}:`, {
+        rel: link.rel,
+        href: link.href,
+        sizes: link.sizes?.value,
+        id: link.id
+      });
+    });
+
     // If we found a matching domain, update the favicons
     if (faviconSet) {
       const { 16: favicon16Src, 32: favicon32Src, apple: appleSrc } = faviconSet;
