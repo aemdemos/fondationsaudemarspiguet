@@ -370,7 +370,7 @@
 }
 
 .biencommun .section:has(.columns.two-column) h1 {
-  color: var(--fondations-titre-h2);
+  color: var(--biencommun-site-color);
 }
 
 .fondations .section:has(.columns.two-column) h1 {
