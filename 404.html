@@ -68,14 +68,13 @@
   <script type="module">
     import { load404 } from '/scripts/scripts.js';
 
-    // Add site-specific body classes BEFORE other scripts
     const hostname = window.location.hostname.toLowerCase();
     const path = window.location.pathname.toLowerCase();
     const body = document.body;
 
-    // Ternary chain: biencommun, arbres, or fondations
+    // Check forbiencommun, arbres, or fondations
     const siteClass = hostname.startsWith('biencommun.') || path.includes('--biencommun-fondationsaudemarspiguet--') ? 'biencommun' :
-                     hostname.startsWith('arbres.') || path.includes('--arbres-') ? 'arbres' : 'fondations';
+                     hostname.startsWith('arbres.') || path.includes('--arbres-fondationsaudemarspiguet--') ? 'arbres' : 'fondations';
     if (siteClass) body.classList.add(siteClass);
     load404();
   </script>
