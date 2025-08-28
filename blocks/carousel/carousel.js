@@ -167,8 +167,9 @@ export default async function decorate(block) {
         if (slidelegende) {
           slidelegende.classList.add('slide-legend');
         }
-        // Append to block (outside carousel slides)
-        block.append(socialContainer, slidelegende);
+        if (!block.classList.contains('scrollable')) {
+          block.append(socialContainer, slidelegende);
+        }
       }
       return hasPicture; // keep only picture rows in "rows"
     });
@@ -194,6 +195,7 @@ export default async function decorate(block) {
     block.classList.add('carousel-vertical');
   }
 
+  const isScrollable = block.classList.contains('scrollable');
   let slideIndicators;
   if (!isSingleSlide) {
     const slideIndicatorsNav = document.createElement('nav');
@@ -218,6 +220,17 @@ export default async function decorate(block) {
   rows.forEach((row, idx) => {
     slide = createSlide(row, idx, carouselId);
     moveInstrumentation(row, slide);
+    if (isScrollable) {
+      const socialContainer = block.querySelector('.social-cr-wrapper');
+      const slidelegende = block.querySelector('.slide-legend');
+      console.log(socialContainer, slidelegende);
+      if (socialContainer && slidelegende) {
+        slide.append(
+          socialContainer.cloneNode(true),
+          slidelegende.cloneNode(true)
+        );
+      }
+    }
     slidesWrapper.append(slide);
 
     if (slideIndicators) {
@@ -226,6 +239,12 @@ export default async function decorate(block) {
       indicator.dataset.targetSlide = idx;
       indicator.innerHTML = `<button type="button" aria-label="${placeholders.showSlide || 'Show Slide'} ${idx + 1} ${placeholders.of || 'of'} ${rows.length}"></button>`;
       slideIndicators.append(indicator);
+      if (isScrollable) {
+        // Scroll into view when indicator is clicked
+        indicator.querySelector('button').addEventListener('click', () => {
+          slide.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+      }
     }
     row.remove();
   });
@@ -233,22 +252,50 @@ export default async function decorate(block) {
   container.append(slidesWrapper);
   block.prepend(container);
 
-  // Show the first slide by default
-  showSlide(block, 0);
-
-  // Autoplay functionality
-  function autoAdvance() {
+  if (isScrollable) {
+    // Scroll-snap mode (CSS controls the snapping)
     const slides = block.querySelectorAll('.carousel-slide');
-    const current = parseInt(block.dataset.activeSlide, 10) || 0;
-    const next = (current + 1) % slides.length;
-    showSlide(block, next);
-    block.carouselTimer = setTimeout(autoAdvance, 4000); // 4000ms = 4 seconds
-  }
-  block.carouselTimer = setTimeout(autoAdvance, 4000);
+    const indicators = block.querySelectorAll('.carousel-slide-indicator');
+    indicators.forEach((indicator, idx) => {
+      const btn = indicator.querySelector('button');
+      btn.addEventListener('click', () => {
+        slides[idx].scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+      });
+    });
 
-  if (!isSingleSlide) {
-    bindEvents(block);
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const idx = parseInt(entry.target.dataset.slideIndex, 10);
+          indicators.forEach((ind, i) => {
+            ind.querySelector('button').toggleAttribute('disabled', i === idx);
+          });
+        }
+      });
+    }, { threshold: 0.6 });
+
+    slides.forEach((s) => observer.observe(s));
+  } else {
+    // Show the first slide by default
+    showSlide(block, 0);
+
+    // Autoplay functionality
+    function autoAdvance() {
+      const slides = block.querySelectorAll('.carousel-slide');
+      const current = parseInt(block.dataset.activeSlide, 10) || 0;
+      const next = (current + 1) % slides.length;
+      showSlide(block, next);
+      block.carouselTimer = setTimeout(autoAdvance, 4000); // 4000ms = 4 seconds
+    }
+    block.carouselTimer = setTimeout(autoAdvance, 4000);
+
+    if (!isSingleSlide) {
+      bindEvents(block);
+    }
+    centerIndicators(block);
+    window.addEventListener('resize', () => centerIndicators(block));
   }
-  centerIndicators(block);
-  window.addEventListener('resize', () => centerIndicators(block));
 }

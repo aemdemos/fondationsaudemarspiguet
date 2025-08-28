@@ -178,7 +178,7 @@
   font-style: normal;
 }
 
-.biencommun .full-width.carousel-container .carousel.hero-banner div.social-cr-wrapper {
+.biencommun .full-width.carousel-container .carousel.hero-banner div.social-cr-wrapper, .fondations .full-width.carousel-container .carousel.hero-banner div.social-cr-wrapper  {
   position: absolute;
   bottom: 37px;
   left: 20px;
@@ -191,18 +191,18 @@
   font-weight: 250;
 }
 
-.biencommun .full-width.carousel-container .carousel.hero-banner div.social-cr-wrapper p {
+.biencommun .full-width.carousel-container .carousel.hero-banner div.social-cr-wrapper p, .fondations .full-width.carousel-container .carousel.hero-banner div.social-cr-wrapper p {
   margin: 0;
   line-height : 13px;
 }
 
-.biencommun .full-width.carousel-container .carousel.hero-banner div.social-cr-wrapper .icon {
+.biencommun .full-width.carousel-container .carousel.hero-banner div.social-cr-wrapper .icon, .fondations .full-width.carousel-container .carousel.hero-banner div.social-cr-wrapper .icon {
   height: 40px;
   width: 40px;
   margin-right: 20px;
 }
 
-.biencommun .full-width.carousel-container .carousel.hero-banner div.slide-legend > p {
+.biencommun .full-width.carousel-container .carousel.hero-banner div.slide-legend > p, .fondations .full-width.carousel-container .carousel.hero-banner div.slide-legend > p {
   margin: 0;
   font-size: 14px;
   font-weight: 500;
@@ -213,12 +213,12 @@
   font-size: 30px;
 }
 
-.biencommun .full-width.carousel-container .carousel.hero-banner div.social-cr-wrapper p:last-of-type {
+.biencommun .full-width.carousel-container .carousel.hero-banner div.social-cr-wrapper p:last-of-type, .fondations .full-width.carousel-container .carousel.hero-banner div.social-cr-wrapper p:last-of-type {
   display: none;
   font-size: 10px;
 }
 
-.biencommun .full-width.carousel-container .carousel.hero-banner div.slide-legend {
+.biencommun .full-width.carousel-container .carousel.hero-banner div.slide-legend, .fondations .full-width.carousel-container .carousel.hero-banner div.slide-legend {
   position: absolute;
   bottom: 48px;
   display: inline-block;
@@ -226,11 +226,11 @@
   z-index: 10;
 }
 
-.biencommun .full-width.carousel-container .carousel.hero-banner div.slide-legend > p > a {
+.biencommun .full-width.carousel-container .carousel.hero-banner div.slide-legend > p > a, .fondations .full-width.carousel-container .carousel.hero-banner div.slide-legend > p > a {
   color: var(--news-button-text-colour);
 }
 
-.biencommun .full-width.carousel-container .carousel.hero-banner div.slide-legend > p > a.any-link {
+.biencommun .full-width.carousel-container .carousel.hero-banner div.slide-legend > p > a.any-link, .fondations .full-width.carousel-container .carousel.hero-banner div.slide-legend > p > a.any-link {
   text-decoration: none;
   overflow-wrap: break-word;
 }
@@ -357,19 +357,19 @@
     height: 500px;
   }
 
-  .biencommun .full-width.carousel-container .carousel.hero-banner div.social-cr-wrapper { 
+  .biencommun .full-width.carousel-container .carousel.hero-banner div.social-cr-wrapper, .fondations .full-width.carousel-container .carousel.hero-banner div.social-cr-wrapper {
     bottom: 29px;
   }
 
-  .biencommun .full-width.carousel-container .carousel.hero-banner div.social-cr-wrapper p:last-of-type {
+  .biencommun .full-width.carousel-container .carousel.hero-banner div.social-cr-wrapper p:last-of-type, .fondations .full-width.carousel-container .carousel.hero-banner div.social-cr-wrapper p:last-of-type {
     display: unset;
   }
 
-  .biencommun .full-width.carousel-container .carousel.hero-banner div.slide-legend {
+  .biencommun .full-width.carousel-container .carousel.hero-banner div.slide-legend, .fondations .full-width.carousel-container .carousel.hero-banner div.slide-legend {
     bottom: 48px;
   }
 
-  .biencommun .full-width.carousel-container .carousel.hero-banner div.slide-legend > p {
+  .biencommun .full-width.carousel-container .carousel.hero-banner div.slide-legend > p, .fondations .full-width.carousel-container .carousel.hero-banner div.slide-legend > p {
     font-size: 18px;
   }
 
@@ -383,17 +383,17 @@
 }
 
 @media (width >= 1200px) {
-  .biencommun .full-width.carousel-container .carousel.hero-banner div.social-cr-wrapper {
+  .biencommun .full-width.carousel-container .carousel.hero-banner div.social-cr-wrapper, .fondations .full-width.carousel-container .carousel.hero-banner div.social-cr-wrapper {
     bottom: 86px;
     left: 100px;
   }
 
-  .biencommun .full-width.carousel-container .carousel.hero-banner div.slide-legend {
+  .biencommun .full-width.carousel-container .carousel.hero-banner div.slide-legend, .fondations .full-width.carousel-container .carousel.hero-banner div.slide-legend {
     bottom: 100px;
     right: 100px;
   }
 
-  .biencommun .full-width.carousel-container .carousel.hero-banner div.slide-legend > p {
+  .biencommun .full-width.carousel-container .carousel.hero-banner div.slide-legend > p, .fondations .full-width.carousel-container .carousel.hero-banner div.slide-legend > p {
     font-size: 22px;
   }
 }
@@ -421,6 +421,20 @@
   background-color: #edecea !important;
 }
 
+.full-width.carousel-container {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.full-width.carousel-container .carousel-wrapper {
+  width: 100%;
+  position: relative;
+  padding: 0;
+  margin: 0;
+  max-width: 100%;
+}
+
 .biencommun .full-width.carousel-container {
   width: 100%;
   padding: 0;
@@ -438,4 +452,35 @@
   width: 100vw;
   position: relative;
   height: 100vh;
+}
+
+.fondations .full-width.carousel-container .carousel.hero-banner.scrollable {
+  height: 100vh;
+}
+
+.fondations .carousel.carousel-vertical .carousel-slide-indicators {
+  position: fixed;
+}
+
+.fondations .scrollable .carousel-slides-container {
+  display: block;
+  overflow-y: auto;
+  scroll-snap-type: y mandatory;
+  height: 100vh; /* each viewport shows one slide */
+}
+
+.fondations .scrollable .carousel-slides {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.fondations .scrollable .carousel-slide {
+  height: 100vh; /* full viewport per slide */
+  scroll-snap-align: start !important;
+  display: flex !important;
+  flex-direction: column;
+  position: relative !important;
+  transition: unset;
+  opacity: unset !important;
 }
