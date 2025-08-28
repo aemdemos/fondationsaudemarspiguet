@@ -418,11 +418,13 @@ h2 {
   letter-spacing: .08em;
 }
 
-.biencommun h2 {
+.biencommun main .default-content-wrapper h2 {
   color: var(--biencommun-site-color);
 }
 
+
 .fondations h2 {
+.fondations main .default-content-wrapper h2 {
   color: var(--fondations-titre);
 }
 
@@ -687,7 +689,7 @@ main .section.colored-text p{
     padding-bottom: 80px;
   }
 
-main .section.soft-grey-bg.default-colored-text p {
+main .section.default-colored-text p {
   line-height: 1.5;
   letter-spacing: 0.02em;
   font-weight: 400;
@@ -713,7 +715,8 @@ main .section.colored-text b {
   display: inline-block;
 }
 
-.policy-template.biencommun main .default-content-wrapper p a {
+.policy-template.biencommun main .default-content-wrapper p a,
+.policy-template.fondations main .default-content-wrapper p a {
   color: var(--site-color-2-bien);
 }
 
@@ -1010,6 +1013,10 @@ main .section:has(.icons-grid.statistics) .default-content-wrapper {
   color: var(--biencommun-titre); 
 }
 
+.policy-template.fondations  .default-content-wrapper h2 {
+  color: var(--fondations-titre); 
+}
+
 main .section:has(.icons-grid) .default-content-wrapper h2 {
   margin: 0;
 }
@@ -1146,7 +1153,7 @@ main .section:has(.icons-grid.statistics) .columns-wrapper .columns p.button-con
 }
 
 @media (width >= 900px) {
-    main .section.soft-grey-bg.default-colored-text p {
+    main .section.default-colored-text p {
     font-size: 20px;
   }
 }
