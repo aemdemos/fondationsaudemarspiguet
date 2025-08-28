@@ -15,10 +15,19 @@
   
   <!-- Favicons created dynamically with correct URLs for site -->
   <script type="module">
-    import { getFaviconUrls } from '/scripts/scripts.js';
+    import { getFaviconUrls, detectSiteType } from '/scripts/scripts.js';
+    
+    // Debug site detection
+    const detectedSite = detectSiteType();
+    console.log('🔍 404 Favicon Debug:', {
+      hostname: window.location.hostname,
+      pathname: window.location.pathname,
+      detectedSite: detectedSite
+    });
     
     // Get correct favicon URLs immediately - no transition
     const faviconUrls = getFaviconUrls();
+    console.log('🎯 404 Favicon URLs:', faviconUrls);
     
     // Create favicon elements with correct URLs from the start
     const appleIcon = document.createElement('link');
@@ -40,6 +49,8 @@
     favicon16.sizes = '16x16';
     favicon16.href = faviconUrls.favicon16;
     document.head.appendChild(favicon16);
+    
+    console.log('✅ 404 Favicons created for:', detectedSite);
   </script>
 
   <script type="module">
