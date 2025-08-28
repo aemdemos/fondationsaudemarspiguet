@@ -486,39 +486,67 @@ export function setPathSpecificFavicon() {
     if (faviconSet) {
       const { 16: favicon16Src, 32: favicon32Src, apple: appleSrc } = faviconSet;
 
-      // Update all 16x16 favicons (there might be duplicates)
-      const favicon16Elements = document.querySelectorAll('link[rel="icon"][sizes="16x16"]');
-      // eslint-disable-next-line no-console
-      console.log('16x16 favicon elements found:', favicon16Elements.length);
-      favicon16Elements.forEach((favicon16) => {
+      // Check if favicon elements exist, if not create them
+      let favicon16Elements = document.querySelectorAll('link[rel="icon"][sizes="16x16"]');
+      let favicon32Elements = document.querySelectorAll('link[rel="icon"][sizes="32x32"]');
+      let appleIconElements = document.querySelectorAll('link[rel="apple-touch-icon"]');
+
+      // Create 16x16 favicon if not exists
+      if (favicon16Elements.length === 0) {
+        const favicon16 = document.createElement('link');
+        favicon16.rel = 'icon';
+        favicon16.type = 'image/png';
+        favicon16.sizes = '16x16';
         favicon16.href = favicon16Src;
+        document.head.appendChild(favicon16);
         // eslint-disable-next-line no-console
-        console.log('Updated 16x16 favicon to:', favicon16Src);
-      });
+        console.log('🆕 Created 16x16 favicon:', favicon16Src);
+      } else {
+        favicon16Elements.forEach((favicon16) => {
+          favicon16.href = favicon16Src;
+          // eslint-disable-next-line no-console
+          console.log('Updated 16x16 favicon to:', favicon16Src);
+        });
+      }
 
-      // Update all 32x32 favicons (there might be duplicates)
-      const favicon32Elements = document.querySelectorAll('link[rel="icon"][sizes="32x32"]');
-      // eslint-disable-next-line no-console
-      console.log('32x32 favicon elements found:', favicon32Elements.length);
-      favicon32Elements.forEach((favicon32) => {
+      // Create 32x32 favicon if not exists
+      if (favicon32Elements.length === 0) {
+        const favicon32 = document.createElement('link');
+        favicon32.rel = 'icon';
+        favicon32.type = 'image/png';
+        favicon32.sizes = '32x32';
         favicon32.href = favicon32Src;
+        document.head.appendChild(favicon32);
         // eslint-disable-next-line no-console
-        console.log('Updated 32x32 favicon to:', favicon32Src);
-      });
+        console.log('🆕 Created 32x32 favicon:', favicon32Src);
+      } else {
+        favicon32Elements.forEach((favicon32) => {
+          favicon32.href = favicon32Src;
+          // eslint-disable-next-line no-console
+          console.log('Updated 32x32 favicon to:', favicon32Src);
+        });
+      }
 
-      // Update all apple touch icons (there might be duplicates)
-      const appleIconElements = document.querySelectorAll('link[rel="apple-touch-icon"]');
-      // eslint-disable-next-line no-console
-      console.log('Apple icon elements found:', appleIconElements.length);
-      appleIconElements.forEach((appleIcon) => {
+      // Create apple touch icon if not exists
+      if (appleIconElements.length === 0) {
+        const appleIcon = document.createElement('link');
+        appleIcon.rel = 'apple-touch-icon';
+        appleIcon.sizes = '180x180';
         appleIcon.href = appleSrc;
+        document.head.appendChild(appleIcon);
         // eslint-disable-next-line no-console
-        console.log('Updated apple icon to:', appleSrc);
-      });
+        console.log('🆕 Created apple touch icon:', appleSrc);
+      } else {
+        appleIconElements.forEach((appleIcon) => {
+          appleIcon.href = appleSrc;
+          // eslint-disable-next-line no-console
+          console.log('Updated apple icon to:', appleSrc);
+        });
+      }
       
       // Summary log
       // eslint-disable-next-line no-console
-      console.log('✅ Favicons updated for:', detectedSite);
+      console.log('✅ Favicons applied for:', detectedSite);
     }
   }
 
