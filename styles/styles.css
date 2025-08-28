@@ -862,8 +862,7 @@ body.fondations main .section.split-fade h2 {
   margin-top: 100px;
 }
 
-body.fondations main .section.split-fade p:not(:has(img)),
-body.fondations main .section.split-fade ul {
+body.fondations main .section.split-fade p:not(:has(img)) {
   float: right;
   width: calc((((100% - (12 * 30px)) / 12) * 9) + (8 * 30px));
   line-height: 1.5em;
@@ -872,11 +871,41 @@ body.fondations main .section.split-fade ul {
   font-weight: 300;
 }
 
+body.fondations main .section.split-fade ul {
+  float: right;
+  width: calc((((100% - (12 * 30px)) / 12) * 9) + (8 * 30px));
+  line-height: 1.5em;
+  letter-spacing: .02em;
+  font-size: 20px;
+  font-weight: 300;
+  padding-bottom: 80px;
+}
+
+body.fondations main .section.split-fade ul li {
+  list-style: none;
+  padding-left: 120px;
+  position: relative;
+  margin-bottom: 12px;
+}
+
+body.fondations main .section.split-fade ul li::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  background-color: #947F5F;
+  font-size: 20px;
+  line-height: 20px;
+  position: absolute;
+  top: 10px;
+  left: 100px;
+  border-radius: 500px;
+}
+
 body.fondations main .section.split-fade p:has(+ p img) {
   padding-bottom: 60px;
 }
 
-body.fondations main .section.split-fade p:has(img) {
+body.fondations main .section.split-fade:not(.full-width-image) p:not(:has(+ ul)):last-of-type {
   padding-bottom: 100px;
 }
 
@@ -889,6 +918,27 @@ body.fondations main .section.split-fade::after {
 
 body.fondations main .section.light-grey-orange {
   background-color: var(--fondations-quote-bg);
+}
+
+body.fondations main .section.light-grey-orange.split-fade {
+  padding-bottom: 0;
+  margin-bottom: 0;
+}
+
+body.fondations main .section.full-width-image {
+  padding: 0;
+  margin: 0;
+}
+
+body.fondations main .section.full-width-image p {
+  padding: 0;
+  margin: 0;
+}
+
+body.fondations main .section.full-width-image .default-content-wrapper {
+  padding: 0;
+  margin: 0;
+  max-width: unset;
 }
 
 @media (width>=900px) {
