@@ -19,12 +19,14 @@
   <link rel="icon" href="/styles/favicon-16x16.png" type="image/png" sizes="16x16" id="favicon-16">
   
   <script>
-    // Update favicon hrefs immediately based on domain
+    // Update favicon hrefs based on domain - wait for DOM
     (function() {
       const hostname = window.location.hostname.toLowerCase();
       const pathname = window.location.pathname.toLowerCase();
       
       let siteType = 'fondations'; // default
+      
+      console.log('🔍 404 Favicon: Detecting domain...', { hostname, pathname });
       
       // Handle localhost development
       if (hostname.includes('localhost')) {
@@ -37,25 +39,54 @@
         siteType = 'fondations';
       }
       
-      // Update favicon hrefs if not fondations (since that's the default)
-      if (siteType !== 'fondations') {
+      console.log('🎯 404 Favicon: Detected site type:', siteType);
+      
+      // Function to update favicons
+      function updateFavicons() {
         const appleIcon = document.getElementById('apple-icon');
         const favicon32 = document.getElementById('favicon-32');
         const favicon16 = document.getElementById('favicon-16');
         
-        if (siteType === 'biencommun') {
-          appleIcon.href = '/styles/biencommun-apple-touch-icon.png';
-          favicon32.href = '/styles/biencommun-favicon-32x32.png';
-          favicon16.href = '/styles/biencommun-favicon-16x16.png';
-        } else if (siteType === 'arbres') {
-          appleIcon.href = '/styles/arbres-apple-touch-icon.png';
-          favicon32.href = '/styles/arbres-favicon-32x32.png';
-          favicon16.href = '/styles/arbres-favicon-16x16.png';
+        console.log('🔗 404 Favicon: Found elements:', { 
+          appleIcon: !!appleIcon, 
+          favicon32: !!favicon32, 
+          favicon16: !!favicon16 
+        });
+        
+        if (!appleIcon || !favicon32 || !favicon16) {
+          console.error('❌ 404 Favicon: Could not find favicon elements!');
+          return;
         }
         
-        console.log('404 Favicon: Updated to', siteType);
+        // Update favicon hrefs if not fondations (since that's the default)
+        if (siteType !== 'fondations') {
+          if (siteType === 'biencommun') {
+            appleIcon.href = '/styles/biencommun-apple-touch-icon.png';
+            favicon32.href = '/styles/biencommun-favicon-32x32.png';
+            favicon16.href = '/styles/biencommun-favicon-16x16.png';
+          } else if (siteType === 'arbres') {
+            appleIcon.href = '/styles/arbres-apple-touch-icon.png';
+            favicon32.href = '/styles/arbres-favicon-32x32.png';
+            favicon16.href = '/styles/arbres-favicon-16x16.png';
+          }
+          
+          console.log('✅ 404 Favicon: Updated to', siteType, {
+            apple: appleIcon.href,
+            favicon32: favicon32.href,
+            favicon16: favicon16.href
+          });
+        } else {
+          console.log('✅ 404 Favicon: Using default fondations');
+        }
+      }
+      
+      // Try to update immediately, or wait for DOM
+      if (document.getElementById('apple-icon')) {
+        updateFavicons();
       } else {
-        console.log('404 Favicon: Using default fondations');
+        document.addEventListener('DOMContentLoaded', updateFavicons);
+        // Fallback with timeout
+        setTimeout(updateFavicons, 100);
       }
     })();
   </script>
