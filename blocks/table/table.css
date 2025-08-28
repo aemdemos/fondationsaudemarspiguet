@@ -293,15 +293,15 @@ main .table-container .table-wrapper .table.no-border.block {
 
 .biencommun .report.table-container table td:nth-child(2) p,
 .biencommun .report.table-container table th:nth-child(2) p {
-  color: var(--site-color-bien) !important;
+  color: var(--site-color-bien);
 }
 
 .biencommun .report.table-container table td:nth-child(3) a {
-  color: var(--site-color-bien) !important;
+  color: var(--site-color-bien);
 }
 
 .biencommun .report.table-container table td:nth-child(3) a svg {
-  fill: var(--site-color-bien) !important;
+  fill: var(--site-color-bien);
 }
 
 
@@ -309,13 +309,13 @@ main .table-container .table-wrapper .table.no-border.block {
 
 .fondations .report.table-container table td:nth-child(2) p,
 .fondations .report.table-container table th:nth-child(2) p {
-  color: var(--fondations-site-color) !important;
+  color: var(--fondations-site-color) ;
 }
 
 .fondations .report.table-container table td:nth-child(3) a {
-  color: var(--site-color-bien) !important;
+  color: var(--site-color-bien) ;
 }
 
 .fondations .report.table-container table td:nth-child(3) a svg {
-  fill: var(--site-color-bien) !important;
+  fill: var(--site-color-bien);
 }
