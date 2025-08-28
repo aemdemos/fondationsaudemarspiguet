@@ -74,13 +74,11 @@
     const body = document.body;
 
     const siteClass = hostname.includes('biencommun') || path.includes('--biencommun-fondationsaudemarspiguet--') ? 'biencommun' :
-                     hostname === 'fondationsaudemarspiguet.org' || path.includes('--fondationsaudemarspiguet--') || hostname.includes('localhost') ? 'fondations' : '';
+                     hostname.includes('fondationsaudemarspiguet.org') || path.includes('--fondationsaudemarspiguet--') || hostname.includes('localhost') ? 'fondations' : '';
 
     if (siteClass) body.classList.add(siteClass);
 
     load404();
-
-    console.log('404 Script v3 - Hostname:', hostname, 'Path:', path, 'Final body classes:', body.className);
   </script>
 </body>
 
