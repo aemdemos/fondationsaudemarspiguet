@@ -11,7 +11,7 @@ export function applyFadeUpAnimation(targetElement, parentContainer) {
   // Create a wrapper div for the fade-up effect
   const targetWrapper = div({ class: 'image-fade-wrapper' });
   targetWrapper.style.opacity = '0';
-  targetWrapper.style.transform = 'translateY(120px)';
+  targetWrapper.style.transform = 'translateY(80px)';
   targetWrapper.style.transition = 'opacity 1.5s ease-out, transform 1.5s ease-out';
   if (isBanner) {
     targetWrapper.classList.add('horizontal-banner');
@@ -34,7 +34,7 @@ export function applyFadeUpAnimation(targetElement, parentContainer) {
       } else if (!scrollingDown) {
         // Only reset animation when scrolling up and element goes out of view
         entry.target.style.opacity = '0';
-        entry.target.style.transform = 'translateY(120px)';
+        entry.target.style.transform = 'translateY(80px)';
       }
 
       lastScrollY = currentScrollY;
