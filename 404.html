@@ -67,22 +67,21 @@
   
   <script type="module">
     import { load404 } from '/scripts/scripts.js';
+
+    // Add site-specific body classes BEFORE other scripts
+    const hostname = window.location.hostname.toLowerCase();
+    const path = window.location.pathname.toLowerCase();
+    const body = document.body;
+
+    const siteClass = hostname.includes('biencommun') || path.includes('--biencommun-fondationsaudemarspiguet--') ? 'biencommun' :
+                     hostname === 'fondationsaudemarspiguet.org' || path.includes('--fondationsaudemarspiguet--') || hostname.includes('localhost') ? 'fondations' : '';
+
+    if (siteClass) body.classList.add(siteClass);
+
     load404();
+
+    console.log('404 Script v3 - Hostname:', hostname, 'Path:', path, 'Final body classes:', body.className);
   </script>
-
-      <script>
-      // Add site-specific body classes based on hostname and path
-      (function() {
-        const hostname = window.location.hostname.toLowerCase();
-        const path = window.location.pathname.toLowerCase();
-        const body = document.body;
-
-        const siteClass = hostname.includes('biencommun') || path.includes('--biencommun-fondationsaudemarspiguet--') ? 'biencommun' :
-                         hostname === 'fondationsaudemarspiguet.org' || path.includes('--fondationsaudemarspiguet--') || hostname.includes('localhost') ? 'fondations' : '';
-
-        if (siteClass) body.classList.add(siteClass);
-      })();
-    </script>
 </body>
 
 </html>
