@@ -44,6 +44,7 @@ export function applyFadeUpAnimation(targetElement, parentContainer) {
   observer.observe(targetWrapper);
 }
 
+// Apply fade-up animation to split-fade sections on fondations site
 function applyFadeUpAnimationSplitFade() {
   const splitFadeSections = document.querySelectorAll('.section.split-fade');
   splitFadeSections.forEach((section) => {
