@@ -280,6 +280,9 @@
 
   /* FONDATIONS QUOTE */
   --fondations-quote-bg: #edecea;
+
+  /* FONDATIONS NEWS */
+  --fondations-hero-bg: #9AA198;
 }
 
 /* fallback fonts */

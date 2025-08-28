@@ -11,6 +11,14 @@
   background-color: #d8d7d0;
 }
 
+body.fondations .quote blockquote {
+  margin-top: 0;
+}
+
+body.fondations .section.quote-container {
+  margin-top: 0;
+}
+
 .quote-quotation {
   text-align: center;
   margin-left: auto;

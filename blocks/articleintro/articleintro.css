@@ -15,8 +15,7 @@
 .articleintro.block .news-block-header {
     padding: 0;
     margin: 0;
-    height: auto;
-    height: 600px;
+    height: 350px;
 }
 
 .articleintro.block .news-block-header .page-hero-image {
@@ -24,6 +23,10 @@
   float: left;
   height: 100%;
   position: relative;
+}
+
+body.fondations .articleintro.block .news-block-header .page-hero-image {
+    width: 50%;
 }
 
 .articleintro.block .news-block-header .page-hero-image-seconde img {
@@ -47,11 +50,19 @@
     display: block;
     max-width: 640px;
     width: calc(100% - 80px);
-    height: 400px;
+    height: 200px;
     position: absolute;
     right: 0;
     top: 50%;
     transform: translateY(-50%);
+}
+
+body.fondations .articleintro.block .news-block-header .page-hero-image {
+    background-color: var(--fondations-hero-bg);
+}
+
+body.fondations .articleintro.block .news-block-header .page-hero-image:last-of-type .page-hero-image-middle {
+    left: 0;
 }
 
 .articleintro.block .news-block-header .page-hero-image .page-hero-image-middle img {
@@ -120,6 +131,14 @@ body.biencommun .articleintro.block .news-block-header .news-detail-big-header .
 }
 
 @media (width >= 600px) {
+    .articleintro.block .news-block-header {
+        height: 600px;
+    }
+
+    .articleintro.block .news-block-header .page-hero-image .page-hero-image-middle {
+        height: 400px;
+    }
+
     .articleintro.block .news-block-header .page-hero-image {
         width: 50%;
     }
