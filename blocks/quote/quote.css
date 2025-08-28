@@ -35,7 +35,7 @@
 }
 
 body.fondations .quote .quote-quotation > p:first-child {
-  font-size: 48px;
+  font-size: 24px;
   line-height: 1.5em;
   padding-bottom: 20px;
   letter-spacing: .02em;
@@ -97,6 +97,10 @@ body.fondations .quote blockquote {
     padding: 100px 80px;
     align-items: center;
     justify-content: center;
+  }
+
+  body.fondations .quote .quote-quotation > p:first-child {
+    font-size: 48px;
   }
 }
 
