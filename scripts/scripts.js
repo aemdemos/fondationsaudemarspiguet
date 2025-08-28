@@ -377,7 +377,12 @@ export function detectSiteType() {
   const hostname = window.location.hostname.toLowerCase();
   const pathname = window.location.pathname.toLowerCase();
 
-  // Site detection patterns
+  // Handle localhost development - always use fondations default
+  if (hostname.includes('localhost')) {
+    return 'fondations';
+  }
+
+  // Site detection patterns for production/preview
   const sitePatterns = {
     biencommun: {
       hostname: ['biencommun.', '--biencommun-'],
@@ -421,8 +426,6 @@ export function applySiteClass(siteType = null) {
  * Sets domain-specific favicon and CSS classes based on current URL
  */
 function setPathSpecificFavicon() {
-  const { hostname } = window.location;
-
   // Define domain-specific favicon mappings
   const faviconMappings = {
     biencommun: {
@@ -435,26 +438,22 @@ function setPathSpecificFavicon() {
       32: '/styles/arbres-favicon-32x32.png',
       apple: '/styles/arbres-apple-touch-icon.png',
     },
-    // Add more domain mappings as needed
+    fondations: {
+      16: '/styles/favicon-16x16.png',
+      32: '/styles/favicon-32x32.png',
+      apple: '/styles/apple-touch-icon.png',
+    },
   };
 
-  // Default favicon mapping for domains that don't match specific rules
-  const defaultFaviconSet = {
-    16: '/styles/favicon-16x16.png',
-    32: '/styles/favicon-32x32.png',
-    apple: '/styles/apple-touch-icon.png',
-  };
-
-  // Check if current domain matches any special favicon rules
-  const domainKeys = Object.keys(faviconMappings);
-  const matchedDomain = domainKeys.find((domainKey) => hostname.includes(domainKey));
-  const faviconSet = matchedDomain ? faviconMappings[matchedDomain] : defaultFaviconSet;
+  // Use the centralized site detection function
+  const detectedSite = detectSiteType();
+  const faviconSet = faviconMappings[detectedSite];
 
   // Debug logging
   // eslint-disable-next-line no-console
   console.log('Favicon Debug:', {
-    hostname,
-    matchedDomain,
+    hostname: window.location.hostname,
+    detectedSite,
     faviconSet,
   });
 
