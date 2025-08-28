@@ -370,6 +370,54 @@ export async function loadAllPlaceholders() {
 }
 
 /**
+ * Detects the current site type based on hostname and pathname
+ * @returns {string} The detected site type: 'biencommun', 'arbres', or 'fondations'
+ */
+export function detectSiteType() {
+  const hostname = window.location.hostname.toLowerCase();
+  const pathname = window.location.pathname.toLowerCase();
+
+  // Site detection patterns
+  const sitePatterns = {
+    biencommun: {
+      hostname: ['biencommun.', '--biencommun-'],
+      pathname: ['--biencommun-fondationsaudemarspiguet--'],
+    },
+    arbres: {
+      hostname: ['arbres.', '--arbres-'],
+      pathname: ['--arbres-fondationsaudemarspiguet--'],
+    },
+    fondations: {
+      hostname: ['fondations.', '--fondations'],
+      pathname: ['--fondationsaudemarspiguet--'],
+    },
+  };
+
+  // Check each site type using array methods instead of for...of
+  const siteTypes = Object.keys(sitePatterns);
+  const matchedSiteType = siteTypes.find((siteType) => {
+    const patterns = sitePatterns[siteType];
+    const hostnameMatch = patterns.hostname.some((pattern) => hostname.includes(pattern));
+    const pathnameMatch = patterns.pathname.some((pattern) => pathname.includes(pattern));
+
+    return hostnameMatch || pathnameMatch;
+  });
+
+  return matchedSiteType || 'fondations'; // default fallback
+}
+
+/**
+ * Applies the detected site class to the document body
+ * @param {string} siteType - Optional site type override
+ * @returns {string} The applied site class
+ */
+export function applySiteClass(siteType = null) {
+  const detectedSite = siteType || detectSiteType();
+  document.body.classList.add(detectedSite);
+  return detectedSite;
+}
+
+/**
  * Sets domain-specific favicon and CSS classes based on current URL
  */
 function setPathSpecificFavicon() {
