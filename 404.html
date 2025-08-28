@@ -72,9 +72,9 @@
     const path = window.location.pathname.toLowerCase();
     const body = document.body;
 
-    // Check forbiencommun, arbres, or fondations
-    const siteClass = hostname.startsWith('biencommun.') || path.includes('--biencommun-fondationsaudemarspiguet--') ? 'biencommun' :
-                     hostname.startsWith('arbres.') || path.includes('--arbres-fondationsaudemarspiguet--') ? 'arbres' : 'fondations';
+         // Check for biencommun, arbres, or fondations (both production domains and preview URLs)
+     const siteClass = hostname.startsWith('biencommun.') || hostname.includes('--biencommun-') || path.includes('--biencommun-fondationsaudemarspiguet--') ? 'biencommun' :
+                      hostname.startsWith('arbres.') || hostname.includes('--arbres-') || path.includes('--arbres-fondationsaudemarspiguet--') ? 'arbres' : 'fondations';
 
     if (siteClass) body.classList.add(siteClass);
     load404();
