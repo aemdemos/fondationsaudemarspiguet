@@ -66,10 +66,11 @@
   <footer></footer>
   
   <script type="module">
-    import { load404, applySiteClass } from '/scripts/scripts.js';
+    import { load404, applySiteClass, setPathSpecificFavicon } from '/scripts/scripts.js';
 
-    // Apply the appropriate site class based on URL
+    // Apply the appropriate site class and favicon based on URL
     applySiteClass();
+    setPathSpecificFavicon();
     load404();
   </script>
 </body>

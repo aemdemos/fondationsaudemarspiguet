@@ -425,7 +425,7 @@ export function applySiteClass(siteType = null) {
 /**
  * Sets domain-specific favicon and CSS classes based on current URL
  */
-function setPathSpecificFavicon() {
+export function setPathSpecificFavicon() {
   // Define domain-specific favicon mappings
   const faviconMappings = {
     biencommun: {
