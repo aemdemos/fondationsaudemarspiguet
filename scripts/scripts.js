@@ -455,51 +455,24 @@ export function getFaviconUrls(siteType = null) {
  * Sets domain-specific favicon and CSS classes based on current URL
  */
 export function setPathSpecificFavicon() {
-  // Define domain-specific favicon mappings
-  const faviconMappings = {
-    biencommun: {
-      16: '/styles/biencommun-favicon-16x16.png',
-      32: '/styles/biencommun-favicon-32x32.png',
-      apple: '/styles/biencommun-apple-touch-icon.png',
-    },
-    arbres: {
-      16: '/styles/arbres-favicon-16x16.png',
-      32: '/styles/arbres-favicon-32x32.png',
-      apple: '/styles/arbres-apple-touch-icon.png',
-    },
-    fondations: {
-      16: '/styles/favicon-16x16.png',
-      32: '/styles/favicon-32x32.png',
-      apple: '/styles/apple-touch-icon.png',
-    },
-  };
-
-  // Use the centralized site detection function
   const detectedSite = detectSiteType();
-  const faviconSet = faviconMappings[detectedSite];
+  const faviconUrls = getFaviconUrls(detectedSite);
 
-  // If we found a matching domain, update the favicons
-  if (faviconSet) {
-    const { 16: favicon16Src, 32: favicon32Src, apple: appleSrc } = faviconSet;
+  // Update existing favicon elements only (for regular pages with head.html)
+  const favicon16Elements = document.querySelectorAll('link[rel="icon"][sizes="16x16"]');
+  favicon16Elements.forEach((favicon16) => {
+    favicon16.href = faviconUrls.favicon16;
+  });
 
-    // Update all 16x16 favicons (there might be duplicates)
-    const favicon16Elements = document.querySelectorAll('link[rel="icon"][sizes="16x16"]');
-    favicon16Elements.forEach((favicon16) => {
-      favicon16.href = favicon16Src;
-    });
+  const favicon32Elements = document.querySelectorAll('link[rel="icon"][sizes="32x32"]');
+  favicon32Elements.forEach((favicon32) => {
+    favicon32.href = faviconUrls.favicon32;
+  });
 
-    // Update all 32x32 favicons (there might be duplicates)
-    const favicon32Elements = document.querySelectorAll('link[rel="icon"][sizes="32x32"]');
-    favicon32Elements.forEach((favicon32) => {
-      favicon32.href = favicon32Src;
-    });
-
-    // Update all apple touch icons (there might be duplicates)
-    const appleIconElements = document.querySelectorAll('link[rel="apple-touch-icon"]');
-    appleIconElements.forEach((appleIcon) => {
-      appleIcon.href = appleSrc;
-    });
-  }
+  const appleIconElements = document.querySelectorAll('link[rel="apple-touch-icon"]');
+  appleIconElements.forEach((appleIcon) => {
+    appleIcon.href = faviconUrls.apple;
+  });
 }
 
 /**
