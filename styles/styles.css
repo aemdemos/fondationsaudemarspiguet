@@ -979,13 +979,6 @@ body.fondations main .section.full-width-image .default-content-wrapper {
   body.fondations main .section.split-fade p:not(:has(img)) {
     float: right;
     width: calc((((100% - (12 * 30px)) / 12) * 9) + (8 * 30px));
-  }
-
-  body.fondations main .section.split-fade p:not(:has(img)) {
-    font-size: 20px;
-  }
-
-  body.fondations main .section.split-fade ul {
     font-size: 20px;
   }
 
@@ -1016,6 +1009,7 @@ body.fondations main .section.full-width-image .default-content-wrapper {
 
   body.fondations main .section.split-fade ul {
     float: right;
+    font-size: 20px;
     width: calc((((100% - (12 * 30px)) / 12) * 9) + (8 * 30px));
   }
 

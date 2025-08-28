@@ -27,6 +27,7 @@
 
 body.fondations .articleintro.block .news-block-header .page-hero-image {
     width: 50%;
+    background-color: var(--fondations-hero-bg);
 }
 
 .articleintro.block .news-block-header .page-hero-image-seconde img {
@@ -55,10 +56,6 @@ body.fondations .articleintro.block .news-block-header .page-hero-image {
     right: 0;
     top: 50%;
     transform: translateY(-50%);
-}
-
-body.fondations .articleintro.block .news-block-header .page-hero-image {
-    background-color: var(--fondations-hero-bg);
 }
 
 body.fondations .articleintro.block .news-block-header .page-hero-image:last-of-type .page-hero-image-middle {
