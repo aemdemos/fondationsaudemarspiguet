@@ -423,144 +423,82 @@ export function applySiteClass(siteType = null) {
 }
 
 /**
+ * Gets favicon URLs for a specific site type
+ * @param {string} siteType - The site type (biencommun, arbres, fondations)
+ * @returns {object} Object with favicon URLs
+ */
+export function getFaviconUrls(siteType = null) {
+  const detectedSite = siteType || detectSiteType();
+  
+  const faviconMappings = {
+    biencommun: {
+      apple: '/styles/biencommun-apple-touch-icon.png',
+      favicon32: '/styles/biencommun-favicon-32x32.png',
+      favicon16: '/styles/biencommun-favicon-16x16.png',
+    },
+    arbres: {
+      apple: '/styles/arbres-apple-touch-icon.png',
+      favicon32: '/styles/arbres-favicon-32x32.png',
+      favicon16: '/styles/arbres-favicon-16x16.png',
+    },
+    fondations: {
+      apple: '/styles/apple-touch-icon.png',
+      favicon32: '/styles/favicon-32x32.png',
+      favicon16: '/styles/favicon-16x16.png',
+    },
+  };
+
+  return faviconMappings[detectedSite] || faviconMappings.fondations;
+}
+
+/**
  * Sets domain-specific favicon and CSS classes based on current URL
  */
 export function setPathSpecificFavicon() {
-  function updateFavicons() {
-    // Define domain-specific favicon mappings
-    const faviconMappings = {
-      biencommun: {
-        16: '/styles/biencommun-favicon-16x16.png',
-        32: '/styles/biencommun-favicon-32x32.png',
-        apple: '/styles/biencommun-apple-touch-icon.png',
-      },
-      arbres: {
-        16: '/styles/arbres-favicon-16x16.png',
-        32: '/styles/arbres-favicon-32x32.png',
-        apple: '/styles/arbres-apple-touch-icon.png',
-      },
-      fondations: {
-        16: '/styles/favicon-16x16.png',
-        32: '/styles/favicon-32x32.png',
-        apple: '/styles/apple-touch-icon.png',
-      },
-    };
+  // Define domain-specific favicon mappings
+  const faviconMappings = {
+    biencommun: {
+      16: '/styles/biencommun-favicon-16x16.png',
+      32: '/styles/biencommun-favicon-32x32.png',
+      apple: '/styles/biencommun-apple-touch-icon.png',
+    },
+    arbres: {
+      16: '/styles/arbres-favicon-16x16.png',
+      32: '/styles/arbres-favicon-32x32.png',
+      apple: '/styles/arbres-apple-touch-icon.png',
+    },
+    fondations: {
+      16: '/styles/favicon-16x16.png',
+      32: '/styles/favicon-32x32.png',
+      apple: '/styles/apple-touch-icon.png',
+    },
+  };
 
-    // Use the centralized site detection function
-    const detectedSite = detectSiteType();
-    const faviconSet = faviconMappings[detectedSite];
+  // Use the centralized site detection function
+  const detectedSite = detectSiteType();
+  const faviconSet = faviconMappings[detectedSite];
 
-    // Debug logging
-    // eslint-disable-next-line no-console
-    console.log('🔍 Favicon Debug:', {
-      hostname: window.location.hostname,
-      detectedSite,
-      faviconSet,
+  // If we found a matching domain, update the favicons
+  if (faviconSet) {
+    const { 16: favicon16Src, 32: favicon32Src, apple: appleSrc } = faviconSet;
+
+    // Update all 16x16 favicons (there might be duplicates)
+    const favicon16Elements = document.querySelectorAll('link[rel="icon"][sizes="16x16"]');
+    favicon16Elements.forEach((favicon16) => {
+      favicon16.href = favicon16Src;
     });
 
-    // Additional debugging - what's actually in the DOM?
-    const allFaviconElements = document.querySelectorAll('link[rel*="icon"]');
-    const allElements = document.querySelectorAll('link');
-    // eslint-disable-next-line no-console
-    console.log('🔍 DOM Debug:', {
-      'allFaviconElements': allFaviconElements.length,
-      'allLinkElements': allElements.length,
-      'documentReadyState': document.readyState,
-      'hasAppleIcon': !!document.getElementById('apple-icon'),
-      'hasFavicon32': !!document.getElementById('favicon-32'),
-      'hasFavicon16': !!document.getElementById('favicon-16')
-    });
-    
-    // Log first few link elements to see what we have
-    Array.from(allElements).slice(0, 5).forEach((link, index) => {
-      // eslint-disable-next-line no-console
-      console.log(`Link ${index}:`, {
-        rel: link.rel,
-        href: link.href,
-        sizes: link.sizes?.value,
-        id: link.id
-      });
+    // Update all 32x32 favicons (there might be duplicates)
+    const favicon32Elements = document.querySelectorAll('link[rel="icon"][sizes="32x32"]');
+    favicon32Elements.forEach((favicon32) => {
+      favicon32.href = favicon32Src;
     });
 
-    // If we found a matching domain, update the favicons
-    if (faviconSet) {
-      const { 16: favicon16Src, 32: favicon32Src, apple: appleSrc } = faviconSet;
-
-      // Check if favicon elements exist, if not create them
-      let favicon16Elements = document.querySelectorAll('link[rel="icon"][sizes="16x16"]');
-      let favicon32Elements = document.querySelectorAll('link[rel="icon"][sizes="32x32"]');
-      let appleIconElements = document.querySelectorAll('link[rel="apple-touch-icon"]');
-
-      // Create 16x16 favicon if not exists
-      if (favicon16Elements.length === 0) {
-        const favicon16 = document.createElement('link');
-        favicon16.rel = 'icon';
-        favicon16.type = 'image/png';
-        favicon16.sizes = '16x16';
-        favicon16.href = favicon16Src;
-        document.head.appendChild(favicon16);
-        // eslint-disable-next-line no-console
-        console.log('🆕 Created 16x16 favicon:', favicon16Src);
-      } else {
-        favicon16Elements.forEach((favicon16) => {
-          favicon16.href = favicon16Src;
-          // eslint-disable-next-line no-console
-          console.log('Updated 16x16 favicon to:', favicon16Src);
-        });
-      }
-
-      // Create 32x32 favicon if not exists
-      if (favicon32Elements.length === 0) {
-        const favicon32 = document.createElement('link');
-        favicon32.rel = 'icon';
-        favicon32.type = 'image/png';
-        favicon32.sizes = '32x32';
-        favicon32.href = favicon32Src;
-        document.head.appendChild(favicon32);
-        // eslint-disable-next-line no-console
-        console.log('🆕 Created 32x32 favicon:', favicon32Src);
-      } else {
-        favicon32Elements.forEach((favicon32) => {
-          favicon32.href = favicon32Src;
-          // eslint-disable-next-line no-console
-          console.log('Updated 32x32 favicon to:', favicon32Src);
-        });
-      }
-
-      // Create apple touch icon if not exists
-      if (appleIconElements.length === 0) {
-        const appleIcon = document.createElement('link');
-        appleIcon.rel = 'apple-touch-icon';
-        appleIcon.sizes = '180x180';
-        appleIcon.href = appleSrc;
-        document.head.appendChild(appleIcon);
-        // eslint-disable-next-line no-console
-        console.log('🆕 Created apple touch icon:', appleSrc);
-      } else {
-        appleIconElements.forEach((appleIcon) => {
-          appleIcon.href = appleSrc;
-          // eslint-disable-next-line no-console
-          console.log('Updated apple icon to:', appleSrc);
-        });
-      }
-      
-      // Summary log
-      // eslint-disable-next-line no-console
-      console.log('✅ Favicons applied for:', detectedSite);
-    }
-  }
-
-  // Try to update immediately, or wait for DOM
-  if (document.querySelector('link[rel="icon"]')) {
-    updateFavicons();
-  } else {
-    // Wait for DOM to be ready
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', updateFavicons);
-    } else {
-      // DOM is already ready, try with a small delay
-      setTimeout(updateFavicons, 50);
-    }
+    // Update all apple touch icons (there might be duplicates)
+    const appleIconElements = document.querySelectorAll('link[rel="apple-touch-icon"]');
+    appleIconElements.forEach((appleIcon) => {
+      appleIcon.href = appleSrc;
+    });
   }
 }
 
@@ -577,8 +515,10 @@ async function loadEager(doc) {
   const templateName = getMetadata('template');
   decorateTemplateAndTheme();
 
-  // Set path-specific favicon and site class early in the load process for all pages
-  setPathSpecificFavicon();
+  // Set path-specific favicon for regular pages only (404 handles its own)
+  if (!window.isErrorPage) {
+    setPathSpecificFavicon();
+  }
   applySiteClass();
 
   const main = doc.querySelector('main');

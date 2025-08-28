@@ -13,84 +13,33 @@
   <script src="/scripts/scripts.js" type="module"></script>
   <link rel="stylesheet" href="/styles/styles.css"/>
   
-  <!-- Static favicon links - updated by script below -->
-  <link rel="apple-touch-icon" href="/styles/apple-touch-icon.png" sizes="180x180" id="apple-icon">
-  <link rel="icon" href="/styles/favicon-32x32.png" type="image/png" sizes="32x32" id="favicon-32">
-  <link rel="icon" href="/styles/favicon-16x16.png" type="image/png" sizes="16x16" id="favicon-16">
-  
-  <script>
-    // Update favicon hrefs based on domain - wait for DOM
-    (function() {
-      const hostname = window.location.hostname.toLowerCase();
-      const pathname = window.location.pathname.toLowerCase();
-      
-      let siteType = 'fondations'; // default
-      
-      console.log('🔍 404 Favicon Debug:', { hostname, pathname });
-      
-      // Handle localhost development
-      if (hostname.includes('localhost')) {
-        siteType = 'fondations';
-      } else if (hostname.includes('biencommun') || pathname.includes('--biencommun-')) {
-        siteType = 'biencommun';
-      } else if (hostname.includes('arbres') || pathname.includes('--arbres-')) {
-        siteType = 'arbres';
-      } else if (hostname.includes('fondations') || pathname.includes('--fondations')) {
-        siteType = 'fondations';
-      }
-      
-      console.log('🎯 404 Favicon: Detected site type:', siteType);
-      
-      // Function to update favicons
-      function updateFavicons() {
-        const appleIcon = document.getElementById('apple-icon');
-        const favicon32 = document.getElementById('favicon-32');
-        const favicon16 = document.getElementById('favicon-16');
-        
-        console.log('🔗 404 Favicon: Elements found:', { 
-          appleIcon: !!appleIcon, 
-          favicon32: !!favicon32, 
-          favicon16: !!favicon16 
-        });
-        
-        if (!appleIcon || !favicon32 || !favicon16) {
-          console.warn('❌ 404 Favicon: Could not find favicon elements');
-          return;
-        }
-        
-        // Update favicon hrefs if not fondations (since that's the default)
-        if (siteType !== 'fondations') {
-          console.log('🔄 404 Favicon: Updating to', siteType);
-          
-          if (siteType === 'biencommun') {
-            appleIcon.href = '/styles/biencommun-apple-touch-icon.png';
-            favicon32.href = '/styles/biencommun-favicon-32x32.png';
-            favicon16.href = '/styles/biencommun-favicon-16x16.png';
-          } else if (siteType === 'arbres') {
-            appleIcon.href = '/styles/arbres-apple-touch-icon.png';
-            favicon32.href = '/styles/arbres-favicon-32x32.png';
-            favicon16.href = '/styles/arbres-favicon-16x16.png';
-          }
-          
-          console.log('✅ 404 Favicon: Updated hrefs to:', {
-            apple: appleIcon.href,
-            favicon32: favicon32.href,
-            favicon16: favicon16.href
-          });
-        } else {
-          console.log('ℹ️ 404 Favicon: Using default fondations favicons');
-        }
-      }
-      
-      // Try to update immediately, or wait for DOM
-      if (document.getElementById('apple-icon')) {
-        updateFavicons();
-      } else {
-        document.addEventListener('DOMContentLoaded', updateFavicons);
-        // Fallback with timeout
-        setTimeout(updateFavicons, 100);
-      }
-    })();
+  <!-- Favicons created dynamically with correct URLs for site -->
+  <script type="module">
+    import { getFaviconUrls } from '/scripts/scripts.js';
+    
+    // Get correct favicon URLs immediately - no transition
+    const faviconUrls = getFaviconUrls();
+    
+    // Create favicon elements with correct URLs from the start
+    const appleIcon = document.createElement('link');
+    appleIcon.rel = 'apple-touch-icon';
+    appleIcon.sizes = '180x180';
+    appleIcon.href = faviconUrls.apple;
+    document.head.appendChild(appleIcon);
+    
+    const favicon32 = document.createElement('link');
+    favicon32.rel = 'icon';
+    favicon32.type = 'image/png';
+    favicon32.sizes = '32x32';
+    favicon32.href = faviconUrls.favicon32;
+    document.head.appendChild(favicon32);
+    
+    const favicon16 = document.createElement('link');
+    favicon16.rel = 'icon';
+    favicon16.type = 'image/png';
+    favicon16.sizes = '16x16';
+    favicon16.href = faviconUrls.favicon16;
+    document.head.appendChild(favicon16);
   </script>
 
   <script type="module">
@@ -145,41 +94,11 @@
   </main>
   <footer></footer>
   
-  <script>
-    // Simple site class application - runs immediately without module loading
-    (function() {
-      const hostname = window.location.hostname.toLowerCase();
-      const pathname = window.location.pathname.toLowerCase();
-      
-      let siteClass = 'fondations'; // default
-      
-      // Detect site type (same logic as favicon)
-      if (hostname.includes('localhost')) {
-        siteClass = 'fondations';
-      } else if (hostname.includes('biencommun') || pathname.includes('--biencommun-')) {
-        siteClass = 'biencommun';
-      } else if (hostname.includes('arbres') || pathname.includes('--arbres-')) {
-        siteClass = 'arbres';
-      } else if (hostname.includes('fondations') || pathname.includes('--fondations')) {
-        siteClass = 'fondations';
-      }
-      
-      // Apply site class to body when DOM is ready
-      if (document.body) {
-        document.body.classList.add(siteClass);
-        console.log('404 Site Class:', siteClass);
-      } else {
-        document.addEventListener('DOMContentLoaded', function() {
-          document.body.classList.add(siteClass);
-          console.log('404 Site Class:', siteClass);
-        });
-      }
-    })();
-  </script>
-  
   <script type="module">
-    // Only load 404 text functionality
-    import { load404 } from '/scripts/scripts.js';
+    import { load404, applySiteClass } from '/scripts/scripts.js';
+    
+    // Apply site class and load 404 functionality
+    applySiteClass();
     load404();
   </script>
 </body>
