@@ -17,6 +17,7 @@
     import { sampleRUM } from '/scripts/aem.js';
     sampleRUM('404', { source: document.referrer });
   </script>
+
   <style>
     main.error {
       padding: 2rem 0;
@@ -66,6 +67,16 @@
   
   <script type="module">
     import { load404 } from '/scripts/scripts.js';
+
+    const hostname = window.location.hostname.toLowerCase();
+    const path = window.location.pathname.toLowerCase();
+    const body = document.body;
+
+         // Check for biencommun, arbres, or fondations (both production domains and preview URLs)
+     const siteClass = hostname.startsWith('biencommun.') || hostname.includes('--biencommun-') || path.includes('--biencommun-fondationsaudemarspiguet--') ? 'biencommun' :
+                      hostname.startsWith('arbres.') || hostname.includes('--arbres-') || path.includes('--arbres-fondationsaudemarspiguet--') ? 'arbres' : 'fondations';
+
+    if (siteClass) body.classList.add(siteClass);
     load404();
   </script>
 </body>
