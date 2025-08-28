@@ -11,7 +11,7 @@ export function applyFadeUpAnimation(targetElement, parentContainer) {
   // Create a wrapper div for the fade-up effect
   const targetWrapper = div({ class: 'image-fade-wrapper' });
   targetWrapper.style.opacity = '0';
-  targetWrapper.style.transform = 'translateY(80px)';
+  targetWrapper.style.transform = 'translateY(100px)';
   targetWrapper.style.transition = 'opacity 1.5s ease-out, transform 1.5s ease-out';
   if (isBanner) {
     targetWrapper.classList.add('horizontal-banner');
@@ -34,7 +34,7 @@ export function applyFadeUpAnimation(targetElement, parentContainer) {
       } else if (!scrollingDown) {
         // Only reset animation when scrolling up and element goes out of view
         entry.target.style.opacity = '0';
-        entry.target.style.transform = 'translateY(80px)';
+        entry.target.style.transform = 'translateY(100px)';
       }
 
       lastScrollY = currentScrollY;
@@ -60,10 +60,10 @@ function applyFadeUpAnimationSplitFade() {
 // Wait for DOM to be ready and then try with a small delay
 if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', () => {
-    setTimeout(applyFadeUpAnimationSplitFade, 100);
+    setTimeout(applyFadeUpAnimationSplitFade, 50);
   });
 } else {
-  setTimeout(applyFadeUpAnimationSplitFade, 100);
+  setTimeout(applyFadeUpAnimationSplitFade, 50);
 }
 
 export function decorateListingCards(doc) {
