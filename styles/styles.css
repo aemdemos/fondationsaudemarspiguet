@@ -856,18 +856,39 @@ body.fondations main .section.split-fade h2 {
   width: calc((((100% - (12 * 30px)) / 12) * 6) + (5 * 30px));
   float: left;
   position: relative;
-  margin: 15px;
   box-sizing: border-box;
   opacity: 0;
   transform: translateX(-50px);
+  margin-top: 100px;
 }
 
-body.fondations main .section.split-fade p:first-of-type {
-  float: right !important;
+body.fondations main .section.split-fade p:not(:has(img)),
+body.fondations main .section.split-fade ul {
+  float: right;
   width: calc((((100% - (12 * 30px)) / 12) * 9) + (8 * 30px));
   line-height: 1.5em;
-  padding-bottom: 60px;
   letter-spacing: .02em;
+  font-size: 20px;
+  font-weight: 300;
+}
+
+body.fondations main .section.split-fade p:has(+ p img) {
+  padding-bottom: 60px;
+}
+
+body.fondations main .section.split-fade p:has(img) {
+  padding-bottom: 100px;
+}
+
+/* Clear floats after split-fade section to prevent float effects on subsequent sections */
+body.fondations main .section.split-fade::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+body.fondations main .section.light-grey-orange {
+  background-color: var(--fondations-quote-bg);
 }
 
 @media (width>=900px) {

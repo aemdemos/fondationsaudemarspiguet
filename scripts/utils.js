@@ -44,6 +44,28 @@ export function applyFadeUpAnimation(targetElement, parentContainer) {
   observer.observe(targetWrapper);
 }
 
+function applyFadeUpAnimationSplitFade() {
+  const splitFadeSections = document.querySelectorAll('.section.split-fade');
+  splitFadeSections.forEach((section) => {
+    const imageElement = section.querySelector('picture');
+    const parentContainer = section.querySelector('p:last-of-type');
+
+    // Only apply animation if both elements exist within this section
+    if (imageElement && parentContainer) {
+      applyFadeUpAnimation(imageElement, parentContainer);
+    }
+  });
+}
+
+// Wait for DOM to be ready and then try with a small delay
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', () => {
+    setTimeout(applyFadeUpAnimationSplitFade, 100);
+  });
+} else {
+  setTimeout(applyFadeUpAnimationSplitFade, 100);
+}
+
 export function decorateListingCards(doc) {
   const contentDivs = doc.querySelectorAll('.section.float-right .default-content-wrapper');
   contentDivs.forEach((contentDiv) => {
