@@ -70,20 +70,19 @@
     load404();
   </script>
 
-  <script>
-    // Add site-specific body classes based on URL path and domain
-    (function() {
-      const url = window.location.href.toLowerCase();
-      const hostname = window.location.hostname.toLowerCase();
-      const body = document.body;
+      <script>
+      // Add site-specific body classes based on hostname and path
+      (function() {
+        const hostname = window.location.hostname.toLowerCase();
+        const path = window.location.pathname.toLowerCase();
+        const body = document.body;
 
-      const siteClass = url.includes('biencommun') ? 'biencommun' :
-                       url.includes('arbres') ? 'arbres' :
-                       hostname === 'fondationsaudemarspiguet.org' || url.includes('--fondationsaudemarspiguet--') || hostname.includes('localhost') ? 'fondations' : '';
+        const siteClass = hostname.includes('biencommun') || path.includes('--biencommun-fondationsaudemarspiguet--') ? 'biencommun' :
+                         hostname === 'fondationsaudemarspiguet.org' || path.includes('--fondationsaudemarspiguet--') || hostname.includes('localhost') ? 'fondations' : '';
 
-      if (siteClass) body.classList.add(siteClass);
-    })();
-  </script>
+        if (siteClass) body.classList.add(siteClass);
+      })();
+    </script>
 </body>
 
 </html>
