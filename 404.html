@@ -64,9 +64,16 @@
   </main>
   <footer></footer>
   
-  <script type="module">
-    import { load404 } from '/scripts/scripts.js';
-    load404();
+   <script type="module">
+    const currentPath = window.location.pathname;
+    if (currentPath.includes('arbres')) {
+      document.body.classList.add('arbres');
+    } else if (currentPath.includes('biencommun')) {
+      document.body.classList.add('biencommun');
+    } else {
+      document.body.classList.add('fondations');
+    }
+    import('/scripts/scripts.js').then(({ load404 }) => load404());
   </script>
 </body>
 
