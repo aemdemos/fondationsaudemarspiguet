@@ -13,10 +13,55 @@
   <script src="/scripts/scripts.js" type="module"></script>
   <link rel="stylesheet" href="/styles/styles.css"/>
   
-  <!-- Favicon links - will be updated by setPathSpecificFavicon() -->
-  <link rel="apple-touch-icon" href="/styles/apple-touch-icon.png" sizes="180x180">
-  <link rel="icon" href="/styles/favicon-32x32.png" type="image/png" sizes="32x32">
-  <link rel="icon" href="/styles/favicon-16x16.png" type="image/png" sizes="16x16">
+  <!-- Favicons will be dynamically inserted based on domain -->
+  <script>
+    // Simple domain-based favicon detection - runs immediately
+    (function() {
+      const hostname = window.location.hostname.toLowerCase();
+      const pathname = window.location.pathname.toLowerCase();
+      
+      let siteType = 'fondations'; // default
+      
+      // Handle localhost development
+      if (hostname.includes('localhost')) {
+        siteType = 'fondations';
+      } else if (hostname.includes('biencommun') || pathname.includes('--biencommun-')) {
+        siteType = 'biencommun';
+      } else if (hostname.includes('arbres') || pathname.includes('--arbres-')) {
+        siteType = 'arbres';
+      } else if (hostname.includes('fondations') || pathname.includes('--fondations')) {
+        siteType = 'fondations';
+      }
+      
+      // Define favicon paths
+      const faviconPaths = {
+        biencommun: {
+          apple: '/styles/biencommun-apple-touch-icon.png',
+          favicon32: '/styles/biencommun-favicon-32x32.png',
+          favicon16: '/styles/biencommun-favicon-16x16.png'
+        },
+        arbres: {
+          apple: '/styles/arbres-apple-touch-icon.png',
+          favicon32: '/styles/arbres-favicon-32x32.png',
+          favicon16: '/styles/arbres-favicon-16x16.png'
+        },
+        fondations: {
+          apple: '/styles/apple-touch-icon.png',
+          favicon32: '/styles/favicon-32x32.png',
+          favicon16: '/styles/favicon-16x16.png'
+        }
+      };
+      
+      const favicons = faviconPaths[siteType];
+      
+      // Insert favicon link elements
+      document.write('<link rel="apple-touch-icon" href="' + favicons.apple + '" sizes="180x180">');
+      document.write('<link rel="icon" href="' + favicons.favicon32 + '" type="image/png" sizes="32x32">');
+      document.write('<link rel="icon" href="' + favicons.favicon16 + '" type="image/png" sizes="16x16">');
+      
+      console.log('404 Favicon: Applied', siteType, 'favicons');
+    })();
+  </script>
 
   <script type="module">
     import { sampleRUM } from '/scripts/aem.js';
@@ -70,28 +115,42 @@
   </main>
   <footer></footer>
   
+  <script>
+    // Simple site class application - runs immediately without module loading
+    (function() {
+      const hostname = window.location.hostname.toLowerCase();
+      const pathname = window.location.pathname.toLowerCase();
+      
+      let siteClass = 'fondations'; // default
+      
+      // Detect site type (same logic as favicon)
+      if (hostname.includes('localhost')) {
+        siteClass = 'fondations';
+      } else if (hostname.includes('biencommun') || pathname.includes('--biencommun-')) {
+        siteClass = 'biencommun';
+      } else if (hostname.includes('arbres') || pathname.includes('--arbres-')) {
+        siteClass = 'arbres';
+      } else if (hostname.includes('fondations') || pathname.includes('--fondations')) {
+        siteClass = 'fondations';
+      }
+      
+      // Apply site class to body when DOM is ready
+      if (document.body) {
+        document.body.classList.add(siteClass);
+        console.log('404 Site Class: Applied', siteClass);
+      } else {
+        document.addEventListener('DOMContentLoaded', function() {
+          document.body.classList.add(siteClass);
+          console.log('404 Site Class: Applied', siteClass);
+        });
+      }
+    })();
+  </script>
+  
   <script type="module">
-    console.log('🚨 404.html: Script is executing!');
-    
-    import { load404, applySiteClass, setPathSpecificFavicon } from '/scripts/scripts.js';
-
-    console.log('🚨 404.html: Imports loaded');
-    
-    // Apply the appropriate site class immediately  
-    const siteClass = applySiteClass();
-    console.log('🚨 404.html: Applied site class:', siteClass);
-    
-    // Check favicon elements before update
-    const faviconElements = document.querySelectorAll('link[rel="icon"], link[rel="apple-touch-icon"]');
-    console.log('🚨 404.html: Favicon elements found:', faviconElements.length, faviconElements);
-    
-    // Apply favicons immediately since elements are already in DOM
-    setPathSpecificFavicon();
-    console.log('🚨 404.html: Called setPathSpecificFavicon()');
-    
-    // Load 404 functionality
+    // Only load 404 text functionality
+    import { load404 } from '/scripts/scripts.js';
     load404();
-    console.log('🚨 404.html: All done!');
   </script>
 </body>
 
