@@ -34,6 +34,13 @@
   display: inline;
 }
 
+body.fondations .quote .quote-quotation > p:first-child {
+  font-size: 48px;
+  line-height: 1.5em;
+  padding-bottom: 20px;
+  letter-spacing: .02em;
+}
+
 
 .quote .quote-quotation > p:last-child:not(:only-child) {
   color: #947F5F;
@@ -51,6 +58,10 @@
   font-style: normal;
 }
 
+body.fondations .quote-quotation em {
+  color: #525252;
+}
+
 /* Style italic text in quotation for biencommun site - different color */
 body.biencommun .quote .quote-quotation em,
 body.biencommun .quote .quote-quotation i {
@@ -61,6 +72,11 @@ body.biencommun .quote .quote-quotation i {
 /* Different background color for quote block on biencommun site */
 body.biencommun .quote blockquote {
   background-color: var(--biencommun-page-bloc-full);
+}
+
+/* Different background color for quote block on fondations site */
+body.fondations .quote blockquote {
+  background-color: var(--fondations-quote-bg);
 }
 
 /* Style underline text in quotation - remove underline and make brown */
