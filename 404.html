@@ -14,9 +14,9 @@
   <link rel="stylesheet" href="/styles/styles.css"/>
   
   <!-- Favicon links - will be updated by setPathSpecificFavicon() -->
-  <link rel="icon" type="image/png" sizes="16x16" href="/styles/favicon-16x16.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/styles/favicon-32x32.png">
-  <link rel="apple-touch-icon" href="/styles/apple-touch-icon.png">
+  <link rel="apple-touch-icon" href="/styles/apple-touch-icon.png" sizes="180x180">
+  <link rel="icon" href="/styles/favicon-32x32.png" type="image/png" sizes="32x32">
+  <link rel="icon" href="/styles/favicon-16x16.png" type="image/png" sizes="16x16">
 
   <script type="module">
     import { sampleRUM } from '/scripts/aem.js';
@@ -73,10 +73,21 @@
   <script type="module">
     import { load404, applySiteClass, setPathSpecificFavicon } from '/scripts/scripts.js';
 
-    // Apply the appropriate site class and favicon based on URL
-    applySiteClass();
-    setPathSpecificFavicon();
-    load404();
+    // Wait for DOM to be ready before applying favicon changes
+    document.addEventListener('DOMContentLoaded', () => {
+      console.log('404.html: DOM loaded, starting site detection...');
+      
+      // Apply the appropriate site class and favicon based on URL
+      const siteClass = applySiteClass();
+      console.log('404.html: Applied site class:', siteClass);
+      
+      // Check favicon elements before update
+      const faviconElements = document.querySelectorAll('link[rel="icon"], link[rel="apple-touch-icon"]');
+      console.log('404.html: Favicon elements found:', faviconElements.length, faviconElements);
+      
+      setPathSpecificFavicon();
+      load404();
+    });
   </script>
 </body>
 
