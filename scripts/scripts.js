@@ -506,10 +506,9 @@ async function loadEager(doc) {
   const templateName = getMetadata('template');
   decorateTemplateAndTheme();
 
-  // Set path-specific favicon early in the load process (skip for error pages)
-  if (!window.isErrorPage) {
-    setPathSpecificFavicon();
-  }
+  // Set path-specific favicon and site class early in the load process for all pages
+  setPathSpecificFavicon();
+  applySiteClass();
 
   const main = doc.querySelector('main');
   if (main) {
