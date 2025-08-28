@@ -458,21 +458,53 @@ export function setPathSpecificFavicon() {
   const detectedSite = detectSiteType();
   const faviconUrls = getFaviconUrls(detectedSite);
 
-  // Update existing favicon elements only (for regular pages with head.html)
-  const favicon16Elements = document.querySelectorAll('link[rel="icon"][sizes="16x16"]');
-  favicon16Elements.forEach((favicon16) => {
+  // Check if favicon elements exist
+  let favicon16Elements = document.querySelectorAll('link[rel="icon"][sizes="16x16"]');
+  let favicon32Elements = document.querySelectorAll('link[rel="icon"][sizes="32x32"]');
+  let appleIconElements = document.querySelectorAll('link[rel="apple-touch-icon"]');
+
+  // Check if this is likely a 404 page (no favicon elements exist)
+  const is404Page = favicon16Elements.length === 0 && favicon32Elements.length === 0 && appleIconElements.length === 0;
+
+  if (is404Page) {
+    // Create favicons for 404/non-existing pages only
+    const favicon16 = document.createElement('link');
+    favicon16.rel = 'icon';
+    favicon16.type = 'image/png';
+    favicon16.sizes = '16x16';
     favicon16.href = faviconUrls.favicon16;
-  });
+    document.head.appendChild(favicon16);
 
-  const favicon32Elements = document.querySelectorAll('link[rel="icon"][sizes="32x32"]');
-  favicon32Elements.forEach((favicon32) => {
+    const favicon32 = document.createElement('link');
+    favicon32.rel = 'icon';
+    favicon32.type = 'image/png';
+    favicon32.sizes = '32x32';
     favicon32.href = faviconUrls.favicon32;
-  });
+    document.head.appendChild(favicon32);
 
-  const appleIconElements = document.querySelectorAll('link[rel="apple-touch-icon"]');
-  appleIconElements.forEach((appleIcon) => {
+    const appleIcon = document.createElement('link');
+    appleIcon.rel = 'apple-touch-icon';
+    appleIcon.sizes = '180x180';
     appleIcon.href = faviconUrls.apple;
-  });
+    document.head.appendChild(appleIcon);
+
+    console.log('404 Favicons created for:', detectedSite);
+  } else {
+    // Update existing favicons for regular pages
+    favicon16Elements.forEach((favicon16) => {
+      favicon16.href = faviconUrls.favicon16;
+    });
+
+    favicon32Elements.forEach((favicon32) => {
+      favicon32.href = faviconUrls.favicon32;
+    });
+
+    appleIconElements.forEach((appleIcon) => {
+      appleIcon.href = faviconUrls.apple;
+    });
+
+    console.log('Regular page favicons updated for:', detectedSite);
+  }
 }
 
 /**
@@ -488,10 +520,8 @@ async function loadEager(doc) {
   const templateName = getMetadata('template');
   decorateTemplateAndTheme();
 
-  // Set path-specific favicon for regular pages only (404 handles its own)
-  if (!window.isErrorPage) {
-    setPathSpecificFavicon();
-  }
+  // Set path-specific favicon for all pages (including AEM's auto-generated 404s)
+  setPathSpecificFavicon();
   applySiteClass();
 
   const main = doc.querySelector('main');
