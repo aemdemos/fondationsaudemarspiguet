@@ -71,23 +71,27 @@
   <footer></footer>
   
   <script type="module">
+    console.log('🚨 404.html: Script is executing!');
+    
     import { load404, applySiteClass, setPathSpecificFavicon } from '/scripts/scripts.js';
 
-    console.log('404.html: Script loading...');
+    console.log('🚨 404.html: Imports loaded');
     
     // Apply the appropriate site class immediately  
     const siteClass = applySiteClass();
-    console.log('404.html: Applied site class:', siteClass);
+    console.log('🚨 404.html: Applied site class:', siteClass);
     
     // Check favicon elements before update
     const faviconElements = document.querySelectorAll('link[rel="icon"], link[rel="apple-touch-icon"]');
-    console.log('404.html: Favicon elements found:', faviconElements.length, faviconElements);
+    console.log('🚨 404.html: Favicon elements found:', faviconElements.length, faviconElements);
     
     // Apply favicons immediately since elements are already in DOM
     setPathSpecificFavicon();
+    console.log('🚨 404.html: Called setPathSpecificFavicon()');
     
     // Load 404 functionality
     load404();
+    console.log('🚨 404.html: All done!');
   </script>
 </body>
 
