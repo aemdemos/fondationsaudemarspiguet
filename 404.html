@@ -2,7 +2,7 @@
 <html>
 
 <head>
-  <title>Page not found</title>
+  <title>Page not found - v2024</title>
   <script type="text/javascript">
     window.isErrorPage = true;
     window.errorCode = '404';
@@ -24,14 +24,15 @@
       const hostname = window.location.hostname.toLowerCase();
       const pathname = window.location.pathname.toLowerCase();
       
-      let siteType = 'fondations'; // default
+      let siteType = 'arbres'; // DEFAULT CHANGED FOR TESTING
       
       console.log('🔍 404 Favicon: Detecting domain...', { hostname, pathname });
       
-      // Handle localhost development
-      if (hostname.includes('localhost')) {
-        siteType = 'fondations';
-      } else if (hostname.includes('biencommun') || pathname.includes('--biencommun-')) {
+      // Handle localhost development (DISABLED FOR TESTING)
+      // if (hostname.includes('localhost')) {
+      //   siteType = 'fondations';
+      // } else 
+      if (hostname.includes('biencommun') || pathname.includes('--biencommun-')) {
         siteType = 'biencommun';
       } else if (hostname.includes('arbres') || pathname.includes('--arbres-')) {
         siteType = 'arbres';
@@ -149,12 +150,13 @@
       const hostname = window.location.hostname.toLowerCase();
       const pathname = window.location.pathname.toLowerCase();
       
-      let siteClass = 'fondations'; // default
+      let siteClass = 'arbres'; // DEFAULT CHANGED FOR TESTING
       
-      // Detect site type (same logic as favicon)
-      if (hostname.includes('localhost')) {
-        siteClass = 'fondations';
-      } else if (hostname.includes('biencommun') || pathname.includes('--biencommun-')) {
+      // Detect site type (same logic as favicon) (LOCALHOST DISABLED FOR TESTING)
+      // if (hostname.includes('localhost')) {
+      //   siteClass = 'fondations';
+      // } else 
+      if (hostname.includes('biencommun') || pathname.includes('--biencommun-')) {
         siteClass = 'biencommun';
       } else if (hostname.includes('arbres') || pathname.includes('--arbres-')) {
         siteClass = 'arbres';
