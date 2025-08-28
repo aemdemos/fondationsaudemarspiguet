@@ -17,6 +17,7 @@
     import { sampleRUM } from '/scripts/aem.js';
     sampleRUM('404', { source: document.referrer });
   </script>
+
   <style>
     main.error {
       padding: 2rem 0;
@@ -67,6 +68,21 @@
   <script type="module">
     import { load404 } from '/scripts/scripts.js';
     load404();
+  </script>
+
+  <script>
+    // Add site-specific body classes based on URL path and domain
+    (function() {
+      const url = window.location.href.toLowerCase();
+      const hostname = window.location.hostname.toLowerCase();
+      const body = document.body;
+
+      const siteClass = url.includes('biencommun') ? 'biencommun' :
+                       url.includes('arbres') ? 'arbres' :
+                       hostname === 'fondationsaudemarspiguet.org' || url.includes('--fondationsaudemarspiguet--') || hostname.includes('localhost') ? 'fondations' : '';
+
+      if (siteClass) body.classList.add(siteClass);
+    })();
   </script>
 </body>
 
