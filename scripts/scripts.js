@@ -521,7 +521,7 @@ async function loadEager(doc) {
   decorateTemplateAndTheme();
 
   // Set path-specific favicon for all pages (including AEM's auto-generated 404s)
-  // setPathSpecificFavicon();
+  setPathSpecificFavicon();
   applySiteClass();
 
   const main = doc.querySelector('main');
