@@ -73,11 +73,10 @@
     const path = window.location.pathname.toLowerCase();
     const body = document.body;
 
-    const siteClass = hostname.includes('biencommun') || path.includes('--biencommun-fondationsaudemarspiguet--') ? 'biencommun' :
-                     hostname.includes('fondationsaudemarspiguet.org') || path.includes('--fondationsaudemarspiguet--') || hostname.includes('localhost') ? 'fondations' : '';
-
+    // Ternary chain: biencommun, arbres, or fondations
+    const siteClass = hostname.startsWith('biencommun.') || path.includes('--biencommun-fondationsaudemarspiguet--') ? 'biencommun' :
+                     hostname.startsWith('arbres.') || path.includes('--arbres-') ? 'arbres' : 'fondations';
     if (siteClass) body.classList.add(siteClass);
-
     load404();
   </script>
 </body>
