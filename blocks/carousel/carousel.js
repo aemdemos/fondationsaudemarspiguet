@@ -270,6 +270,11 @@ export default async function decorate(block) {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           const idx = parseInt(entry.target.dataset.slideIndex, 10);
+          entry.target.classList.add('active');
+          // 🔹 Remove 'active' from others
+          slides.forEach((s) => {
+            if (s !== entry.target) s.classList.remove('active');
+          });
           indicators.forEach((ind, i) => {
             ind.querySelector('button').toggleAttribute('disabled', i === idx);
           });
