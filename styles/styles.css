@@ -917,7 +917,7 @@ body.fondations main .section.light-grey-orange {
   background-color: var(--fondations-quote-bg);
 }
 
-body.fondations main .section.light-grey-orange.split-fade {
+body.fondations main .section.split-fade {
   padding-bottom: 0;
   margin-bottom: 0;
 }
