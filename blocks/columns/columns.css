@@ -286,7 +286,7 @@
     flex-direction: row;
     float: right;
     width: 73%;
-    margin-right: 120px;
+    margin-right: 100px;
     box-sizing: border-box;
   }
 
@@ -356,7 +356,6 @@
     flex-direction: row;
     float: right;
     width: 55%;
-    margin-right: 150px;
     box-sizing: border-box;
   }
 }

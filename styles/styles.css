@@ -1017,6 +1017,10 @@ main .section.light, main .section.highlight {
   background-color: var(--biencommun-fleche-to-top-bg);
 }
 
+.fondations .page-level-btn {
+  background-color: var(--fondations-fleche-to-top-bg);
+}
+
 .page-level-btn.show {
   opacity: 1;
   visibility: visible;
