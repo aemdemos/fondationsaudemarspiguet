@@ -6,16 +6,19 @@ import { getLanguage } from '../../scripts/scripts.js';
 // media query match that indicates mobile/tablet width
 const isDesktop = window.matchMedia('(min-width: 900px)');
 
+// check to see whether we are on the Fondations site
+const isFondations = (document.querySelector('body')).classList.contains('fondations');
+
 function closeOnEscape(e) {
   if (e.code === 'Escape') {
     const nav = document.getElementById('nav');
     const navSections = nav.querySelector('.nav-sections');
     const navSectionExpanded = navSections.querySelector('[aria-expanded="true"]');
-    if (navSectionExpanded && isDesktop.matches) {
+    if (navSectionExpanded && isDesktop.matches && !isFondations) {
       // eslint-disable-next-line no-use-before-define
       toggleAllNavSections(navSections);
       navSectionExpanded.focus();
-    } else if (!isDesktop.matches) {
+    } else if (!isDesktop.matches || isFondations) {
       // eslint-disable-next-line no-use-before-define
       toggleMenu(nav, navSections);
       nav.querySelector('button').focus();
@@ -28,10 +31,10 @@ function closeOnFocusLost(e) {
   if (!nav.contains(e.relatedTarget)) {
     const navSections = nav.querySelector('.nav-sections');
     const navSectionExpanded = navSections.querySelector('[aria-expanded="true"]');
-    if (navSectionExpanded && isDesktop.matches) {
+    if (navSectionExpanded && isDesktop.matches && !isFondations) {
       // eslint-disable-next-line no-use-before-define
       toggleAllNavSections(navSections, false);
-    } else if (!isDesktop.matches) {
+    } else if (!isDesktop.matches || isFondations) {
       // eslint-disable-next-line no-use-before-define
       toggleMenu(nav, navSections, false);
     }
@@ -41,7 +44,7 @@ function closeOnFocusLost(e) {
 function openOnKeydown(e) {
   const focused = document.activeElement;
   const isNavDrop = focused.className === 'nav-drop';
-  if (isNavDrop && (e.code === 'Enter' || e.code === 'Space')) {
+  if (isNavDrop && (e.code === 'Enter' || e.code === 'Space') && !isFondations) {
     const dropExpanded = focused.getAttribute('aria-expanded') === 'true';
     // eslint-disable-next-line no-use-before-define
     toggleAllNavSections(focused.closest('.nav-sections'));
@@ -73,13 +76,13 @@ function toggleAllNavSections(sections, expanded = false) {
 function toggleMenu(nav, navSections, forceExpanded = null) {
   const expanded = forceExpanded !== null ? !forceExpanded : nav.getAttribute('aria-expanded') === 'true';
   const button = nav.querySelector('.nav-hamburger button');
-  document.body.style.overflowY = (expanded || isDesktop.matches) ? '' : 'hidden';
+  document.body.style.overflowY = (expanded || (isDesktop.matches && !isFondations)) ? '' : 'hidden';
   nav.setAttribute('aria-expanded', expanded ? 'false' : 'true');
-  toggleAllNavSections(navSections, expanded || isDesktop.matches ? 'false' : 'true');
+  toggleAllNavSections(navSections, expanded || (isDesktop.matches && !isFondations) ? 'false' : 'true');
   button.setAttribute('aria-label', expanded ? 'Open navigation' : 'Close navigation');
   // enable nav dropdown keyboard accessibility
   const navDrops = navSections.querySelectorAll('.nav-drop');
-  if (isDesktop.matches) {
+  if (isDesktop.matches && !isFondations) {
     navDrops.forEach((drop) => {
       if (!drop.hasAttribute('tabindex')) {
         drop.setAttribute('tabindex', 0);
@@ -166,7 +169,7 @@ export default async function decorate(block) {
     navSections.querySelectorAll(':scope .default-content-wrapper > ul > li').forEach((navSection) => {
       if (navSection.querySelector('ul')) navSection.classList.add('nav-drop');
       navSection.addEventListener('click', () => {
-        if (isDesktop.matches) {
+        if (isDesktop.matches && !isFondations) {
           const expanded = navSection.getAttribute('aria-expanded') === 'true';
           toggleAllNavSections(navSections);
           navSection.setAttribute('aria-expanded', expanded ? 'false' : 'true');
@@ -185,8 +188,10 @@ export default async function decorate(block) {
   nav.prepend(hamburger);
   nav.setAttribute('aria-expanded', 'false');
   // prevent mobile nav behavior on window resize
-  toggleMenu(nav, navSections, isDesktop.matches);
-  isDesktop.addEventListener('change', () => toggleMenu(nav, navSections, isDesktop.matches));
+  toggleMenu(nav, navSections, (isDesktop.matches && !isFondations));
+  if (!isFondations) {
+    isDesktop.addEventListener('change', () => toggleMenu(nav, navSections, isDesktop.matches));
+  }
   logoWrapper.append(navBrand);
   logoWrapper.append(navSections);
   logoWrapper.append(hamburger);
