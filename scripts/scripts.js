@@ -468,25 +468,25 @@ export function setPathSpecificFavicon() {
 
   if (is404Page) {
     // Create favicons for 404/non-existing pages only
-    const favicon16 = document.createElement('link');
-    favicon16.rel = 'icon';
-    favicon16.type = 'image/png';
-    favicon16.sizes = '16x16';
-    favicon16.href = faviconUrls.favicon16;
-    document.head.appendChild(favicon16);
+    // const favicon16 = document.createElement('link');
+    // favicon16.rel = 'icon';
+    // favicon16.type = 'image/png';
+    // favicon16.sizes = '16x16';
+    // favicon16.href = faviconUrls.favicon16;
+    // document.head.appendChild(favicon16);
 
-    const favicon32 = document.createElement('link');
-    favicon32.rel = 'icon';
-    favicon32.type = 'image/png';
-    favicon32.sizes = '32x32';
-    favicon32.href = faviconUrls.favicon32;
-    document.head.appendChild(favicon32);
+    // const favicon32 = document.createElement('link');
+    // favicon32.rel = 'icon';
+    // favicon32.type = 'image/png';
+    // favicon32.sizes = '32x32';
+    // favicon32.href = faviconUrls.favicon32;
+    // document.head.appendChild(favicon32);
 
-    const appleIcon = document.createElement('link');
-    appleIcon.rel = 'apple-touch-icon';
-    appleIcon.sizes = '180x180';
-    appleIcon.href = faviconUrls.apple;
-    document.head.appendChild(appleIcon);
+    // const appleIcon = document.createElement('link');
+    // appleIcon.rel = 'apple-touch-icon';
+    // appleIcon.sizes = '180x180';
+    // appleIcon.href = faviconUrls.apple;
+    // document.head.appendChild(appleIcon);
 
     // eslint-disable-next-line no-console
     console.log('404 Favicons created for:', detectedSite);
