@@ -62,7 +62,7 @@ body.fondations .quote .quote-quotation > p:first-child {
 }
 
 body.fondations .quote-quotation em {
-  color: #525252;
+  color: var(--fondations-titre);
 }
 
 /* Style italic text in quotation for biencommun site - different color */
