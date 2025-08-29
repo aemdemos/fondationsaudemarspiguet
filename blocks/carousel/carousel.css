@@ -289,11 +289,6 @@
   z-index: 10;
 }
 
- .fondations .full-width.carousel-container .carousel.hero-banner.scrollable div.social-cr-wrapper,
- .fondations .full-width.carousel-container .carousel.hero-banner.scrollable div.slide-legend {
-    display: none;
- }
-
 .biencommun .full-width.carousel-container .carousel.hero-banner div.slide-legend > p > a, .fondations .full-width.carousel-container .carousel.hero-banner.scrollable div.slide-legend > p > a {
   color: var(--news-button-text-colour);
 }
