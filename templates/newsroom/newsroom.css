@@ -72,6 +72,11 @@ main .media-filter-container .media-filter-container-left .view-all-media {
     color: var(--site-color-2-bien);
 }
 
+.fondations main .media-filter-container .media-filter-container-left .view-all-media {
+    color: var(--fondations-site-color-2);
+}
+
+
 main .media-filter-container .media-filter-container-left .view-all-media:hover {
     text-decoration: none;
     opacity: .7;
@@ -93,7 +98,8 @@ main .media-filter-container .media-filter-container-right .filter-top-btn {
     transition: opacity 0.2s ease;
 }
 
-.biencommun .media-filter-container .media-filter-container-right .filter-top-btn {
+.biencommun .media-filter-container .media-filter-container-right .filter-top-btn,
+.fondations .media-filter-container .media-filter-container-right .filter-top-btn {
     width: 30px;
     height: 30px;
     background-image: url('/icons/btn_bien_filtre_top.svg');
@@ -113,7 +119,8 @@ main .media-filter-container .media-filter-container-right .filter-bottom-btn {
     transition: opacity 0.2s ease;
 }
 
-.biencommun .media-filter-container .media-filter-container-right .filter-bottom-btn {
+.biencommun .media-filter-container .media-filter-container-right .filter-bottom-btn,
+.fondations .media-filter-container .media-filter-container-right .filter-bottom-btn {
     width: 30px;
     height: 30px;
     background-image: url('/icons/btn_bien_filtre_bottom.svg');
@@ -149,7 +156,8 @@ main .media-listing {
     transition: opacity 0.2s ease;
 }
 
-.biencommun .btn-media-search-clear {
+.biencommun .btn-media-search-clear, 
+.fondations .btn-media-search-clear{
     background-image: url('/icons/btn_bien_filter_clear.svg');
     height: 40px;
     width: 30px;
@@ -266,5 +274,22 @@ main .media-listing {
 }
 
 .biencommun.newsroom main .media-filter-container input {
+    color: var(--input-selected-color);
+}
+
+/* Fondations Colors */
+.fondations .type-dropdown {
+  background-color: transparent; 
+  box-shadow: none;
+  border: none;
+  color: var(--biencommun-carousel-card-3);
+}
+
+.fondations .type-option {
+  color: var(--fondations-site-color);  
+  font-weight: 200;
+}
+
+.fondations.newsroom main .media-filter-container input {
     color: var(--input-selected-color);
 }
