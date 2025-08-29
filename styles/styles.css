@@ -393,6 +393,10 @@ header {
   height: var(--header-mob-height);
 }
 
+.fondations.homepage main {
+  margin-top: calc(-1 * var(--header-mob-height));
+}
+
 header .header, footer .footer {
   visibility: hidden;
 }
@@ -909,6 +913,10 @@ body.fondations main .section.full-width-image .default-content-wrapper {
 @media (width>=900px) {
   header {
     height: var(--header-tab-height);
+  }
+
+  .fondations.homepage main {
+    margin-top: calc(-1 * var(--header-tab-height));
   }
 
   body.fondations main p,
@@ -1461,6 +1469,10 @@ main .section.table-container.accordion-container{
 @media (width >= 1200px) {
   header {
     height: var(--header-height);
+  }
+
+  .fondations.homepage main {
+    margin-top: calc(-1 * var(--header-height));
   }
   
   main .section.colored-text p{

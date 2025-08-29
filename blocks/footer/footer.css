@@ -140,6 +140,10 @@ footer .footer .section.social-section>div .footer-general-wrapper .links-cr-wra
   padding: 0 4px;
 }
 
+.fondations.homepage footer {
+  display: none;
+}
+
 @media (width>600px) {
   footer .footer .section.newsletter-section {
     padding: 50px 0 30px;
