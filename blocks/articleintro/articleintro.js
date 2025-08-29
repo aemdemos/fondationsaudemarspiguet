@@ -5,12 +5,12 @@ import { div, h1 } from '../../scripts/dom-helpers.js';
 export default function decorate(block) {
   const newsHeader = document.body.classList.contains('fondations')
     ? div(
-      { class: 'news-block-header' },
+      { class: 'hero-block-header' },
       div({ class: 'page-hero-image' }, div({ class: 'page-hero-image-middle' })),
       div({ class: 'page-hero-image' }, div({ class: 'page-hero-image-middle' })),
     )
     : div(
-      { class: 'news-block-header' },
+      { class: 'hero-block-header' },
       div({ class: 'page-hero-image' }, div({ class: 'page-hero-image-middle' })),
       div({ class: 'news-detail-big-header' }, div({ class: 'news-detail-category' }), div({ class: 'news-detail-date' }), h1({ class: 'news-detail-title animate-on-scroll' })),
       div({ class: 'page-hero-image-seconde' }),
