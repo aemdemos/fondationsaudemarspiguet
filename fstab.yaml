@@ -1,4 +1,0 @@
-mountpoints:
-  /:
-    url: https://content.da.live/audemars-piguet/biencommun-fondationsaudemarspiguet/
-    type: markup
