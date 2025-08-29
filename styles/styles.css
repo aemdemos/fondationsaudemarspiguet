@@ -811,6 +811,18 @@ main .section.float-right .default-content-wrapper .content-wrapper ul li {
   margin-bottom: 12px;
 }
 
+body.fondations main p,
+body.fondations main ul li {
+  font-size: 14px;
+  line-height: 1.5em;
+  letter-spacing: .02em;
+  font-weight: 200;
+}
+
+body.fondations main .section.float-right .default-content-wrapper .content-wrapper ul li {
+  padding-left: 30px;
+}
+
 main .section.float-right .default-content-wrapper .content-wrapper ul li::before {
   content: "";
   width: 6px;
@@ -822,6 +834,10 @@ main .section.float-right .default-content-wrapper .content-wrapper ul li::befor
   top: 10px;
   left: 100px;
   border-radius: 500px;
+}
+
+body.fondations main .section.float-right .default-content-wrapper .content-wrapper ul li::before {
+  left: 0;
 }
 
 main .section.colored-text em,
@@ -855,71 +871,19 @@ main .section.float-right .default-content-wrapper .clear {
   clear: both;
 }
 
-body.fondations main .section.split-fade h2 {
-  position: relative;
-  box-sizing: border-box;
-  opacity: 0;
-  transform: translateX(-50px);
-  padding-top: 50px;
-}
-
-body.fondations main .section.split-fade p:not(:has(img)) {
-  line-height: 1.5em;
-  letter-spacing: .02em;
-  font-size: 14px;
-  font-weight: 300;
-}
-
-body.fondations main .section.split-fade ul {
-  line-height: 1.5em;
-  letter-spacing: .02em;
-  font-size: 14px;
-  font-weight: 300;
-  padding-bottom: 80px;
-}
-
-body.fondations main .section.split-fade ul li {
-  list-style: none;
-  position: relative;
-  margin-bottom: 12px;
-  padding-left: 40px;
-}
-
-body.fondations main .section.split-fade ul li::before {
-  content: "";
-  width: 6px;
-  height: 6px;
-  background-color: #947F5F;
-  font-size: 20px;
-  line-height: 20px;
-  position: absolute;
-  top: 10px;
-  left: 5px;
-  border-radius: 500px;
-}
-
-body.fondations main .section.split-fade p:has(+ p img) {
-  padding-bottom: 60px;
-}
-
-body.fondations main .section.split-fade:not(.full-width-image) p:not(:has(+ ul)):last-of-type {
-  padding-bottom: 50px;
-}
-
-/* Clear floats after split-fade section to prevent float effects on subsequent sections */
-body.fondations main .section.split-fade::after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
 body.fondations main .section.light-grey-orange {
   background-color: var(--fondations-quote-bg);
 }
 
-body.fondations main .section.split-fade {
-  padding-bottom: 0;
-  margin-bottom: 0;
+body.fondations main .section.fade-up {
+  margin-top: 0;
+  padding-top: 0;
+  padding-bottom: 20px;
+}
+
+body.fondations main .section.fade-up p {
+  margin: 0;
+  padding: 0;
 }
 
 body.fondations main .section.full-width-image {
@@ -942,6 +906,12 @@ body.fondations main .section.full-width-image .default-content-wrapper {
   header {
     height: var(--header-tab-height);
   }
+
+  body.fondations main p,
+  body.fondations main ul li
+   {
+    font-size: 20px;
+   }
 
   main>.section.extra-padding {
     padding: 100px 0;
@@ -970,47 +940,16 @@ body.fondations main .section.full-width-image .default-content-wrapper {
     max-width: 1200px;
   }
 
-  body.fondations main .section.split-fade h2 {
-    float: left;
-    width: calc((((100% - (12 * 30px)) / 12) * 6) + (5 * 30px));
-    padding-top: 100px;
-  }
-
-  body.fondations main .section.split-fade p:not(:has(img)) {
-    float: right;
-    width: calc((((100% - (12 * 30px)) / 12) * 9) + (8 * 30px));
-    font-size: 20px;
-  }
-
-  body.fondations main .section.split-fade ul li {
-    padding-left: 120px;
-  }
-
-  body.fondations main .section.split-fade ul li::before {
-    content: "";
-    width: 6px;
-    height: 6px;
-    background-color: #947F5F;
-    font-size: 20px;
-    line-height: 20px;
-    position: absolute;
-    top: 10px;
-    left: 100px;
-    border-radius: 500px;
-  }
-
-  body.fondations main .section.split-fade:not(.full-width-image) p:not(:has(+ ul)):last-of-type {
+  body.fondations main .section.fade-up {
     padding-bottom: 100px;
+  }
+
+  body.fondations main .section.float-right {
+    max-width: unset;
   }
 
   main .section.float-right .default-content-wrapper .heading-wrapper {
     width: calc((((100% - (12*30px))/12)*9) + (8*30px));
-  }
-
-  body.fondations main .section.split-fade ul {
-    float: right;
-    font-size: 20px;
-    width: calc((((100% - (12 * 30px)) / 12) * 9) + (8 * 30px));
   }
 
   main .section.float-right .default-content-wrapper .heading-wrapper h1 {
@@ -1031,6 +970,14 @@ body.fondations main .section.full-width-image .default-content-wrapper {
 
   main .section:has(.icons-grid.statistics) .default-content-wrapper {
     padding: 0;
+  }
+
+  body.fondations main .section.float-right .default-content-wrapper .content-wrapper ul li {
+    padding-left: 120px;
+  }
+
+  body.fondations main .section.float-right .default-content-wrapper .content-wrapper ul li::before {
+    left: 100px;
   }
 }
 

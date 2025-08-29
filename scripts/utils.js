@@ -46,7 +46,7 @@ export function applyFadeUpAnimation(targetElement, parentContainer) {
 
 // Apply fade-up animation to split-fade sections on fondations site
 function applyFadeUpAnimationSplitFade() {
-  const splitFadeSections = document.querySelectorAll('.section.split-fade');
+  const splitFadeSections = document.querySelectorAll('.section.fade-up');
   splitFadeSections.forEach((section) => {
     const imageElement = section.querySelector('picture');
     const parentContainer = section.querySelector('p:last-of-type');
