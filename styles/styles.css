@@ -940,7 +940,7 @@ body.fondations main .section.full-width-image .default-content-wrapper {
     max-width: 1200px;
   }
 
-  body.fondations main .section.fade-up {
+  body.fondations main .section.fade-up:not(.full-width-image) {
     padding-bottom: 100px;
   }
 
