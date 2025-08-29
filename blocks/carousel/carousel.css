@@ -63,8 +63,109 @@
   padding: 16px;
   color: white;
   background-color: rgba(19 19 19 / 75%);
-  position: relative;
   width: var(--slide-content-width, auto);
+}
+
+.biencommun .full-width.carousel-container .carousel.hero-banner .carousel-slide .carousel-slide-content {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  max-width: 1000px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: var(--news-button-text-colour);
+  text-align: center;
+  box-sizing: border-box;
+  padding: 0 60px;
+  background-color: unset;
+  margin: unset;
+}
+
+.biencommun .full-width.carousel-container .carousel.hero-banner div.slide-legend > p {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+}
+
+.fondations .full-width.carousel-container .carousel.hero-banner.scrollable .carousel-slide .carousel-slide-content {
+  background-color: unset;
+  text-align: center;
+  margin: auto;
+  opacity: 0;
+  transition: all 3s ease-in-out;
+  transform: translateY(-50%);
+
+  --slide-content-width: unset;
+
+  max-width: 100%;
+  padding: 0 40px;
+}
+
+.biencommun .full-width.carousel-container .carousel.hero-banner div.social-cr-wrapper p,
+.fondations .full-width.carousel-container .carousel.hero-banner.scrollable div.social-cr-wrapper p {
+  margin: 0;
+  line-height : 13px;
+}
+
+.biencommun .full-width.carousel-container .carousel.hero-banner div.social-cr-wrapper .icon,
+.fondations .full-width.carousel-container .carousel.hero-banner.scrollable div.social-cr-wrapper .icon {
+  height: 40px;
+  width: 40px;
+  margin-right: 20px;
+}
+
+
+
+.fondations .full-width.carousel-container .carousel.hero-banner.scrollable div.slide-legend > p {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+}
+
+.biencommun .full-width.carousel-container .carousel.hero-banner div.social-cr-wrapper p:last-of-type {
+  display: none;
+  font-size: 10px;
+}
+
+.fondations .full-width.carousel-container .carousel.hero-banner.scrollable .carousel-slide .carousel-slide-content p {
+  font-size: 30px;
+}
+
+.fondations .full-width.carousel-container .carousel.hero-banner.scrollable div.social-cr-wrapper p:last-of-type {
+  display: none;
+  font-size: 10px;
+}
+
+.fondations .full-width.carousel-container .carousel.hero-banner.scrollable .carousel-slide .carousel-slide-content p:nth-child(2) {
+  padding-left: 54px;
+  background-image: url('/icons/fleche_right.svg');
+  background-position: left center;
+  background-repeat: no-repeat;
+  display: inline-block;
+  color: inherit;
+  font-size: inherit;
+  line-height: 60px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .2em;
+  background-color: transparent;
+  border: 0;
+}
+
+.fondations .full-width.carousel-container .carousel.hero-banner.scrollable .carousel-slide .direction-icon-section {
+    position: absolute;
+    bottom: 20px;
+    display: inline-block;
+    z-index: 100;
+    left: 20px;
+    transform: none;
+}
+
+.fondations .full-width.carousel-container .carousel.hero-banner.scrollable .carousel-slide .direction-icon-section .icon {
+  width: 60px;
+  height: auto;
 }
 
 .carousel .carousel-slide-indicators {
@@ -141,44 +242,33 @@
   left: calc(50% - 2px);
 }
 
-.biencommun .full-width.carousel-container .carousel.carousel.hero-banner .carousel-slide-indicators .carousel-slide-indicator {
+.biencommun .full-width.carousel-container .carousel.hero-banner .carousel-slide-indicators .carousel-slide-indicator,
+.fondations .full-width.carousel-container .carousel.hero-banner.scrollable .carousel-slide-indicators .carousel-slide-indicator {
   position: relative;
-  margin: 9px 0 !important;
-  height: 18px;
-  width: 18px;
+  height: 14px;
+  width: 14px;
   opacity: 1;
 }
 
-.biencommun .full-width.carousel-container .carousel.hero-banner .carousel-slide-indicators  .carousel-slide-indicator button {
+.biencommun .full-width.carousel-container .carousel.hero-banner .carousel-slide-indicators  .carousel-slide-indicator button,
+.fondations .full-width.carousel-container .carousel.hero-banner.scrollable .carousel-slide-indicators .carousel-slide-indicator button {
   position: relative;
-  height: 18px;
+  height: 14px;
   border-radius: 50%;
-  width: 18px;
+  width: 14px;
   opacity: 1;
 }
 
-.biencommun .full-width.carousel-container .carousel.hero-banner .carousel-slide .carousel-slide-content {
-  position: absolute;
-  top: 50%;
-  width: 100%;
-  max-width: 1000px;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: var(--news-button-text-colour);
-  text-align: center;
-  box-sizing: border-box;
-  padding: 0 60px;
-  background-color: unset;
-  margin: unset;
-}
-
-.biencommun .full-width.carousel-container .carousel.hero-banner .carousel-slide .carousel-slide-content p strong em{
+.biencommun .full-width.carousel-container .carousel.hero-banner .carousel-slide .carousel-slide-content p strong em,
+.fondations .full-width.carousel-container .carousel.hero-banner.scrollable .carousel-slide .carousel-slide-content p strong em{
   color: var(--biencommun-carousel-color);
   text-decoration: none;
   font-style: normal;
 }
 
-.biencommun .full-width.carousel-container .carousel.hero-banner div.social-cr-wrapper {
+
+
+.biencommun .full-width.carousel-container .carousel.hero-banner div.social-cr-wrapper  {
   position: absolute;
   bottom: 37px;
   left: 20px;
@@ -191,34 +281,7 @@
   font-weight: 250;
 }
 
-.biencommun .full-width.carousel-container .carousel.hero-banner div.social-cr-wrapper p {
-  margin: 0;
-  line-height : 13px;
-}
-
-.biencommun .full-width.carousel-container .carousel.hero-banner div.social-cr-wrapper .icon {
-  height: 40px;
-  width: 40px;
-  margin-right: 20px;
-}
-
-.biencommun .full-width.carousel-container .carousel.hero-banner div.slide-legend > p {
-  margin: 0;
-  font-size: 14px;
-  font-weight: 500;
-  letter-spacing: 0.03em;;
-}
-
-.biencommun .full-width.carousel-container .carousel.hero-banner .carousel-slide .carousel-slide-content p {
-  font-size: 30px;
-}
-
-.biencommun .full-width.carousel-container .carousel.hero-banner div.social-cr-wrapper p:last-of-type {
-  display: none;
-  font-size: 10px;
-}
-
-.biencommun .full-width.carousel-container .carousel.hero-banner div.slide-legend {
+.biencommun .full-width.carousel-container .carousel.hero-banner div.slide-legend, .fondations .full-width.carousel-container .carousel.hero-banner.scrollable div.slide-legend {
   position: absolute;
   bottom: 48px;
   display: inline-block;
@@ -226,11 +289,11 @@
   z-index: 10;
 }
 
-.biencommun .full-width.carousel-container .carousel.hero-banner div.slide-legend > p > a {
+.biencommun .full-width.carousel-container .carousel.hero-banner div.slide-legend > p > a, .fondations .full-width.carousel-container .carousel.hero-banner.scrollable div.slide-legend > p > a {
   color: var(--news-button-text-colour);
 }
 
-.biencommun .full-width.carousel-container .carousel.hero-banner div.slide-legend > p > a.any-link {
+.biencommun .full-width.carousel-container .carousel.hero-banner div.slide-legend > p > a.any-link, .fondations .full-width.carousel-container .carousel.hero-banner.scrollable div.slide-legend > p > a.any-link {
   text-decoration: none;
   overflow-wrap: break-word;
 }
@@ -252,7 +315,7 @@
   align-items: center;
   justify-content: center;
   gap: 10px;
-  z-index: 2;
+  z-index: 1;
   padding: 0;
   margin: 0;
   list-style: none;
@@ -321,7 +384,7 @@
 
 /* stylelint-disable no-descending-specificity */
 .carousel.carousel-vertical .carousel-slide {
-  position: absolute !important;
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
@@ -329,7 +392,7 @@
   opacity: 0;
   pointer-events: none;
   transition: opacity 2s ease-in-out;
-  display: block !important;
+  display: block;
   flex: none !important;
   scroll-snap-align: unset !important;
 }
@@ -357,19 +420,59 @@
     height: 500px;
   }
 
-  .biencommun .full-width.carousel-container .carousel.hero-banner div.social-cr-wrapper { 
+  .fondations .full-width.carousel-container .carousel.hero-banner.scrollable .carousel-slide .direction-icon-section {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .fondations .full-width.carousel-container .carousel.hero-banner.scrollable .carousel-slide .direction-icon-section .icon {
+    width: 100%;
+    height: 100%;
+  }
+
+  .fondations .full-width.carousel-container .carousel.hero-banner.scrollable .carousel-slide .carousel-slide-content {
+    background-color: unset;
+    text-align: center;
+    margin: auto;
+    width: 100%;
+    max-width: 1200px;
+    padding: 0;
+  }
+
+  .fondations .full-width.carousel-container .carousel.hero-banner.scrollable .carousel-slide .carousel-slide-content p {
+    font-size: 50px;
+  }
+
+  .fondations .full-width.carousel-container .carousel.hero-banner.scrollable div.social-cr-wrapper {
+    position: absolute;
+    bottom: 29px;
+    left: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    z-index: 10;
+    color: var(--news-button-text-colour);
+    font-size: 10px;
+    font-weight: 250;
+  }
+
+  .biencommun .full-width.carousel-container .carousel.hero-banner div.social-cr-wrapper,
+  .fondations .full-width.carousel-container .carousel.hero-banner.scrollable div.social-cr-wrapper {
     bottom: 29px;
   }
 
-  .biencommun .full-width.carousel-container .carousel.hero-banner div.social-cr-wrapper p:last-of-type {
+  .biencommun .full-width.carousel-container .carousel.hero-banner div.social-cr-wrapper p:last-of-type,
+  .fondations .full-width.carousel-container .carousel.hero-banner.scrollable div.social-cr-wrapper p:last-of-type {
     display: unset;
   }
 
-  .biencommun .full-width.carousel-container .carousel.hero-banner div.slide-legend {
+  .biencommun .full-width.carousel-container .carousel.hero-banner div.slide-legend,
+  .fondations .full-width.carousel-container .carousel.hero-banner.scrollable div.slide-legend {
     bottom: 48px;
   }
 
-  .biencommun .full-width.carousel-container .carousel.hero-banner div.slide-legend > p {
+  .biencommun .full-width.carousel-container .carousel.hero-banner div.slide-legend > p,
+  .fondations .full-width.carousel-container .carousel.hero-banner.scrollable div.slide-legend > p {
     font-size: 18px;
   }
 
@@ -380,20 +483,38 @@
   .biencommun .full-width.carousel-container .carousel.hero-banner .carousel-slide .carousel-slide-content p {
     font-size: 50px;
   }
+
+  .biencommun .full-width.carousel-container .carousel.hero-banner .carousel-slide-indicators .carousel-slide-indicator,
+  .fondations .full-width.carousel-container .carousel.hero-banner.scrollable .carousel-slide-indicators .carousel-slide-indicator {
+    position: relative;
+    margin: 9px 0 !important;
+    height: 18px;
+    width: 18px;
+    opacity: 1;
+  }
+
+  .biencommun .full-width.carousel-container .carousel.hero-banner .carousel-slide-indicators  .carousel-slide-indicator button,
+  .fondations .full-width.carousel-container .carousel.hero-banner.scrollable .carousel-slide-indicators .carousel-slide-indicator button {
+    position: relative;
+    height: 18px;
+    border-radius: 50%;
+    width: 18px;
+    opacity: 1;
+  }
 }
 
 @media (width >= 1200px) {
-  .biencommun .full-width.carousel-container .carousel.hero-banner div.social-cr-wrapper {
+  .biencommun .full-width.carousel-container .carousel.hero-banner div.social-cr-wrapper, .fondations .full-width.carousel-container .carousel.hero-banner.scrollable div.social-cr-wrapper {
     bottom: 86px;
     left: 100px;
   }
 
-  .biencommun .full-width.carousel-container .carousel.hero-banner div.slide-legend {
+  .biencommun .full-width.carousel-container .carousel.hero-banner div.slide-legend, .fondations .full-width.carousel-container .carousel.hero-banner.scrollable div.slide-legend {
     bottom: 100px;
     right: 100px;
   }
 
-  .biencommun .full-width.carousel-container .carousel.hero-banner div.slide-legend > p {
+  .biencommun .full-width.carousel-container .carousel.hero-banner div.slide-legend > p, .fondations .full-width.carousel-container .carousel.hero-banner.scrollable div.slide-legend > p {
     font-size: 22px;
   }
 }
@@ -421,6 +542,20 @@
   background-color: #edecea !important;
 }
 
+.full-width.carousel-container {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.full-width.carousel-container .carousel-wrapper {
+  width: 100%;
+  position: relative;
+  padding: 0;
+  margin: 0;
+  max-width: 100%;
+}
+
 .biencommun .full-width.carousel-container {
   width: 100%;
   padding: 0;
@@ -438,4 +573,39 @@
   width: 100vw;
   position: relative;
   height: 100vh;
+}
+
+.fondations .full-width.carousel-container .carousel.hero-banner.scrollable {
+  height: 100%;
+}
+
+.fondations .full-width.carousel-container .carousel.hero-banner.scrollable.carousel-vertical .carousel-slide-indicators {
+  position: fixed;
+}
+
+.fondations .full-width.carousel-container .carousel.hero-banner.scrollable .carousel-slides-container {
+  display: block;
+  overflow-y: auto;
+  scroll-snap-type: y mandatory;
+  height: 100vh; /* each viewport shows one slide */
+}
+
+.fondations .full-width.carousel-container .carousel.hero-banner.scrollable .carousel-slides {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+.fondations .full-width.carousel-container .carousel.hero-banner.scrollable .carousel-slide {
+  height: 100%; /* full viewport per slide */
+  scroll-snap-align: start !important;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  opacity: unset;
+}
+
+.fondations .full-width.carousel-container .carousel.hero-banner.scrollable .carousel-slide.active .carousel-slide-content {
+  opacity: 1;
 }

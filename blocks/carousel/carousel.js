@@ -154,23 +154,26 @@ export default async function decorate(block) {
   carouselId += 1;
   block.setAttribute('id', `carousel-${carouselId}`);
   let rows = block.querySelectorAll(':scope > div');
+  const isScrollable = block.classList.contains('scrollable');
+  let socialContainer = null;
+  let slidelegende = null;
   if (block.classList.contains('hero-banner')) {
     rows = Array.from(rows).filter((row) => {
       const hasPicture = row.querySelector('picture');
       if (!hasPicture) {
         // Handle row without picture
-        const socialContainer = row.querySelector('div:nth-child(1)');
-        const slidelegende = row.querySelector('div:nth-child(2)');
+        socialContainer = row.querySelector('div:nth-child(1)');
+        slidelegende = row.querySelector('div:nth-child(2)');
         if (socialContainer) {
           socialContainer.classList.add('social-cr-wrapper');
         }
         if (slidelegende) {
           slidelegende.classList.add('slide-legend');
         }
-        // Append to block (outside carousel slides)
-        block.append(socialContainer, slidelegende);
+        row.remove();
+        return false;
       }
-      return hasPicture; // keep only picture rows in "rows"
+      return true; // keep only picture rows in "rows"
     });
   }
 
@@ -218,6 +221,23 @@ export default async function decorate(block) {
   rows.forEach((row, idx) => {
     slide = createSlide(row, idx, carouselId);
     moveInstrumentation(row, slide);
+    if (isScrollable && socialContainer && slidelegende) {
+      const content = slide.querySelector('.carousel-slide-content');
+      const directionIcon = content?.querySelector('p:last-of-type');
+      const socialClone = socialContainer.cloneNode(true);
+      const legendClone = slidelegende.cloneNode(true);
+      if (directionIcon) {
+        // Create wrapper div
+        const directionIconDiv = document.createElement('div');
+        directionIconDiv.classList.add('direction-icon-section');
+        // Move the <p> into wrapper
+        directionIconDiv.appendChild(directionIcon);
+        // Insert before social block
+        slide.append(directionIconDiv, socialClone, legendClone);
+      } else {
+        slide.append(socialClone, legendClone);
+      }
+    }
     slidesWrapper.append(slide);
 
     if (slideIndicators) {
@@ -226,29 +246,73 @@ export default async function decorate(block) {
       indicator.dataset.targetSlide = idx;
       indicator.innerHTML = `<button type="button" aria-label="${placeholders.showSlide || 'Show Slide'} ${idx + 1} ${placeholders.of || 'of'} ${rows.length}"></button>`;
       slideIndicators.append(indicator);
+      if (isScrollable) {
+        // Scroll into view when indicator is clicked
+        indicator.querySelector('button').addEventListener('click', () => {
+          slide.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+      }
     }
-    row.remove();
   });
 
   container.append(slidesWrapper);
   block.prepend(container);
+  // Remove empty divs left behind
+  block.querySelectorAll('div').forEach((div) => {
+    if (!div.children.length && !div.textContent.trim()) {
+      div.remove();
+    }
+  });
 
-  // Show the first slide by default
-  showSlide(block, 0);
-
-  // Autoplay functionality
-  function autoAdvance() {
+  if (isScrollable) {
+    // Scroll-snap mode (CSS controls the snapping)
     const slides = block.querySelectorAll('.carousel-slide');
-    const current = parseInt(block.dataset.activeSlide, 10) || 0;
-    const next = (current + 1) % slides.length;
-    showSlide(block, next);
-    block.carouselTimer = setTimeout(autoAdvance, 4000); // 4000ms = 4 seconds
-  }
-  block.carouselTimer = setTimeout(autoAdvance, 4000);
+    const indicators = block.querySelectorAll('.carousel-slide-indicator');
+    indicators.forEach((indicator, idx) => {
+      const btn = indicator.querySelector('button');
+      btn.addEventListener('click', () => {
+        slides[idx].scrollIntoView({
+          behavior: 'smooth',
+          block: 'start',
+        });
+      });
+    });
 
-  if (!isSingleSlide) {
-    bindEvents(block);
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const idx = parseInt(entry.target.dataset.slideIndex, 10);
+          entry.target.classList.add('active');
+          // 🔹 Remove 'active' from others
+          slides.forEach((s) => {
+            if (s !== entry.target) s.classList.remove('active');
+          });
+          indicators.forEach((ind, i) => {
+            ind.querySelector('button').toggleAttribute('disabled', i === idx);
+          });
+        }
+      });
+    }, { threshold: 0.6 });
+
+    slides.forEach((s) => observer.observe(s));
+  } else {
+    // Show the first slide by default
+    showSlide(block, 0);
+
+    // Autoplay functionality
+    const autoAdvance = () => {
+      const slides = block.querySelectorAll('.carousel-slide');
+      const current = parseInt(block.dataset.activeSlide, 10) || 0;
+      const next = (current + 1) % slides.length;
+      showSlide(block, next);
+      block.carouselTimer = setTimeout(autoAdvance, 4000); // 4000ms = 4 seconds
+    };
+    block.carouselTimer = setTimeout(autoAdvance, 4000);
+
+    if (!isSingleSlide) {
+      bindEvents(block);
+    }
+    centerIndicators(block);
+    window.addEventListener('resize', () => centerIndicators(block));
   }
-  centerIndicators(block);
-  window.addEventListener('resize', () => centerIndicators(block));
 }
