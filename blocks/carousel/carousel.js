@@ -223,7 +223,6 @@ export default async function decorate(block) {
     if (isScrollable) {
       const socialContainer = block.querySelector('.social-cr-wrapper');
       const slidelegende = block.querySelector('.slide-legend');
-      console.log(socialContainer, slidelegende);
       if (socialContainer && slidelegende) {
         slide.append(
           socialContainer.cloneNode(true),
