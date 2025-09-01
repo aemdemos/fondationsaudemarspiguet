@@ -476,9 +476,6 @@ export function setPathSpecificFavicon() {
     appleIcon.sizes = '180x180';
     appleIcon.href = faviconUrls.apple;
     document.head.appendChild(appleIcon);
-
-    // eslint-disable-next-line no-console
-    console.log('404 Favicons created for:', detectedSite);
   } else {
     // Update existing favicons for regular pages
     favicon16Elements.forEach((favicon16) => {
@@ -488,13 +485,9 @@ export function setPathSpecificFavicon() {
     favicon32Elements.forEach((favicon32) => {
       favicon32.href = faviconUrls.favicon32;
     });
-
     appleIconElements.forEach((appleIcon) => {
       appleIcon.href = faviconUrls.apple;
     });
-
-    // eslint-disable-next-line no-console
-    console.log('Regular page favicons updated for:', detectedSite);
   }
 }
 
