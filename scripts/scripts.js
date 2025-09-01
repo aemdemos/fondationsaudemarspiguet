@@ -420,19 +420,19 @@ export function getFaviconUrls(siteType = null) {
   const detectedSite = siteType || detectSiteType();
   const faviconMappings = {
     biencommun: {
-      apple: '/styles/biencommun-apple-touch-icon.png',
-      favicon32: '/styles/biencommun-favicon-32x32.png',
-      favicon16: '/styles/biencommun-favicon-16x16.png',
+      apple: '/icons/biencommun-apple-touch-icon.png',
+      favicon32: '/icons/biencommun-favicon-32x32.png',
+      favicon16: '/icons/biencommun-favicon-16x16.png',
     },
     arbres: {
-      apple: '/styles/arbres-apple-touch-icon.png',
-      favicon32: '/styles/arbres-favicon-32x32.png',
-      favicon16: '/styles/arbres-favicon-16x16.png',
+      apple: '/icons/arbres-apple-touch-icon.png',
+      favicon32: '/icons/arbres-favicon-32x32.png',
+      favicon16: '/icons/arbres-favicon-16x16.png',
     },
     fondations: {
-      apple: '/styles/apple-touch-icon.png',
-      favicon32: '/styles/favicon-32x32.png',
-      favicon16: '/styles/favicon-16x16.png',
+      apple: '/icons/apple-touch-icon.png',
+      favicon32: '/icons/favicon-32x32.png',
+      favicon16: '/icons/favicon-16x16.png',
     },
     // Add more domain mappings as needed
   };
