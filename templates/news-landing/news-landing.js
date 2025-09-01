@@ -1,5 +1,5 @@
 import {
-  div, input, span, a, h2, img,
+  div, input, span, a, h2, img, p,
 } from '../../scripts/dom-helpers.js';
 import ffetch from '../../scripts/ffetch.js';
 import {
@@ -70,6 +70,21 @@ async function getNewsdata() {
 function showNewsArticles(getNews, doc) {
   getNews.forEach((news) => {
     const url = news.path;
+    // Create description with smart sentence limiting
+    const newsDescription = p();
+    if (news.description) {
+      const sentences = news.description
+        .split(/\.\s*(?=[A-Z]|$)/)
+        .filter((s) => s.trim().length > 0)
+        .map((s) => s.trim() + (s.trim().endsWith('.') ? '' : '.'));
+      let descriptionText = sentences.slice(0, 2).join(' ').trim();
+      if (descriptionText.length > 500 && sentences.length > 1) {
+        descriptionText = sentences[0].trim();
+      }
+      newsDescription.textContent = descriptionText;
+    } else {
+      newsDescription.textContent = '';
+    }
     const $newsItem = a(
       { class: 'news-item', href: url },
       div(
@@ -83,7 +98,7 @@ function showNewsArticles(getNews, doc) {
         span({ class: 'news-category' }, news.category),
         span({ class: 'news-date' }, news.date),
         h2({ class: 'news-title' }, news.title),
-        div({ class: 'news-description' }, news.description),
+        div({ class: 'news-description' }, newsDescription),
       ),
       div({ class: 'clear' }),
     );
