@@ -165,7 +165,6 @@ export default async function decorate(block) {
         socialContainer = row.querySelector('div:nth-child(1)');
         slidelegende = row.querySelector('div:nth-child(2)');
         if (socialContainer) {
-          console.log(socialContainer);
           const linkedin = socialContainer.querySelector('.icon.icon-linkedin');
           if (linkedin) {
             const link = document.createElement('a');
@@ -200,7 +199,6 @@ export default async function decorate(block) {
 
   const slidesWrapper = document.createElement('ul');
   slidesWrapper.classList.add('carousel-slides');
-  // block.prepend(slidesWrapper);
 
   // Detect vertical carousel and add class
   const isVertical = block.classList.contains('vertical') || block.classList.contains('carousel-vertical');
