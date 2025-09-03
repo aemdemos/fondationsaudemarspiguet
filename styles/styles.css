@@ -1241,7 +1241,7 @@ main .section:has(.icons-grid.statistics) .columns-wrapper .columns p.button-con
   padding-bottom: 0;
 }
 
-.biencommun main .section.cream-bg {
+.biencommun main .section.bright-gray-bg {
 background-color: var(--biencommun-team-bg-page);
 }
 
