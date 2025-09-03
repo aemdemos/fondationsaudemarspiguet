@@ -189,7 +189,6 @@ export default async function decorate(block) {
 
   const slidesWrapper = document.createElement('ul');
   slidesWrapper.classList.add('carousel-slides');
-  block.prepend(slidesWrapper);
 
   // Detect vertical carousel and add class
   const isVertical = block.classList.contains('vertical') || block.classList.contains('carousel-vertical');
