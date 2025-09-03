@@ -8,15 +8,15 @@ footer .footer .section.newsletter-section {
   padding: 25px 0;
 }
 
-footer .footer .section.beige-bg {
+.section.beige-bg {
   background-color: var(--newsletter-bg);
 }
 
-.biencommun footer .footer .section.cream-bg {
+.biencommun .section.cream-bg {
   background-color: var(--biencommun-newsletter-bg);
 }
 
-.fondations footer .footer .section.grey-bg {
+.fondations .section.grey-bg {
   background-color: var(--fondations-footer-color);
 }
 
