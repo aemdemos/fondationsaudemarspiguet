@@ -466,6 +466,11 @@
     font-weight: 250;
   }
 
+  .fondations .full-width.carousel-container .carousel.hero-banner.scrollable div.social-cr-wrapper .button-container a {
+    background-color: unset;
+    padding: 0;
+  }
+
   .biencommun .full-width.carousel-container .carousel.hero-banner div.social-cr-wrapper,
   .fondations .full-width.carousel-container .carousel.hero-banner.scrollable div.social-cr-wrapper {
     bottom: 29px;

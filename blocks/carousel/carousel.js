@@ -165,16 +165,6 @@ export default async function decorate(block) {
         socialContainer = row.querySelector('div:nth-child(1)');
         slidelegende = row.querySelector('div:nth-child(2)');
         if (socialContainer) {
-          const linkedin = socialContainer.querySelector('.icon.icon-linkedin');
-          if (linkedin) {
-            const link = document.createElement('a');
-            link.href = 'https://www.linkedin.com/company/audemars-piguet-foundations/';
-            link.target = '_blank'; // optional: open in new tab
-            link.rel = 'noopener noreferrer';
-            // move the span into the anchor
-            linkedin.parentNode.insertBefore(link, linkedin);
-            link.appendChild(linkedin);
-          }
           socialContainer.classList.add('social-cr-wrapper');
         }
         if (slidelegende) {
