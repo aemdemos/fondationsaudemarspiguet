@@ -52,7 +52,7 @@
 }
 
 .biencommun .full-width.carousel-container .carousel.hero-banner .carousel-slide .carousel-slide-image picture > img {
-  height: 100vh;
+  height: 100%;
   width: 100%;
   object-fit: cover;
 }
@@ -379,7 +379,7 @@
 
 .carousel.carousel-vertical .carousel-slides-container {
    position: relative;
-   height: 100%;
+   height: 100vh;
    overflow: hidden;
 }
 
@@ -588,8 +588,8 @@
 
 .biencommun .full-width.carousel-container .carousel.hero-banner {
   width: 100vw;
+  height: 100%;
   position: relative;
-  height: 100vh;
 }
 
 .fondations .full-width.carousel-container .carousel.hero-banner.scrollable {
