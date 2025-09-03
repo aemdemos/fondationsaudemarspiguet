@@ -26,7 +26,7 @@ footer .footer .section.social-section {
   color: #fff;
 }
 
-footer .footer .section.green-bg {
+.section.green-bg {
   background-color: var(--footer-color);
 }
 
