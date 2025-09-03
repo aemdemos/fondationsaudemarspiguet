@@ -709,14 +709,12 @@ main .section.soft-grey-bg.default-colored-text p {
   color: var(--default-colored-text);
 }
 
-main .section.colored-text strong,
-main .section.colored-text b {
+main .section.colored-text strong {
   color: var(--news-category);
   font-weight: 400; 
 }
 
-.biencommun main .section.colored-text strong,
-.biencommun main .section.colored-text b {
+.biencommun main .section.colored-text strong {
   color: var(--site-color-2-bien);
 }
 
@@ -745,13 +743,8 @@ main .section.colored-text b {
   font-weight: bold;
 }
 
-/* .biencommun.contact-us main .section .default-content-wrapper {
-  padding: 15px;
-} */
-
 /* Make strong elements bold in contact-us section for both themes */
-.contact-us main .section .default-content-wrapper strong,
-.contact-us main .section .default-content-wrapper b {
+.contact-us main .section .default-content-wrapper strong {
   font-weight: bold;
 }
 
