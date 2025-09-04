@@ -266,12 +266,4 @@ export default async function decorate(block) {
       switchLanguage();
     });
   }
-  /**
- * Adjusts the scroll limit for short content
- */
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', adjustScrollLimitForShortContent);
-  } else {
-    adjustScrollLimitForShortContent();
-  }
 }
