@@ -111,7 +111,7 @@ function toggleMenu(nav, navSections, forceExpanded = null) {
 /**
  * Adjusts the scroll limit for short content
  */
-function adjustScrollLimitForShortContent() {
+/* function adjustScrollLimitForShortContent() {
   const main = document.querySelector('main');
   const header = document.querySelector('header .nav-wrapper');
   const footer = document.querySelector('footer');
@@ -129,7 +129,7 @@ function adjustScrollLimitForShortContent() {
       });
     }
   }
-}
+} */
 
 /**
  * loads and decorates the header, mainly the nav
