@@ -36,19 +36,19 @@ body.news-article main .section.articleintro-container + div .default-content-wr
     font-weight: 400;
 }
 
-body.news-article main .section.details-sidebar.light-grey-bg + * {
-    background-color: var(--news-bg-page-suite);
-}
-
-body.news-article main .section.details-sidebar + * {
-    margin: 0;
-  }
-
 body.biencommun main .section.details-sidebar + * {
     background-color: unset;
 }
 
-body.news-article main .section.white-lilac-bg {
+body.news-article main .section.details-sidebar + * {
+    margin: 0;
+}
+
+body.news-article main .section.details-sidebar.light-grey-bg + * {
+    background-color: var(--news-bg-page-suite);
+}
+
+main .section.white-lilac-bg {
     background-color: var(--news-sophis-bg-text2);
 }
 
@@ -75,6 +75,40 @@ body.news-article main .section.articlecontent-container + div div.default-conte
 
 body.biencommun main .section.articlecontent-container + div div.default-content-wrapper > p > strong {
     color: var(--biencommun-projet-bloc-titre);
+}
+
+body.news-article main .section.details-sidebar .news-article-inner a {
+    text-decoration: none;
+    color: var(--text-color);
+}
+
+body.news-article main .section.details-sidebar .news-article-inner a:hover {
+    opacity: 0.7;
+}
+
+body.news-article main .section.details-sidebar .button-wrapper .button-container a{
+    background-image: url('/icons/btn_fleche_right.svg');
+    background-position: calc(100% - 10px) center;
+    background-repeat: no-repeat;
+    padding: 13px 50px 13px 15px;
+    color: #FFF;
+    font-size: 12px;
+    text-transform: uppercase;
+    background-color: var(--site-color);
+    box-sizing: border-box;
+    border: none;
+    cursor: pointer;
+    letter-spacing: .12em;
+    font-weight: 500;
+    text-align: center;
+    min-width: 270px;
+    line-height: normal;
+    border-radius: 0;
+    margin: 0;
+}
+
+body.biencommun main .section.details-sidebar .button-wrapper .button-container a {
+    background-color: var(--site-color-bien);
 }
 
 body.biencommun main .section.articlecontent-container + div div.default-content-wrapper a:any-link {
@@ -118,16 +152,6 @@ body.news-article main .section.details-sidebar .news-article-inner .default-con
 
 body.news-article main .news-article-sidebar {
     width: 100%;
-}
-
-body.news-article main .news-article-sidebar div {
-    color: var(--site-color-2);
-    margin-top: 20px;
-    margin-bottom: 4px;
-}
-
-body.biencommun main .news-article-sidebar div {
-    color: var(--site-color-2-bien);
 }
 
 body.news-article main .news-article-sidebar ul {
@@ -195,11 +219,6 @@ body.news-article main .section.details-sidebar .news-article-inner .clear {
     display: table;
 }
 
-body.news-article main .section.details-sidebar .news-article-inner a {
-    text-decoration: none;
-    color: var(--text-color);
-}
-
 body.news-article main .section.details-sidebar + * li {
     background-color: var(--news-bg-page-suite);
 }
@@ -208,39 +227,10 @@ body.news-article main .section.details-sidebar.right + * li {
     background-color: white;
 }
 
-body.news-article main .section.details-sidebar .news-article-inner a:hover {
-    opacity: 0.7;
-}
-
 body.news-article main .section.details-sidebar .button-wrapper {
     text-align: center;
     padding: 30px 0;
     max-width: 100%;
-}
-
-body.news-article main .section.details-sidebar .button-wrapper .button-container a{
-    background-image: url('/icons/btn_fleche_right.svg');
-    background-position: calc(100% - 10px) center;
-    background-repeat: no-repeat;
-    padding: 13px 50px 13px 15px;
-    color: #FFF;
-    font-size: 12px;
-    text-transform: uppercase;
-    background-color: var(--site-color);
-    box-sizing: border-box;
-    border: none;
-    cursor: pointer;
-    letter-spacing: .12em;
-    font-weight: 500;
-    text-align: center;
-    min-width: 270px;
-    line-height: normal;
-    border-radius: 0;
-    margin: 0;
-}
-
-body.biencommun main .section.details-sidebar .button-wrapper .button-container a {
-    background-color: var(--site-color-bien);
 }
 
 body.news-article main .section.details-sidebar.right .news-article-inner .default-content-wrapper p {
@@ -295,6 +285,16 @@ body.news-article main .section.details-sidebar.right .news-article-inner .defau
     body.news-article main .section.details-sidebar.right .news-article-inner .default-content-wrapper{
         width: calc(100% - 280px);
         float: left;
+    }
+
+    body.news-article main .news-article-sidebar div {
+        color: var(--site-color-2);
+        margin-top: 20px;
+        margin-bottom: 4px;
+    }
+
+    body.biencommun main .news-article-sidebar div {
+        color: var(--site-color-2-bien);
     }
 
     body.news-article main .section.articleintro-container + div .default-content-wrapper p {
