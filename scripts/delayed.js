@@ -1,3 +1,5 @@
+import { applySectionBackgrounds } from './utils.js';
+
 export default function loadswiper() {
   return new Promise((resolve, reject) => {
     // Check if Swiper is already loaded
@@ -35,3 +37,6 @@ export default function loadswiper() {
     document.head.append(scriptrrule);
   });
 }
+
+// Apply section backgrounds after delay to avoid performance impact
+applySectionBackgrounds();
