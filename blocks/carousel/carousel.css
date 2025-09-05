@@ -597,7 +597,7 @@ iframe .biencommun .full-width.carousel-container .carousel.hero-banner .carouse
 .biencommun .full-width.carousel-container .carousel.hero-banner {
   width: 100vw;
   position: relative;
-  height: 100vh;
+  height: 100%;
 }
 
 .fondations .full-width.carousel-container .carousel.hero-banner.scrollable {
