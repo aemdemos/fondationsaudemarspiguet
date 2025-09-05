@@ -52,7 +52,7 @@
 }
 
 .biencommun .full-width.carousel-container .carousel.hero-banner .carousel-slide .carousel-slide-image picture > img {
-  height: 100vh;
+  height: 100%;
   width: 100%;
   object-fit: cover;
 }
@@ -383,6 +383,14 @@
    overflow: hidden;
 }
 
+.biencommun .full-width.carousel-container .carousel.hero-banner .carousel-slides-container {
+  height: 100vh;
+}
+
+iframe .biencommun .full-width.carousel-container .carousel.hero-banner .carousel-slides-container {
+  height: 500px;
+}
+
 .carousel.carousel-vertical .carousel-slides {
   position: relative;
   display: block !important;
@@ -589,7 +597,7 @@
 .biencommun .full-width.carousel-container .carousel.hero-banner {
   width: 100vw;
   position: relative;
-  height: 100vh;
+  height: 100%;
 }
 
 .fondations .full-width.carousel-container .carousel.hero-banner.scrollable {
