@@ -1,4 +1,4 @@
-import { fetchPlaceholders, getMetadata } from '../../scripts/aem.js';
+import { fetchPlaceholders, getMetadata, createOptimizedPicture } from '../../scripts/aem.js';
 import { moveInstrumentation } from '../../scripts/scripts.js';
 
 function updateActiveSlide(slide) {
@@ -120,13 +120,21 @@ function bindEvents(block) {
   });
 }
 
-function createSlide(row, slideIndex, carouselId) {
+function createSlide(row, slideIndex, carouselId, isHeroBanner = false) {
   const slide = document.createElement('li');
   slide.dataset.slideIndex = slideIndex;
   slide.setAttribute('id', `carousel-${carouselId}-slide-${slideIndex}`);
   slide.classList.add('carousel-slide');
   row.querySelectorAll(':scope > div').forEach((column, colIdx) => {
     column.classList.add(`carousel-slide-${colIdx === 0 ? 'image' : 'content'}`);
+    // 🔹 Optimize images only if this is a hero-banner
+    if (isHeroBanner) {
+      const imgs = column.querySelectorAll('img');
+      imgs.forEach((img) => {
+        const optimized = createOptimizedPicture(img.src);
+        img.replaceWith(optimized);
+      });
+    }
     slide.append(column);
   });
 
@@ -218,7 +226,7 @@ export default async function decorate(block) {
   }
   let slide;
   rows.forEach((row, idx) => {
-    slide = createSlide(row, idx, carouselId);
+    slide = createSlide(row, idx, carouselId, block.classList.contains('hero-banner'));
     moveInstrumentation(row, slide);
     if (isScrollable && socialContainer && slidelegende) {
       const content = slide.querySelector('.carousel-slide-content');

@@ -412,6 +412,17 @@ export function detectSiteType() {
 }
 
 /**
+ * Applies the detected site class to the document body
+ * @param {string} siteType - Optional site type override
+ * @returns {string} The applied site class
+ */
+export function applySiteClass(siteType = null) {
+  const detectedSite = siteType || detectSiteType();
+  document.body.classList.add(detectedSite);
+  return detectedSite;
+}
+
+/**
  * Gets favicon URLs for a specific site type
  * @param {string} siteType - The site type (biencommun, arbres, fondations)
  * @returns {object} Object with favicon URLs

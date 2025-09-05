@@ -873,7 +873,7 @@ main .section.float-right .default-content-wrapper .clear {
   clear: both;
 }
 
-body.fondations main .section.light-grey-orange {
+main .section.light-grey-orange-bg {
   background-color: var(--fondations-quote-bg);
 }
 
