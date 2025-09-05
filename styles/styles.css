@@ -614,7 +614,7 @@ main .section.pale-grey-bg {
   background-color: var(--biencommun-medias-bg);
 }
 
-.biencommun main .section.grey-yellow-bg {
+main .section.grey-yellow-bg {
   background-color: var(--biencommun-page-bloc-bg-pictos);
 }
 
@@ -1241,7 +1241,7 @@ main .section:has(.icons-grid.statistics) .columns-wrapper .columns p.button-con
   padding-bottom: 0;
 }
 
-.biencommun main .section.bright-gray-bg {
+main .section.bright-gray-bg {
 background-color: var(--biencommun-team-bg-page);
 }
 
@@ -1258,11 +1258,11 @@ color: var(--biencommun-titre);
   margin-top: 20px;
 }
 
-.biencommun main .section.light-grey-bg {
+main .section.light-grey-bg {
   background-color: var(--biencommun-projet-bg-page);
 }
 
-.biencommun main .section.light-grey-red-bg {
+main .section.light-grey-red-bg {
   background-color: var(--biencommun-chiffres-bloc-bg);
 }
 
