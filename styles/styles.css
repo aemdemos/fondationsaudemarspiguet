@@ -1258,7 +1258,7 @@ color: var(--biencommun-titre);
   margin-top: 20px;
 }
 
-main .section.light-grey-bg {
+.biencommun main .section.light-grey-bg {
   background-color: var(--biencommun-projet-bg-page);
 }
 
