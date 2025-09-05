@@ -379,8 +379,16 @@
 
 .carousel.carousel-vertical .carousel-slides-container {
    position: relative;
-   height: 100vh;
+   height: 100%;
    overflow: hidden;
+}
+
+.biencommun .full-width.carousel-container .carousel.hero-banner .carousel-slides-container {
+  height: 100vh;
+}
+
+iframe .biencommun .full-width.carousel-container .carousel.hero-banner .carousel-slides-container {
+  height: 500px;
 }
 
 .carousel.carousel-vertical .carousel-slides {
@@ -588,8 +596,8 @@
 
 .biencommun .full-width.carousel-container .carousel.hero-banner {
   width: 100vw;
-  height: 100%;
   position: relative;
+  height: 100vh;
 }
 
 .fondations .full-width.carousel-container .carousel.hero-banner.scrollable {
