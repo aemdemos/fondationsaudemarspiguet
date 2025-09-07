@@ -306,6 +306,7 @@ export async function loadAllPlaceholders() {
     'category-news',
     'category-projects',
     'language-switcher',
+    currentLanguage === 'fr' ? 'mapmarkers-fr' : 'mapmarkers',
   ];
 
   // Create default structure
@@ -315,6 +316,8 @@ export async function loadAllPlaceholders() {
     'category-news': { en: [], fr: [] },
     'category-projects': { en: [], fr: [] },
     'language-switcher': [],
+    // mapmarkers: [],
+    // 'mapmarkers-fr': [],
   });
 
   // Sheet processors for different data types
@@ -350,7 +353,7 @@ export async function loadAllPlaceholders() {
 
       if (sheetName === 'category-news' || sheetName === 'category-projects') {
         window.placeholders[sheetName] = processors.category(data);
-      } else if (sheetName === 'language-switcher') {
+      } else if (sheetName === 'language-switcher' || sheetName === 'mapmarkers' || sheetName === 'mapmarkers-fr') {
         window.placeholders[sheetName] = processors.raw(data);
       } else {
         window.placeholders[sheetName] = processors.language(data);
