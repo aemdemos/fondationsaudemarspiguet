@@ -138,16 +138,16 @@ function createSlide(row, slideIndex, carouselId, isHeroBanner = false) {
     slide.append(column);
   });
 
-  const carousel_logo = [
+  const carouselLogo = [
     '/icons/carousel_logo_fondations.svg',
     '/icons/carousel_logo_biencommun.svg',
     '/icons/carousel_logo_arbres.svg',
   ];
 
-  if (carousel_logo[slideIndex]) {
+  if (carouselLogo[slideIndex]) {
     const logoWrapper = document.createElement('div');
     logoWrapper.className = 'carousel-slide-logo';
-    logoWrapper.innerHTML = `<img src="${carousel_logo[slideIndex]}" alt="Slide ${slideIndex + 1} logo">`;
+    logoWrapper.innerHTML = `<img src="${carouselLogo[slideIndex]}" alt="Slide ${slideIndex + 1} logo">`;
     slide.append(logoWrapper);
   }
 
