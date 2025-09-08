@@ -8,7 +8,7 @@
   text-align: center;
   align-items: center;
   justify-content: center; 
-  background-color: #d8d7d0;
+  /*background-color: #d8d7d0;*/
 }
 
 body.fondations .section.quote-container {
@@ -70,17 +70,6 @@ body.biencommun .quote .quote-quotation em,
 body.biencommun .quote .quote-quotation i {
   color: var(--biencommun-projet-bloc-titre);
   font-style: normal;
-}
-
-/* Different background color for quote block on biencommun site */
-.light-grey-orange-bg .quote blockquote {
-  background-color: var(--biencommun-page-bloc-full);
-}
-
-/* Different background color for quote block on fondations site */
-.ashy-grey-bg .quote blockquote {
-  background-color: var(--fondations-quote-bg);
-  margin-top: 0;
 }
 
 /* Style underline text in quotation - remove underline and make brown */

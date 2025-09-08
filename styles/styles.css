@@ -877,6 +877,10 @@ main .section.light-grey-orange-bg {
   background-color: var(--fondations-quote-bg);
 }
 
+main .section.ashy-grey-bg {
+  background-color: var(--fondations-quote-bg);
+}
+
 body.fondations main .section.fade-up {
   margin-top: 0;
   padding-top: 0;
