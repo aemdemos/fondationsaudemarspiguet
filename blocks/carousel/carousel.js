@@ -138,6 +138,19 @@ function createSlide(row, slideIndex, carouselId, isHeroBanner = false) {
     slide.append(column);
   });
 
+  const carousel_logo = [
+    '/icons/carousel_logo_fondations.svg',
+    '/icons/carousel_logo_biencommun.svg',
+    '/icons/carousel_logo_arbres.svg',
+  ];
+
+  if (carousel_logo[slideIndex]) {
+    const logoWrapper = document.createElement('div');
+    logoWrapper.className = 'carousel-slide-logo';
+    logoWrapper.innerHTML = `<img src="${carousel_logo[slideIndex]}" alt="Slide ${slideIndex + 1} logo">`;
+    slide.append(logoWrapper);
+  }
+
   const labeledBy = slide.querySelector('h1, h2, h3, h4, h5, h6');
   if (labeledBy) {
     slide.setAttribute('aria-labelledby', labeledBy.getAttribute('id'));

@@ -288,6 +288,10 @@ header nav .nav-brand img {
   height: auto;
 }
 
+.fondations.homepage header nav[aria-expanded="false"] .nav-brand img {
+  visibility: hidden;
+}
+
 /* sections */
 header nav .nav-sections {
   position: absolute;
