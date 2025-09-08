@@ -316,8 +316,6 @@ export async function loadAllPlaceholders() {
     'category-news': { en: [], fr: [] },
     'category-projects': { en: [], fr: [] },
     'language-switcher': [],
-    // mapmarkers: [],
-    // 'mapmarkers-fr': [],
   });
 
   // Sheet processors for different data types
