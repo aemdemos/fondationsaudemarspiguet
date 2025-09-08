@@ -73,12 +73,12 @@ body.biencommun .quote .quote-quotation i {
 }
 
 /* Different background color for quote block on biencommun site */
-body.biencommun .quote blockquote {
+.light-grey-orange-bg .quote blockquote {
   background-color: var(--biencommun-page-bloc-full);
 }
 
 /* Different background color for quote block on fondations site */
-body.fondations .quote blockquote {
+.ashy-grey-bg .quote blockquote {
   background-color: var(--fondations-quote-bg);
   margin-top: 0;
 }
