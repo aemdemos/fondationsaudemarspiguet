@@ -16,7 +16,7 @@ import {
   toCamelCase,
   fetchPlaceholders,
 } from './aem.js';
-import { decorateListingCards } from './utils.js';
+import { decorateListingCards, applySectionBackgrounds } from './utils.js';
 
 const LANGUAGES = new Set(['en', 'fr']);
 let language;
@@ -306,6 +306,7 @@ export async function loadAllPlaceholders() {
     'category-news',
     'category-projects',
     'language-switcher',
+    currentLanguage === 'fr' ? 'mapmarkers-fr' : 'mapmarkers',
   ];
 
   // Create default structure
@@ -350,7 +351,7 @@ export async function loadAllPlaceholders() {
 
       if (sheetName === 'category-news' || sheetName === 'category-projects') {
         window.placeholders[sheetName] = processors.category(data);
-      } else if (sheetName === 'language-switcher') {
+      } else if (sheetName === 'language-switcher' || sheetName === 'mapmarkers' || sheetName === 'mapmarkers-fr') {
         window.placeholders[sheetName] = processors.raw(data);
       } else {
         window.placeholders[sheetName] = processors.language(data);
@@ -584,6 +585,9 @@ function backToTopWithIcon() {
 async function loadLazy(doc) {
   const main = doc.querySelector('main');
   await loadSections(main);
+
+  // Apply section backgrounds after all sections are loaded and decorated
+  await applySectionBackgrounds();
 
   const { hash } = window.location;
   const element = hash ? doc.getElementById(hash.substring(1)) : false;

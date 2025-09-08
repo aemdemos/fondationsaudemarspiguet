@@ -66,7 +66,8 @@ body.map-landing .section.pale-grey-bg {
     background-color: var(--news-bg-page);
 }
 
-body.map-landing .section.map-container {
+body.map-landing .section.map-container,
+body.map-landing .section.map-bien-container {
     padding: 0;
     margin: 0;
 }
@@ -75,7 +76,8 @@ body.biencommun .section.pale-grey-bg {
     background-color: var(--map-bg-page-bien);
 }
 
-body.map-landing .section.map-container .cards-wrapper {
+body.map-landing .section.map-container .cards-wrapper,
+body.map-landing .section.map-bien-container .cards-wrapper {
     display: grid;
     grid-template-columns: auto;
     grid-template-rows: auto;
@@ -88,12 +90,13 @@ body.map-landing .section.map-container .cards-wrapper {
     margin: 0;
 }
 
-body.map-landing.biencommun .section.map-container .cards-wrapper {
+body.map-landing.biencommun .section.map-bien-container .cards-wrapper {
     background-color: var(--map-carte-icone-container-bien);
 }
 
 
-body.map-landing .section.map-container .map-wrapper {
+body.map-landing .section.map-container .map-wrapper,
+body.map-landing .section.map-bien-container .map-bien-wrapper {
     height: 1064.44px;
     position: relative;
     overflow: hidden;
@@ -102,7 +105,7 @@ body.map-landing .section.map-container .map-wrapper {
     max-width: 100%;
 }
 
-body.map-landing .section.map-container .map-bien-wrapper {
+body.map-landing .section.map-bien-container .map-bien-wrapper {
     height: 1064.44px;
     position: relative;
     overflow: hidden;
@@ -112,7 +115,8 @@ body.map-landing .section.map-container .map-bien-wrapper {
 }
 
 @media (width >= 900px) {
-    body.map-landing .section.map-container .cards-wrapper {
+    body.map-landing .section.map-container .cards-wrapper,
+    body.map-landing .section.map-bien-container .cards-wrapper {
         height: 1064.44px;
         width: 250px;
         float: left;

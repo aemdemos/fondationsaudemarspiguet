@@ -481,9 +481,9 @@ pre {
   white-space: pre;
 }
 
-main>div {
+/* main>div {
   margin: 40px 16px;
-}
+} */
 
 input, textarea, select, button {
   font: inherit;
@@ -558,9 +558,10 @@ main img {
 }
 
 /* sections */
-main>.section {
+
+/* main>.section {
   margin: 40px 0;
-}
+} */
 
 main>.section>div {
   max-width: 1200px;
