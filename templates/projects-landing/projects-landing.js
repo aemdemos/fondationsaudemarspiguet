@@ -116,7 +116,7 @@ export default async function decorate(doc) {
   const { projectsLandingSearchFilter } = placeholders;
 
   const $projectsListingRight = div({ class: 'projects-listing-container-right' });
-  const $mapLink = a({ class: 'map-link-btn', href: '/en/fondation-pour-les-arbres-projects-map', id: 'map-link' }, 'See Map');
+  const $mapLink = a({ class: 'map-link-btn', href: '/en/fondation-pour-le-bien-commun-projects-map', id: 'map-link' }, 'See Map');
 
   $projectsListingRight.append($mapLink);
 

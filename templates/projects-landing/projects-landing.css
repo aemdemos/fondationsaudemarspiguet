@@ -59,6 +59,10 @@ main .filter-container .category-dropdown ul li, main .filter-container .locatio
     padding: 5px 18px;
 }
 
+.biencommun main .filter-container .category-dropdown ul li, main .filter-container .location-dropdown ul li {
+    background: var(--biencommun-dropdown-bg);
+}
+
 main .filter-container .category-dropdown ul li:hover, main .filter-container .location-dropdown ul li:hover {
     font-weight: 500;
 }
@@ -108,6 +112,10 @@ main .filter-container .projects-listing-container-left .view-all {
     white-space: nowrap;
 }
 
+.biencommun main .filter-container .projects-listing-container-left .view-all {
+    color: var(--site-color-2-bien);
+}
+
 main .filter-container .projects-listing-container-left .view-all:hover {
     text-decoration: none;
     opacity: .7;
@@ -133,7 +141,12 @@ main .filter-container .projects-listing-container-right .map-link-btn {
     text-decoration: none;
     position: relative;
     display: inline-block;
-} 
+}
+
+.biencommun main .filter-container .projects-listing-container-right .map-link-btn {
+    background-image: url('../../icons/btn_bien_carte.svg');
+    color: var(--site-color-2-bien);
+}
 
 .projects-landing main .filter-container input {
     border: none;
@@ -152,6 +165,9 @@ main .filter-container .projects-listing-container-right .map-link-btn {
     margin-top: 4px;
 }
 
+.biencommun.projects-landing .btn-search-clear {
+    background-image: url('../../icons/btn_bien_filter_back.svg');
+}
 
 main .projects-listing {
     display: grid;
@@ -208,9 +224,17 @@ main .projects-listing {
     text-transform: uppercase
 }
 
+.biencommun .projects-listing .projects-partner {
+    color: var(--biencommun-site-color-2);
+}
+
 .projects-listing .projects-location, .projects-listing .projects-duration {
     color: var(--site-color);
     text-transform: uppercase
+}
+
+.biencommun .projects-listing .projects-location, .biencommun .projects-listing .projects-duration {
+    color: var(--site-color-bien);
 }
 
 .projects-listing .projects-category {
@@ -218,6 +242,10 @@ main .projects-listing {
     font-size: 12px;
     font-weight: 300;
     text-transform: uppercase
+}
+
+.biencommun .projects-listing .projects-category {
+    color: var(--biencommun-site-color-2);
 }
 
 
