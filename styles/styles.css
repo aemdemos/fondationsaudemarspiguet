@@ -896,6 +896,10 @@ main .section.float-right .default-content-wrapper .clear {
 }
 
 main .section.light-grey-orange-bg {
+  background-color: var(--biencommun-page-bloc-full);
+}
+
+main .section.ashy-grey-bg {
   background-color: var(--fondations-quote-bg);
 }
 
