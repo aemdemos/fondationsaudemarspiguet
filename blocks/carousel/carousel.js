@@ -128,7 +128,6 @@ function createSlide(row, slideIndex, carouselId, isHeroBanner = false) {
   const slideColor = document.createElement('div');
   slideColor.className = `slide-color slide-color-${slideIndex + 1}`;
   slide.append(slideColor);
-  
   row.querySelectorAll(':scope > div').forEach((column, colIdx) => {
     column.classList.add(`carousel-slide-${colIdx === 0 ? 'image' : 'content'}`);
     // 🔹 Optimize images only if this is a hero-banner
