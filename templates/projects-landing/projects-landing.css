@@ -25,8 +25,16 @@ main .filter-container .category-input {
     outline: none;
 }
 
+.biencommun main .filter-container .category-input {
+    cursor: text;
+}
+
 main .filter-container .location-input {
     cursor: pointer;
+}
+
+.biencommun main .filter-container .location-input {
+    cursor: text;
 }
 
 main .filter-container .category-dropdown, main .filter-container .location-dropdown {
@@ -77,7 +85,7 @@ main .filter-container .search-input {
     opacity: 1;
     position: relative;
     left: 0;
-    cursor: pointer;
+    cursor: text;
     text-transform: none;
     font-weight: 400;
     line-height: 1.01;
@@ -143,6 +151,10 @@ main .filter-container .projects-listing-container-right .map-link-btn {
     display: inline-block;
 }
 
+main .filter-container .projects-listing-container-right .map-link-btn:hover {
+    opacity: 0.7;
+}
+
 .biencommun main .filter-container .projects-listing-container-right .map-link-btn {
     background-image: url('../../icons/btn_bien_carte.svg');
     color: var(--site-color-2-bien);
@@ -163,6 +175,10 @@ main .filter-container .projects-listing-container-right .map-link-btn {
     background-position: center;
     float: right;
     margin-top: 4px;
+}
+
+.projects-landing .btn-search-clear:hover {
+    opacity: 0.7;
 }
 
 .biencommun.projects-landing .btn-search-clear {
