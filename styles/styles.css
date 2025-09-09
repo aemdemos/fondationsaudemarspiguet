@@ -481,9 +481,9 @@ pre {
   white-space: pre;
 }
 
-main>div {
+/* main>div {
   margin: 40px 16px;
-}
+} */
 
 input, textarea, select, button {
   font: inherit;
@@ -558,9 +558,10 @@ main img {
 }
 
 /* sections */
-main>.section {
+
+/* main>.section {
   margin: 40px 0;
-}
+} */
 
 main>.section>div {
   max-width: 1200px;
@@ -604,6 +605,27 @@ main .section:has(.accordion.teams) {
 
 main .section.cream-bg {
   background-color: var(--team-bg-page);
+}
+
+/* adding colors to main */
+main .section.white-lilac-bg {
+  background-color: var(--news-sophis-bg-text2);
+}
+
+main .section.beige-bg {
+  background-color: var(--newsletter-bg);
+}
+
+main .section.green-bg {
+  background-color: var(--arbres-header-color-over);
+}
+
+main .section.brown-bg {
+  background-color: var(--site-color-bien);
+}
+
+main .section.white-smoke-bg {
+  background-color: var(--news-bg-page);
 }
 
 main .section.light-grey-bg {
