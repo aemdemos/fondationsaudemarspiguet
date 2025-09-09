@@ -25,16 +25,8 @@ main .filter-container .category-input {
     outline: none;
 }
 
-.biencommun main .filter-container .category-input {
-    cursor: text;
-}
-
 main .filter-container .location-input {
     cursor: pointer;
-}
-
-.biencommun main .filter-container .location-input {
-    cursor: text;
 }
 
 main .filter-container .category-dropdown, main .filter-container .location-dropdown {
@@ -67,7 +59,7 @@ main .filter-container .category-dropdown ul li, main .filter-container .locatio
     padding: 5px 18px;
 }
 
-.biencommun main .filter-container .category-dropdown ul li, main .filter-container .location-dropdown ul li {
+.biencommun main .filter-container .category-dropdown ul li, .biencommun main .filter-container .location-dropdown ul li {
     background: var(--biencommun-dropdown-bg);
 }
 

@@ -117,11 +117,12 @@ export default async function decorate(doc) {
 
   const $projectsListingRight = div({ class: 'projects-listing-container-right' });
 
+  let $mapLink;
   if (window.location.hostname.includes('biencommun')) {
-   const $mapLink = a({ class: 'map-link-btn', href: '/en/fondation-pour-le-bien-commun-projects-map', id: 'map-link' }, 'See Map');
+    $mapLink = a({ class: 'map-link-btn', href: '/en/fondation-pour-le-bien-commun-projects-map', id: 'map-link' }, 'See map');
   } else {
-  const $mapLink = a({ class: 'map-link-btn', href: '/en/fondation-pour-les-arbres-projects-map', id: 'map-link' }, 'See Map');
-  }    
+    $mapLink = a({ class: 'map-link-btn', href: '/en/fondation-pour-les-arbres-projects-map', id: 'map-link' }, 'See map');
+  }
   $projectsListingRight.append($mapLink);
 
   const $projectsListingLeft = div(
