@@ -141,28 +141,26 @@ function createSlide(row, slideIndex, carouselId, isHeroBanner = false) {
     slide.append(column);
   });
 
-  const carousel_en_Logo = [
+  const carouselEnLogo = [
     '/icons/carousel_logo_fondations.svg',
     '/icons/carousel_logo_biencommun.svg',
     '/icons/carousel_logo_arbres.svg',
   ];
 
-    const carousel_fr_Logo = [
+  const carouselFrLogo = [
     '/icons/carousel_logo_fr_fondations.svg',
     '/icons/carousel_logo_fr_biencommun.svg',
     '/icons/carousel_logo_fr_arbres.svg',
   ];
-
-  if (carousel_en_Logo[slideIndex]) {
+  // Pick correct logo set based on language
+  const language = getLanguage();
+  const carouselLogos = language === 'en' ? carouselEnLogo : carouselFrLogo;
+  if (carouselLogos[slideIndex]) {
     const logoWrapper = document.createElement('div');
     logoWrapper.className = 'carousel-slide-logo';
-    const language = getLanguage();
-    console.log(language);
-    if (language === 'en') {
-      logoWrapper.innerHTML = `<img src="${carousel_en_Logo[slideIndex]}" alt="Slide ${slideIndex + 1} logo">`;
-    } else {
-      logoWrapper.innerHTML = `<img src="${carousel_fr_Logo[slideIndex]}" alt="Logo de la diapositive ${slideIndex + 1}">`;
-    }
+    logoWrapper.innerHTML = `
+      <img src="${carouselLogos[slideIndex]}" alt="Slide ${slideIndex + 1} logo">
+    `;
     slide.append(logoWrapper);
   }
 
