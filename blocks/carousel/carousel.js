@@ -1,5 +1,5 @@
 import { fetchPlaceholders, getMetadata, createOptimizedPicture } from '../../scripts/aem.js';
-import { moveInstrumentation } from '../../scripts/scripts.js';
+import { moveInstrumentation, getLanguage } from '../../scripts/scripts.js';
 
 function updateActiveSlide(slide) {
   const block = slide.closest('.carousel');
@@ -141,16 +141,28 @@ function createSlide(row, slideIndex, carouselId, isHeroBanner = false) {
     slide.append(column);
   });
 
-  const carouselLogo = [
+  const carousel_en_Logo = [
     '/icons/carousel_logo_fondations.svg',
     '/icons/carousel_logo_biencommun.svg',
     '/icons/carousel_logo_arbres.svg',
   ];
 
-  if (carouselLogo[slideIndex]) {
+    const carousel_fr_Logo = [
+    '/icons/carousel_logo_fr_fondations.svg',
+    '/icons/carousel_logo_fr_biencommun.svg',
+    '/icons/carousel_logo_fr_arbres.svg',
+  ];
+
+  if (carousel_en_Logo[slideIndex]) {
     const logoWrapper = document.createElement('div');
     logoWrapper.className = 'carousel-slide-logo';
-    logoWrapper.innerHTML = `<img src="${carouselLogo[slideIndex]}" alt="Slide ${slideIndex + 1} logo">`;
+    const language = getLanguage();
+    console.log(language);
+    if (language === 'en') {
+      logoWrapper.innerHTML = `<img src="${carousel_en_Logo[slideIndex]}" alt="Slide ${slideIndex + 1} logo">`;
+    } else {
+      logoWrapper.innerHTML = `<img src="${carousel_fr_Logo[slideIndex]}" alt="Logo de la diapositive ${slideIndex + 1}">`;
+    }
     slide.append(logoWrapper);
   }
 

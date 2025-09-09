@@ -429,11 +429,11 @@ iframe .biencommun .full-width.carousel-container .carousel.hero-banner .carouse
 .fondations .full-width.carousel-container .carousel.hero-banner.scrollable .carousel-slide .carousel-slide-logo {
   position: absolute;
   z-index: 1;
-  top: 20px;
+  top: 40px;
   left: 20px;
   width: 150px;
   opacity: 0;
-  transition: all 3s ease-in-out;
+  transition: all 700ms ease-in-out;
 }
 
 .fondations .full-width.carousel-container .carousel.hero-banner.scrollable .carousel-slide.active .carousel-slide-logo {
