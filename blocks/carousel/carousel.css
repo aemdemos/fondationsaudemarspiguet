@@ -654,7 +654,7 @@ iframe .biencommun .full-width.carousel-container .carousel.hero-banner .carouse
   flex-direction: column;
   position: relative;
   transition: background-color 3s ease-in-out, opacity 3s ease-in-out;
-  opacity: 0.8;
+  opacity: 1;
 }
 
 .fondations .full-width.carousel-container .carousel.hero-banner.scrollable .carousel-slide .slide-color {
