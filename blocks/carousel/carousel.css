@@ -135,11 +135,6 @@
   margin-top: 0;
 }
 
-.fondations .full-width.carousel-container .carousel.hero-banner.scrollable div.social-cr-wrapper p:last-of-type {
-  display: none;
-  font-size: 10px;
-}
-
 .fondations .full-width.carousel-container .carousel.hero-banner.scrollable .carousel-slide .direction-icon-section {
     position: absolute;
     bottom: 20px;
@@ -265,6 +260,10 @@
   font-weight: 250;
 }
 
+.fondations .full-width.carousel-container .carousel.hero-banner.scrollable div.social-cr-wrapper {
+  display: none;
+}
+
 .biencommun .full-width.carousel-container .carousel.hero-banner div.slide-legend, .fondations .full-width.carousel-container .carousel.hero-banner.scrollable div.slide-legend {
   position: absolute;
   bottom: 48px;
@@ -301,7 +300,7 @@
   opacity: 0.7;
 }
 
-.fondations .full-width.carousel-container .carousel.hero-banner.scrollable .carousel-slide .carousel-slide-content p:nth-child(2) a {
+.fondations .full-width.carousel-container .carousel.hero-banner.scrollable .carousel-slide .carousel-slide-content p a {
   padding-left: 54px;
   background-image: url('/icons/fleche_right.svg');
   background-position: left center;
@@ -496,7 +495,7 @@ iframe .biencommun .full-width.carousel-container .carousel.hero-banner .carouse
     padding: 0;
   }
 
-  .fondations .full-width.carousel-container .carousel.hero-banner.scrollable .carousel-slide .carousel-slide-content p:nth-child(2) a {
+  .fondations .full-width.carousel-container .carousel.hero-banner.scrollable .carousel-slide .carousel-slide-content p a {
     font-size: 24px;
   }
 
@@ -505,8 +504,7 @@ iframe .biencommun .full-width.carousel-container .carousel.hero-banner .carouse
     bottom: 29px;
   }
 
-  .biencommun .full-width.carousel-container .carousel.hero-banner div.social-cr-wrapper p:last-of-type,
-  .fondations .full-width.carousel-container .carousel.hero-banner.scrollable div.social-cr-wrapper p:last-of-type {
+  .biencommun .full-width.carousel-container .carousel.hero-banner div.social-cr-wrapper p:last-of-type {
     display: unset;
   }
 
