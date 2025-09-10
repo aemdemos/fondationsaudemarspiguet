@@ -270,8 +270,8 @@ main .table-container .table-wrapper .table.no-border.block {
   display: inline-flex;
   flex-direction: row;
   align-items: center;
-  color: #839790 !important;
-  font-size: 10px !important;
+  color: #839790;
+  font-size: 10px;
   text-transform: uppercase;
   vertical-align: middle;
   gap: 0.4em;

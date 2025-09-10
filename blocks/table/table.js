@@ -10,6 +10,19 @@ import { moveInstrumentation } from '../../scripts/scripts.js';
  *
  * @param {Element} block
  */
+
+function makeReportLinksOpenInNewTab(block) {
+  // Check if this is a report table
+  if (block.closest('.report.table-container')) {
+    // Find all links in the third column of this specific table
+    const reportLinks = block.querySelectorAll('table td:nth-child(3) a');
+    reportLinks.forEach((link) => {
+      link.setAttribute('target', '_blank');
+      link.setAttribute('rel', 'noopener noreferrer');
+    });
+  }
+}
+
 export default async function decorate(block) {
   const table = document.createElement('table');
   const thead = document.createElement('thead');
@@ -48,4 +61,8 @@ export default async function decorate(block) {
   });
   table.append(thead, tbody);
   block.replaceChildren(table);
+
+  setTimeout(() => {
+    makeReportLinksOpenInNewTab(block);
+  }, 100);
 }
