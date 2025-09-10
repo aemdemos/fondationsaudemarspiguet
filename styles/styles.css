@@ -779,7 +779,6 @@ main .section.colored-text.warm-grey-bg p {
 .contact-us main .section .default-content-wrapper p {
   padding-top: 20px;
   gap: 10px;
-  
 }
 
 .contact-us main .section .default-content-wrapper .icon {
@@ -800,7 +799,6 @@ main .section.colored-text.warm-grey-bg p {
 
 .contact-us main .section .default-content-wrapper p > a[href]:has(picture),
 p > a[href]:has(img) {
-  margin-bottom: 0;
   padding-bottom: 0;
   line-height: 0;
 }
