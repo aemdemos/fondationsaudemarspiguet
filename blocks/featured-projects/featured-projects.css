@@ -37,6 +37,10 @@
     display: inline-block;
 }
 
+.biencommun .featured-projects.block .cards.block.featured ul a:has(.image-container) {
+    color: var(--site-color-2-bien);
+}
+
 .featured-projects.block .cards.block.featured ul .image-container {
     width: 100%;
     background-size: cover;
