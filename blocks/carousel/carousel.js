@@ -1,5 +1,5 @@
 import { fetchPlaceholders, getMetadata, createOptimizedPicture } from '../../scripts/aem.js';
-import { moveInstrumentation } from '../../scripts/scripts.js';
+import { moveInstrumentation, getLanguage } from '../../scripts/scripts.js';
 
 function updateActiveSlide(slide) {
   const block = slide.closest('.carousel');
@@ -125,6 +125,9 @@ function createSlide(row, slideIndex, carouselId, isHeroBanner = false) {
   slide.dataset.slideIndex = slideIndex;
   slide.setAttribute('id', `carousel-${carouselId}-slide-${slideIndex}`);
   slide.classList.add('carousel-slide');
+  const slideColor = document.createElement('div');
+  slideColor.className = `slide-color slide-color-${slideIndex + 1}`;
+  slide.append(slideColor);
   row.querySelectorAll(':scope > div').forEach((column, colIdx) => {
     column.classList.add(`carousel-slide-${colIdx === 0 ? 'image' : 'content'}`);
     // 🔹 Optimize images only if this is a hero-banner
@@ -137,6 +140,29 @@ function createSlide(row, slideIndex, carouselId, isHeroBanner = false) {
     }
     slide.append(column);
   });
+
+  const carouselEnLogo = [
+    '/icons/carousel_logo_fondations.svg',
+    '/icons/carousel_logo_biencommun.svg',
+    '/icons/carousel_logo_arbres.svg',
+  ];
+
+  const carouselFrLogo = [
+    '/icons/carousel_logo_fr_fondations.svg',
+    '/icons/carousel_logo_fr_biencommun.svg',
+    '/icons/carousel_logo_fr_arbres.svg',
+  ];
+  // Pick correct logo set based on language
+  const language = getLanguage();
+  const carouselLogos = language === 'en' ? carouselEnLogo : carouselFrLogo;
+  if (carouselLogos[slideIndex]) {
+    const logoWrapper = document.createElement('div');
+    logoWrapper.className = 'carousel-slide-logo';
+    logoWrapper.innerHTML = `
+      <img src="${carouselLogos[slideIndex]}" alt="Slide ${slideIndex + 1} logo">
+    `;
+    slide.append(logoWrapper);
+  }
 
   const labeledBy = slide.querySelector('h1, h2, h3, h4, h5, h6');
   if (labeledBy) {
@@ -266,7 +292,7 @@ export default async function decorate(block) {
   block.prepend(container);
   // Remove empty divs left behind
   block.querySelectorAll('div').forEach((div) => {
-    if (!div.children.length && !div.textContent.trim()) {
+    if (!div.children.length && !div.textContent.trim() && !div.classList.length) {
       div.remove();
     }
   });
