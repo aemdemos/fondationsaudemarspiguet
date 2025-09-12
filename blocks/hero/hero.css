@@ -380,7 +380,6 @@
 .hero.two-columnar-text-image.block > div > div:last-child img,
 .hero.two-columnar-text-image.block > div > div:last-child picture {
   width: 100%;
-  aspect-ratio: 16/9;
   background: #fff;
   object-fit: cover;
   object-position: 54% center;
@@ -439,18 +438,17 @@
   }
 
   .hero.two-columnar-text-image.block {
-  width: 100vw;
-  padding: 0 !important;
-  margin-top: 20px;
-}
+    width: 100vw;
+    padding: 0;
+  }
 
-.hero.two-columnar-text-image.block > div {
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-  min-height: 0;
-  width: 100%;
-}
+  .hero.two-columnar-text-image.block > div {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    min-height: 0;
+    width: 100%;
+  }
 
    .hero.two-columnar-text-image.block > div > div:first-child {
     flex: none;
@@ -473,7 +471,6 @@
     flex: none;
     width: 100%;
     min-width: 0;
-    min-height: 300px;
     order: 1;
     height: auto;
   }  
