@@ -439,7 +439,7 @@
 
   .hero.two-columnar-text-image.block {
     width: 100vw;
-    padding: 0 !important;
+    padding: 0;
   }
 
   .hero.two-columnar-text-image.block > div {
@@ -471,7 +471,6 @@
     flex: none;
     width: 100%;
     min-width: 0;
-    min-height: 300px;
     order: 1;
     height: auto;
   }  
