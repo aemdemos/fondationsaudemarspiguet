@@ -442,6 +442,10 @@ body.biencommun .cards.map-category a.works_categorylink {
   margin-top: 0;
  }
 
+main .section.cards-container .cards-wrapper .cards.listing.block {
+ padding: 80px 0;
+}
+
 main .cards-buttons .button-desc-btn{
   flex-direction: row;
   margin-left: auto;
