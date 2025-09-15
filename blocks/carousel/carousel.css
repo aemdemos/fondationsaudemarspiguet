@@ -229,6 +229,7 @@
   height: 14px;
   width: 14px;
   opacity: 1;
+  margin: 9px;
 }
 
 .carousel-container .carousel.hero-banner .carousel-slide-indicators  .carousel-slide-indicator button,
@@ -614,7 +615,7 @@ iframe.carousel-container .carousel.hero-banner .carousel-slides-container {
   width: 100%;
   position: relative;
   padding: 0;
-  margin: 0;
+  margin: auto;
 }
 
 .full-width.carousel-container .carousel.hero-banner {
@@ -630,6 +631,7 @@ iframe.carousel-container .carousel.hero-banner .carousel-slides-container {
 .carousel-container .carousel.hero-banner.scrollable.carousel-vertical .carousel-slide-indicators {
   position: fixed;
   z-index: 1;
+  display: unset;
 }
 
 .carousel-container .carousel.hero-banner.scrollable .carousel-slides-container {
