@@ -51,7 +51,7 @@
   object-fit: cover;
 }
 
-.biencommun .full-width.carousel-container .carousel.hero-banner .carousel-slide .carousel-slide-image picture > img {
+.carousel-container .carousel.hero-banner .carousel-slide .carousel-slide-image picture > img {
   height: 100%;
   width: 100%;
   object-fit: cover;
@@ -66,7 +66,7 @@
   width: var(--slide-content-width, auto);
 }
 
-.biencommun .full-width.carousel-container .carousel.hero-banner .carousel-slide .carousel-slide-content {
+.carousel-container .carousel.hero-banner .carousel-slide .carousel-slide-content {
   position: absolute;
   top: 50%;
   width: 100%;
@@ -81,14 +81,14 @@
   margin: unset;
 }
 
-.biencommun .full-width.carousel-container .carousel.hero-banner div.slide-legend > p {
+.carousel-container .carousel.hero-banner div.slide-legend > p {
   margin: 0;
   font-size: 14px;
   font-weight: 500;
   letter-spacing: 0.03em;
 }
 
-.fondations .full-width.carousel-container .carousel.hero-banner.scrollable .carousel-slide .carousel-slide-content {
+.carousel-container .carousel.hero-banner.scrollable .carousel-slide .carousel-slide-content {
   background-color: unset;
   text-align: center;
   margin: 0;
@@ -103,14 +103,14 @@
   padding: 0 40px;
 }
 
-.biencommun .full-width.carousel-container .carousel.hero-banner div.social-cr-wrapper p,
-.fondations .full-width.carousel-container .carousel.hero-banner.scrollable div.social-cr-wrapper p {
+.carousel-container .carousel.hero-banner div.social-cr-wrapper p,
+.carousel-container .carousel.hero-banner.scrollable div.social-cr-wrapper p {
   margin: 0;
   line-height : 13px;
 }
 
-.biencommun .full-width.carousel-container .carousel.hero-banner div.social-cr-wrapper .icon,
-.fondations .full-width.carousel-container .carousel.hero-banner.scrollable div.social-cr-wrapper .icon {
+.carousel-container .carousel.hero-banner div.social-cr-wrapper .icon,
+.carousel-container .carousel.hero-banner.scrollable div.social-cr-wrapper .icon {
   height: 40px;
   width: 40px;
   margin-right: 20px;
@@ -118,24 +118,24 @@
 
 
 
-.fondations .full-width.carousel-container .carousel.hero-banner.scrollable div.slide-legend > p {
+.carousel-container .carousel.hero-banner.scrollable div.slide-legend > p {
   margin: 0;
   font-size: 14px;
   font-weight: 500;
   letter-spacing: 0.03em;
 }
 
-.biencommun .full-width.carousel-container .carousel.hero-banner div.social-cr-wrapper p:last-of-type {
+.carousel-container .carousel.hero-banner div.social-cr-wrapper p:last-of-type {
   display: none;
   font-size: 10px;
 }
 
-.fondations .full-width.carousel-container .carousel.hero-banner.scrollable .carousel-slide .carousel-slide-content p {
+.carousel-container .carousel.hero-banner.scrollable .carousel-slide .carousel-slide-content p {
   font-size: 30px;
   margin-top: 0;
 }
 
-.fondations .full-width.carousel-container .carousel.hero-banner.scrollable .carousel-slide .direction-icon-section {
+.carousel-container .carousel.hero-banner.scrollable .carousel-slide .direction-icon-section {
     position: absolute;
     bottom: 20px;
     display: inline-block;
@@ -144,7 +144,7 @@
     transform: none;
 }
 
-.fondations .full-width.carousel-container .carousel.hero-banner.scrollable .carousel-slide .direction-icon-section .icon {
+.carousel-container .carousel.hero-banner.scrollable .carousel-slide .direction-icon-section .icon {
   width: 60px;
   height: auto;
 }
@@ -223,16 +223,16 @@
   left: calc(50% - 2px);
 }
 
-.biencommun .full-width.carousel-container .carousel.hero-banner .carousel-slide-indicators .carousel-slide-indicator,
-.fondations .full-width.carousel-container .carousel.hero-banner.scrollable .carousel-slide-indicators .carousel-slide-indicator {
+.carousel-container .carousel.hero-banner .carousel-slide-indicators .carousel-slide-indicator,
+.carousel-container .carousel.hero-banner.scrollable .carousel-slide-indicators .carousel-slide-indicator {
   position: relative;
   height: 14px;
   width: 14px;
   opacity: 1;
 }
 
-.biencommun .full-width.carousel-container .carousel.hero-banner .carousel-slide-indicators  .carousel-slide-indicator button,
-.fondations .full-width.carousel-container .carousel.hero-banner.scrollable .carousel-slide-indicators .carousel-slide-indicator button {
+.carousel-container .carousel.hero-banner .carousel-slide-indicators  .carousel-slide-indicator button,
+.carousel-container .carousel.hero-banner.scrollable .carousel-slide-indicators .carousel-slide-indicator button {
   position: relative;
   height: 14px;
   border-radius: 50%;
@@ -240,14 +240,14 @@
   opacity: 1;
 }
 
-.biencommun .full-width.carousel-container .carousel.hero-banner .carousel-slide .carousel-slide-content p strong em,
-.fondations .full-width.carousel-container .carousel.hero-banner.scrollable .carousel-slide .carousel-slide-content p strong em{
+.carousel-container .carousel.hero-banner .carousel-slide .carousel-slide-content p strong em,
+.carousel-container .carousel.hero-banner.scrollable .carousel-slide .carousel-slide-content p strong em{
   color: var(--biencommun-carousel-color);
   text-decoration: none;
   font-style: normal;
 }
 
-.biencommun .full-width.carousel-container .carousel.hero-banner div.social-cr-wrapper  {
+.carousel-container .carousel.hero-banner div.social-cr-wrapper  {
   position: absolute;
   bottom: 37px;
   left: 20px;
@@ -260,11 +260,11 @@
   font-weight: 250;
 }
 
-.fondations .full-width.carousel-container .carousel.hero-banner.scrollable div.social-cr-wrapper {
+.carousel-container .carousel.hero-banner.scrollable div.social-cr-wrapper {
   display: none;
 }
 
-.biencommun .full-width.carousel-container .carousel.hero-banner div.slide-legend, .fondations .full-width.carousel-container .carousel.hero-banner.scrollable div.slide-legend {
+.carousel-container .carousel.hero-banner div.slide-legend, .carousel-container .carousel.hero-banner.scrollable div.slide-legend {
   position: absolute;
   bottom: 48px;
   display: inline-block;
@@ -272,35 +272,35 @@
   z-index: 1;
 }
 
-.biencommun .full-width.carousel-container .carousel.hero-banner div.slide-legend > p > a {
+.carousel-container .carousel.hero-banner div.slide-legend > p > a {
   color: var(--news-button-text-colour);
 }
 
-.fondations .full-width.carousel-container .carousel.hero-banner.scrollable .carousel-slide a{
+.carousel-container .carousel.hero-banner.scrollable .carousel-slide a{
   pointer-events: auto;
 }
 
-.fondations .full-width.carousel-container .carousel.hero-banner.scrollable div.slide-legend > p > a {
+.carousel-container .carousel.hero-banner.scrollable div.slide-legend > p > a {
   color: var(--news-button-text-colour);
 }
 
-.biencommun .full-width.carousel-container .carousel.hero-banner div.slide-legend > p > a.any-link, .fondations .full-width.carousel-container .carousel.hero-banner.scrollable div.slide-legend > p > a.any-link {
+.carousel-container .carousel.hero-banner div.slide-legend > p > a.any-link, .carousel-container .carousel.hero-banner.scrollable div.slide-legend > p > a.any-link {
   text-decoration: none;
   overflow-wrap: break-word;
 }
 
-.biencommun .full-width.carousel-container .carousel.hero-banner div.slide-legend > p > a:hover {
+.carousel-container .carousel.hero-banner div.slide-legend > p > a:hover {
   text-decoration: none;
   color: var(--btn-bg);
 }
 
-.fondations .full-width.carousel-container .carousel.hero-banner.scrollable .carousel-slide .button-container:hover,
-.fondations .full-width.carousel-container .carousel.hero-banner.scrollable .carousel-slide a:hover {
+.carousel-container .carousel.hero-banner.scrollable .carousel-slide .button-container:hover,
+.carousel-container .carousel.hero-banner.scrollable .carousel-slide a:hover {
   text-decoration: none;
   opacity: 0.7;
 }
 
-.fondations .full-width.carousel-container .carousel.hero-banner.scrollable .carousel-slide .carousel-slide-content p a {
+.carousel-container .carousel.hero-banner.scrollable .carousel-slide .carousel-slide-content p a {
   padding-left: 54px;
   background-image: url('/icons/fleche_right.svg');
   background-position: left center;
@@ -339,7 +339,7 @@
   box-sizing: border-box;
 }
 
-.biencommun .full-width.carousel-container .carousel.hero-banner .carousel-slide-indicators {
+.carousel-container .carousel.hero-banner .carousel-slide-indicators {
   display: none;
 }
 
@@ -359,15 +359,15 @@
     --slide-content-width: auto;
   }
 
-  .biencommun .full-width.carousel-container .carousel.hero-banner .carousel-slide-indicators {
+ .carousel-container .carousel.hero-banner .carousel-slide-indicators {
     display: flex;
   }
 
-  .biencommun .full-width.carousel-container .carousel.hero-banner .carousel-slide .carousel-slide-content {
+ .carousel-container .carousel.hero-banner .carousel-slide .carousel-slide-content {
     padding: 0 20px;
   }
 
-  .biencommun .full-width.carousel-container .carousel.hero-banner .carousel-slide .carousel-slide-content p {
+ .carousel-container .carousel.hero-banner .carousel-slide .carousel-slide-content p {
     font-size: 46px;
   }
 }
@@ -384,11 +384,11 @@
    overflow: hidden;
 }
 
-.biencommun .full-width.carousel-container .carousel.hero-banner .carousel-slides-container {
+.carousel-container .carousel.hero-banner .carousel-slides-container {
   height: 100vh;
 }
 
-iframe .biencommun .full-width.carousel-container .carousel.hero-banner .carousel-slides-container {
+iframe.carousel-container .carousel.hero-banner .carousel-slides-container {
   height: 500px;
 }
 
@@ -398,10 +398,6 @@ iframe .biencommun .full-width.carousel-container .carousel.hero-banner .carouse
   overflow: visible !important;
   scroll-behavior: unset !important;
   scroll-snap-type: none !important;
-}
-
-.biencommun .carousel.carousel-vertical .carousel-slides {
-  position: unset;
 }
 
 /* stylelint-disable no-descending-specificity */
@@ -425,7 +421,7 @@ iframe .biencommun .full-width.carousel-container .carousel.hero-banner .carouse
   z-index: 1;
 }
 
-.fondations .full-width.carousel-container .carousel.hero-banner.scrollable .carousel-slide .carousel-slide-logo {
+.carousel-container .carousel.hero-banner.scrollable .carousel-slide .carousel-slide-logo {
   position: absolute;
   z-index: 1;
   top: 40px;
@@ -435,7 +431,7 @@ iframe .biencommun .full-width.carousel-container .carousel.hero-banner .carouse
   transition: all 700ms ease-in-out;
 }
 
-.fondations .full-width.carousel-container .carousel.hero-banner.scrollable .carousel-slide.active .carousel-slide-logo {
+.carousel-container .carousel.hero-banner.scrollable .carousel-slide.active .carousel-slide-logo {
   opacity: 1;
 }
 
@@ -456,28 +452,28 @@ iframe .biencommun .full-width.carousel-container .carousel.hero-banner .carouse
     height: 500px;
   }
 
-  .fondations .full-width.carousel-container .carousel.hero-banner.scrollable .carousel-slide .direction-icon-section {
+  .carousel-container .carousel.hero-banner.scrollable .carousel-slide .direction-icon-section {
     left: 50%;
     transform: translateX(-50%);
   }
 
-  .fondations .full-width.carousel-container .carousel.hero-banner.scrollable .carousel-slide .direction-icon-section .icon {
+  .carousel-container .carousel.hero-banner.scrollable .carousel-slide .direction-icon-section .icon {
     width: 100%;
     height: 100%;
   }
 
-  .fondations .full-width.carousel-container .carousel.hero-banner.scrollable .carousel-slide .carousel-slide-content {
+  .carousel-container .carousel.hero-banner.scrollable .carousel-slide .carousel-slide-content {
     background-color: unset;
     text-align: center;
     margin: auto;
     max-width: 1200px;
   }
 
-  .fondations .full-width.carousel-container .carousel.hero-banner.scrollable .carousel-slide .carousel-slide-content p {
+  .carousel-container .carousel.hero-banner.scrollable .carousel-slide .carousel-slide-content p {
     font-size: 50px;
   }
 
-  .fondations .full-width.carousel-container .carousel.hero-banner.scrollable div.social-cr-wrapper {
+  .carousel-container .carousel.hero-banner.scrollable div.social-cr-wrapper {
     position: absolute;
     bottom: 29px;
     left: 20px;
@@ -490,44 +486,44 @@ iframe .biencommun .full-width.carousel-container .carousel.hero-banner .carouse
     font-weight: 250;
   }
 
-  .fondations .full-width.carousel-container .carousel.hero-banner.scrollable div.social-cr-wrapper .button-container a {
+  .carousel-container .carousel.hero-banner.scrollable div.social-cr-wrapper .button-container a {
     background-color: unset;
     padding: 0;
   }
 
-  .fondations .full-width.carousel-container .carousel.hero-banner.scrollable .carousel-slide .carousel-slide-content p a {
+  .carousel-container .carousel.hero-banner.scrollable .carousel-slide .carousel-slide-content p a {
     font-size: 24px;
   }
 
-  .biencommun .full-width.carousel-container .carousel.hero-banner div.social-cr-wrapper,
-  .fondations .full-width.carousel-container .carousel.hero-banner.scrollable div.social-cr-wrapper {
+ .carousel-container .carousel.hero-banner div.social-cr-wrapper,
+  .carousel-container .carousel.hero-banner.scrollable div.social-cr-wrapper {
     bottom: 29px;
   }
 
-  .biencommun .full-width.carousel-container .carousel.hero-banner div.social-cr-wrapper p:last-of-type {
+ .carousel-container .carousel.hero-banner div.social-cr-wrapper p:last-of-type {
     display: unset;
   }
 
-  .biencommun .full-width.carousel-container .carousel.hero-banner div.slide-legend,
-  .fondations .full-width.carousel-container .carousel.hero-banner.scrollable div.slide-legend {
+ .carousel-container .carousel.hero-banner div.slide-legend,
+  .carousel-container .carousel.hero-banner.scrollable div.slide-legend {
     bottom: 48px;
   }
 
-  .biencommun .full-width.carousel-container .carousel.hero-banner div.slide-legend > p,
-  .fondations .full-width.carousel-container .carousel.hero-banner.scrollable div.slide-legend > p {
+ .carousel-container .carousel.hero-banner div.slide-legend > p,
+  .carousel-container .carousel.hero-banner.scrollable div.slide-legend > p {
     font-size: 18px;
   }
 
-  .biencommun .full-width.carousel-container .carousel.hero-banner .carousel-slide .carousel-slide-content {
+ .carousel-container .carousel.hero-banner .carousel-slide .carousel-slide-content {
     padding: 0 160px;
   }
 
-  .biencommun .full-width.carousel-container .carousel.hero-banner .carousel-slide .carousel-slide-content p {
+ .carousel-container .carousel.hero-banner .carousel-slide .carousel-slide-content p {
     font-size: 50px;
   }
 
-  .biencommun .full-width.carousel-container .carousel.hero-banner .carousel-slide-indicators .carousel-slide-indicator,
-  .fondations .full-width.carousel-container .carousel.hero-banner.scrollable .carousel-slide-indicators .carousel-slide-indicator {
+ .carousel-container .carousel.hero-banner .carousel-slide-indicators .carousel-slide-indicator,
+  .carousel-container .carousel.hero-banner.scrollable .carousel-slide-indicators .carousel-slide-indicator {
     position: relative;
     margin: 9px 0 !important;
     height: 18px;
@@ -535,8 +531,8 @@ iframe .biencommun .full-width.carousel-container .carousel.hero-banner .carouse
     opacity: 1;
   }
 
-  .biencommun .full-width.carousel-container .carousel.hero-banner .carousel-slide-indicators  .carousel-slide-indicator button,
-  .fondations .full-width.carousel-container .carousel.hero-banner.scrollable .carousel-slide-indicators .carousel-slide-indicator button {
+ .carousel-container .carousel.hero-banner .carousel-slide-indicators  .carousel-slide-indicator button,
+  .carousel-container .carousel.hero-banner.scrollable .carousel-slide-indicators .carousel-slide-indicator button {
     position: relative;
     height: 18px;
     border-radius: 50%;
@@ -546,21 +542,21 @@ iframe .biencommun .full-width.carousel-container .carousel.hero-banner .carouse
 }
 
 @media (width >= 1200px) {
-  .biencommun .full-width.carousel-container .carousel.hero-banner div.social-cr-wrapper, .fondations .full-width.carousel-container .carousel.hero-banner.scrollable div.social-cr-wrapper {
+ .carousel-container .carousel.hero-banner div.social-cr-wrapper, .carousel-container .carousel.hero-banner.scrollable div.social-cr-wrapper {
     bottom: 86px;
     left: 100px;
   }
 
-  .biencommun .full-width.carousel-container .carousel.hero-banner div.slide-legend, .fondations .full-width.carousel-container .carousel.hero-banner.scrollable div.slide-legend {
+ .carousel-container .carousel.hero-banner div.slide-legend, .carousel-container .carousel.hero-banner.scrollable div.slide-legend {
     bottom: 100px;
     right: 100px;
   }
 
-  .biencommun .full-width.carousel-container .carousel.hero-banner div.slide-legend > p, .fondations .full-width.carousel-container .carousel.hero-banner.scrollable div.slide-legend > p {
+ .carousel-container .carousel.hero-banner div.slide-legend > p, .carousel-container .carousel.hero-banner.scrollable div.slide-legend > p {
     font-size: 22px;
   }
 
-  .fondations .full-width.carousel-container .carousel.hero-banner.scrollable .carousel-slide .carousel-slide-logo {
+  .carousel-container .carousel.hero-banner.scrollable .carousel-slide .carousel-slide-logo {
     left: 80px;
     top: 100px;
     width: 230px;
@@ -585,7 +581,7 @@ iframe .biencommun .full-width.carousel-container .carousel.hero-banner .carouse
   transition: none !important;
 }
 
-.project-article-template .carousel-container {
+.project-article-template.carousel-container {
   margin: 0 !important;
   background-color: #edecea !important;
 }
@@ -604,49 +600,49 @@ iframe .biencommun .full-width.carousel-container .carousel.hero-banner .carouse
   max-width: 100%;
 }
 
-.biencommun .full-width.carousel-container {
+.carousel-container {
   width: 100%;
   padding: 0;
 }
 
 /* Full width carousel styles */
-.biencommun .full-width.carousel-container .carousel-wrapper {
+.carousel-container .carousel-wrapper {
   width: 100%;
   position: relative;
   padding: 0;
   margin: 0;
 }
 
-.biencommun .full-width.carousel-container .carousel.hero-banner {
+.full-width.carousel-container .carousel.hero-banner {
   width: 100vw;
   position: relative;
   height: 100%;
 }
 
-.fondations .full-width.carousel-container .carousel.hero-banner.scrollable {
+.carousel-container .carousel.hero-banner.scrollable {
   height: 100%;
 }
 
-.fondations .full-width.carousel-container .carousel.hero-banner.scrollable.carousel-vertical .carousel-slide-indicators {
+.carousel-container .carousel.hero-banner.scrollable.carousel-vertical .carousel-slide-indicators {
   position: fixed;
   z-index: 1;
 }
 
-.fondations .full-width.carousel-container .carousel.hero-banner.scrollable .carousel-slides-container {
+.carousel-container .carousel.hero-banner.scrollable .carousel-slides-container {
   display: block;
   overflow-y: auto;
   scroll-snap-type: y mandatory;
   height: 100vh; /* each viewport shows one slide */
 }
 
-.fondations .full-width.carousel-container .carousel.hero-banner.scrollable .carousel-slides {
+.carousel-container .carousel.hero-banner.scrollable .carousel-slides {
   list-style: none;
   margin: 0;
   padding: 0;
   height: 100%;
 }
 
-.fondations .full-width.carousel-container .carousel.hero-banner.scrollable .carousel-slide {
+.carousel-container .carousel.hero-banner.scrollable .carousel-slide {
   height: 100%; /* full viewport per slide */
   scroll-snap-align: start !important;
   display: flex;
@@ -656,7 +652,7 @@ iframe .biencommun .full-width.carousel-container .carousel.hero-banner .carouse
   opacity: 1;
 }
 
-.fondations .full-width.carousel-container .carousel.hero-banner.scrollable .carousel-slide .slide-color {
+.carousel-container .carousel.hero-banner.scrollable .carousel-slide .slide-color {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -667,25 +663,25 @@ iframe .biencommun .full-width.carousel-container .carousel.hero-banner .carouse
   transition: all 3s ease-in-out;
 }
 
-.fondations .full-width.carousel-container .carousel.hero-banner.scrollable .carousel-slide.active .slide-color {
+.carousel-container .carousel.hero-banner.scrollable .carousel-slide.active .slide-color {
   opacity: 0.2;
 }
 
 /* Slide 1 */
-.fondations .full-width.carousel-container .carousel.hero-banner.scrollable .carousel-slide .slide-color.slide-color-1 {
+.carousel-container .carousel.hero-banner.scrollable .carousel-slide .slide-color.slide-color-1 {
   background-color: var(--fondations-site-color);
 }
 
 /* Slide 2 */
-.fondations .full-width.carousel-container .carousel.hero-banner.scrollable .carousel-slide .slide-color.slide-color-2 {
+.carousel-container .carousel.hero-banner.scrollable .carousel-slide .slide-color.slide-color-2 {
   background-color: var(--biencommun-site-color-2);
 }
 
 /* Slide 3 */
-.fondations .full-width.carousel-container .carousel.hero-banner.scrollable .carousel-slide .slide-color.slide-color-3 {
+.carousel-container .carousel.hero-banner.scrollable .carousel-slide .slide-color.slide-color-3 {
   background-color: var(--site-color);
 }
 
-.fondations .full-width.carousel-container .carousel.hero-banner.scrollable .carousel-slide.active .carousel-slide-content {
+.carousel-container .carousel.hero-banner.scrollable .carousel-slide.active .carousel-slide-content {
   opacity: 1;
 }
