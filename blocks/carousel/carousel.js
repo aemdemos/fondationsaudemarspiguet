@@ -254,7 +254,7 @@ export default async function decorate(block) {
   rows.forEach((row, idx) => {
     slide = createSlide(row, idx, carouselId, block.classList.contains('hero-banner'));
     moveInstrumentation(row, slide);
-    if (isScrollable && socialContainer && slidelegende) {
+    if (socialContainer && slidelegende) {
       const content = slide.querySelector('.carousel-slide-content');
       const directionIcon = content?.querySelector('p:last-of-type');
       const socialClone = socialContainer.cloneNode(true);
