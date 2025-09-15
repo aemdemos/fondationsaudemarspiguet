@@ -400,6 +400,10 @@ iframe.carousel-container .carousel.hero-banner .carousel-slides-container {
   scroll-snap-type: none !important;
 }
 
+.carousel-container .carousel.hero-banner.carousel-vertical .carousel-slides {
+  position: unset;
+}
+
 /* stylelint-disable no-descending-specificity */
 .carousel.carousel-vertical .carousel-slide {
   position: absolute;
