@@ -4,8 +4,17 @@ This is a project created by AEMY.
 
 ## Environments
 
-- Preview: https://main--fondationsaudemarspiguet--aemdemos.aem.page/
-- Live: https://main--fondationsaudemarspiguet--aemdemos.aem.live/
+Fondations site:
+- Preview: https://main--fondationsaudemarspiguet--audemars-piguet.aem.page/
+- Live: https://main--fondationsaudemarspiguet--audemars-piguet.aem.live/
+
+Arbres Fondations site:
+- Preview: https://main--arbres-fondationsaudemarspiguet--audemars-piguet.aem.page/
+- Live: https://main--arbres-fondationsaudemarspiguet--audemars-piguet.aem.live/
+
+Biencommun Fondations site:
+- Preview: https://main--biencommun-fondationsaudemarspiguet--audemars-piguet.aem.page/
+- Live: https://main--biencommun-fondationsaudemarspiguet--audemars-piguet.aem.live/
 
 ## Installation
 
