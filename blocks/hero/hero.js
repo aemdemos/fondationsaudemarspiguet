@@ -1,3 +1,5 @@
+import { createOptimizedPicture } from '../../scripts/aem.js';
+
 export function createTwoColumnarHeroBlock({
   subheading,
   imageUrl,
@@ -59,7 +61,11 @@ export default function decorate(block) {
     const imageUrl = block.querySelector('img').src;
     block.querySelector('img')?.closest('p')?.remove();
     block.querySelector('a[href$=".mp4"]')?.closest('p')?.remove();
-    const videoElement = createVideoElement(videoUrl, imageUrl);
+
+    const optimizedpicture = createOptimizedPicture(imageUrl);
+    const optimisedUrl = optimizedpicture.querySelector('img').src;
+
+    const videoElement = createVideoElement(videoUrl, optimisedUrl);
     block.querySelector('div').prepend(videoElement); // appending video element to the div
   }
 
