@@ -628,8 +628,7 @@ export const NX_ORIGIN = branch === 'local' || origin.includes('localhost') ? 'h
 (async function loadDa() {
   /* eslint-disable import/no-unresolved */
   // Check if dapreview parameter exists in current URL or if we're in an iframe with dapreview
-  const currentUrl = new URL(window.location.href);
-  const hasDapreview = currentUrl.searchParams.get('dapreview')
+  const hasDapreview = searchParams.get('dapreview')
                       || (window !== window.top && window.location.href.includes('dapreview='));
 
   if (hasDapreview) {
