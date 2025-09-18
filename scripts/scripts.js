@@ -627,11 +627,31 @@ export const NX_ORIGIN = branch === 'local' || origin.includes('localhost') ? 'h
 
 (async function loadDa() {
   /* eslint-disable import/no-unresolved */
-  // Check if dapreview parameter exists in current URL or if we're in an iframe with dapreview
+  // Debug: Log current URL and parameters
+  console.log('Current URL:', window.location.href);
+  console.log('SearchParams dapreview:', searchParams.get('dapreview'));
+  console.log('Is in iframe:', window !== window.top);
+
+  // Check parent window URL if in iframe
+  let parentUrl = '';
+  try {
+    if (window !== window.top) {
+      parentUrl = window.top.location.href;
+      console.log('Parent URL:', parentUrl);
+    }
+  } catch (e) {
+    console.log('Cannot access parent URL (cross-origin)');
+  }
+
+  // Check multiple conditions for DA Live preview
   const hasDapreview = searchParams.get('dapreview')
+                      || (window !== window.top && parentUrl.includes('da.live'))
                       || (window !== window.top && window.location.href.includes('dapreview='));
 
+  console.log('Has dapreview (any condition):', hasDapreview);
+
   if (hasDapreview) {
+    console.log('Adding da-live-preview-test class');
     document.body.classList.add('da-live-preview-test');
     // eslint-disable-next-line import/no-unresolved
     import('https://da.live/scripts/dapreview.js').then(({ default: daPreview }) => daPreview(loadPage));
