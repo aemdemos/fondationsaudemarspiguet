@@ -625,36 +625,12 @@ const branch = searchParams.get('nx') || 'main';
 
 export const NX_ORIGIN = branch === 'local' || origin.includes('localhost') ? 'http://localhost:6456/nx' : 'https://da.live/nx';
 
-/**
- * Ensures metadata is properly applied to head tag
- */
-function ensureMetadataInHead() {
-  // Set language on html element
-  document.documentElement.lang = getLanguage();
-
-  // Apply template and theme classes to body (reads from head metadata)
-  decorateTemplateAndTheme();
-
-  // Set appropriate favicon links in head
-  setPathSpecificFavicon();
-
-  // If there's a template, ensure its CSS is loaded
-  const templateName = getMetadata('template');
-  if (templateName && !document.body.classList.contains(`${templateName}-template`)) {
-    document.body.classList.add(`${templateName}-template`);
-    loadCSS(`${window.hlx.codeBasePath}/templates/${templateName}/${templateName}.css`);
-  }
-}
-
 (async function loadDa() {
   /* eslint-disable import/no-unresolved */
-  if (searchParams.get('dapreview')) {
-    import('https://da.live/scripts/dapreview.js')
-      .then(({ default: daPreview }) => daPreview(loadPage));
-  }
-  if (searchParams.get('dapreview') === 'on') {
-    // Force metadata application when dapreview=on (targeted approach)
-    ensureMetadataInHead();
+  if (new URL(window.location.href).searchParams.get('dapreview')) {
+    document.body.classList.add('da-live-preview');
+    // eslint-disable-next-line import/no-unresolved
+    import('https://da.live/scripts/dapreview.js').then(({ default: daPreview }) => daPreview(loadPage));
   }
   if (searchParams.get('daexperiment')) {
     import(`${NX_ORIGIN}/public/plugins/exp/exp.js`);
