@@ -318,7 +318,7 @@
   margin-top: 0;
 }
 
-.carousel.carousel-vertical .carousel-slide-indicators {
+.carousel.vertical .carousel-slide-indicators {
   position: absolute;
   right: 0;
   top: 50%;
@@ -375,11 +375,11 @@
 
  /* Vertical Carousel */
 
- .carousel.carousel-vertical {
+ .carousel.vertical {
   height: 600px;
 }
 
-.carousel.carousel-vertical .carousel-slides-container {
+.carousel.vertical .carousel-slides-container {
    position: relative;
    height: 100%;
    overflow: hidden;
@@ -389,11 +389,7 @@
   height: 100vh;
 }
 
-iframe.carousel-container .carousel.hero-banner .carousel-slides-container {
-  height: 500px;
-}
-
-.carousel.carousel-vertical .carousel-slides {
+.carousel.vertical .carousel-slides {
   position: relative;
   display: block !important;
   overflow: visible !important;
@@ -401,12 +397,12 @@ iframe.carousel-container .carousel.hero-banner .carousel-slides-container {
   scroll-snap-type: none !important;
 }
 
-.carousel-container .carousel.hero-banner.carousel-vertical .carousel-slides {
+.carousel-container .carousel.hero-banner.vertical .carousel-slides {
   position: unset;
 }
 
 /* stylelint-disable no-descending-specificity */
-.carousel.carousel-vertical .carousel-slide {
+.carousel.vertical .carousel-slide {
   position: absolute;
   top: 0;
   left: 0;
@@ -420,7 +416,7 @@ iframe.carousel-container .carousel.hero-banner .carousel-slides-container {
   scroll-snap-align: unset !important;
 }
 
-.carousel.carousel-vertical .carousel-slide[aria-hidden="false"] {
+.carousel.vertical .carousel-slide[aria-hidden="false"] {
   opacity: 1;
   pointer-events: auto;
   z-index: 1;
@@ -441,19 +437,19 @@ iframe.carousel-container .carousel.hero-banner .carousel-slides-container {
 }
 
 @media (width <= 600px) {
-  .carousel.carousel-vertical {
+  .carousel.vertical {
     height: 200px;
   }
 }
 
 @media (width >= 600px) and (width <=900px) {
-  .carousel.carousel-vertical {
+  .carousel.vertical {
     height: 400px;
   }
 }
 
 @media (width >= 900px) {
-  .carousel.carousel-vertical {
+  .carousel.vertical {
     height: 500px;
   }
 
@@ -628,7 +624,7 @@ iframe.carousel-container .carousel.hero-banner .carousel-slides-container {
   height: 100%;
 }
 
-.carousel-container .carousel.hero-banner.scrollable.carousel-vertical .carousel-slide-indicators {
+.carousel-container .carousel.hero-banner.scrollable.vertical .carousel-slide-indicators {
   position: fixed;
   z-index: 1;
   display: unset;
