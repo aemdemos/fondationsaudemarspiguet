@@ -120,7 +120,7 @@ function bindEvents(block) {
   });
 }
 
-function createSlide(row, slideIndex, carouselId, isHeroBanner = false) {
+function createSlide(row, slideIndex, carouselId) {
   const slide = document.createElement('li');
   slide.dataset.slideIndex = slideIndex;
   slide.setAttribute('id', `carousel-${carouselId}-slide-${slideIndex}`);
@@ -130,14 +130,12 @@ function createSlide(row, slideIndex, carouselId, isHeroBanner = false) {
   slide.append(slideColor);
   row.querySelectorAll(':scope > div').forEach((column, colIdx) => {
     column.classList.add(`carousel-slide-${colIdx === 0 ? 'image' : 'content'}`);
-    // 🔹 Optimize images only if this is a hero-banner
-    if (isHeroBanner) {
-      const imgs = column.querySelectorAll('img');
-      imgs.forEach((img) => {
-        const optimized = createOptimizedPicture(img.src);
-        img.replaceWith(optimized);
-      });
-    }
+    //  Optimize images
+    const imgs = column.querySelectorAll('img');
+    imgs.forEach((img) => {
+      const optimized = createOptimizedPicture(img.src);
+      img.replaceWith(optimized);
+    });
     slide.append(column);
   });
 
@@ -225,11 +223,7 @@ export default async function decorate(block) {
   slidesWrapper.classList.add('carousel-slides');
 
   // Detect vertical carousel and add class
-  const isVertical = block.classList.contains('vertical') || block.classList.contains('carousel-vertical');
-  if (isVertical) {
-    block.classList.add('carousel-vertical');
-  }
-
+  const isVertical = block.classList.contains('vertical');
   let slideIndicators;
   if (!isSingleSlide) {
     const slideIndicatorsNav = document.createElement('nav');
@@ -252,11 +246,14 @@ export default async function decorate(block) {
   }
   let slide;
   rows.forEach((row, idx) => {
-    slide = createSlide(row, idx, carouselId, block.classList.contains('hero-banner'));
+    slide = createSlide(row, idx, carouselId);
     moveInstrumentation(row, slide);
-    if (socialContainer && slidelegende) {
-      const content = slide.querySelector('.carousel-slide-content');
-      const directionIcon = content?.querySelector('p:last-of-type');
+    const content = slide.querySelector('.carousel-slide-content');
+    let directionIcon;
+    if (block.classList.contains('hero-banner') && socialContainer && slidelegende) {
+      if (isScrollable) {
+        directionIcon = content?.querySelector('p:last-of-type');
+      }
       const socialClone = socialContainer.cloneNode(true);
       const legendClone = slidelegende.cloneNode(true);
       if (directionIcon) {
@@ -268,7 +265,7 @@ export default async function decorate(block) {
         // Insert before social block
         slide.append(directionIconDiv, socialClone, legendClone);
       } else {
-        slide.append(socialClone, legendClone);
+        slide.append(content, socialClone, legendClone);
       }
     }
     slidesWrapper.append(slide);
