@@ -1,3 +1,5 @@
+import { createOptimizedPicture } from '../../scripts/aem.js';
+
 export function createTwoColumnarHeroBlock({
   subheading,
   imageUrl,
@@ -31,43 +33,50 @@ export function createTwoColumnarHeroBlock({
   return block;
 }
 
+function createVideoElement(videoUrl, imageUrl) {
+  // Create the video element HTML
+
+  const wrapper = document.createElement('div');
+  wrapper.innerHTML = `
+      <video autoplay="" muted="" loop="" poster="${imageUrl}">
+          <source src="${videoUrl}" type="video/mp4">
+      </video>
+  `;
+
+  return wrapper.firstElementChild;
+}
+
 export default function decorate(block) {
-  // add embedded video into hero block
+  if (!block.querySelector('img')) {
+    block.classList.add('without-image');
+  }
+
   if (block.classList.contains('video')) {
-    const heroVideoPara = block.querySelector('div:first-of-type > div > p');
-    const heroVideoLink = block.querySelector('div:first-of-type > div >  p > a');
-    const videoURL = heroVideoLink.href;
-    const relativeVideoURL = heroVideoLink.getAttribute('href');
-    const heroVideoWrapper = document.createElement('video');
-    const videoSource = document.createElement('source');
-    videoSource.setAttribute('src', videoURL);
-    videoSource.setAttribute('type', 'video/mp4');
-    heroVideoWrapper.setAttribute('autoplay', '');
-    heroVideoWrapper.setAttribute('muted', '');
-    heroVideoWrapper.setAttribute('loop', '');
-    heroVideoWrapper.setAttribute('nofullscreen', '');
-    heroVideoWrapper.setAttribute('playsinline', '');
-    heroVideoWrapper.setAttribute('style', 'visibility: visbible; display: inline;');
-    heroVideoWrapper.setAttribute('title', relativeVideoURL);
-    heroVideoWrapper.className = 'video-cover';
-    heroVideoWrapper.append(videoSource);
-    heroVideoPara.replaceWith(heroVideoWrapper);
+    // get video url from all anchors tags having mp4 extension
+    const videoUrls = [...block.querySelectorAll('a')]
+      .filter((a) => a.href.endsWith('.mp4'))
+      .map((a) => a.href);
+    const videoUrl = videoUrls[0];
 
-    // Play video after it is in the DOM and ensure it is muted for autoplay
-    heroVideoWrapper.muted = true;
-    heroVideoWrapper.play().catch(() => {
-      // Autoplay might still be blocked, handle error if needed
-    });
+    const imageUrl = block.querySelector('img').src;
+    block.querySelector('img')?.closest('p')?.remove();
+    block.querySelector('a[href$=".mp4"]')?.closest('p')?.remove();
 
-    const socialCRDiv = block.querySelector('div:nth-of-type(2) > div:first-of-type');
-    if (socialCRDiv) {
-      socialCRDiv.className = 'social-cr-wrapper';
-    }
+    const optimizedpicture = createOptimizedPicture(imageUrl);
+    const optimisedUrl = optimizedpicture.querySelector('img').src;
 
-    const legendDiv = block.querySelector('div:nth-of-type(2) > div:nth-of-type(2)');
-    if (legendDiv) {
-      legendDiv.className = 'slide-legend';
-    }
+    const videoElement = createVideoElement(videoUrl, optimisedUrl);
+    block.querySelector('div').prepend(videoElement); // appending video element to the div
+  }
+
+  const socialCRDiv = block.querySelector('div:nth-of-type(2) > div:first-of-type');
+  if (socialCRDiv) {
+    socialCRDiv.className = 'social-cr-wrapper';
+  }
+
+  const legendDiv = block.querySelector('div:nth-of-type(2) > div:nth-of-type(2)');
+  if (legendDiv) {
+    legendDiv.className = 'slide-legend';
   }
 
   // Detect and render two-columnar-text-image hero block
