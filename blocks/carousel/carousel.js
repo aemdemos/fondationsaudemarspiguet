@@ -130,7 +130,7 @@ function createSlide(row, slideIndex, carouselId) {
   slide.append(slideColor);
   row.querySelectorAll(':scope > div').forEach((column, colIdx) => {
     column.classList.add(`carousel-slide-${colIdx === 0 ? 'image' : 'content'}`);
-    // 🔹 Optimize images
+    //  Optimize images
     const imgs = column.querySelectorAll('img');
     imgs.forEach((img) => {
       const optimized = createOptimizedPicture(img.src);

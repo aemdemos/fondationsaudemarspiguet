@@ -1,6 +1,5 @@
 /* Columns block background and basic layout */
 .columns.buttons {
-  background: var(--news-sophis-bg-intro, #e1e5e6);
   min-height: 64px;
   width: 100%;
   display: flex;

@@ -103,7 +103,15 @@
   padding: 0 40px;
 }
 
-.carousel-container .carousel.hero-banner div.social-cr-wrapper p,
+.carousel-container .carousel.hero-banner div.social-cr-wrapper p {
+  margin: 0;
+  line-height : 13px;
+}
+
+.carousel-container .carousel.hero-banner .carousel-slide .carousel-slide-content p {
+    font-size: 30px;
+}
+
 .carousel-container .carousel.hero-banner.scrollable div.social-cr-wrapper p {
   margin: 0;
   line-height : 13px;
@@ -115,8 +123,6 @@
   width: 40px;
   margin-right: 20px;
 }
-
-
 
 .carousel-container .carousel.hero-banner.scrollable div.slide-legend > p {
   margin: 0;
