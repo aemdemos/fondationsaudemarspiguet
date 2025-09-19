@@ -628,9 +628,9 @@ export const NX_ORIGIN = branch === 'local' || origin.includes('localhost') ? 'h
 (async function loadDa() {
   /* eslint-disable import/no-unresolved */
   if (searchParams.get('dapreview')) {
-    document.body.classList.add('da-live-preview');
     // eslint-disable-next-line import/no-unresolved
-    import('https://da.live/scripts/dapreview.js').then(({ default: daPreview }) => daPreview(loadPage));
+    await import('https://da.live/scripts/dapreview.js').then(({ default: daPreview }) => daPreview(loadPage));
+    document.body.classList.add('da-live-preview');
   }
   if (searchParams.get('daexperiment')) {
     import(`${NX_ORIGIN}/public/plugins/exp/exp.js`);
