@@ -1,4 +1,4 @@
-.details-sidebar h1 {
+main .section.details-sidebar h1 {
     color: var(--site-color);
     text-align: left;
     margin-bottom: 40px;
@@ -11,7 +11,7 @@
     margin-top: 0;
 }
 
-body.biencommun .details-sidebar h1 {
+body.biencommun main .section.details-sidebar h1 {
     color: var(--biencommun-site-color);
 }
 
@@ -100,7 +100,7 @@ body.biencommun .details-sidebar h1 {
 }
 
 @media (width >= 600px) {
-    .details-sidebar h1 {
+    main .section.details-sidebar h1 {
         font-size: 50px;
     }
 

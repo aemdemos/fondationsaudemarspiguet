@@ -1,5 +1,5 @@
 
-.section.details-sidebar h1 {
+main .section.details-sidebar h1 {
     color: var(--site-color);
     text-align: left;
     font-weight: 400;
@@ -281,7 +281,7 @@ body.news-article main .section.details-sidebar.right .news-article-inner .defau
 }
 
 @media (width >= 600px) {
-    .section.details-sidebar h1 { 
+    main .section.details-sidebar h1 { 
         font-size: 50px;
     }
 
