@@ -1,3 +1,23 @@
+
+main .section.details-sidebar h1 {
+    color: var(--site-color);
+    text-align: left;
+    font-weight: 400;
+    font-feature-settings: 'clig' 0;
+    font-style: normal;
+    line-height: 1.2em;
+    letter-spacing: .08em;
+    font-size: 30px;
+    margin: 0;
+    padding-top: 15px;
+    padding-bottom: 25px;
+    text-transform: uppercase;
+}
+
+body.biencommun main .section.details-sidebar h1 {
+    color: var(--site-color-bien);
+}
+
 body.news-article main .carousel-wrapper {
     padding-top: 30px;
 }
@@ -261,6 +281,10 @@ body.news-article main .section.details-sidebar.right .news-article-inner .defau
 }
 
 @media (width >= 600px) {
+    main .section.details-sidebar h1 { 
+        font-size: 50px;
+    }
+
     body.news-article main .carousel-wrapper {
         padding-top: 100px;
     }
