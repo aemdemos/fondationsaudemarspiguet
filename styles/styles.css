@@ -1068,6 +1068,10 @@ main .section.light, main .section.highlight {
   pointer-events: auto;
 }
 
+.da-live-preview .full-width.carousel-container .carousel.hero-banner.vertical:not(.scrollable) .carousel-slides-container {
+  height: 600px;
+}
+
 @media (width<600px) {
   .page-level-btn {
     right: 20px;
@@ -1493,8 +1497,4 @@ main .section.table-container.accordion-container{
     height: 1200px;
   }
 
-}
-
-.da-live-preview .full-width.carousel-container .carousel.hero-banner.vertical:not(.scrollable) .carousel-slides-container {
-  height: 600px;
 }
