@@ -625,6 +625,15 @@ const branch = searchParams.get('nx') || 'main';
 
 export const NX_ORIGIN = branch === 'local' || origin.includes('localhost') ? 'http://localhost:6456/nx' : 'https://da.live/nx';
 
+// Helper function to apply site-specific class based on URL for DA preview
+function applySiteClassFromUrl() {
+  if (origin.includes('main--biencommun-fondationsaudemarspiguet')) {
+    document.body.classList.add('biencommun');
+  } else if (origin.includes('main--fondationsaudemarspiguet')) {
+    document.body.classList.add('fondations');
+  }
+}
+
 (async function loadDa() {
   /* eslint-disable import/no-unresolved */
   if (searchParams.get('dapreview')) {
@@ -632,14 +641,15 @@ export const NX_ORIGIN = branch === 'local' || origin.includes('localhost') ? 'h
     await import('https://da.live/scripts/dapreview.js').then(async ({ default: daPreview }) => {
       await daPreview(loadPage);
       document.body.classList.add('da-live-preview');
+      applySiteClassFromUrl();
 
       const observer = new MutationObserver((mutations) => {
         mutations.forEach((mutation) => {
           if (mutation.type === 'childList') {
             // Check if body was replaced and apply class to new body
-            const currentBody = document.body;
-            if (currentBody && !currentBody.classList.contains('da-live-preview')) {
-              currentBody.classList.add('da-live-preview');
+            if (document.body && !document.body.classList.contains('da-live-preview')) {
+              document.body.classList.add('da-live-preview');
+              applySiteClassFromUrl();
             }
           }
         });

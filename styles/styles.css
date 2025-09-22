@@ -765,6 +765,10 @@ main .section.colored-text strong {
   font-weight: bold;
 }
 
+.policy-template main .default-content-wrapper p:last-child{
+  margin-bottom: 20px;
+}
+
 /* Make strong elements bold in contact-us section for both themes */
 .contact-us main .section .default-content-wrapper strong {
   font-weight: bold;
@@ -1267,7 +1271,7 @@ main .section:has(.icons-grid.statistics) .columns-wrapper .columns p.button-con
 }
 
 .policy-template main .section .default-content-wrapper > *:last-child {
-  padding-bottom: 50px;
+  padding-bottom: 30px;
   border-bottom: 1px solid var(--policy-template-borders);
 }
   
@@ -1290,7 +1294,6 @@ color: var(--biencommun-titre);
 
 .policy-template main .section:last-of-type {
   margin-bottom: 0;
-  margin-top: 20px;
 }
 
 .biencommun main .section.light-grey-bg {
@@ -1304,7 +1307,7 @@ main .section.light-grey-red-bg {
 .policy-template main .last-modified {
   font-size: 14px;
   display: block;
-  padding: 20px 24px 65px;
+  padding: 0 24px 65px;
   letter-spacing: 0.02em;
   line-height: var(--body-line-height);
   font-weight: var(--body-font-weight);
@@ -1315,7 +1318,7 @@ main .section.light-grey-red-bg {
 @media (width >= 900px) {
   .policy-template main .last-modified {
     font-size: var(--body-font-size-m);
-    padding: 20px 80px 145px;
+    padding: 0 80px 145px;
   }
 }
 
@@ -1374,6 +1377,15 @@ main .section.table-container.accordion-container{
   /* added because of generic selector rule: .columns.buttons > div > div */
   main .section:has(.icons-grid.statistics) .columns-wrapper .columns > div > div {
     flex: unset;
+  }
+
+  .policy-template main .section .default-content-wrapper {
+    padding-top: 30px;
+  }
+
+  .policy-template main .section .default-content-wrapper > *:last-child {
+  padding-bottom: 50px;
+  border-bottom: 1px solid var(--policy-template-borders);
   }
 }
 
