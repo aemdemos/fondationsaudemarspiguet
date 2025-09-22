@@ -1,3 +1,20 @@
+.details-sidebar h1 {
+    color: var(--site-color);
+    text-align: left;
+    margin-bottom: 40px;
+    font-weight: 300;
+    font-feature-settings: 'clig' 0;
+    font-style: normal;
+    line-height: 1.2em;
+    letter-spacing: .08em;
+    font-size: 30px;
+    margin-top: 0;
+}
+
+body.biencommun .details-sidebar h1 {
+    color: var(--biencommun-site-color);
+}
+
 .project-article-template .details-sidebar.light-grey-bg {
     display:flex;
     margin: 0;
@@ -83,6 +100,10 @@
 }
 
 @media (width >= 600px) {
+    .details-sidebar h1 {
+        font-size: 50px;
+    }
+
     .project-article-template .details-sidebar .project-article-sidebar {
         width: 260px;
     }

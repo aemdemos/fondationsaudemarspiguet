@@ -1431,6 +1431,10 @@ main .section.table-container.accordion-container{
   main .section:has(.icons-grid) .default-content-wrapper {
     padding: 0 80px;
   }
+
+  .da-live-preview .full-width.carousel-container .carousel.hero-banner.vertical:not(.scrollable) .carousel-slides-container {
+    height: 900px;
+  }
 }
 
 /* Larger screen responsive for colorful class */
@@ -1472,8 +1476,13 @@ main .section.table-container.accordion-container{
   main .section.colored-text:has(.icons-grid) .columns-wrapper div > div > p {
     width: 100%;
   }
- }
 
-.da-live-preview .full-width.carousel-container .carousel.hero-banner.vertical .carousel-slides-container {
+  .da-live-preview .full-width.carousel-container .carousel.hero-banner.vertical:not(.scrollable) .carousel-slides-container {
+    height: 1200px;
+  }
+
+}
+
+.da-live-preview .full-width.carousel-container .carousel.hero-banner.vertical:not(.scrollable) .carousel-slides-container {
   height: 600px;
 }
