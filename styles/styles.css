@@ -1449,7 +1449,7 @@ main .section.table-container.accordion-container{
   }
 
   .da-live-preview .full-width.carousel-container .carousel.hero-banner.vertical:not(.scrollable) .carousel-slides-container {
-    height: 900px;
+    height: 700px;
   }
 }
 
@@ -1494,7 +1494,6 @@ main .section.table-container.accordion-container{
   }
 
   .da-live-preview .full-width.carousel-container .carousel.hero-banner.vertical:not(.scrollable) .carousel-slides-container {
-    height: 1200px;
+    height: 760px;
   }
-
 }

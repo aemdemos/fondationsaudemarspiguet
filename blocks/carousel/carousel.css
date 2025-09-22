@@ -248,7 +248,9 @@
 }
 
 .carousel-container .carousel.hero-banner .carousel-slide .carousel-slide-content p strong em,
-.carousel-container .carousel.hero-banner.scrollable .carousel-slide .carousel-slide-content p strong em{
+.carousel-container .carousel.hero-banner.scrollable .carousel-slide .carousel-slide-content p strong em, 
+.carousel-container .carousel.hero-banner .carousel-slide .carousel-slide-content p em strong, 
+.carousel-container .carousel.hero-banner.scrollable .carousel-slide .carousel-slide-content p em strong {
   color: var(--biencommun-carousel-color);
   text-decoration: none;
   font-style: normal;
