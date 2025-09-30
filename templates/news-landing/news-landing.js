@@ -158,8 +158,8 @@ export default async function decorate(doc) {
           class: 'search-input', id: 'filtersearch', placeholder: newsLandingSearchFilter, type: 'text', minlength: '2', size: '10',
         },
       ),
+      a({ class: 'btn-search-clear', href: '#' }),
     ),
-    a({ class: 'btn-search-clear', href: '#' }),
   );
   $newsListingRight.append($filterTop, $fitlerBottom);
   $filterContainer.append($newsListingLeft, $newsListingRight);
