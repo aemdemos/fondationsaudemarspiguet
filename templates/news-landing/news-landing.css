@@ -173,7 +173,7 @@ main .news-listing {
     background-size: cover;
     display: inline-block;
     position: relative;
-    padding-bottom: 75%; /* Creates a 5:3 aspect ratio (60% = 3/5 * 100) */
+    padding-bottom: 75%;
 }
 
 .news-listing .news-image-wrapper img {
@@ -270,6 +270,22 @@ main .news-listing {
 
 .news-listing .news-content-wrapper {
     padding-top: 30px;
+}
+
+.biencommun main .filter-container .news-listing-container-left .view-all {
+    color: var(--site-color-2-bien);
+}
+
+.biencommun.news-landing .btn-search-clear {
+    background-image: url('../../icons/btn_bien_filter_back.svg');
+}
+
+.biencommun main .filter-container .news-listing-container-right .filter-top-btn {
+  background-image: url('/icons/btn_bien_filtre_top.svg');
+}
+
+.biencommun main .filter-container .news-listing-container-right .filter-bottom-btn {
+  background-image: url('/icons/btn_bien_filtre_bottom.svg');
 }
 
 @media (width >= 900px) {
