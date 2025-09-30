@@ -51,6 +51,13 @@
   object-fit: cover;
 }
 
+.carousel.vertical .carousel-slide .carousel-slide-image picture > img {
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+  object-position: center center;
+}
+
 .carousel-container .carousel.hero-banner .carousel-slide .carousel-slide-image picture > img {
   height: 100%;
   width: 100%;
@@ -384,7 +391,11 @@
  /* Vertical Carousel */
 
  .carousel.vertical {
-  height: 600px;
+  height: 300px;
+  padding-left: 30px;
+  padding-right: 20px;
+  margin-top: 40px;
+  margin-bottom: 40px;
 }
 
 .carousel.vertical .carousel-slides-container {
@@ -444,11 +455,6 @@
   opacity: 1;
 }
 
-@media (width <= 600px) {
-  .carousel.vertical {
-    height: 200px;
-  }
-}
 
 @media (width >= 600px) and (width <=900px) {
   .carousel.vertical {
@@ -459,8 +465,19 @@
 @media (width >= 900px) {
   .carousel.vertical {
     height: 500px;
+    padding-left: 50px;
+    padding-right: 40px;
+    margin-top: 0;
+    margin-bottom: 0;
   }
 
+  @media (width >= 1200px) {
+    .carousel.vertical {
+      height: 800px;
+      width: 1300px;
+      margin-left: -50px;
+    }
+  }
   .carousel-container .carousel.hero-banner.scrollable .carousel-slide .direction-icon-section {
     left: 50%;
     transform: translateX(-50%);
