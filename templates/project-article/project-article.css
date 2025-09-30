@@ -22,6 +22,10 @@ body.biencommun main .section.details-sidebar h1 {
     background-color: var(--projet-bg-page);
 }
 
+.project-article-template .details-sidebar.light-grey-bg + .section.carousel-container {
+    background-color: var(--projet-bg-page);
+}
+
 .project-article-template .details-sidebar .project-article-sidebar {
     width: 100%;
     box-sizing: border-box;
