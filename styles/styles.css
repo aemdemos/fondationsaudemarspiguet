@@ -1359,6 +1359,7 @@ main .section.table-container.accordion-container .default-content-wrapper h2{
     font-size: var(--heading-font-size-l);
     margin-bottom: 50px;
     padding: 15px 0;
+    text-transform: capitalize;
 }
 
 main .section.table-container.accordion-container .default-content-wrapper:nth-child(1) h2 {
