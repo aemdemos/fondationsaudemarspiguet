@@ -474,11 +474,13 @@
   @media (width >= 1200px) {
     .carousel.vertical {
       height: 800px;
-      width: 1300px;
-      margin-left: -50px;
+      width: 1280px;
+      padding: 0;
+      margin-left: -25px;
+      margin-right: 0;
     }
   }
-  
+
   .carousel-container .carousel.hero-banner.scrollable .carousel-slide .direction-icon-section {
     left: 50%;
     transform: translateX(-50%);
