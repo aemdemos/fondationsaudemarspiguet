@@ -54,7 +54,7 @@
 .carousel.vertical .carousel-slide .carousel-slide-image picture > img {
   height: 100%;
   width: 100%;
-  object-fit: contain;
+  object-fit: cover;
   object-position: center center;
 }
 
@@ -355,6 +355,24 @@
   box-sizing: border-box;
 }
 
+@media (width < 600px) {
+  .carousel.vertical .carousel-slide-indicators {
+     display: none;
+  }
+}
+
+@media (width <= 780px) {
+  .carousel.vertical .carousel-slide-indicators {
+    transform: translateY(-70px) !important; /* Move up */
+  }
+}
+
+@media (width > 1200px) {
+  .carousel.vertical .carousel-slide-indicators {
+    transform: translateY(-80px) !important; /* Move up more */
+  }
+}
+
 .carousel-container .carousel.hero-banner .carousel-slide-indicators {
   display: none;
 }
@@ -472,6 +490,13 @@
   }
 
   @media (width >= 1200px) {
+    .carousel.vertical {
+      height: 800px;
+      width: 1100px;
+    }
+  }
+
+  @media (width >= 1400px) {
     .carousel.vertical {
       height: 800px;
       width: 1280px;
