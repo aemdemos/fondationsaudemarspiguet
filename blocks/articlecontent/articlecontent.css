@@ -98,7 +98,6 @@ body.biencommun .articlecontent.block .news-detail-big-contenu-right {
     padding-bottom: 20px;
     letter-spacing: .02em;
     font-size: 14px;
-    font-weight: 300;
     font-weight: bold !important;
     color: var(--background-color);
 }
