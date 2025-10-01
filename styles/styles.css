@@ -816,12 +816,7 @@ p:has(a[href] img) {
   .contact-us main .section .default-content-wrapper a {
     font-size: 20px;
   }
-
-  .contact-us main .section .default-content-wrapper {
-  padding-bottom: 35px;
-  }
 }
-
 
 /* Target paragraphs containing the icon classes */
 /* stylelint-disable-next-line selector-class-pattern */
