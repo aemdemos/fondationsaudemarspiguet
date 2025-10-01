@@ -1,6 +1,7 @@
 /* featured-projects.css */
 .featured-projects.block {
     margin-bottom: 50px;
+    margin-top: 100px;
 }
 
 .featured-projects.block .cards.block.featured ul {
@@ -91,7 +92,7 @@
     z-index: -1;
     background-color: var(--projet-bg-page-suite);
     width: 100vw;
-    height: 300px;
+    height: 400px;
 }
 
 .biencommun.project-article-template.featured-projects-container.section::before {
@@ -104,7 +105,7 @@
     }
 
     .project-article-template .featured-projects-container.section::before {
-        margin-top: -40px;
+        margin-top: -140px;
     }
 }
 
