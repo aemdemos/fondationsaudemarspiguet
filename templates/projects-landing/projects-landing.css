@@ -82,11 +82,22 @@ main .filter-container .category-dropdown ul li, main .filter-container .locatio
 
 .biencommun main .filter-container .category-dropdown ul li, .biencommun main .filter-container .location-dropdown ul li {
     background: var(--biencommun-dropdown-bg);
+    color: var(--biencommun-site-color);
+    font-weight: 400;
+    letter-spacing: 0.04em;
 }
 
 main .filter-container .category-dropdown ul li:hover, main .filter-container .location-dropdown ul li:hover {
-    font-weight: 500;
     color: var(--site-color);
+}
+
+.fondations main .filter-container .category-dropdown ul li, .fondations main .filter-container .location-dropdown ul li {
+    color: var(--fondations-site-color);
+}
+
+.biencommun main .filter-container .category-dropdown ul li:hover, .biencommun main .filter-container .location-dropdown ul li:hover {
+    color: var(--biencommun-site-color);
+    font-weight: 500;
 }
 
 main .filter-container .input-category-span, main .filter-container .input-location-span {
