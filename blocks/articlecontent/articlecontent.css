@@ -109,10 +109,12 @@ body.biencommun .articlecontent.block .news-detail-big-contenu-right {
 
 .articlecontent.block .news-detail-big-contenu-right p strong u {
     color: var(--site-color-2);
+    text-decoration: none;
 }
 
 body.biencommun .articlecontent.block .news-detail-big-contenu-right p strong u {
     color: var(--site-color-2-bien);
+    text-decoration: none;
 }
 
 .articlecontent.block .news-detail-big-contenu-right > p:first-child {
