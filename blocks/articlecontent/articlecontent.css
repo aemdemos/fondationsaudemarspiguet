@@ -94,13 +94,22 @@ body.biencommun .articlecontent.block .news-detail-big-contenu-right {
 }
 
 .articlecontent.block .news-detail-big-contenu-right p strong {
-    color: #D3C19B;
     line-height: 1.5em;
     padding-bottom: 20px;
     letter-spacing: .02em;
     font-size: 14px;
     font-weight: 300;
     font-weight: bold !important;
+    color: var(--background-color);
+}
+
+.articlecontent.block .news-detail-big-contenu-right p strong em {
+    font-style: normal;
+    color: var(--biencommun-carousel-color);
+}
+
+.articlecontent.block .news-detail-big-contenu-right p strong u {
+    color: var(--site-color-2);
 }
 
 .articlecontent.block .news-detail-big-contenu-right > p:first-child {
