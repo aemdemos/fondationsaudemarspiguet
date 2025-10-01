@@ -809,6 +809,7 @@ p > a[href]:has(img) {
 .contact-us main .section .default-content-wrapper p:has(a[href] picture),
 p:has(a[href] img) {
   margin-bottom: 0;
+  margin-top: 0;
 }
 
 @media (width >= 900px) {
@@ -950,6 +951,15 @@ body.fondations main .section.full-width-image .default-content-wrapper {
   max-width: unset;
 }
 
+.contact-us main p:not(:has(span)) {
+  margin-bottom: 30px;
+  margin-top: 40px;
+}
+
+.contact-us main p:last-of-type {
+  margin-bottom: 50px;
+}
+
 @media (width>=900px) {
   header {
     height: var(--header-tab-height);
@@ -979,9 +989,9 @@ body.fondations main .section.full-width-image .default-content-wrapper {
   }
 
   .contact-us main p {
-  letter-spacing: 0.05em;
-  font-weight: 400;
-}
+    letter-spacing: 0.05em;
+    font-weight: 400;
+  }
 
 
   main h2 {
