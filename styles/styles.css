@@ -843,9 +843,12 @@ p:has(a[href] img) {
 
 main .section.float-right .default-content-wrapper .content-wrapper ul li {
   list-style: none;
-  padding-left: 120px;
   position: relative;
   margin-bottom: 12px;
+  font-size: 14px;
+  letter-spacing: 0.02em;
+  font-weight: var(--body-font-weight);
+  padding-left: 20px;
 }
 
 body.fondations main p,
@@ -869,7 +872,7 @@ main .section.float-right .default-content-wrapper .content-wrapper ul li::befor
   line-height: 20px;
   position: absolute;
   top: 10px;
-  left: 100px;
+  left: -3px;
   border-radius: 500px;
 }
 
@@ -991,10 +994,6 @@ body.fondations main .section.full-width-image .default-content-wrapper {
 
   body.fondations main .section.float-right {
     max-width: unset;
-  }
-
-  main .section.float-right .default-content-wrapper .heading-wrapper {
-    width: calc((((100% - (12*30px))/12)*9) + (8*30px));
   }
 
   main .section.float-right .default-content-wrapper .heading-wrapper h1 {
@@ -1330,7 +1329,15 @@ main .section.light-grey-red-bg {
 }
 
 @media (width >= 900px) {
-  .policy-template main .last-modified {
+main .section.float-right .default-content-wrapper .content-wrapper ul li {
+ font-size: 19px;
+}
+
+main .section.float-right .default-content-wrapper .content-wrapper p{
+  font-size: 19px;
+}
+
+.policy-template main .last-modified {
     font-size: var(--body-font-size-m);
     padding: 0 80px 145px;
   }
@@ -1402,6 +1409,15 @@ main .section.table-container.accordion-container{
   padding-bottom: 50px;
   border-bottom: 1px solid var(--policy-template-borders);
   }
+
+ main .section.float-right .default-content-wrapper .content-wrapper ul li{
+  padding-left: 70px;
+ }
+
+  main .section.float-right .default-content-wrapper .content-wrapper ul li::before {
+  left: 50px;
+}
+
 }
 
 @media (width >= 900px) {
