@@ -1,6 +1,7 @@
 /* featured-projects.css */
 .featured-projects.block {
     margin-bottom: 50px;
+    margin-top: 50px;
 }
 
 .featured-projects.block .cards.block.featured ul {
@@ -46,6 +47,7 @@
     background-size: cover;
     display: inline-block;
     position: relative;
+    max-height: 250px;
 }
 
 .featured-projects.block .cards.block.featured ul .image-container img {
@@ -54,15 +56,16 @@
     height: 100% !important;
     width: 100%;
     object-fit: cover;
+    aspect-ratio: 4.5/3;
 }
 
-.featured-projects.block .cards.block.featured ul .projets-listing-partners {
-    font-size: 14px;
-    line-height: 1.2em;
-}
-
+.featured-projects.block .cards.block.featured ul .projets-listing-partners,
 .featured-projects.block .cards.block.featured ul .projets-listing-infos {
     font-size: 14px;
+    line-height: 1.2em;
+    text-transform: uppercase;
+    font-weight: 400;
+    letter-spacing: .12em;
 }
 
 .featured-projects.block .cards.block.featured ul h3 {
@@ -74,6 +77,7 @@
     font-weight: 500;
     margin-bottom: 10px;
     color: #000;
+    margin-top: 0
 }
 
 .featured-projects.block .cards.block.featured ul .projets-listing-cat {
@@ -88,7 +92,8 @@
     z-index: -1;
     background-color: var(--projet-bg-page-suite);
     width: 100vw;
-    height: 300px;
+    height: 400px;
+    margin-top: -140px;
 }
 
 .biencommun.project-article-template.featured-projects-container.section::before {
@@ -96,12 +101,16 @@
 }
 
 @media (width >= 600px) {
+    .featured-projects.block {
+        margin-top: 100px;
+    }
+
     .featured-projects.block .cards.block.featured ul {
         grid-template-columns: repeat(2, 1fr);
     }
 
     .project-article-template .featured-projects-container.section::before {
-        margin-top: -40px;
+        margin-top: -140px;
     }
 }
 
