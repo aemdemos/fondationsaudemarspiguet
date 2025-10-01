@@ -184,6 +184,10 @@ main .projects-listing {
     margin: auto;
     height: auto;
     padding: 35px 20px;
+    font-size: 18px;
+    font-weight: 400;
+    letter-spacing: .12em;
+    line-height: 1.15;
 }
 
 .projects-listing .project-item {
@@ -209,14 +213,16 @@ main .projects-listing {
     display: inline-block;
     position: relative;
     max-width: 100%;
+    margin-bottom: 10px;
 }
 
 .projects-listing .projects-image-wrapper img {
     min-height: 100%;
     width: 100%;
-    height: 300px;
+    height: 100%;
     object-fit: cover;
     max-width: 100%;
+    aspect-ratio: 4.5/3;
 }
 
 .projects-listing .projects-title {
@@ -224,7 +230,8 @@ main .projects-listing {
     font-size: 14px;
     font-weight: 500;
     margin-top: 0;
-    text-transform: uppercase
+    text-transform: uppercase;
+    margin-bottom: 10px;
 }
 
 .projects-listing .projects-partner {
@@ -247,9 +254,11 @@ main .projects-listing {
 
 .projects-listing .projects-category {
     color: var(--site-color-2);
-    font-size: 12px;
+    font-size: 10px;
     font-weight: 300;
-    text-transform: uppercase
+    text-transform: uppercase;
+    line-height: 1;
+    display: block;
 }
 
 .biencommun .projects-listing .projects-category {
@@ -298,6 +307,7 @@ main .projects-listing {
         gap: 30px;
         max-width: 1200px;
         margin: auto;
+        font-size: 14px;
     }
 
     .projects-listing .project-item {
