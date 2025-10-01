@@ -1,8 +1,8 @@
-main .filter-container {
+main .section .filter-container {
     padding: 0 24px;
     display: flex;
     flex-direction: column;
-    max-width: 1200px;
+    max-width: 1780px;
     margin: auto;
     font-size: 36px;
     position: relative;
@@ -23,11 +23,15 @@ main .filter-container .category-input {
     font-weight: 400;
     line-height: 1.01;
     outline: none;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizelegibility;
+    letter-spacing: 0.05em;
 }
 
 main .filter-container .category-dropdown {
     border: none;
-    margin: 24px 0;
+    margin: 20px 0;
     border-top: 0 none;
     box-shadow: none;
     font-size: 16px;
@@ -75,6 +79,10 @@ main .filter-container .search-input {
     text-transform: none;
     font-weight: 400;
     line-height: 1.01;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizelegibility;
+    letter-spacing: 0.06em;
 }
 
 main .filter-container .search-input::placeholder {
@@ -88,20 +96,27 @@ main .filter-container .news-listing-container-left .search-section {
 }
 
 main .filter-container .news-listing-container-left .filter-separator {
-    padding: 0 10px;
+    padding: 0 15px;
     text-transform: none;
-    font-weight: 400 ;
+    font-weight: 400;
     line-height: 1.01;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizelegibility;
+    letter-spacing: 0.05em;
 }
 
 main .filter-container .news-listing-container-left .view-all {
     color: var(--site-color-2);
     text-transform: none;
-    font-weight: 400 ;
+    font-weight: 400;
     line-height: 1.01;
     letter-spacing: .1em;
     text-align: center;
     white-space: nowrap;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizelegibility;
 }
 
 main .filter-container .news-listing-container-left .view-all:hover {
@@ -138,10 +153,10 @@ main .filter-container .news-listing-container-right .filter-bottom-btn {
     background-image: url('../../icons/btn_arbres_filter_back.svg');
     height: 40px;
     width: 30px;
-    display: block;
+    display: inline-block;
     background-repeat: no-repeat;
     background-position: center;
-    float: right;
+    vertical-align: middle;
 }
 
 main .news-listing {
@@ -158,13 +173,16 @@ main .news-listing {
     background-size: cover;
     display: inline-block;
     position: relative;
-    padding-bottom: 30px;
+    padding-bottom: 75%;
 }
 
 .news-listing .news-image-wrapper img {
-    min-height: 100%;
-    height: 300px;
+    position: absolute !important;
+    top: 0;
+    left: 0;
+    height: 100% !important;
     width: 100%;
+    max-width: 100% !important;
     object-fit: cover;
 }
 
@@ -250,6 +268,31 @@ main .news-listing {
     grid-column: 1 / -1;
 }
 
+.news-listing .news-content-wrapper {
+    padding-top: 30px;
+}
+
+.biencommun main .filter-container .news-listing-container-left .view-all {
+    color: var(--site-color-2-bien);
+}
+
+.biencommun.news-landing .btn-search-clear {
+    background-image: url('../../icons/btn_bien_filter_back.svg');
+}
+
+.biencommun main .filter-container .news-listing-container-right .filter-top-btn {
+  background-image: url('/icons/btn_bien_filtre_top.svg');
+}
+
+.biencommun main .filter-container .news-listing-container-right .filter-bottom-btn {
+  background-image: url('/icons/btn_bien_filtre_bottom.svg');
+}
+
+.biencommun main .filter-container .category-dropdown ul li {
+    background: var(--biencommun-dropdown-bg);
+    color: var(--biencommun-site-color-2);
+}
+
 @media (width >= 900px) {
     main .news-listing {
         display: grid;
@@ -275,11 +318,12 @@ main .news-listing {
         margin: 15px;
     }
 
-    main .filter-container {
+    main .section .filter-container {
         padding: 0 80px;
         font-size: 36px;
         flex-direction: row;
         justify-content: space-between;
+        max-width: 1780px;
     }
 
     main .filter-container .news-listing-container-left {
@@ -290,5 +334,11 @@ main .news-listing {
 
     main .filter-container .news-listing-container-right {
         align-self: center;
+    }
+}
+
+@media (width >= 1200px) {
+    main .filter-container .search-input {
+        padding-right: 100px;
     }
 }

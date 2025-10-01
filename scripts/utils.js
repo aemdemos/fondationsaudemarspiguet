@@ -94,6 +94,7 @@ export function setInputWidthToText(inputEl) {
   const spanForWidth = document.createElement('span');
   const style = getComputedStyle(inputEl);
   spanForWidth.style.font = style.font;
+  spanForWidth.style.letterSpacing = style.letterSpacing;
   spanForWidth.style.whiteSpace = 'pre';
   spanForWidth.style.position = 'absolute';
   spanForWidth.style.visibility = 'hidden';
@@ -101,7 +102,7 @@ export function setInputWidthToText(inputEl) {
   document.body.appendChild(spanForWidth);
   const width = spanForWidth.offsetWidth;
   spanForWidth.remove();
-  inputEl.style.width = `${width}px`;
+  inputEl.style.width = `${width + 10}px`;
 }
 
 export async function setClassDataBg() {
