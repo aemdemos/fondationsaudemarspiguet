@@ -22,13 +22,13 @@ export default async function decorate() {
     link.href = links;
     link.textContent = links;
     sidebar.innerHTML = `
-      <div> partner </div>
+      <div> Partner </div>
         ${partner}
-      <div> Categories </div>
+      <div> Category(ies) </div>
         ${category}
-      <div>Project Duration </div>
+      <div> Project duration </div>
         ${duration}
-      <div> Location </div>
+      <div> Location(s) </div>
         ${location}
       <div> Link(s) </div>
       <div class="photos"> Photos </div>

@@ -11,6 +11,19 @@ main .section.details-sidebar h1 {
     margin-top: 0;
 }
 
+.project-article-template .details-sidebar .project-article-inner h1 {
+    color: var(--site-color);
+    text-align: left;
+    margin-bottom: 40px;
+    font-weight: 400;
+    font-feature-settings: 'clig' 0;
+    font-style: normal;
+    line-height: 1.2em;
+    letter-spacing: .08em;
+    font-size: 30px;
+    margin-top: 40px;
+}
+
 body.biencommun main .section.details-sidebar h1 {
     color: var(--biencommun-site-color);
 }
@@ -43,19 +56,6 @@ body.biencommun main .section.details-sidebar h1 {
 
 .project-article-template .details-sidebar .project-article-inner .clear{
     clear: both;
-}
-
-.project-article-template .details-sidebar .project-article-inner h1 {
-    color: var(--site-color);
-    text-align: left;
-    margin-bottom: 40px;
-    font-weight: 300;
-    font-feature-settings: 'clig' 0;
-    font-style: normal;
-    line-height: 1.2em;
-    letter-spacing: .08em;
-    font-size: 30px;
-    margin-top: 0;
 }
 
 .biencommun.project-article-template .details-sidebar .project-article-inner h1 {
