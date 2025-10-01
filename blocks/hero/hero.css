@@ -161,7 +161,7 @@
   flex: 1;
   align-items: stretch;
   justify-content: stretch;
-  min-height: 300px;
+  min-height: 200px;
   transform: none;
   padding: 0 !important;
   width: 100vw;
@@ -185,7 +185,7 @@
   order: 1;
   position: relative;
   overflow: hidden;
-  min-height: 300px;
+  min-height: 200px;
 }
 
 .hero.two-columnar.block > div > div:first-child picture,
@@ -199,7 +199,7 @@
 }
 
 .hero.two-columnar.block > div > div:last-child {
-  background: #b9b8b2;
+  background: var(--projet-bg-intro);
   display: flex;
   flex: 1 1 50%;
   width: 50%;
@@ -210,13 +210,11 @@
   order: 2;
   position: relative;
   overflow: visible;
-  padding: 40px;
+  padding: 20px 50px;
 }
 
-
-
 .hero.two-columnar.block > div > div:last-child p {
-  color: #695D5B;
+  color: var(--site-color-2-bien);
   font-size: 40px;
   font-family: Antarctica,sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -224,29 +222,20 @@
   line-height: normal;
   letter-spacing: 0.02em;
   text-align: center;
-  max-width: 700px;
-  
+  margin: 0;
 }
-
-/* @media (width >= 600px) and (width <= 900px) {
-  .hero.two-columnar.block > div > div:first-child,
-  .hero.two-columnar.block > div > div:last-child {
-    min-height: 75vh;
-    height: 75vh;
-  }
-} */
 
 @media (width >= 600px) {
 .hero.two-columnar.block > div {
     position: relative;
-    min-height: 300px;
+    min-height: 200px;
   }
 
   .hero.two-columnar.block > div > div:first-child {
     flex: 1 1 50%;
     width: 50%;
     min-width: 0;
-    min-height: 300px;
+    min-height: 200px;
     order: unset;  
   }
 
@@ -254,9 +243,8 @@
     flex: 1 1 50%;
     width: 50%;
     min-width: 0;
-    min-height: 300px;
-    order: unset; 
-    padding: 30px 20px;
+    min-height: 200px;
+    order: unset;
   }
 
   .hero.two-columnar.block > div > div:first-child picture,
@@ -272,7 +260,7 @@
   }
 }
 
-@media (width >= 1200px) {
+/* @media (width >= 1200px) {
   .hero.two-columnar.block > div {
     min-height: 500px;
   }
@@ -283,8 +271,9 @@
 
   .hero.two-columnar.block > div > div:last-child {
     min-height: 500px;
+
   }
-}
+} */
 
 @media (width <= 600px) {
   .hero.two-columnar.block > div {
@@ -298,7 +287,7 @@
     min-width: 0;
     order: unset;
     height: auto;
-    min-height: 250px;
+    min-height: 200px;
   }
 
   .hero.two-columnar.block > div > div:last-child {
@@ -307,14 +296,15 @@
     min-width: 0;
     order: unset;
     height: auto;
-    min-height: 200px;
-    padding: 20px 16px;
+    min-height: auto;
+    padding: 20px;
     box-sizing: border-box;
   }
 
   .hero.two-columnar.block > div > div:last-child p {
     max-width: 100vw;
     font-size: 24px;
+    margin: 0;
   }
 }
 
@@ -327,21 +317,22 @@
 }
 
 .hero.two-columnar-text-image.block > div > div:first-child {
-  flex: 1 1 0;
+  flex: 1 1 50%;
+  width: 50%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 64px 48px;
+  padding: 90px;
   box-sizing: border-box;
   background: #fff;
   min-width: 0;
-  background-color: #b9b8b2;
+  background-color: var(--projet-bg-intro-even);
   overflow: visible;
 }
 
 .hero.two-columnar-text-image.block > div > div:first-child p {
-  color: #6B7E7C;
+  color: var(--titre);
   font-size: 40px;
   font-family: Antarctica,sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -355,7 +346,8 @@
 
 /* Right column: image */
 .hero.two-columnar-text-image.block > div > div:last-child {
-  flex: 1 1 0;
+  flex: 1 1 50%;
+  width: 50%;
   display: flex;
   align-items: stretch;
   justify-content: stretch;
@@ -374,7 +366,7 @@
 }
 
 .biencommun .hero.two-columnar.block > div > div:last-child {
-  background-color: var(--biencommun-projet-bg-intro-even);
+  background-color: var(--biencommun-page-bloc-bg-pictos);
 }
 
 .hero.two-columnar-text-image.block > div > div:last-child img,
@@ -403,7 +395,8 @@
   }
 
   .hero.two-columnar-text-image.block > div > div:first-child {
-    width: 100%;
+    flex: 1 1 50%;
+    width: 50%;
     min-width: 0;
     min-height: 500px;
     padding: 30px 20px !important;
@@ -411,7 +404,8 @@
   }
 
   .hero.two-columnar-text-image.block > div > div:last-child {
-    width: 100%;
+    flex: 1 1 50%;
+    width: 50%;
     min-width: 0;
     min-height: 500px;
     padding: 0 !important;
@@ -472,8 +466,16 @@
     width: 100%;
     min-width: 0;
     order: 1;
-    height: auto;
-  }  
+    max-height: 400px;
+  }
+
+  .hero.two-columnar-text-image.block > div > div:last-child img,
+  .hero.two-columnar-text-image.block > div > div:last-child picture {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center center;
+  }
 }
 
 /* End of Two-columnar-text-image block styles */
