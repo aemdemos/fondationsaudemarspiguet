@@ -37,36 +37,43 @@ function createVideoElement(videoUrl, imageUrl) {
   // Create the video element HTML
 
   const wrapper = document.createElement('div');
-  wrapper.innerHTML = `
-      <video autoplay="" muted="" loop="" poster="${imageUrl}">
-          <source src="${videoUrl}" type="video/mp4">
-      </video>
-  `;
+  if (imageUrl) {
+    wrapper.innerHTML = `
+        <video autoplay="" muted="" loop="" poster="${imageUrl}">
+            <source src="${videoUrl}" type="video/mp4">
+        </video>
+    `;
+  } else {
+    wrapper.innerHTML = `
+        <video autoplay="" muted="" loop="" poster="">
+            <source src="${videoUrl}" type="video/mp4">
+        </video>
+    `;
+  }
 
   return wrapper.firstElementChild;
 }
 
 export default function decorate(block) {
-  if (!block.querySelector('img')) {
-    block.classList.add('without-image');
-  }
-
   if (block.classList.contains('video')) {
     // get video url from all anchors tags having mp4 extension
     const videoUrls = [...block.querySelectorAll('a')]
       .filter((a) => a.href.endsWith('.mp4'))
       .map((a) => a.href);
     const videoUrl = videoUrls[0];
+    let optimisedUrl = null;
+    if (!block.querySelector('img')) {
+      block.classList.add('without-image');
+    } else {
+      const imageUrl = block.querySelector('img').src;
+      block.querySelector('img')?.closest('p')?.remove();
+      block.querySelector('a[href$=".mp4"]')?.closest('p')?.remove();
 
-    const imageUrl = block.querySelector('img').src;
-    block.querySelector('img')?.closest('p')?.remove();
-    block.querySelector('a[href$=".mp4"]')?.closest('p')?.remove();
-
-    const optimizedpicture = createOptimizedPicture(imageUrl);
-    const optimisedUrl = optimizedpicture.querySelector('img').src;
-
+      const optimizedpicture = createOptimizedPicture(imageUrl);
+      optimisedUrl = optimizedpicture.querySelector('img').src;
+    }
     const videoElement = createVideoElement(videoUrl, optimisedUrl);
-    block.querySelector('div').prepend(videoElement); // appending video element to the div
+    block.querySelector('div').replaceChildren(videoElement); // appending video element to the div
   }
 
   const socialCRDiv = block.querySelector('div:nth-of-type(2) > div:first-of-type');
