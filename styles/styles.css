@@ -1003,6 +1003,10 @@ body.fondations main .section.full-width-image .default-content-wrapper {
     max-width: 1200px;
   }
 
+  .biencommun.newsroom-template .section.float-right {
+    padding: 65px 80px 0 0;
+  }
+
   body.fondations main .section.fade-up:not(.full-width-image) {
     padding-bottom: 100px;
   }
