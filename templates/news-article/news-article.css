@@ -402,8 +402,8 @@ body.news-article main .section.details-sidebar.right .news-article-inner .defau
     }
 
     body.news-article main .section.details-sidebar .news-article-inner {
-        padding-left: 0;
-        max-width: 1200px;
+        padding: 0 80px;
+        max-width: 1280px;
         margin: auto;
     }
 }
