@@ -300,7 +300,7 @@ body.news-article main .section.details-sidebar.right .news-article-inner .defau
 
     body.news-article main .section.details-sidebar.right .news-article-sidebar {
         float: right;
-        padding: 0 0 0 50px;
+        padding: 0 0 0 130px;
     }
 
     body.news-article main .section.details-sidebar.right .news-article-inner {
@@ -357,7 +357,7 @@ body.news-article main .section.details-sidebar.right .news-article-inner .defau
     }
 
     body.news-article main .section.articlecontent-container + div div.default-content-wrapper {
-        padding: 0 80px;
+        padding-right: 200px;
         width: calc(100% - 380px);
     }
 
@@ -402,7 +402,7 @@ body.news-article main .section.details-sidebar.right .news-article-inner .defau
     }
 
     body.news-article main .section.details-sidebar .news-article-inner {
-        padding: 0 80px;
+        padding-left: 0;
         max-width: 1200px;
         margin: auto;
     }
