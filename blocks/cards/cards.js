@@ -302,6 +302,8 @@ export default function decorate(block) {
         link.innerHTML = '';
         link.classList.remove('button', 'desc_btn');
         link.append(cardImageWrapper, heading);
+        link.setAttribute('target', '_blank');
+        link.setAttribute('rel', 'noopener noreferrer');
         cardBody.append(link);
       } else {
         const titlePara = cardBody.querySelector('p strong');
