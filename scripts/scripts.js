@@ -663,10 +663,19 @@ function applySiteClassFromUrl() {
 }());
 
 document.addEventListener('DOMContentLoaded', () => {
+  const currentHost = window.location.hostname;
+
   document.body.addEventListener('click', (e) => {
-    if (e.target.closest('.contact-us a')) {
+    const link = e.target.closest('.contact-us a');
+    if (!link?.href) return;
+
+    const { href } = link;
+    const isExternal = (href.startsWith('http') || href.startsWith('//'))
+      && !href.includes(currentHost);
+
+    if (isExternal) {
       e.preventDefault();
-      window.open(e.target.href || e.target.closest('a').href, '_blank');
+      window.open(href, '_blank');
     }
   });
 });

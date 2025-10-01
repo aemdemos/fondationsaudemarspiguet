@@ -781,7 +781,6 @@ main .section.colored-text.warm-grey-bg p {
 }
 
 .contact-us main .section .default-content-wrapper p {
-  padding-top: 20px;
   gap: 10px;
 }
 
@@ -791,7 +790,7 @@ main .section.colored-text.warm-grey-bg p {
 }
 
 .contact-us main .section .default-content-wrapper a {
-  font-weight: bold;
+  font-weight: 600;
   text-decoration: none;
   font-size: 14px;
   letter-spacing: 0.2em;
@@ -810,13 +809,14 @@ p > a[href]:has(img) {
 .contact-us main .section .default-content-wrapper p:has(a[href] picture),
 p:has(a[href] img) {
   margin-bottom: 0;
+  margin-top: 0;
 }
 
 @media (width >= 900px) {
   .contact-us main .section .default-content-wrapper a {
     font-size: 20px;
-  }}
-
+  }
+}
 
 /* Target paragraphs containing the icon classes */
 /* stylelint-disable-next-line selector-class-pattern */
@@ -946,6 +946,15 @@ body.fondations main .section.full-width-image .default-content-wrapper {
   max-width: unset;
 }
 
+.contact-us main p:not(:has(span)) {
+  margin-bottom: 30px;
+  margin-top: 40px;
+}
+
+.contact-us main p:last-of-type {
+  margin-bottom: 50px;
+}
+
 @media (width>=900px) {
   header {
     height: var(--header-tab-height);
@@ -973,6 +982,12 @@ body.fondations main .section.full-width-image .default-content-wrapper {
   main p {
     font-size: var(--body-font-size-m);
   }
+
+  .contact-us main p {
+    letter-spacing: 0.05em;
+    font-weight: 400;
+  }
+
 
   main h2 {
     font-size: var(--heading-font-size-xl);
