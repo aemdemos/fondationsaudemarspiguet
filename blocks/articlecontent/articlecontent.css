@@ -111,6 +111,10 @@ body.biencommun .articlecontent.block .news-detail-big-contenu-right {
     color: var(--site-color-2);
 }
 
+body.biencommun .articlecontent.block .news-detail-big-contenu-right p strong u {
+    color: var(--site-color-2-bien);
+}
+
 .articlecontent.block .news-detail-big-contenu-right > p:first-child {
     font-weight: bold !important;
 }
