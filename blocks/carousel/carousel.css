@@ -363,13 +363,13 @@
 
 @media (width <= 780px) {
   .carousel.vertical .carousel-slide-indicators {
-    transform: translateY(-70px) !important; /* Move up */
+    transform: translateY(-70px); /* Move up */
   }
 }
 
 @media (width > 1200px) {
   .carousel.vertical .carousel-slide-indicators {
-    transform: translateY(-80px) !important; /* Move up more */
+    transform: translateY(-80px); /* Move up more */
   }
 }
 
@@ -418,9 +418,7 @@
 
    /* Reset padding for all vertical carousel variants */
    .carousel.vertical.hero-banner,
-   .carousel.vertical.scrollable,
-   .carousel.vertical.news-slider,
-   .carousel.vertical.featured-projects {
+   .carousel.vertical.scrollable {
  padding: unset;
  margin: unset;
 }
@@ -437,10 +435,10 @@
 
 .carousel.vertical .carousel-slides {
   position: relative;
-  display: block !important;
-  overflow: visible !important;
-  scroll-behavior: unset !important;
-  scroll-snap-type: none !important;
+  display: block ;
+  overflow: visible ;
+  scroll-behavior: unset;
+  scroll-snap-type: none;
 }
 
 .carousel-container .carousel.hero-banner.vertical .carousel-slides {
@@ -458,8 +456,8 @@
   pointer-events: none;
   transition: opacity 2s ease-in-out;
   display: block;
-  flex: none !important;
-  scroll-snap-align: unset !important;
+  flex: none ;
+  scroll-snap-align: unset ;
 }
 
 .carousel.vertical .carousel-slide[aria-hidden="false"] {
