@@ -148,9 +148,7 @@
   }
 }
 
-
 /* Two-column block styling - Mobile First */
-
 .section:has(.columns.two-column) h1 {
   color: #6B7E7C;
   font-size: 32px;
@@ -203,10 +201,9 @@
   font-family: Antarctica, sans-serif;
   line-height: 1.5em;
   font-weight: 300;
+  padding-bottom: 30px;
   
 }
-
-
 
 /* First column paragraph - Mobile */
 .columns.two-column > div > div:nth-child(1) > p {
@@ -278,6 +275,7 @@
   .columns-wrapper:has(.columns.two-column) {
     justify-content: flex-end; /* pushes content to right side */
     gap: 20px;
+    padding-bottom: 100px;
   }
 
   /* Override default columns behavior - Desktop */
