@@ -307,7 +307,6 @@ body.biencommun .cards.map-category p {
 .cards.map-category ul li:first-child p {
   text-transform: uppercase;
   color: var(--site-color);
-  margin-bottom: 20px;
   font-size: 12px;
   font-weight: 500;
   letter-spacing: .05em;
@@ -394,7 +393,6 @@ body.biencommun .cards.map-category ul li a[data-categoryid]:not([data-categoryi
 .cards.map-category ul li > a[data-categoryid]:not([data-categoryid="all"]) + div p {
   font-size: 12px;
   text-align: left;
-  padding: 0 0 20px;
   font-weight: 400;
 }
 
