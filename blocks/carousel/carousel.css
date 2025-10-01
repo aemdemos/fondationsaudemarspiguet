@@ -416,6 +416,15 @@
   margin-bottom: 40px;
 }
 
+   /* Reset padding for all vertical carousel variants */
+   .carousel.vertical.hero-banner,
+   .carousel.vertical.scrollable,
+   .carousel.vertical.news-slider,
+   .carousel.vertical.featured-projects {
+ padding: unset;
+ margin: unset;
+}
+
 .carousel.vertical .carousel-slides-container {
    position: relative;
    height: 100%;
@@ -504,6 +513,15 @@
       margin-left: -25px;
       margin-right: 0;
     }
+
+    /* Reset padding for all vertical carousel variants */
+    .carousel.vertical.hero-banner,
+    .carousel.vertical.scrollable,
+    .carousel.vertical.news-slider,
+    .carousel.vertical.featured-projects {
+  padding: unset;
+  margin: unset;
+}
   }
 
   .carousel-container .carousel.hero-banner.scrollable .carousel-slide .direction-icon-section {
