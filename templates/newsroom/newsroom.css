@@ -102,8 +102,9 @@ main .media-filter-container .media-filter-container-right {
     display: flex;
     gap: 5px;
     align-items: center;
-    margin-bottom: 20px;
     margin-right: 15px;
+    padding-top: 60px;
+    margin-bottom: 5px;
 }
 
 main .media-filter-container .media-filter-container-right .filter-top-btn {
@@ -247,6 +248,14 @@ main .media-listing {
 }
 
 /* Responsive dropdown */
+@media (width >= 600px) {
+ main .media-filter-container .media-filter-container-right {
+    margin-bottom: 20px;
+    padding-top: 0;
+}
+}
+
+
 @media (width >= 900px) {
   .type-dropdown {
     left: 50px;

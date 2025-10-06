@@ -182,7 +182,6 @@ main .table-container .table-wrapper .table.no-border.block {
 
 .report.table-container .table.block {
   width: 100%;
-  overflow-x: auto;
 }
 
 .report.table-container .table.block table {
