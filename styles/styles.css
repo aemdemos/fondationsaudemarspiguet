@@ -812,6 +812,11 @@ p:has(a[href] img) {
   margin-top: 0;
 }
 
+.homepage.hero.video,
+.homepage.hero-banner {
+  margin-top: calc(-1 * var(--header-height)) !important;
+}
+
 @media (width >= 900px) {
   .contact-us main .section .default-content-wrapper a {
     font-size: 20px;
