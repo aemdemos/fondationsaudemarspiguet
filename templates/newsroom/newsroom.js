@@ -252,26 +252,16 @@ export default async function decorate(doc) {
         minlength: '2',
         size: '12',
       }),
+      a({ class: 'btn-media-search-clear', href: '#' }),
     ),
-    a({ class: 'btn-media-search-clear', href: '#' }),
   );
 
   $filterContainer.append($mediaFilterLeft, $mediaFilterRight);
 
-  // Insert filter section
-  // const viewAndSearchSection = $main.querySelector('.view-and-search');
-  // if (viewAndSearchSection) {
-  // // Insert filter container before view-and-search section
-  //   viewAndSearchSection.parentNode.insertBefore($filterContainer, viewAndSearchSection);
-  // } else {
-  // // Insert filter container at the beginning of the first section
-  //   $section.insertBefore($filterContainer, $section.firstChild);
-  // }
-
   $section.append($filterContainer);
   const tablesection = $main.querySelector('.report');
-  const floatrightsection = $main.querySelector('.float-right');
-  $main.append(floatrightsection, $section, tablesection);
+  const firstsection = $main.querySelector('main .section:first-of-type');
+  $main.append(firstsection, $section, tablesection);
 
   // Initialize functionality
   setupSortButtons(doc);

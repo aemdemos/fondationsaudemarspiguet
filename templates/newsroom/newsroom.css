@@ -7,6 +7,7 @@ main .media-filter-container {
     max-width: 1720px;
     margin: auto;
     font-size: 18px;
+    flex-wrap: wrap;
 }
 
 /* Make type input look clickable */
@@ -65,6 +66,7 @@ main .media-filter-container .media-filter-container-left {
     display: flex;
     align-items: center;
     margin-bottom: 20px;
+    flex-wrap: wrap;
 }
 
 main .media-filter-container .media-filter-container-left .filter-separator {
@@ -72,6 +74,7 @@ main .media-filter-container .media-filter-container-left .filter-separator {
     text-transform: none;
     font-weight: 400;
     line-height: 1.01;
+    font-size: 36px;
 }
 
 main .media-filter-container .media-filter-container-left .view-all-media {
@@ -82,6 +85,7 @@ main .media-filter-container .media-filter-container-left .view-all-media {
     letter-spacing: .1em;
     text-align: center;
     white-space: nowrap;
+    font-size: 36px;
 }
 
 .biencommun main .media-filter-container .media-filter-container-left .view-all-media {
@@ -98,13 +102,14 @@ main .media-filter-container .media-filter-container-left .view-all-media:hover 
     opacity: .7;
 }
 
+
 main .media-filter-container .media-filter-container-right {
     display: flex;
     gap: 5px;
     align-items: center;
     margin-right: 15px;
-    padding-top: 60px;
     margin-bottom: 5px;
+    margin-left: auto; /* Ensures right alignment when wrapped */
 }
 
 main .media-filter-container .media-filter-container-right .filter-top-btn {
@@ -159,6 +164,19 @@ main .media-listing {
     border: none;
     outline: none;
     color: var(--input-color);
+    font-size: 36px;
+}
+
+.newsroom main .media-filter-container .type-input {
+    width: 90px;
+}
+
+.newsroom main .media-filter-container .media-search-input {
+    width: 250px;
+}
+
+main .media-filter-container .media-search-section {
+    width: 100%;
 }
 
 .newsroom .btn-media-search-clear {
@@ -168,9 +186,9 @@ main .media-listing {
     display: block;
     background-repeat: no-repeat;
     background-position: center;
-    float: right;
     cursor: pointer;
     transition: opacity 0.2s ease;
+    float: right;
 }
 
 .biencommun .btn-media-search-clear, 
@@ -181,9 +199,9 @@ main .media-listing {
     display: block;
     background-repeat: no-repeat;
     background-position: center;
-    float: right;
     cursor: pointer;
     transition: opacity 0.2s ease;
+    float: right;
 }
 
 .newsroom .btn-media-search-clear:hover {
@@ -197,7 +215,7 @@ main .media-listing {
     }
 
     main .media-filter-container .type-input {
-        width: 150px;
+        width: 100px;
     }
 
     main .media-filter-container .type-input.selected {
@@ -253,6 +271,19 @@ main .media-listing {
     margin-bottom: 20px;
     padding-top: 0;
 }
+
+
+main .media-search-section {
+    display: block;
+    min-width: 280px;
+    overflow: hidden;
+}
+
+main .media-filter-container .media-search-section {
+        width: unset;
+    }
+
+
 }
 
 

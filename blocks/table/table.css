@@ -191,6 +191,12 @@ main .table-container .table-wrapper .table.no-border.block {
   font-size: var(--body-font-size-xs);
 }
 
+.report.table-container .table.block table th,
+.report.table-container .table.block table td {
+  padding: 0;
+  text-align: left;
+}
+
 @media (width >= 600px) {
   .report.table-container .table.block table {
     font-size: var(--body-font-size-s);
@@ -201,6 +207,13 @@ main .table-container .table-wrapper .table.no-border.block {
   .report.table-container .table.block table {
     font-size: var(--body-font-size-m);
   }
+
+ .report.table-container .table.block table th,
+ .report.table-container .table.block table td {
+  padding: 0.5em;
+  text-align: left;
+}
+
 }
 
 .report.table-container .table.block table thead tr {
@@ -214,12 +227,6 @@ main .table-container .table-wrapper .table.no-border.block {
 
 .report.table-container .table.block table th {
   font-weight: 700;
-}
-
-.report.table-container .table.block table th,
-.report.table-container .table.block table td {
-  padding: 0.5em;
-  text-align: left;
 }
 
 .report.table-container .table table th p,
@@ -254,11 +261,6 @@ main .table-container .table-wrapper .table.no-border.block {
 }
 
 /* Style for tables with the 'report' class */
-
-.view-and-search {
-  background-color: #edecea;
-  margin: 0 !important;
-}
 
 .report.table-container {
   padding-top: 80px;

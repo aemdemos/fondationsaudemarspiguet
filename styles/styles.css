@@ -569,6 +569,11 @@ main>.section>div {
   padding: 0 24px;
 }
 
+.newsroom.newsroom-template main>.section>div {
+  max-width: 100%;
+  margin: 0;
+}
+
 main>.section:first-of-type {
   margin-top: 0;
 }
@@ -1003,8 +1008,13 @@ body.fondations main .section.full-width-image .default-content-wrapper {
     max-width: 1200px;
   }
 
+   .newsroom.biencommun.newsroom-template main .section.float-right {
+    margin: auto;
+    max-width: 1440px;
+  }
+
   .biencommun.newsroom-template .section.float-right {
-    padding: 65px 80px 0 0;
+    padding: 65px 50px 0 0;
   }
 
   body.fondations main .section.fade-up:not(.full-width-image) {
