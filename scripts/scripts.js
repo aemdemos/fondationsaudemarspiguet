@@ -156,6 +156,25 @@ export function getLanguage(curPath = window.location.pathname, resetCache = fal
   return getLanguageFromPath(curPath, resetCache);
 }
 
+export function isHomepage() {
+  const lang = getLanguage();
+  const path = window.location.pathname;
+  return path === '/' || path === `/${lang}`;
+}
+
+export function decorateVideoBackground(main) {
+  if (!isHomepage()) return;
+
+  // Find hero video or banner
+  const hero = main.querySelector('.hero.video, .hero-banner');
+  if (!hero) return;
+
+  // Pull hero behind transparent header
+  hero.style.position = 'relative';
+  hero.style.marginTop = 'calc(-1 * var(--header-height, 80px))';
+  hero.style.zIndex = '0';
+}
+
 export async function load404() {
   const placeholders = await fetchPlaceholders(`${getLanguage()}`);
   const { pageNotFoundText } = placeholders;
@@ -246,6 +265,7 @@ export function decorateMain(main) {
   decorateSections(main);
   decorateBlocks(main);
   decorateListingCards(main);
+  decorateVideoBackground(main);
 }
 
 /**
