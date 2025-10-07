@@ -164,15 +164,9 @@ export function isHomepage() {
 
 export function decorateVideoBackground(main) {
   if (!isHomepage()) return;
-
-  // Find hero video or banner
   const hero = main.querySelector('.hero.video, .hero-banner');
   if (!hero) return;
-
-  // Pull hero behind transparent header
-  hero.style.position = 'relative';
-  hero.style.marginTop = 'calc(-1 * var(--header-height, 80px))';
-  hero.style.zIndex = '0';
+  hero.style.marginTop = 'calc(-1 * var(--header-height))';
 }
 
 export async function load404() {
