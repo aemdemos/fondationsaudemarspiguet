@@ -203,7 +203,7 @@ function setupSortButtons(doc) {
 export default async function decorate(doc) {
   const $main = doc.querySelector('main');
   // Use existing section from DA document instead of creating new one
-  const $section = doc.querySelector('main .section:last-of-type') || doc.querySelector('main section:first-child');
+  const $section = doc.querySelector('main .section:last-of-type');
   // If no section exists in DA, fall back (but this should not happen)
   if (!$section) {
     console.warn('No section found in newsroom DA document');
@@ -259,14 +259,19 @@ export default async function decorate(doc) {
   $filterContainer.append($mediaFilterLeft, $mediaFilterRight);
 
   // Insert filter section
-  const viewAndSearchSection = $main.querySelector('.view-and-search');
-  if (viewAndSearchSection) {
-  // Insert filter container before view-and-search section
-    viewAndSearchSection.parentNode.insertBefore($filterContainer, viewAndSearchSection);
-  } else {
-  // Insert filter container at the beginning of the first section
-    $section.insertBefore($filterContainer, $section.firstChild);
-  }
+  // const viewAndSearchSection = $main.querySelector('.view-and-search');
+  // if (viewAndSearchSection) {
+  // // Insert filter container before view-and-search section
+  //   viewAndSearchSection.parentNode.insertBefore($filterContainer, viewAndSearchSection);
+  // } else {
+  // // Insert filter container at the beginning of the first section
+  //   $section.insertBefore($filterContainer, $section.firstChild);
+  // }
+
+  $section.append($filterContainer);
+  const tablesection = $main.querySelector('.report');
+  const floatrightsection = $main.querySelector('.float-right');
+  $main.append(floatrightsection, $section, tablesection);
 
   // Initialize functionality
   setupSortButtons(doc);
