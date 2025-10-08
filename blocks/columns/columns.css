@@ -148,9 +148,7 @@
   }
 }
 
-
 /* Two-column block styling - Mobile First */
-
 .section:has(.columns.two-column) h1 {
   color: #6B7E7C;
   font-size: 32px;
@@ -202,11 +200,12 @@
   letter-spacing: 0.02em;
   font-family: Antarctica, sans-serif;
   line-height: 1.5em;
-  font-weight: 300;
-  
+  font-weight: 300; 
 }
 
-
+.newsroom.newsroom-template .columns.two-column > div {
+ padding-bottom: 30px;
+}
 
 /* First column paragraph - Mobile */
 .columns.two-column > div > div:nth-child(1) > p {
@@ -268,10 +267,15 @@
     float: left;
     font-size: 50px;
     letter-spacing: 0.08em;
-    padding-top: 80px;
     margin-top: 30px;
     margin-bottom: 30px;
     text-align: left;
+    padding-left: 80px;
+  }
+
+  .newsroom.newsroom-template .section.columns-container h1 {
+    padding-left: 0;
+    padding-top: 80px;
   }
 
   /* Make the columns wrapper flex and position on right - Desktop */
@@ -279,6 +283,10 @@
     justify-content: flex-end; /* pushes content to right side */
     gap: 20px;
   }
+
+   .newsroom.newsroom-template .columns-wrapper:has(.columns.two-column) {
+     padding-bottom: 100px;
+   }
 
   /* Override default columns behavior - Desktop */
   .columns.two-column {
