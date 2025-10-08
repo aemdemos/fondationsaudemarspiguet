@@ -52,12 +52,12 @@
   overflow: hidden;
 }
 
-.hero.video.homepage-hero {
+.hero.video.homepage {
   height: 100vh;
   margin-top: calc(-1 * var(--header-mob-height));
 }
 
-.hero.video.homepage-hero video {
+.hero.video.homepage video {
   height: 100vh;
 }
 
@@ -126,7 +126,7 @@
     padding: 40px 32px;
   }
 
-  .hero.video.homepage-hero {
+  .hero.video.homepage {
     margin-top: calc(-1 * var(--header-tab-height));
   }
 
@@ -148,7 +148,7 @@
 }
 
 @media (width >= 1200px) {
-  .hero.video.homepage-hero {
+  .hero.video.homepage {
     margin-top: calc(-1 * var(--header-height));
   }
 

@@ -166,7 +166,7 @@ export function decorateVideoBackground(main) {
   if (!isHomepage()) return;
   const hero = main.querySelector('.hero.video, .hero-banner');
   if (!hero) return;
-  hero.classList.add('homepage-hero');
+  hero.classList.add('homepage');
 }
 
 export async function load404() {
