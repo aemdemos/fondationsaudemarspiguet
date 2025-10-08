@@ -160,7 +160,7 @@ const createMetadata = (main, document) => {
       const cardsBlock = document.querySelector('.partenaires .partenaires_listing_container .partenaires_listing');
       if (cardsBlock) {
         // The cards are actually the a.myItem elements directly
-        const cards = cardsBlock.querySelectorAll('a.myItem');
+        const cards = cardsBlock.querySelectorAll('a.myItem, div.myItem');
         console.log(`Found ${cards.length} cards in total`);
         
         if (cards && cards.length > 0) {
