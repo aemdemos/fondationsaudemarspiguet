@@ -73,7 +73,7 @@
   width: var(--slide-content-width, auto);
 }
 
-.carousel-container .carousel.hero-banner.homepage {
+.carousel-container .carousel.hero-banner.homepage:not(.scrollable) {
   margin-top: calc(-1 * var(--header-mob-height));
 }
 
@@ -492,7 +492,7 @@
 }
 
 @media (width >= 900px) {
-  .carousel-container .carousel.hero-banner.homepage {
+  .carousel-container .carousel.hero-banner.homepage:not(.scrollable) {
     margin-top: calc(-1 * var(--header-tab-height));
   }
 
@@ -506,7 +506,7 @@
 }
 
 @media (width >= 1200px) {
-  .carousel-container .carousel.hero-banner.homepage {
+  .carousel-container .carousel.hero-banner.homepage:not(.scrollable) {
     margin-top: calc(-1 * var(--header-height));
   }
 
