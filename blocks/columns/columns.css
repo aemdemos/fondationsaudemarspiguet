@@ -200,9 +200,11 @@
   letter-spacing: 0.02em;
   font-family: Antarctica, sans-serif;
   line-height: 1.5em;
-  font-weight: 300;
-  padding-bottom: 30px;
-  
+  font-weight: 300; 
+}
+
+.newsroom.newsroom-template .columns.two-column > div {
+ padding-bottom: 30px;
 }
 
 /* First column paragraph - Mobile */
@@ -280,8 +282,11 @@
   .columns-wrapper:has(.columns.two-column) {
     justify-content: flex-end; /* pushes content to right side */
     gap: 20px;
-    padding-bottom: 100px;
   }
+
+   .newsroom.newsroom-template .columns-wrapper:has(.columns.two-column) {
+     padding-bottom: 100px;
+   }
 
   /* Override default columns behavior - Desktop */
   .columns.two-column {
