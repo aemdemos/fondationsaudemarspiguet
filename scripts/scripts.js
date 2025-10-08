@@ -156,6 +156,19 @@ export function getLanguage(curPath = window.location.pathname, resetCache = fal
   return getLanguageFromPath(curPath, resetCache);
 }
 
+export function isHomepage() {
+  const lang = getLanguage();
+  const path = window.location.pathname;
+  return path === '/' || path === `/${lang}`;
+}
+
+export function decorateVideoBackground(main) {
+  if (!isHomepage()) return;
+  const hero = main.querySelector('.hero.video, .hero-banner');
+  if (!hero) return;
+  hero.classList.add('homepage');
+}
+
 export async function load404() {
   const placeholders = await fetchPlaceholders(`${getLanguage()}`);
   const { pageNotFoundText } = placeholders;
@@ -246,6 +259,7 @@ export function decorateMain(main) {
   decorateSections(main);
   decorateBlocks(main);
   decorateListingCards(main);
+  decorateVideoBackground(main);
 }
 
 /**
