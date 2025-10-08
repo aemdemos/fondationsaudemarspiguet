@@ -271,6 +271,11 @@
     padding-left: 80px;
   }
 
+  .biencommun.newsroom.newsroom-template .section.columns-container h1 {
+    padding-left: 0;
+    padding-top: 80px;
+  }
+
   /* Make the columns wrapper flex and position on right - Desktop */
   .columns-wrapper:has(.columns.two-column) {
     justify-content: flex-end; /* pushes content to right side */
