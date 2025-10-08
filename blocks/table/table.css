@@ -182,6 +182,7 @@ main .table-container .table-wrapper .table.no-border.block {
 
 .report.table-container .table.block {
   width: 100%;
+  overflow-x: auto;
 }
 
 .report.table-container .table.block table {
@@ -189,12 +190,6 @@ main .table-container .table-wrapper .table.no-border.block {
   max-width: 100%;
   border-collapse: collapse;
   font-size: var(--body-font-size-xs);
-}
-
-.report.table-container .table.block table th,
-.report.table-container .table.block table td {
-  padding: 0;
-  text-align: left;
 }
 
 @media (width >= 600px) {
@@ -207,13 +202,6 @@ main .table-container .table-wrapper .table.no-border.block {
   .report.table-container .table.block table {
     font-size: var(--body-font-size-m);
   }
-
- .report.table-container .table.block table th,
- .report.table-container .table.block table td {
-  padding: 0.5em;
-  text-align: left;
-}
-
 }
 
 .report.table-container .table.block table thead tr {
@@ -227,6 +215,12 @@ main .table-container .table-wrapper .table.no-border.block {
 
 .report.table-container .table.block table th {
   font-weight: 700;
+}
+
+.report.table-container .table.block table th,
+.report.table-container .table.block table td {
+  padding: 0.5em;
+  text-align: left;
 }
 
 .report.table-container .table table th p,

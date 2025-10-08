@@ -569,11 +569,6 @@ main>.section>div {
   padding: 0 24px;
 }
 
-.newsroom.newsroom-template main>.section>div {
-  max-width: 100%;
-  margin: 0;
-}
-
 main>.section:first-of-type {
   margin-top: 0;
 }
@@ -818,7 +813,11 @@ p:has(a[href] img) {
 }
 
 @media (width >= 900px) {
-  .contact-us main .section .default-content-wrapper a {
+.newsroom.newsroom-template main .section .media-filter-container {
+   max-width: 100%;
+}
+
+.contact-us main .section .default-content-wrapper a {
     font-size: 20px;
   }
 }
