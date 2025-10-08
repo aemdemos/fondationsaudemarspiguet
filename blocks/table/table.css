@@ -239,14 +239,11 @@ main .table-container .table-wrapper .table.no-border.block {
   margin-top: 0.25em;
 }
 
-
 /* no header variant */
 .report.table-container .table.block.no-header table tbody tr {
   border-top: 1px solid #6B7E7C;
-  border-bottom: 1px solid #6B7E7C;
+  border-bottom: none;
 }
-
-
 
 /* bordered variant */
 .report.table-container .table.block.bordered table th,
