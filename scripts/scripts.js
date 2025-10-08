@@ -166,7 +166,7 @@ export function decorateVideoBackground(main) {
   if (!isHomepage()) return;
   const hero = main.querySelector('.hero.video, .hero-banner');
   if (!hero) return;
-  hero.style.marginTop = 'calc(-1 * var(--header-height))';
+  hero.classList.add('homepage-hero');
 }
 
 export async function load404() {
