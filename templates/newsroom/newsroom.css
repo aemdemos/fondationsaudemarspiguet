@@ -238,7 +238,7 @@ main .media-filter-container .media-search-section {
 .type-dropdown {
   position: absolute;
   top: calc(100%); 
-  left: 25px;
+  left: 1px;
   right: 0;
   background: #c5cbcb; 
   border-top: none;
@@ -289,7 +289,6 @@ main .media-filter-container .media-search-section {
 
 @media (width >= 900px) {
   .type-dropdown {
-    left: 50px;
     width: 250px;
     top: calc(100% + 20px); 
   }
