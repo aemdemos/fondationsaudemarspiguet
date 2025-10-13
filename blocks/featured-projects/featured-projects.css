@@ -1,7 +1,8 @@
 /* featured-projects.css */
 .featured-projects.block {
     margin-bottom: 50px;
-    margin-top: 50px;
+    
+    /* margin-top: 50px; */
 }
 
 .featured-projects.block .cards.block.featured ul {
@@ -101,9 +102,9 @@
 }
 
 @media (width >= 600px) {
-    .featured-projects.block {
+    /* .featured-projects.block {
         margin-top: 100px;
-    }
+    } */
 
     .featured-projects.block .cards.block.featured ul {
         grid-template-columns: repeat(2, 1fr);
