@@ -79,15 +79,10 @@ export default async function decorate() {
       li.textContent = `${words[i]} ${words[i + 1] || ''}`.trim();
       photoList.appendChild(li);
     }
-    // Handle multiple links
-    const linksFragment = document.createDocumentFragment();
-    linksArray.forEach((l) => {
-      const link = document.createElement('a');
-      link.href = l;
-      link.textContent = l;
-      linksFragment.appendChild(link);
-      linksFragment.appendChild(document.createElement('br'));
-    });
+
+    const link = document.createElement('a');
+    link.href = links;
+    link.textContent = links;
     sidebar.innerHTML = `
       <div> Partenaire </div>
         ${partner}
@@ -100,7 +95,7 @@ export default async function decorate() {
       <div> ${linkLabel} </div>
       <div class="photos"> Photos </div>
     `;
-    sidebar.insertBefore(linksFragment, sidebar.querySelector('div:last-child'));
+    sidebar.insertBefore(link, sidebar.querySelector('div:last-child'));
     sidebar.appendChild(photoList);
   }
   const projectDiv = document.querySelector('.project-article-template .details-sidebar');
