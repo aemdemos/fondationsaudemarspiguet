@@ -6,9 +6,9 @@ export default async function decorate() {
   const language = getMetadata('language');
   let placeholders;
   if (language === 'en') {
-    placeholders = await fetchPlaceholders('project-article-en-properties');
+    placeholders = await fetchPlaceholders('projects-article-en-properties');
   } else {
-    placeholders = await fetchPlaceholders('project-article-fr-properties');
+    placeholders = await fetchPlaceholders('projects-article-fr-properties');
   }
   if (language === 'en') {
     const partner = getMetadata('partner');
