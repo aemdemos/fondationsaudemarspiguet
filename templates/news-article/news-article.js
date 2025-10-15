@@ -1,4 +1,4 @@
-import { getMetadata } from '../../scripts/aem.js';
+import { getMetadata, fetchPlaceholders } from '../../scripts/aem.js';
 import { applyFadeUpAnimation } from '../../scripts/utils.js';
 import {
   div, h1, a, ul, li,
@@ -22,6 +22,7 @@ export function enableAnimationOnScroll() {
 export default async function decorate(doc) {
   const sidebar = div({ class: 'news-article-sidebar' });
   const language = getMetadata('language');
+  const links = getMetadata('links');
   const author = getMetadata('author');
   const newsDiv = doc.querySelector('.news-article-template .details-sidebar');
   const viewMoreButton = doc.querySelector('.news-article-template .details-sidebar .default-content-wrapper .button-container');
@@ -29,9 +30,19 @@ export default async function decorate(doc) {
   buttonDiv.append(viewMoreButton);
   const rightAlignSidebar = doc.querySelector('.news-article-template .details-sidebar.right');
   if (!newsDiv.classList.contains('right')) {
+    let placeholders;
+    if (language === 'en') {
+      placeholders = await fetchPlaceholders('news-article-en-properties');
+    } else {
+      placeholders = await fetchPlaceholders('news-article-fr-properties');
+    }
+    const linksArray = links ? links.split(',').map((link) => link.trim()).filter(Boolean) : [];
+    const { singleLink } = placeholders;
+    const { multipleLinks } = placeholders;
+    const linkLabel = linksArray.length > 1 ? multipleLinks : singleLink;
     if (language === 'en') {
       sidebar.innerHTML = `      
-        <div> Link(s) </div>
+        <div> ${linkLabel} </div>
         <div class="photos"> Photos </div>
         <div class="author">Written by</div>
           ${author}
@@ -39,14 +50,13 @@ export default async function decorate(doc) {
       `;
     } else if (language === 'fr') {
       sidebar.innerHTML = `      
-        <div> Lien(s) </div>
+        <div> ${linkLabel} </div>
         <div class="photos"> Photos </div>
         <div class="author">Rédaction</div>
           ${author}
         <div> Nous suivre </div>
       `;
     }
-    const links = getMetadata('links');
     const photos = getMetadata('photos');
     const link = a({ href: links }, links);
     const words = photos.trim().split(',');

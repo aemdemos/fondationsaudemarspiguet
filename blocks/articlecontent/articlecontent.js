@@ -1,8 +1,8 @@
 import { div } from '../../scripts/dom-helpers.js';
-import { createOptimizedPicture, getMetadata } from '../../scripts/aem.js';
+import { createOptimizedPicture, getMetadata, fetchPlaceholders } from '../../scripts/aem.js';
 import { applyFadeUpAnimation } from '../../scripts/utils.js';
 
-export default function decorate(block) {
+export default async function decorate(block) {
   const mainContent = div(
     { class: 'news-detail-big-content-1' },
     div(
@@ -15,13 +15,23 @@ export default function decorate(block) {
   const rightContent = div({ class: 'news-detail-big-contenu-right' });
 
   // Get metadata
-  const links = getMetadata('links')?.split(',').map((link) => `<a href="${link.trim()}">${link.trim()}</a>`).join('<br>');
+  const allLinks = getMetadata('links');
+  const links = allLinks?.split(',').map((link) => `<a href="${link.trim()}">${link.trim()}</a>`).join('<br>');
+  const linksArray = allLinks ? allLinks.split(',').map((link) => link.trim()).filter(Boolean) : [];
+  let placeholders;
+  if (getMetadata('language') === 'en') {
+    placeholders = await fetchPlaceholders('news-article-en-properties');
+  } else {
+    placeholders = await fetchPlaceholders('news-article-fr-properties');
+  }
+  const { singleLink } = placeholders;
+  const { multipleLinks } = placeholders;
+  const linkLabel = linksArray.length > 1 ? multipleLinks : singleLink;
   const photos = getMetadata('photos');
 
-  // Set metadata content
   if (links) {
     const linksDiv = mainContent.querySelector('.news-links');
-    linksDiv.innerHTML = `<div>Link(s)</div>${links}`;
+    linksDiv.innerHTML = `<div>${linkLabel}</div>${links}`;
   }
   if (photos) {
     const photosDiv = mainContent.querySelector('.news-photos');
