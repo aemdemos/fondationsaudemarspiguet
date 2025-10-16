@@ -95,7 +95,7 @@ main .form-container {
     width: var(--form-width);
 }
  
-.contact-us main .section.form-container .default-content-wrapper h2 {
+main .section.contact-form.form-container .default-content-wrapper h2 {
   margin:0;
   padding-top: 100px;
   color: white;
@@ -111,13 +111,13 @@ main .form > div:not(:first-child) {
     display: none;
 }
 
-.contact-us main .button-wrapper.field-btn-submit.field-wrapper.submit-wrapper {
+main .contact-form .button-wrapper.field-btn-submit.field-wrapper.submit-wrapper {
   display: flex;
   justify-content: flex-start;
   margin-top: 20px;
 }
 
-.contact-us main>.section>div {
+main>.section.contact-form>div {
     max-width: unset;
     margin: auto;
 }
@@ -149,7 +149,7 @@ main .form form p {
     margin: var(--form-paragraph-margin);
 }
 
-.contact-us main p:last-of-type {
+main .contact-form p:last-of-type {
     margin-bottom: 0;
 }
 
@@ -184,8 +184,8 @@ main .form select {
     padding-bottom: 0;
   }
 
-.contact-us main .form input,
-.contact-us main .form select {
+ main .contact-form .form input,
+ main .contact-form .form select {
     background-color: var(--form-input-background-color);
     border: none;
     width: 100%;
@@ -200,7 +200,7 @@ main .form select {
     letter-spacing: .12em;
 }
 
-.contact-us main .form textarea {
+main .contact-form .form textarea {
     font-family: Antarctica, sans-serif;
     width: 100%;
     height: 300px;
@@ -212,7 +212,7 @@ main .form select {
     letter-spacing: .12em;
 }
 
-.contact-us main .section.form-container .default-content-wrapper p{
+main .section.contact-form.form-container .default-content-wrapper p{
  margin: 0;
  color: white;
  line-height: 1.5em;
@@ -223,7 +223,7 @@ main .form select {
  font-weight: 300;
 }
 
-.contact-us main .section.form-container .form-wrapper {
+main .section.contact-form.form-container .form-wrapper {
     box-sizing: border-box;
     position: relative;
     max-width: 1440px;
@@ -260,13 +260,13 @@ main .form input[type='radio'] {
     z-index: 1;
 }
 
-.contact-us main .input-col-1 {
+main .contact-form .input-col-1 {
     display: inline-block;
     width: 100%;
     float: left;
 }
 
-.contact-us main .input-col-2 {
+main .contact-form .input-col-2 {
     width:100%;
 }
 
@@ -472,10 +472,6 @@ main .form button {
     width: 100%;
 }
 
-/* .contact-us main .form-wrapper .form.block p {
-    padding-bottom: 0;
-} */
-
 main form .file-wrapper > button{
     display: flex;
 }
@@ -673,26 +669,26 @@ main .form form .wizard .wizard-menu-active-item::before{
 }
 
 @media (width >= 900px) {
-.contact-us main>.section>div {
+main>.section.contact-form>div {
     max-width: 1440px;
     margin: auto;
 }
 
-.contact-us main .section.form-container .form-wrapper {
+ main .section.contact-form.form-container .form-wrapper {
     padding: 0 80px; 
  }
 
-.contact-us main .form input,
-.contact-us main .form select {
+ main .contact-form .form input,
+ main .contact-form .form select {
     width: 480px;
 }
 
-.contact-us main .input-col-1 {
+main .contact-form .input-col-1 {
     width: 480px;
     float: left;
 }
 
-.contact-us main .input-col-2 {
+main .contact-form .input-col-2 {
     width: calc(100% - 506px);
     float: left;
     padding-left: 25px;
