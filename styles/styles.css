@@ -644,6 +644,10 @@ main .section.warm-grey-bg {
   background-color: var(--chiffres-bloc-bg);
 }
 
+main .section.dark-grayish-blue {
+  background-color: var(--input-selected-color);
+}
+
 /* Ensure default-content-wrapper inside full-width spans the full width */
 .contact-us .full-width .default-content-wrapper,
 .contact-us main .section .full-width .default-content-wrapper {

@@ -94,25 +94,63 @@ main .form-container {
     padding: var(--form-padding);
     width: var(--form-width);
 }
+ 
+main .section.contact-form.form-container .default-content-wrapper h2 {
+  margin:0;
+  padding-top: 100px;
+  color: white;
+}
 
-main .form {
-    background-color: var(--form-background-color);
+
+/* Hide form labels */
+main .form label {
+    display: none;
 }
 
 main .form > div:not(:first-child) {
     display: none;
 }
 
-main .form form {
+main .contact-form .button-wrapper.field-btn-submit.field-wrapper.submit-wrapper {
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 20px;
+}
+
+main>.section.contact-form>div {
+    max-width: unset;
+    margin: auto;
+}
+
+/* main .form form {
     display: grid;
     grid-template-columns: repeat(var(--form-columns), minmax(0, 1fr));
     gap: var(--form-field-vert-gap) var(--form-field-horz-gap);
-}
+} */
 
 main .form form fieldset {
     border: var(--form-fieldset-border);
     margin: var(--form-fieldset-marign);
     width: 100%;
+}
+
+main .form form p,
+main .form form .repeat-wrapper,
+main .form form .field-wrapper {
+    /* margin: var(--form-field-gap); */
+    color: var(--form-label-color);
+    grid-column: span 12;
+}
+
+main .form form p {
+    font-size: var(--form-paragraph-font-size);
+    font-style: var(--form-paragraph-font-style);
+    color: var(--form-paragraph-color);
+    margin: var(--form-paragraph-margin);
+}
+
+main .contact-form p:last-of-type {
+    margin-bottom: 0;
 }
 
 main .form form fieldset fieldset {
@@ -128,16 +166,6 @@ main .form form .field-invalid .field-description {
     color: var(--form-error-color);
     font-weight: 700;
 }
-
-
-/**
- * Required field indicator
- */
- [data-required="true"] > label::after {
-    content: "*";
-    color: var(--form-error-color);
-    padding-inline-start: 5px;
-  }
 
   /**
    * Required field indicator not required for checkboxes and radio buttons
@@ -156,20 +184,50 @@ main .form select {
     padding-bottom: 0;
   }
 
-main .form input,
-main .form textarea,
-main .form select {
+ main .contact-form .form input,
+ main .contact-form .form select {
     background-color: var(--form-input-background-color);
-    border: var(--form-input-border-size) solid var(--form-input-border-color);
+    border: none;
     width: 100%;
-    height: 42px;
+    font-weight: 500;
+    line-height: 40px;
     color: var(--form-label-color);
-    padding: var(--form-input-padding);
-    font-size: var(--form-input-font-size);
-    max-width: unset;
-    margin-top: .5rem;
-    margin-bottom: 1rem;
-    border-radius: 0.25rem;
+    padding: 0 10px;
+    box-sizing: border-box;
+    font-size: 12px;
+    font-family: Antarctica, sans-serif;
+    margin-bottom: 25px;
+    letter-spacing: .12em;
+}
+
+main .contact-form .form textarea {
+    font-family: Antarctica, sans-serif;
+    width: 100%;
+    height: 300px;
+    padding: 10px;
+    box-sizing: border-box;
+    font-weight: 500;
+    font-size: 12px;
+    border: none;
+    letter-spacing: .12em;
+}
+
+main .section.contact-form.form-container .default-content-wrapper p{
+ margin: 0;
+ color: white;
+ line-height: 1.5em;
+ padding-bottom: 100px;
+ letter-spacing: .02em;
+ font-family: Antarctica, sans-serif;
+ font-size: 20px;
+ font-weight: 300;
+}
+
+main .section.contact-form.form-container .form-wrapper {
+    box-sizing: border-box;
+    position: relative;
+    max-width: 1440px;
+    padding: 0 15px;
 }
 
 main .form input:hover, main .form select:hover {
@@ -202,8 +260,14 @@ main .form input[type='radio'] {
     z-index: 1;
 }
 
-main .form textarea {
-    min-height: 100px;
+main .contact-form .input-col-1 {
+    display: inline-block;
+    width: 100%;
+    float: left;
+}
+
+main .contact-form .input-col-2 {
+    width:100%;
 }
 
 main .form fieldset:not(.checkbox-group-wrapper, .radio-group-wrapper) legend {
@@ -243,21 +307,6 @@ main .form label.required::after {
     content: "*";
     color: var(--form-label-color);
     padding-inline-start: 5px;
-}
-
-main .form form p,
-main .form form .repeat-wrapper,
-main .form form .field-wrapper {
-    margin: var(--form-field-gap);
-    color: var(--form-label-color);
-    grid-column: span 12;
-}
-
-main .form form p {
-    font-size: var(--form-paragraph-font-size);
-    font-style: var(--form-paragraph-font-style);
-    color: var(--form-paragraph-color);
-    margin: var(--form-paragraph-margin);
 }
 
 main .form form .checkbox-wrapper, main .form form .radio-wrapper {
@@ -513,13 +562,24 @@ main .file-wrapper .file-description button::after{
 }
 
 main .form .button-wrapper button {
-    cursor:pointer
+    cursor: pointer;
+    margin-top:0;
+    padding-left: 54px;
+    background-image: url("/icons/fleche_right.svg");
+    background-position: left center;
+    background-repeat: no-repeat;
+    display: inline-block;
+    font-size: inherit;
+    line-height: 60px;
+    text-transform: uppercase;
+    letter-spacing: .2em;
+    background-color: transparent;
+    border: 0;
+    width: unset;
 }
 
 main .form .button-wrapper button:hover {
-    border: 3px solid #fff;
-    color: #fff;
-    background-color: var(--button-secondary-color);
+    opacity: 0.7;
 }
 
 main .form .button-wrapper button[disabled] {
@@ -608,6 +668,33 @@ main .form form .wizard .wizard-menu-active-item::before{
     }
 }
 
+@media (width >= 900px) {
+main>.section.contact-form>div {
+    max-width: 1440px;
+    margin: auto;
+}
+
+ main .section.contact-form.form-container .form-wrapper {
+    padding: 0 80px; 
+ }
+
+ main .contact-form .form input,
+ main .contact-form .form select {
+    width: 480px;
+}
+
+main .contact-form .input-col-1 {
+    width: 480px;
+    float: left;
+}
+
+main .contact-form .input-col-2 {
+    width: calc(100% - 506px);
+    float: left;
+    padding-left: 25px;
+}
+} 
+
 /* wizard title on left */
 main .form form .wizard.left{
   display: flex;
@@ -624,7 +711,7 @@ main form .panel-wrapper {
   flex-direction: column;
 }
 
-main .form form .panel-wrapper{
+/* main .form form .panel-wrapper{
   display: grid;
   grid-template-columns: repeat(var(--form-columns), minmax(0, 1fr));
   gap: var(--form-field-vert-gap) var(--form-field-horz-gap);
@@ -634,7 +721,7 @@ main .form form .repeat-wrapper{
     display: grid;
     grid-template-columns: repeat(var(--form-columns), minmax(0, 1fr));
     gap: var(--form-field-vert-gap) var(--form-field-horz-gap);
-}
+} */
 
 main .form form .wizard.left .panel-wrapper{
   flex: 1;
@@ -767,10 +854,8 @@ main .form form .checkbox-group-wrapper.horizontal .field-description {
 }
 
 main div.form-wrapper {
-    background: white;
     padding: 40px;
     border-radius: 12px;
-    box-shadow: 0 4px 24px rgb(0 0 0 / 8%);
 }
 
 /* Responsive adjustments for mobile */

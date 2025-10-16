@@ -317,6 +317,60 @@ export async function generateFormRendition(panel, container, formId, getItems =
 
   const children = await Promise.all(promises);
   container.append(...children.filter((_) => _ != null));
+
+  if (document.querySelector('.contact-us')) {
+    const fieldSelectorsCol1 = [
+      'input[name="nom"]', // Last Name
+      'input[name="prenom"]', // First Name
+      'input[name="entreprise"]', // Organisation
+      'input[name="email"]', // Email
+      'input[name="tel"]', // Phone Number
+    ];
+
+    const fieldSelectorsCol2 = [
+      'textarea[name="message"]', // Message textarea
+    ];
+
+    // Utility to locate field wrappers
+    const findWrappers = (selectors) => selectors.map((sel) => {
+      const el = container.querySelector(sel);
+      return el ? el.closest('.field-wrapper') || el.parentElement : null;
+    }).filter(Boolean);
+
+    // Skip grouping button wrappers (submit, reset, etc.)
+    const buttonWrapper = container.querySelector(
+      '.button-wrapper, .field-btn-submit, .submit-wrapper',
+    );
+
+    // === Group 1 ===
+    const wrappersCol1 = findWrappers(fieldSelectorsCol1);
+    if (wrappersCol1.length) {
+      const inputCol1 = document.createElement('div');
+      inputCol1.className = 'input-col-1';
+
+      // insert before first field of the group
+      const first = wrappersCol1[0];
+      first.parentNode.insertBefore(inputCol1, first);
+      wrappersCol1.forEach((w) => inputCol1.appendChild(w));
+    }
+
+    // === Group 2 ===
+    const wrappersCol2 = findWrappers(fieldSelectorsCol2);
+    if (wrappersCol2.length) {
+      const inputCol2 = document.createElement('div');
+      inputCol2.className = 'input-col-2';
+
+      // insert before message field
+      const first = wrappersCol2[0];
+      first.parentNode.insertBefore(inputCol2, first);
+      wrappersCol2.forEach((w) => inputCol2.appendChild(w));
+    }
+
+    // Move submit button wrapper (if exists) to the end, outside all groups
+    if (buttonWrapper) {
+      container.appendChild(buttonWrapper);
+    }
+  }
   decoratePanelContainer(panel, container);
   await componentDecorator(container, panel, null, formId);
 }
