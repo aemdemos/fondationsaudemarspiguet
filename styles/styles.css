@@ -564,9 +564,10 @@ main img {
 } */
 
 main>.section>div {
-  max-width: 1200px;
+  max-width: 1440px;
   margin: auto;
-  padding: 0 24px;
+  padding: 0 20px;
+  box-sizing: border-box;
 }
 
 main>.section:first-of-type {
@@ -672,14 +673,8 @@ main .section.light-grey-bg.float-right {
   max-width: 100%;
 }
 
-main .section.float-right {
-  padding: 65px 0 50px;
-  margin: 0;
-}
-
 main .section.float-right .default-content-wrapper {
   color: var(--text-color);
-  padding: 0 20px;
 }
 
 main .section.float-right .default-content-wrapper .container-col {
@@ -999,16 +994,6 @@ body.fondations main .section.full-width-image .default-content-wrapper {
 
   main h2 {
     font-size: var(--heading-font-size-xl);
-  }
-
-  main .section.float-right .default-content-wrapper {
-    padding: 0;
-  }
-
-  main .section.float-right {
-    padding: 65px 80px 50px;
-    margin: auto;
-    max-width: 1200px;
   }
 
   body.fondations main .section.fade-up:not(.full-width-image) {
