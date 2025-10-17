@@ -414,8 +414,6 @@
 
  .carousel.vertical {
   height: 300px;
-  padding-left: 30px;
-  padding-right: 20px;
   margin-top: 40px;
   margin-bottom: 40px;
 }
@@ -498,8 +496,6 @@
 
   .carousel.vertical {
     height: 500px;
-    padding-left: 50px;
-    padding-right: 40px;
     margin-top: 0;
     margin-bottom: 0;
   }
@@ -510,19 +506,23 @@
     margin-top: calc(-1 * var(--header-height));
   }
 
-  .carousel.vertical {
+  .carousel.vertical:not(.scrollable) {
     height: 600px;
-    width: 1100px;
+    max-width: 1200px;
+    margin: auto;
+  }
+
+  .carousel.vertical.carousel.hero-banner {
+    max-width: unset;
   }
 }
 
   @media (width >= 1400px) {
     .carousel.vertical {
       height: 600px;
-      width: 1280px;
+      width: 1200px;
       padding: 0;
-      margin-left: -25px;
-      margin-right: 0;
+      margin: auto;
     }
 
   .carousel-container .carousel.hero-banner.scrollable .carousel-slide .direction-icon-section {
@@ -680,9 +680,7 @@
 
 /* Full width carousel styles */
 .carousel-container .carousel-wrapper {
-  width: 100%;
   position: relative;
-  padding: 0;
   margin: auto;
 }
 
