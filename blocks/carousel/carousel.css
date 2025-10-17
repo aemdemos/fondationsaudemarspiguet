@@ -506,7 +506,7 @@
     margin-top: calc(-1 * var(--header-height));
   }
 
-  .carousel.vertical {
+  .carousel.vertical:not(.scrollable) {
     height: 600px;
     max-width: 1200px;
     margin: auto;
