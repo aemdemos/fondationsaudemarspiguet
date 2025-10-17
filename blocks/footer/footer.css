@@ -47,10 +47,6 @@ footer .footer .section.social-section>div p {
   margin-bottom: 0;
 }
 
-footer .footer .section.newsletter-section>div>p {
-  margin: 15px;
-}
-
 footer .footer .section.newsletter-section>div>p:first-of-type {
   padding-bottom: 20px;
 }
@@ -77,6 +73,7 @@ footer .footer .section.newsletter-section>div>p.button-container a.button:any-l
 
 footer .footer .section.beige-bg>div>p.button-container a.button:any-link {
   background-color: var(--site-color);
+  margin-left: 10px
 }
 
 .biencommun footer .footer .section.cream-bg>div>p.button-container a.button:any-link {
@@ -166,7 +163,10 @@ footer .footer .section.social-section>div .footer-general-wrapper .links-cr-wra
   }
 
   footer .footer .section.newsletter-section>div {
-    padding: 0 75px;
+    padding: 0 80px;
+    max-width: 1440px;
+    margin: auto;
+    box-sizing: border-box;
   }
 
   footer .footer .section.social-section {
@@ -201,12 +201,6 @@ footer .footer .section.social-section>div .footer-general-wrapper .links-cr-wra
 }
 
 @media (width>1200px) {
-  footer .footer .section.newsletter-section>div {
-    position: relative;
-    margin: auto;
-    max-width: 1440px;
-  }
-
   footer .footer .section.newsletter-section>div p {
     max-width: 795px;
   }
