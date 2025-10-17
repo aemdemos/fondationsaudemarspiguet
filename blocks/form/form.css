@@ -79,6 +79,11 @@ main .form pre {
     display: none;
 }
 
+main .section.newsletter-form .form-wrapper {
+    margin: auto;
+    padding: 0 80px;
+}
+
 form output {
     display: block;
     font-weight: 700;
@@ -95,12 +100,22 @@ main .form-container {
     width: var(--form-width);
 }
  
+
 main .section.contact-form.form-container .default-content-wrapper h2 {
   margin:0;
   padding-top: 100px;
   color: white;
 }
 
+main .section.newsletter-form.form-container .default-content-wrapper h1 {
+  margin:0;
+  padding-top: 100px;
+  color: white;
+  font-weight: 400;
+  letter-spacing: .08em;
+  padding-bottom: 20px;
+  font-size: 35px;
+}
 
 /* Hide form labels */
 main .form label {
@@ -115,6 +130,13 @@ main .contact-form .button-wrapper.field-btn-submit.field-wrapper.submit-wrapper
   display: flex;
   justify-content: flex-start;
   margin-top: 20px;
+}
+
+main .newsletter-form .button-wrapper.field-btn-submit.field-wrapper.submit-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  width: calc((((100% - (12 * 30px)) / 12) * 12) + (11 * 30px));
 }
 
 main>.section.contact-form>div {
@@ -179,13 +201,19 @@ main .form form .field-invalid .field-description {
       flex-wrap: wrap;
   }
 
-main .form select {
+ main .form select {
     padding-top: 0;
     padding-bottom: 0;
   }
 
+.newsletter-form .input-col-1, .newsletter-form .input-col-2 {
+  background-color: #5a626b;
+}
+
  main .contact-form .form input,
- main .contact-form .form select {
+ main .contact-form .form select,
+ main .newsletter-form .form input,
+ main .newsletter-form .form select {
     background-color: var(--form-input-background-color);
     border: none;
     width: 100%;
@@ -198,7 +226,14 @@ main .form select {
     font-family: Antarctica, sans-serif;
     margin-bottom: 25px;
     letter-spacing: .12em;
+    text-transform: uppercase;
 }
+
+ main .newsletter-form .form select {
+    padding: 0;
+    margin-bottom: 0;
+}
+
 
 main .contact-form .form textarea {
     font-family: Antarctica, sans-serif;
@@ -223,16 +258,20 @@ main .section.contact-form.form-container .default-content-wrapper p{
  font-weight: 300;
 }
 
-main .section.contact-form.form-container .form-wrapper {
+main .section.contact-form.form-container .form-wrapper,
+main .section.newsletter-form.form-container .form-wrapper {
     box-sizing: border-box;
     position: relative;
     max-width: 1440px;
     padding: 0 15px;
+    overflow-x: hidden;
 }
+
 
 main .form input:hover, main .form select:hover {
     border-color: rgb(90 92 96);
 }
+
 
 main .form input:disabled{
     background-color: var(--form-input-disable-color);
@@ -267,6 +306,16 @@ main .contact-form .input-col-1 {
 }
 
 main .contact-form .input-col-2 {
+    width:100%;
+}
+
+main .newsletter-form .input-col-1 {
+    display: inline-block;
+    width: 100%;
+    float: left;
+}
+
+main .newsletter-form .input-col-2{
     width:100%;
 }
 
@@ -398,6 +447,7 @@ main .form form fieldset.cards > .checkbox-wrapper > input {
     width: 0;
     height: 0;
 }
+
 
 main .form form fieldset.cards > .radio-wrapper > input:checked ~ label,
 main .form form fieldset.cards > .checkbox-wrapper > input:checked ~ label {
@@ -666,15 +716,22 @@ main .form form .wizard .wizard-menu-active-item::before{
     main .form button {
         width: unset;
     }
+    
+  main .section.newsletter-form.form-container .default-content-wrapper h1 {
+  font-size: 50px;
+}
+
 }
 
 @media (width >= 900px) {
-main>.section.contact-form>div {
+main>.section.contact-form>div,
+ main>.section.newsletter-form>div {
     max-width: 1440px;
     margin: auto;
 }
 
- main .section.contact-form.form-container .form-wrapper {
+ main .section.contact-form.form-container .form-wrapper,
+ main .section.newsletter-form.form-container .form-wrapper {
     padding: 0 80px; 
  }
 
@@ -683,7 +740,7 @@ main>.section.contact-form>div {
     width: 480px;
 }
 
-main .contact-form .input-col-1 {
+main .contact-form .input-col-1{
     width: 480px;
     float: left;
 }
@@ -693,6 +750,19 @@ main .contact-form .input-col-2 {
     float: left;
     padding-left: 25px;
 }
+
+
+main .newsletter-form .input-col-1 {
+     width: calc((((100% - (12 * 30px)) / 12) * 6) + (5 * 30px));
+     float: left;
+}
+
+main .newsletter-form .input-col-2{
+    width: calc((((100% - (12 * 30px)) / 12) * 6) + (5 * 30px));
+    float: left;
+    padding-left: 25px;
+}
+
 } 
 
 /* wizard title on left */
@@ -711,6 +781,23 @@ main form .panel-wrapper {
   flex-direction: column;
 }
 
+main .newsletter-form .form .drop-down-wrapper {
+    font-family: Antarctica, sans-serif;
+    background-color: white;
+    width: 100%;
+    font-size: 12px;
+    padding: 0 10px;
+    line-height: 40px;
+    margin-bottom: 25px;
+    font-weight: 500;
+    border: none;
+    text-transform: uppercase;
+    letter-spacing: .12em;
+    background-image: url("/icons/select_simple__plus.svg");
+    background-position: calc(100% - 10px) center;
+    background-repeat: no-repeat;
+}
+    
 /* main .form form .panel-wrapper{
   display: grid;
   grid-template-columns: repeat(var(--form-columns), minmax(0, 1fr));
@@ -855,6 +942,11 @@ main .form form .checkbox-group-wrapper.horizontal .field-description {
 
 main div.form-wrapper {
     padding: 40px;
+    border-radius: 12px;
+}
+
+main .newsletter-form div.form-wrapper {
+    padding: 80px;
     border-radius: 12px;
 }
 

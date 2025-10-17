@@ -371,6 +371,63 @@ export async function generateFormRendition(panel, container, formId, getItems =
       container.appendChild(buttonWrapper);
     }
   }
+
+  if (document.querySelector('.newsletter-form')) {
+    // const container = document.querySelector('.newsletter-form');
+
+    // === Define selectors for each column ===
+    const fieldSelectorsCol1 = [
+      'input[name="civilite"]', // Title
+      'input[name="prenom"]', // First Name
+      'input[name="nom"]', // Last Name
+    ];
+
+    const fieldSelectorsCol2 = [
+      'select[name="secteurs"]', // Industry
+      'input[name="email"]', // Email
+    ];
+
+    // === Utility to find wrappers for each field ===
+    const findWrappers = (selectors) => selectors
+      .map((sel) => {
+        const el = container.querySelector(sel);
+        return el ? el.closest('.field-wrapper') || el.parentElement : null;
+      })
+      .filter(Boolean);
+
+    // === Button wrapper (Subscribe button area) ===
+    const buttonWrapper = container.querySelector(
+      '.button-container, .button-wrapper, .submit-wrapper',
+    );
+
+    // === Group 1 ===
+    const wrappersCol1 = findWrappers(fieldSelectorsCol1);
+    if (wrappersCol1.length) {
+      const inputCol1 = document.createElement('div');
+      inputCol1.className = 'input-col-1';
+
+      const first = wrappersCol1[0];
+      first.parentNode.insertBefore(inputCol1, first);
+      wrappersCol1.forEach((w) => inputCol1.appendChild(w));
+    }
+
+    // === Group 2 ===
+    const wrappersCol2 = findWrappers(fieldSelectorsCol2);
+    if (wrappersCol2.length) {
+      const inputCol2 = document.createElement('div');
+      inputCol2.className = 'input-col-2';
+
+      const first = wrappersCol2[0];
+      first.parentNode.insertBefore(inputCol2, first);
+      wrappersCol2.forEach((w) => inputCol2.appendChild(w));
+    }
+
+    // === Move the button wrapper (Subscribe) to the end ===
+    if (buttonWrapper) {
+      container.appendChild(buttonWrapper);
+    }
+  }
+
   decoratePanelContainer(panel, container);
   await componentDecorator(container, panel, null, formId);
 }
