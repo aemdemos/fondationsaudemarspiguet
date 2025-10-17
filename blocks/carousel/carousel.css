@@ -511,6 +511,10 @@
     max-width: 1200px;
     margin: auto;
   }
+
+  .carousel.vertical.carousel.hero-banner {
+    max-width: unset;
+  }
 }
 
   @media (width >= 1400px) {
