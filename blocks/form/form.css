@@ -79,6 +79,11 @@ main .form pre {
     display: none;
 }
 
+ main .form select {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
 main .section.newsletter-form .form-wrapper {
     margin: auto;
     padding: 0 80px;
@@ -100,6 +105,12 @@ main .form-container {
     width: var(--form-width);
 }
  
+main .newsletter-form .form select {
+    background-image: url("/icons/select_simple__plus.svg");
+    background-position: calc(100% - 1px) center;
+    background-repeat: no-repeat;
+    appearance: none;
+}
 
 main .section.contact-form.form-container .default-content-wrapper h2 {
   margin:0;
@@ -199,11 +210,6 @@ main .form form .field-invalid .field-description {
 
   main .form form .checkbox-wrapper.field-invalid {
       flex-wrap: wrap;
-  }
-
- main .form select {
-    padding-top: 0;
-    padding-bottom: 0;
   }
 
 .newsletter-form .input-col-1, .newsletter-form .input-col-2 {
