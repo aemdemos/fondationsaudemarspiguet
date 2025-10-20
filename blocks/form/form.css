@@ -109,7 +109,7 @@ main .newsletter-form .form select {
     padding: 0;
     margin-bottom: 0;
     background-image: url("/icons/select_simple__plus.svg");
-    background-position: calc(100% - 1px) center;
+    background-position: calc(100% - 10px) center;
     background-repeat: no-repeat;
     appearance: none;
 }
@@ -781,23 +781,6 @@ main form .panel-wrapper {
   display: flex;
   padding: 0;
   flex-direction: column;
-}
-
-main .newsletter-form .form .drop-down-wrapper {
-    font-family: Antarctica, sans-serif;
-    background-color: white;
-    width: 100%;
-    font-size: 12px;
-    padding: 0 10px;
-    line-height: 40px;
-    margin-bottom: 25px;
-    font-weight: 500;
-    border: none;
-    text-transform: uppercase;
-    letter-spacing: .12em;
-    background-image: url("/icons/select_simple__plus.svg");
-    background-position: calc(100% - 10px) center;
-    background-repeat: no-repeat;
 }
     
 /* main .form form .panel-wrapper{
