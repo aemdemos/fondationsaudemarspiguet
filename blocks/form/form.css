@@ -214,10 +214,6 @@ main .form form .field-invalid .field-description {
       flex-wrap: wrap;
   }
 
-.newsletter-form .input-col-1, .newsletter-form .input-col-2 {
-  background-color: #5a626b;
-}
-
  main .contact-form .form input,
  main .contact-form .form select,
  main .newsletter-form .form input,
