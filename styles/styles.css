@@ -621,6 +621,10 @@ main>.section.extra-padding {
   padding: 0;
 }
 
+.contact-us .full-width img {
+  width: 100vw;
+}
+
 main .section:has(.accordion.teams) {
   padding: 80px 0;
 }
