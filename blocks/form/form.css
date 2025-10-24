@@ -378,7 +378,7 @@ main .section.contact-form.form-container .default-content-wrapper p{
  padding-bottom: 100px;
  letter-spacing: .02em;
  font-family: Antarctica, sans-serif;
- font-size: 20px;
+ font-size: 14px;
  font-weight: 300;
 }
 
@@ -387,8 +387,12 @@ main .section.newsletter-form.form-container .form-wrapper {
     box-sizing: border-box;
     position: relative;
     max-width: 1440px;
-    padding: 0 15px 35px;
+    padding: 0 15px;
     overflow-x: hidden;
+}
+
+main .section.newsletter-form.form-container .form-wrapper {
+    padding: 0 15px 35px;
 }
 
 main .form input:hover, main .form select:hover {
@@ -852,6 +856,7 @@ main .form form .wizard .wizard-menu-active-item::before{
 }
 
 @media (width < 900px) {
+  main .section.contact-form.form-container .default-content-wrapper,
   main .section.newsletter-form.form-container .default-content-wrapper {
     padding: 0 12px;
   }
@@ -864,7 +869,10 @@ main>.section.contact-form>div,
     margin: auto;
 }
 
- main .section.contact-form.form-container .form-wrapper,
+ main .section.contact-form.form-container .form-wrapper {
+    padding: 0 80px;
+ }
+
  main .section.newsletter-form.form-container .form-wrapper {
     padding: 0 80px 80px;
  }
@@ -896,6 +904,11 @@ main .newsletter-form .input-col-2{
     float: left;
     padding-left: 25px;
 }
+
+main .section.contact-form.form-container .default-content-wrapper p{
+ font-size: 20px;
+}
+
 
 } 
 
