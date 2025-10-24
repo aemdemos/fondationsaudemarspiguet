@@ -571,10 +571,24 @@ main>.section>div {
 }
 
 main>.section.colored-text>div.default-content-wrapper {
+  max-width: unset;
+  margin: unset;
+  padding: unset;
+  box-sizing: unset;
+}
+
+main>.section.colored-text>div.default-content-wrapper h2 {
+  box-sizing: border-box;
+  margin: auto;
+  max-width: 1440px;
+  padding: 0 20px;
+}
+
+main>.section.colored-text>div.default-content-wrapper p {
   box-sizing: border-box;
   margin: auto;
   max-width: 1720px;
-  padding: 0 20px;
+  padding: 75px 20px 100px;
 }
 
 main>.section:first-of-type {
@@ -973,6 +987,10 @@ body.fondations main .section.full-width-image .default-content-wrapper {
   margin-bottom: 50px;
 }
 
+main>.section.colored-text.columns-container>div.default-content-wrapper p {
+  padding: 50px 20px 40px;
+}
+
 @media (width>=900px) {
   header {
     height: var(--header-tab-height);
@@ -997,8 +1015,16 @@ body.fondations main .section.full-width-image .default-content-wrapper {
     padding: 0 80px;
   }
 
-  main>.section.colored-text>div.default-content-wrapper {
+  main>.section.colored-text>div.default-content-wrapper h2 {
     padding: 0 80px;
+  }
+
+  main>.section.colored-text>div.default-content-wrapper p {
+    padding: 75px 80px 100px;
+  }
+
+  main>.section.colored-text.columns-container>div.default-content-wrapper p {
+    padding: 50px 80px 40px;
   }
 
   main p {
@@ -1131,10 +1157,6 @@ main .section:has(.icons-grid) .default-content-wrapper h2 {
 
 .biencommun main .section.float-right h2{
   color: var(--biencommun-titre);
-}
-
-main .section:has(.icons-grid.statistics) .default-content-wrapper h2 {
-  margin: 0 0 40px;
 }
 
 /* Default button styles */
@@ -1383,6 +1405,10 @@ main .section.table-container.accordion-container .default-content-wrapper:nth-c
 main .section.table-container.accordion-container{
   margin-bottom: 0;
 }
+
+main .section:has(.icons-grid.statistics) {
+    padding: 40px 0;
+  }
 
 @media (width >= 600px) {
   main .section:has(.icons-grid.statistics) {
