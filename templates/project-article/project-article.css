@@ -103,6 +103,10 @@ body.biencommun main .section.details-sidebar h1 {
     color: var(--text-color);
 }
 
+.project-article-template main .section.light-grey-bg.details-sidebar {
+    padding-top: 40px;
+}
+
 @media (width >= 600px) {
     main .section.details-sidebar h1 {
         font-size: 50px;
@@ -162,9 +166,5 @@ body.biencommun main .section.details-sidebar h1 {
 @media (width >= 600px) and (width <= 1200px) {
     .project-article-template main .section.hero-container {
         margin: 0;
-    }
-
-    .project-article-template main .section.light-grey-bg.details-sidebar {
-        padding-top: 40px;
     }
 }
