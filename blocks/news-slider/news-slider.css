@@ -15,7 +15,6 @@ html, body {
     box-sizing: border-box;
     position: relative;
     margin: auto;
-    max-width: 1215px !important;
 }
 
 .news-slider-wrapper .cards-card-image > p {
@@ -240,7 +239,6 @@ html, body {
 
 @media (width >= 900px) {
     .news-slider-wrapper {
-        padding: 0 !important;
         margin-left: 24px;
     }
 
@@ -267,10 +265,6 @@ html, body {
 }
 
 @media (width >= 900px) and (width <= 1340px) {
-    .news-slider-wrapper {
-        margin-left: 80px !important;
-    }
-
     .news-slider-wrapper .swiper-button-next {
         right: calc(-50vw + 55% + 20px);
     }

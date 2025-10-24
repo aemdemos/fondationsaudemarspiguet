@@ -105,6 +105,6 @@ export default async function decorate() {
   clearDiv.className = 'clear';
   const innerDiv = document.createElement('div');
   innerDiv.className = 'project-article-inner';
-  innerDiv.append(heading, sidebar, articleContent, clearDiv);
+  innerDiv.append(...[heading, sidebar, articleContent, clearDiv].filter(Boolean));
   projectDiv.appendChild(innerDiv);
 }

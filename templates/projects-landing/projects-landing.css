@@ -349,7 +349,6 @@ main .projects-listing {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         gap: 30px;
-        max-width: 1200px;
         margin: auto;
         font-size: 14px;
     }
@@ -387,7 +386,9 @@ main .projects-listing {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         gap: 30px;
-        max-width: 1200px;
+        max-width: 1440px;
+        margin: auto;
+        box-sizing: border-box;
         padding: 0 80px;
     }
 
