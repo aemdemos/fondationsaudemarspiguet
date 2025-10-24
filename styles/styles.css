@@ -680,6 +680,10 @@ main .section.light-grey-bg.float-right {
   max-width: 100%;
 }
 
+main .section.float-right {
+  padding: 25px 0 5px;
+}
+
 main .section.float-right .default-content-wrapper {
   color: var(--text-color);
 }
@@ -819,12 +823,16 @@ p:has(a[href] img) {
 }
 
 @media (width >= 900px) {
-.newsroom.newsroom-template main .section .media-filter-container {
-   max-width: 100%;
-}
+  main .section.float-right {
+    padding: 65px 0 50px;
+  }
 
-.contact-us main .section .default-content-wrapper a {
-    font-size: 20px;
+  .newsroom.newsroom-template main .section .media-filter-container {
+    max-width: 100%;
+  }
+
+  .contact-us main .section .default-content-wrapper a {
+      font-size: 20px;
   }
 }
 
@@ -1023,17 +1031,9 @@ body.fondations main .section.full-width-image .default-content-wrapper {
     width: calc((((100% - (12*30px))/12)*9) + (8*30px));
   }
 
-  /* main .section:has(.icons-grid) {
-    padding: 100px;
-  } */
-
   main .section:has(.icons-grid.statistics) .cards-wrapper {
     padding: 50px 80px;
   }
-
-  /* main .section:has(.icons-grid.statistics) .default-content-wrapper {
-    padding: 0;
-  } */
 
   body.fondations main .section.float-right .default-content-wrapper .content-wrapper ul li {
     padding-left: 120px;
@@ -1425,10 +1425,6 @@ main .section.table-container.accordion-container{
   main .section:has(.icons-grid.statistics).cards-wrapper {
     padding: 0;
   }
-
-  /* main .section:has(.icons-grid.statistics) {
-    padding: 100px 80px;
-  } */
 
   main .section:has(.icons-grid.statistics) .columns-wrapper .columns > div {
     gap: 65px;
