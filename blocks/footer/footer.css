@@ -35,7 +35,7 @@ footer .footer .section.green-bg {
 }
 
 footer .footer .section.newsletter-section>div {
-  padding: 0 5px;
+  padding: 0 20px;
   letter-spacing: .06em;
   font-weight: 400;
   line-height: normal;
@@ -73,7 +73,6 @@ footer .footer .section.newsletter-section>div>p.button-container a.button:any-l
 
 footer .footer .section.beige-bg>div>p.button-container a.button:any-link {
   background-color: var(--site-color);
-  margin-left: 10px
 }
 
 .biencommun footer .footer .section.cream-bg>div>p.button-container a.button:any-link {
@@ -153,6 +152,10 @@ footer .footer .section.social-section>div .footer-general-wrapper .links-cr-wra
 
   footer .footer .section.newsletter-section>div>p {
     width: calc((((100% - (12*30px))/12)*12) + (11*30px));
+  }
+
+  footer .footer .section.beige-bg>div>p.button-container a.button:any-link {
+    margin-left: 10px ;
   }
 }
 
