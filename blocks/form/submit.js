@@ -1,4 +1,5 @@
 import { DEFAULT_THANK_YOU_MESSAGE, getSubmitBaseUrl } from './constant.js';
+import { checkValidation } from './util.js';
 
 export function submitSuccess(e, form) {
   const { payload } = e;
@@ -133,10 +134,10 @@ export async function handleSubmit(e, form, captcha) {
       }
     }
   } else {
-    const firstInvalidEl = form.querySelector(':invalid:not(fieldset)');
-    if (firstInvalidEl) {
-      firstInvalidEl.focus();
-      firstInvalidEl.scrollIntoView({ behavior: 'smooth' });
-    }
+    // Trigger validation on all invalid fields to show error messages
+    const invalidElements = form.querySelectorAll(':invalid:not(fieldset)');
+    invalidElements.forEach((el) => {
+      checkValidation(el);
+    });
   }
 }
