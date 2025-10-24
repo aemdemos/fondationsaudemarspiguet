@@ -570,6 +570,13 @@ main>.section>div {
   box-sizing: border-box;
 }
 
+main>.section.colored-text>div.default-content-wrapper {
+  box-sizing: border-box;
+  margin: auto;
+  max-width: 1720px;
+  padding: 0 20px;
+}
+
 main>.section:first-of-type {
   margin-top: 0;
 }
@@ -982,6 +989,10 @@ body.fondations main .section.full-width-image .default-content-wrapper {
     padding: 0 80px;
   }
 
+  main>.section.colored-text>div.default-content-wrapper {
+    padding: 0 80px;
+  }
+
   main p {
     font-size: var(--body-font-size-m);
   }
@@ -1012,17 +1023,17 @@ body.fondations main .section.full-width-image .default-content-wrapper {
     width: calc((((100% - (12*30px))/12)*9) + (8*30px));
   }
 
-  main .section:has(.icons-grid) {
+  /* main .section:has(.icons-grid) {
     padding: 100px;
-  }
+  } */
 
   main .section:has(.icons-grid.statistics) .cards-wrapper {
     padding: 50px 80px;
   }
 
-  main .section:has(.icons-grid.statistics) .default-content-wrapper {
+  /* main .section:has(.icons-grid.statistics) .default-content-wrapper {
     padding: 0;
-  }
+  } */
 
   body.fondations main .section.float-right .default-content-wrapper .content-wrapper ul li {
     padding-left: 120px;
@@ -1102,34 +1113,8 @@ main .section.light, main .section.highlight {
 }
 
 main .section:has(.icons-grid) {
-  padding: 100px 20px;
+  padding: 100px 0;
   margin: 100px 0 0;
-}
-
-main .section:has(.icons-grid.statistics) {
-  padding: 40px 20px;
-  margin: 100px 0 0;
-}
-
-main .section:has(.icons-grid) .cards-wrapper {
-  max-width: 1200px;
-  padding: 0 5px;
-}
-
-main .section:has(.icons-grid.statistics) .cards-wrapper {
-  max-width: 1200px;
-  padding: 0 5px;
-  margin-bottom: 60px;
-}
-
-main .section:has(.icons-grid) .default-content-wrapper {
-  max-width: 1200px;
-  padding: 0;
-}
-
-main .section:has(.icons-grid.statistics) .default-content-wrapper {
-    max-width: 1200px;
-    padding: 0;
 }
 
 .policy-template main .default-content-wrapper h2 {
@@ -1328,11 +1313,11 @@ main .section.light-grey-red-bg {
 .policy-template main .last-modified {
   font-size: 14px;
   display: block;
-  padding: 0 24px 65px;
+  padding: 0 20px 65px;
   letter-spacing: 0.02em;
   line-height: var(--body-line-height);
   font-weight: var(--body-font-weight);
-  max-width: 1200px;
+  max-width: 1280px;
   margin: 0 auto;
 }
 
@@ -1401,7 +1386,7 @@ main .section.table-container.accordion-container{
 
 @media (width >= 600px) {
   main .section:has(.icons-grid.statistics) {
-    padding: 100px 20px;
+    padding: 100px 0;
   }
 
   /* added because of generic selector rule: .columns.buttons > div > div */
@@ -1441,9 +1426,9 @@ main .section.table-container.accordion-container{
     padding: 0;
   }
 
-  main .section:has(.icons-grid.statistics) {
+  /* main .section:has(.icons-grid.statistics) {
     padding: 100px 80px;
-  }
+  } */
 
   main .section:has(.icons-grid.statistics) .columns-wrapper .columns > div {
     gap: 65px;
@@ -1499,9 +1484,6 @@ main .section.table-container.accordion-container{
   }
   
   main .section.colored-text p{
-    width: 100vw;
-    margin-left: calc(50% - 50vw);
-    margin-right: calc(50% - 50vw);
     box-sizing: border-box;
     font-size: 40px; 
     font-family: Antarctica, sans-serif; 
@@ -1510,22 +1492,10 @@ main .section.table-container.accordion-container{
     line-height: normal; 
     letter-spacing: 2.4px; 
     text-align: left; 
-    padding: 50px 80px 100px;
   }
 
   main .section.colored-text.warm-grey-bg p {
     font-size: 42px; /* Slightly larger for large screens */
-    padding: 60px 80px 80px; /* Different padding */
-  }
- 
-  main .section.colored-text:has(.icons-grid) .default-content-wrapper > p {
-    padding: 10px 0 65px;
-    max-width: 110%;
-    margin-left: -5vw;
-  }
-
-  main .section.colored-text:has(.icons-grid) .columns-wrapper div > div > p {
-    width: 100%;
   }
 
   .da-live-preview .full-width.carousel-container .carousel.hero-banner.vertical:not(.scrollable) .carousel-slides-container {
