@@ -270,10 +270,14 @@ export default class DocBasedFormToAF {
      * @param {any} field FieldJson
      */
   #transformFieldType(field) {
-    field[':type'] = field.fieldType;
+    if (field.fieldType && field.fieldType.includes(':')) {
+      [field.fieldType, field[':type']] = field.fieldType.split(':');
+    } else {
+      field[':type'] = field.fieldType;
+    }
     if (this.fieldMapping.has(field?.fieldType)) {
       field.fieldType = this.fieldMapping.get(field?.fieldType);
-    } if (this.containerNamesSet.has(field.name)) {
+    } else if (this.containerNamesSet.has(field.name)) {
       field.fieldType = 'panel';
     }
   }
