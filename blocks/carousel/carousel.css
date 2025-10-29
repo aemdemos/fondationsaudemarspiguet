@@ -386,18 +386,6 @@
   }
 }
 
-@media (width <= 780px) {
-  .carousel.vertical .carousel-slide-indicators {
-    transform: translateY(-70px); /* Move up */
-  }
-}
-
-@media (width > 1200px) {
-  .carousel.vertical .carousel-slide-indicators {
-    transform: translateY(-80px); /* Move up more */
-  }
-}
-
 .carousel-container .carousel.hero-banner .carousel-slide-indicators {
   display: none;
 }
