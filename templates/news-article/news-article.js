@@ -20,6 +20,10 @@ export function enableAnimationOnScroll() {
 }
 
 export default async function decorate(doc) {
+  const mainSection = doc.querySelector('.news-article-template main');
+  const articlecontentSection = div({ class: 'section articlecontent-container' });
+  const carouselContainer = doc.querySelector('.news-article-template .carousel-container');
+  const featuredProject = doc.querySelector('.news-article-template .featured-projects-container');
   const sidebar = div({ class: 'news-article-sidebar' });
   const language = getMetadata('language');
   const links = getMetadata('links');
@@ -86,6 +90,8 @@ export default async function decorate(doc) {
     const innerDiv = div({ class: 'news-article-inner' });
     innerDiv.append(newsDetails, title, sidebar, articleContent, clearDiv);
     newsDiv.append(innerDiv, buttonDiv);
+    articlecontentSection.append(carouselContainer, newsDiv);
+    mainSection.append(articlecontentSection, featuredProject);
   } else if (rightAlignSidebar.classList.contains('right')) {
     if (language === 'en') {
       sidebar.innerHTML = `

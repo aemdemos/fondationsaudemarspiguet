@@ -40,8 +40,11 @@
   align-items: flex-end;
 }
 
+.carousel.carousel.vertical .carousel-slide .carousel-slide-image {
+  height: 100%;
+}
+
 .carousel .carousel-slide .carousel-slide-image picture {
-  position: absolute;
   inset: 0;
 }
 
@@ -54,6 +57,7 @@
 .carousel.vertical .carousel-slide .carousel-slide-image picture > img {
   height: 100%;
   width: 100%;
+  aspect-ratio: 2 / 1;
   object-fit: cover;
   object-position: center center;
 }
@@ -359,21 +363,22 @@
   box-sizing: border-box;
 }
 
+ .carousel.vertical {
+  height: 100%;
+}
+
+.carousel.vertical:not(.scrollable,.hero-banner) .carousel-slides-container {
+   position: relative;
+   min-height: 100px;
+   height: auto;
+   max-height: 640px;
+   overflow: hidden;
+   aspect-ratio: 2 / 1;
+}
+
 @media (width < 600px) {
   .carousel.vertical .carousel-slide-indicators {
      display: none;
-  }
-}
-
-@media (width <= 780px) {
-  .carousel.vertical .carousel-slide-indicators {
-    transform: translateY(-70px); /* Move up */
-  }
-}
-
-@media (width > 1200px) {
-  .carousel.vertical .carousel-slide-indicators {
-    transform: translateY(-80px); /* Move up more */
   }
 }
 
@@ -410,25 +415,12 @@
   }
 }
 
- /* Vertical Carousel */
-
- .carousel.vertical {
-  height: 300px;
-  margin-bottom: 40px;
-}
-
    /* Reset padding for all vertical carousel variants */
    .carousel.vertical.hero-banner,
    .carousel.vertical.scrollable {
- padding: unset;
- margin: unset;
-}
-
-.carousel.vertical .carousel-slides-container {
-   position: relative;
-   height: 100%;
-   overflow: hidden;
-}
+  padding: unset;
+  margin: unset;
+  }
 
 .carousel-container .carousel.hero-banner .carousel-slides-container {
   height: 100vh;
@@ -459,6 +451,8 @@
   display: block;
   flex: none ;
   scroll-snap-align: unset ;
+  padding: 0;
+  margin: 0;
 }
 
 .carousel.vertical .carousel-slide[aria-hidden="false"] {
@@ -481,20 +475,12 @@
   opacity: 1;
 }
 
-
-@media (width >= 600px) and (width <=900px) {
-  .carousel.vertical {
-    height: 400px;
-  }
-}
-
 @media (width >= 900px) {
   .carousel-container .carousel.hero-banner.homepage:not(.scrollable) {
     margin-top: calc(-1 * var(--header-tab-height));
   }
 
   .carousel.vertical {
-    height: 500px;
     margin-top: 0;
     margin-bottom: 0;
   }
@@ -503,10 +489,6 @@
 @media (width >= 1200px) {
   .carousel-container .carousel.hero-banner.homepage:not(.scrollable) {
     margin-top: calc(-1 * var(--header-height));
-  }
-
-  .carousel.vertical {
-    height: 600px;
   }
 }
 
