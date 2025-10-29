@@ -35,7 +35,7 @@ footer .footer .section.green-bg {
 }
 
 footer .footer .section.newsletter-section>div {
-  padding: 0 5px;
+  padding: 0 20px;
   letter-spacing: .06em;
   font-weight: 400;
   line-height: normal;
@@ -45,10 +45,6 @@ footer .footer .section.newsletter-section>div {
 footer .footer .section.social-section>div p {
   margin-top: 0;
   margin-bottom: 0;
-}
-
-footer .footer .section.newsletter-section>div>p {
-  margin: 15px;
 }
 
 footer .footer .section.newsletter-section>div>p:first-of-type {
@@ -157,6 +153,10 @@ footer .footer .section.social-section>div .footer-general-wrapper .links-cr-wra
   footer .footer .section.newsletter-section>div>p {
     width: calc((((100% - (12*30px))/12)*12) + (11*30px));
   }
+
+  footer .footer .section.beige-bg>div>p.button-container a.button:any-link {
+    margin-left: 10px ;
+  }
 }
 
 @media (width>900px) {
@@ -166,7 +166,10 @@ footer .footer .section.social-section>div .footer-general-wrapper .links-cr-wra
   }
 
   footer .footer .section.newsletter-section>div {
-    padding: 0 75px;
+    padding: 0 80px;
+    max-width: 1440px;
+    margin: auto;
+    box-sizing: border-box;
   }
 
   footer .footer .section.social-section {
@@ -201,12 +204,6 @@ footer .footer .section.social-section>div .footer-general-wrapper .links-cr-wra
 }
 
 @media (width>1200px) {
-  footer .footer .section.newsletter-section>div {
-    position: relative;
-    margin: auto;
-    max-width: 1440px;
-  }
-
   footer .footer .section.newsletter-section>div p {
     max-width: 795px;
   }

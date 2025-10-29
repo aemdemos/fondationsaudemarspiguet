@@ -298,7 +298,8 @@ main .news-listing {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         gap: 30px;
-        max-width: 1200px;
+        max-width: 1440px;
+        box-sizing: border-box;
         padding: 0 80px;
         margin: auto;
         height: auto;

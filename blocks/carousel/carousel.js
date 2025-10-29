@@ -120,7 +120,7 @@ function bindEvents(block) {
   });
 }
 
-function createSlide(row, slideIndex, carouselId) {
+function createSlide(row, slideIndex, carouselId, isScrollable) {
   const slide = document.createElement('li');
   slide.dataset.slideIndex = slideIndex;
   slide.setAttribute('id', `carousel-${carouselId}-slide-${slideIndex}`);
@@ -139,27 +139,30 @@ function createSlide(row, slideIndex, carouselId) {
     slide.append(column);
   });
 
-  const carouselEnLogo = [
-    '/icons/carousel_logo_fondations.svg',
-    '/icons/carousel_logo_biencommun.svg',
-    '/icons/carousel_logo_arbres.svg',
-  ];
+  if (isScrollable) {
+    const carouselEnLogo = [
+      '/icons/carousel_logo_fondations.svg',
+      '/icons/carousel_logo_biencommun.svg',
+      '/icons/carousel_logo_arbres.svg',
+    ];
 
-  const carouselFrLogo = [
-    '/icons/carousel_logo_fr_fondations.svg',
-    '/icons/carousel_logo_fr_biencommun.svg',
-    '/icons/carousel_logo_fr_arbres.svg',
-  ];
-  // Pick correct logo set based on language
-  const language = getLanguage();
-  const carouselLogos = language === 'en' ? carouselEnLogo : carouselFrLogo;
-  if (carouselLogos[slideIndex]) {
-    const logoWrapper = document.createElement('div');
-    logoWrapper.className = 'carousel-slide-logo';
-    logoWrapper.innerHTML = `
-      <img src="${carouselLogos[slideIndex]}" alt="Slide ${slideIndex + 1} logo">
-    `;
-    slide.append(logoWrapper);
+    const carouselFrLogo = [
+      '/icons/carousel_logo_fr_fondations.svg',
+      '/icons/carousel_logo_fr_biencommun.svg',
+      '/icons/carousel_logo_fr_arbres.svg',
+    ];
+
+    // Pick correct logo set based on language
+    const language = getLanguage();
+    const carouselLogos = language === 'en' ? carouselEnLogo : carouselFrLogo;
+    if (carouselLogos[slideIndex]) {
+      const logoWrapper = document.createElement('div');
+      logoWrapper.className = 'carousel-slide-logo';
+      logoWrapper.innerHTML = `
+        <img src="${carouselLogos[slideIndex]}" alt="Slide ${slideIndex + 1} logo">
+      `;
+      slide.append(logoWrapper);
+    }
   }
 
   const labeledBy = slide.querySelector('h1, h2, h3, h4, h5, h6');
@@ -246,7 +249,7 @@ export default async function decorate(block) {
   }
   let slide;
   rows.forEach((row, idx) => {
-    slide = createSlide(row, idx, carouselId);
+    slide = createSlide(row, idx, carouselId, isScrollable);
     moveInstrumentation(row, slide);
     const content = slide.querySelector('.carousel-slide-content');
     let directionIcon;
