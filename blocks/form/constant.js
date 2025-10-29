@@ -7,7 +7,6 @@ export const DEFAULT_THANK_YOU_MESSAGE = 'Thank you for your submission.';
 // To set log level, modify this constant:
 export const LOG_LEVEL = 'error'; // Available options: 'off', 'debug', 'info', 'warn', 'error'
 
-// Error messages by language
 export const defaultErrorMessages = {
   accept: 'The specified file type not supported.',
   maxFileSize: 'File too large. Reduce size and try again.',
