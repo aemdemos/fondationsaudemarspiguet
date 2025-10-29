@@ -1,7 +1,6 @@
 /* eslint-disable no-param-reassign */
 
 import { getId } from './util.js';
-import { defaultErrorMessages } from './constant.js';
 
 function handleCheckboxAndRadio(field) {
   // if fieldType is checkbox and value is not empty then convert it to enum.
@@ -134,9 +133,7 @@ function handleFranklinSpecialCases(item) {
 function initField() {
   return {
     constraintMessages: {
-      get required() {
-        return defaultErrorMessages.required;
-      },
+      required: 'Please fill in this field.',
     },
   };
 }
