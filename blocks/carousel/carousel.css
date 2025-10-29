@@ -662,6 +662,12 @@
   height: 100%;
 }
 
+.full-width.carousel-container .carousel.hero-banner {
+  width: 100vw;
+  position: relative;
+  height: 100%;
+}
+
 .carousel-container .carousel.hero-banner.scrollable {
   height: 100%;
 }
@@ -729,5 +735,3 @@
 .carousel-container .carousel.hero-banner.scrollable .carousel-slide.active .carousel-slide-content {
   opacity: 1;
 }
-
-.carousel
