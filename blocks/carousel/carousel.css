@@ -32,10 +32,6 @@
   min-height: min(50vw, calc(100dvh - var(--header-height)));
 }
 
-.carousel.vertical .carousel-slide-logo {
-  display: none;
-}
-
 .carousel .carousel-slide:has(.carousel-slide-content[data-align='center']) {
   align-items: center;
 }
@@ -654,12 +650,6 @@
 .carousel-container .carousel-wrapper {
   width: 100%;
   position: relative;
-}
-
-.full-width.carousel-container .carousel.hero-banner {
-  width: 100vw;
-  position: relative;
-  height: 100%;
 }
 
 .full-width.carousel-container .carousel.hero-banner {
