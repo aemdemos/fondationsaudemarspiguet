@@ -128,7 +128,7 @@ export async function setClassDataBg() {
     const valuesString = backgroundOption.values;
 
     // Split by " | " and parse each background value
-    const valuesList = valuesString.split(' | ').map((val) => val.trim());
+    const valuesList = valuesString.split('|').map((val) => val.trim());
 
     valuesList.forEach((valueItem) => {
       // Parse format like "cream-bg=#f8f7f2"

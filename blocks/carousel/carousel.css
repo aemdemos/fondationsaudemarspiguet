@@ -371,7 +371,7 @@
   height: 100%;
 }
 
-.carousel.vertical .carousel-slides-container {
+.carousel.vertical:not(.scrollable,.hero-banner) .carousel-slides-container {
    position: relative;
    height: 50vw;
    max-height: 640px;

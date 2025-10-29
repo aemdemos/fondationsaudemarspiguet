@@ -445,10 +445,6 @@
 }
 
 @media (width <= 600px) {
-   .section{
-    margin: 0 !important;
-  }
-
   .hero.two-columnar-text-image.block {
     width: 100vw;
     padding: 0;
