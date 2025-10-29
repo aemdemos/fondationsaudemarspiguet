@@ -171,6 +171,7 @@ export default class DocBasedFormToAF {
     'Pattern Error Message': 'constraintMessages.pattern',
     'Min Error Message': 'constraintMessages.min',
     'Max Error Message': 'constraintMessages.max',
+    'Custom Type': ':type',
   };
 
   fieldMapping = new Map([
@@ -270,9 +271,7 @@ export default class DocBasedFormToAF {
      * @param {any} field FieldJson
      */
   #transformFieldType(field) {
-    if (field.fieldType && field.fieldType.includes(':')) {
-      [field.fieldType, field[':type']] = field.fieldType.split(':');
-    } else {
+    if (!field[':type']) {
       field[':type'] = field.fieldType;
     }
     if (this.fieldMapping.has(field?.fieldType)) {
