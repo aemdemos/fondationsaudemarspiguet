@@ -61,17 +61,11 @@ body.news-article .articlecontent-container {
 body.news-article .articlecontent-container .carousel-container.section {
     top: 40px;
     position: relative;
-    margin: 0 auto;
-    padding: 0 20px;
-    max-width: 1440px;
-    box-sizing: border-box;
 }
 
 body.news-article main .articlecontent-container .section.details-sidebar {
     margin: 0 auto;
     padding: 0 20px;
-    max-width: 1440px;
-    box-sizing: border-box;
     margin-top: 80px;
 }  
 

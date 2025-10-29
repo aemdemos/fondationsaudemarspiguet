@@ -21,7 +21,7 @@ export function enableAnimationOnScroll() {
 
 export default async function decorate(doc) {
   const mainSection = doc.querySelector('.news-article-template main');
-  const articlecontentSection = div({ class: 'articlecontent-container' });
+  const articlecontentSection = div({ class: 'section articlecontent-container' });
   const carouselContainer = doc.querySelector('.news-article-template .carousel-container');
   const featuredProject = doc.querySelector('.news-article-template .featured-projects-container');
   const sidebar = div({ class: 'news-article-sidebar' });

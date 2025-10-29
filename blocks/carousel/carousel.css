@@ -373,9 +373,11 @@
 
 .carousel.vertical:not(.scrollable,.hero-banner) .carousel-slides-container {
    position: relative;
-   height: 50vw;
+   min-height: 100px;
+   height: auto;
    max-height: 640px;
    overflow: hidden;
+   aspect-ratio: 2 / 1;
 }
 
 @media (width < 600px) {
@@ -497,10 +499,6 @@
   .carousel.vertical {
     margin-top: 0;
     margin-bottom: 0;
-  }
-
-  .carousel.vertical .carousel-slides-container {
-    height: calc((50vw) - 100px);
   }
 }
 
