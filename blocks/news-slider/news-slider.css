@@ -70,7 +70,7 @@ html, body {
     border-radius: 50%;
     position: absolute;
     top: 50%;
-    right: calc(-50vw + 50% + 20px);
+    right: calc(-50vw + 50% + 10px);
     transform: translateY(-50%);
     z-index: 10;
 }
@@ -92,22 +92,22 @@ html, body {
     box-sizing: content-box;
     display: flex;
     gap: 30px;
-    min-height: 1000px;
     margin-top: 50px;
     margin-bottom: 50px;
+    align-items: stretch;
 }
 
 .news-slider-wrapper .cards.block.swiper.news-swiper ul.swiper-wrapper li.swiper-slide {
     box-sizing: border-box;
     flex-shrink: 0;
     width: 100%;
+    height: auto;
     position: relative;
     transition-property: transform;
-    display: block;
+    align-items: stretch;
     margin: 0 !important;
     border: 0;
     padding: 15px;
-    overflow: hidden;
 }
 
 /* Default color scheme */
@@ -133,10 +133,10 @@ html, body {
 }
 
 .news-slider-wrapper .cards.block.swiper.news-swiper ul.swiper-wrapper li.swiper-slide a img {
-    height: 600px;
     width: 100%;
     object-fit: cover;
     margin-bottom: 10px;
+    aspect-ratio: 7 / 9.8;
 }
 
 /* Default category colors */
@@ -216,7 +216,7 @@ html, body {
 
 @media (width >= 600px) {
     .news-slider-wrapper .cards.block.swiper.news-swiper ul.swiper-wrapper li.swiper-slide a img {
-        height: 200px;
+        aspect-ratio: 5 / 7;
     }
 
     .news-slider-wrapper .cards.block.swiper.news-swiper ul.swiper-wrapper {
@@ -228,12 +228,10 @@ html, body {
         box-sizing: content-box;
         display: flex;
         gap: unset;
-        min-height: 700px;
     }
 
     .news-slider-wrapper .cards.block.swiper.news-swiper ul.swiper-wrapper li.swiper-slide {
-        height: 700px !important;
-        overflow: hidden;
+        overflow: visible;
     }
 }
 
@@ -241,35 +239,9 @@ html, body {
     .news-slider-wrapper {
         margin-left: 24px;
     }
-
-    .news-slider-wrapper .cards.block.swiper.news-swiper ul.swiper-wrapper li.swiper-slide a img {
-        height: 300px;
-    }
-
-    .news-slider-wrapper .cards.block.swiper.news-swiper ul.swiper-wrapper {
-        min-height: 1000px;
-    }
     
     .news-slider-wrapper .cards.block.swiper.news-swiper ul.swiper-wrapper li.swiper-slide {
-        height: 1000px !important;
-        overflow: hidden;
+        overflow: visible;
         min-width: 320px;
-    }
-}
-
-
-@media (width >= 1200px) {
-    .news-slider-wrapper .cards.block.swiper.news-swiper ul.swiper-wrapper li.swiper-slide a img {
-        height: 350px;
-    }
-}
-
-@media (width >= 900px) and (width <= 1340px) {
-    .news-slider-wrapper .swiper-button-next {
-        right: calc(-50vw + 55% + 20px);
-    }
-
-    .news-slider-wrapper .swiper-button-prev {
-        left: calc(-50vw + 48% + 20px);
     }
 }
