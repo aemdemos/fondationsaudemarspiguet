@@ -2,7 +2,7 @@
     --background-color-primary: #fff;
     --label-color: #666;
     --border-color: #818a91;
-    --form-error-color: #ff5f3f;
+    --form-error-color: red;
     --button-primary-color: #5F8DDA;
     --button-secondary-color: #666;
     --button-primary-hover-color: #035fe6;
@@ -60,6 +60,7 @@
 
     /* Card styling variables */
     --form-card-border-color: #e0e0e0;
+    --form-card-border-hover-color: #ccc;
     --form-card-border-radius: 4px;
     --form-card-padding: 0.6rem 0.8rem;
     --form-card-background: var(--background-color-primary);
@@ -79,6 +80,16 @@ main .form pre {
     display: none;
 }
 
+ main .form select {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
+main .section.newsletter-form .form-wrapper {
+    margin: auto;
+    padding: 0 80px;
+}
+
 form output {
     display: block;
     font-weight: 700;
@@ -95,12 +106,30 @@ main .form-container {
     width: var(--form-width);
 }
  
+main .newsletter-form .form select {
+    padding: 0;
+    margin-bottom: 0;
+    background-image: url("/icons/select_simple__plus.svg");
+    background-position: calc(100% - 10px) center;
+    background-repeat: no-repeat;
+    appearance: none;
+}
+
 main .section.contact-form.form-container .default-content-wrapper h2 {
   margin:0;
   padding-top: 100px;
   color: white;
 }
 
+main .section.newsletter-form.form-container .default-content-wrapper h1 {
+  margin:0;
+  padding-top: 100px;
+  color: white;
+  font-weight: 400;
+  letter-spacing: .08em;
+  padding-bottom: 20px;
+  font-size: 35px;
+}
 
 /* Hide form labels */
 main .form label {
@@ -115,6 +144,13 @@ main .contact-form .button-wrapper.field-btn-submit.field-wrapper.submit-wrapper
   display: flex;
   justify-content: flex-start;
   margin-top: 20px;
+}
+
+main .newsletter-form .button-wrapper.field-btn-submit.field-wrapper.submit-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  width: calc((((100% - (12 * 30px)) / 12) * 12) + (11 * 30px));
 }
 
 main>.section.contact-form>div {
@@ -160,11 +196,17 @@ main .form form fieldset fieldset {
 main .form .field-description {
     color: var(--form-label-color);
     font-size: var(--form-font-size-xs);
+    margin-top: 5px;
+    display: block;
 }
 
 main .form form .field-invalid .field-description {
     color: var(--form-error-color);
-    font-weight: 700;
+    font-weight: 400;
+    font-size: 12px;
+    margin-top: -25px;
+    display: block;
+    padding-bottom: 20px;
 }
 
   /**
@@ -179,13 +221,10 @@ main .form form .field-invalid .field-description {
       flex-wrap: wrap;
   }
 
-main .form select {
-    padding-top: 0;
-    padding-bottom: 0;
-  }
-
  main .contact-form .form input,
- main .contact-form .form select {
+ main .contact-form .form select,
+ main .newsletter-form .form input,
+ main .newsletter-form .form select {
     background-color: var(--form-input-background-color);
     border: none;
     width: 100%;
@@ -198,6 +237,7 @@ main .form select {
     font-family: Antarctica, sans-serif;
     margin-bottom: 25px;
     letter-spacing: .12em;
+    text-transform: uppercase;
 }
 
 main .contact-form .form textarea {
@@ -219,19 +259,31 @@ main .section.contact-form.form-container .default-content-wrapper p{
  padding-bottom: 100px;
  letter-spacing: .02em;
  font-family: Antarctica, sans-serif;
- font-size: 20px;
+ font-size: 14px;
  font-weight: 300;
 }
 
-main .section.contact-form.form-container .form-wrapper {
+main .section.contact-form.form-container .form-wrapper,
+main .section.newsletter-form.form-container .form-wrapper {
     box-sizing: border-box;
     position: relative;
     max-width: 1440px;
     padding: 0 15px;
+    overflow-x: hidden;
+}
+
+main .section.newsletter-form.form-container .form-wrapper {
+    padding: 0 15px 35px;
 }
 
 main .form input:hover, main .form select:hover {
     border-color: rgb(90 92 96);
+}
+
+main .form input:focus,
+main .form textarea:focus,
+main .form select:focus {
+    outline: none;
 }
 
 main .form input:disabled{
@@ -267,6 +319,16 @@ main .contact-form .input-col-1 {
 }
 
 main .contact-form .input-col-2 {
+    width:100%;
+}
+
+main .newsletter-form .input-col-1 {
+    display: inline-block;
+    width: 100%;
+    float: left;
+}
+
+main .newsletter-form .input-col-2{
     width:100%;
 }
 
@@ -370,7 +432,7 @@ main .form form fieldset.cards > .checkbox-wrapper > label {
 main .form form fieldset.cards > .radio-wrapper > label:hover,
 main .form form fieldset.cards > .checkbox-wrapper > label:hover {
     box-shadow: var(--form-card-hover-shadow);
-    border-color: #ccc;
+    border-color: var(--form-card-border-hover-color);
     transform: translateY(-1px);
 }
 
@@ -398,6 +460,7 @@ main .form form fieldset.cards > .checkbox-wrapper > input {
     width: 0;
     height: 0;
 }
+
 
 main .form form fieldset.cards > .radio-wrapper > input:checked ~ label,
 main .form form fieldset.cards > .checkbox-wrapper > input:checked ~ label {
@@ -576,6 +639,7 @@ main .form .button-wrapper button {
     background-color: transparent;
     border: 0;
     width: unset;
+    font-weight: 100;
 }
 
 main .form .button-wrapper button:hover {
@@ -663,19 +727,35 @@ main .form form .wizard .wizard-menu-active-item::before{
 }
 
 @media (width >= 600px) {
-    main .form button {
-        width: unset;
-    }
+  main .form button {
+    width: unset;
+  }
+    
+  main .section.newsletter-form.form-container .default-content-wrapper h1 {
+    font-size: 50px;
+  }
+}
+
+@media (width < 900px) {
+  main .section.contact-form.form-container .default-content-wrapper,
+  main .section.newsletter-form.form-container .default-content-wrapper {
+    padding: 0 12px;
+  }
 }
 
 @media (width >= 900px) {
-main>.section.contact-form>div {
+main>.section.contact-form>div,
+ main>.section.newsletter-form>div {
     max-width: 1440px;
     margin: auto;
 }
 
  main .section.contact-form.form-container .form-wrapper {
-    padding: 0 80px; 
+    padding: 0 80px;
+ }
+
+ main .section.newsletter-form.form-container .form-wrapper {
+    padding: 0 80px 80px;
  }
 
  main .contact-form .form input,
@@ -683,7 +763,7 @@ main>.section.contact-form>div {
     width: 480px;
 }
 
-main .contact-form .input-col-1 {
+main .contact-form .input-col-1{
     width: 480px;
     float: left;
 }
@@ -693,6 +773,24 @@ main .contact-form .input-col-2 {
     float: left;
     padding-left: 25px;
 }
+
+
+main .newsletter-form .input-col-1 {
+     width: calc((((100% - (12 * 30px)) / 12) * 6) + (5 * 30px));
+     float: left;
+}
+
+main .newsletter-form .input-col-2{
+    width: calc((((100% - (12 * 30px)) / 12) * 6) + (5 * 30px));
+    float: left;
+    padding-left: 25px;
+}
+
+main .section.contact-form.form-container .default-content-wrapper p{
+ font-size: 20px;
+}
+
+
 } 
 
 /* wizard title on left */
@@ -710,7 +808,7 @@ main form .panel-wrapper {
   padding: 0;
   flex-direction: column;
 }
-
+    
 /* main .form form .panel-wrapper{
   display: grid;
   grid-template-columns: repeat(var(--form-columns), minmax(0, 1fr));
@@ -826,6 +924,16 @@ main .form form .wizard > .field-description {
     width: 100%;
 }
 
+/* Dropdown-specific error styling */
+main .form form .drop-down-wrapper.field-invalid .field-description {
+    margin-top: -20px;
+    margin-bottom: 20px;
+}
+
+main .form form .drop-down-wrapper.field-invalid .custom-dropdown-selected {
+    border-bottom-color: var(--form-error-color);
+}
+
 main .form form .checkbox-wrapper.field-invalid > .field-description {
       order: 1;
 }
@@ -855,6 +963,11 @@ main .form form .checkbox-group-wrapper.horizontal .field-description {
 
 main div.form-wrapper {
     padding: 40px;
+    border-radius: 12px;
+}
+
+main .newsletter-form div.form-wrapper {
+    padding: 80px;
     border-radius: 12px;
 }
 

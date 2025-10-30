@@ -1,0 +1,120 @@
+:root {
+    /* Dropdown styling variables */
+    --form-dropdown-border-color: #000;
+    --form-dropdown-text-color: #1E1E1E;
+    --form-dropdown-shadow: 0 2px 8px rgb(0 0 0 / 10%);
+    --form-dropdown-scrollbar-track: rgb(0 0 0 / 5%);
+    --form-dropdown-option-focused-bg: #c5cbcb;
+}
+
+/* Custom Dropdown Styling */
+main .form form .drop-down-wrapper {
+    position: relative;
+    margin-bottom: 25px;
+}
+
+main .form form .drop-down-wrapper .custom-dropdown {
+    position: relative;
+    width: 100%;
+    cursor: pointer;
+    user-select: none;
+}
+
+main .form form .drop-down-wrapper .custom-dropdown-selected {
+    background-color: var(--form-input-background-color);
+    border: none;
+    border-bottom: 1px solid var(--form-dropdown-border-color);
+    width: 100%;
+    height: 40px;
+    padding: 0 35px 0 10px;
+    font: 500 12px/40px Antarctica, sans-serif;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+}
+
+main .form form .drop-down-wrapper .custom-dropdown-selected:hover,
+main .form form .drop-down-wrapper .custom-dropdown-selected:focus {
+    outline: none;
+    border-bottom-color: var(--form-dropdown-border-color);
+}
+
+main .form form .drop-down-wrapper .custom-dropdown-text {
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+main .form form .drop-down-wrapper .custom-dropdown-arrow {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    width: 30px;
+    height: 30px;
+    background: url("/icons/select_simple__plus.svg") center / contain no-repeat;
+}
+
+main .form form .drop-down-wrapper .custom-dropdown-options {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: var(--form-input-background-color);
+    max-height: 250px;
+    overflow-y: auto;
+    z-index: 1000;
+    display: none;
+    box-shadow: var(--form-dropdown-shadow);
+}
+
+main .form form .drop-down-wrapper .custom-dropdown.open .custom-dropdown-options {
+    display: block;
+    padding: 5px;
+}
+
+main .form form .drop-down-wrapper .custom-dropdown-option {
+    padding: 5px;
+    font-size: 12px;
+    font-family: Antarctica, sans-serif;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--form-dropdown-text-color);
+    cursor: pointer;
+}
+
+main .form form .drop-down-wrapper .custom-dropdown-option:hover,
+main .form form .drop-down-wrapper .custom-dropdown-option.active,
+main .form form .drop-down-wrapper .custom-dropdown-option.selected {
+    font-weight: bold;
+}
+
+main .form form .drop-down-wrapper .custom-dropdown-option.focused {
+    background-color: var(--form-dropdown-option-focused-bg);
+}
+
+main .form form .drop-down-wrapper .custom-dropdown-option.disabled {
+    display: none;
+}
+
+/* Custom scrollbar for dropdown options */
+main .form form .drop-down-wrapper .custom-dropdown-options::-webkit-scrollbar {
+    width: 6px;
+}
+
+main .form form .drop-down-wrapper .custom-dropdown-options::-webkit-scrollbar-track {
+    background: var(--form-dropdown-scrollbar-track);
+}
+
+main .form form .drop-down-wrapper .custom-dropdown-options::-webkit-scrollbar-thumb {
+    background: var(--form-label-color);
+    border-radius: 3px;
+}
+
+main .form form .drop-down-wrapper .custom-dropdown-options::-webkit-scrollbar-thumb:hover {
+    background: var(--button-primary-color);
+}
