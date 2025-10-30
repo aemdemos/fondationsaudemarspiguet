@@ -9,7 +9,7 @@
     position: relative;
 }
 
-.project-article > div {
+.home-projects.block .project-article > div {
     max-width: 1440px;
     padding: 0 20px;
     margin: auto;
