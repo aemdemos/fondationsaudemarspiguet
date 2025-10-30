@@ -252,13 +252,3 @@ html, body {
         min-width: 320px;
     }
 }
-
-/* @media (width >= 900px) and (width <= 1340px) {
-    .news-slider-wrapper .swiper-button-next {
-        right: calc(-50vw + 55% + 20px);
-    }
-
-    .news-slider-wrapper .swiper-button-prev {
-        left: calc(-50vw + 48% + 20px);
-    }
-} */

@@ -37,10 +37,6 @@
     margin: 0 auto;
 }
 
-/* .home-projects.block .project-article div.project-image a div {
-    height: 78%;
-} */
-
 .home-projects.block .project-article div.project-image img {
     width: 100%;
     aspect-ratio: 3 / 2;
