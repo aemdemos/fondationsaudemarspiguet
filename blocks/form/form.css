@@ -776,12 +776,12 @@ main .contact-form .input-col-2 {
 
 
 main .newsletter-form .input-col-1 {
-     width: calc((((100% - (12 * 30px)) / 12) * 6) + (5 * 30px));
+     width: 49%;
      float: left;
 }
 
 main .newsletter-form .input-col-2{
-    width: calc((((100% - (12 * 30px)) / 12) * 6) + (5 * 30px));
+    width: 51%;
     float: left;
     padding-left: 25px;
 }
