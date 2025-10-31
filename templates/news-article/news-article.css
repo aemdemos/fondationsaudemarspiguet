@@ -295,7 +295,7 @@ body.news-article main .section.details-sidebar.right .news-article-inner .defau
 }
 
 @media (width >= 600px) {
-    body.news-article .articlecontent-container {
+    body.news-article .articlecontent-container:has(.carousel) {
         background-color: var(--news-bg-page-suite);
         margin: 300px auto 0;
     }
