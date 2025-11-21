@@ -11,6 +11,7 @@ import {
   loadSection,
   loadSections,
   loadCSS,
+  waitForLCP,
   getMetadata,
   buildBlock,
   toCamelCase,
@@ -19,6 +20,7 @@ import {
 import { decorateListingCards, applySectionBackgrounds } from './utils.js';
 
 const LANGUAGES = new Set(['en', 'fr']);
+const LCP_BLOCKS = ['hero', 'video'];
 let language;
 
 /**
@@ -540,6 +542,7 @@ async function loadEager(doc) {
       await loadTemplate(doc, templateName);
     }
     document.body.classList.add('appear');
+    await waitForLCP(LCP_BLOCKS);
     await loadSection(main.querySelector('.section'), waitForFirstImage);
   }
 
