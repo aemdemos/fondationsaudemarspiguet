@@ -1116,7 +1116,7 @@ main .section.light, main .section.highlight {
   pointer-events: auto;
 }
 
-.da-live-preview .full-width.carousel-container .carousel.hero-banner.vertical:not(.scrollable) .carousel-slides-container {
+.da-live-preview .full-width.carousel-container .carousel.hero-banner.vertical:not(.scrollable) .carousel-slides-container , .da-live-preview .section.hero-container .hero.video.homepage {
   height: 600px;
 }
 
@@ -1494,7 +1494,7 @@ main .section:has(.icons-grid.statistics) {
     padding: 0 80px;
   }
 
-  .da-live-preview .full-width.carousel-container .carousel.hero-banner.vertical:not(.scrollable) .carousel-slides-container {
+  .da-live-preview .full-width.carousel-container .carousel.hero-banner.vertical:not(.scrollable) .carousel-slides-container, .da-live-preview .section.hero-container .hero.video.homepage {
     height: 700px;
   }
 }
@@ -1524,7 +1524,7 @@ main .section:has(.icons-grid.statistics) {
     font-size: 42px; /* Slightly larger for large screens */
   }
 
-  .da-live-preview .full-width.carousel-container .carousel.hero-banner.vertical:not(.scrollable) .carousel-slides-container {
+  .da-live-preview .full-width.carousel-container .carousel.hero-banner.vertical:not(.scrollable) .carousel-slides-container , .da-live-preview .section.hero-container .hero.video.homepage {
     height: 760px;
   }
 }
