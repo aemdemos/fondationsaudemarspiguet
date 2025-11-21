@@ -20,7 +20,7 @@ import {
 import { decorateListingCards, applySectionBackgrounds } from './utils.js';
 
 const LANGUAGES = new Set(['en', 'fr']);
-const LCP_BLOCKS = ['hero.video'];
+const LCP_BLOCKS = ['hero'];
 let language;
 
 /**
