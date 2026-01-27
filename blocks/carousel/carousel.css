@@ -613,23 +613,14 @@
 /* End of Vertical Carousel */
 
 /* Code to Ensure h2 is above the background */
-.carousel-bg-grey {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 100vw;
-  background: var(--projet-bg-page-suite);
-  z-index: 0;
-  pointer-events: none;
-}
 
-/* Project article specific background positioning */
+/* Project article specific carousel background */
 .project-article-template .carousel-wrapper {
   position: relative;
 }
 
 .project-article-template .carousel-bg-grey {
-  /* Dynamically positioned via JavaScript */
+  /* Top and height are set dynamically via JavaScript */
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
