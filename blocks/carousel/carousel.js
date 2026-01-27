@@ -70,22 +70,11 @@ export function showSlide(block, slideIndex = 0) {
         existingBg.remove();
       }
 
-      // Make sure the parent is positioned relative
-      if (getComputedStyle(parent).position === 'static') {
-        parent.style.position = 'relative';
-      }
-
       const bgDiv = document.createElement('div');
       bgDiv.className = 'carousel-bg-grey';
-      bgDiv.style.position = 'absolute';
-      bgDiv.style.left = '50%';
-      bgDiv.style.transform = 'translateX(-50%)';
-      bgDiv.style.width = '100vw';
+      // Set dynamic calculated values
       bgDiv.style.top = `${block.offsetTop + carouselRect.height / 2}px`;
       bgDiv.style.height = `${carouselRect.height}px`;
-      bgDiv.style.background = 'var(--projet-bg-page-suite)'; // Grey color
-      bgDiv.style.zIndex = '0';
-      bgDiv.style.pointerEvents = 'none';
 
       parent.insertBefore(bgDiv, block);
     }, 0);
@@ -331,16 +320,6 @@ export default async function decorate(block) {
   } else {
     // Show the first slide by default
     showSlide(block, 0);
-
-    // Autoplay functionality
-    const autoAdvance = () => {
-      const slides = block.querySelectorAll('.carousel-slide');
-      const current = parseInt(block.dataset.activeSlide, 10) || 0;
-      const next = (current + 1) % slides.length;
-      showSlide(block, next);
-      block.carouselTimer = setTimeout(autoAdvance, 4000); // 4000ms = 4 seconds
-    };
-    block.carouselTimer = setTimeout(autoAdvance, 4000);
 
     if (!isSingleSlide) {
       bindEvents(block);
