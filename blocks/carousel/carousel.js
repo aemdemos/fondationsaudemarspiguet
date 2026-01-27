@@ -62,22 +62,29 @@ export function showSlide(block, slideIndex = 0) {
   // Add grey background behind carousel, starting at its middle
   const templateName = getMetadata('template');
   if (templateName === 'project-article') {
-    setTimeout(() => {
+    // Use requestAnimationFrame to ensure layout is complete
+    requestAnimationFrame(() => {
       const carouselRect = block.getBoundingClientRect();
       const parent = block.parentNode;
       const existingBg = parent.querySelector('.carousel-bg-grey');
+
       if (existingBg) {
         existingBg.remove();
       }
 
+      // Make sure the parent is positioned relative
+      if (getComputedStyle(parent).position === 'static') {
+        parent.style.position = 'relative';
+      }
+
       const bgDiv = document.createElement('div');
       bgDiv.className = 'carousel-bg-grey';
-      // Set dynamic calculated values
+      // Only set the dynamic properties (top and height)
       bgDiv.style.top = `${block.offsetTop + carouselRect.height / 2}px`;
       bgDiv.style.height = `${carouselRect.height}px`;
 
       parent.insertBefore(bgDiv, block);
-    }, 0);
+    });
   }
 }
 
@@ -320,6 +327,16 @@ export default async function decorate(block) {
   } else {
     // Show the first slide by default
     showSlide(block, 0);
+
+    // Autoplay functionality
+    const autoAdvance = () => {
+      const slides = block.querySelectorAll('.carousel-slide');
+      const current = parseInt(block.dataset.activeSlide, 10) || 0;
+      const next = (current + 1) % slides.length;
+      showSlide(block, next);
+      block.carouselTimer = setTimeout(autoAdvance, 4000); // 4000ms = 4 seconds
+    };
+    block.carouselTimer = setTimeout(autoAdvance, 4000);
 
     if (!isSingleSlide) {
       bindEvents(block);
