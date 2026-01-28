@@ -1,5 +1,9 @@
 import { getMetadata, fetchPlaceholders } from '../../scripts/aem.js';
-import { applyFadeUpAnimation } from '../../scripts/utils.js';
+import {
+  applyFadeUpAnimation,
+  getLocalizedMetadata,
+  getLocalizedUILabel,
+} from '../../scripts/utils.js';
 import {
   div, h1, a, ul, li,
 } from '../../scripts/dom-helpers.js';
@@ -25,43 +29,42 @@ export default async function decorate(doc) {
   const carouselContainer = doc.querySelector('.news-article-template .carousel-container');
   const featuredProject = doc.querySelector('.news-article-template .featured-projects-container');
   const sidebar = div({ class: 'news-article-sidebar' });
+
+  // Get language and metadata using the new helper
   const language = getMetadata('language');
-  const links = getMetadata('links');
-  const author = getMetadata('author');
+  const links = getLocalizedMetadata('links', 'newsArticle', doc);
+  const author = getLocalizedMetadata('author', 'newsArticle', doc);
+  const photos = getLocalizedMetadata('photos', 'newsArticle', doc);
+
+  // Get UI labels
+  const photosLabel = getLocalizedUILabel('photos', 'newsArticle', doc);
+  const writtenByLabel = getLocalizedUILabel('writtenBy', 'newsArticle', doc);
+  const followUsLabel = getLocalizedUILabel('followUs', 'newsArticle', doc);
+
   const newsDiv = doc.querySelector('.news-article-template .details-sidebar');
   const viewMoreButton = doc.querySelector('.news-article-template .details-sidebar .default-content-wrapper .button-container');
   const buttonDiv = div({ class: 'button-wrapper' });
   buttonDiv.append(viewMoreButton);
   const rightAlignSidebar = doc.querySelector('.news-article-template .details-sidebar.right');
+
   if (!newsDiv.classList.contains('right')) {
-    let placeholders;
-    if (language === 'en') {
-      placeholders = await fetchPlaceholders('news-article-en-properties');
-    } else {
-      placeholders = await fetchPlaceholders('news-article-fr-properties');
-    }
+    // Fetch language-specific placeholders dynamically
+    const placeholderSheet = `news-article-${language}-properties`;
+    const placeholders = await fetchPlaceholders(placeholderSheet);
+
     const linksArray = links ? links.split(',').map((link) => link.trim()).filter(Boolean) : [];
-    const { singleLink } = placeholders;
-    const { multipleLinks } = placeholders;
+    const { singleLink, multipleLinks } = placeholders;
     const linkLabel = linksArray.length > 1 ? multipleLinks : singleLink;
-    if (language === 'en') {
-      sidebar.innerHTML = `      
-        <div> ${linkLabel} </div>
-        <div class="photos"> Photos </div>
-        <div class="author">Written by</div>
-          ${author}
-        <div> Follow us </div>
-      `;
-    } else if (language === 'fr') {
-      sidebar.innerHTML = `      
-        <div> ${linkLabel} </div>
-        <div class="photos"> Photos </div>
-        <div class="author">Rédaction</div>
-          ${author}
-        <div> Nous suivre </div>
-      `;
-    }
-    const photos = getMetadata('photos');
+
+    // Build sidebar HTML (no language-specific if/else needed!)
+    sidebar.innerHTML = `
+      <div> ${linkLabel} </div>
+      <div class="photos"> ${photosLabel} </div>
+      <div class="author">${writtenByLabel}</div>
+        ${author}
+      <div> ${followUsLabel} </div>
+    `;
+
     const link = a({ href: links }, links);
     const words = photos.trim().split(',');
     const photoList = ul();
@@ -74,17 +77,23 @@ export default async function decorate(doc) {
     sidebar.insertBefore(photoList, sidebar.querySelector('.author'));
     sidebar.appendChild(linkedin);
     const articleContent = newsDiv.querySelector('.default-content-wrapper');
-    const heading = getMetadata('og:title');
+
+    // Get title using the new helper
+    const heading = getLocalizedMetadata('title', 'newsArticle', doc);
     let title;
     if (heading) {
       title = h1(heading);
     }
+
     const newsDetails = div({ class: 'news-details' });
     const categorySection = div({ class: 'news-article-category' });
     const clearDiv = div({ class: 'clear' });
-    categorySection.textContent = getMetadata('category');
+
+    // Get category and date using the new helper
+    categorySection.textContent = getLocalizedMetadata('category', 'newsArticle', doc);
     const dateSection = div({ class: 'news-article-date' });
-    dateSection.textContent = getMetadata('date');
+    dateSection.textContent = getLocalizedMetadata('date', 'newsArticle', doc);
+
     newsDetails.appendChild(categorySection);
     newsDetails.appendChild(dateSection);
     const innerDiv = div({ class: 'news-article-inner' });
@@ -93,19 +102,12 @@ export default async function decorate(doc) {
     articlecontentSection.append(carouselContainer, newsDiv);
     mainSection.append(articlecontentSection, featuredProject);
   } else if (rightAlignSidebar.classList.contains('right')) {
-    if (language === 'en') {
-      sidebar.innerHTML = `
-        <div class="author">Written by</div>
-          ${author}
-        <div> Follow us </div>
-      `;
-    } else if (language === 'fr') {
-      sidebar.innerHTML = `
-        <div class="author">Rédaction</div>
-          ${author}
-        <div> Nous suivre </div>
-      `;
-    }
+    // Build right-aligned sidebar (no language-specific if/else needed!)
+    sidebar.innerHTML = `
+      <div class="author">${writtenByLabel}</div>
+        ${author}
+      <div> ${followUsLabel} </div>
+    `;
     const linkedin = a({ href: 'https://www.linkedin.com/company/audemars-piguet-foundations/', target: '_blank' }, '↳ LinkedIn');
     sidebar.appendChild(linkedin);
     const articleContent = newsDiv.querySelector('.default-content-wrapper');

@@ -1,4 +1,118 @@
 import { div } from './dom-helpers.js';
+import { getMetadata } from './aem.js';
+import { getMetadataKey, getTemplateMetadataMap, getUILabel, getAllUILabels } from './metadata-config.js';
+
+/**
+ * Get localized metadata value based on template type and current language
+ * 
+ * @param {string} fieldName - Logical field name (e.g., 'partner', 'category', 'links')
+ * @param {string} templateType - Template type from metadata-config (e.g., 'newsArticle', 'projectArticle')
+ * @param {Document} doc - Document object to query metadata from (optional, defaults to document)
+ * @returns {string} The metadata value or empty string if not found
+ * 
+ * @example
+ * // Get partner metadata for project article (works for both EN/FR)
+ * const partner = getLocalizedMetadata('partner', 'projectArticle');
+ * 
+ * // Get links metadata for news article
+ * const links = getLocalizedMetadata('links', 'newsArticle');
+ */
+export function getLocalizedMetadata(fieldName, templateType, doc = document) {
+  // Get the current language from metadata
+  const language = getMetadata('language', doc) || 'en';
+  
+  // Get the actual metadata key for this field and language
+  const metadataKey = getMetadataKey(fieldName, templateType, language);
+  
+  if (!metadataKey) {
+    // Fallback: if no mapping exists, try the field name directly
+    // This allows backward compatibility and handles common fields like 'language'
+    return getMetadata(fieldName, doc);
+  }
+  
+  // Get and return the metadata value
+  return getMetadata(metadataKey, doc);
+}
+
+/**
+ * Get multiple localized metadata values at once
+ * 
+ * @param {string[]} fieldNames - Array of logical field names
+ * @param {string} templateType - Template type from metadata-config
+ * @param {Document} doc - Document object to query metadata from (optional)
+ * @returns {object} Object with field names as keys and metadata values as values
+ * 
+ * @example
+ * const metadata = getLocalizedMetadataMultiple(
+ *   ['partner', 'category', 'duration', 'location'],
+ *   'projectArticle'
+ * );
+ * // Returns: { partner: '...', category: '...', duration: '...', location: '...' }
+ */
+export function getLocalizedMetadataMultiple(fieldNames, templateType, doc = document) {
+  const result = {};
+  fieldNames.forEach((fieldName) => {
+    result[fieldName] = getLocalizedMetadata(fieldName, templateType, doc);
+  });
+  return result;
+}
+
+/**
+ * Get all metadata for a template as an object
+ *
+ * @param {string} templateType - Template type from metadata-config
+ * @param {Document} doc - Document object to query metadata from (optional)
+ * @returns {object} Object with all field names and their values
+ *
+ * @example
+ * const allMetadata = getAllLocalizedMetadata('newsArticle');
+ * // Returns: { links: '...', author: '...', photos: '...', ... }
+ */
+export function getAllLocalizedMetadata(templateType, doc = document) {
+  const language = getMetadata('language', doc) || 'en';
+  const metadataMap = getTemplateMetadataMap(templateType, language);
+
+  const result = {};
+  Object.keys(metadataMap).forEach((fieldName) => {
+    result[fieldName] = getLocalizedMetadata(fieldName, templateType, doc);
+  });
+
+  return result;
+}
+
+/**
+ * Get a localized UI label
+ *
+ * @param {string} labelKey - Label key (e.g., 'photos', 'writtenBy', 'partner')
+ * @param {string} templateType - Template type from metadata-config
+ * @param {Document} doc - Document object to query language from (optional)
+ * @returns {string} The localized UI label
+ *
+ * @example
+ * const label = getLocalizedUILabel('writtenBy', 'newsArticle');
+ * // Returns: "Written by" (EN) or "Rédaction" (FR)
+ */
+export function getLocalizedUILabel(labelKey, templateType, doc = document) {
+  const language = getMetadata('language', doc) || 'en';
+  return getUILabel(labelKey, templateType, language);
+}
+
+/**
+ * Get all localized UI labels for a template
+ *
+ * @param {string} templateType - Template type from metadata-config
+ * @param {Document} doc - Document object to query language from (optional)
+ * @returns {object} Object with all UI labels
+ *
+ * @example
+ * const labels = getAllLocalizedUILabels('newsArticle');
+ * // Returns: { photos: 'Photos', writtenBy: 'Written by', followUs: 'Follow us' }
+ */
+export function getAllLocalizedUILabels(templateType, doc = document) {
+  const language = getMetadata('language', doc) || 'en';
+  return getAllUILabels(templateType, language);
+}
+
 
 export function getPathSegments() {
   return window.location.pathname.split('/')
