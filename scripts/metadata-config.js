@@ -1,156 +1,248 @@
 /**
- * Metadata field mappings for different languages
+ * Metadata configuration for multi-language templates
  *
- * Structure:
- * {
- *   templateType: {
- *     language: {
- *       logicalFieldName: 'actual-metadata-key'
- *     }
- *   }
- * }
+ * How to add a new language:
+ * 1. Add language code to SUPPORTED_LANGUAGES
+ * 2. Add translations to SHARED_LABELS and template-specific labels
+ * 3. Add field overrides (only if metadata key differs from base)
  *
- * To add a new language: Add a new language key (e.g., 'de', 'es') with field mappings
- * To add a new field: Add the field to all language blocks
- * To add a new template: Add a new top-level key with language mappings
+ * How to add a new template:
+ * 1. Add entry to TEMPLATES object
+ * 2. Define unique fields and labels (shared ones auto-included)
  */
 
-const METADATA_MAPS = {
-  // News Article Template Metadata
-  // Note: News articles use the same metadata keys for both EN and FR
+// ==================== CONFIGURATION ====================
+
+const SUPPORTED_LANGUAGES = ['en', 'fr'];
+
+const SHARED_FIELDS = {
+  photos: { base: 'photos' },
+  language: { base: 'language' },
+};
+
+const SHARED_LABELS = {
+  photos: {
+    en: 'Photos',
+    fr: 'Photos',
+  },
+};
+
+const TEMPLATES = {
   newsArticle: {
-    en: {
-      links: 'links',
-      author: 'author',
-      photos: 'photos',
-      title: 'og:title',
-      category: 'category',
-      date: 'date',
-      language: 'language',
+    fields: {
+      links: { base: 'links' },
+      author: { base: 'author' },
+      title: { base: 'og:title' },
+      category: { base: 'category' },
+      date: { base: 'date' },
     },
-    fr: {
-      links: 'links',
-      author: 'author',
-      photos: 'photos',
-      title: 'og:title',
-      category: 'category',
-      date: 'date',
-      language: 'language',
+    labels: {
+      writtenBy: {
+        en: 'Written by',
+        fr: 'Rédaction',
+      },
+      followUs: {
+        en: 'Follow us',
+        fr: 'Nous suivre',
+      },
     },
   },
 
-  // Project Article Template Metadata
   projectArticle: {
-    en: {
-      partner: 'partner',
-      category: 'category-ies-',
-      duration: 'project-duration',
-      location: 'location-s-',
-      links: 'link-s-',
-      photos: 'photos',
-      language: 'language',
+    fields: {
+      partner: {
+        base: 'partner',
+        overrides: { fr: 'partenaire' },
+      },
+      category: {
+        base: 'category-ies-',
+        overrides: { fr: 'axe-s-' },
+      },
+      duration: {
+        base: 'project-duration',
+        overrides: { fr: 'dur-e-du-projet' },
+      },
+      location: {
+        base: 'location-s-',
+        overrides: { fr: 'lieu-x-' },
+      },
+      links: {
+        base: 'link-s-',
+        overrides: { fr: 'lien-s-' },
+      },
     },
-    fr: {
-      partner: 'partenaire',
-      category: 'axe-s-',
-      duration: 'dur-e-du-projet',
-      location: 'lieu-x-',
-      links: 'lien-s-',
-      photos: 'photos',
-      language: 'language',
+    labels: {
+      partner: {
+        en: 'Partner',
+        fr: 'Partenaire',
+      },
+      projectDuration: {
+        en: 'Project duration',
+        fr: 'Durée du projet',
+      },
     },
   },
 };
 
-/**
- * UI Labels for different templates and languages
- * These are static labels used in the UI (not from metadata)
- */
-const UI_LABELS = {
-  newsArticle: {
-    en: {
-      photos: 'Photos',
-      writtenBy: 'Written by',
-      followUs: 'Follow us',
-    },
-    fr: {
-      photos: 'Photos',
-      writtenBy: 'Rédaction',
-      followUs: 'Nous suivre',
-    },
-  },
-  projectArticle: {
-    en: {
-      partner: 'Partner',
-      projectDuration: 'Project duration',
-      photos: 'Photos',
-    },
-    fr: {
-      partner: 'Partenaire',
-      projectDuration: 'Durée du projet',
-      photos: 'Photos',
-    },
-  },
-};
+// ==================== INTERNAL HELPERS ====================
+
+// Compose shared and template-specific resources
+function getTemplateConfig(templateType) {
+  const template = TEMPLATES[templateType];
+  if (!template) return null;
+
+  return {
+    fields: { ...SHARED_FIELDS, ...template.fields },
+    labels: { ...SHARED_LABELS, ...template.labels },
+  };
+}
+
+const metadataMapCache = new Map();
+const uiLabelsCache = new Map();
 
 /**
- * Get the metadata key for a given field name and template type
- * @param {string} fieldName - Logical field name (e.g., 'partner', 'category')
+ * Get metadata key for a field
+ * @param {string} fieldName - Field name (e.g., 'partner', 'category')
  * @param {string} templateType - Template type (e.g., 'newsArticle', 'projectArticle')
  * @param {string} language - Language code (e.g., 'en', 'fr')
- * @returns {string|null} The metadata key or null if not found
+ * @returns {string|null} Metadata key or null
  */
 export function getMetadataKey(fieldName, templateType, language) {
-  return METADATA_MAPS[templateType]?.[language]?.[fieldName] || null;
+  const config = getTemplateConfig(templateType);
+  const field = config?.fields?.[fieldName];
+  if (!field) return null;
+
+  return field.overrides?.[language] || field.base;
 }
 
 /**
- * Get all metadata keys for a template type and language
+ * Get all metadata keys for a template
  * @param {string} templateType - Template type (e.g., 'newsArticle', 'projectArticle')
  * @param {string} language - Language code (e.g., 'en', 'fr')
- * @returns {object} Object containing all field mappings for the template/language
+ * @returns {object} All field mappings for the template/language
  */
 export function getTemplateMetadataMap(templateType, language) {
-  return METADATA_MAPS[templateType]?.[language] || {};
+  const cacheKey = `${templateType}:${language}`;
+
+  if (metadataMapCache.has(cacheKey)) {
+    return metadataMapCache.get(cacheKey);
+  }
+
+  const config = getTemplateConfig(templateType);
+  const fields = config?.fields || {};
+  const result = {};
+
+  Object.keys(fields).forEach((fieldName) => {
+    result[fieldName] = getMetadataKey(fieldName, templateType, language);
+  });
+
+  metadataMapCache.set(cacheKey, result);
+  return result;
 }
 
 /**
- * Get UI label for a template type and language
+ * Get UI label (fallback to English if missing)
  * @param {string} labelKey - Label key (e.g., 'photos', 'writtenBy', 'partner')
  * @param {string} templateType - Template type (e.g., 'newsArticle', 'projectArticle')
  * @param {string} language - Language code (e.g., 'en', 'fr')
- * @returns {string} The UI label or the key itself if not found
+ * @returns {string} UI label or key if not found
  */
 export function getUILabel(labelKey, templateType, language) {
-  return UI_LABELS[templateType]?.[language]?.[labelKey] || labelKey;
+  const config = getTemplateConfig(templateType);
+  const label = config?.labels?.[labelKey]?.[language];
+
+  if (!label) {
+    const fallback = config?.labels?.[labelKey]?.en;
+    if (fallback && language !== 'en') {
+      // eslint-disable-next-line no-console
+      console.warn(`Missing ${language} translation for ${templateType}.${labelKey}, using English`);
+    }
+    return fallback || labelKey;
+  }
+
+  return label;
 }
 
 /**
- * Get all UI labels for a template type and language
+ * Get all UI labels for a template
  * @param {string} templateType - Template type (e.g., 'newsArticle', 'projectArticle')
  * @param {string} language - Language code (e.g., 'en', 'fr')
- * @returns {object} Object containing all UI labels for the template/language
+ * @returns {object} All UI labels for the template/language
  */
 export function getAllUILabels(templateType, language) {
-  return UI_LABELS[templateType]?.[language] || {};
+  const cacheKey = `${templateType}:${language}:labels`;
+
+  if (uiLabelsCache.has(cacheKey)) {
+    return uiLabelsCache.get(cacheKey);
+  }
+
+  const config = getTemplateConfig(templateType);
+  const labels = config?.labels || {};
+  const result = {};
+
+  Object.keys(labels).forEach((labelKey) => {
+    result[labelKey] = getUILabel(labelKey, templateType, language);
+  });
+
+  uiLabelsCache.set(cacheKey, result);
+  return result;
 }
 
 /**
- * Check if a template type exists in the configuration
+ * Check if template exists
  * @param {string} templateType - Template type to check
- * @returns {boolean} True if template type exists
+ * @returns {boolean} True if exists
  */
 export function hasTemplateType(templateType) {
-  return !!METADATA_MAPS[templateType];
+  return !!TEMPLATES[templateType];
 }
 
 /**
- * Get all supported languages for a template type
- * @param {string} templateType - Template type
- * @returns {string[]} Array of language codes
+ * Get supported languages
+ * @returns {string[]} Language codes
  */
-export function getSupportedLanguages(templateType) {
-  return METADATA_MAPS[templateType] ? Object.keys(METADATA_MAPS[templateType]) : [];
+export function getSupportedLanguages() {
+  return [...SUPPORTED_LANGUAGES];
 }
+
+/**
+ * Validate configuration for missing translations
+ * @returns {string[]} Error messages (empty if valid)
+ */
+export function validateConfiguration() {
+  const errors = [];
+
+  Object.keys(TEMPLATES).forEach((templateType) => {
+    const config = getTemplateConfig(templateType);
+    const { labels } = config;
+
+    Object.entries(labels || {}).forEach(([labelKey, translations]) => {
+      SUPPORTED_LANGUAGES.forEach((lang) => {
+        if (!translations[lang]) {
+          errors.push(`Missing ${lang} translation for ${templateType}.${labelKey}`);
+        }
+      });
+    });
+  });
+
+  return errors;
+}
+
+if (typeof process !== 'undefined' && process.env?.NODE_ENV === 'development') {
+  const validationErrors = validateConfiguration();
+  if (validationErrors.length > 0) {
+    // eslint-disable-next-line no-console
+    console.warn('Metadata configuration validation warnings:', validationErrors);
+  }
+}
+
+// Legacy default export for backward compatibility
+const METADATA_MAPS = {};
+Object.keys(TEMPLATES).forEach((templateType) => {
+  METADATA_MAPS[templateType] = {};
+  SUPPORTED_LANGUAGES.forEach((lang) => {
+    METADATA_MAPS[templateType][lang] = getTemplateMetadataMap(templateType, lang);
+  });
+});
 
 export default METADATA_MAPS;
