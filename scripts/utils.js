@@ -1,47 +1,51 @@
 import { div } from './dom-helpers.js';
 import { getMetadata } from './aem.js';
-import { getMetadataKey, getTemplateMetadataMap, getUILabel, getAllUILabels } from './metadata-config.js';
+import {
+  getMetadataKey, getTemplateMetadataMap, getUILabel, getAllUILabels,
+} from './metadata-config.js';
 
 /**
  * Get localized metadata value based on template type and current language
- * 
+ *
  * @param {string} fieldName - Logical field name (e.g., 'partner', 'category', 'links')
- * @param {string} templateType - Template type from metadata-config (e.g., 'newsArticle', 'projectArticle')
- * @param {Document} doc - Document object to query metadata from (optional, defaults to document)
+ * @param {string} templateType - Template type from metadata-config
+ *  (e.g., 'newsArticle', 'projectArticle')
+ * @param {Document} doc - Document object to query metadata from
+ *  (optional, defaults to document)
  * @returns {string} The metadata value or empty string if not found
- * 
+ *
  * @example
  * // Get partner metadata for project article (works for both EN/FR)
  * const partner = getLocalizedMetadata('partner', 'projectArticle');
- * 
+ *
  * // Get links metadata for news article
  * const links = getLocalizedMetadata('links', 'newsArticle');
  */
 export function getLocalizedMetadata(fieldName, templateType, doc = document) {
   // Get the current language from metadata
   const language = getMetadata('language', doc) || 'en';
-  
+
   // Get the actual metadata key for this field and language
   const metadataKey = getMetadataKey(fieldName, templateType, language);
-  
+
   if (!metadataKey) {
     // Fallback: if no mapping exists, try the field name directly
     // This allows backward compatibility and handles common fields like 'language'
     return getMetadata(fieldName, doc);
   }
-  
+
   // Get and return the metadata value
   return getMetadata(metadataKey, doc);
 }
 
 /**
  * Get multiple localized metadata values at once
- * 
+ *
  * @param {string[]} fieldNames - Array of logical field names
  * @param {string} templateType - Template type from metadata-config
  * @param {Document} doc - Document object to query metadata from (optional)
  * @returns {object} Object with field names as keys and metadata values as values
- * 
+ *
  * @example
  * const metadata = getLocalizedMetadataMultiple(
  *   ['partner', 'category', 'duration', 'location'],
@@ -112,7 +116,6 @@ export function getAllLocalizedUILabels(templateType, doc = document) {
   const language = getMetadata('language', doc) || 'en';
   return getAllUILabels(templateType, language);
 }
-
 
 export function getPathSegments() {
   return window.location.pathname.split('/')
