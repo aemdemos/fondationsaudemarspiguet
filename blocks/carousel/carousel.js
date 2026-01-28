@@ -62,10 +62,12 @@ export function showSlide(block, slideIndex = 0) {
   // Add grey background behind carousel, starting at its middle
   const templateName = getMetadata('template');
   if (templateName === 'project-article') {
-    setTimeout(() => {
+    // Use requestAnimationFrame to ensure layout is complete
+    requestAnimationFrame(() => {
       const carouselRect = block.getBoundingClientRect();
       const parent = block.parentNode;
       const existingBg = parent.querySelector('.carousel-bg-grey');
+
       if (existingBg) {
         existingBg.remove();
       }
@@ -77,18 +79,12 @@ export function showSlide(block, slideIndex = 0) {
 
       const bgDiv = document.createElement('div');
       bgDiv.className = 'carousel-bg-grey';
-      bgDiv.style.position = 'absolute';
-      bgDiv.style.left = '50%';
-      bgDiv.style.transform = 'translateX(-50%)';
-      bgDiv.style.width = '100vw';
+      // Only set the dynamic properties (top and height)
       bgDiv.style.top = `${block.offsetTop + carouselRect.height / 2}px`;
       bgDiv.style.height = `${carouselRect.height}px`;
-      bgDiv.style.background = 'var(--projet-bg-page-suite)'; // Grey color
-      bgDiv.style.zIndex = '0';
-      bgDiv.style.pointerEvents = 'none';
 
       parent.insertBefore(bgDiv, block);
-    }, 0);
+    });
   }
 }
 

@@ -613,9 +613,20 @@
 /* End of Vertical Carousel */
 
 /* Code to Ensure h2 is above the background */
-.carousel-bg-grey {
-  z-index: 0;
+
+/* Project article specific carousel background */
+.project-article-template .carousel-wrapper {
+  position: relative;
+}
+
+.project-article-template .carousel-bg-grey {
+  /* Top and height are set dynamically via JavaScript */
   position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100vw;
+  background: var(--projet-bg-page-suite);
+  z-index: 0;
   pointer-events: none;
 }
 
@@ -635,6 +646,10 @@
 
 .carousel-container .carousel-wrapper {
   width: 100%;
+  position: relative;
+}
+
+.project-article-template.carousel-container > .carousel-wrapper {
   position: relative;
 }
 
