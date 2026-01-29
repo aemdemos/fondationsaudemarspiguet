@@ -2,7 +2,7 @@ import { div } from './dom-helpers.js';
 import { getMetadata } from './aem.js';
 import {
   getMetadataKey, getTemplateMetadataMap, getUILabel,
-} from './metadata-api.js';
+} from './metadata/api.js';
 
 /**
  * Get localized metadata value for a field
