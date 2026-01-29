@@ -1,103 +1,72 @@
 import { getMetadata, fetchPlaceholders } from '../../scripts/aem.js';
+import { getLocalizedMetadata, getLocalizedUILabel } from '../../scripts/utils.js';
 
 export default async function decorate() {
   const sidebar = document.createElement('div');
   sidebar.className = 'project-article-sidebar';
-  const language = getMetadata('language');
-  let placeholders;
-  if (language === 'en') {
-    placeholders = await fetchPlaceholders('projects-article-en-properties');
-  } else {
-    placeholders = await fetchPlaceholders('projects-article-fr-properties');
-  }
-  if (language === 'en') {
-    const partner = getMetadata('partner');
-    const category = getMetadata('category-ies-');
-    const categoryArray = category ? category.split('|').map((link) => link.trim()).filter(Boolean) : [];
-    const { singleCategory } = placeholders;
-    const { multipleCategory } = placeholders;
-    const categoryLabel = categoryArray.length > 1 ? multipleCategory : singleCategory;
-    const duration = getMetadata('project-duration');
-    const location = getMetadata('location-s-');
-    const locationArray = location ? location.split('|').map((link) => link.trim()).filter(Boolean) : [];
-    const { singleLocation } = placeholders;
-    const { multipleLocation } = placeholders;
-    const locationLabel = locationArray.length > 1 ? multipleLocation : singleLocation;
-    const links = getMetadata('link-s-');
-    const linksArray = links ? links.split(',').map((link) => link.trim()).filter(Boolean) : [];
-    const { singleLink } = placeholders;
-    const { multipleLinks } = placeholders;
-    const linkLabel = linksArray.length > 1 ? multipleLinks : singleLink;
-    const photos = getMetadata('photos');
-    const words = photos.trim().split(/\s+/);
-    const photoList = document.createElement('ul');
-    for (let i = 0; i < words.length; i += 2) {
-      const li = document.createElement('li');
-      li.textContent = `${words[i]} ${words[i + 1] || ''}`.trim();
-      photoList.appendChild(li);
-    }
-    const link = document.createElement('a');
-    link.href = links;
-    link.textContent = links;
-    sidebar.innerHTML = `
-      <div> Partner </div>
-        ${partner}
-      <div> ${categoryLabel} </div>
-        ${category}
-      <div> Project duration </div>
-        ${duration}
-      <div> ${locationLabel} </div>
-        ${location}
-      <div> ${linkLabel} </div>
-      <div class="photos"> Photos </div>
-    `;
-    sidebar.insertBefore(link, sidebar.querySelector('div:last-child'));
-    sidebar.appendChild(photoList);
-  } else if (language === 'fr') {
-    const partner = getMetadata('partenaire');
-    const category = getMetadata('axe-s-');
-    const categoryArray = category ? category.split('|').map((link) => link.trim()).filter(Boolean) : [];
-    const { singleCategory } = placeholders;
-    const { multipleCategory } = placeholders;
-    const categoryLabel = categoryArray.length > 1 ? multipleCategory : singleCategory;
-    const duration = getMetadata('dur-e-du-projet');
-    const location = getMetadata('lieu-x-');
-    const locationArray = location ? location.split('|').map((link) => link.trim()).filter(Boolean) : [];
-    const { singleLocation } = placeholders;
-    const { multipleLocation } = placeholders;
-    const locationLabel = locationArray.length > 1 ? multipleLocation : singleLocation;
-    const links = getMetadata('lien-s-');
-    const linksArray = links ? links.split(',').map((link) => link.trim()).filter(Boolean) : [];
-    const { singleLink } = placeholders;
-    const { multipleLinks } = placeholders;
-    const linkLabel = linksArray.length > 1 ? multipleLinks : singleLink;
-    const photos = getMetadata('photos');
-    const words = photos.trim().split(/\s+/);
-    const photoList = document.createElement('ul');
-    for (let i = 0; i < words.length; i += 2) {
-      const li = document.createElement('li');
-      li.textContent = `${words[i]} ${words[i + 1] || ''}`.trim();
-      photoList.appendChild(li);
-    }
 
-    const link = document.createElement('a');
-    link.href = links;
-    link.textContent = links;
-    sidebar.innerHTML = `
-      <div> Partenaire </div>
-        ${partner}
-      <div> ${categoryLabel} </div>
-        ${category}
-      <div>Durée du projet </div>
-        ${duration}
-      <div> ${locationLabel} </div>
-        ${location}
-      <div> ${linkLabel} </div>
-      <div class="photos"> Photos </div>
-    `;
-    sidebar.insertBefore(link, sidebar.querySelector('div:last-child'));
-    sidebar.appendChild(photoList);
+  // Get language and fetch placeholders dynamically
+  const language = getMetadata('language');
+  const placeholderSheet = `projects-article-${language}-properties`;
+  const placeholders = await fetchPlaceholders(placeholderSheet);
+
+  // Get all metadata using the new helper function
+  const partner = getLocalizedMetadata('partner', 'projectArticle');
+  const category = getLocalizedMetadata('category', 'projectArticle');
+  const duration = getLocalizedMetadata('duration', 'projectArticle');
+  const location = getLocalizedMetadata('location', 'projectArticle');
+  const links = getLocalizedMetadata('links', 'projectArticle');
+  const photos = getLocalizedMetadata('photos', 'projectArticle');
+
+  // Get UI labels (no if/else needed!)
+  const partnerLabel = getLocalizedUILabel('partner', 'projectArticle');
+  const durationLabel = getLocalizedUILabel('projectDuration', 'projectArticle');
+  const photosLabel = getLocalizedUILabel('photos', 'projectArticle');
+
+  // Process arrays for plural/singular labels
+  const categoryArray = category ? category.split('|').map((link) => link.trim()).filter(Boolean) : [];
+  const { singleCategory, multipleCategory } = placeholders;
+  const categoryLabel = categoryArray.length > 1 ? multipleCategory : singleCategory;
+
+  const locationArray = location ? location.split('|').map((link) => link.trim()).filter(Boolean) : [];
+  const { singleLocation, multipleLocation } = placeholders;
+  const locationLabel = locationArray.length > 1 ? multipleLocation : singleLocation;
+
+  const linksArray = links ? links.split(',').map((link) => link.trim()).filter(Boolean) : [];
+  const { singleLink, multipleLinks } = placeholders;
+  const linkLabel = linksArray.length > 1 ? multipleLinks : singleLink;
+
+  // Create photo list
+  const words = photos.trim().split(/\s+/);
+  const photoList = document.createElement('ul');
+  for (let i = 0; i < words.length; i += 2) {
+    const li = document.createElement('li');
+    li.textContent = `${words[i]} ${words[i + 1] || ''}`.trim();
+    photoList.appendChild(li);
   }
+
+  // Create link element
+  const link = document.createElement('a');
+  link.href = links;
+  link.textContent = links;
+
+  // Build sidebar HTML (no language-specific if/else needed!)
+  sidebar.innerHTML = `
+    <div> ${partnerLabel} </div>
+      ${partner}
+    <div> ${categoryLabel} </div>
+      ${category}
+    <div> ${durationLabel} </div>
+      ${duration}
+    <div> ${locationLabel} </div>
+      ${location}
+    <div> ${linkLabel} </div>
+    <div class="photos"> ${photosLabel} </div>
+  `;
+
+  sidebar.insertBefore(link, sidebar.querySelector('div:last-child'));
+  sidebar.appendChild(photoList);
+
   const projectDiv = document.querySelector('.project-article-template .details-sidebar');
   const articleContent = projectDiv.querySelector('.default-content-wrapper');
   const heading = projectDiv.querySelector('.default-content-wrapper h1');

@@ -1,4 +1,71 @@
 import { div } from './dom-helpers.js';
+import { getMetadata } from './aem.js';
+import {
+  getMetadataKey, getTemplateMetadataMap, getUILabel,
+} from './metadata/api.js';
+
+/**
+ * Get localized metadata value for a field
+ * @param {string} fieldName - Field name (e.g., 'partner', 'category')
+ * @param {string} templateType - Template type (e.g., 'newsArticle', 'projectArticle')
+ * @param {Document} doc - Document object (optional)
+ * @returns {string} Metadata value or empty string
+ */
+export function getLocalizedMetadata(fieldName, templateType, doc = document) {
+  const language = getMetadata('language', doc) || 'en';
+  const metadataKey = getMetadataKey(fieldName, templateType, language);
+
+  if (!metadataKey) {
+    return getMetadata(fieldName, doc);
+  }
+
+  return getMetadata(metadataKey, doc);
+}
+
+/**
+ * Get multiple localized metadata values
+ * @param {string[]} fieldNames - Array of field names
+ * @param {string} templateType - Template type
+ * @param {Document} doc - Document object (optional)
+ * @returns {object} Object with field names and values
+ */
+export function getLocalizedMetadataMultiple(fieldNames, templateType, doc = document) {
+  const result = {};
+  fieldNames.forEach((fieldName) => {
+    result[fieldName] = getLocalizedMetadata(fieldName, templateType, doc);
+  });
+  return result;
+}
+
+/**
+ * Get all metadata for a template
+ * @param {string} templateType - Template type
+ * @param {Document} doc - Document object (optional)
+ * @returns {object} All field names and values
+ */
+export function getAllLocalizedMetadata(templateType, doc = document) {
+  const language = getMetadata('language', doc) || 'en';
+  const metadataMap = getTemplateMetadataMap(templateType, language);
+
+  const result = {};
+  Object.keys(metadataMap).forEach((fieldName) => {
+    result[fieldName] = getLocalizedMetadata(fieldName, templateType, doc);
+  });
+
+  return result;
+}
+
+/**
+ * Get localized UI label
+ * @param {string} labelKey - Label key (e.g., 'photos', 'writtenBy')
+ * @param {string} templateType - Template type
+ * @param {Document} doc - Document object (optional)
+ * @returns {string} Localized UI label
+ */
+export function getLocalizedUILabel(labelKey, templateType, doc = document) {
+  const language = getMetadata('language', doc) || 'en';
+  return getUILabel(labelKey, templateType, language);
+}
 
 export function getPathSegments() {
   return window.location.pathname.split('/')
@@ -8,7 +75,6 @@ export function getPathSegments() {
 export function applyFadeUpAnimation(targetElement, parentContainer) {
   const isBanner = targetElement.classList.contains('horizontal-banner');
 
-  // Create a wrapper div for the fade-up effect
   const targetWrapper = div({ class: 'image-fade-wrapper' });
   targetWrapper.style.opacity = '0';
   targetWrapper.style.transform = 'translateY(100px)';
@@ -114,7 +180,6 @@ export async function setClassDataBg() {
 
     const jsonData = await response.json();
 
-    // Find the background option in the options.data array
     const backgroundOption = jsonData.options?.data?.find(
       (item) => item.key === 'background',
     );
@@ -123,15 +188,12 @@ export async function setClassDataBg() {
       return null;
     }
 
-    // Parse the values string into an object
     const backgroundValues = {};
     const valuesString = backgroundOption.values;
 
-    // Split by " | " and parse each background value
     const valuesList = valuesString.split('|').map((val) => val.trim());
 
     valuesList.forEach((valueItem) => {
-      // Parse format like "cream-bg=#f8f7f2"
       const [name, colorCode] = valueItem.split('=');
       if (name && colorCode) {
         backgroundValues[name.trim()] = colorCode.trim();
@@ -146,7 +208,6 @@ export async function setClassDataBg() {
 
 export async function applySectionBackgrounds() {
   try {
-    // Get the background values from the JSON
     const backgroundValues = await setClassDataBg();
     if (!backgroundValues) {
       return;
@@ -164,12 +225,8 @@ export async function applySectionBackgrounds() {
         (key) => backgroundValues[key] === dataBackgroundValue,
       );
 
-      if (matchingKey) {
-        // Check if the div already has this class
-        if (!sectionDiv.classList.contains(matchingKey)) {
-          // Add the background class
-          sectionDiv.classList.add(matchingKey);
-        }
+      if (matchingKey && !sectionDiv.classList.contains(matchingKey)) {
+        sectionDiv.classList.add(matchingKey);
       }
     });
   } catch (error) {
