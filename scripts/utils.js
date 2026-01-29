@@ -1,57 +1,33 @@
 import { div } from './dom-helpers.js';
 import { getMetadata } from './aem.js';
 import {
-  getMetadataKey, getTemplateMetadataMap, getUILabel, getAllUILabels,
-} from './metadata-config.js';
+  getMetadataKey, getTemplateMetadataMap, getUILabel,
+} from './metadata-api.js';
 
 /**
- * Get localized metadata value based on template type and current language
- *
- * @param {string} fieldName - Logical field name (e.g., 'partner', 'category', 'links')
- * @param {string} templateType - Template type from metadata-config
- *  (e.g., 'newsArticle', 'projectArticle')
- * @param {Document} doc - Document object to query metadata from
- *  (optional, defaults to document)
- * @returns {string} The metadata value or empty string if not found
- *
- * @example
- * // Get partner metadata for project article (works for both EN/FR)
- * const partner = getLocalizedMetadata('partner', 'projectArticle');
- *
- * // Get links metadata for news article
- * const links = getLocalizedMetadata('links', 'newsArticle');
+ * Get localized metadata value for a field
+ * @param {string} fieldName - Field name (e.g., 'partner', 'category')
+ * @param {string} templateType - Template type (e.g., 'newsArticle', 'projectArticle')
+ * @param {Document} doc - Document object (optional)
+ * @returns {string} Metadata value or empty string
  */
 export function getLocalizedMetadata(fieldName, templateType, doc = document) {
-  // Get the current language from metadata
   const language = getMetadata('language', doc) || 'en';
-
-  // Get the actual metadata key for this field and language
   const metadataKey = getMetadataKey(fieldName, templateType, language);
 
   if (!metadataKey) {
-    // Fallback: if no mapping exists, try the field name directly
-    // This allows backward compatibility and handles common fields like 'language'
     return getMetadata(fieldName, doc);
   }
 
-  // Get and return the metadata value
   return getMetadata(metadataKey, doc);
 }
 
 /**
- * Get multiple localized metadata values at once
- *
- * @param {string[]} fieldNames - Array of logical field names
- * @param {string} templateType - Template type from metadata-config
- * @param {Document} doc - Document object to query metadata from (optional)
- * @returns {object} Object with field names as keys and metadata values as values
- *
- * @example
- * const metadata = getLocalizedMetadataMultiple(
- *   ['partner', 'category', 'duration', 'location'],
- *   'projectArticle'
- * );
- * // Returns: { partner: '...', category: '...', duration: '...', location: '...' }
+ * Get multiple localized metadata values
+ * @param {string[]} fieldNames - Array of field names
+ * @param {string} templateType - Template type
+ * @param {Document} doc - Document object (optional)
+ * @returns {object} Object with field names and values
  */
 export function getLocalizedMetadataMultiple(fieldNames, templateType, doc = document) {
   const result = {};
@@ -62,15 +38,10 @@ export function getLocalizedMetadataMultiple(fieldNames, templateType, doc = doc
 }
 
 /**
- * Get all metadata for a template as an object
- *
- * @param {string} templateType - Template type from metadata-config
- * @param {Document} doc - Document object to query metadata from (optional)
- * @returns {object} Object with all field names and their values
- *
- * @example
- * const allMetadata = getAllLocalizedMetadata('newsArticle');
- * // Returns: { links: '...', author: '...', photos: '...', ... }
+ * Get all metadata for a template
+ * @param {string} templateType - Template type
+ * @param {Document} doc - Document object (optional)
+ * @returns {object} All field names and values
  */
 export function getAllLocalizedMetadata(templateType, doc = document) {
   const language = getMetadata('language', doc) || 'en';
@@ -85,36 +56,15 @@ export function getAllLocalizedMetadata(templateType, doc = document) {
 }
 
 /**
- * Get a localized UI label
- *
- * @param {string} labelKey - Label key (e.g., 'photos', 'writtenBy', 'partner')
- * @param {string} templateType - Template type from metadata-config
- * @param {Document} doc - Document object to query language from (optional)
- * @returns {string} The localized UI label
- *
- * @example
- * const label = getLocalizedUILabel('writtenBy', 'newsArticle');
- * // Returns: "Written by" (EN) or "Rédaction" (FR)
+ * Get localized UI label
+ * @param {string} labelKey - Label key (e.g., 'photos', 'writtenBy')
+ * @param {string} templateType - Template type
+ * @param {Document} doc - Document object (optional)
+ * @returns {string} Localized UI label
  */
 export function getLocalizedUILabel(labelKey, templateType, doc = document) {
   const language = getMetadata('language', doc) || 'en';
   return getUILabel(labelKey, templateType, language);
-}
-
-/**
- * Get all localized UI labels for a template
- *
- * @param {string} templateType - Template type from metadata-config
- * @param {Document} doc - Document object to query language from (optional)
- * @returns {object} Object with all UI labels
- *
- * @example
- * const labels = getAllLocalizedUILabels('newsArticle');
- * // Returns: { photos: 'Photos', writtenBy: 'Written by', followUs: 'Follow us' }
- */
-export function getAllLocalizedUILabels(templateType, doc = document) {
-  const language = getMetadata('language', doc) || 'en';
-  return getAllUILabels(templateType, language);
 }
 
 export function getPathSegments() {
@@ -125,7 +75,6 @@ export function getPathSegments() {
 export function applyFadeUpAnimation(targetElement, parentContainer) {
   const isBanner = targetElement.classList.contains('horizontal-banner');
 
-  // Create a wrapper div for the fade-up effect
   const targetWrapper = div({ class: 'image-fade-wrapper' });
   targetWrapper.style.opacity = '0';
   targetWrapper.style.transform = 'translateY(100px)';
@@ -231,7 +180,6 @@ export async function setClassDataBg() {
 
     const jsonData = await response.json();
 
-    // Find the background option in the options.data array
     const backgroundOption = jsonData.options?.data?.find(
       (item) => item.key === 'background',
     );
@@ -240,15 +188,12 @@ export async function setClassDataBg() {
       return null;
     }
 
-    // Parse the values string into an object
     const backgroundValues = {};
     const valuesString = backgroundOption.values;
 
-    // Split by " | " and parse each background value
     const valuesList = valuesString.split('|').map((val) => val.trim());
 
     valuesList.forEach((valueItem) => {
-      // Parse format like "cream-bg=#f8f7f2"
       const [name, colorCode] = valueItem.split('=');
       if (name && colorCode) {
         backgroundValues[name.trim()] = colorCode.trim();
@@ -263,7 +208,6 @@ export async function setClassDataBg() {
 
 export async function applySectionBackgrounds() {
   try {
-    // Get the background values from the JSON
     const backgroundValues = await setClassDataBg();
     if (!backgroundValues) {
       return;
@@ -281,12 +225,8 @@ export async function applySectionBackgrounds() {
         (key) => backgroundValues[key] === dataBackgroundValue,
       );
 
-      if (matchingKey) {
-        // Check if the div already has this class
-        if (!sectionDiv.classList.contains(matchingKey)) {
-          // Add the background class
-          sectionDiv.classList.add(matchingKey);
-        }
+      if (matchingKey && !sectionDiv.classList.contains(matchingKey)) {
+        sectionDiv.classList.add(matchingKey);
       }
     });
   } catch (error) {
