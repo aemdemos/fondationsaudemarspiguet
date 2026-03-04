@@ -694,6 +694,7 @@
   display: block;
   overflow-y: auto;
   scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
   height: 100vh; /* each viewport shows one slide */
 }
 
