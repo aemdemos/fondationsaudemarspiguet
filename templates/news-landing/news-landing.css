@@ -171,9 +171,11 @@ main .news-listing {
 .news-listing .news-image-wrapper {
     width: 100%;
     background-size: cover;
-    display: inline-block;
+    display: block;
     position: relative;
-    padding-bottom: 75%;
+    padding-bottom: 0;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
 }
 
 .news-listing .news-image-wrapper img {
