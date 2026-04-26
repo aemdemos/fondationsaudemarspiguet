@@ -233,14 +233,26 @@ export default async function decorate(block) {
     });
   }
 
-  const scrollLimit = block.querySelector('header .nav-wrapper').offsetHeight;
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > scrollLimit) {
-      navWrapper.classList.add('non-sticky');
-    } else {
-      navWrapper.classList.remove('non-sticky');
-    }
-  });
+  const scrollLimit = navWrapper.offsetHeight;
+  let lastScrollY = window.scrollY;
+  if (window.scrollY > scrollLimit) {
+    navWrapper.classList.add('non-sticky');
+  }
+  window.addEventListener(
+    'scroll',
+    () => {
+      const y = window.scrollY;
+      if (y <= scrollLimit) {
+        navWrapper.classList.remove('non-sticky');
+      } else if (y < lastScrollY - 2) {
+        navWrapper.classList.remove('non-sticky');
+      } else if (y > lastScrollY + 2) {
+        navWrapper.classList.add('non-sticky');
+      }
+      lastScrollY = y;
+    },
+    { passive: true },
+  );
 
   const currentUrl = window.location.href;
   const menuLinks = nav.querySelectorAll('.default-content-wrapper > ul > li a');
