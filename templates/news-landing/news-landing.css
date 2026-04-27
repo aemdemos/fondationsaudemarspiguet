@@ -170,20 +170,22 @@ main .news-listing {
 
 .news-listing .news-image-wrapper {
     width: 100%;
+    aspect-ratio: 4.5 / 3;
     background-size: cover;
-    display: inline-block;
+    display: block;
     position: relative;
-    padding-bottom: 75%;
+    overflow: hidden;
+    box-sizing: border-box;
 }
 
 .news-listing .news-image-wrapper img {
     position: absolute !important;
-    top: 0;
-    left: 0;
+    inset: 0;
+    width: 100% !important;
     height: 100% !important;
-    width: 100%;
     max-width: 100% !important;
     object-fit: cover;
+    object-position: center;
 }
 
 .news-listing .news-item {
@@ -305,18 +307,27 @@ main .news-listing {
         height: auto;
     }
 
+    .news-listing .news-item.horizontal-banner {
+        display: flow-root;
+    }
+
+    /* Same image ratio as other cards; width matches one column of the 2-col grid (50% − half gap). */
     .news-listing .news-item.horizontal-banner .news-image-wrapper {
-        width: calc((((100% - (12 * 30px)) / 12) * 6) + (5 * 30px));
+        width: calc(50% - 15px);
+        aspect-ratio: 4.5 / 3;
         background-size: cover;
         position: relative;
         float: left;
-        margin: 15px;
+        margin: 0 30px 0 0;
+        overflow: hidden;
+        box-sizing: border-box;
     }
 
     .news-listing .news-item.horizontal-banner .news-content-wrapper {
-        width: calc((((100% - (12 * 30px)) / 12) * 6) + (5 * 30px));
+        width: calc(50% - 15px);
         float: right;
-        margin: 15px;
+        margin: 0;
+        box-sizing: border-box;
     }
 
     main .section .filter-container {
