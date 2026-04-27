@@ -89,7 +89,7 @@ main .filter-container .search-input::placeholder {
     color: var(--input-placeholder-color);
 }
 
-main .filter-container .news-listing-container-left, 
+main .filter-container .news-listing-container-left,
 main .filter-container .news-listing-container-left .category-section,
 main .filter-container .news-listing-container-left .search-section {
     display: inline-block
@@ -168,22 +168,30 @@ main .news-listing {
     height: auto;
 }
 
+/*
+ * Image frame matches legacy site (.gallery_listing_format):
+ * padding-top 65.714285714286% of width => aspect-ratio width/height = 35/23
+ */
 .news-listing .news-image-wrapper {
     width: 100%;
-    background-size: cover;
     display: inline-block;
     position: relative;
-    padding-bottom: 75%;
+    overflow: hidden;
+    font-size: 0;
+    vertical-align: top;
+    aspect-ratio: 35 / 23;
+    background-size: cover;
 }
 
-.news-listing .news-image-wrapper img {
+main .news-listing .news-image-wrapper img {
     position: absolute !important;
     top: 0;
     left: 0;
+    width: 100% !important;
     height: 100% !important;
-    width: 100%;
-    max-width: 100% !important;
+    max-width: none !important;
     object-fit: cover;
+    object-position: center;
 }
 
 .news-listing .news-item {
@@ -260,8 +268,8 @@ main .news-listing {
     background-color: var(--news-bg-enavant);
 }
 
-.news-listing > .image-fade-wrapper {
-  display: grid;
+.news-listing>.image-fade-wrapper {
+    display: grid;
 }
 
 .news-listing .image-fade-wrapper.horizontal-banner {
@@ -281,11 +289,11 @@ main .news-listing {
 }
 
 .biencommun main .filter-container .news-listing-container-right .filter-top-btn {
-  background-image: url('/icons/btn_bien_filtre_top.svg');
+    background-image: url('/icons/btn_bien_filtre_top.svg');
 }
 
 .biencommun main .filter-container .news-listing-container-right .filter-bottom-btn {
-  background-image: url('/icons/btn_bien_filtre_bottom.svg');
+    background-image: url('/icons/btn_bien_filtre_bottom.svg');
 }
 
 .biencommun main .filter-container .category-dropdown ul li {
@@ -293,7 +301,7 @@ main .news-listing {
     color: var(--biencommun-site-color-2);
 }
 
-@media (width >= 900px) {
+@media (width >=900px) {
     main .news-listing {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
@@ -307,7 +315,6 @@ main .news-listing {
 
     .news-listing .news-item.horizontal-banner .news-image-wrapper {
         width: calc((((100% - (12 * 30px)) / 12) * 6) + (5 * 30px));
-        background-size: cover;
         position: relative;
         float: left;
         margin: 15px;
@@ -328,9 +335,9 @@ main .news-listing {
     }
 
     main .filter-container .news-listing-container-left {
-    display: flex;
-    align-items: center;
-    margin-bottom: 20px;
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
     }
 
     main .filter-container .news-listing-container-right {
@@ -338,7 +345,7 @@ main .news-listing {
     }
 }
 
-@media (width >= 1200px) {
+@media (width >=1200px) {
     main .filter-container .search-input {
         padding-right: 100px;
     }
