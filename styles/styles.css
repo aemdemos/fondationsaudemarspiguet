@@ -1023,8 +1023,8 @@ main>.section.colored-text.columns-container>div.default-content-wrapper p {
     padding: 0 80px;
   }
 
-  main>.section.colored-text>div.default-content-wrapper p {
-    padding: 75px 80px 100px;
+  main>.section.colored-text>div.default-content-wrapper p.button-container {
+    padding: 0;
   }
 
   main>.section.colored-text.columns-container>div.default-content-wrapper p {
@@ -1062,7 +1062,7 @@ main>.section.colored-text.columns-container>div.default-content-wrapper p {
   }
 
   main .section:has(.icons-grid.statistics) .cards-wrapper {
-    padding: 50px 80px;
+    padding: 40px 80px;
   }
 
   body.fondations main .section.float-right .default-content-wrapper .content-wrapper ul li {
