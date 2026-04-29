@@ -8,6 +8,10 @@ footer .footer .section.newsletter-section {
   padding: 25px 0;
 }
 
+.newsletter.hide-newsletter-section footer .footer .section.newsletter-section {
+  display: none;
+}
+
 footer .footer .section.beige-bg {
   background-color: var(--newsletter-bg);
 }

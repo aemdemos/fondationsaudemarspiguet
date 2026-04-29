@@ -98,6 +98,10 @@ body.news-article main .section.details-sidebar.light-grey-bg + * {
     background-color: var(--news-bg-page-suite);
 }
 
+body.news-article main .section.details-sidebar.light-grey-bg + .section.featured-projects-container {
+    background-color: unset;
+}
+
 body.news-article main .section.white-lilac-bg {
     background-color: var(--news-sophis-bg-text2);
 }
@@ -136,7 +140,7 @@ body.news-article main .section.details-sidebar .news-article-inner a {
     color: var(--text-color);
 }
 
-body.biencommun main .section.details-sidebar .button-wrapper .button-container a {
+body.news-article.biencommun main .section.details-sidebar .button-wrapper .button-container a {
     background-color: var(--site-color-bien);
 }
 
