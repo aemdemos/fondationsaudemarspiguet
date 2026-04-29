@@ -680,6 +680,23 @@
   height: 100%;
 }
 
+/* Section > .carousel-wrapper inherits main>.section>div { max-width: 1440px; padding }
+   so hero stops at ~1440px on large screens. Break out to viewport (body.fondations — not
+   body.fondations.homepage: "homepage" is on the carousel block, not always on body). */
+body.fondations main > .section.carousel-container:has(.carousel.hero-banner) > .carousel-wrapper {
+  max-width: none;
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body.fondations main > .section.carousel-container:has(.carousel.hero-banner) .carousel.hero-banner {
+  width: 100%;
+  max-width: none;
+}
+
 .carousel-container .carousel.hero-banner.scrollable {
   height: 100%;
 }
@@ -710,9 +727,37 @@
   scroll-snap-align: start !important;
   display: flex;
   flex-direction: column;
+  /* Default .carousel-slide uses align-items: flex-start — image column then shrinks to
+     intrinsic photo width; stretch so media spans full slide width (see fondations homepage). */
+  align-items: stretch;
   position: relative;
   transition: background-color 3s ease-in-out, opacity 3s ease-in-out;
   opacity: 1;
+}
+
+.carousel-container .carousel.hero-banner.scrollable .carousel-slide .carousel-slide-image {
+  position: relative;
+  width: 100%;
+  flex: 1 1 auto;
+  min-height: 0;
+}
+
+.carousel-container .carousel.hero-banner.scrollable .carousel-slide .carousel-slide-image picture {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.carousel-container .carousel.hero-banner.scrollable .carousel-slide .carousel-slide-image picture > img {
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  min-width: 100%;
+  object-fit: cover;
+  object-position: center center;
+  aspect-ratio: unset;
 }
 
 .carousel-container .carousel.hero-banner.scrollable .carousel-slide .slide-color {

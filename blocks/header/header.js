@@ -233,14 +233,34 @@ export default async function decorate(block) {
     });
   }
 
-  const scrollLimit = block.querySelector('header .nav-wrapper').offsetHeight;
+  const scrollLimit = navWrapper.offsetHeight;
+  let lastScrollY = window.scrollY;
+  const scrollThresholdPx = 5;
+
   window.addEventListener('scroll', () => {
-    if (window.scrollY > scrollLimit) {
+    const y = window.scrollY;
+    const mobileStyleNav = !isDesktop.matches || isFondations;
+    if (mobileStyleNav && nav.getAttribute('aria-expanded') === 'true') {
+      navWrapper.classList.remove('non-sticky');
+      lastScrollY = y;
+      return;
+    }
+    if (y <= scrollLimit) {
+      navWrapper.classList.remove('non-sticky');
+      lastScrollY = y;
+      return;
+    }
+    if (Math.abs(y - lastScrollY) < scrollThresholdPx) {
+      return;
+    }
+    const scrollingDown = y > lastScrollY;
+    lastScrollY = y;
+    if (scrollingDown) {
       navWrapper.classList.add('non-sticky');
     } else {
       navWrapper.classList.remove('non-sticky');
     }
-  });
+  }, { passive: true });
 
   const currentUrl = window.location.href;
   const menuLinks = nav.querySelectorAll('.default-content-wrapper > ul > li a');

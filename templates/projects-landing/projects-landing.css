@@ -48,7 +48,8 @@ main .filter-container .location-input {
     letter-spacing: 0.05em;
 }
 
-main .filter-container .category-dropdown, main .filter-container .location-dropdown {
+main .filter-container .category-dropdown,
+main .filter-container .location-dropdown {
     border: none;
     margin: 20px 0;
     border-top: 0 none;
@@ -60,14 +61,16 @@ main .filter-container .category-dropdown, main .filter-container .location-drop
     z-index: 99;
 }
 
-main .filter-container .category-dropdown ul, main .filter-container .location-dropdown ul {
+main .filter-container .category-dropdown ul,
+main .filter-container .location-dropdown ul {
     margin: 0;
     padding: 0;
     overflow: hidden auto;
     max-height: 200px;
 }
 
-main .filter-container .category-dropdown ul li, main .filter-container .location-dropdown ul li {
+main .filter-container .category-dropdown ul li,
+main .filter-container .location-dropdown ul li {
     list-style: none;
     cursor: pointer;
     width: auto;
@@ -80,27 +83,32 @@ main .filter-container .category-dropdown ul li, main .filter-container .locatio
     color: var(--site-color);
 }
 
-.biencommun main .filter-container .category-dropdown ul li, .biencommun main .filter-container .location-dropdown ul li {
+.biencommun main .filter-container .category-dropdown ul li,
+.biencommun main .filter-container .location-dropdown ul li {
     background: var(--biencommun-dropdown-bg);
     color: var(--biencommun-site-color);
     font-weight: 400;
     letter-spacing: 0.04em;
 }
 
-main .filter-container .category-dropdown ul li:hover, main .filter-container .location-dropdown ul li:hover {
+main .filter-container .category-dropdown ul li:hover,
+main .filter-container .location-dropdown ul li:hover {
     color: var(--site-color);
 }
 
-.fondations main .filter-container .category-dropdown ul li, .fondations main .filter-container .location-dropdown ul li {
+.fondations main .filter-container .category-dropdown ul li,
+.fondations main .filter-container .location-dropdown ul li {
     color: var(--fondations-site-color);
 }
 
-.biencommun main .filter-container .category-dropdown ul li:hover, .biencommun main .filter-container .location-dropdown ul li:hover {
+.biencommun main .filter-container .category-dropdown ul li:hover,
+.biencommun main .filter-container .location-dropdown ul li:hover {
     color: var(--biencommun-site-color);
     font-weight: 500;
 }
 
-main .filter-container .input-category-span, main .filter-container .input-location-span {
+main .filter-container .input-category-span,
+main .filter-container .input-location-span {
     position: absolute;
     visibility: hidden;
     white-space: pre;
@@ -125,7 +133,7 @@ main .filter-container .search-input::placeholder {
     color: var(--input-placeholder-color);
 }
 
-main .filter-container .projects-listing-container-left, 
+main .filter-container .projects-listing-container-left,
 main .filter-container .projects-listing-container-left .category-section,
 main .filter-container .projects-listing-container-left .location-section,
 main .filter-container .projects-listing-container-left .search-section {
@@ -287,12 +295,14 @@ main .projects-listing {
     color: var(--biencommun-site-color-2);
 }
 
-.projects-listing .projects-location, .projects-listing .projects-duration {
+.projects-listing .projects-location,
+.projects-listing .projects-duration {
     color: var(--site-color);
     text-transform: uppercase
 }
 
-.biencommun .projects-listing .projects-location, .biencommun .projects-listing .projects-duration {
+.biencommun .projects-listing .projects-location,
+.biencommun .projects-listing .projects-duration {
     color: var(--site-color-bien);
 }
 
@@ -322,7 +332,7 @@ main .projects-listing {
     color: var(--site-color);
 }
 
-.projects-listing .project-title  {
+.projects-listing .project-title {
     color: var(--news-button-text-colour);
     font-size: 18px;
     text-transform: none;
@@ -344,7 +354,7 @@ main .projects-listing {
     background-color: var(--project-bg-enavant);
 }
 
-@media (width >= 600px) {
+@media (width >=600px) {
     main .projects-listing {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
@@ -381,7 +391,7 @@ main .projects-listing {
     }
 }
 
-@media (width >= 900px) {
+@media (width >=900px) {
     main .projects-listing {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
@@ -392,7 +402,7 @@ main .projects-listing {
         padding: 0 80px;
     }
 
-    main .projects-listing h2  {
+    main .projects-listing h2 {
         color: black;
         font-size: 18px;
         text-transform: none;
@@ -405,7 +415,7 @@ main .projects-listing {
     }
 }
 
-@media (width >= 1200px) {
+@media (width >=1200px) {
     main .filter-container .search-input {
         padding-right: 100px;
     }
