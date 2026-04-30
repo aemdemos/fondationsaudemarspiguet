@@ -1,3 +1,34 @@
+/*
+ * Video hero: viewport-based box + fill (legacy .header_page sizing).
+ * Below 600px the inner box must match the visible hero height (legacy max-height);
+ * using a tall padding-top + parent max-height made cover scale to the wrong size.
+ * Breakpoints: 600px, 900px, 1200px.
+ */
+.projects-landing .hero.video {
+    min-height: 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.projects-landing .hero.video > div:first-child {
+    position: relative;
+    width: 100%;
+    height: calc(50vh - 107px);
+    padding-top: 0;
+    overflow: hidden;
+}
+
+.projects-landing .hero.video video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center center;
+    padding: 0;
+}
+
 main .section .filter-container {
     padding: 0 24px;
     display: flex;
@@ -389,6 +420,11 @@ main .projects-listing {
         white-space: nowrap;
         float: right;
     }
+
+    .projects-landing .hero.video > div:first-child {
+        height: 0;
+        padding-top: calc(100vh - 86px);
+    }
 }
 
 @media (width >=900px) {
@@ -418,5 +454,9 @@ main .projects-listing {
 @media (width >=1200px) {
     main .filter-container .search-input {
         padding-right: 100px;
+    }
+
+    .projects-landing .hero.video > div:first-child {
+        padding-top: calc(100vh - 216px);
     }
 }
