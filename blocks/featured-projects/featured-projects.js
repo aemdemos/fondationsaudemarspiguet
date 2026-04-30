@@ -102,7 +102,7 @@ const resultParsers = {
     const blockContents = [];
     // Get path segments to check URL condition
     const pathSegments = getPathSegments();
-    const isNewsPage = pathSegments[1] === 'fondation-pour-les-arbres-news' || pathSegments[1] === 'fondation-pour-les-arbres-actualites';
+    const isNewsPage = pathSegments[1] === 'fondation-pour-les-arbres-news' || pathSegments[1] === 'fondation-pour-les-arbres-actualites' || pathSegments[1] === 'fondation-pour-le-bien-commun-news' || pathSegments[1] === 'fondation-pour-le-bien-commun-actualites';
 
     results.forEach((result) => {
       const cardContainer = div();
