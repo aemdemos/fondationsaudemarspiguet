@@ -18,6 +18,10 @@
   background-color: var(--background-color);
 }
 
+.featured-projects .cards-wrapper .image-fade-wrapper .cards.featured > ul > li {
+  background-color: unset;
+}
+
 .cards.listing > ul > li {
   background-color: unset;
 }
