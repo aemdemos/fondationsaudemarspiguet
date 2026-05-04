@@ -67,6 +67,18 @@ async function getProjectsdata() {
   return rawProjects;
 }
 
+function getProjectCardSlot(projectItemEl) {
+  return projectItemEl.closest('.image-fade-wrapper') || projectItemEl;
+}
+
+function setProjectItemFilterData($el, project) {
+  $el.dataset.filterPath = project.path;
+  $el.dataset.filterTitle = (project.title || '').toLowerCase();
+  $el.dataset.filterCategory = project.category || '';
+  $el.dataset.filterLocation = project.location || '';
+  $el.dataset.filterPartner = (project.partner || '').toLowerCase();
+}
+
 function showProjectCards(getprojects, doc) {
   getprojects.forEach((projects) => {
     const url = projects.path;
@@ -94,11 +106,57 @@ function showProjectCards(getprojects, doc) {
       span({ class: 'projects-date' }, projects.date),
       span({ class: 'projects-category' }, projects.category),
     );
+    setProjectItemFilterData($projectsItem, projects);
     doc.querySelector('.projects-listing').append($projectsItem);
   });
   const projectItems = doc.querySelectorAll('.project-item');
   projectItems.forEach((project) => {
     applyFadeUpAnimation(project, project.parentNode);
+  });
+}
+
+function syncProjectsListingFilters(
+  projectsListing,
+  $categoryInput,
+  $locationInput,
+  searchInput,
+  options = {},
+) {
+  const { forceShowAll } = options;
+  const categoryVal = ($categoryInput?.value || '').trim();
+  const locationVal = ($locationInput?.value || '').trim();
+  const searchRaw = (searchInput?.value || '').toLowerCase();
+
+  projectsListing.querySelectorAll('.project-item').forEach((item) => {
+    const title = item.dataset.filterTitle || '';
+    const category = item.dataset.filterCategory || '';
+    const location = item.dataset.filterLocation || '';
+    const partner = item.dataset.filterPartner || '';
+
+    const matchCategory = forceShowAll || !categoryVal
+      || (category && category.includes(categoryVal));
+    const matchLocation = forceShowAll || !locationVal
+      || (location && location.includes(locationVal));
+    const matchSearch = forceShowAll || searchRaw.length < 2
+      || title.includes(searchRaw)
+      || category.toLowerCase().includes(searchRaw)
+      || location.toLowerCase().includes(searchRaw)
+      || partner.includes(searchRaw);
+
+    const show = matchCategory && matchLocation && matchSearch;
+    getProjectCardSlot(item).style.display = show ? '' : 'none';
+  });
+}
+
+function reorderProjectSlots(projectsListing, orderedProjects) {
+  const pathToSlot = new Map();
+  projectsListing.querySelectorAll('.project-item').forEach((item) => {
+    const path = item.dataset.filterPath;
+    if (path) pathToSlot.set(path, getProjectCardSlot(item));
+  });
+  orderedProjects.forEach((project) => {
+    const slot = pathToSlot.get(project.path);
+    if (slot) projectsListing.appendChild(slot);
   });
 }
 
@@ -239,6 +297,7 @@ export default async function decorate(doc) {
   });
 
   const projectsListing = doc.querySelector('.projects-listing');
+  const searchInput = document.getElementById('filtersearch');
   const categoryItems = categorysection.querySelectorAll('li');
   const locationItems = locationsection.querySelectorAll('li');
   categoryItems.forEach((item) => {
@@ -248,12 +307,12 @@ export default async function decorate(doc) {
       setInputWidthToText(inputCat);
       categorysection.style.display = 'none';
       locationsection.style.display = 'none';
-      const filteredprojects = getProjects
-        .filter((project) => !$locationInput.value
-        || (project.location && project.location.includes($locationInput.value)))
-        .filter((project) => project.category && project.category.includes(selectedCategory));
-      projectsListing.innerHTML = '';
-      showProjectCards(filteredprojects, doc);
+      syncProjectsListingFilters(
+        projectsListing,
+        $categoryInput,
+        $locationInput,
+        searchInput,
+      );
     });
   });
 
@@ -265,35 +324,26 @@ export default async function decorate(doc) {
       locationsection.style.display = 'none';
       categorysection.style.display = 'none';
 
-      const filteredprojects = getProjects
-        .filter((project) => !$categoryInput.value
-        || (project.category && project.category.includes($categoryInput.value)))
-        .filter((project) => project.location && project.location.includes(selectedLocation));
-
-      projectsListing.innerHTML = '';
-      showProjectCards(filteredprojects, doc);
+      syncProjectsListingFilters(
+        projectsListing,
+        $categoryInput,
+        $locationInput,
+        searchInput,
+      );
     });
   });
 
-  const searchInput = document.getElementById('filtersearch');
   let debounceTimer;
   if (searchInput) {
-    searchInput.addEventListener('input', (event) => {
+    searchInput.addEventListener('input', () => {
       clearTimeout(debounceTimer);
       debounceTimer = setTimeout(() => {
-        const searchTerm = event.target.value.toLowerCase();
-        const filteredProject = searchTerm.length < 2
-          ? getProjects
-          : getProjects.filter((projects) => {
-            const title = projects.title.toLowerCase();
-            const category = projects.category.toLowerCase();
-            const location = projects.location.toLowerCase();
-            const partner = projects.partner.toLowerCase();
-            return title.includes(searchTerm) || category.includes(searchTerm)
-            || location.includes(searchTerm) || partner.includes(searchTerm);
-          });
-        projectsListing.innerHTML = '';
-        showProjectCards(filteredProject, document);
+        syncProjectsListingFilters(
+          projectsListing,
+          $categoryInput,
+          $locationInput,
+          searchInput,
+        );
       }, 300);
     });
   }
@@ -309,8 +359,14 @@ export default async function decorate(doc) {
     $categoryInput.value = '';
     $locationInput.value = '';
     searchInput.value = '';
-    projectsListing.innerHTML = '';
-    showProjectCards(getProjects, doc);
+    reorderProjectSlots(projectsListing, getProjects);
+    syncProjectsListingFilters(
+      projectsListing,
+      $categoryInput,
+      $locationInput,
+      searchInput,
+      { forceShowAll: true },
+    );
   });
 
   const clearSearchBtn = doc.querySelector('.btn-search-clear');
@@ -318,8 +374,14 @@ export default async function decorate(doc) {
     clearSearchBtn.addEventListener('click', (event) => {
       event.preventDefault();
       searchInput.value = '';
-      projectsListing.innerHTML = '';
-      showProjectCards(getProjects, doc);
+      reorderProjectSlots(projectsListing, getProjects);
+      syncProjectsListingFilters(
+        projectsListing,
+        $categoryInput,
+        $locationInput,
+        searchInput,
+        { forceShowAll: true },
+      );
     });
   }
 

@@ -67,6 +67,16 @@ async function getNewsdata() {
   return rawNews;
 }
 
+function getNewsCardSlot(newsItemEl) {
+  return newsItemEl.closest('.image-fade-wrapper') || newsItemEl;
+}
+
+function setNewsItemFilterData($newsItem, news) {
+  $newsItem.dataset.filterPath = news.path;
+  $newsItem.dataset.filterTitle = (news.title || '').toLowerCase();
+  $newsItem.dataset.filterCategory = news.category || '';
+}
+
 function showNewsArticles(getNews, doc) {
   getNews.forEach((news) => {
     const url = news.path;
@@ -110,11 +120,39 @@ function showNewsArticles(getNews, doc) {
     if (layout) {
       $newsItem.classList.add(layout);
     }
+    setNewsItemFilterData($newsItem, news);
     doc.querySelector('.news-listing').append($newsItem);
   });
   const newsItems = doc.querySelectorAll('.news-item');
   newsItems.forEach((news) => {
     applyFadeUpAnimation(news, news.parentNode);
+  });
+}
+
+function syncNewsListingFilters(newsListing, $categoryInput, searchInput, options = {}) {
+  const { forceShowAll } = options;
+  const categoryVal = ($categoryInput?.value || '').trim();
+  const searchRaw = (searchInput?.value || '').toLowerCase();
+
+  newsListing.querySelectorAll('.news-item').forEach((item) => {
+    const titleLower = item.dataset.filterTitle || '';
+    const cat = item.dataset.filterCategory || '';
+    const matchCategory = forceShowAll || !categoryVal || (cat && cat.includes(categoryVal));
+    const matchSearch = forceShowAll || searchRaw.length < 2 || titleLower.includes(searchRaw);
+    const show = matchCategory && matchSearch;
+    getNewsCardSlot(item).style.display = show ? '' : 'none';
+  });
+}
+
+function reorderNewsSlots(newsListing, orderedNews) {
+  const pathToSlot = new Map();
+  newsListing.querySelectorAll('.news-item').forEach((item) => {
+    const path = item.dataset.filterPath;
+    if (path) pathToSlot.set(path, getNewsCardSlot(item));
+  });
+  orderedNews.forEach((news) => {
+    const slot = pathToSlot.get(news.path);
+    if (slot) newsListing.appendChild(slot);
   });
 }
 
@@ -193,6 +231,7 @@ export default async function decorate(doc) {
 
   const inputCat = doc.querySelector('.category-input');
   const newsListing = document.querySelector('.news-listing');
+  const searchInput = document.getElementById('filtersearch');
   const sortedNews = getNews
     .sort((date1, date2) => parseDate(date2.date) - parseDate(date1.date));
   showNewsArticles(sortedNews, doc);
@@ -205,10 +244,7 @@ export default async function decorate(doc) {
         setInputWidthToText(inputCat);
       });
       categorysection.style.display = 'none';
-      const filteredNews = getNews.filter((news) => news.category
-      && news.category.includes(selectedCategory));
-      newsListing.innerHTML = '';
-      showNewsArticles(filteredNews, doc);
+      syncNewsListingFilters(newsListing, $categoryInput, searchInput);
     });
   });
 
@@ -228,25 +264,16 @@ export default async function decorate(doc) {
       setInputWidthToText(inputCat);
     });
     $categoryInput.value = '';
-    newsListing.innerHTML = '';
-    showNewsArticles(sortedNews, doc);
+    reorderNewsSlots(newsListing, sortedNews);
+    syncNewsListingFilters(newsListing, $categoryInput, searchInput, { forceShowAll: true });
   });
 
-  const searchInput = document.getElementById('filtersearch');
   let debounceTimer;
   if (searchInput) {
-    searchInput.addEventListener('input', (event) => {
+    searchInput.addEventListener('input', () => {
       clearTimeout(debounceTimer);
       debounceTimer = setTimeout(() => {
-        const searchTerm = event.target.value.toLowerCase();
-        const filteredNews = searchTerm.length < 2
-          ? sortedNews
-          : sortedNews.filter((news) => {
-            const title = news.title.toLowerCase();
-            return title.includes(searchTerm);
-          });
-        newsListing.innerHTML = '';
-        showNewsArticles(filteredNews, document);
+        syncNewsListingFilters(newsListing, $categoryInput, searchInput);
       }, 300);
     });
   }
@@ -256,8 +283,8 @@ export default async function decorate(doc) {
     clearSearchBtn.addEventListener('click', (event) => {
       event.preventDefault();
       searchInput.value = '';
-      newsListing.innerHTML = '';
-      showNewsArticles(getNews, doc);
+      reorderNewsSlots(newsListing, getNews);
+      syncNewsListingFilters(newsListing, $categoryInput, searchInput, { forceShowAll: true });
     });
   }
 
@@ -265,8 +292,8 @@ export default async function decorate(doc) {
   if (sortByDate) {
     sortByDate.addEventListener('click', (event) => {
       event.preventDefault();
-      newsListing.innerHTML = '';
-      showNewsArticles(sortedNews, doc);
+      reorderNewsSlots(newsListing, sortedNews);
+      syncNewsListingFilters(newsListing, $categoryInput, searchInput, { forceShowAll: true });
     });
   }
 
@@ -276,8 +303,8 @@ export default async function decorate(doc) {
       event.preventDefault();
       const reverseSortedNews = sortedNews.slice()
         .sort((date1, date2) => parseDate(date1.date) - parseDate(date2.date));
-      newsListing.innerHTML = '';
-      showNewsArticles(reverseSortedNews, doc);
+      reorderNewsSlots(newsListing, reverseSortedNews);
+      syncNewsListingFilters(newsListing, $categoryInput, searchInput, { forceShowAll: true });
     });
   }
 
