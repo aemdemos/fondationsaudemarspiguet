@@ -632,7 +632,9 @@ async function loadPage() {
   loadDelayed();
 }
 
-loadPage();
+if (!new URL(window.location.href).searchParams.get('dapreview')) {
+  loadPage();
+}
 
 const { searchParams, origin } = new URL(window.location.href);
 const branch = searchParams.get('nx') || 'main';
