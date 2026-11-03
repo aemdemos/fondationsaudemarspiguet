@@ -1,0 +1,23 @@
+.newsletter.block {
+  width: 100%;
+  max-width: var(--newsletter-max-width, 660px);
+  margin-inline: auto;
+}
+
+.newsletter.block iframe {
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  height: var(--newsletter-iframe-height, 960px);
+  border: 0;
+}
+
+.newsletter.block[data-format="desktop"] iframe {
+  height: var(--newsletter-iframe-height, 800px);
+}
+
+@media (width < 700px) {
+  main .section > .newsletter-wrapper {
+    padding-inline: 4px;
+  }
+}
