@@ -14,11 +14,6 @@ main .section.details-sidebar h1 {
     text-transform: uppercase;
 }
 
-body.biencommun main .section.details-sidebar h1 {
-    color: var(--site-color-bien);
-}
-
-
 body.news-article main .section.white-smoke-bg {
     background-color: var(--news-bg-page);
 }
@@ -174,6 +169,10 @@ body.biencommun main .section.articlecontent-container + div div.default-content
     color: var(--site-color-2-bien);
 }
 
+body.news-article.biencommun main .section.details-sidebar .news-article-inner .default-content-wrapper p a:not(.button) {
+    color: var(--site-color-2-bien);
+}
+
 body.news-article main .section.articlecontent-container + div div.image-wrapper {
     padding-top: 40px;
     margin-bottom: 40px;
@@ -259,6 +258,10 @@ body.news-article main .section.details-sidebar h1 {
     padding-top: 15px;
     padding-bottom: 25px;
     text-transform: uppercase;
+}
+
+body.biencommun main .section.details-sidebar h1 {
+    color: var(--site-color-bien);
 }
 
 body.news-article main .section.details-sidebar .news-article-inner .clear {

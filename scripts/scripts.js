@@ -55,6 +55,21 @@ export function moveInstrumentation(from, to) {
   );
 }
 
+export function decorateLinkedInLinks(container) {
+  container.querySelectorAll('.icon-linkedin').forEach((icon) => {
+    const link = icon.closest('a');
+    if (!link) return;
+
+    link.target = '_blank';
+    link.relList.add('noopener', 'noreferrer');
+    link.classList.remove('button', 'primary', 'secondary');
+    link.closest('p')?.classList.remove('button-container');
+    if (!link.textContent.trim() && !link.getAttribute('aria-label') && !link.querySelector('img[alt]:not([alt=""])')) {
+      link.setAttribute('aria-label', 'LinkedIn');
+    }
+  });
+}
+
 /**
  * Decorates h1, h2 headings with repeatable scroll animations
  * @param {Element} main The container element
