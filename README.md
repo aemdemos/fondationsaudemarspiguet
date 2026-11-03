@@ -34,6 +34,20 @@ npm run lint
 1. Start AEM Proxy: `aem up` (opens your browser at `http://localhost:3000/`)
 1. Open the `fondationsaudemarspiguet` directory in your favorite IDE and start coding :)
 
+## Shared front-end behavior
+
+Fondations, Arbres and Bien Commun share the same block layouts and interactions.
+Image-only heroes keep their natural image height. Project listings use 35:23
+image frames; homepage project images use 700:459 frames with `object-fit: cover`.
+Project grids have one column through 640px, two through 930px and three above;
+homepage project images and text stack through 930px.
+Each site's existing color tokens remain in use, including article headings and
+inline links. These rules apply wherever the corresponding block/template is used.
+
+LinkedIn URLs remain authored in DA: link the LinkedIn icon to the desired URL.
+The footer and hero preserve the icon appearance and open the link in a new tab.
+No Universal Editor model change is needed.
+
 ## Newsletter block (DA)
 
 Add a table named `Newsletter` with the following four configuration rows. Merge

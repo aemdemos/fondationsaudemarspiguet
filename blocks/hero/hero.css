@@ -167,12 +167,12 @@
   }
 }
 
-.biencommun .hero.image.block picture {
+.hero.image.block picture {
   position: static;
   display: block;
 }
 
-.biencommun .hero.image.block img {
+.hero.image.block img {
   display: block;
   height: auto;
 }
@@ -506,7 +506,7 @@
 
 /* Hero Image block styles */
 
-.biencommun .hero.image.block {
+.hero.image.block {
   width: 100vw;
   min-height: 0;
   overflow: hidden;

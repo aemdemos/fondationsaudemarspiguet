@@ -136,6 +136,7 @@ main .filter-container .news-listing-container-right .filter-top-btn {
     height: 30px;
     cursor: pointer;
     background-image: url('/icons/btn_arbres_filtre_top.svg');
+    background-size: 30px 30px;
 }
 
 main .filter-container .news-listing-container-right .filter-bottom-btn {
@@ -143,6 +144,7 @@ main .filter-container .news-listing-container-right .filter-bottom-btn {
     height: 30px;
     cursor: pointer;
     background-image: url('/icons/btn_arbres_filtre_bottom.svg');
+    background-size: 30px 30px;
 }
 
 main .filter-container .news-listing-container-right .filter-top-btn:hover,
