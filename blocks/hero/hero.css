@@ -167,6 +167,16 @@
   }
 }
 
+.biencommun .hero.image.block picture {
+  position: static;
+  display: block;
+}
+
+.biencommun .hero.image.block img {
+  display: block;
+  height: auto;
+}
+
 /* Two-columnar hero block */
 .hero.two-columnar.block {
   padding: 0 !important;
@@ -498,14 +508,7 @@
 
 .biencommun .hero.image.block {
   width: 100vw;
-  height: 500px;
+  min-height: 0;
   overflow: hidden;
   padding: 0;
 }
-
-@media (width >= 600px) {
-  .biencommun .hero.image.block {
-    height: 700px;
-  }
-}
-

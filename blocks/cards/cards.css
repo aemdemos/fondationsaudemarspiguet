@@ -459,6 +459,7 @@ main .cards-buttons .button-desc-btn{
   margin-left: auto;
   background-image: url('/icons/btn_arbres_filtre_top.svg');
   background-repeat: no-repeat;
+  background-size: 30px 30px;
   height: 30px;
   width: 30px;
   padding-bottom: 6px;
@@ -467,6 +468,7 @@ main .cards-buttons .button-desc-btn{
 main .cards-buttons .button-asc-btn {
   background-image: url('/icons/btn_arbres_filtre_bottom.svg');
   background-repeat: no-repeat;
+  background-size: 30px 30px;
   padding-bottom: 6px;
   height: 30px;
   width: 30px;
