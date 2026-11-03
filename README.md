@@ -41,6 +41,8 @@ Image-only heroes keep their natural image height. Project listings use 35:23
 image frames; homepage project images use 700:459 frames with `object-fit: cover`.
 Project grids have one column through 640px, two through 930px and three above;
 homepage project images and text stack through 930px.
+Project map introductions use a centered 1440px container with the back link
+in the bottom spacing, without adding an extra row above the map.
 Each site's existing color tokens remain in use, including article headings and
 inline links. These rules apply wherever the corresponding block/template is used.
 In extended news articles, the closing gallery overlaps the background transition
