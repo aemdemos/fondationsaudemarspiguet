@@ -1,6 +1,20 @@
+body.news-article {
+    --news-article-title-color: var(--site-color);
+    --news-article-link-color: var(--site-color-2);
+}
+
+body.news-article.biencommun {
+    --news-article-title-color: var(--site-color-bien);
+    --news-article-link-color: var(--site-color-2-bien);
+}
+
+body.news-article.fondations {
+    --news-article-title-color: var(--fondations-site-color);
+    --news-article-link-color: var(--fondations-site-color-2);
+}
 
 main .section.details-sidebar h1 {
-    color: var(--site-color);
+    color: var(--news-article-title-color);
     text-align: left;
     font-weight: 400;
     font-feature-settings: 'clig' 0;
@@ -13,11 +27,6 @@ main .section.details-sidebar h1 {
     padding-bottom: 25px;
     text-transform: uppercase;
 }
-
-body.biencommun main .section.details-sidebar h1 {
-    color: var(--site-color-bien);
-}
-
 
 body.news-article main .section.white-smoke-bg {
     background-color: var(--news-bg-page);
@@ -119,6 +128,7 @@ body.news-article main .section.articlecontent-container + div div.default-conte
 }
 
 body.news-article main .section.articlecontent-container + div div.default-content-wrapper > p {
+    font-weight: 300;
     line-height: 1.5em;
     letter-spacing: .04em;
     font-size: 14px;
@@ -126,13 +136,10 @@ body.news-article main .section.articlecontent-container + div div.default-conte
     float: left;
 }
 
-body.news-article main .section.articlecontent-container + div div.default-content-wrapper > p > strong {
-    color: var(--news-category);
+body.news-article main .section.articlecontent-container + div div.default-content-wrapper > p > strong,
+body.news-article main .section.details-sidebar.right .news-article-inner .default-content-wrapper p strong {
+    color: var(--chiffres-bloc-btn);
     font-weight: bold;
-}
-
-body.biencommun main .section.articlecontent-container + div div.default-content-wrapper > p > strong {
-    color: var(--biencommun-projet-bloc-titre);
 }
 
 body.news-article main .section.details-sidebar .news-article-inner a {
@@ -170,11 +177,14 @@ body.news-article main .section.details-sidebar .news-article-inner a:hover {
     opacity: 0.7;
 }
 
-body.biencommun main .section.articlecontent-container + div div.default-content-wrapper a:any-link {
-    color: var(--site-color-2-bien);
+body.news-article main .section.details-sidebar .news-article-inner .default-content-wrapper p a:not(.button),
+body.news-article main .section.articlecontent-container + div div.default-content-wrapper a:any-link:not(.button) {
+    color: var(--news-article-link-color);
 }
 
 body.news-article main .section.articlecontent-container + div div.image-wrapper {
+    width: fit-content;
+    max-width: 100%;
     padding-top: 40px;
     margin-bottom: 40px;
     float: right;
@@ -221,6 +231,8 @@ body.news-article main .news-article-sidebar ul {
 
 body.news-article main .section.details-sidebar.right {
     background-color: unset;
+    margin-top: 0;
+    padding-top: 40px;
 }
 
 body.news-article main .section.details-sidebar .news-details {
@@ -247,7 +259,7 @@ body.news-article main .section.details-sidebar .news-details .news-article-date
 }
 
 body.news-article main .section.details-sidebar h1 {
-    color: var(--site-color);
+    color: var(--news-article-title-color);
     text-align: left;
     font-weight: 400;
     font-feature-settings: 'clig' 0;
@@ -282,19 +294,13 @@ body.news-article main .section.details-sidebar .button-wrapper {
 }
 
 body.news-article main .section.details-sidebar.right .news-article-inner .default-content-wrapper p {
+    font-weight: 300;
     line-height: 1.5em;
     padding-bottom: 20px;
     letter-spacing: .02em;
 }
 
-body.news-article main .section.details-sidebar.right .news-article-inner .default-content-wrapper p:nth-child(1) {
-    color: var(--chiffres-bloc-btn);
-    font-weight: bold;
-
-}
-
 body.news-article main .section.details-sidebar.right .news-article-inner .default-content-wrapper p:nth-child(1) strong {
-    color: var(--news-category);
     font-size: 14px;
 }
 
@@ -414,6 +420,9 @@ body.news-article main .section.details-sidebar.right .news-article-inner .defau
 
     body.news-article main .section.articlecontent-container + div div.image-wrapper {
         margin-bottom: -90px;
-        max-width: unset;
+    }
+
+    body.news-article main .section.details-sidebar.right {
+        padding-top: 130px;
     }
 }

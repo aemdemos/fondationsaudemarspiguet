@@ -134,13 +134,22 @@ main .filter-container .news-listing-container-right {
 main .filter-container .news-listing-container-right .filter-top-btn {
     width: 30px;
     height: 30px;
+    cursor: pointer;
     background-image: url('/icons/btn_arbres_filtre_top.svg');
+    background-size: 30px 30px;
 }
 
 main .filter-container .news-listing-container-right .filter-bottom-btn {
     width: 30px;
     height: 30px;
+    cursor: pointer;
     background-image: url('/icons/btn_arbres_filtre_bottom.svg');
+    background-size: 30px 30px;
+}
+
+main .filter-container .news-listing-container-right .filter-top-btn:hover,
+main .filter-container .news-listing-container-right .filter-bottom-btn:hover {
+    opacity: 0.7;
 }
 
 .news-landing main .filter-container input {
@@ -157,6 +166,10 @@ main .filter-container .news-listing-container-right .filter-bottom-btn {
     background-repeat: no-repeat;
     background-position: center;
     vertical-align: middle;
+}
+
+.news-landing .btn-search-clear:hover {
+    opacity: 0.7;
 }
 
 main .news-listing {

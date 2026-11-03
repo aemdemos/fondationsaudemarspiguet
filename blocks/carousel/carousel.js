@@ -1,5 +1,5 @@
 import { fetchPlaceholders, getMetadata, createOptimizedPicture } from '../../scripts/aem.js';
-import { moveInstrumentation, getLanguage } from '../../scripts/scripts.js';
+import { moveInstrumentation, getLanguage, decorateLinkedInLinks } from '../../scripts/scripts.js';
 
 function updateActiveSlide(slide) {
   const block = slide.closest('.carousel');
@@ -203,6 +203,7 @@ export default async function decorate(block) {
         slidelegende = row.querySelector('div:nth-child(2)');
         if (socialContainer) {
           socialContainer.classList.add('social-cr-wrapper');
+          decorateLinkedInLinks(socialContainer);
         }
         if (slidelegende) {
           slidelegende.classList.add('slide-legend');

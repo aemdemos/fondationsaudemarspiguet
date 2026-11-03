@@ -1,4 +1,5 @@
 import { createOptimizedPicture } from '../../scripts/aem.js';
+import { decorateLinkedInLinks } from '../../scripts/scripts.js';
 
 export function createTwoColumnarHeroBlock({
   subheading,
@@ -79,6 +80,7 @@ export default function decorate(block) {
   const socialCRDiv = block.querySelector('div:nth-of-type(2) > div:first-of-type');
   if (socialCRDiv) {
     socialCRDiv.className = 'social-cr-wrapper';
+    decorateLinkedInLinks(socialCRDiv);
   }
 
   const legendDiv = block.querySelector('div:nth-of-type(2) > div:nth-of-type(2)');

@@ -116,6 +116,7 @@ main .media-filter-container .media-filter-container-right .filter-top-btn {
     width: 30px;
     height: 30px;
     background-image: url('/icons/btn_arbres_filtre_top.svg');
+    background-size: 30px 30px;
     cursor: pointer;
     transition: opacity 0.2s ease;
 }
@@ -130,13 +131,14 @@ main .media-filter-container .media-filter-container-right .filter-top-btn {
 }
 
 main .media-filter-container .media-filter-container-right .filter-top-btn:hover {
-    opacity: 0.6; /* ✅ Light greyish effect on hover */
+    opacity: 0.7;
 }
 
 main .media-filter-container .media-filter-container-right .filter-bottom-btn {
     width: 30px;
     height: 30px;
     background-image: url('/icons/btn_arbres_filtre_bottom.svg');
+    background-size: 30px 30px;
     cursor: pointer;
     transition: opacity 0.2s ease;
 }
@@ -151,7 +153,7 @@ main .media-filter-container .media-filter-container-right .filter-bottom-btn {
 }
 
 main .media-filter-container .media-filter-container-right .filter-bottom-btn:hover {
-    opacity: 0.6; /* ✅ Light greyish effect on hover */
+    opacity: 0.7;
 }
 
 main .media-listing {
@@ -205,7 +207,7 @@ main .media-filter-container .media-search-section {
 }
 
 .newsroom .btn-media-search-clear:hover {
-    opacity: 0.6; /* ✅ Light greyish effect on hover */
+    opacity: 0.7;
 }
 
 @media (width >= 900px) {
