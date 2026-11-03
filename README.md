@@ -43,6 +43,10 @@ Project grids have one column through 640px, two through 930px and three above;
 homepage project images and text stack through 930px.
 Each site's existing color tokens remain in use, including article headings and
 inline links. These rules apply wherever the corresponding block/template is used.
+In extended news articles, the closing gallery overlaps the background transition
+on desktop, while the following text/sidebar section stays clear of the image.
+Article body paragraphs use weight 300; bold emphasis remains authored with
+`strong` rather than applied automatically to the first paragraph.
 
 LinkedIn URLs remain authored in DA: link the LinkedIn icon to the desired URL.
 The footer and hero preserve the icon appearance and open the link in a new tab.

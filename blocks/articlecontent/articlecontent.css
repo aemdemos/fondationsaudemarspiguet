@@ -102,7 +102,8 @@ body.biencommun .articlecontent.block .news-detail-big-contenu-right {
     color: var(--background-color);
 }
 
-.articlecontent.block .news-detail-big-contenu-right p strong em {
+.articlecontent.block .news-detail-big-contenu-right p strong em,
+.articlecontent.block .news-detail-big-contenu-right p em strong {
     font-style: normal;
     color: var(--biencommun-carousel-color);
 }
@@ -115,10 +116,6 @@ body.biencommun .articlecontent.block .news-detail-big-contenu-right {
 body.biencommun .articlecontent.block .news-detail-big-contenu-right p strong u {
     color: var(--site-color-2-bien);
     text-decoration: none;
-}
-
-.articlecontent.block .news-detail-big-contenu-right > p:first-child {
-    font-weight: bold !important;
 }
 
 /* Clear floats after the article content container */

@@ -128,6 +128,7 @@ body.news-article main .section.articlecontent-container + div div.default-conte
 }
 
 body.news-article main .section.articlecontent-container + div div.default-content-wrapper > p {
+    font-weight: 300;
     line-height: 1.5em;
     letter-spacing: .04em;
     font-size: 14px;
@@ -135,13 +136,10 @@ body.news-article main .section.articlecontent-container + div div.default-conte
     float: left;
 }
 
-body.news-article main .section.articlecontent-container + div div.default-content-wrapper > p > strong {
-    color: var(--news-category);
+body.news-article main .section.articlecontent-container + div div.default-content-wrapper > p > strong,
+body.news-article main .section.details-sidebar.right .news-article-inner .default-content-wrapper p strong {
+    color: var(--chiffres-bloc-btn);
     font-weight: bold;
-}
-
-body.biencommun main .section.articlecontent-container + div div.default-content-wrapper > p > strong {
-    color: var(--biencommun-projet-bloc-titre);
 }
 
 body.news-article main .section.details-sidebar .news-article-inner a {
@@ -185,6 +183,8 @@ body.news-article main .section.articlecontent-container + div div.default-conte
 }
 
 body.news-article main .section.articlecontent-container + div div.image-wrapper {
+    width: fit-content;
+    max-width: 100%;
     padding-top: 40px;
     margin-bottom: 40px;
     float: right;
@@ -231,6 +231,8 @@ body.news-article main .news-article-sidebar ul {
 
 body.news-article main .section.details-sidebar.right {
     background-color: unset;
+    margin-top: 0;
+    padding-top: 40px;
 }
 
 body.news-article main .section.details-sidebar .news-details {
@@ -292,19 +294,13 @@ body.news-article main .section.details-sidebar .button-wrapper {
 }
 
 body.news-article main .section.details-sidebar.right .news-article-inner .default-content-wrapper p {
+    font-weight: 300;
     line-height: 1.5em;
     padding-bottom: 20px;
     letter-spacing: .02em;
 }
 
-body.news-article main .section.details-sidebar.right .news-article-inner .default-content-wrapper p:nth-child(1) {
-    color: var(--chiffres-bloc-btn);
-    font-weight: bold;
-
-}
-
 body.news-article main .section.details-sidebar.right .news-article-inner .default-content-wrapper p:nth-child(1) strong {
-    color: var(--news-category);
     font-size: 14px;
 }
 
@@ -424,6 +420,9 @@ body.news-article main .section.details-sidebar.right .news-article-inner .defau
 
     body.news-article main .section.articlecontent-container + div div.image-wrapper {
         margin-bottom: -90px;
-        max-width: unset;
+    }
+
+    body.news-article main .section.details-sidebar.right {
+        padding-top: 130px;
     }
 }
