@@ -195,8 +195,8 @@ export default async function decorate(doc) {
       div(
         { class: 'category-dropdown' },
       ),
+      span({ class: 'filter-separator' }, '|'),
     ),
-    span({ class: 'filter-separator' }, ' | '),
     div(
       { class: 'location-section' },
       input(
@@ -207,10 +207,10 @@ export default async function decorate(doc) {
       div(
         { class: 'location-dropdown' },
       ),
+      span({ class: 'filter-separator' }, '|'),
     ),
-    span({ class: 'filter-separator' }, ' | '),
     a({ class: 'view-all', href: '#', id: 'view-all' }, projectsLandingViewFilter),
-    span({ class: 'filter-separator' }, ' | '),
+    span({ class: 'filter-separator' }, '|'),
     div(
       { class: 'search-section' },
       input(
