@@ -303,6 +303,31 @@ export default async function decorate(block) {
   if (isScrollable) {
     // Scroll-snap mode (CSS controls the snapping)
     const slides = block.querySelectorAll('.carousel-slide');
+    slides.forEach((currentSlide, idx) => {
+      const directionIcon = currentSlide.querySelector('.direction-icon-section .icon');
+      if (!directionIcon) return;
+
+      const isLastSlide = idx === slides.length - 1;
+      const target = slides[isLastSlide ? 0 : idx + 1];
+      const link = directionIcon.closest('a') || document.createElement('a');
+      link.className = 'section-navigation';
+      link.href = `#${target.id}`;
+      const isFrench = getLanguage() === 'fr';
+      const nextLabel = isFrench ? 'Section suivante' : 'Next section';
+      const topLabel = isFrench ? 'Retour en haut' : 'Back to top';
+      link.setAttribute('aria-label', isLastSlide ? topLabel : nextLabel);
+      if (!link.contains(directionIcon)) {
+        directionIcon.before(link);
+        link.append(directionIcon);
+      }
+      link.addEventListener('click', (event) => {
+        event.preventDefault();
+        const behavior = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+          ? 'instant' : 'smooth';
+        target.scrollIntoView({ behavior, block: 'start' });
+        if (isLastSlide) window.scrollTo({ top: 0, behavior });
+      });
+    });
     const indicators = block.querySelectorAll('.carousel-slide-indicator');
     indicators.forEach((indicator, idx) => {
       const btn = indicator.querySelector('button');
