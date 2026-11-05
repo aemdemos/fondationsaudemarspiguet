@@ -228,21 +228,21 @@ function getPolicyTemplateDynamicData(main) {
         if (pageData) {
           const datechanged = pageData.lastModified;
           const date = new Date(datechanged * 1000);
-          const formattedEng = `${date.toLocaleDateString('en-US', { month: 'short' })} ${date.getDate()}, ${date.getFullYear()}`;
           const formattedFr = `${date.getDate()} ${date.toLocaleDateString('fr-FR', { month: 'long' })}, ${date.getFullYear()}`;
           // fetch placeholders based on current language
           const currentLanguage = getLanguage();
           const placeholders = await fetchPlaceholders(currentLanguage);
-          const strEng = `${formattedEng}`;
           const strFr = `${formattedFr}`;
           const info = document.createElement('span');
           info.classList.add('last-modified');
 
           if (currentLanguage === 'en') {
             if (pageSlug === 'privacy-notice') {
-              info.textContent = `${placeholders.privacyPolicyUpdateText} ${strEng}`;
+              info.classList.add('policy-update');
+              info.textContent = 'This Privacy Notice was last updated on September 10, 2025.';
             } else if (pageSlug === 'terms-of-use') {
-              info.textContent = `${placeholders.termsOfUseUpdateText} ${strEng}`;
+              info.classList.add('policy-update');
+              info.textContent = 'These Terms of Use were last updated on September 10, 2025.';
             }
           } else if (currentLanguage === 'fr') {
             if (pageSlug === 'declaration-de-confidentialite') {

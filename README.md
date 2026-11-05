@@ -37,6 +37,12 @@ npm run lint
 ## Shared front-end behavior
 
 Fondations, Arbres and Bien Commun share the same block layouts and interactions.
+Scrollable hero carousel arrows navigate to the next slide; the last arrow returns
+to the first slide and the top of the page, with reduced-motion support.
+On the Fondations homepage, carousel copy is selectable and uses uniform light
+typography, retaining the authored highlight colors.
+Fondations content sections using `light-grey-orange-bg` retain the site's light
+grey background rather than the Bien Commun beige.
 Image-only heroes keep their natural image height. Project listings use 35:23
 image frames; homepage project images use 700:459 frames with `object-fit: cover`.
 Project grids have one column through 640px, two through 930px and three above;

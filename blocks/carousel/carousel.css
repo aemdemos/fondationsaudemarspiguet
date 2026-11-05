@@ -186,6 +186,17 @@
   height: auto;
 }
 
+.carousel .direction-icon-section .section-navigation {
+  display: inline-block;
+  cursor: pointer;
+  line-height: 0;
+}
+
+.carousel .direction-icon-section .section-navigation:focus-visible {
+  outline: 2px solid currentcolor;
+  outline-offset: 6px;
+}
+
 .carousel .carousel-slide-indicators {
   display: flex;
   flex-wrap: wrap;
@@ -808,4 +819,18 @@ body.fondations main > .section.carousel-container:has(.carousel.hero-banner) .c
 
 .carousel-container .carousel.hero-banner.scrollable .carousel-slide.active .carousel-slide-content {
   opacity: 1;
+}
+
+.fondations .carousel-container .carousel.hero-banner.scrollable .carousel-slide .carousel-slide-content {
+  pointer-events: auto;
+  user-select: text;
+}
+
+.fondations .carousel.hero-banner.scrollable .carousel-slide-content p:not(.button-container) {
+  font-weight: 300;
+  font-style: normal;
+}
+
+.fondations .carousel.hero-banner.scrollable .carousel-slide-content p:not(.button-container) :is(strong, em) {
+  font: inherit;
 }
