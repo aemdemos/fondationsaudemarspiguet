@@ -26,7 +26,7 @@ function createInfoBoxContent(imageId, imageName, partner, country, dateRange, t
   // Set language-specific text (data is already localized in the JSON)
   const seeMoreText = language === 'fr' ? "→ Voir en détail" : "→ See more";
   
-  return `<div class='myboxmap'><img src='https://content.da.live/audemars-piguet/biencommun-fondationsaudemarspiguet/assets/images/map/projects-listing/${imageId}/${imageName}.jpg' width='220' height='144'><p class="carte_box_partenaires">${partner}</p><p class="carte_box_pays">${country}</p><p class="carte_box_date">${dateRange}</p><p class="carte_box_titre">${title}</p><p class="carte_box_categorie">${category}</p><p class="carte_box_link"><a href=${localizedUrl}>${seeMoreText}</a></p></div>`;
+  return `<div class='myboxmap'><img src='/assets/images/map/projects-listing/${imageId}/${imageName}.jpg' width='220' height='144'><p class="carte_box_partenaires">${partner}</p><p class="carte_box_pays">${country}</p><p class="carte_box_date">${dateRange}</p><p class="carte_box_titre">${title}</p><p class="carte_box_categorie">${category}</p><p class="carte_box_link"><a href=${localizedUrl}>${seeMoreText}</a></p></div>`;
 }
 
 var draggable=true;
@@ -208,7 +208,7 @@ var popupoption = {
             imagePath: '/assets/images/',
             styles:[
                 {
-                    url: 'https://content.da.live/audemars-piguet/biencommun-fondationsaudemarspiguet/assets/images/closter1.png',
+                    url: '/assets/images/closter1.png',
                     width: 56,
                     height: 56,
                     textColor: '#ffffff',
