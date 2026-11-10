@@ -1,7 +1,6 @@
 import {
   toCamelCase,
   createOptimizedPicture,
-  buildBlock,
   decorateBlock,
   loadBlock,
 } from '../../scripts/aem.js';
@@ -94,6 +93,24 @@ async function fetchProjectPlaceholders(prefix = 'en') {
 
 const blockType = 'cards';
 
+function createProjectLink(path) {
+  const link = a();
+  if (typeof path === 'string' && path.trim()) {
+    try {
+      const { protocol } = new URL(path, window.location.href);
+      if (protocol === 'http:' || protocol === 'https:') {
+        link.setAttribute('href', path);
+        return link;
+      }
+    } catch (error) {
+      if (!(error instanceof TypeError)) throw error;
+    }
+  }
+  // eslint-disable-next-line no-console
+  console.warn('Invalid or unsupported featured-project URL');
+  return link;
+}
+
 // Result parsers parse the query results into a format that can be used by the block builder for
 // the specific block types
 const resultParsers = {
@@ -108,7 +125,7 @@ const resultParsers = {
       const cardContainer = div();
 
       // Create the wrapper anchor tag
-      const cardLink = a({ href: result.productsPath });
+      const cardLink = createProjectLink(result.productsPath);
 
       // Create image container
       const imageContainer = div({ class: 'image-container' });
@@ -131,9 +148,13 @@ const resultParsers = {
       // Create location and duration info
       const projectInfo = div({ class: 'projets-listing-infos' });
       if (isNewsPage) {
-        projectInfo.innerHTML = result.productsDuration || '';
+        projectInfo.textContent = result.productsDuration || '';
       } else {
-        projectInfo.innerHTML = `${result.productsLocation || ''} <br> ${result.productsDuration || ''}`;
+        projectInfo.append(
+          document.createTextNode(`${result.productsLocation || ''} `),
+          document.createElement('br'),
+          document.createTextNode(` ${result.productsDuration || ''}`),
+        );
       }
       cardLink.append(projectInfo);
 
@@ -307,7 +328,10 @@ export default async function decorate(block) {
 
     const getProducts = await getProductsdata();
     const blockContents = await loadresults(getProducts);
-    const builtBlock = buildBlock(blockType, blockContents);
+    const builtBlock = div(
+      { class: blockType },
+      ...blockContents.map((row) => div(...row.map((cell) => div(cell)))),
+    );
     const parentDiv = div(
       builtBlock,
     );

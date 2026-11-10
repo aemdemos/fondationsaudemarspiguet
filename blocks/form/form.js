@@ -3,6 +3,7 @@ import transferRepeatableDOM, { insertAddButton, insertRemoveButton } from './co
 import { emailPattern, getSubmitBaseUrl, SUBMISSION_SERVICE } from './constant.js';
 import GoogleReCaptcha from './integrations/recaptcha.js';
 import componentDecorator from './mappings.js';
+import setRichTextContent from './rich-text.js';
 import { handleSubmit } from './submit.js';
 import DocBasedFormToAF from './transform.js';
 import {
@@ -109,7 +110,7 @@ function createRadioOrCheckboxGroup(fd) {
 function createPlainText(fd) {
   const paragraph = document.createElement('p');
   if (fd.richText) {
-    paragraph.innerHTML = stripTags(fd.value);
+    setRichTextContent(paragraph, fd.value);
   } else {
     paragraph.textContent = fd.value;
   }

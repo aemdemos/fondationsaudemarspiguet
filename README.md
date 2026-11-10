@@ -34,6 +34,22 @@ npm run lint
 1. Start AEM Proxy: `aem up` (opens your browser at `http://localhost:3000/`)
 1. Open the `fondationsaudemarspiguet` directory in your favorite IDE and start coding :)
 
+## Security regression checks
+
+With the local AEM proxy running, open
+`http://localhost:3000/test/security.html?rum=off` and check that every case
+passes. Repeat at desktop and mobile viewport sizes. The page uses local mocks
+for project-index data and map scripts; it does not submit a real form or load
+Google Maps. The fixture is excluded from publication by `.hlxignore`. These
+checks do not replace the Snyk scan or integration checks with real content.
+
+Form rich text, descriptions, validation help and confirmation messages are
+sanitized with the bundled DOMPurify. Safe formatting, links, image alternatives
+and authoring data attributes are retained; executable markup and unsafe link
+protocols are removed. Links opening in a new tab receive `rel="noopener"`.
+Featured-project metadata is rendered as plain text, and its links accept only
+HTTP(S) URLs. Map scripts use French for `fr` paths and English otherwise.
+
 ## Shared front-end behavior
 
 Fondations, Arbres and Bien Commun share the same block layouts and interactions.
