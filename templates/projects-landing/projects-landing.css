@@ -87,6 +87,8 @@ main .filter-container .location-dropdown {
     box-shadow: none;
     font-size: 16px;
     position: absolute;
+    top: 100%;
+    left: 0;
     max-height: 200px;
     display: none;
     z-index: 99;
@@ -125,6 +127,7 @@ main .filter-container .location-dropdown ul li {
 main .filter-container .category-dropdown ul li:hover,
 main .filter-container .location-dropdown ul li:hover {
     color: var(--site-color);
+    font-weight: 700;
 }
 
 .fondations main .filter-container .category-dropdown ul li,
@@ -135,7 +138,6 @@ main .filter-container .location-dropdown ul li:hover {
 .biencommun main .filter-container .category-dropdown ul li:hover,
 .biencommun main .filter-container .location-dropdown ul li:hover {
     color: var(--biencommun-site-color);
-    font-weight: 500;
 }
 
 main .filter-container .input-category-span,
@@ -171,6 +173,14 @@ main .filter-container .projects-listing-container-left .search-section {
     display: inline-block
 }
 
+main .filter-container .projects-listing-container-left .category-section,
+main .filter-container .projects-listing-container-left .location-section {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    vertical-align: middle;
+}
+
 main .filter-container .projects-listing-container-left .filter-separator {
     padding: 0 15px;
     text-transform: none;
@@ -179,7 +189,7 @@ main .filter-container .projects-listing-container-left .filter-separator {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizelegibility;
-    letter-spacing: 0.05em;
+    letter-spacing: 0;
 }
 
 main .filter-container .projects-listing-container-left .view-all {
@@ -239,6 +249,11 @@ main .filter-container .projects-listing-container-right .map-link-btn:hover {
     border: none;
     outline: none;
     color: var(--input-selected-color);
+}
+
+.projects-landing main .filter-container .category-input,
+.projects-landing main .filter-container .location-input {
+    padding: 0;
 }
 
 .projects-landing .btn-search-clear {

@@ -166,9 +166,13 @@ export function setInputWidthToText(inputEl) {
   spanForWidth.style.visibility = 'hidden';
   spanForWidth.textContent = textToMeasure;
   document.body.appendChild(spanForWidth);
-  const width = spanForWidth.offsetWidth;
+  const { width } = spanForWidth.getBoundingClientRect();
   spanForWidth.remove();
-  inputEl.style.width = `${width + 10}px`;
+  const boxWidth = style.boxSizing === 'border-box'
+    ? parseFloat(style.paddingLeft) + parseFloat(style.paddingRight)
+      + parseFloat(style.borderLeftWidth) + parseFloat(style.borderRightWidth)
+    : 0;
+  inputEl.style.width = `${width + boxWidth}px`;
 }
 
 export async function setClassDataBg() {

@@ -186,9 +186,9 @@ export default async function decorate(doc) {
         { class: 'category-dropdown' },
       ),
     ),
-    span({ class: 'filter-separator' }, ' | '),
+    span({ class: 'filter-separator' }, '|'),
     a({ class: 'view-all', href: '#', id: 'view-all' }, newsLandingViewFilter),
-    span({ class: 'filter-separator' }, ' | '),
+    span({ class: 'filter-separator' }, '|'),
     div(
       { class: 'search-section' },
       input(

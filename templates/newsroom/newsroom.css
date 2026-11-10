@@ -260,7 +260,7 @@ main .media-filter-container .media-search-section {
 }
 
 .type-option:hover {
-  font-weight: 500;
+  font-weight: 700;
 }
 
 .type-option:last-child {
@@ -326,6 +326,10 @@ main .media-filter-container .media-search-section {
 .fondations .type-option {
   color: var(--fondations-site-color);  
   font-weight: 200;
+}
+
+.fondations .type-option:hover {
+  font-weight: 700;
 }
 
 .fondations.newsroom main .media-filter-container input {

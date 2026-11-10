@@ -61,7 +61,7 @@ main .filter-container .category-dropdown ul li {
 }
 
 main .filter-container .category-dropdown ul li:hover {
-    font-weight: 500;
+    font-weight: 700;
 }
 
 main .filter-container .input-category-span {
@@ -103,7 +103,7 @@ main .filter-container .news-listing-container-left .filter-separator {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizelegibility;
-    letter-spacing: 0.05em;
+    letter-spacing: 0;
 }
 
 main .filter-container .news-listing-container-left .view-all {
@@ -156,6 +156,10 @@ main .filter-container .news-listing-container-right .filter-bottom-btn:hover {
     border: none;
     outline: none;
     color: var(--input-selected-color);
+}
+
+.news-landing main .filter-container .category-input {
+    padding: 0;
 }
 
 .news-landing .btn-search-clear {

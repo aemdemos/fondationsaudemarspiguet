@@ -53,10 +53,23 @@ HTTP(S) URLs. Map scripts use French for `fr` paths and English otherwise.
 ## Shared front-end behavior
 
 Fondations, Arbres and Bien Commun share the same block layouts and interactions.
+Scrollable hero carousel arrows navigate to the next slide; the last arrow returns
+to the first slide and the top of the page, with reduced-motion support.
+On the Fondations homepage, carousel copy is selectable and uses uniform light
+typography, retaining the authored highlight colors.
+Fondations content sections using `light-grey-orange-bg` retain the site's light
+grey background rather than the Bien Commun beige.
 Image-only heroes keep their natural image height. Project listings use 35:23
 image frames; homepage project images use 700:459 frames with `object-fit: cover`.
 Project grids have one column through 640px, two through 930px and three above;
 homepage project images and text stack through 930px.
+Project category/location options and news category options become bold on hover
+across all three sites.
+Filter separators have equal spacing on both sides; category and location inputs
+are sized to their displayed text without extra trailing padding.
+Project category/location separators stay with their input when filters wrap.
+Project map introductions use a centered 1440px container with the back link
+in the bottom spacing, without adding an extra row above the map.
 Each site's existing color tokens remain in use, including article headings and
 inline links. These rules apply wherever the corresponding block/template is used.
 In extended news articles, the closing gallery overlaps the background transition

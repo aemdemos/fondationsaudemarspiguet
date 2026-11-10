@@ -963,6 +963,10 @@ main .section.light-grey-orange-bg {
   background-color: var(--biencommun-page-bloc-full);
 }
 
+body.fondations main .section.light-grey-orange-bg {
+  background-color: var(--fondations-quote-bg);
+}
+
 main .section.ashy-grey-bg {
   background-color: var(--fondations-quote-bg);
 }
@@ -1249,6 +1253,10 @@ main .section.quote-container .quote-wrapper {
   margin-bottom: 30px;
 }
 
+body.fondations main .section.quote-container:has(+ .section.float-right) .quote-wrapper {
+  margin-bottom: 0;
+}
+
 main .section:has(.icons-grid) .default-content-wrapper p.button-container a.button {
   background-color: var(--page-bloc-btn-bg);
   background-image: url("/icons/btn_fleche_right.svg");
@@ -1384,6 +1392,10 @@ main .section.float-right .default-content-wrapper .content-wrapper p{
     font-size: var(--body-font-size-m);
     padding: 0 80px 145px;
   }
+}
+
+.policy-template main .last-modified.policy-update {
+  margin-top: 1.5em;
 }
 
 .policy-template main .section .default-content-wrapper li::marker {
