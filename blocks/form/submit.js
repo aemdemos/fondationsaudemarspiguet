@@ -1,4 +1,5 @@
 import { DEFAULT_THANK_YOU_MESSAGE, getSubmitBaseUrl } from './constant.js';
+import setRichTextContent from './rich-text.js';
 import { checkValidation } from './util.js';
 
 export function submitSuccess(e, form) {
@@ -13,7 +14,7 @@ export function submitSuccess(e, form) {
       thankYouMessage = document.createElement('div');
       thankYouMessage.className = 'form-message success-message';
     }
-    thankYouMessage.innerHTML = thankYouMsg || DEFAULT_THANK_YOU_MESSAGE;
+    setRichTextContent(thankYouMessage, thankYouMsg || DEFAULT_THANK_YOU_MESSAGE);
     form.parentNode.insertBefore(thankYouMessage, form);
     if (thankYouMessage.scrollIntoView) {
       thankYouMessage.scrollIntoView({ behavior: 'smooth' });

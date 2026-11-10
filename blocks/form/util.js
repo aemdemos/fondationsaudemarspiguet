@@ -1,6 +1,7 @@
 // create a string containing head tags from h1 to h5
 import { defaultErrorMessages } from './constant.js';
 import { externalize } from './rules/functions.js';
+import setRichTextContent from './rich-text.js';
 
 const headings = Array.from({ length: 6 }, (_, i) => `<h${i + 1}>`).join('');
 const allowedTags = `${headings}<a><b><p><i><em><strong><ul><li><ol><br><hr><u><sup><sub><s>`;
@@ -68,7 +69,7 @@ export function createLabel(fd, tagName = 'label') {
     label.setAttribute('for', fd.id);
     label.className = 'field-label';
     if (fd.label.richText === true) {
-      label.innerHTML = stripTags(fd.label.value);
+      setRichTextContent(label, fd.label.value);
     } else {
       label.textContent = fd.label.value;
     }
@@ -158,7 +159,7 @@ export function createHelpText(fd) {
   const div = document.createElement('div');
   div.className = 'field-description';
   div.setAttribute('aria-live', 'polite');
-  div.innerHTML = fd.description;
+  setRichTextContent(div, fd.description);
   div.id = `${fd.id}-description`;
   return div;
 }
@@ -175,7 +176,7 @@ export function updateOrCreateInvalidMsg(fieldElement, msg) {
     element.textContent = msg;
   } else if (container.dataset.description) {
     container.classList.remove('field-invalid');
-    element.innerHTML = container.dataset.description;
+    setRichTextContent(element, container.dataset.description);
   } else if (element) {
     element.remove();
     container?.classList?.remove('field-invalid');
