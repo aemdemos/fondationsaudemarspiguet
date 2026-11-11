@@ -6,6 +6,7 @@ import {
   buildAemPreviewUrl,
   buildDaHashUrl,
   getLanguageDestinationUrl,
+  openLanguageDestinations,
 } from '../tools/languageswitcher/locale-url-helper.js';
 
 const fixtures = document.querySelector('#fixtures');
@@ -258,6 +259,66 @@ export default [
         'https://da.live.evil.example/edit', 'https://da.live:444/edit',
         'https://user:password@da.live/edit', '//da.live/edit',
       ].forEach((value) => assertThrows(() => getLanguageDestinationUrl(value), `Unsafe tool destination accepted: ${value}`));
+    },
+  },
+  {
+    name: 'R01 - form navigation ignores an external document base and preserves URL components',
+    async run() {
+      const frame = await navigationFrame();
+      const target = frame.contentWindow;
+      const base = target.document.createElement('base');
+      base.href = 'https://evil.example/';
+      target.document.head.append(base);
+      const form = submissionForm(target.document);
+      target.document.body.append(form);
+      form.dataset.redirectUrl = `${window.location.origin}/test/navigation.html`
+        + '?dapreview=1&rum=off&value=%252F%3F%23#confirmed';
+      const loaded = new Promise((resolve) => {
+        frame.addEventListener('load', resolve, { once: true });
+      });
+      target.navigationHandlers.submitSuccess({}, form);
+      await Promise.race([
+        loaded,
+        new Promise((resolve, reject) => {
+          setTimeout(() => reject(new Error('Form navigation timed out')), 5000);
+        }),
+      ]);
+      assert(target.location.origin === window.location.origin, 'Document base changed the destination origin');
+      assert(target.location.pathname === '/test/navigation.html', 'Redirect path changed');
+      assert(target.location.search === '?dapreview=1&rum=off&value=%252F%3F%23', 'Query encoding changed');
+      assert(target.location.hash === '#confirmed', 'Redirect fragment changed');
+    },
+  },
+  {
+    name: 'R02 - language tool validates all destinations before opening any tabs',
+    run() {
+      const originalOpen = window.open;
+      const calls = [];
+      window.open = (...args) => { calls.push(args); };
+      try {
+        const valid = [
+          'https://da.live/edit#/org/repo/fr/page',
+          'https://main--repo--org.aem.page/fr/page?q=%252F#section',
+          'https://feature--repo--org.hlx.live/en/page',
+        ];
+        openLanguageDestinations(valid);
+        assert(calls.length === valid.length, 'Expected tabs were not opened');
+        calls.forEach(([href, target, features], index) => {
+          assert(href === valid[index], 'Destination components changed');
+          assert(target === '_blank' && features === 'noopener,noreferrer', 'Tab protections changed');
+        });
+        calls.length = 0;
+        [
+          'https://evil.example/', 'https://da.live.evil.example/',
+          'https://main--repo--org.aem.page.evil.example/', 'http://da.live/',
+          'https://da.live:444/', 'https://user@da.live/',
+        ].forEach((value) => {
+          assertThrows(() => openLanguageDestinations([valid[0], value]), 'Unsafe batch accepted');
+          assert(calls.length === 0, 'Part of an invalid batch opened');
+        });
+      } finally {
+        window.open = originalOpen;
+      }
     },
   },
   {

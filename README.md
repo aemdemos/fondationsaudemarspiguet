@@ -56,6 +56,9 @@ External or executable destinations are rejected rather than followed. This does
 not change the submission endpoint on `forms.adobe.com` or the SendGrid iframe.
 Language navigation is also confined to the current origin; the separate DA
 language tool opens only HTTPS DA or AEM/Helix destinations.
+Same-origin redirects rebuild the destination from the browser's current origin
+and validated path, query and fragment, never from the input URL's authority.
+The DA tool validates every destination before opening any tab in a batch.
 
 Fragments are fetched from the current origin without following HTTP redirects
 and are sanitized before decoration. Link fragments directly to their canonical

@@ -33,5 +33,6 @@ export function getSameOriginUrl(value) {
 
 export function redirectToSameOrigin(value) {
   const url = getSameOriginUrl(value);
-  window.location.assign(url.href);
+  // Never reuse the input authority, even after validation.
+  window.location.assign(`${window.location.origin}${url.pathname}${url.search}${url.hash}`);
 }
