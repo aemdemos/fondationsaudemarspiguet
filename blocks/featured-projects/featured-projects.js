@@ -10,9 +10,9 @@ import {
   div,
   h3,
   h2,
-  a,
 } from '../../scripts/dom-helpers.js';
 import { applyFadeUpAnimation, getPathSegments } from '../../scripts/utils.js';
+import { createSafeLink } from '../../scripts/url-utils.js';
 
 class Products {
   // eslint-disable-next-line max-len
@@ -93,24 +93,6 @@ async function fetchProjectPlaceholders(prefix = 'en') {
 
 const blockType = 'cards';
 
-function createProjectLink(path) {
-  const link = a();
-  if (typeof path === 'string' && path.trim()) {
-    try {
-      const { protocol } = new URL(path, window.location.href);
-      if (protocol === 'http:' || protocol === 'https:') {
-        link.setAttribute('href', path);
-        return link;
-      }
-    } catch (error) {
-      if (!(error instanceof TypeError)) throw error;
-    }
-  }
-  // eslint-disable-next-line no-console
-  console.warn('Invalid or unsupported featured-project URL');
-  return link;
-}
-
 // Result parsers parse the query results into a format that can be used by the block builder for
 // the specific block types
 const resultParsers = {
@@ -125,7 +107,7 @@ const resultParsers = {
       const cardContainer = div();
 
       // Create the wrapper anchor tag
-      const cardLink = createProjectLink(result.productsPath);
+      const cardLink = createSafeLink(result.productsPath);
 
       // Create image container
       const imageContainer = div({ class: 'image-container' });

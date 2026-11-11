@@ -11,6 +11,8 @@ import {
 import {
   loadSections,
 } from '../../scripts/aem.js';
+import setSanitizedContent from '../../scripts/sanitize.js';
+import { getSameOriginUrl } from '../../scripts/url-utils.js';
 
 /**
  * Loads a fragment.
@@ -19,12 +21,14 @@ import {
  */
 export async function loadFragment(path) {
   if (path && path.startsWith('/')) {
+    const url = getSameOriginUrl(path);
     // eslint-disable-next-line no-param-reassign
-    path = path.replace(/(\.plain)?\.html/, '');
-    const resp = await fetch(`${path}.plain.html`);
+    path = url.pathname.replace(/(\.plain)?\.html$/, '');
+    url.pathname = `${path}.plain.html`;
+    const resp = await fetch(url.href, { redirect: 'error' });
     if (resp.ok) {
       const main = document.createElement('main');
-      main.innerHTML = await resp.text();
+      setSanitizedContent(main, await resp.text());
 
       // reset base path for media to fragment base
       const resetAttributeBase = (tag, attr) => {

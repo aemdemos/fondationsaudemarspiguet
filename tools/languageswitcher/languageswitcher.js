@@ -7,6 +7,7 @@ import {
   buildDaHashUrl,
   pathnameToSegments,
   contextToDaUrl,
+  getLanguageDestinationUrl,
 } from './locale-url-helper.js';
 import {
   fetchLanguageSwitcherRows,
@@ -137,8 +138,9 @@ function writeCache(key, rows, ttlMs) {
 }
 
 function openUrlsInNewTabs(urls) {
-  urls.filter(Boolean).forEach((href) => {
-    window.open(typeof href === 'string' ? href : String(href), '_blank', 'noopener,noreferrer');
+  const destinations = urls.filter(Boolean).map((href) => getLanguageDestinationUrl(href));
+  destinations.forEach((url) => {
+    window.open(url.href, '_blank', 'noopener,noreferrer');
   });
 }
 

@@ -50,6 +50,21 @@ protocols are removed. Links opening in a new tab receive `rel="noopener"`.
 Featured-project metadata is rendered as plain text, and its links accept only
 HTTP(S) URLs. Map scripts use French for `fr` paths and English otherwise.
 
+After form submission, redirects accept only HTTP(S) URLs on the current page's
+origin (same scheme, host and port), including relative confirmation-page links.
+External or executable destinations are rejected rather than followed. This does
+not change the submission endpoint on `forms.adobe.com` or the SendGrid iframe.
+Language navigation is also confined to the current origin; the separate DA
+language tool opens only HTTPS DA or AEM/Helix destinations.
+
+Fragments are fetched from the current origin without following HTTP redirects
+and are sanitized before decoration. Link fragments directly to their canonical
+paths, not redirecting aliases. Safe HTML, relative media and authoring data
+attributes remain supported; executable markup is removed. Home-project and
+news-slider metadata is built with DOM nodes, and their links accept only HTTP(S).
+The local checks include navigation in isolated frames, fragment loading and
+mocked project/news indexes; production integrations still need their own checks.
+
 ## Shared front-end behavior
 
 Fondations, Arbres and Bien Commun share the same block layouts and interactions.
