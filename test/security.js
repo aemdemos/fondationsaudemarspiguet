@@ -7,6 +7,7 @@ import { createLabel } from '../blocks/form/util.js';
 import decorateMapBien from '../blocks/map-bien/map-bien.js';
 import decorateMap from '../blocks/map/map.js';
 import { loadScript } from '../scripts/aem.js';
+import mediumTests from './security-medium.js';
 
 const results = document.querySelector('#results');
 const fixtures = document.querySelector('#fixtures');
@@ -96,6 +97,8 @@ async function withFeaturedProjects(path, products, callback, options = {}) {
   const originalHlx = window.hlx;
   const originalPlaceholders = window.placeholders;
   const originalAddEventListener = window.addEventListener;
+  const originalRequestAnimationFrame = window.requestAnimationFrame;
+  const originalCancelAnimationFrame = window.cancelAnimationFrame;
   const originalWidth = Object.getOwnPropertyDescriptor(window, 'innerWidth');
   const resizeListeners = [];
   let resetLanguage;
@@ -125,6 +128,9 @@ async function withFeaturedProjects(path, products, callback, options = {}) {
     if (type === 'resize') resizeListeners.push(listener);
     else originalAddEventListener.call(this, type, listener, listenerOptions);
   };
+  // Keep the synthetic resize test runnable when the browser tab is hidden.
+  window.requestAnimationFrame = (onFrame) => setTimeout(() => onFrame(performance.now()), 0);
+  window.cancelAnimationFrame = clearTimeout;
   Object.defineProperty(window, 'innerWidth', { configurable: true, writable: true, value: 1200 });
 
   try {
@@ -150,6 +156,8 @@ async function withFeaturedProjects(path, products, callback, options = {}) {
     window.hlx = originalHlx;
     window.placeholders = originalPlaceholders;
     window.addEventListener = originalAddEventListener;
+    window.requestAnimationFrame = originalRequestAnimationFrame;
+    window.cancelAnimationFrame = originalCancelAnimationFrame;
     if (originalWidth) Object.defineProperty(window, 'innerWidth', originalWidth);
     else delete window.innerWidth;
     window.history.replaceState(null, '', originalUrl);
@@ -805,6 +813,8 @@ const tests = [
     },
   },
 ];
+
+tests.push(...mediumTests);
 
 const report = { cases: [] };
 window.securityTestReport = report;

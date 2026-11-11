@@ -1,4 +1,5 @@
 import { getLanguage } from './scripts.js';
+import { redirectToSameOrigin } from './url-utils.js';
 
 const LANGUAGES = new Set(['en', 'fr']);
 
@@ -45,29 +46,33 @@ async function findMappedUrl(targetLang) {
 
 // Switch to target language
 export async function switchToLanguage(targetLang) {
+  if (!LANGUAGES.has(targetLang)) {
+    throw new Error('Unsupported target language');
+  }
   if (getLanguage() === targetLang) return;
 
+  let destination;
   try {
     const mappedUrl = await findMappedUrl(targetLang);
 
     // Homepage: / <-> /fr
     if (!mappedUrl || mappedUrl === '/') {
-      window.location.href = targetLang === 'fr' ? '/fr' : '/';
-      return;
+      destination = targetLang === 'fr' ? '/fr' : '/';
+    } else {
+      // Other pages: standard pattern
+      const cleanUrl = mappedUrl.startsWith('/') ? mappedUrl : `/${mappedUrl}`;
+      destination = `/${targetLang}${cleanUrl}`;
     }
-
-    // Other pages: standard pattern
-    const cleanUrl = mappedUrl.startsWith('/') ? mappedUrl : `/${mappedUrl}`;
-    window.location.href = `/${targetLang}${cleanUrl}`;
   } catch {
     // Fallback
     const currentPath = getPagePathWithoutLanguage();
     if (currentPath === '/') {
-      window.location.href = targetLang === 'fr' ? '/fr' : '/';
+      destination = targetLang === 'fr' ? '/fr' : '/';
     } else {
-      window.location.href = `/${targetLang}${currentPath}`;
+      destination = `/${targetLang}${currentPath}`;
     }
   }
+  redirectToSameOrigin(destination);
 }
 
 // Toggle between languages

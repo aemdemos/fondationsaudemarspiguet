@@ -1,6 +1,5 @@
 import {
   createOptimizedPicture,
-  buildBlock,
   decorateBlock,
   loadBlock,
   fetchPlaceholders,
@@ -13,6 +12,7 @@ import {
   a,
 } from '../../scripts/dom-helpers.js';
 import { applyFadeUpAnimation } from '../../scripts/utils.js';
+import { createSafeLink } from '../../scripts/url-utils.js';
 
 class Products {
   // eslint-disable-next-line max-len
@@ -45,7 +45,7 @@ const resultParsers = {
       // 1) Image with cardLink (link only on image)
       if (result.productsImage && result.productsImage.length > 0) {
         const projectImageDiv = div({ class: 'project-image' });
-        const imageLink = a({ href: result.productsPath });
+        const imageLink = createSafeLink(result.productsPath);
         const imageContainer = div({ class: 'image-container' });
         const cardImage = createOptimizedPicture(result.productsImage);
         cardImage.classList.add('lazy', 'slide_img');
@@ -89,7 +89,7 @@ const resultParsers = {
       projectsListingButton.textContent = leftButtonText;
 
       // 2nd button - Individual project
-      const projectDetailButton = a({ href: result.productsPath, class: 'btn-project-detail' });
+      const projectDetailButton = createSafeLink(result.productsPath, { class: 'btn-project-detail' });
       projectDetailButton.textContent = rightButtonText;
 
       buttonsDiv.append(projectsListingButton);
@@ -202,7 +202,10 @@ const loadresults = async (getProducts) => {
 export default async function decorate(block) {
   const getProducts = await getProductsdata();
   const blockContents = await loadresults(getProducts);
-  const builtBlock = buildBlock(blockType, blockContents);
+  const builtBlock = div(
+    { class: blockType },
+    ...blockContents.map((row) => div(...row.map((cell) => div(cell)))),
+  );
   const parentDiv = div(
     builtBlock,
   );

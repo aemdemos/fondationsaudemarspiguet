@@ -19,6 +19,7 @@
  ************************************************************************ */
 import { getSubmitBaseUrl } from '../constant.js';
 import setRichTextContent from '../rich-text.js';
+import { redirectToSameOrigin } from '../../../scripts/url-utils.js';
 /**
  * Prefixes the URL with the context path.
  * @param {string} url - The URL to externalize.
@@ -124,7 +125,7 @@ function defaultSubmitSuccessHandler(globals) {
   const { form } = globals;
   if (submitSuccessResponse) {
     if (submitSuccessResponse.redirectUrl) {
-      window.location.href = encodeURI(submitSuccessResponse.redirectUrl);
+      redirectToSameOrigin(submitSuccessResponse.redirectUrl);
     } else if (submitSuccessResponse.thankYouMessage) {
       const formContainerElement = document.getElementById(`${form.$id}`);
       const thankYouMessage = document.createElement('div');
