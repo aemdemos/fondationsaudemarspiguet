@@ -3,6 +3,29 @@
 const DA_HOSTS = ['da.live', 'www.da.live', 'stage.da.live'];
 const DA_VIEWS = new Set(['edit', 'sheet', 'browse', 'config', 'media']);
 
+export function getLanguageDestinationUrl(value) {
+  const url = new URL(value);
+  const isAemHost = /^[a-z0-9-]+--[a-z0-9-]+--[a-z0-9-]+\.(aem|hlx)\.(page|live)$/i.test(url.hostname);
+  if (url.protocol !== 'https:' || url.username || url.password || url.port
+    || (!DA_HOSTS.includes(url.hostname) && !isAemHost)) {
+    throw new Error('Unsupported language tool destination');
+  }
+  return url;
+}
+
+export function openLanguageDestinations(values) {
+  const destinations = values.filter(Boolean).map((value) => getLanguageDestinationUrl(value));
+  destinations.forEach((url) => {
+    // Keep the destination policy next to the navigation sink as well.
+    if (url.protocol !== 'https:' || url.username || url.password || url.port
+      || (!DA_HOSTS.includes(url.hostname)
+        && !/^[a-z0-9-]+--[a-z0-9-]+--[a-z0-9-]+\.(aem|hlx)\.(page|live)$/i.test(url.hostname))) {
+      throw new Error('Unsupported language tool destination');
+    }
+    window.open(`https://${url.hostname}${url.pathname}${url.search}${url.hash}`, '_blank', 'noopener,noreferrer');
+  });
+}
+
 export function extractHashPath(hash) {
   if (!hash) return null;
   const parts = hash.split('#');

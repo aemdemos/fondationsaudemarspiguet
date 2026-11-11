@@ -9,6 +9,7 @@
     <script>
       const fixtureUrl = new URL(window.location.href);
       fixtureUrl.searchParams.set('rum', 'off');
+      fixtureUrl.searchParams.set('dapreview', '1');
       window.history.replaceState(null, '', fixtureUrl);
     </script>
   </head>

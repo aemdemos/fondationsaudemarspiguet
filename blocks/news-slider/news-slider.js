@@ -1,6 +1,5 @@
 import {
   createOptimizedPicture,
-  buildBlock,
   decorateBlock,
   loadBlock,
 } from '../../scripts/aem.js';
@@ -9,11 +8,11 @@ import ffetch from '../../scripts/ffetch.js';
 import {
   div,
   h3,
-  a,
   p,
 } from '../../scripts/dom-helpers.js';
 import loadswiper from '../../scripts/delayed.js';
 import { applyFadeUpAnimation } from '../../scripts/utils.js';
+import { createSafeLink } from '../../scripts/url-utils.js';
 
 class News {
   // eslint-disable-next-line max-len
@@ -54,7 +53,7 @@ const resultParsers = {
       }
 
       // Create the wrapper anchor tag
-      const cardLink = a({ href: result.newsPath });
+      const cardLink = createSafeLink(result.newsPath);
 
       // Create image container
       const imageContainer = div({ class: 'image-container' });
@@ -205,7 +204,10 @@ const loadresults = async (getNews) => {
 export default async function decorate(block) {
   const newsData = await getNewsdata();
   const blockContents = await loadresults(newsData);
-  const builtBlock = buildBlock(blockType, blockContents);
+  const builtBlock = div(
+    { class: blockType },
+    ...blockContents.map((row) => div(...row.map((cell) => div(cell)))),
+  );
 
   // Keep parentDiv for decorateBlock to work properly
   const parentDiv = div(builtBlock);
