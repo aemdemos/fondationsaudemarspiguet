@@ -160,6 +160,42 @@ function reorderProjectSlots(projectsListing, orderedProjects) {
   });
 }
 
+function getProjectSortDate(project, endYear) {
+  const fallback = endYear * 10000 + 1231;
+  const value = project.startDate?.trim();
+  if (!value) return fallback;
+
+  const match = /^(\d{2})\.(\d{2})\.(\d{4})$/.exec(value);
+  if (match) {
+    const [day, month, year] = match.slice(1).map(Number);
+    const date = new Date(0);
+    date.setUTCFullYear(year, month - 1, day);
+    if (year > 0 && date.getUTCFullYear() === year
+      && date.getUTCMonth() === month - 1 && date.getUTCDate() === day) {
+      return year * 10000 + month * 100 + day;
+    }
+  }
+  console.warn(`Invalid Start Date for project ${project.path}: "${value}". Expected DD.MM.YYYY; using Duration instead.`);
+  return fallback;
+}
+
+function sortProjects(projects) {
+  return projects.map((project) => {
+    const [start, end] = (project.duration || '').replace(/\s*→\s*/, '→').split('→')
+      .map((year) => parseInt(year.trim(), 10));
+    const startYear = Number.isFinite(start) ? start : 0;
+    const endYear = Number.isFinite(end) ? end : 0;
+    return {
+      project,
+      date: getProjectSortDate(project, endYear),
+      startYear,
+      endYear,
+    };
+  }).sort((left, right) => right.date - left.date
+    || right.endYear - left.endYear || right.startYear - left.startYear)
+    .map(({ project }) => project);
+}
+
 export default async function decorate(doc) {
   const $main = doc.querySelector('main');
   const $section = doc.querySelector('main .section:last-of-type');
@@ -230,7 +266,7 @@ export default async function decorate(doc) {
     ),
   );
   $section.append($filterContainer, $projectsListing);
-  const getProjects = await getProjectsdata();
+  const getProjects = sortProjects(await getProjectsdata());
   const allCategories = getProjects
     .flatMap((item) => (item.category || '').split('|'))
     .map((cat) => cat.trim())
@@ -257,15 +293,7 @@ export default async function decorate(doc) {
 
   $main.append($section);
 
-  const sortedProjects = getProjects.sort((dateA, dateB) => {
-    const [startA, endA] = dateA.duration.replace(/\s*→\s*/, '→').split('→').map((y) => parseInt(y.trim(), 10));
-    const [startB, endB] = dateB.duration.replace(/\s*→\s*/, '→').split('→').map((y) => parseInt(y.trim(), 10));
-    if (endA !== endB) {
-      return endB - endA; // Descending end year
-    }
-    return startB - startA; // Ascending start year
-  });
-  showProjectCards(sortedProjects, doc);
+  showProjectCards(getProjects, doc);
   const categorysection = doc.querySelector('.category-dropdown');
   const locationsection = doc.querySelector('.location-dropdown');
   locationsection.appendChild(locationList);

@@ -99,6 +99,36 @@ LinkedIn URLs remain authored in DA: link the LinkedIn icon to the desired URL.
 The footer and hero preserve the icon appearance and open the link in a new tab.
 No Universal Editor model change is needed.
 
+## Project list ordering (DA)
+
+In each project page's existing `Metadata` table, optionally add:
+
+| Metadata | |
+| --- | --- |
+| Start Date | 15.03.2026 |
+
+Use the same `Start Date` label on French and English pages and the exact
+`DD.MM.YYYY` format. This metadata controls project-list ordering only; it is
+not displayed and does not replace the visible project duration.
+
+The list sorts newest first using `Start Date`. Without it (or if it is empty
+or invalid), the duration's end year is treated as 31 December of that year.
+All projects share this ordering, including when filters are cleared. Ties use
+the previous rule: descending duration end year, then descending start year.
+Invalid dates generate a browser console warning and use the duration fallback.
+
+**Index prerequisite:** separately update each Arbres and Bien Commun
+`projects-index.json` configuration, in both languages, to expose the page's
+`<meta name="start-date" content="15.03.2026">` as the string column `startDate`.
+The index configuration is managed outside this repository; no remote content
+or configuration is changed here. Until that column is available and the
+affected pages are reindexed, the existing duration-based ordering remains.
+Homepage and featured-project ordering are unchanged. No UE model change is needed.
+
+With the local AEM proxy running, open
+`http://localhost:3000/test/projects-landing.html?dapreview=1&rum=off` to run
+mock-index checks for ordering, date validation, hidden metadata and filter resets.
+
 ## Newsletter block (DA)
 
 Add a table named `Newsletter` with the following four configuration rows. Merge
