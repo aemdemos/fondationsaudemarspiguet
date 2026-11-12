@@ -150,16 +150,6 @@ function setupSearchFilter(doc) {
   }
 }
 
-function setupDownloadLinks(doc) {
-  getTableRows(doc).forEach((row) => {
-    row.querySelectorAll('a').forEach((link) => {
-      if (!link.querySelector('.icon[class*="download"]')) return;
-      link.setAttribute('download', '');
-      link.removeAttribute('target');
-    });
-  });
-}
-
 // Simplified sorting functions
 function updateSortButtonStates(doc, activeSort) {
   resetButtonStates(doc);
@@ -274,7 +264,6 @@ export default async function decorate(doc) {
   $main.append(firstsection, $section, tablesection);
 
   // Initialize functionality
-  setupDownloadLinks(doc);
   setupSortButtons(doc);
   setupTypeFilter(doc, typePlaceholder);
   setupSearchFilter(doc);

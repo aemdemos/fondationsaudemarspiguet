@@ -104,6 +104,10 @@ LinkedIn URLs remain authored in DA: link the LinkedIn icon to the desired URL.
 The footer and hero preserve the icon appearance and open the link in a new tab.
 No Universal Editor model change is needed.
 
+In newsroom report tables, the download-icon link downloads the authored file,
+while the Discover link opens it in a new tab. Download links should reference
+files on the same origin so browsers honor the `download` attribute.
+
 ## Project list ordering (DA)
 
 In each project page's existing `Metadata` table, optionally add:
