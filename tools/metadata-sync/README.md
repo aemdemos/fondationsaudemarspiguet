@@ -14,7 +14,10 @@ It uses the shared multi-site runtime in [`tools/da-multisite`](../da-multisite/
   - A row present twice on the source page cannot be selected. A row present twice on the target page stops the update.
 - **Value.** Copied as is: text, formatting, images and links. Nothing is translated. Internal links to the source locale (`/en/...`) are switched to the target locale with the same mapping, and anchors and query strings are kept.
 - **Missing block.** If the target page has no metadata block, one is created at the end of the last section.
-- **Safety.** Analyse is read-only and shows the planned change. Apply asks for confirmation, saves a DA version of the target page ("Before Metadata sync" followed by the date and time), and writes only if the page has not changed since the analysis. Otherwise it reports "Conflict"; analyse again. Preview and Publish are separate, confirmed steps.
+- **Safety.** Analyse is read-only and shows the planned change. Apply asks for confirmation and saves a DA version of the target page ("Before Metadata sync" followed by the date and time). With an ETag, the write uses `If-Match`: a concurrent change produces "Conflict"; analyse again.
+  - Some DA responses have no ETag (observed on Arbres). In that case the tool warns in the analysis and asks to **Write with content comparison**. It re-reads the target without browser caching before versioning and again immediately before writing, comparing its exact source with the analysis snapshot. Changed content, lost permissions, failed reads or a failed backup stop the write.
+  - **Content comparison is not atomic.** An edit made between the final read and the write can still be overwritten. Coordinate with other authors and avoid simultaneous edits of the target. An ETag supplied by the final read is used if available; the document ID or modification date is never substituted for an ETag.
+  - Preview and Publish are separate actions; Publish requires confirmation.
 
 ## How to Use
 
@@ -49,3 +52,5 @@ To test a branch, add `?ref=<branch>` to the DA editor URL, or `?ref=local` with
 ## Local Test
 
 With `aem up`, open `http://localhost:3000/test/metadata-sync.html?repo=arbres-fondationsaudemarspiguet&path=/en/fondation-pour-les-arbres-projects/agroforestry-and-green-entrepreneurship`. The DA SDK and the DA/AEM APIs are mocked in memory ([`test/metadata-sync-test.js`](../../test/metadata-sync-test.js)). Other fixtures: `/en/media-newsroom`, `/fr/espace-medias` and `/en/duplicate-rows` (Fondations), `/en/only-in-english` (Arbres), and `/en/no-metadata` (Bien Commun, `repo=biencommun-fondationsaudemarspiguet`). Add `&row=<name>` to test a preset entry.
+
+Add `&etag=missing` to reproduce DA responses without an ETag. Run the automated concurrency checks at `http://localhost:3000/test/da-multisite.html`: versioning, both comparison checkpoints, permissions, failed requests, ETag conflicts and the warning/confirmation UI. All writes in these tests stay in memory.

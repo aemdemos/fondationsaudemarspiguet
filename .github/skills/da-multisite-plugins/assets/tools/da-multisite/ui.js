@@ -7,7 +7,8 @@
  */
 import { LOCALES, ORG, SITES } from './sites.js';
 import {
-  aemStep, aemUrl, applyTarget, collectAssets, createApi, daEditUrl, expandTargets,
+  aemStep, aemUrl, applyTarget, collectAssets, CONTENT_COMPARISON_WARNING,
+  createApi, daEditUrl, expandTargets,
   inspectAsset, planTarget, runPool, targetAssetIds, uploadAsset, valuesFor,
 } from './core.js';
 
@@ -65,6 +66,7 @@ function stateCell(result, href) {
     { class: 'dams-result' },
     h('span', { class: `dams-state dams-state-${result.state}`, text: LABELS[result.state] || result.state }),
     result.message ? h('span', { class: 'dams-message', text: result.message }) : null,
+    result.warning ? h('span', { class: 'dams-message', text: `Warning: ${result.warning}` }) : null,
     href && result.state === 'ok' ? h('a', {
       href, target: '_blank', rel: 'noopener noreferrer', text: 'Open',
     }) : null,
@@ -416,7 +418,9 @@ function createTool({ api, operation, root }) {
   applyButton.addEventListener('click', () => {
     const pages = run.pages.filter(({ content }) => content.state === 'ready').length;
     const files = run.files.filter(({ content }) => content.state === 'new').length;
-    askConfirm(applyButton, `Write ${pages} page(s) and upload ${files} new file(s) in DA? A version of each page is saved first.`, 'Write in DA', apply);
+    const comparison = run.pages.some(({ content }) => content.state === 'ready' && !content.etag);
+    const warning = comparison ? ` Warning: ${CONTENT_COMPARISON_WARNING}` : '';
+    askConfirm(applyButton, `Write ${pages} page(s) and upload ${files} new file(s) in DA? A version of each page is saved first.${warning}`, comparison ? 'Write with content comparison' : 'Write in DA', apply);
   });
   previewButton.addEventListener('click', () => guarded(() => aemRun('preview')));
   publishButton.addEventListener('click', () => {
