@@ -1,4 +1,5 @@
 import decorate from '../templates/projects-landing/projects-landing.js';
+import decorateHomeProjects from '../blocks/home-projects/home-projects.js';
 import { getLanguageFromPath } from '../scripts/scripts.js';
 
 const originalFetch = window.fetch;
@@ -62,6 +63,7 @@ window.placeholders = {
   projectsLandingLocationFilter: 'Location',
   projectsLandingViewFilter: 'View all',
   projectsLandingSearchFilter: 'Search',
+  [language]: { homeProjectsLeftButton: 'All projects', homeProjectsRightButton: 'Read more' },
 };
 getLanguageFromPath(`/${language}`, true);
 
@@ -123,10 +125,35 @@ try {
     await render([]);
     assert(order() === '', 'Empty index rendered cards');
   });
+
+  await check('Home projects use the same ordering and only include featured projects', async () => {
+    const warnings = [];
+    const originalWarn = console.warn;
+    console.warn = (message) => warnings.push(message);
+    try {
+      data = [
+        { ...project('earlier-day', '2020 → 2030', '14.03.2026'), featured: 'yes' },
+        { ...project('legacy', '2020 → 2025'), featured: 'yes' },
+        { ...project('newer-day', '2020 → 2022', '15.03.2026'), featured: 'yes' },
+        { ...project('invalid', '2020 → 2024', '31.02.2026'), featured: 'yes' },
+        { ...project('hidden', '2020 → 2035', '01.01.2035'), featured: '' },
+      ];
+      const block = document.createElement('div');
+      block.className = 'home-projects block';
+      document.querySelector('main').append(block);
+      await decorateHomeProjects(block);
+      const titles = [...block.querySelectorAll('.project-article h3')].map((title) => title.textContent);
+      assert(titles.join(',') === 'newer-day,earlier-day,legacy,invalid', titles.join(','));
+      assert(warnings.length === 1 && warnings[0].includes('/invalid'), 'Invalid date warning missing');
+      assert(!block.textContent.includes('15.03.2026'), 'Start Date was displayed');
+    } finally {
+      console.warn = originalWarn;
+    }
+  });
 } finally {
   window.fetch = originalFetch;
   window.placeholders = originalPlaceholders;
   getLanguageFromPath(window.location.pathname, true);
-  summary.textContent = failures ? `${failures} checks failed` : 'All 4 checks passed';
+  summary.textContent = failures ? `${failures} checks failed` : 'All 5 checks passed';
   summary.dataset.failures = String(failures);
 }

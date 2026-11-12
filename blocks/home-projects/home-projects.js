@@ -13,6 +13,7 @@ import {
 } from '../../scripts/dom-helpers.js';
 import { applyFadeUpAnimation } from '../../scripts/utils.js';
 import { createSafeLink } from '../../scripts/url-utils.js';
+import sortProjects from '../../scripts/project-order.js';
 
 class Products {
   // eslint-disable-next-line max-len
@@ -153,30 +154,7 @@ async function getProductsdata() {
   const featuredProducts = rawProducts1.filter((item) => item.featured
     && item.featured.trim().length > 0);
 
-  // Function to extract years from duration string
-  const extractYears = ((duration) => {
-    if (!duration) return { year1: 0, year2: 0 };
-    const years = duration.split('→').map((year) => parseInt(year.trim(), 10));
-    return {
-      year1: years[0] || 0,
-      year2: years[1] || 0,
-    };
-  });
-
-  // Sort the filtered array based on year2 first, then year1
-  featuredProducts.sort((item1, item2) => {
-    const yearsA = extractYears(item1.duration);
-    const yearsB = extractYears(item2.duration);
-
-    // Compare year2 first
-    if (yearsB.year2 !== yearsA.year2) {
-      return yearsB.year2 - yearsA.year2;
-    }
-    // If year2 is same, compare year1
-    return yearsB.year1 - yearsA.year1;
-  });
-
-  return featuredProducts;
+  return sortProjects(featuredProducts);
 }
 
 const loadresults = async (getProducts) => {

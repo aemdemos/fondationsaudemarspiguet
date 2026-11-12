@@ -113,7 +113,7 @@ In each project page's existing `Metadata` table, optionally add:
 | Start Date | 15.03.2026 |
 
 Use the same `Start Date` label on French and English pages and the exact
-`DD.MM.YYYY` format. This metadata controls project-list ordering only; it is
+`DD.MM.YYYY` format. This metadata controls project-list and homepage featured-project ordering; it is
 not displayed and does not replace the visible project duration.
 
 The list sorts newest first using `Start Date`. Without it (or if it is empty
@@ -128,7 +128,8 @@ Invalid dates generate a browser console warning and use the duration fallback.
 The index configuration is managed outside this repository; no remote content
 or configuration is changed here. Until that column is available and the
 affected pages are reindexed, the existing duration-based ordering remains.
-Homepage and featured-project ordering are unchanged. No UE model change is needed.
+The homepage applies the same ordering to projects with non-empty `featured`
+metadata. Other featured-project blocks are unchanged. No UE model change is needed.
 
 With the local AEM proxy running, open
 `http://localhost:3000/test/projects-landing.html?dapreview=1&rum=off` to run
