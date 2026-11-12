@@ -87,6 +87,20 @@ function dataTable(caption, headers, rows) {
   }, table);
 }
 
+function operationNotice(notice) {
+  if (!notice) return null;
+  return h(
+    'section',
+    { class: 'dams-notice', 'aria-label': notice.title },
+    h('h2', { text: notice.title }),
+    notice.message ? h('p', { text: notice.message }) : null,
+    notice.items?.length ? h('ul', {}, notice.items.map((text) => h('li', { text }))) : null,
+    notice.details?.length ? h('dl', {}, notice.details.flatMap(({ label, value }) => [
+      h('dt', { text: label }), h('dd', { text: value }),
+    ])) : null,
+  );
+}
+
 function createTool({ api, operation, root }) {
   const controls = new Map();
   let run = null;
@@ -454,6 +468,7 @@ function createTool({ api, operation, root }) {
   );
   root.replaceChildren(
     h('h1', { text: operation.title }),
+    operationNotice(operation.notice),
     operation.description ? h('p', { class: 'dams-intro', text: operation.description }) : null,
     form,
     confirmSlot,

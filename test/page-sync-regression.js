@@ -293,6 +293,7 @@ tests.push(['Creation UI: confirmation, translation reminder and preview-before-
       operation: createPageOperation(),
       root,
     });
+    assert(!root.querySelector('.dams-notice'), 'Creation shows a metadata-only notice');
     button('Analyse').click();
     await waitFor(() => root.querySelector('.dams-state-ready'));
     button('Apply changes…').click();
@@ -311,6 +312,69 @@ tests.push(['Creation UI: confirmation, translation reminder and preview-before-
     assert(root.querySelector('.dams-confirm').textContent.includes('translate'), 'No publish reminder');
     button('Cancel').click();
     assert(!fixture.mock.aem.live.size, 'Cancel published a page');
+  } finally {
+    root.remove();
+  }
+}]);
+
+['en', 'fr'].forEach((locale) => {
+  tests.push([`Existing-page UI (${locale}): clear metadata-only scope and accessible row selection`, async () => {
+    const fixture = createFixture({ exists: true, locale });
+    const root = document.createElement('div');
+    document.querySelector('#fixtures').append(root);
+    try {
+      const tool = await mountMultisiteTool({
+        sdk: Promise.resolve({
+          context: fixture.context, actions: { daFetch: fixture.mock.daFetch },
+        }),
+        operation: createPageOperation(),
+        root,
+      });
+      const notice = root.querySelector('.dams-notice');
+      assert(notice?.querySelector('h2').textContent === 'Only metadata can be synced', 'Scope not prominent');
+      assert(notice.getAttribute('aria-label') === 'Only metadata can be synced', 'Notice not named');
+      assert(notice.textContent.includes('one metadata row'), 'Single-row limit missing');
+      assert(notice.textContent.includes('No full-page copy'), 'Full-copy limitation missing');
+      assert(notice.textContent.includes('stay unchanged'), 'Preserved content not explained');
+      const labels = [...notice.querySelectorAll('dt')].map((node) => node.textContent);
+      assert(labels[0] === `Source (${locale.toUpperCase()}, read-only)`, 'Source role unclear');
+      assert(labels[1] === `Target (${locale === 'en' ? 'FR' : 'EN'})`, 'Target role unclear');
+      const paths = [...notice.querySelectorAll('dd')].map((node) => node.textContent);
+      assert(paths[0] === fixture.sourcePath && paths[1] === fixture.targetPath, 'Paths not separated');
+      const select = root.querySelector('select');
+      assert(!select.multiple, 'More than one row can be selected');
+      assert(root.querySelector(`label[for="${select.id}"]`).textContent
+        === 'Metadata row to sync', 'Metadata selector not labelled');
+      assert(root.querySelector(`#${select.getAttribute('aria-describedby')}`).textContent
+        .includes('without translation'), 'Translation guidance not associated with the selector');
+      assert(root.querySelector('.dams-intro').textContent.includes('save your edits'), 'Save reminder lost');
+      assert(!puts(fixture).length, 'Opening the notice wrote content');
+      select.value = 'start-date';
+      await tool.analyse();
+      assert(root.querySelector('.dams-state-ready'), 'Metadata analysis no longer works');
+      assert(root.textContent.includes('not atomic'), 'Content-comparison warning lost');
+    } finally {
+      root.remove();
+    }
+  }]);
+});
+
+tests.push(['Existing-page UI preserves the missing language-switcher warning', async () => {
+  const fixture = createFixture({ exists: true, missingSheet: true });
+  const root = document.createElement('div');
+  document.querySelector('#fixtures').append(root);
+  try {
+    await mountMultisiteTool({
+      sdk: Promise.resolve({
+        context: fixture.context, actions: { daFetch: fixture.mock.daFetch },
+      }),
+      operation: createPageOperation(),
+      root,
+    });
+    assert(root.querySelector('.dams-notice'), 'Metadata-only notice missing');
+    assert(root.querySelector('.dams-intro').textContent.includes('sheet unavailable'), 'Warning lost');
+    assert(root.querySelector('.dams-intro').textContent.includes('known article folder'), 'Fallback hidden');
+    assert(!puts(fixture).length, 'Opening the notice wrote content');
   } finally {
     root.remove();
   }

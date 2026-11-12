@@ -13,7 +13,7 @@ A DA **library plugin** for News and Projects articles, on the same registered s
 4. Open the target using the DA link in the results. **Do not forget to translate it before publishing.** Review the title, text, image alternatives, links, metadata names/values and any `Language` row.
 5. Preview and publish separately when ready. The translation reminder is repeated in the creation result and publication confirmation. Nothing is automatically previewed or published.
 
-If the page already exists when the tool opens, choose one metadata row, then Analyse and Apply. This reuses Metadata sync's localized row names, internal-link handling, backup versions and explicit content-comparison fallback when DA has no ETag.
+If the page already exists when the tool opens, the **Only metadata can be synced** notice highlights that a full-page copy is unavailable and all other content stays unchanged. Source (read-only) and target paths are listed separately. Choose a **Metadata row to sync**, then Analyse and Apply. This reuses Metadata sync's localized row names, internal-link handling, backup versions and explicit content-comparison fallback when DA has no ETag.
 
 The mode is chosen when the tool opens. Reopen it after creating the page, or if another author creates/deletes the counterpart, to refresh the mode.
 

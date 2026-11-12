@@ -48,7 +48,25 @@ export default function createPageOperation() {
           ...metadata,
           ...configured,
           title: 'Page sync',
-          description: `The ${locale.toUpperCase()} page already exists. It will never be replaced by a full copy. Select one metadata row to sync. ${configured.description}`,
+          notice: {
+            title: 'Only metadata can be synced',
+            message: `The ${locale.toUpperCase()} page already exists.`,
+            items: [
+              'Update or add one metadata row at a time.',
+              'No full-page copy: other metadata, text, images and blocks stay unchanged.',
+            ],
+            details: [
+              { label: `Source (${source.locale.toUpperCase()}, read-only)`, value: source.path },
+              { label: `Target (${locale.toUpperCase()})`, value: target.path },
+            ],
+          },
+          description: 'Wait for DA to save your edits, then choose a row and select Analyse.'
+            + `${mapping.error ? ` Language-switcher sheet unavailable: ${mapping.error} Using the known article folder pair.` : ''}`,
+          fields: configured.fields.map((field) => (field.name === 'row' ? {
+            ...field,
+            label: 'Metadata row to sync',
+            help: 'The value is copied without translation. Metadata names and internal links are adapted to the target language.',
+          } : field)),
         };
       }
       if (current.status !== 404) {
