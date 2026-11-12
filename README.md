@@ -75,6 +75,8 @@ Scrollable hero carousel arrows navigate to the next slide; the last arrow retur
 to the first slide and the top of the page, with reduced-motion support.
 On the Fondations homepage, carousel copy is selectable and uses uniform light
 typography, retaining the authored highlight colors.
+On the Arbres and Bien Commun homepages, formatted carousel text inherits the
+surrounding typography while retaining authored highlight colors and underlines.
 Fondations content sections using `light-grey-orange-bg` retain the site's light
 grey background rather than the Bien Commun beige.
 Image-only heroes keep their natural image height. Project listings use 35:23

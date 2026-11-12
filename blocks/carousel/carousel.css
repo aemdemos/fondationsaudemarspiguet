@@ -834,3 +834,7 @@ body.fondations main > .section.carousel-container:has(.carousel.hero-banner) .c
 .fondations .carousel.hero-banner.scrollable .carousel-slide-content p:not(.button-container) :is(strong, em) {
   font: inherit;
 }
+
+.carousel.hero-banner.homepage:not(.scrollable) .carousel-slide-content p:not(.button-container) :is(strong, b, em, i) {
+  font: inherit;
+}
