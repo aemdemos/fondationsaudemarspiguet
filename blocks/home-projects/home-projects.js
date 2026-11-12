@@ -39,6 +39,7 @@ const resultParsers = {
   columns: (results, leftButtonText, rightButtonText) => {
     const blockContents = [];
     const currentLanguage = getLanguage();
+    const isBienCommun = window.location.hostname.includes('biencommun');
 
     results.forEach((result) => {
       const cardContainer = div();
@@ -83,9 +84,13 @@ const resultParsers = {
       const buttonsDiv = div({ class: 'buttons-container' });
 
       // 1st button - Projects listing
-      const projectsListingUrl = currentLanguage === 'fr'
-        ? '/fr/fondation-pour-les-arbres-nos-projets'
-        : '/en/fondation-pour-les-arbres-projects';
+      const projectsListingUrl = isBienCommun
+        ? (currentLanguage === 'fr'
+          ? '/fr/fondation-pour-le-bien-commun-nos-projets'
+          : '/en/fondation-pour-le-bien-commun-projects')
+        : (currentLanguage === 'fr'
+          ? '/fr/fondation-pour-les-arbres-nos-projets'
+          : '/en/fondation-pour-les-arbres-projects');
       const projectsListingButton = a({ href: projectsListingUrl, class: 'btn-projects-listing' });
       projectsListingButton.textContent = leftButtonText;
 
