@@ -197,6 +197,7 @@ function createOperation() {
 
   return {
     title: 'Metadata sync',
+    allowContentComparison: true,
     fields: [],
     pages: {},
     apply,

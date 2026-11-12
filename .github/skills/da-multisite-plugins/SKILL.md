@@ -5,7 +5,7 @@ description: 'Use when creating or changing Document Authoring (DA, da.live, Exp
 
 # Build Multi-Site, Multi-Language DA Plugins
 
-The three sites share one codebase but not their content. A change to a shared page means 3 sites × 2 languages = 6 manual edits. A multi-site plugin turns this into one form: **analyse → confirm → write (versioned, conflict-safe) → preview → publish**, with a per-page status.
+The three sites share one codebase but not their content. A change to a shared page means 3 sites × 2 languages = 6 manual edits. A multi-site plugin turns this into one form: **analyse → confirm → write (versioned, with concurrency checks) → preview → publish**, with a per-page status.
 
 Use this skill for author-facing tools running inside DA. Use something else for:
 
@@ -67,6 +67,7 @@ Optional operation members, for tools that depend on the page being edited (libr
 | `setup({ context, api })` | Once, after the SDK and org checks | Read `context.path`, the current page or a sheet; return overrides merged into the operation (`description`, `fields`, `pages`, `siteIds`, `locales`). Throw to show a blocking message. |
 | `load({ api, input })` | At each Analyse, before planning | Re-read source data; the result is passed to `apply` as `shared` and reused unchanged for Apply and its verification. |
 | `siteIds`, `locales` | At mount | Restrict the scope; a scope with one entry is not shown as checkboxes. |
+| `allowContentComparison` | Analyse / Apply | Default false. Explicitly opts into non-atomic source comparison when DA has no ETag. The runtime warns in the plan and write confirmation; see [safety.md](./references/safety.md#missing-etag). Metadata sync opts in; other operations remain strict. |
 | `{ type: 'checkboxes', options: [{ value, label, hint, disabled }], default: [] }` | Field | Multiple choice; the value is an array, `required` means at least one. `select` options also accept `disabled`; use a first option with `value: ''` as a placeholder for a required choice. |
 
 `api.request(url, init)` is the guarded `daFetch` (DA and AEM admin origins only) for helpers that need a raw fetch, such as `fetchLanguageSwitcherRows`.
@@ -101,6 +102,7 @@ Optional operation members, for tools that depend on the page being edited (libr
   - **Apply**: each page is written once; one version per page; new files uploaded; site icons, link labels and link forms preserved; unrelated blocks untouched.
   - **Re-analyse**: every page is "Up to date" (idempotency) and existing files are kept.
   - **Concurrent edit** (`DA_MOCK.edit(key, fn)` between Analyse and Apply): that page shows "Conflict", the others are written.
+  - **Missing ETag** (`createDaMock({ etags: false })`): strict operations refuse writes; opted-in ones show the non-atomic warning and compare before and after versioning. Test edits at both checkpoints, failed reads and backups, and unchanged pages. In this repository, `/test/da-multisite.html` runs these regressions; `/test/metadata-sync.html?etag=missing` exercises the plugin.
   - **Read-only site** (`DA_MOCK.setReadOnly(repo)`): its pages show "No access" and its files are "Skipped".
   - **Injected failure** (`DA_MOCK.fail(method, url, status)`): a failed version means the page is not written; a failed file preview means the page is blocked.
   - **Missing page or ambiguous block**: explicit errors; the other pages are unaffected.
@@ -115,7 +117,7 @@ Optional operation members, for tools that depend on the page being edited (libr
 Follow [safety.md](./references/safety.md). Non-negotiable:
 
 - Analyse is read-only. Writing and publishing each require an explicit confirmation in the UI.
-- Every page write uses `If-Match` with the ETag from the analysis, after a named version. No ETag means no write.
+- Page writes use `If-Match` with the ETag from the analysis, after a named version. No ETag means no write by default; the only opt-in fallback is the explicitly warned, non-atomic content comparison in [safety.md](./references/safety.md#missing-etag).
 - Never overwrite binaries (DA does not version them). Files are created with `If-None-Match: *`.
 - Preview and publish files before the pages that link to them, and publish only what was previewed.
 - `daFetch` sends the author's token to any URL. Call only `admin.da.live` and `admin.hlx.page`, through `createApi`.

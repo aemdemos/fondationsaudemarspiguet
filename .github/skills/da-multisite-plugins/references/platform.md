@@ -37,7 +37,7 @@ Base: `https://admin.da.live`. The paths include the extension for documents.
 
 | Call | Use |
 | --- | --- |
-| `GET /source/{org}/{repo}{path}.html` | DA source plus `ETag` plus `x-da-actions` |
+| `GET /source/{org}/{repo}{path}.html` | DA source, `x-da-actions` and an optional `ETag` |
 | `HEAD /source/{org}/{repo}{file}` | Existence and permissions of a file |
 | `PUT /source/{org}/{repo}{path}.html` (FormData `data` = Blob) | Write a document |
 | `PUT` with `If-Match: <etag>` | 412 if the document changed since it was read |
@@ -47,6 +47,7 @@ Base: `https://admin.da.live`. The paths include the extension for documents.
 
 - The source format is `<body><header></header><main><div>…section…</div></main><footer></footer></body>`. A block is `<div class="name variant">`, rows are child `div`s and cells are their child `div`s, possibly containing `<p>`. Section metadata is `div.section-metadata` with key/value rows. Icons are authored as `:icon-name:` text.
 - Parse with `DOMParser`, serialize `doc.body.outerHTML` (as Adobe's update-tree example does), and compare serialized baseline with serialized result to detect real changes.
+- **ETag availability is not guaranteed.** On 2026-11-12, authenticated GET and HEAD of an Arbres project returned 200 without an ETag, despite CORS exposing it. An incorrect `If-Match` on GET returned 412, while `If-Unmodified-Since` was ignored. Do not invent a validator from `X-da-id`, `Last-Modified` or a content hash. The default runtime refuses changed-page writes without an ETag. Metadata sync explicitly opts into the non-atomic, author-confirmed content-comparison fallback described in [safety.md](./safety.md).
 - **Binaries (PDF, images) are not versioned.** Never overwrite them. Ask authors to use a new file name for a new version.
 - Link forms found in DA source vary (`/path`, `https://content.da.live/{org}/{repo}/path`, AEM host URLs, relative links). `linkPath` normalizes them and `hrefLike` writes new links in the same form as the row they replace.
 

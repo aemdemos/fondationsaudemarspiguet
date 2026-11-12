@@ -8,6 +8,7 @@ import {
 
 export const DA_ADMIN = 'https://admin.da.live';
 export const AEM_ADMIN = 'https://admin.hlx.page';
+export const CONTENT_COMPARISON_WARNING = 'No ETag from DA: the page will be re-read and compared before writing. This is not atomic; an edit made between the last check and the write could still be overwritten.';
 
 // actions.daFetch adds the author's token to every URL: only call these origins.
 const API_ORIGINS = new Set([DA_ADMIN, AEM_ADMIN]);
@@ -133,7 +134,7 @@ export function createApi(daFetch) {
     /** Raw authenticated fetch, restricted to the DA and AEM admin origins. */
     request: call,
     async getDocument(target) {
-      const resp = await call(source(target, '.html'));
+      const resp = await call(source(target, '.html'), { cache: 'no-store' });
       return {
         status: resp.status,
         ok: resp.ok,
@@ -145,7 +146,7 @@ export function createApi(daFetch) {
     async putDocument(target, html, etag) {
       const resp = await call(source(target, '.html'), {
         method: 'PUT',
-        headers: { 'If-Match': etag },
+        headers: etag ? { 'If-Match': etag } : {},
         body: upload(new Blob([html], { type: 'text/html' })),
       });
       return { status: resp.status, ok: resp.ok };
@@ -231,8 +232,6 @@ export async function planTarget(api, operation, target, { values, shared }) {
   if (source.permissions && !source.permissions.includes('write')) {
     return { state: 'denied', message: 'No write permission' };
   }
-  if (!source.etag) return { state: 'error', message: 'No ETag from DA; refusing an unprotected write' };
-
   const doc = parseDocument(source.html);
   const baseline = serializeDocument(doc);
   let result;
@@ -243,18 +242,54 @@ export async function planTarget(api, operation, target, { values, shared }) {
   }
   const html = serializeDocument(doc);
   if (html === baseline) return { state: 'unchanged', message: 'Already up to date' };
+  if (!source.etag && !operation.allowContentComparison) {
+    return { state: 'error', message: 'No ETag from DA; refusing an unprotected write' };
+  }
   return {
-    state: 'ready', message: result.summary || 'Change ready', etag: source.etag, html,
+    state: 'ready',
+    message: result.summary || 'Change ready',
+    etag: source.etag,
+    html,
+    sourceHtml: source.etag ? undefined : source.html,
+    warning: source.etag ? undefined : CONTENT_COMPARISON_WARNING,
   };
 }
 
-/** Versions, writes with If-Match, then re-plans to prove the result is idempotent. */
+async function compareSource(api, target, original) {
+  const current = await api.getDocument(target);
+  if (!current.ok) {
+    return { state: failureState(current.status), message: `Cannot recheck page (HTTP ${current.status}); page not written` };
+  }
+  if (current.permissions && !current.permissions.includes('write')) {
+    return { state: 'denied', message: 'No write permission; page not written' };
+  }
+  if (current.html !== original) {
+    return { state: 'conflict', message: 'Page changed since analysis; analyse again' };
+  }
+  return { state: 'unchanged', etag: current.etag };
+}
+
+/** Versions, writes with If-Match (or opted-in content comparison), then verifies. */
 export async function applyTarget(api, operation, target, input, plan, label) {
   if (plan.state !== 'ready') return plan;
+  if (!plan.etag) {
+    if (!operation.allowContentComparison || typeof plan.sourceHtml !== 'string') {
+      return { state: 'error', message: 'No ETag or source snapshot; analyse again before writing' };
+    }
+    const beforeVersion = await compareSource(api, target, plan.sourceHtml);
+    if (beforeVersion.state !== 'unchanged') return beforeVersion;
+  }
+
   const version = await api.createVersion(target, label);
   if (!version.ok) return { state: 'error', message: `Backup version failed (HTTP ${version.status}); page not written` };
 
-  const put = await api.putDocument(target, plan.html, plan.etag);
+  let { etag } = plan;
+  if (!etag) {
+    const beforeWrite = await compareSource(api, target, plan.sourceHtml);
+    if (beforeWrite.state !== 'unchanged') return beforeWrite;
+    etag = beforeWrite.etag;
+  }
+  const put = await api.putDocument(target, plan.html, etag);
   if (put.status === 412) return { state: 'conflict', message: 'Page changed since analysis; analyse again' };
   if (!put.ok) return { state: failureState(put.status), message: `Write failed (HTTP ${put.status})` };
 
@@ -262,7 +297,7 @@ export async function applyTarget(api, operation, target, input, plan, label) {
   if (check.state !== 'unchanged') {
     return { state: 'error', message: `Written, but verification returned ${check.state}: ${check.message}` };
   }
-  return { state: 'written', message: plan.message };
+  return { state: 'written', message: plan.message, warning: plan.warning };
 }
 
 export async function aemStep(api, action, item) {

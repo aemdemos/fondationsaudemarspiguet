@@ -102,7 +102,7 @@ window.DA_MOCK_CONTEXT = {
   repo: params.get('repo') || REPOS.fondations,
   path: params.get('path') || PAGES.newsroomEn[1],
 };
-window.DA_MOCK = createDaMock({ documents });
+window.DA_MOCK = createDaMock({ documents, etags: params.get('etag') !== 'missing' });
 window.DA_FIXTURE = {
   ORG, REPOS, PAGES, key,
 };

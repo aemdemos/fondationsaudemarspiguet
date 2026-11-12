@@ -1,12 +1,12 @@
 /**
  * In-memory stand-in for `actions.daFetch` (DA Source API + AEM Admin API).
- * Local tests only: it mimics ETags, If-Match / If-None-Match, versions,
+ * Local tests only: it mimics optional ETags, If-Match / If-None-Match, versions,
  * read-only repositories, injected failures and the preview-before-live rule.
  */
 const DA = 'https://admin.da.live';
 const AEM = 'https://admin.hlx.page';
 
-export default function createDaMock({ documents = {}, readOnly = [] } = {}) {
+export default function createDaMock({ documents = {}, readOnly = [], etags = true } = {}) {
   const store = new Map();
   const versions = [];
   const aem = { preview: new Set(), live: new Set() };
@@ -14,6 +14,7 @@ export default function createDaMock({ documents = {}, readOnly = [] } = {}) {
   const failures = new Map();
   const readOnlyRepos = new Set(readOnly);
   let counter = 0;
+  let exposeEtags = etags;
 
   const save = (key, body) => {
     counter += 1;
@@ -38,7 +39,7 @@ export default function createDaMock({ documents = {}, readOnly = [] } = {}) {
     if (method === 'GET' || method === 'HEAD') {
       if (!entry) return reply(404);
       return reply(200, method === 'HEAD' ? null : entry.body, {
-        etag: entry.etag,
+        ...(exposeEtags ? { etag: entry.etag } : {}),
         'x-da-actions': `/${key}=${actions}`,
       });
     }
@@ -48,13 +49,15 @@ export default function createDaMock({ documents = {}, readOnly = [] } = {}) {
     if (ifMatch && (!entry || entry.etag !== ifMatch)) return reply(412);
     if (headers.get('if-none-match') === '*' && entry) return reply(412);
     save(key, await readBody(init.body));
-    return reply(entry ? 200 : 201, '{}', { etag: store.get(key).etag });
+    return reply(entry ? 200 : 201, '{}', exposeEtags ? { etag: store.get(key).etag } : {});
   }
 
   async function daFetch(url, init = {}) {
     const method = (init.method || 'GET').toUpperCase();
     const parsed = new URL(url);
-    calls.push({ method, url: parsed.href });
+    calls.push({
+      method, url: parsed.href, ifMatch: new Headers(init.headers).get('if-match'), cache: init.cache,
+    });
     const failure = failures.get(`${method} ${parsed.href}`);
     if (failure) return reply(failure, null, { 'x-error': 'Injected failure' });
 
@@ -106,6 +109,9 @@ export default function createDaMock({ documents = {}, readOnly = [] } = {}) {
     setReadOnly(repo, value = true) {
       if (value) readOnlyRepos.add(repo);
       else readOnlyRepos.delete(repo);
+    },
+    setEtags(value) {
+      exposeEtags = value;
     },
   };
 }
