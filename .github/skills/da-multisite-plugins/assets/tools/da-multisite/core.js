@@ -130,6 +130,8 @@ export function createApi(daFetch) {
   };
 
   return {
+    /** Raw authenticated fetch, restricted to the DA and AEM admin origins. */
+    request: call,
     async getDocument(target) {
       const resp = await call(source(target, '.html'));
       return {
@@ -219,8 +221,11 @@ export async function uploadAsset(api, asset, plan) {
   return { state: failureState(put.status), message: `Upload failed (HTTP ${put.status})` };
 }
 
-/** Reads the page and runs the operation in memory. Nothing is written. */
-export async function planTarget(api, operation, target, values) {
+/**
+ * Reads the page and runs the operation in memory. Nothing is written.
+ * @param {{ values: object, shared?: * }} input `shared` is what `operation.load` returned.
+ */
+export async function planTarget(api, operation, target, { values, shared }) {
   const source = await api.getDocument(target);
   if (!source.ok) return { state: failureState(source.status), message: `HTTP ${source.status}` };
   if (source.permissions && !source.permissions.includes('write')) {
@@ -232,7 +237,7 @@ export async function planTarget(api, operation, target, values) {
   const baseline = serializeDocument(doc);
   let result;
   try {
-    result = operation.apply(doc, { target, values }) || {};
+    result = operation.apply(doc, { target, values, shared }) || {};
   } catch (error) {
     return { state: 'error', message: error?.message || String(error) };
   }
@@ -244,7 +249,7 @@ export async function planTarget(api, operation, target, values) {
 }
 
 /** Versions, writes with If-Match, then re-plans to prove the result is idempotent. */
-export async function applyTarget(api, operation, target, values, plan, label) {
+export async function applyTarget(api, operation, target, input, plan, label) {
   if (plan.state !== 'ready') return plan;
   const version = await api.createVersion(target, label);
   if (!version.ok) return { state: 'error', message: `Backup version failed (HTTP ${version.status}); page not written` };
@@ -253,7 +258,7 @@ export async function applyTarget(api, operation, target, values, plan, label) {
   if (put.status === 412) return { state: 'conflict', message: 'Page changed since analysis; analyse again' };
   if (!put.ok) return { state: failureState(put.status), message: `Write failed (HTTP ${put.status})` };
 
-  const check = await planTarget(api, operation, target, values);
+  const check = await planTarget(api, operation, target, input);
   if (check.state !== 'unchanged') {
     return { state: 'error', message: `Written, but verification returned ${check.state}: ${check.message}` };
   }

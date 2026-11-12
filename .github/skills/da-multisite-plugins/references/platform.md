@@ -17,7 +17,7 @@ These facts were verified against the DA SDK source, da-admin and the Experience
 
 `import DA_SDK from 'https://da.live/nx/utils/sdk.js'` resolves to `{ context, token, actions, ... }` **only inside a DA iframe**. Outside DA it never resolves, so always race it against a timeout (`mountMultisiteTool` waits 10 s).
 
-- `context`: `org`, `repo`, `ref`, `path` and so on for the site where the tool was opened. Use it to check the org, not to choose targets.
+- `context`: `org`, `repo`, `ref`, `path` and so on for the site where the tool was opened. Use it to check the org, not to choose org or repositories. In a library plugin, `path` is the page being edited, without org, repo or `.html` (for example `/en/media-newsroom`; da-live builds it from the editor hash). Accept a `/{org}/{repo}` prefix or `.html` defensively.
 - `token`: the author's IMS token. Never store it, log it or put it in a URL.
 - `actions`: `daFetch`, `sendText`, `sendHTML`, `setHref`, `setHash`, `closeLibrary`, `setPrompt`, `showPanel`, `makeDraggable`, `subscribeChatTurnCompleted`. `sendText`, `sendHTML` and `closeLibrary` only make sense in a library plugin.
 
@@ -77,7 +77,7 @@ Verified from a `*.aem.page` origin:
 Site configuration: `https://da.live/config#/{org}/{site}/`. An org-level configuration (`#/{org}/`) applies to all sites; site sheets override it. Without an org-level entry, configure each of the three sites.
 
 - **Fullscreen app** (`apps` sheet): `title`, `description`, `image`, `path`, `ref`. App URL: `https://da.live/app/{org}/{site}/{path-without-.html}`, for example `https://da.live/app/audemars-piguet/fondationsaudemarspiguet/tools/newsroom-report/newsroom-report`. The app is listed on `https://da.live/apps#/{org}/{site}`.
-- **Library plugin** (`library` sheet): `title`, `path` (for example `/tools/<name>/<name>.html`), `icon`, `experience` (`dialog`), and optionally `format` and `ref`. Open it from the editor's library while editing a page.
+- **Library plugin** (`library` sheet): `title`, `path` (for example `/tools/<name>/<name>.html`), `icon`, `experience` (`dialog`), and optionally `format` and `ref`. Open it from the editor's library while editing a page. The query string of `path` is kept in the iframe URL (da-live `calculateSources` then `toPreviewProxyUrl`), so one tool can back several entries with presets (`/tools/metadata-sync/metadata-sync.html?row=start-date`). Commas split `path` into several sources, and the entry name is derived from `title`, so titles must be distinct.
 
 A multi-site batch tool fits a fullscreen app best. A library plugin suits actions on the open document (`sendHTML`) or a tool reached from a specific page.
 

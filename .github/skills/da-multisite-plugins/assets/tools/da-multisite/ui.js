@@ -1,6 +1,8 @@
 /**
  * Generic multi-site tool UI. An operation describes its fields, target pages
- * and an in-memory `apply(doc, { target, values })`; this module does the rest.
+ * and an in-memory `apply(doc, { target, values, shared })`; this module does the rest.
+ * Optional hooks: `setup({ context, api })` once at mount (returns operation overrides)
+ * and `load({ api, input })` at each analysis (its result is passed as `shared`).
  * The DOM is built with createElement/textContent only (no innerHTML).
  */
 import { LOCALES, ORG, SITES } from './sites.js';
@@ -94,10 +96,14 @@ function createTool({ api, operation, root }) {
     status.dataset.tone = tone;
   };
 
-  const siteBoxes = SITES.map((site) => h('input', {
+  const scopeSites = SITES.filter(({ id }) => !operation.siteIds || operation.siteIds.includes(id));
+  const scopeLocales = LOCALES
+    .filter((locale) => !operation.locales || operation.locales.includes(locale));
+  if (!scopeSites.length || !scopeLocales.length) throw new Error('No site or language to work on.');
+  const siteBoxes = scopeSites.map((site) => h('input', {
     type: 'checkbox', name: 'site', value: site.id, checked: true,
   }));
-  const localeBoxes = LOCALES.map((locale) => h('input', {
+  const localeBoxes = scopeLocales.map((locale) => h('input', {
     type: 'checkbox', name: 'locale', value: locale, checked: true,
   }));
   const checked = (boxes) => boxes.filter((box) => box.checked).map((box) => box.value);
@@ -109,16 +115,48 @@ function createTool({ api, operation, root }) {
     boxes.map((box, index) => h('label', {}, box, ` ${labels[index]}`)),
   );
 
+  function optionsControl(field, locale, id, helpId) {
+    const defaults = field.default || [];
+    const boxes = field.options.map((option, index) => h('input', {
+      type: 'checkbox',
+      id: `${id}-${index}`,
+      name: id,
+      value: option.value,
+      checked: defaults.includes(option.value),
+      disabled: option.disabled,
+    }));
+    controls.set(locale ? `${field.name}.${locale}` : field.name, boxes);
+    return h(
+      'fieldset',
+      {
+        class: 'dams-field dams-options', 'data-locale': locale, 'aria-describedby': helpId,
+      },
+      h('legend', { text: `${field.label}${locale ? ` (${locale.toUpperCase()})` : ''}` }),
+      field.options.map((option, index) => h(
+        'label',
+        { for: boxes[index].id },
+        boxes[index],
+        h('span', { text: option.label }),
+        option.hint ? h('span', { class: 'dams-muted', text: option.hint }) : null,
+      )),
+      helpId ? h('p', { id: helpId, class: 'dams-help', text: field.help }) : null,
+    );
+  }
+
   function fieldControl(field, locale) {
     const id = `dams-${field.name}${locale ? `-${locale}` : ''}`;
     const helpId = field.help ? `${id}-help` : null;
+    if (field.type === 'checkboxes') return optionsControl(field, locale, id, helpId);
     const common = {
       id, name: id, required: field.required, 'aria-describedby': helpId,
     };
     let control;
     if (field.type === 'select') {
       control = h('select', common, field.options.map((option) => h('option', {
-        value: option.value, text: option.label, selected: option.value === field.default,
+        value: option.value,
+        text: option.label,
+        selected: option.value === field.default,
+        disabled: option.disabled,
       })));
     } else if (field.type === 'file') {
       control = h('input', { ...common, type: 'file', accept: field.accept });
@@ -140,10 +178,21 @@ function createTool({ api, operation, root }) {
   const syncLocaleControls = () => {
     const active = checked(localeBoxes);
     operation.fields.filter(({ localized }) => localized).forEach((field) => {
-      LOCALES.forEach((locale) => {
-        controls.get(`${field.name}.${locale}`).disabled = !active.includes(locale);
+      scopeLocales.forEach((locale) => {
+        const control = controls.get(`${field.name}.${locale}`);
+        (Array.isArray(control) ? control : [control]).forEach((element) => {
+          const option = field.type === 'checkboxes'
+            && field.options.find(({ value }) => value === element.value);
+          element.disabled = !active.includes(locale) || Boolean(option?.disabled);
+        });
       });
     });
+  };
+
+  const controlValue = (field, control) => {
+    if (field.type === 'file') return control.files[0] || null;
+    if (field.type === 'checkboxes') return checked(control);
+    return control.value.trim();
   };
 
   function readInput() {
@@ -155,9 +204,10 @@ function createTool({ api, operation, root }) {
     const input = {};
     operation.fields.forEach((field) => {
       const read = (key, label) => {
-        const control = controls.get(key);
-        const value = field.type === 'file' ? control.files[0] || null : control.value.trim();
-        if (field.required && !value) errors.push(`${label} is required.`);
+        const value = controlValue(field, controls.get(key));
+        if (field.required && (Array.isArray(value) ? !value.length : !value)) {
+          errors.push(field.type === 'checkboxes' ? `${label}: select at least one option.` : `${label} is required.`);
+        }
         if (value && field.maxBytes && value.size > field.maxBytes) errors.push(`${label} is too large.`);
         return value;
       };
@@ -277,15 +327,17 @@ function createTool({ api, operation, root }) {
     run = null;
     render();
     announce(`Analysing ${targets.length} page(s) and ${assets.length} file(s)…`);
+    const shared = operation.load ? await operation.load({ api, input }) : undefined;
     const fileResults = await runPool(assets, CONCURRENCY, (asset) => inspectAsset(api, asset));
     const pageResults = await runPool(targets, CONCURRENCY, (target) => planTarget(
       api,
       operation,
       target,
-      valuesFor(operation.fields, input, target.locale),
+      { values: valuesFor(operation.fields, input, target.locale), shared },
     ));
     run = {
       input,
+      shared,
       stale: false,
       files: assets.map((asset, index) => ({ asset, content: fileResults[index] })),
       pages: targets.map((target, index) => ({
@@ -319,7 +371,8 @@ function createTool({ api, operation, root }) {
       const missing = page.content.state === 'ready' && missingFile(page, 'content', new Set(['exists', 'uploaded']));
       if (missing) return { state: 'blocked', message: `File unavailable: ${missing.asset.path}` };
       const values = valuesFor(operation.fields, run.input, page.target.locale);
-      return applyTarget(api, operation, page.target, values, page.content, label);
+      const input = { values, shared: run.shared };
+      return applyTarget(api, operation, page.target, input, page.content, label);
     });
     run.pages.forEach((page, index) => { page.content = pageResults[index]; });
     announce(`Write: ${countStates(pageResults)}. Use Preview to check the pages.`);
@@ -374,10 +427,14 @@ function createTool({ api, operation, root }) {
     if (busy) event.preventDefault();
   });
 
+  const scope = [
+    scopeSites.length > 1 && choice('Sites', siteBoxes, scopeSites.map(({ label }) => label)),
+    scopeLocales.length > 1 && choice('Languages', localeBoxes, scopeLocales.map((locale) => locale.toUpperCase())),
+  ].filter(Boolean);
   form.append(
-    h('div', { class: 'dams-scope' }, choice('Sites', siteBoxes, SITES.map(({ label }) => label)), choice('Languages', localeBoxes, LOCALES.map((locale) => locale.toUpperCase()))),
+    ...(scope.length ? [h('div', { class: 'dams-scope' }, scope)] : []),
     ...operation.fields.flatMap((field) => (field.localized
-      ? LOCALES.map((locale) => fieldControl(field, locale))
+      ? scopeLocales.map((locale) => fieldControl(field, locale))
       : [fieldControl(field)])),
     h('div', { class: 'dams-actions' }, analyseButton, applyButton, previewButton, publishButton),
   );
@@ -421,7 +478,11 @@ export default async function mountMultisiteTool({
     return null;
   }
   try {
-    return createTool({ api: createApi(session.actions?.daFetch), operation, root });
+    const api = createApi(session.actions?.daFetch);
+    const overrides = operation.setup
+      ? await operation.setup({ context: session.context, api })
+      : {};
+    return createTool({ api, operation: { ...operation, ...overrides }, root });
   } catch (error) {
     fatal(errorText(error));
     return null;
