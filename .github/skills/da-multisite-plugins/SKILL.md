@@ -22,9 +22,11 @@ The reusable runtime is in [assets/](./assets/). Its folders mirror the reposito
 | [sites.js](./assets/tools/da-multisite/sites.js) | `tools/da-multisite/` | Org, ref, locales and site registry (code only, never from the URL) |
 | [core.js](./assets/tools/da-multisite/core.js) | `tools/da-multisite/` | Targets, guarded DA/AEM API, plan/apply/verify pipeline, file upload |
 | [da-blocks.js](./assets/tools/da-multisite/da-blocks.js) | `tools/da-multisite/` | DA source helpers: sections, blocks, rows, cells, section metadata, links |
+| [language-pages.js](./assets/tools/da-multisite/language-pages.js) | `tools/da-multisite/` | Validates the current DA page and reuses the repository's `tools/languageswitcher/placeholders.js` for locale mapping |
 | [ui.js](./assets/tools/da-multisite/ui.js), [ui.css](./assets/tools/da-multisite/ui.css) | `tools/da-multisite/` | Generic form, scope selection, confirmations, status tables |
 | [newsroom-report](./assets/tools/newsroom-report/) | `tools/newsroom-report/` | Worked example: add or update a report on 6 newsroom pages |
 | — (repository only) | `tools/metadata-sync/`, `test/metadata-sync*` | Context-aware library plugin: copies one metadata row from the open page to its other-language counterpart (uses `setup`, `load`, a `select` built from the page, and an optional `?row=` preset from the library entry) |
+| — (repository only) | `tools/page-sync/`, `test/page-sync*` | News/Projects counterpart creation with exact source copies; reuses Metadata sync's operation when the counterpart exists |
 | [da-mock.js](./assets/test/da-mock.js), [da-sdk-stub.js](./assets/test/da-sdk-stub.js) | `test/` | In-memory DA/AEM and SDK stub for local tests |
 | [newsroom-report.html](./assets/test/newsroom-report.html), [newsroom-report-test.js](./assets/test/newsroom-report-test.js) | `test/` | Example test page and fixtures |
 
@@ -68,6 +70,7 @@ Optional operation members, for tools that depend on the page being edited (libr
 | `load({ api, input })` | At each Analyse, before planning | Re-read source data; the result is passed to `apply` as `shared` and reused unchanged for Apply and its verification. |
 | `siteIds`, `locales` | At mount | Restrict the scope; a scope with one entry is not shown as checkboxes. |
 | `allowContentComparison` | Analyse / Apply | Default false. Explicitly opts into non-atomic source comparison when DA has no ETag. The runtime warns in the plan and write confirmation; see [safety.md](./references/safety.md#missing-etag). Metadata sync opts in; other operations remain strict. |
+| `create({ target, values, shared })` | Analyse, only after target 404 | Alternative to `apply`: create-only operation returning `{ html, summary, warning }`. Existing pages are never replaced. PUT uses `If-None-Match: *`, without a backup of nonexistent content; verification compares the exact source. |
 | `{ type: 'checkboxes', options: [{ value, label, hint, disabled }], default: [] }` | Field | Multiple choice; the value is an array, `required` means at least one. `select` options also accept `disabled`; use a first option with `value: ''` as a placeholder for a required choice. |
 
 `api.request(url, init)` is the guarded `daFetch` (DA and AEM admin origins only) for helpers that need a raw fetch, such as `fetchLanguageSwitcherRows`.
@@ -79,6 +82,8 @@ Optional operation members, for tools that depend on the page being edited (libr
 3. **Preserve site differences.** Clone an existing row or element from the same page instead of building markup. Icons, link labels and styles differ per site (see [ap-sites.md](./references/ap-sites.md)).
 4. **Pure and local.** Use only `doc`, `target`, `values` and `shared`. No network calls, no global state, and no `innerHTML` with author input. Use `textContent`, `setAttribute` and the `da-blocks.js` helpers. Content copied from another DA document is imported with `doc.importNode`.
 5. **Minimal.** Touch only the targeted block. Never rewrite whole sections or metadata that the operation does not own.
+
+For exact document cloning, use `create` instead of a DOM transform. Keep the saved source unchanged and show a reminder to translate and review locale-specific metadata/links before publishing. Page sync is the reference implementation. A create-only operation must never fall back to overwriting an existing page.
 
 ## Workflow
 
@@ -103,6 +108,7 @@ Optional operation members, for tools that depend on the page being edited (libr
   - **Re-analyse**: every page is "Up to date" (idempotency) and existing files are kept.
   - **Concurrent edit** (`DA_MOCK.edit(key, fn)` between Analyse and Apply): that page shows "Conflict", the others are written.
   - **Missing ETag** (`createDaMock({ etags: false })`): strict operations refuse writes; opted-in ones show the non-atomic warning and compare before and after versioning. Test edits at both checkpoints, failed reads and backups, and unchanged pages. In this repository, `/test/da-multisite.html` runs these regressions; `/test/metadata-sync.html?etag=missing` exercises the plugin.
+  - **New-page creation** (`/test/page-sync-regression.html`): exact source equality, both directions, registered sites, existing target before/after Analyse, 412 without retry, failed creation/verification, no automatic preview/publish, and translation reminders. A target 401/403/500 is not an absent page.
   - **Read-only site** (`DA_MOCK.setReadOnly(repo)`): its pages show "No access" and its files are "Skipped".
   - **Injected failure** (`DA_MOCK.fail(method, url, status)`): a failed version means the page is not written; a failed file preview means the page is blocked.
   - **Missing page or ambiguous block**: explicit errors; the other pages are unaffected.
@@ -117,7 +123,7 @@ Optional operation members, for tools that depend on the page being edited (libr
 Follow [safety.md](./references/safety.md). Non-negotiable:
 
 - Analyse is read-only. Writing and publishing each require an explicit confirmation in the UI.
-- Page writes use `If-Match` with the ETag from the analysis, after a named version. No ETag means no write by default; the only opt-in fallback is the explicitly warned, non-atomic content comparison in [safety.md](./references/safety.md#missing-etag).
+- Existing-page writes use `If-Match` with the ETag from the analysis, after a named version. No ETag means no update by default; the only opt-in fallback is the explicitly warned, non-atomic content comparison in [safety.md](./references/safety.md#missing-etag). New pages use `If-None-Match: *`; they do not need an ETag or a backup of nonexistent content.
 - Never overwrite binaries (DA does not version them). Files are created with `If-None-Match: *`.
 - Preview and publish files before the pages that link to them, and publish only what was previewed.
 - `daFetch` sends the author's token to any URL. Call only `admin.da.live` and `admin.hlx.page`, through `createApi`.

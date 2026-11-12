@@ -228,6 +228,7 @@
 }
 
 .da-multisite .dams-state-written,
+.da-multisite .dams-state-created,
 .da-multisite .dams-state-uploaded,
 .da-multisite .dams-state-ok {
   color: var(--dams-ok);

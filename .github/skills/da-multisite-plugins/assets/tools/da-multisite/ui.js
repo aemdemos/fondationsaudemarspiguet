@@ -7,19 +7,20 @@
  */
 import { LOCALES, ORG, SITES } from './sites.js';
 import {
-  aemStep, aemUrl, applyTarget, collectAssets, CONTENT_COMPARISON_WARNING,
-  createApi, daEditUrl, expandTargets,
+  aemStep, aemUrl, applyTarget, collectAssets, createApi, daEditUrl, expandTargets,
   inspectAsset, planTarget, runPool, targetAssetIds, uploadAsset, valuesFor,
 } from './core.js';
 
 const CONCURRENCY = 3;
 const SDK_TIMEOUT_MS = 10000;
 const AVAILABLE_FILE = new Set(['new', 'exists', 'uploaded']);
-const ON_PAGE = new Set(['written', 'unchanged']);
+const ON_PAGE = new Set(['written', 'unchanged', 'created']);
 const LABELS = {
   ready: 'Ready',
   unchanged: 'Up to date',
   written: 'Written',
+  created: 'Created',
+  existing: 'Existing page',
   new: 'New file',
   exists: 'Existing file',
   uploaded: 'Uploaded',
@@ -416,16 +417,25 @@ function createTool({ api, operation, root }) {
     updateButtons();
   }));
   applyButton.addEventListener('click', () => {
-    const pages = run.pages.filter(({ content }) => content.state === 'ready').length;
+    const pages = run.pages.filter(({ content }) => content.state === 'ready');
+    const created = pages.filter(({ content }) => content.mode === 'create').length;
     const files = run.files.filter(({ content }) => content.state === 'new').length;
-    const comparison = run.pages.some(({ content }) => content.state === 'ready' && !content.etag);
-    const warning = comparison ? ` Warning: ${CONTENT_COMPARISON_WARNING}` : '';
-    askConfirm(applyButton, `Write ${pages} page(s) and upload ${files} new file(s) in DA? A version of each page is saved first.${warning}`, comparison ? 'Write with content comparison' : 'Write in DA', apply);
+    const comparison = pages.some(({ content }) => content.mode !== 'create' && !content.etag);
+    const warnings = [...new Set(pages.map(({ content }) => content.warning).filter(Boolean))];
+    const action = created
+      ? `Create ${created} new page(s), update ${pages.length - created} page(s)`
+      : `Write ${pages.length} page(s)`;
+    const backup = created
+      ? 'Existing pages are never replaced by a copy. Only updated pages need a backup version.'
+      : 'A version of each page is saved first.';
+    askConfirm(applyButton, `${action} and upload ${files} new file(s) in DA? ${backup} ${warnings.join(' ')}`, comparison ? 'Write with content comparison' : 'Write in DA', apply);
   });
   previewButton.addEventListener('click', () => guarded(() => aemRun('preview')));
   publishButton.addEventListener('click', () => {
-    const pages = run.pages.filter(({ preview }) => preview?.state === 'ok').length;
-    askConfirm(publishButton, `Publish ${pages} previewed page(s) and their files to the live sites?`, 'Publish now', () => aemRun('live'));
+    const pages = run.pages.filter(({ preview }) => preview?.state === 'ok');
+    const warnings = [...new Set(pages.filter(({ content }) => content.state === 'created')
+      .map(({ content }) => content.warning).filter(Boolean))];
+    askConfirm(publishButton, `Publish ${pages.length} previewed page(s) and their files to the live sites? ${warnings.join(' ')}`, 'Publish now', () => aemRun('live'));
   });
   window.addEventListener('beforeunload', (event) => {
     if (busy) event.preventDefault();

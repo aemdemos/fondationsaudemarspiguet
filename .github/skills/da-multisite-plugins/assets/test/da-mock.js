@@ -55,8 +55,13 @@ export default function createDaMock({ documents = {}, readOnly = [], etags = tr
   async function daFetch(url, init = {}) {
     const method = (init.method || 'GET').toUpperCase();
     const parsed = new URL(url);
+    const headers = new Headers(init.headers);
     calls.push({
-      method, url: parsed.href, ifMatch: new Headers(init.headers).get('if-match'), cache: init.cache,
+      method,
+      url: parsed.href,
+      ifMatch: headers.get('if-match'),
+      ifNoneMatch: headers.get('if-none-match'),
+      cache: init.cache,
     });
     const failure = failures.get(`${method} ${parsed.href}`);
     if (failure) return reply(failure, null, { 'x-error': 'Injected failure' });

@@ -17,6 +17,12 @@ A multi-site tool writes six pages with one click. These rules keep a mistake fr
 
 If any input changes after Analyse, the run is stale. Apply, Preview and Publish are disabled until a new analysis.
 
+### New pages
+
+An operation with `create` is create-only: only a target 404 permits a creation plan. Existing targets are kept, regardless of whether their contents match the source. Apply uses `If-None-Match: *`; a 412 is a conflict, never grounds for an unconditional retry. No version is requested before creation because no previous page exists. Verify the created source against the exact analysis snapshot.
+
+Page sync uses this mode for absent News/Projects counterparts; when the tool opens on an existing pair it instead uses Metadata sync. Source/target remain in the same registered site and corresponding article folders. A full-copy translation warning appears in the plan, write confirmation, result and publication confirmation. Creation never previews or publishes automatically.
+
 ### Missing ETag
 
 The default is to refuse a changed-page write without an ETag. An operation may explicitly set `allowContentComparison: true` only when this weaker protection is acceptable (Metadata sync does so). The analysis and write confirmation must warn that the fallback is **not atomic**, with a distinct "Write with content comparison" confirmation.
@@ -32,6 +38,8 @@ An edit between the last read and PUT can still be lost. Do not describe this fa
 | Ready | Change computed, nothing written | Apply |
 | Up to date | Page already contains the change | None |
 | Written | Version saved, page written and verified | Preview |
+| Created | New page created with `If-None-Match: *` and exact-copy verification | Translate and review before publishing |
+| Existing page | A create-only target already exists; no write performed | Reopen Page sync for single-row metadata updates |
 | Conflict | Page changed since Analyse (412 or source comparison mismatch) | Analyse again |
 | No access | 401/403 or no `write` in `x-da-actions` | Ask for access, or deselect the site |
 | Not found | Page or file missing (404) | Check the page mapping |

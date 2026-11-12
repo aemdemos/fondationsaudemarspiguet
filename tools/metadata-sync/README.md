@@ -4,6 +4,8 @@ A Document Authoring (DA) **library plugin** that copies **one row** of the **me
 
 It uses the shared multi-site runtime in [`tools/da-multisite`](../da-multisite/) (see the `da-multisite-plugins` skill).
 
+The reusable implementation is in [operation.js](./operation.js); [metadata-sync.js](./metadata-sync.js) remains the DA entry point. [Page sync](../page-sync/README.md) reuses the same operation for existing News/Projects counterparts and can create a full copy when the counterpart is absent. Metadata sync itself still updates only one row and does not create missing pages.
+
 ## Behavior
 
 - **Source.** The page open in the editor. It is read, never written.

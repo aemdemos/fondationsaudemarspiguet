@@ -151,6 +151,14 @@ export function createApi(daFetch) {
       });
       return { status: resp.status, ok: resp.ok };
     },
+    async createDocument(target, html) {
+      const resp = await call(source(target, '.html'), {
+        method: 'PUT',
+        headers: { 'If-None-Match': '*' },
+        body: upload(new Blob([html], { type: 'text/html' })),
+      });
+      return { status: resp.status, ok: resp.ok };
+    },
     async createVersion({ org, repo, path }, label) {
       const resp = await call(`${DA_ADMIN}/versionsource/${org}/${repo}${path}.html`, {
         method: 'POST',
@@ -228,6 +236,28 @@ export async function uploadAsset(api, asset, plan) {
  */
 export async function planTarget(api, operation, target, { values, shared }) {
   const source = await api.getDocument(target);
+  if (operation.create) {
+    if (source.ok) {
+      return { state: 'existing', message: 'Page already exists and is kept. Reopen Page sync to update a metadata row.' };
+    }
+    if (source.status === 404) {
+      try {
+        const result = operation.create({ target, values, shared });
+        if (typeof result?.html !== 'string' || !result.html.trim()) {
+          throw new Error('No source content to create the page.');
+        }
+        return {
+          state: 'ready',
+          mode: 'create',
+          html: result.html,
+          message: result.summary || 'Create a new page',
+          warning: result.warning,
+        };
+      } catch (error) {
+        return { state: 'error', message: error?.message || String(error) };
+      }
+    }
+  }
   if (!source.ok) return { state: failureState(source.status), message: `HTTP ${source.status}` };
   if (source.permissions && !source.permissions.includes('write')) {
     return { state: 'denied', message: 'No write permission' };
@@ -272,6 +302,21 @@ async function compareSource(api, target, original) {
 /** Versions, writes with If-Match (or opted-in content comparison), then verifies. */
 export async function applyTarget(api, operation, target, input, plan, label) {
   if (plan.state !== 'ready') return plan;
+  if (plan.mode === 'create') {
+    if (!operation.create) return { state: 'error', message: 'This operation cannot create pages.' };
+    const created = await api.createDocument(target, plan.html);
+    if (created.status === 412) {
+      return { state: 'conflict', message: 'The page was created meanwhile and was not overwritten. Reopen Page sync to update a metadata row.' };
+    }
+    if (!created.ok) {
+      return { state: failureState(created.status), message: `Creation failed (HTTP ${created.status})` };
+    }
+    const check = await api.getDocument(target);
+    if (!check.ok || check.html !== plan.html) {
+      return { state: 'error', message: `Created, but verification failed${check.ok ? ': content differs from the source snapshot' : ` (HTTP ${check.status})`}. Open the target page to check it.` };
+    }
+    return { state: 'created', message: plan.message, warning: plan.warning };
+  }
   if (!plan.etag) {
     if (!operation.allowContentComparison || typeof plan.sourceHtml !== 'string') {
       return { state: 'error', message: 'No ETag or source snapshot; analyse again before writing' };
