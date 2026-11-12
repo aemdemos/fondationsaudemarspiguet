@@ -1,0 +1,221 @@
+.da-multisite {
+  --dams-text: #222;
+  --dams-muted: #6e6e6e;
+  --dams-border: #d5d5d5;
+  --dams-accent: #3b63fb;
+  --dams-ok: #12805c;
+  --dams-warn: #a65c00;
+  --dams-error: #c9252d;
+
+  box-sizing: border-box;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 24px;
+  color: var(--dams-text);
+  font-family: adobe-clean, 'Source Sans Pro', -apple-system, system-ui, sans-serif;
+  font-size: 15px;
+  line-height: 1.4;
+}
+
+.da-multisite *,
+.da-multisite *::before,
+.da-multisite *::after {
+  box-sizing: inherit;
+}
+
+.da-multisite h1 {
+  margin: 0 0 8px;
+  font-size: 24px;
+}
+
+@media (width <= 600px) {
+  .da-multisite {
+    padding: 12px;
+  }
+}
+
+.da-multisite .dams-intro,
+.da-multisite .dams-help,
+.da-multisite .dams-muted,
+.da-multisite .dams-message {
+  color: var(--dams-muted);
+}
+
+.da-multisite .dams-form {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 16px;
+  margin: 16px 0;
+}
+
+.da-multisite .dams-scope,
+.da-multisite .dams-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  grid-column: 1 / -1;
+}
+
+.da-multisite .dams-choice {
+  margin: 0;
+  padding: 8px 12px;
+  border: 1px solid var(--dams-border);
+  border-radius: 4px;
+}
+
+.da-multisite .dams-choice label {
+  margin-right: 12px;
+  white-space: nowrap;
+}
+
+.da-multisite .dams-field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.da-multisite .dams-field label {
+  font-weight: 700;
+}
+
+.da-multisite .dams-help {
+  margin: 0;
+  font-size: 13px;
+}
+
+.da-multisite input[type='text'],
+.da-multisite select {
+  min-height: 32px;
+  padding: 4px 8px;
+  border: 1px solid var(--dams-border);
+  border-radius: 4px;
+  font: inherit;
+}
+
+.da-multisite input:disabled,
+.da-multisite select:disabled {
+  opacity: 0.5;
+}
+
+.da-multisite button {
+  min-height: 32px;
+  padding: 4px 16px;
+  border: 2px solid var(--dams-text);
+  border-radius: 16px;
+  background: #fff;
+  color: var(--dams-text);
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.da-multisite button.dams-primary {
+  border-color: var(--dams-accent);
+  background: var(--dams-accent);
+  color: #fff;
+}
+
+.da-multisite button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.da-multisite button:focus-visible,
+.da-multisite input:focus-visible,
+.da-multisite select:focus-visible,
+.da-multisite a:focus-visible {
+  outline: 2px solid var(--dams-accent);
+  outline-offset: 2px;
+}
+
+.da-multisite .dams-confirm {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  margin: 12px 0;
+  padding: 12px;
+  border-left: 4px solid var(--dams-warn);
+  background: #fff8ec;
+}
+
+.da-multisite .dams-confirm p {
+  flex-basis: 100%;
+  margin: 0;
+}
+
+.da-multisite .dams-status {
+  min-height: 1.4em;
+  font-weight: 700;
+}
+
+.da-multisite .dams-status[data-tone='error'] {
+  color: var(--dams-error);
+}
+
+.da-multisite .dams-status[data-tone='warning'] {
+  color: var(--dams-warn);
+}
+
+.da-multisite .dams-table-wrap {
+  max-width: 100%;
+  margin: 16px 0;
+  overflow-x: auto;
+}
+
+.da-multisite .dams-table {
+  width: 100%;
+  min-width: 560px;
+  border-collapse: collapse;
+}
+
+.da-multisite .dams-table caption {
+  padding: 8px 0;
+  font-weight: 700;
+  text-align: left;
+}
+
+.da-multisite .dams-table th,
+.da-multisite .dams-table td {
+  padding: 8px;
+  border-bottom: 1px solid var(--dams-border);
+  text-align: left;
+  vertical-align: top;
+}
+
+.da-multisite .dams-result {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  overflow-wrap: anywhere;
+}
+
+.da-multisite .dams-state {
+  font-weight: 700;
+}
+
+.da-multisite .dams-state-ready,
+.da-multisite .dams-state-new {
+  color: var(--dams-accent);
+}
+
+.da-multisite .dams-state-written,
+.da-multisite .dams-state-uploaded,
+.da-multisite .dams-state-ok {
+  color: var(--dams-ok);
+}
+
+.da-multisite .dams-state-conflict,
+.da-multisite .dams-state-blocked,
+.da-multisite .dams-state-denied,
+.da-multisite .dams-state-missing {
+  color: var(--dams-warn);
+}
+
+.da-multisite .dams-state-error {
+  color: var(--dams-error);
+}
+
+.da-multisite .dams-state-skipped {
+  color: var(--dams-muted);
+}

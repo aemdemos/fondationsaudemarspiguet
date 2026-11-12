@@ -26,3 +26,7 @@ Load the relevant local skill for block tasks:
 - [Building blocks](skills/building-blocks/SKILL.md): implement or modify JS/CSS blocks.
 - [Block references](skills/block-collection-and-party/SKILL.md): find reusable local or external patterns.
 - [Testing blocks](skills/testing-blocks/SKILL.md): verify behavior, accessibility, responsive layout, and linting.
+
+## DA Tool Skills
+
+- [DA multi-site plugins](skills/da-multisite-plugins/SKILL.md): build DA apps or library plugins that update, preview, or publish shared content across the Fondations, Arbres, and Biencommun sites in every language.
