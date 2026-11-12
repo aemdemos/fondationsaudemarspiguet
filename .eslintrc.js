@@ -20,4 +20,16 @@ module.exports = {
     'no-param-reassign': [2, { props: false }], // allow modifying properties of param
   },
   ignorePatterns: ['tools/importer/**/*'],
+  overrides: [
+    {
+      // Node CLI scripts for bulk DA content changes
+      files: ['tools/da-bulk/**/*.mjs'],
+      env: { node: true, browser: false, es2020: true },
+      rules: {
+        'no-console': 'off',
+        'import/extensions': ['error', { js: 'always', mjs: 'always' }],
+        'import/no-extraneous-dependencies': ['error', { devDependencies: true }],
+      },
+    },
+  ],
 };
