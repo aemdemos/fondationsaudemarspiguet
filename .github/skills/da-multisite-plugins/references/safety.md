@@ -36,7 +36,7 @@ Each site and language is independent: one failure never stops the others, and r
 ## Security
 
 - **Token scope.** `daFetch` attaches the author's token to every URL. Only `createApi` may call it, and it allows only `https://admin.da.live` and `https://admin.hlx.page`.
-- **Targets.** Org, repositories, locales and paths come from `sites.js` and the operation, never from the query string, `postMessage` data, author input or remote sheets. Check `context.org`.
+- **Targets.** Org, repositories, locales and paths come from `sites.js` and the operation, never from the query string, `postMessage` data, author input or remote sheets. Check `context.org`. One bounded exception: a library plugin may take the page being edited from `context.path` and map it to its other-language counterpart with the same site's `language-switcher` sheet (see `tools/metadata-sync`). It requires `context.repo` to be a registered site, keeps the same repository, validates the path with `sitePath`, stays inside a registered locale folder, and shows the target to the author before any write.
 - **Paths.** Validate them with `sitePath` (no `..`, `//`, scheme or spaces). Derive file names with `safeFileName` (lowercase ASCII and an allowed extension).
 - **DOM.** Build the UI and edit the DA source with `createElement`, `textContent` and `setAttribute`. Never put author input into `innerHTML` or `insertAdjacentHTML`. Do not write `javascript:` or external URLs unless the operation requires them, and then validate them with an allowlist.
 - **Secrets.** Never log or persist tokens, document bodies or file contents (`console`, `localStorage`, URLs).

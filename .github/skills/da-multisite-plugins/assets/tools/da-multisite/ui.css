@@ -83,6 +83,34 @@
   font-size: 13px;
 }
 
+.da-multisite .dams-options {
+  grid-column: 1 / -1;
+  min-width: 0;
+  margin: 0;
+  padding: 8px 12px;
+  border: 1px solid var(--dams-border);
+  border-radius: 4px;
+}
+
+.da-multisite .dams-options legend {
+  padding: 0 4px;
+  font-weight: 700;
+}
+
+.da-multisite .dams-field.dams-options label {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 8px;
+  padding: 4px 0;
+  font-weight: 400;
+  overflow-wrap: anywhere;
+}
+
+.da-multisite .dams-options label > span:first-of-type {
+  font-weight: 700;
+}
+
 .da-multisite input[type='text'],
 .da-multisite select {
   min-height: 32px;

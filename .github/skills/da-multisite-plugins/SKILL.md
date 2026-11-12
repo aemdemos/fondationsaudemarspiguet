@@ -24,6 +24,7 @@ The reusable runtime is in [assets/](./assets/). Its folders mirror the reposito
 | [da-blocks.js](./assets/tools/da-multisite/da-blocks.js) | `tools/da-multisite/` | DA source helpers: sections, blocks, rows, cells, section metadata, links |
 | [ui.js](./assets/tools/da-multisite/ui.js), [ui.css](./assets/tools/da-multisite/ui.css) | `tools/da-multisite/` | Generic form, scope selection, confirmations, status tables |
 | [newsroom-report](./assets/tools/newsroom-report/) | `tools/newsroom-report/` | Worked example: add or update a report on 6 newsroom pages |
+| — (repository only) | `tools/metadata-sync/`, `test/metadata-sync*` | Context-aware library plugin: copies one metadata row from the open page to its other-language counterpart (uses `setup`, `load`, a `select` built from the page, and an optional `?row=` preset from the library entry) |
 | [da-mock.js](./assets/test/da-mock.js), [da-sdk-stub.js](./assets/test/da-sdk-stub.js) | `test/` | In-memory DA/AEM and SDK stub for local tests |
 | [newsroom-report.html](./assets/test/newsroom-report.html), [newsroom-report-test.js](./assets/test/newsroom-report-test.js) | `test/` | Example test page and fixtures |
 
@@ -59,19 +60,30 @@ mountMultisiteTool({ sdk: DA_SDK, operation, root: document.querySelector('#app'
 
 `values` holds the current locale's values. A localized field resolves to that locale, and a file field becomes `{ file, path }`. `target` is `{ org, repo, site, locale, path }`.
 
+Optional operation members, for tools that depend on the page being edited (library plugins):
+
+| Member | Called | Use |
+| --- | --- | --- |
+| `setup({ context, api })` | Once, after the SDK and org checks | Read `context.path`, the current page or a sheet; return overrides merged into the operation (`description`, `fields`, `pages`, `siteIds`, `locales`). Throw to show a blocking message. |
+| `load({ api, input })` | At each Analyse, before planning | Re-read source data; the result is passed to `apply` as `shared` and reused unchanged for Apply and its verification. |
+| `siteIds`, `locales` | At mount | Restrict the scope; a scope with one entry is not shown as checkboxes. |
+| `{ type: 'checkboxes', options: [{ value, label, hint, disabled }], default: [] }` | Field | Multiple choice; the value is an array, `required` means at least one. `select` options also accept `disabled`; use a first option with `value: ''` as a placeholder for a required choice. |
+
+`api.request(url, init)` is the guarded `daFetch` (DA and AEM admin origins only) for helpers that need a raw fetch, such as `fetchLanguageSwitcherRows`.
+
 ## Rules for `apply`
 
 1. **Idempotent.** Find the existing item by a natural key (link path, ID, slug) and update it, or add it. A second run must return "Up to date". The runtime proves this by re-planning after every write.
 2. **Strict, never guessing.** Use `findBlock` (exactly one match) and check the column counts. Throw a clear error when the page structure is unexpected. One page reports an error and the others continue.
 3. **Preserve site differences.** Clone an existing row or element from the same page instead of building markup. Icons, link labels and styles differ per site (see [ap-sites.md](./references/ap-sites.md)).
-4. **Pure and local.** Use only `doc`, `target` and `values`. No network calls, no global state, and no `innerHTML` with author input. Use `textContent`, `setAttribute` and the `da-blocks.js` helpers.
+4. **Pure and local.** Use only `doc`, `target`, `values` and `shared`. No network calls, no global state, and no `innerHTML` with author input. Use `textContent`, `setAttribute` and the `da-blocks.js` helpers. Content copied from another DA document is imported with `doc.importNode`.
 5. **Minimal.** Touch only the targeted block. Never rewrite whole sections or metadata that the operation does not own.
 
 ## Workflow
 
 1. **Scope.** Define the change, the page per site and locale, the pages that may be absent (`null`), the natural key, and who runs the tool. Keep one operation per author intent. Prefer a few explicit fields over free HTML.
 2. **Read the real DA source** of every target page with the author's or developer's access (`GET https://admin.da.live/source/{org}/{repo}{path}.html`, or copy it from DA). Do not design transforms from `.plain.html` or the live DOM: they are rendered output with different icons, media URLs and wrappers. Record the site and locale differences.
-3. **Install the runtime** if `tools/da-multisite/` is missing. Copy `assets/tools/da-multisite/` → `tools/da-multisite/`, and copy `assets/test/da-mock.js` and `assets/test/da-sdk-stub.js` → `test/`. Never fork the runtime per plugin. Improve it in place, and then update the skill assets too.
+3. **Install the runtime** if `tools/da-multisite/` is missing. Copy `assets/tools/da-multisite/` → `tools/da-multisite/`, and copy `assets/test/da-mock.js` and `assets/test/da-sdk-stub.js` → `test/`. Never fork the runtime per plugin. Improve it in place, keep both copies identical (`diff -r .github/skills/da-multisite-plugins/assets/tools/da-multisite tools/da-multisite`), and re-test the existing tools that use it.
 4. **Create the plugin.** Copy `assets/tools/newsroom-report/` → `tools/<name>/` (`<name>.html`, `<name>.js`). Then write the operation.
 5. **Create the fixtures.** Copy the example test page and script to `test/<name>.html` and `test/<name>-test.js`. Paste the real DA source of each site and locale variant, with personal data removed.
 6. **Test locally** following [Testing](#testing). Nothing remote is touched.
@@ -107,7 +119,8 @@ Follow [safety.md](./references/safety.md). Non-negotiable:
 - Never overwrite binaries (DA does not version them). Files are created with `If-None-Match: *`.
 - Preview and publish files before the pages that link to them, and publish only what was previewed.
 - `daFetch` sends the author's token to any URL. Call only `admin.da.live` and `admin.hlx.page`, through `createApi`.
-- The registry lives in code, and the org must match `context.org`. Never build targets from the URL or a sheet.
+- The registry lives in code, and the org must match `context.org`. Never build org or repositories from the URL or a sheet; the only path exception (current page → language counterpart) is described in [safety.md](./references/safety.md).
+- A library plugin never writes the page open in the editor; it writes other pages only.
 - The agent never publishes, edits DA content or changes DA configuration on its own. Those steps belong to the user.
 
 ## References
