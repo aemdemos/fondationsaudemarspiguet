@@ -65,6 +65,10 @@ header nav .nav-tools, header nav .nav-sections {
   color: white;
 }
 
+:where(body:not(.fondations)) header nav .nav-tools {
+  text-transform: uppercase;
+}
+
 header nav[aria-expanded="false"] .nav-tools {
   display: none;
 }
@@ -86,6 +90,10 @@ header nav .nav-tools ul li ul li {
   font-size: 18px;
   font-weight: 300;
   text-decoration: none;
+}
+
+:where(body:not(.fondations)) header nav .nav-tools ul li ul li {
+  font-weight: 400;
 }
 
 .fondations header nav .nav-tools ul li {
@@ -348,6 +356,12 @@ header nav .nav-tools ul li a.button:any-link {
   border-radius: 0;
   padding: 0;
   font-weight: 200;
+  overflow: visible;
+}
+
+:where(body:not(.fondations)) header nav .nav-tools ul li p,
+:where(body:not(.fondations)) header nav .nav-tools ul li a.button:any-link {
+  font-weight: 600;
 }
 
 header nav .nav-tools ul li a.button:any-link:hover, header nav .nav-tools ul li a:any-link:hover, nav .nav-tools ul li ul li a.button:any-link:hover, header nav .nav-tools ul li ul.show li:hover {

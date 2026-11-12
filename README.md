@@ -92,6 +92,9 @@ Project map introductions use a centered 1440px container with the back link
 in the bottom spacing, without adding an extra row above the map.
 Each site's existing color tokens remain in use, including article headings and
 inline links. These rules apply wherever the corresponding block/template is used.
+Arbres and Bien Commun navigation labels remain uppercase on mobile and desktop,
+using the desktop font weights at all widths (600 for main labels, 400 for
+submenu links). Navigation links allow accented capitals to render without clipping.
 In extended news articles, the closing gallery overlaps the background transition
 on desktop, while the following text/sidebar section stays clear of the image.
 Article body paragraphs use weight 300; bold emphasis remains authored with
