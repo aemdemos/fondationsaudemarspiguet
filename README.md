@@ -90,6 +90,7 @@ across all three sites.
 Filter separators have equal spacing on both sides; category and location inputs
 are sized to their displayed text without extra trailing padding.
 Project category/location separators stay with their input when filters wrap.
+The map link is temporarily hidden on project listings for Arbres and Bien Commun.
 Project map introductions use a centered 1440px container with the back link
 in the bottom spacing, without adding an extra row above the map.
 Each site's existing color tokens remain in use, including article headings and

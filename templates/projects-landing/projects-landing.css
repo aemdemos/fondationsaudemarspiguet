@@ -215,7 +215,8 @@ main .filter-container .projects-listing-container-left .view-all:hover {
 }
 
 main .filter-container .projects-listing-container-right {
-    display: flex;
+    /* Temporarily hide the map link until the map is fixed. */
+    display: none;
     gap: 5px;
     align-self: end;
 }
