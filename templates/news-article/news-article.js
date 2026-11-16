@@ -42,6 +42,7 @@ export default async function decorate(doc) {
   const followUsLabel = getLocalizedUILabel('followUs', 'newsArticle', doc);
 
   const newsDiv = doc.querySelector('.news-article-template .details-sidebar');
+  const articleContent = newsDiv.querySelector('.default-content-wrapper');
   const viewMoreButton = doc.querySelector('.news-article-template .details-sidebar .default-content-wrapper .button-container');
   const buttonDiv = div({ class: 'button-wrapper' });
   buttonDiv.append(viewMoreButton);
@@ -76,7 +77,6 @@ export default async function decorate(doc) {
     sidebar.insertBefore(link, sidebar.querySelector('.photos'));
     sidebar.insertBefore(photoList, sidebar.querySelector('.author'));
     sidebar.appendChild(linkedin);
-    const articleContent = newsDiv.querySelector('.default-content-wrapper');
 
     // Get title using the new helper
     const heading = getLocalizedMetadata('title', 'newsArticle', doc);
@@ -110,12 +110,19 @@ export default async function decorate(doc) {
     `;
     const linkedin = a({ href: 'https://www.linkedin.com/company/audemars-piguet-foundations/', target: '_blank' }, '↳ LinkedIn');
     sidebar.appendChild(linkedin);
-    const articleContent = newsDiv.querySelector('.default-content-wrapper');
     const clearDiv = div({ class: 'clear' });
     const innerDiv = div({ class: 'news-article-inner' });
     innerDiv.append(sidebar, articleContent, clearDiv);
     newsDiv.append(innerDiv, buttonDiv);
   }
+
+  articleContent.querySelectorAll('a[href]').forEach((link) => {
+    if (['http:', 'https:'].includes(link.protocol) && /\.pdf$/i.test(link.pathname)) {
+      link.target = '_blank';
+      link.relList.add('noopener', 'noreferrer');
+    }
+  });
+
   // Add a clear div after the first paragraph to ensure the second paragraph
   // remains in the float: right position for large screen sizes
   const textPara = doc.querySelector('.section.articlecontent-container + div .default-content-wrapper p:first-of-type');

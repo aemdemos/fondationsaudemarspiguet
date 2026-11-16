@@ -107,6 +107,9 @@ No Universal Editor model change is needed.
 In newsroom report tables, the download-icon link downloads the authored file,
 while the Discover link opens it in a new tab. Download links should reference
 files on the same origin so browsers honor the `download` attribute.
+In news article body text, links to PDF files open in a new tab; other links
+keep their existing behavior. This applies to both languages and sidebar layouts.
+To check this locally, open `/test/news-article-links.html`.
 
 ## Project list ordering (DA)
 
