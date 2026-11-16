@@ -408,10 +408,6 @@
   min-height: 0;
 }
 
-.carousel.vertical:not(.scrollable,.hero-banner) .carousel-slide .carousel-slide-image picture > img {
-  object-fit: contain;
-}
-
 @media (width < 600px) {
   .carousel.vertical .carousel-slide-indicators {
      display: none;

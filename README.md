@@ -81,6 +81,8 @@ Fondations content sections using `light-grey-orange-bg` retain the site's light
 grey background rather than the Bien Commun beige.
 Image-only heroes keep their natural image height. Project listings use 35:23
 image frames; homepage project images use 700:459 frames with `object-fit: cover`.
+Vertical image carousels fill their existing frames with centered, proportionally
+scaled images; images with a different aspect ratio are cropped.
 Project grids have one column through 640px, two through 930px and three above;
 homepage project images and text stack through 930px.
 Project category/location options and news category options become bold on hover
