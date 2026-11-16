@@ -145,7 +145,7 @@ header nav .nav-tools ul li.active, header nav .nav-tools ul li a.active {
   
   .fondations header nav{
     display: block;
-    transition: unset;
+    transition: all 0.4s ease-in-out 0s;
   }
 
   header .nav-wrapper {
@@ -243,6 +243,11 @@ header nav .nav-hamburger-icon::before, header nav .nav-hamburger-icon::after {
   content: "";
   position: absolute;
   background: currentcolor;
+}
+
+/* elastic hamburger morph, same timing as the Fondations legacy site */
+.fondations header nav .nav-hamburger-icon, .fondations header nav .nav-hamburger-icon::before, .fondations header nav .nav-hamburger-icon::after {
+  transition: all 0.275s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
 header nav[aria-expanded="false"] .nav-hamburger-icon, header nav[aria-expanded="false"] .nav-hamburger-icon::before, header nav[aria-expanded="false"] .nav-hamburger-icon::after {
