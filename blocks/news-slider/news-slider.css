@@ -21,6 +21,17 @@ html, body {
     margin: 0;
 }
 
+/* Space above the section title, so it does not sit right under the previous block */
+main .section:has(> .news-slider-wrapper) {
+    padding-top: 60px;
+}
+
+@media (width >= 900px) {
+    main .section:has(> .news-slider-wrapper) {
+        padding-top: 100px;
+    }
+}
+
 .news-slider-wrapper .cards.block.swiper.news-swiper {
     overflow: visible !important;
     margin-left: auto;
