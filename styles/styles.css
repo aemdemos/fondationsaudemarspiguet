@@ -15,6 +15,7 @@
   --light-color: #f8f8f8;
   --dark-color: #505050;
   --text-color: #1E1E1E;
+  --content-link-color: var(--site-color);
   --link-color: #3b63fb;
   --link-hover-color: #1d3ecf;
   --listing-card-logo-color: #fffc;
@@ -503,14 +504,18 @@ input, textarea, select, button {
 
 /* links */
 a:any-link {
-  color: var(--link-color);
+  color: var(--content-link-color);
   text-decoration: none;
   overflow-wrap: break-word;
 }
 
 a:hover {
-  color: var(--link-hover-color);
+  color: var(--content-link-color);
   text-decoration: underline;
+}
+
+.biencommun {
+  --content-link-color: var(--biencommun-site-color);
 }
 
 /* buttons */
