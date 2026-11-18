@@ -130,7 +130,7 @@ body.news-article main .section.articlecontent-container + div div.default-conte
 body.news-article main .section.articlecontent-container + div div.default-content-wrapper > p {
     font-weight: 300;
     line-height: 1.5em;
-    letter-spacing: .04em;
+    letter-spacing: .02em;
     font-size: 14px;
     width: 100%;
     float: left;
@@ -298,6 +298,7 @@ body.news-article main .section.details-sidebar.right .news-article-inner .defau
     line-height: 1.5em;
     padding-bottom: 20px;
     letter-spacing: .02em;
+    font-size: 14px;
 }
 
 body.news-article main .section.details-sidebar.right .news-article-inner .default-content-wrapper p:nth-child(1) strong {
@@ -396,6 +397,10 @@ body.news-article main .section.details-sidebar.right .news-article-inner .defau
         font-size: 20px;
         width: calc(100% - 380px);
         float: right;
+    }
+
+    body.news-article main .section.details-sidebar.right .news-article-inner .default-content-wrapper p {
+        font-size: 20px;
     }
 
     body.news-article main .section.details-sidebar .news-article-sidebar {
