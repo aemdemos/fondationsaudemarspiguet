@@ -1073,6 +1073,10 @@ main>.section.colored-text.columns-container>div.default-content-wrapper p {
     font-weight: 400;
   }
 
+  body.fondations.contact-us main p {
+    font-size: var(--body-font-size-m);
+  }
+
 
   main h2 {
     font-size: var(--heading-font-size-xl);
