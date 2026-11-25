@@ -30,6 +30,7 @@ import {
 } from '../util.js';
 import registerCustomFunctions from './functionRegistration.js';
 import { LOG_LEVEL } from '../constant.js';
+import setRichTextContent from '../rich-text.js';
 import { createOptimizedPicture } from '../../../scripts/aem.js';
 
 const formSubscriptions = {};
@@ -127,7 +128,7 @@ async function fieldChanged(payload, form, generateFormRendition) {
         } else if (fieldType === 'checkbox') {
           field.checked = compare(valueToSet, field.value, type);
         } else if (fieldType === 'plain-text') {
-          field.innerHTML = valueToSet;
+          setRichTextContent(field, valueToSet);
         } else if (fieldType === 'image') {
           const altText = field?.querySelector('img')?.alt || '';
           field.querySelector('picture')?.replaceWith(createOptimizedPicture(valueToSet, altText));
@@ -196,9 +197,10 @@ async function fieldChanged(payload, form, generateFormRendition) {
         break;
       case 'description':
         if (fieldWrapper) {
+          fieldWrapper.dataset.description = currentValue ?? '';
           let descriptionEl = fieldWrapper.querySelector('.field-description');
           if (descriptionEl) {
-            descriptionEl.innerHTML = currentValue;
+            setRichTextContent(descriptionEl, currentValue);
           } else if (currentValue !== '') {
             descriptionEl = createHelpText({
               id,

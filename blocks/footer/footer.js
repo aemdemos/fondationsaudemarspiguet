@@ -1,6 +1,6 @@
 import { getMetadata } from '../../scripts/aem.js';
 import { loadFragment } from '../fragment/fragment.js';
-import { getLanguage } from '../../scripts/scripts.js';
+import { getLanguage, decorateLinkedInLinks } from '../../scripts/scripts.js';
 
 /**
  * loads and decorates the footer
@@ -26,6 +26,7 @@ export default async function decorate(block) {
   const socialIcons = footer.querySelector('.section.social-section > div p:first-of-type');
   const footerLinks = footer.querySelector('.section.social-section > div ul:first-of-type');
   const copyRight = footer.querySelector('.section.social-section > div p:nth-of-type(2)');
+  decorateLinkedInLinks(socialIcons);
   const footerGeneralWrapper = document.createElement('div');
   footerGeneralWrapper.className = 'footer-general-wrapper';
   footerGeneralWrapper.append(socialIcons);

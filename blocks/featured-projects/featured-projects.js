@@ -1,7 +1,6 @@
 import {
   toCamelCase,
   createOptimizedPicture,
-  buildBlock,
   decorateBlock,
   loadBlock,
 } from '../../scripts/aem.js';
@@ -11,9 +10,9 @@ import {
   div,
   h3,
   h2,
-  a,
 } from '../../scripts/dom-helpers.js';
 import { applyFadeUpAnimation, getPathSegments } from '../../scripts/utils.js';
+import { createSafeLink } from '../../scripts/url-utils.js';
 
 class Products {
   // eslint-disable-next-line max-len
@@ -102,13 +101,13 @@ const resultParsers = {
     const blockContents = [];
     // Get path segments to check URL condition
     const pathSegments = getPathSegments();
-    const isNewsPage = pathSegments[1] === 'fondation-pour-les-arbres-news' || pathSegments[1] === 'fondation-pour-les-arbres-actualites';
+    const isNewsPage = pathSegments[1] === 'fondation-pour-les-arbres-news' || pathSegments[1] === 'fondation-pour-les-arbres-actualites' || pathSegments[1] === 'fondation-pour-le-bien-commun-news' || pathSegments[1] === 'fondation-pour-le-bien-commun-actualites';
 
     results.forEach((result) => {
       const cardContainer = div();
 
       // Create the wrapper anchor tag
-      const cardLink = a({ href: result.productsPath });
+      const cardLink = createSafeLink(result.productsPath);
 
       // Create image container
       const imageContainer = div({ class: 'image-container' });
@@ -131,9 +130,13 @@ const resultParsers = {
       // Create location and duration info
       const projectInfo = div({ class: 'projets-listing-infos' });
       if (isNewsPage) {
-        projectInfo.innerHTML = result.productsDuration || '';
+        projectInfo.textContent = result.productsDuration || '';
       } else {
-        projectInfo.innerHTML = `${result.productsLocation || ''} <br> ${result.productsDuration || ''}`;
+        projectInfo.append(
+          document.createTextNode(`${result.productsLocation || ''} `),
+          document.createElement('br'),
+          document.createTextNode(` ${result.productsDuration || ''}`),
+        );
       }
       cardLink.append(projectInfo);
 
@@ -307,7 +310,10 @@ export default async function decorate(block) {
 
     const getProducts = await getProductsdata();
     const blockContents = await loadresults(getProducts);
-    const builtBlock = buildBlock(blockType, blockContents);
+    const builtBlock = div(
+      { class: blockType },
+      ...blockContents.map((row) => div(...row.map((cell) => div(cell)))),
+    );
     const parentDiv = div(
       builtBlock,
     );

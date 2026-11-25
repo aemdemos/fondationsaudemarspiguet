@@ -1,6 +1,5 @@
 import {
   createOptimizedPicture,
-  buildBlock,
   decorateBlock,
   loadBlock,
   fetchPlaceholders,
@@ -13,6 +12,8 @@ import {
   a,
 } from '../../scripts/dom-helpers.js';
 import { applyFadeUpAnimation } from '../../scripts/utils.js';
+import { createSafeLink } from '../../scripts/url-utils.js';
+import sortProjects from '../../scripts/project-order.js';
 
 class Products {
   // eslint-disable-next-line max-len
@@ -38,6 +39,7 @@ const resultParsers = {
   columns: (results, leftButtonText, rightButtonText) => {
     const blockContents = [];
     const currentLanguage = getLanguage();
+    const isBienCommun = window.location.hostname.includes('biencommun');
 
     results.forEach((result) => {
       const cardContainer = div();
@@ -45,7 +47,7 @@ const resultParsers = {
       // 1) Image with cardLink (link only on image)
       if (result.productsImage && result.productsImage.length > 0) {
         const projectImageDiv = div({ class: 'project-image' });
-        const imageLink = a({ href: result.productsPath });
+        const imageLink = createSafeLink(result.productsPath);
         const imageContainer = div({ class: 'image-container' });
         const cardImage = createOptimizedPicture(result.productsImage);
         cardImage.classList.add('lazy', 'slide_img');
@@ -82,14 +84,18 @@ const resultParsers = {
       const buttonsDiv = div({ class: 'buttons-container' });
 
       // 1st button - Projects listing
-      const projectsListingUrl = currentLanguage === 'fr'
-        ? '/fr/fondation-pour-les-arbres-nos-projets'
-        : '/en/fondation-pour-les-arbres-projects';
+      const projectsListingUrl = isBienCommun
+        ? (currentLanguage === 'fr'
+          ? '/fr/fondation-pour-le-bien-commun-nos-projets'
+          : '/en/fondation-pour-le-bien-commun-projects')
+        : (currentLanguage === 'fr'
+          ? '/fr/fondation-pour-les-arbres-nos-projets'
+          : '/en/fondation-pour-les-arbres-projects');
       const projectsListingButton = a({ href: projectsListingUrl, class: 'btn-projects-listing' });
       projectsListingButton.textContent = leftButtonText;
 
       // 2nd button - Individual project
-      const projectDetailButton = a({ href: result.productsPath, class: 'btn-project-detail' });
+      const projectDetailButton = createSafeLink(result.productsPath, { class: 'btn-project-detail' });
       projectDetailButton.textContent = rightButtonText;
 
       buttonsDiv.append(projectsListingButton);
@@ -153,30 +159,7 @@ async function getProductsdata() {
   const featuredProducts = rawProducts1.filter((item) => item.featured
     && item.featured.trim().length > 0);
 
-  // Function to extract years from duration string
-  const extractYears = ((duration) => {
-    if (!duration) return { year1: 0, year2: 0 };
-    const years = duration.split('→').map((year) => parseInt(year.trim(), 10));
-    return {
-      year1: years[0] || 0,
-      year2: years[1] || 0,
-    };
-  });
-
-  // Sort the filtered array based on year2 first, then year1
-  featuredProducts.sort((item1, item2) => {
-    const yearsA = extractYears(item1.duration);
-    const yearsB = extractYears(item2.duration);
-
-    // Compare year2 first
-    if (yearsB.year2 !== yearsA.year2) {
-      return yearsB.year2 - yearsA.year2;
-    }
-    // If year2 is same, compare year1
-    return yearsB.year1 - yearsA.year1;
-  });
-
-  return featuredProducts;
+  return sortProjects(featuredProducts);
 }
 
 const loadresults = async (getProducts) => {
@@ -202,7 +185,10 @@ const loadresults = async (getProducts) => {
 export default async function decorate(block) {
   const getProducts = await getProductsdata();
   const blockContents = await loadresults(getProducts);
-  const builtBlock = buildBlock(blockType, blockContents);
+  const builtBlock = div(
+    { class: blockType },
+    ...blockContents.map((row) => div(...row.map((cell) => div(cell)))),
+  );
   const parentDiv = div(
     builtBlock,
   );

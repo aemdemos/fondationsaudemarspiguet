@@ -1,0 +1,38 @@
+main .section.newsletter-form.newsletter-container > .default-content-wrapper h1 {
+  margin: 0;
+  padding: 100px 0 20px;
+  color: white;
+  font-size: 35px;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+}
+
+.newsletter.block {
+  width: 100%;
+  max-width: var(--newsletter-max-width, 660px);
+  margin-inline: auto;
+}
+
+.newsletter.block iframe {
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  height: var(--newsletter-iframe-height, 960px);
+  border: 0;
+}
+
+.newsletter.block[data-format="desktop"] iframe {
+  height: var(--newsletter-iframe-height, 800px);
+}
+
+@media (width < 700px) {
+  main .section > .newsletter-wrapper {
+    padding-inline: 4px;
+  }
+}
+
+@media (width >= 600px) {
+  main .section.newsletter-form.newsletter-container > .default-content-wrapper h1 {
+    font-size: 50px;
+  }
+}

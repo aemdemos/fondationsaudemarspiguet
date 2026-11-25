@@ -45,11 +45,6 @@ export default async function decorate() {
     photoList.appendChild(li);
   }
 
-  // Create link element
-  const link = document.createElement('a');
-  link.href = links;
-  link.textContent = links;
-
   // Build sidebar HTML (no language-specific if/else needed!)
   sidebar.innerHTML = `
     <div> ${partnerLabel} </div>
@@ -60,11 +55,16 @@ export default async function decorate() {
       ${duration}
     <div> ${locationLabel} </div>
       ${location}
-    <div> ${linkLabel} </div>
+    ${linksArray.length ? `<div> ${linkLabel} </div>` : ''}
     <div class="photos"> ${photosLabel} </div>
   `;
 
-  sidebar.insertBefore(link, sidebar.querySelector('div:last-child'));
+  if (linksArray.length) {
+    const link = document.createElement('a');
+    link.href = links;
+    link.textContent = links;
+    sidebar.insertBefore(link, sidebar.querySelector('.photos'));
+  }
   sidebar.appendChild(photoList);
 
   const projectDiv = document.querySelector('.project-article-template .details-sidebar');

@@ -1,0 +1,12 @@
+trigger: none
+
+resources:
+ repositories:
+  - repository: templates
+    name: azure-devops-pipeline-templates
+    ref: feature/snyk-update-scan-task
+    type: git
+    project: IT
+
+extends:
+  template: /Build/qa-scan/qa-tools-scan.yml@templates

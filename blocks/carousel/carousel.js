@@ -1,5 +1,5 @@
 import { fetchPlaceholders, getMetadata, createOptimizedPicture } from '../../scripts/aem.js';
-import { moveInstrumentation, getLanguage } from '../../scripts/scripts.js';
+import { moveInstrumentation, getLanguage, decorateLinkedInLinks } from '../../scripts/scripts.js';
 
 function updateActiveSlide(slide) {
   const block = slide.closest('.carousel');
@@ -99,12 +99,18 @@ function bindEvents(block) {
     });
   });
 
-  block.querySelector('.slide-prev').addEventListener('click', () => {
-    showSlide(block, parseInt(block.dataset.activeSlide, 10) - 1);
-  });
-  block.querySelector('.slide-next').addEventListener('click', () => {
-    showSlide(block, parseInt(block.dataset.activeSlide, 10) + 1);
-  });
+  const prevBtn = block.querySelector('.slide-prev');
+  const nextBtn = block.querySelector('.slide-next');
+  if (prevBtn) {
+    prevBtn.addEventListener('click', () => {
+      showSlide(block, parseInt(block.dataset.activeSlide, 10) - 1);
+    });
+  }
+  if (nextBtn) {
+    nextBtn.addEventListener('click', () => {
+      showSlide(block, parseInt(block.dataset.activeSlide, 10) + 1);
+    });
+  }
 
   const slideObserver = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
@@ -197,6 +203,7 @@ export default async function decorate(block) {
         slidelegende = row.querySelector('div:nth-child(2)');
         if (socialContainer) {
           socialContainer.classList.add('social-cr-wrapper');
+          decorateLinkedInLinks(socialContainer);
         }
         if (slidelegende) {
           slidelegende.classList.add('slide-legend');
@@ -296,6 +303,31 @@ export default async function decorate(block) {
   if (isScrollable) {
     // Scroll-snap mode (CSS controls the snapping)
     const slides = block.querySelectorAll('.carousel-slide');
+    slides.forEach((currentSlide, idx) => {
+      const directionIcon = currentSlide.querySelector('.direction-icon-section .icon');
+      if (!directionIcon) return;
+
+      const isLastSlide = idx === slides.length - 1;
+      const target = slides[isLastSlide ? 0 : idx + 1];
+      const link = directionIcon.closest('a') || document.createElement('a');
+      link.className = 'section-navigation';
+      link.href = `#${target.id}`;
+      const isFrench = getLanguage() === 'fr';
+      const nextLabel = isFrench ? 'Section suivante' : 'Next section';
+      const topLabel = isFrench ? 'Retour en haut' : 'Back to top';
+      link.setAttribute('aria-label', isLastSlide ? topLabel : nextLabel);
+      if (!link.contains(directionIcon)) {
+        directionIcon.before(link);
+        link.append(directionIcon);
+      }
+      link.addEventListener('click', (event) => {
+        event.preventDefault();
+        const behavior = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+          ? 'instant' : 'smooth';
+        target.scrollIntoView({ behavior, block: 'start' });
+        if (isLastSlide) window.scrollTo({ top: 0, behavior });
+      });
+    });
     const indicators = block.querySelectorAll('.carousel-slide-indicator');
     indicators.forEach((indicator, idx) => {
       const btn = indicator.querySelector('button');
@@ -341,7 +373,9 @@ export default async function decorate(block) {
     if (!isSingleSlide) {
       bindEvents(block);
     }
-    centerIndicators(block);
-    window.addEventListener('resize', () => centerIndicators(block));
+    if (!isVertical) {
+      centerIndicators(block);
+      window.addEventListener('resize', () => centerIndicators(block));
+    }
   }
 }

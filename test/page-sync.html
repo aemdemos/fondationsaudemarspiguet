@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Page sync - local test (mock DA)</title>
+    <link rel="icon" href="data:," />
+    <script type="importmap">
+      { "imports": { "https://da.live/nx/utils/sdk.js": "/test/da-sdk-stub.js" } }
+    </script>
+    <link rel="stylesheet" href="/tools/da-multisite/ui.css" />
+  </head>
+  <body>
+    <main id="app"></main>
+    <script src="./page-sync-test.js" type="module"></script>
+  </body>
+</html>

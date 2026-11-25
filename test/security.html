@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Security regression tests</title>
+    <script type="importmap">
+      {"imports":{"https://da.live/scripts/dapreview.js":"/test/dapreview-stub.js"}}
+    </script>
+    <script>
+      const fixtureUrl = new URL(window.location.href);
+      fixtureUrl.searchParams.set('rum', 'off');
+      fixtureUrl.searchParams.set('dapreview', '1');
+      window.history.replaceState(null, '', fixtureUrl);
+    </script>
+  </head>
+  <body>
+    <main>
+      <h1>Security regression tests</h1>
+      <p id="summary">Running tests...</p>
+      <ol id="results"></ol>
+      <div id="fixtures"></div>
+    </main>
+    <script type="module" src="/test/security.js"></script>
+  </body>
+</html>

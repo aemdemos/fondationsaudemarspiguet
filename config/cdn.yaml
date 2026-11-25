@@ -1,0 +1,19 @@
+kind: "CDN"
+version: "1"
+metadata:
+  envTypes: ["prod"]
+data:
+  responseTransformations:
+    rules:
+      - name: hsts-include-subdomains
+        when:
+          reqProperty: domain
+          in:
+            - "fondationsaudemarspiguet.org"
+            - "www.fondationsaudemarspiguet.org"
+            - "arbres.fondationsaudemarspiguet.org"
+            - "biencommun.fondationsaudemarspiguet.org"
+        actions:
+          - type: set
+            respHeader: strict-transport-security
+            value: "max-age=31557600; includeSubDomains"

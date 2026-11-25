@@ -15,6 +15,7 @@
   --light-color: #f8f8f8;
   --dark-color: #505050;
   --text-color: #1E1E1E;
+  --content-link-color: var(--site-color);
   --link-color: #3b63fb;
   --link-hover-color: #1d3ecf;
   --listing-card-logo-color: #fffc;
@@ -383,6 +384,18 @@ body {
   font-family: var(--body-font-family);
   font-size: var(--body-font-size-m);
   line-height: 1.6;
+
+  text-rendering: auto;
+	text-rendering: optimizeLegibility;
+	text-rendering: geometricPrecision;
+	font-smooth: always;
+	
+	font-smoothing: antialiased;
+	-moz-font-smoothing: antialiased;
+	-webkit-font-smoothing: subpixel-antialiased;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+
 }
 
 body.appear {
@@ -491,14 +504,18 @@ input, textarea, select, button {
 
 /* links */
 a:any-link {
-  color: var(--link-color);
+  color: var(--content-link-color);
   text-decoration: none;
   overflow-wrap: break-word;
 }
 
 a:hover {
-  color: var(--link-hover-color);
+  color: var(--content-link-color);
   text-decoration: underline;
+}
+
+.biencommun {
+  --content-link-color: var(--biencommun-site-color);
 }
 
 /* buttons */
@@ -951,6 +968,10 @@ main .section.light-grey-orange-bg {
   background-color: var(--biencommun-page-bloc-full);
 }
 
+body.fondations main .section.light-grey-orange-bg {
+  background-color: var(--fondations-quote-bg);
+}
+
 main .section.ashy-grey-bg {
   background-color: var(--fondations-quote-bg);
 }
@@ -1027,6 +1048,18 @@ main>.section.colored-text.columns-container>div.default-content-wrapper p {
     padding: 75px 80px 100px;
   }
 
+  main>.section.colored-text.cards-container>div.default-content-wrapper p {
+    padding: 50px 80px 0;
+  }
+    
+  main>.section.colored-text>div.default-content-wrapper p.button-container {
+    padding: 0;
+  }
+    
+  main>.section.colored-text.columns-container>div.default-content-wrapper p {
+    padding: 50px 80px 40px;
+  }
+
   main>.section.colored-text.columns-container>div.default-content-wrapper p {
     padding: 50px 80px 40px;
   }
@@ -1038,6 +1071,10 @@ main>.section.colored-text.columns-container>div.default-content-wrapper p {
   .contact-us main p {
     letter-spacing: 0.05em;
     font-weight: 400;
+  }
+
+  body.fondations.contact-us main p {
+    font-size: var(--body-font-size-m);
   }
 
 
@@ -1225,6 +1262,10 @@ main .section.quote-container .quote-wrapper {
   margin-bottom: 30px;
 }
 
+body.fondations main .section.quote-container:has(+ .section.float-right) .quote-wrapper {
+  margin-bottom: 0;
+}
+
 main .section:has(.icons-grid) .default-content-wrapper p.button-container a.button {
   background-color: var(--page-bloc-btn-bg);
   background-image: url("/icons/btn_fleche_right.svg");
@@ -1362,6 +1403,10 @@ main .section.float-right .default-content-wrapper .content-wrapper p{
   }
 }
 
+.policy-template main .last-modified.policy-update {
+  margin-top: 1.5em;
+}
+
 .policy-template main .section .default-content-wrapper li::marker {
   color: var(--policy-template-borders);
 }
@@ -1395,7 +1440,7 @@ main .section.table-container.accordion-container .default-content-wrapper h2{
     font-size: var(--heading-font-size-l);
     margin-bottom: 50px;
     padding: 15px 0;
-    text-transform: capitalize;
+    text-transform: none;
 }
 
 main .section.table-container.accordion-container .default-content-wrapper:nth-child(1) h2 {

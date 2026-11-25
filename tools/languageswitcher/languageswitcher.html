@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Language Switcher</title>
+    <link rel="icon" href="data:," />
+    <link rel="stylesheet" href="https://da.live/nx/public/sl/styles.css" />
+    <link rel="stylesheet" href="./languageswitcher.css" />
+  </head>
+  <body>
+    <div class="ls-shell">
+      <div class="ls-panel ls-loading" role="region" aria-label="Language Switcher" aria-busy="true">
+        <main class="app-main">
+          <p id="status" class="status" role="status" hidden></p>
+
+          <div class="ls-loading-compact" role="status" aria-live="polite" aria-busy="true">
+            <span class="ls-loading-spinner" aria-hidden="true"></span>
+            Loading…
+          </div>
+
+          <div id="contentCard" class="content-card" hidden>
+            <p id="currentLocale" class="current-locale" hidden>
+              Current page language: <span id="currentLocaleValue" class="current-locale-code"></span>
+            </p>
+
+            <section id="langRow" class="lang-section">
+              <label class="field-label" id="langSelectLabel" for="langSelectTrigger">
+                Select language
+              </label>
+              <div class="lang-combobox" id="langCombobox">
+                <button
+                  type="button"
+                  id="langSelectTrigger"
+                  class="lang-select-trigger"
+                  aria-haspopup="listbox"
+                  aria-expanded="false"
+                  aria-controls="langSelectMenu"
+                  aria-labelledby="langSelectLabel"
+                >
+                  <span class="lang-select-value" id="langSelectValue"></span>
+                  <span class="lang-select-chevron" aria-hidden="true"></span>
+                </button>
+                <div
+                  id="langSelectMenu"
+                  class="lang-select-menu"
+                  role="listbox"
+                  aria-labelledby="langSelectLabel"
+                  aria-hidden="true"
+                ></div>
+              </div>
+            </section>
+
+            <div class="actions-panel" id="actions">
+              <button type="button" id="open" class="btn btn-primary">
+                <span id="openLabel">Open page for selected language</span>
+              </button>
+              <button type="button" id="openAll" class="btn btn-primary" hidden>
+                Open page for all languages
+              </button>
+            </div>
+          </div>
+
+          <footer class="bulk-footer" id="bulkFooter" hidden>
+            <div class="bulk-actions-row">
+              <button type="button" id="previewAll" class="btn btn-outline">Preview All</button>
+              <button type="button" id="publishAll" class="btn btn-outline">Publish All</button>
+            </div>
+            <p id="bulkMessage" class="bulk-message" role="status" aria-live="polite" hidden></p>
+          </footer>
+        </main>
+      </div>
+    </div>
+    <script src="https://da.live/nx/utils/sdk.js" type="module"></script>
+    <script src="./languageswitcher.js" type="module"></script>
+  </body>
+</html>

@@ -61,7 +61,7 @@ main .filter-container .category-dropdown ul li {
 }
 
 main .filter-container .category-dropdown ul li:hover {
-    font-weight: 500;
+    font-weight: 700;
 }
 
 main .filter-container .input-category-span {
@@ -103,7 +103,7 @@ main .filter-container .news-listing-container-left .filter-separator {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizelegibility;
-    letter-spacing: 0.05em;
+    letter-spacing: 0;
 }
 
 main .filter-container .news-listing-container-left .view-all {
@@ -134,19 +134,32 @@ main .filter-container .news-listing-container-right {
 main .filter-container .news-listing-container-right .filter-top-btn {
     width: 30px;
     height: 30px;
+    cursor: pointer;
     background-image: url('/icons/btn_arbres_filtre_top.svg');
+    background-size: 30px 30px;
 }
 
 main .filter-container .news-listing-container-right .filter-bottom-btn {
     width: 30px;
     height: 30px;
+    cursor: pointer;
     background-image: url('/icons/btn_arbres_filtre_bottom.svg');
+    background-size: 30px 30px;
+}
+
+main .filter-container .news-listing-container-right .filter-top-btn:hover,
+main .filter-container .news-listing-container-right .filter-bottom-btn:hover {
+    opacity: 0.7;
 }
 
 .news-landing main .filter-container input {
     border: none;
     outline: none;
     color: var(--input-selected-color);
+}
+
+.news-landing main .filter-container .category-input {
+    padding: 0;
 }
 
 .news-landing .btn-search-clear {
@@ -159,6 +172,10 @@ main .filter-container .news-listing-container-right .filter-bottom-btn {
     vertical-align: middle;
 }
 
+.news-landing .btn-search-clear:hover {
+    opacity: 0.7;
+}
+
 main .news-listing {
     display: grid;
     grid-template-columns: 1fr;
@@ -166,31 +183,66 @@ main .news-listing {
     padding: 0 20px;
     margin: auto;
     height: auto;
+    align-items: stretch;
 }
 
-.news-listing .news-image-wrapper {
+.news-listing > .image-fade-wrapper {
     width: 100%;
-    background-size: cover;
-    display: inline-block;
-    position: relative;
-    padding-bottom: 75%;
+    min-width: 0;
+    height: 100%;
 }
 
-.news-listing .news-image-wrapper img {
-    position: absolute !important;
-    top: 0;
-    left: 0;
-    height: 100% !important;
-    width: 100%;
-    max-width: 100% !important;
-    object-fit: cover;
+.news-listing > .image-fade-wrapper:not(.horizontal-banner) {
+    display: flex;
+    flex-direction: column;
+}
+
+.news-listing > .image-fade-wrapper.horizontal-banner {
+    display: block;
 }
 
 .news-listing .news-item {
+    width: 100%;
+    box-sizing: border-box;
     background-color: var(--news-bg-arbres);
     padding: 40px;
     color: black;
     text-decoration: none;
+}
+
+.news-listing .news-item:not(.horizontal-banner) {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-height: 100%;
+}
+
+.news-listing .news-item:not(.horizontal-banner) .news-content-wrapper {
+    flex: 1;
+}
+
+.news-listing .news-item:not(.horizontal-banner) .clear {
+    display: none;
+}
+
+/* Fixed frame (same proportions as former 75% padding-bottom trick) */
+.news-listing .news-image-wrapper {
+    width: 100%;
+    display: block;
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 4 / 3;
+}
+
+.news-listing .news-image-wrapper img {
+    position: absolute;
+    inset: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    object-fit: cover;
+    object-position: center;
 }
 
 .news-listing .news-item:hover {
@@ -218,12 +270,20 @@ main .news-listing {
     color: var(--news-button-text-colour);
 }
 
+.biencommun .news-listing .news-item.horizontal-banner .news-category {
+    background-color: var(--biencommun-site-color-2);
+}
+
 .news-listing .news-item.horizontal-banner h2 {
     color: var(--site-color);
     font-size: 40px;
     margin-top: 0;
     text-transform: uppercase;
     font-weight: 400;
+}
+
+.biencommun .news-listing .news-item.horizontal-banner h2 {
+    color: var(--biencommun-site-color);
 }
 
 .news-listing .news-date {
@@ -236,6 +296,10 @@ main .news-listing {
 
 .news-listing .news-item.horizontal-banner .news-date {
     color: var(--site-color);
+}
+
+.biencommun .news-listing .news-item.horizontal-banner .news-date {
+    color: var(--biencommun-site-color-2);
 }
 
 .news-listing .news-title {
@@ -257,11 +321,8 @@ main .news-listing {
 }
 
 .news-listing .news-item.horizontal-banner {
+    display: block;
     background-color: var(--news-bg-enavant);
-}
-
-.news-listing > .image-fade-wrapper {
-  display: grid;
 }
 
 .news-listing .image-fade-wrapper.horizontal-banner {

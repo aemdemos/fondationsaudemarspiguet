@@ -1,19 +1,26 @@
 import { DEFAULT_THANK_YOU_MESSAGE, getSubmitBaseUrl } from './constant.js';
+import setRichTextContent from './rich-text.js';
 import { checkValidation } from './util.js';
+import { redirectToSameOrigin } from '../../scripts/url-utils.js';
 
 export function submitSuccess(e, form) {
   const { payload } = e;
   const redirectUrl = form.dataset.redirectUrl || payload?.body?.redirectUrl;
   const thankYouMsg = form.dataset.thankYouMsg || payload?.body?.thankYouMessage;
   if (redirectUrl) {
-    window.location.assign(encodeURI(redirectUrl));
+    try {
+      redirectToSameOrigin(redirectUrl);
+    } finally {
+      form.setAttribute('data-submitting', 'false');
+      form.querySelector('button[type="submit"]').disabled = false;
+    }
   } else {
     let thankYouMessage = form.parentNode.querySelector('.form-message.success-message');
     if (!thankYouMessage) {
       thankYouMessage = document.createElement('div');
       thankYouMessage.className = 'form-message success-message';
     }
-    thankYouMessage.innerHTML = thankYouMsg || DEFAULT_THANK_YOU_MESSAGE;
+    setRichTextContent(thankYouMessage, thankYouMsg || DEFAULT_THANK_YOU_MESSAGE);
     form.parentNode.insertBefore(thankYouMessage, form);
     if (thankYouMessage.scrollIntoView) {
       thankYouMessage.scrollIntoView({ behavior: 'smooth' });

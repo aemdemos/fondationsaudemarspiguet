@@ -55,6 +55,21 @@ export function moveInstrumentation(from, to) {
   );
 }
 
+export function decorateLinkedInLinks(container) {
+  container.querySelectorAll('.icon-linkedin').forEach((icon) => {
+    const link = icon.closest('a');
+    if (!link) return;
+
+    link.target = '_blank';
+    link.relList.add('noopener', 'noreferrer');
+    link.classList.remove('button', 'primary', 'secondary');
+    link.closest('p')?.classList.remove('button-container');
+    if (!link.textContent.trim() && !link.getAttribute('aria-label') && !link.querySelector('img[alt]:not([alt=""])')) {
+      link.setAttribute('aria-label', 'LinkedIn');
+    }
+  });
+}
+
 /**
  * Decorates h1, h2 headings with repeatable scroll animations
  * @param {Element} main The container element
@@ -213,21 +228,21 @@ function getPolicyTemplateDynamicData(main) {
         if (pageData) {
           const datechanged = pageData.lastModified;
           const date = new Date(datechanged * 1000);
-          const formattedEng = `${date.toLocaleDateString('en-US', { month: 'short' })} ${date.getDate()}, ${date.getFullYear()}`;
           const formattedFr = `${date.getDate()} ${date.toLocaleDateString('fr-FR', { month: 'long' })}, ${date.getFullYear()}`;
           // fetch placeholders based on current language
           const currentLanguage = getLanguage();
           const placeholders = await fetchPlaceholders(currentLanguage);
-          const strEng = `${formattedEng}`;
           const strFr = `${formattedFr}`;
           const info = document.createElement('span');
           info.classList.add('last-modified');
 
           if (currentLanguage === 'en') {
             if (pageSlug === 'privacy-notice') {
-              info.textContent = `${placeholders.privacyPolicyUpdateText} ${strEng}`;
+              info.classList.add('policy-update');
+              info.textContent = 'This Privacy Notice was last updated on September 10, 2025.';
             } else if (pageSlug === 'terms-of-use') {
-              info.textContent = `${placeholders.termsOfUseUpdateText} ${strEng}`;
+              info.classList.add('policy-update');
+              info.textContent = 'These Terms of Use were last updated on September 10, 2025.';
             }
           } else if (currentLanguage === 'fr') {
             if (pageSlug === 'declaration-de-confidentialite') {
@@ -632,7 +647,9 @@ async function loadPage() {
   loadDelayed();
 }
 
-loadPage();
+if (!new URL(window.location.href).searchParams.get('dapreview')) {
+  loadPage();
+}
 
 const { searchParams, origin } = new URL(window.location.href);
 const branch = searchParams.get('nx') || 'main';

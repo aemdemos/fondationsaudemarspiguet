@@ -76,6 +76,10 @@ body.biencommun .quote .quote-quotation i {
   text-decoration: none;
 }
 
+body.fondations .quote .quote-quotation u ~ u {
+  color: var(--fondations-site-color);
+}
+
 /* Style bold text in quotation - remove bold and make grey */
 .quote .quote-quotation strong,
 .quote .quote-quotation b {
